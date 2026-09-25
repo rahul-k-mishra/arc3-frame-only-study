@@ -28,7 +28,7 @@ RULE (3.3, verbatim):
 PRECEDENCE (plan 3.3, added 25 Sep 2026, decided before any phase-2 result was read): BREAKS
 takes precedence over REPRODUCES.  If any of (iv)-(vi) holds, the label is BREAKS even when
 (i)-(iii) also hold; the output then lists both condition sets with their values.  The rule's
-last clause (no per-level scorecard counts -> INCONCLUSIVE) is checked first, as before.  No
+last clause (no per-level scorecard counts -> INCONCLUSIVE) is checked first (plan 3.3).  No
 threshold is changed.
 
 The decision uses the point values.  The 95% intervals are hierarchical bootstrap percentiles

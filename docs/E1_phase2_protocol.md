@@ -243,9 +243,11 @@ Classification (3.3):
 > precedence over REPRODUCES. If any of (iv)-(vi) holds, the label is BREAKS even when (i)-(iii)
 > also hold. Reason: REPRODUCES asserts that the pattern measured on our agent also holds for an
 > independently authored agent. An agent completing at least twice E2's levels has not reproduced
-> that pattern, whatever its score. (The rule above as first written did not order the two labels;
-> the gap was found while writing scripts/e1_decide.py, and no threshold is changed by this
-> paragraph.)
+> that pattern, whatever its score. The card-count clause comes first: if the agent could not
+> produce per-level scorecard counts, the label is INCONCLUSIVE and neither BREAKS nor REPRODUCES is
+> evaluated, because M2 and the AT HUMAN comparison cannot be computed without those counts. (The
+> rule above as first written did not order these labels; the gaps were found while writing
+> scripts/e1_decide.py, and no threshold is changed by this paragraph.)
 
 What the paper says (3.4):
 
@@ -286,8 +288,9 @@ version of e1_decide.py (commit e82dc11) printed CONFLICT in that case. The auth
 precedence: **BREAKS takes precedence over REPRODUCES**, with the reason recorded in docs/
 TOG_PLAN_v2.md Section 3.3 (quoted above). e1_decide.py now prints BREAKS in that case and lists
 both condition sets with their values; CONFLICT is no longer an outcome. The rule's last clause
-(no per-level scorecard counts gives INCONCLUSIVE) is still checked before anything else, as in
-the first version; the precedence decision does not address it. No threshold changed.
+(no per-level scorecard counts gives INCONCLUSIVE) is checked before anything else, as in the
+first version; the author confirmed this order on 25 September 2026 and it is recorded in
+Section 3.3 (quoted above). No threshold changed.
 
 Precondition for scoring (not for running): BREAKS (vi) needs our E2 value of M4 (hash_state,
 10 seeds). E2 has not been run. Plan 3.2 says E2 is recomputed before any external agent is
