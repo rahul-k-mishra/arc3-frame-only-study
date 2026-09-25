@@ -1,0 +1,14 @@
+{
+ "full": {
+  "sec_per_action": 1254.4667083422344,
+  "prompt_tokens_per_step": 11306.666666666666,
+  "parsed": 4,
+  "steps": 4
+ },
+ "rle": {
+  "sec_per_action": 281.0480311711629,
+  "prompt_tokens_per_step": 5369.0,
+  "parsed": 4,
+  "steps": 4
+ }
+}
