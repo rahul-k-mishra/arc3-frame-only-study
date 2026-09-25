@@ -93,10 +93,10 @@ completes the first k levels at a constant action ratio r?
 - Analytic ceiling validated against the scorecard: NEED (E4, scripts/g_ceiling.py).
 
 RQ2. Does mechanism selection on a subset of public games transfer to the rest?
-- One split: train pick held-out-best for 3 of 17 games; per-game oracle 0.3632 vs selected
-  0.3329: HAVE, but which matrix produced 3/17 and 0.3632 is not recorded. E5 prints the fixed
-  split for both matrices; whichever reproduces the numbers is named as their source.
-- 10,000 random splits: NEED (E5, scripts/g_split_transfer.py).
+- One split and 10,000 random splits: HAVE (runs/split_transfer.json; Section 4). The old
+  one-split sentence ("train pick held-out-best for 3 of 17; oracle 0.3632 vs selected 0.3329")
+  described hash_state, the held-out-best mechanism, not the train pick; it is withdrawn
+  (Section 4.2).
 
 RQ3. For a planner that checks its own assumptions at play time, which assumption fails, per game?
 - v2 census, 4 seeds (runs/navrun_v2_heldout.json), tabulated for all 25 games by
@@ -237,74 +237,105 @@ or scorecard and level_log totals that disagree by more than probe and reset pre
 
 ---
 
-## 4. E5: selection transfer, specified before the analysis runs
+## 4. E5: selection transfer
 
-Script: scripts/g_split_transfer.py. No game runs. Output: runs/split_transfer.json.
+Script: scripts/g_split_transfer.py. No game runs. Output: runs/split_transfer.json (the author's
+run, created 2026-09-25 10:00:58; self-check hash_state held-out mean 0.3329 passed). Every
+number in 4.2-4.4 is from that file; 4.1 is the specification fixed before it was run.
 
-Matrices.
-- Primary: runs/ablate_lenovo_6x4.json. 6 mechanisms (adapt_lazy, base, burst, death,
-  hash_state, repeat_key), seeds 1000-1003, 20,000 actions, 25 games, 600 rows.
-- Exploratory: runs/ablate_kaggle_20x1.json. 20 mechanisms, seed 1000 only, 10,000 actions,
-  25 games, 500 rows. Its budget is half the primary's, so it is not a larger version of the same
-  experiment; it is reported only as a sensitivity analysis and never mixed with the primary.
-- Time-truncated runs (added 25 September 2026, from the actions, state and seconds fields only,
-  before any score in either matrix was looked at). A run is time-truncated if it did not end in
-  WIN and used fewer actions than the matrix's budget (the largest action count in the matrix).
-  The primary matrix has none (its two short runs are WINs). The exploratory matrix has 47, all
-  stopped at the 240 s wall-clock limit: reset_in_graph 25 of 25 (16-501 actions), object_state
-  17 of 25, coarse_state 3, seek 2 (counts as printed by g_split_transfer.py; an earlier hand
-  count in this plan said 20 and 2, and was wrong). Those four mechanisms did not get the same budget as the
-  others. The exploratory analysis therefore uses the 16 mechanisms with no time-truncated run;
-  the 20-mechanism version is printed as a sensitivity check and labelled as including truncated
-  runs. The script counts truncated runs per mechanism and applies this rule itself.
+### 4.1 Specification (fixed before the run; unchanged)
+
+- Primary matrix: runs/ablate_lenovo_6x4.json. 6 mechanisms (adapt_lazy, base, burst, death,
+  hash_state, repeat_key), seeds 1000-1003, 20,000 actions, 25 games, 600 rows, no truncated run.
+- Exploratory matrix: runs/ablate_kaggle_20x1.json. Seed 1000 only, 10,000 actions (half the
+  primary's budget). 47 runs stopped at the 240 s wall clock before the action budget
+  (reset_in_graph 25, object_state 17, coarse_state 3, seek 2; found from the actions, state and
+  seconds fields before any score was read); the exploratory analysis uses the other 16
+  mechanisms, and all 20 are reported as a labelled sensitivity check. Never mixed with the primary.
+- Cell value: mean over seeds of the recorded scorecard score. Selection statistic: unweighted
+  mean over the 8 train games; the pick is its argmax; ties averaged.
+- 10,000 random 8/17 splits, draw k seeded [20260925, k]. Outcomes per split: best_hit (the pick
+  is the held-out-best mechanism), per-game hits, held-out score of the pick, of the best
+  mechanism and of the per-game oracle, the two regrets, the pick's held-out rank, Kendall tau-b
+  between train and held-out means, and chance references for a uniformly random mechanism.
+- Secondary: S1 splits with tu93, dc22, ls20 pinned to train (seed [20260926, k]); S2 a
+  cross-fitted per-game oracle (primary only: choose each game's best mechanism on two seeds,
+  score it on the other two, all six ways).
 - To be stated by the author in the manuscript: how the six primary mechanisms were chosen, and
   whether any held-out score had been seen when they were chosen.
 
-Cell value. For game g and mechanism m: the mean over the matrix's seeds of the recorded
-scorecard score (field "score"). Nothing is recomputed from level_log.
+### 4.2 The fixed split, primary matrix (train tu93 ls20 vc33 m0r0 ft09 lp85 lf52 dc22)
 
-Selection statistic (fixed). For a train set T of 8 games: train(m) = unweighted mean over g in T
-of cell(g, m). The pick is argmax_m train(m). If several mechanisms tie (to 1e-12), every outcome
-is averaged over the tied mechanisms with equal weight.
+Three numbers, each with what it is:
+- The train pick is repeat_key (train mean 0.5344). Its held-out mean is 0.1464.
+- The held-out-best mechanism is hash_state, held-out mean 0.3329. On the train games it ranks
+  6 of 6 (train mean 0.1840). It is best on 8 of 17 held-out games, 3 if the 5 games where all
+  six mechanisms tie are left out.
+- The per-game oracle (each held-out game's best mechanism, chosen on the same seeds it is scored
+  on) is 0.3632. Cross-fitted (chosen on two seeds, scored on the other two) it is 0.2517, below
+  hash_state alone.
 
-Splits (fixed). 10,000 draws. Draw k uses numpy.random.default_rng([20260925, k]) and takes
-8 of the 25 games without replacement as train; the other 17 are held-out. The draw does not
-depend on the number of workers.
+What this corrects. The old plan and CLAUDE.md report "train pick held-out-best for 3 of 17
+games; oracle 0.3632 vs selected 0.3329". The 0.3329 and the 3 of 17 are hash_state's, and
+hash_state is not what the train games select: it is the held-out-best mechanism, and we
+ourselves reported it as our explorer's result. Reporting the held-out-best mechanism's held-out
+score is selection on the held-out games. From here on, 0.3329 is described as "the held-out
+mean of hash_state, the mechanism that is best on the held-out games and worst on the train
+games", never as a selected or train-chosen result. The old plan's "a per-game oracle over 20
+mechanisms is worth 0.03" was wrong twice: the 0.3632 is over the 6 primary mechanisms, and the
+0.03 gap to 0.3329 is in-sample; cross-fitted, the per-game oracle scores below hash_state.
 
-Outcomes per split, with H the 17 held-out games and ho(m) the mean over H of cell(g, m):
-- best_hit: whether the pick is argmax_m ho(m) (ties: the pick counts as best if it ties the
-  maximum; fractional if the pick itself is a tie).
-- per-game hits: the number of games in H where the pick attains max_m cell(g, m); also the number
-  of games in H where all mechanisms tie (these carry no information and are reported apart).
-- pick_ho = ho(pick); best_ho = max_m ho(m); oracle_ho = mean over H of max_m cell(g, m).
-- regret_best = best_ho - pick_ho; regret_oracle = oracle_ho - pick_ho.
-- the pick's rank among mechanisms on H (1 = best, ties share the better rank).
-- Kendall tau-b between train(m) and ho(m) over mechanisms.
-- chance references: the probability a uniformly random mechanism is held-out-best, and the
-  expected held-out score of a uniformly random mechanism.
+### 4.3 Random splits, primary matrix (10,000 splits, 9,962 distinct)
 
-Reported: the fraction of splits with best_hit; mean and 5/25/50/75/95 percentiles of each
-outcome; how often each mechanism is picked; the same for the chance references.
+| outcome | mean | p5 | p50 | p95 | chance reference (mean) |
+|---|---|---|---|---|---|
+| best_hit (pick is held-out-best) | 0.0113 | 0 | 0 | 0 | 0.1668 |
+| Kendall tau-b, train vs held-out means | -0.4282 | -0.8667 | -0.4667 | +0.0667 | |
+| regret vs best mechanism | 0.0923 | 0.0239 | 0.0863 | 0.1816 | |
+| regret vs per-game oracle (in-sample) | 0.2061 | 0.1370 | 0.2163 | 0.2734 | |
+| regret vs cross-fitted oracle | 0.0875 | 0.0236 | 0.0932 | 0.1391 | |
+| held-out mean of the pick | 0.2258 | 0.0914 | 0.2197 | 0.3373 | 0.2547 |
+| per-game hits (of 17) | 7.1707 | 5 | 7 | 10 | 7.2449 |
+| pick's held-out rank (of 6) | 4.8094 | 2 | 5 | 6 | |
 
-Secondary analyses (fixed now):
-- S1 pinned: tu93, dc22, ls20 (source-informed) always in train; 5 more train games drawn from
-  the other 22; 10,000 draws seeded [20260926, k].
-- S2 seed-noise check on the oracle (primary only): the in-sample oracle takes a maximum over
-  noisy seed means and is biased upward. For each of the three ways to split seeds 1000-1003 into
-  two pairs, choose each game's best mechanism on one pair and score it on the other, both ways;
-  average the six. Report in-sample and cross-fitted oracles side by side.
-- The author's fixed split (train tu93 ls20 vc33 m0r0 ft09 lp85 lf52 dc22) is printed for both
-  matrices, with a per-game table that marks source-informed games.
+Reading, for the primary matrix only: the train pick is the held-out-best mechanism in 1.1% of
+splits, against 16.7% for a mechanism chosen uniformly at random; the train and held-out rankings
+are negatively associated in the mean split, and the 95th percentile of tau is +0.0667; the
+pick's expected held-out score (0.2258) is below that of a random mechanism (0.2547). Pick
+frequency: repeat_key 0.449, hash_state 0.293, adapt_lazy 0.090, death 0.079, base 0.046, burst
+0.042. Most of the in-sample oracle regret (0.2061) is seed noise: against the cross-fitted oracle
+it is 0.0875, about the regret against the single best mechanism (0.0923).
 
-What must be true. Every (game, mechanism, seed) cell is present exactly once; within a matrix
-all runs use the same budget. How failure shows: the script stops on a missing or duplicate cell,
-and prints the budgets found per matrix. On the fixed split the primary matrix must give a
-hash_state held-out mean of 0.3329; if it does not, the loader is wrong and nothing else it prints
-is used.
+S1, tu93/dc22/ls20 pinned to train (10,000 splits, 8,312 distinct): best_hit 0.0048 (chance
+0.1667), mean tau -0.4407 (p95 -0.0667), regret vs best 0.0941, vs in-sample oracle 0.1975, vs
+cross-fitted oracle 0.0999.
 
-Limits stated where the result appears. The 10,000 splits are splits of the same 25 authored
-games; they share games and are strongly dependent, so the fraction is a property of this set, not
-an estimate for a population of games, and no p-value is attached. Seeds are nested within games.
+### 4.4 Exploratory matrix (1 seed, 10,000 actions): a different picture
+
+16 untruncated mechanisms, 10,000 splits: best_hit 0.0555 (chance 0.0707); mean tau +0.3673
+(p5 -0.1777, p50 +0.4426, p95 +0.6583); regret vs best 0.2575, vs in-sample oracle 0.2793. On
+the fixed split the pick is burst (held-out mean 0.3985); the held-out-best is again hash_state
+(0.7077); the in-sample oracle is 0.7212. All 20 mechanisms, including time-truncated runs:
+best_hit 0.0408 (chance 0.0546), mean tau +0.2937, regret vs best 0.2980, vs in-sample oracle
+0.3985.
+
+In this matrix the train and held-out rankings are positively associated in the mean split, the
+opposite sign to the primary. The pick is the held-out-best less often than chance in both
+matrices. The two matrices differ in mechanism set, budget (10,000 vs 20,000 actions) and seeds
+(1 vs 4), so the difference in sign cannot be attributed to any one of them. What the evidence
+supports: in both matrices, choosing the mechanism with the best train mean rarely yields the
+held-out-best mechanism; whether train and held-out rankings are anti-correlated depends on the
+matrix, so "rankings reverse" is not a general finding and is not written as one. The
+exploratory in-sample oracle cannot be cross-fitted (one seed) and is inflated by seed noise.
+
+### 4.5 Limits (stated where the numbers appear)
+
+The splits are splits of the same 25 authored public games; they share games and are strongly
+dependent, so every fraction above describes this set of games and mechanisms, not a population,
+and carries no p-value. Seeds are nested within games. On the fixed split 5 of 17 held-out games
+tie across all six mechanisms, and ties are common on every split (mean 4.07 all-tie held-out
+games per split), which limits what per-game hits can show. The six mechanisms were chosen by the
+author before this analysis; how they were chosen is to be stated.
 
 ---
 
