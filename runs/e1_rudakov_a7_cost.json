@@ -1,0 +1,155 @@
+[
+ {
+  "game": "ft09",
+  "mode": "rudakov",
+  "seed": 1000,
+  "actions": 2000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 2000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 42.0,
+  "play_seconds": 41.91,
+  "sec_per_action": 0.021,
+  "env_sec_per_action": 0.0016,
+  "diag": {
+   "issued_by_id": {
+    "0": 15,
+    "6": 1985
+   },
+   "resets": 15,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 96,
+    "Lowest dist": 15
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   2000,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   43,
+   12,
+   23,
+   28,
+   65,
+   37
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "tu93",
+  "mode": "rudakov",
+  "seed": 1000,
+  "actions": 2000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 2000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 37.3,
+  "play_seconds": 37.25,
+  "sec_per_action": 0.0186,
+  "env_sec_per_action": 0.0008,
+  "diag": {
+   "issued_by_id": {
+    "0": 39,
+    "1": 1730,
+    "2": 78,
+    "3": 68,
+    "4": 85
+   },
+   "resets": 39,
+   "their_prints": {
+    "Will run": 1,
+    "Lowest dist": 88,
+    "Suspicious transition": 39,
+    "Error": 1667
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   2000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   19,
+   16,
+   34,
+   42,
+   123,
+   80,
+   14,
+   23,
+   111
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ }
+]
