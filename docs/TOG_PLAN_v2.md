@@ -244,7 +244,8 @@ Matrices.
   WIN and used fewer actions than the matrix's budget (the largest action count in the matrix).
   The primary matrix has none (its two short runs are WINs). The exploratory matrix has 47, all
   stopped at the 240 s wall-clock limit: reset_in_graph 25 of 25 (16-501 actions), object_state
-  20 of 25, coarse_state 2, seek 2. Those four mechanisms did not get the same budget as the
+  17 of 25, coarse_state 3, seek 2 (counts as printed by g_split_transfer.py; an earlier hand
+  count in this plan said 20 and 2, and was wrong). Those four mechanisms did not get the same budget as the
   others. The exploratory analysis therefore uses the 16 mechanisms with no time-truncated run;
   the 20-mechanism version is printed as a sensitivity check and labelled as including truncated
   runs. The script counts truncated runs per mechanism and applies this rule itself.
