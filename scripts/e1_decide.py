@@ -25,9 +25,11 @@ RULE (3.3, verbatim):
         (vi) M4 at least twice our E2 value of M4.
     INCONCLUSIVE otherwise (for example M1 = 0.6, or a single lucky lv3 win), or if the agent
     could not produce per-level scorecard counts.
-The registered text does not say what happens if REPRODUCES and BREAKS both hold (possible:
-(i)-(iii) with (vi)).  This script does not choose: it prints CONFLICT with both conditions, and
-the author settles it in the plan.  It never changes a threshold.
+PRECEDENCE (plan 3.3, added 25 Sep 2026, decided before any phase-2 result was read): BREAKS
+takes precedence over REPRODUCES.  If any of (iv)-(vi) holds, the label is BREAKS even when
+(i)-(iii) also hold; the output then lists both condition sets with their values.  The rule's
+last clause (no per-level scorecard counts -> INCONCLUSIVE) is checked first, as before.  No
+threshold is changed.
 
 The decision uses the point values.  The 95% intervals are hierarchical bootstrap percentiles
 (resample the 17 games with replacement, then seeds within each resampled game; 10,000 draws,
@@ -54,7 +56,7 @@ Command (PowerShell, from D:\\Research\\arc3\\repo):
 EXPECTED OUTPUT (shape): the files and seed counts; a per-game table (agent and reference seed
 means of score and levels, seeds with level >= 3); M1-M4 side by side with 95% intervals; each
 condition (i)-(vi) with its values and TRUE/FALSE; one line
-    DECISION: REPRODUCES | BREAKS | INCONCLUSIVE | CONFLICT  -  decided by <conditions>
+    DECISION: REPRODUCES | BREAKS | INCONCLUSIVE  -  decided by <conditions>
 and "wrote runs\\e1_decision.json".
 """
 from __future__ import annotations
@@ -252,13 +254,17 @@ def main():
     breaks = [c for c in ("iv", "v", "vi") if cond[c]]
     if not a_card:
         decision, by = "INCONCLUSIVE", "the agent could not produce per-level scorecard counts (rows without card_levels / card_baseline)"
-    elif reproduces and breaks:
-        decision, by = "CONFLICT", (f"REPRODUCES (i, ii, iii all true) and BREAKS ({', '.join(breaks)}) both hold; "
-                                    f"Section 3.3 does not order them - the author settles this in the plan")
+    elif breaks:
+        # precedence (TOG_PLAN_v2 3.3, added 25 Sep 2026 before any phase-2 result was read):
+        # any BREAKS condition decides, even when (i)-(iii) also hold
+        by = "BREAKS (" + "; ".join(f"{c}: {vals[c]}" for c in breaks) + ")"
+        if reproduces:
+            by += (" - the REPRODUCES conditions also hold (" + "; ".join(f"{c}: {vals[c]}" for c in
+                                                                    ("i", "ii", "iii"))
+                   + "); BREAKS takes precedence (plan 3.3)")
+        decision = "BREAKS"
     elif reproduces:
         decision, by = "REPRODUCES", "(i), (ii) and (iii) all true"
-    elif breaks:
-        decision, by = "BREAKS", f"({', '.join(breaks)}) true"
     else:
         missed = [c for c in ("i", "ii", "iii") if not cond[c]]
         decision, by = "INCONCLUSIVE", f"REPRODUCES fails on ({', '.join(missed)}); no BREAKS condition holds"
@@ -297,6 +303,8 @@ def main():
                measures=dict(agent=A, reference=R), intervals95=dict(agent=Aci, reference=Rci),
                conditions={c: dict(text=RULE_TEXT[c], value=vals[c], holds=bool(cond[c])) for c in cond},
                decision=decision, decided_by=by, seeds_below_registered=len(a_seeds) < 10,
+               reproduces_conditions_hold=bool(reproduces), breaks_conditions_hold=breaks,
+               precedence="BREAKS over REPRODUCES (TOG_PLAN_v2 3.3, 25 Sep 2026)",
                per_game_heldout=per_game, train_beside=train,
                action7_unavailable=NO_ACTION7, source_informed=SOURCE_INFORMED)
     tmp = args.out + ".tmp"

@@ -205,7 +205,9 @@ $py = "D:\Research\arc3\brutus\.venv\Scripts\python.exe"
 
 Output: runs/e1_decision.json. It prints M1-M4 for both files with hierarchical bootstrap 95%
 intervals (descriptive; the point values decide), each condition (i)-(vi) with its value, and one
-line "DECISION: REPRODUCES | BREAKS | INCONCLUSIVE | CONFLICT - decided by ...".
+line "DECISION: REPRODUCES | BREAKS | INCONCLUSIVE - decided by ...". When a BREAKS condition
+and the REPRODUCES conditions both hold, it prints BREAKS and lists both condition sets with
+their values (precedence, Section 4).
 
 ## 4. The decision rule (docs/TOG_PLAN_v2.md Sections 3.2-3.4, verbatim)
 
@@ -236,6 +238,14 @@ Classification (3.3):
 >   (vi)  M4 at least twice our E2 value of M4.
 > INCONCLUSIVE otherwise (for example M1 = 0.6, or a single lucky lv3 win), or if the agent
 > could not produce per-level scorecard counts.
+>
+> Precedence (added 25 September 2026, decided before any phase-2 result was read): BREAKS takes
+> precedence over REPRODUCES. If any of (iv)-(vi) holds, the label is BREAKS even when (i)-(iii)
+> also hold. Reason: REPRODUCES asserts that the pattern measured on our agent also holds for an
+> independently authored agent. An agent completing at least twice E2's levels has not reproduced
+> that pattern, whatever its score. (The rule above as first written did not order the two labels;
+> the gap was found while writing scripts/e1_decide.py, and no threshold is changed by this
+> paragraph.)
 
 What the paper says (3.4):
 
@@ -256,9 +266,9 @@ What the paper says (3.4):
 How each measure is computed from the rows (fixed now; it adds no threshold):
 - M1: for each held-out game, the mean of `score` over its seeds; then the mean over the 17
   games.
-- M2: the AT HUMAN value per run from g_decompose.py (runs/decompose_*.json,
-  per-mechanism `at_human`, which is a mean over runs). With every game having the same number of
-  seeds, that equals the mean over games of seed means.
+- M2: AT HUMAN per run, computed by e1_decide.py from the row's `levels` (k) and the length N of
+  its `card_baseline` with the scorecard rule: 100 k(k+1) / (N(N+1)). Then the seed mean per game,
+  then the mean over the 17 games.
 - M3: the number of held-out rows with `levels >= 3`. This is not g_decompose's "lv3+" column,
   which counts won levels, not runs.
 - M4: for each held-out game, the mean of `levels` over its seeds; then the sum over the 17 games.
@@ -268,13 +278,16 @@ How each measure is computed from the rows (fixed now; it adds no threshold):
 These computations are implemented in scripts/e1_decide.py (command 4). It was written and tested
 on synthetic rows before any phase-2 or E2 output was read.
 
-An open gap in the registered rule, found while writing that script: Section 3.3 does not say
-what happens when REPRODUCES and BREAKS both hold. This can happen: (i)-(iii) true together with
-(vi), e.g. an agent that wins levels 1 and 2 on many games, slowly, and never level 3, so that
-M4 is at least twice E2's M4 while M1 < 0.5 and M3 = 0. The script does not choose. It prints
-CONFLICT with both sets of conditions. The author should settle the precedence in docs/
-TOG_PLAN_v2.md Section 3.3 before any phase-2 result is read; if that is not done, a CONFLICT
-result is reported as such.
+Change record, 25 September 2026 (before any phase-2 result was read). The rule as first
+registered did not say what happens when REPRODUCES and BREAKS both hold. This can happen:
+(i)-(iii) true together with (vi), e.g. an agent that wins levels 1 and 2 on many games, slowly,
+and never level 3, so that M4 is at least twice E2's M4 while M1 < 0.5 and M3 = 0. The first
+version of e1_decide.py (commit e82dc11) printed CONFLICT in that case. The author settled the
+precedence: **BREAKS takes precedence over REPRODUCES**, with the reason recorded in docs/
+TOG_PLAN_v2.md Section 3.3 (quoted above). e1_decide.py now prints BREAKS in that case and lists
+both condition sets with their values; CONFLICT is no longer an outcome. The rule's last clause
+(no per-level scorecard counts gives INCONCLUSIVE) is still checked before anything else, as in
+the first version; the precedence decision does not address it. No threshold changed.
 
 Precondition for scoring (not for running): BREAKS (vi) needs our E2 value of M4 (hash_state,
 10 seeds). E2 has not been run. Plan 3.2 says E2 is recomputed before any external agent is

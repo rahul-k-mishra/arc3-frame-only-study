@@ -202,6 +202,14 @@ BREAKS if any of:
 INCONCLUSIVE otherwise (for example M1 = 0.6, or a single lucky lv3 win), or if the agent
 could not produce per-level scorecard counts.
 
+Precedence (added 25 September 2026, decided before any phase-2 result was read): BREAKS takes
+precedence over REPRODUCES. If any of (iv)-(vi) holds, the label is BREAKS even when (i)-(iii)
+also hold. Reason: REPRODUCES asserts that the pattern measured on our agent also holds for an
+independently authored agent. An agent completing at least twice E2's levels has not reproduced
+that pattern, whatever its score. (The rule above as first written did not order the two labels;
+the gap was found while writing scripts/e1_decide.py, and no threshold is changed by this
+paragraph.)
+
 ### 3.4 What the paper says, by outcome (fixed)
 
 - At least two admissible independent agents REPRODUCE and none BREAKS: the paper may say "the
