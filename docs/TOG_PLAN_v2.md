@@ -239,6 +239,15 @@ Matrices.
 - Exploratory: runs/ablate_kaggle_20x1.json. 20 mechanisms, seed 1000 only, 10,000 actions,
   25 games, 500 rows. Its budget is half the primary's, so it is not a larger version of the same
   experiment; it is reported only as a sensitivity analysis and never mixed with the primary.
+- Time-truncated runs (added 25 September 2026, from the actions, state and seconds fields only,
+  before any score in either matrix was looked at). A run is time-truncated if it did not end in
+  WIN and used fewer actions than the matrix's budget (the largest action count in the matrix).
+  The primary matrix has none (its two short runs are WINs). The exploratory matrix has 47, all
+  stopped at the 240 s wall-clock limit: reset_in_graph 25 of 25 (16-501 actions), object_state
+  20 of 25, coarse_state 2, seek 2. Those four mechanisms did not get the same budget as the
+  others. The exploratory analysis therefore uses the 16 mechanisms with no time-truncated run;
+  the 20-mechanism version is printed as a sensitivity check and labelled as including truncated
+  runs. The script counts truncated runs per mechanism and applies this rule itself.
 - To be stated by the author in the manuscript: how the six primary mechanisms were chosen, and
   whether any held-out score had been seen when they were chosen.
 
