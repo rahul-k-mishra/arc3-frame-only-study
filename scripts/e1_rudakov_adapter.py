@@ -55,6 +55,19 @@ Commands (PowerShell, from D:\\Research\\arc3\\repo):
     & $py scripts\\e1_rudakov_adapter.py --fidelity                                    (tu93, 300 actions)
     & $py scripts\\e1_rudakov_adapter.py --games tu93,dc22 --seeds 1 --budget 200 --workers 2 --tag phase1_timing
     & $py scripts\\e1_rudakov_adapter.py --fidelity --fidelity-games ft09,tu93 --fidelity-actions 1000   (A6 as registered)
+    & $py scripts\\e1_rudakov_adapter.py --fidelity --fidelity-games vc33,lp85 --fidelity-actions 300    (level wins in 300)
+
+RESUMING.  A run stopped part-way leaves <out>.partial.jsonl and is continued by the same command
+(the partial file is always read).  --resume (no PATH) also keeps the completed (game, seed) rows
+of an existing output file and completes the missing ones; --resume PATH takes completed rows from
+another file (read only), e.g. a 4-seed file when the same run is extended to 10 seeds under a new
+tag.  Rows are kept only if they were run with the same --budget; any other budget stops the
+script.  Kept rows are copied unchanged.
+
+PER-RUN CHECKS printed at the end: time-truncated runs; runs where their choose_action raised
+(their own fallback repeats the last action; counted in diag.their_prints.Error); and level wins
+not followed by their GraphExplorer.reset, which would mean the levels_completed -> score mapping
+(B2) failed.  The reset is observed, not altered.
 
 EXPECTED OUTPUT
     fidelity: per arm, issued actions, steps, card_levels; "U vs A: IDENTICAL" or the first index
@@ -183,6 +196,15 @@ def make_offline_agent(HeuristicAgent, FrameData, env, game_id, seed, budget, se
     agent._budget, agent._started, agent._level = budget, False, 0
     agent.steps, agent.env_seconds, agent.issued, agent.level_steps = 0, 0.0, [], []
     agent.last_raw = None
+    # observation only: record the step count at every GraphExplorer.reset (their level-up path
+    # resets the graph; B2 is working if every level win is followed by a reset)
+    agent.graph_resets = []
+    _reset = agent.graph_explorer.reset
+
+    def _observed_reset():
+        agent.graph_resets.append(agent.steps)
+        return _reset()
+    agent.graph_explorer.reset = _observed_reset
     return agent
 
 
@@ -220,13 +242,19 @@ def play(game, seed, budget, env_dir, seconds):
         level_log.append(dict(level=int(raw.levels_completed), actions=agent.steps - prev,
                               ended=raw.state.name))
     ids = Counter(a for a, _x, _y in agent.issued[1:])
-    out = dict(game=game, mode=MODE, seed=seed, actions=agent.steps, levels=int(raw.levels_completed),
+    wins_at = [at for _lvl, at, _st in agent.level_steps]
+    resets_at = set(agent.graph_resets)
+    wins_followed_by_reset = sum(1 for at in wins_at if at in resets_at)
+    out = dict(game=game, mode=MODE, seed=seed, budget=budget, game_seconds=seconds,
+               actions=agent.steps, levels=int(raw.levels_completed),
                state=raw.state.name, score=0.0, level_log=level_log, stopped=stopped,
                time_truncated=time_truncated, seconds=round(time.time() - t0, 1),
                play_seconds=round(play_seconds, 2),
                sec_per_action=round(play_seconds / max(1, agent.steps), 4),
                env_sec_per_action=round(agent.env_seconds / max(1, agent.steps), 4),
                diag=dict(issued_by_id={str(k): v for k, v in sorted(ids.items())},
+                         level_wins_at_step=wins_at, graph_resets=len(agent.graph_resets),
+                         level_wins_followed_by_graph_reset=wins_followed_by_reset,
                          resets=ids.get(0, 0), their_prints=dict(pc.counts)),
                adapter=dict(commit=provenance_commit(), boundary=["B1", "B2", "B3", "B4", "B5", "B6", "B7"]))
     sc = arc.close_scorecard(card)
@@ -409,6 +437,14 @@ def fidelity(games, n_steps, seed, env_dir, port, out_path):
 
 # ---------------------------------------------------------------- main
 
+def budget_matches(r, budget):
+    """A kept row must have been run with this budget (rows before the budget field: it used the
+    whole budget, or won)."""
+    if "budget" in r:
+        return int(r["budget"]) == int(budget)
+    return int(r.get("actions", -1)) == int(budget) or r.get("stopped") == "win"
+
+
 def write(path, obj):
     tmp = path + ".tmp"
     with open(tmp, "w") as f:
@@ -419,7 +455,7 @@ def write(path, obj):
 
 def main():
     ap = argparse.ArgumentParser(description="E1a adapter for the Rudakov et al. agent")
-    ap.add_argument("--games", default="tu93,dc22")
+    ap.add_argument("--games", default="tu93,dc22", help="train | heldout | all | comma list")
     ap.add_argument("--seeds", type=int, default=1)
     ap.add_argument("--budget", type=int, default=200)
     ap.add_argument("--workers", type=int, default=8)
@@ -435,6 +471,10 @@ def main():
     ap.add_argument("--port", type=int, default=8765)
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--out-dir", default=os.path.join(REPO, "runs"))
+    ap.add_argument("--resume", nargs="?", const="", default=None, metavar="PATH",
+                    help="skip (game, seed) rows already completed with the same budget: in the "
+                         "output file itself (no PATH: continue a stopped run), or in PATH (e.g. a "
+                         "4-seed file when extending to 10 seeds; PATH is only read)")
     args = ap.parse_args()
 
     if args.fidelity:
@@ -446,19 +486,42 @@ def main():
         return
 
     games = (TRAIN if args.games == "train" else HELD_OUT if args.games == "heldout"
-             else args.games.split(","))
+             else TRAIN + HELD_OUT if args.games == "all" else args.games.split(","))
     bad = [g for g in games if g in HELD_OUT]
     if bad and not args.allow_heldout:
         sys.exit(f"STOP: held-out games {bad} refused in E1 phase 1 (--allow-heldout is for phase 2)")
     out = os.path.join(args.out_dir, f"e1_rudakov_{args.tag}.json")
     part = out + ".partial.jsonl"
-    if os.path.exists(out) and not args.force:
-        sys.exit(f"{out} exists (use --force)")
+    if os.path.exists(out) and not args.force and args.resume is None:
+        sys.exit(f"{out} exists (use --resume to continue it, or --force to overwrite)")
     done = []
-    if os.path.exists(part):                                   # resume
-        done = [json.loads(l) for l in open(part) if l.strip()]
-        print(f"resuming: {len(done)} runs already in {part}")
-    have = {(r["game"], r["seed"]) for r in done if not r.get("error")}
+    sources = []
+    if args.resume is not None:
+        src = args.resume or out
+        if os.path.exists(src):
+            sources.append(src)
+        elif args.resume:
+            sys.exit(f"--resume {src}: no such file")
+    for src in sources:
+        prev = json.load(open(src))
+        kept = [r for r in prev if not r.get("error") and r.get("mode") == MODE
+                and r["game"] in games and r["seed"] < 1000 + args.seeds and budget_matches(r, args.budget)]
+        wrong = [r for r in prev if not r.get("error") and not budget_matches(r, args.budget)]
+        if wrong:
+            sys.exit(f"STOP: {len(wrong)} rows in {src} were run with another budget "
+                     f"(e.g. {wrong[0]['game']} seed {wrong[0]['seed']}); not mixed")
+        print(f"resume: {len(kept)} completed rows taken from {src}")
+        done += kept
+    if os.path.exists(part):                                   # crash recovery, always
+        from_part = [json.loads(l) for l in open(part) if l.strip()]
+        print(f"resuming: {len(from_part)} runs already in {part}")
+        done += [r for r in from_part if budget_matches(r, args.budget)]
+    uniq = {}
+    for r in done:
+        if not r.get("error"):
+            uniq.setdefault((r["game"], r["seed"]), r)
+    done = list(uniq.values())
+    have = set(uniq)
     jobs = [(g, 1000 + s, args.budget, args.env_dir, args.game_seconds)
             for s in range(args.seeds) for g in games if (g, 1000 + s) not in have]
     print(f"{len(games)} games x {args.seeds} seeds, {args.budget} actions, {len(jobs)} to run, "
@@ -478,6 +541,7 @@ def main():
                   f"{r['sec_per_action']:.4f} s/action (env {r['env_sec_per_action']:.4f}) "
                   f"stopped {r['stopped']}", flush=True)
     ok = [r for r in rows if not r.get("error")]
+    rows = ok + [r for r in rows if r.get("error")]
     if ok:
         tot_s = sum(r["play_seconds"] for r in ok)
         tot_a = sum(r["actions"] for r in ok)
@@ -489,7 +553,23 @@ def main():
               f"   [A7 is registered as 2,000 actions on each of ft09 and tu93; "
               f"{'this is that measurement' if sorted(games) == ['ft09', 'tu93'] and args.budget >= 2000 else 'this run is not it'}]")
     write(out, sorted(rows, key=lambda r: (r["game"], r["seed"])))
-    if os.path.exists(part) and len(ok) == len(games) * args.seeds:
+    trunc = [f"{r['game']}/{r['seed']}" for r in ok if r.get("time_truncated")]
+    if trunc:
+        print(f"TIME-TRUNCATED runs (stopped by --game-seconds before the budget): {trunc}")
+    errs = [r for r in ok if r.get("diag", {}).get("their_prints", {}).get("Error")]
+    if errs:
+        print("runs where their choose_action raised (their fallback repeats the last action): "
+              + ", ".join(f"{r['game']}/{r['seed']} {r['diag']['their_prints']['Error']}" for r in errs))
+    unreset = [f"{r['game']}/{r['seed']}" for r in ok
+               if len(r.get("diag", {}).get("level_wins_at_step", []))
+               != r.get("diag", {}).get("level_wins_followed_by_graph_reset", 0)]
+    print("level wins not followed by their graph reset (would mean the score mapping B2 failed): "
+          + (", ".join(unreset) if unreset else "none"))
+    missing = [(g, 1000 + s) for s in range(args.seeds) for g in games
+               if (g, 1000 + s) not in {(r["game"], r["seed"]) for r in ok}]
+    print(f"complete: {len(games) * args.seeds - len(missing)} of {len(games) * args.seeds} (game, seed) runs"
+          + (f"; missing {missing[:10]}{' ...' if len(missing) > 10 else ''} - rerun with --resume" if missing else ""))
+    if os.path.exists(part) and not missing:
         os.remove(part)
 
 
