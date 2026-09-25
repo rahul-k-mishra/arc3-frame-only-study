@@ -163,19 +163,25 @@ $py = "D:\Research\arc3\brutus\.venv\Scripts\python.exe"
 Output: runs/e1_rudakov_lenovo_25x10_20k.json (250 rows; "resume: 100 completed rows taken from
 ...", then 150 runs).
 
-Which set decides. Plan 3.1 and 3.2 register the decision on seeds 1000-1009 for an agent below
-0.28 s per action. The 10-seed file (command 2) is the one the Section 4 rule is applied to. The
-4-seed file is an interim result: it may be reported only as "4 seeds, interim", and it is not
-used to classify the agent. If the author decides not to run stage 2, that is a deviation from
-the registered protocol. It must be written here, with the reason, before any number from stage
-1 is looked at, and every E1 number is then labelled "4 seeds".
+Which set decides (decided by the author on 25 September 2026, before any phase-2 result was
+read). The 10-seed protocol is used as registered, because the measured cost is 0.02 s per action
+(A7: ft09 0.021, tu93 0.0186), below the 0.28 s threshold that plan 3.1 ties to the full 10-seed
+protocol. The 10-seed file (command 2) is the one the Section 4 rule is applied to. The 4-seed
+file from command 1 is stage 1 of the same run. It may be reported only as "4 seeds, interim",
+and it is not used to classify the agent.
 
-Secondary arm (plan 3.2: "If the agent's published configuration uses a different action budget,
-that budget is run as a secondary arm and reported separately"). Their published configuration
-has no action budget: MAX_ACTIONS 1,000,000 and a 7.9 h time limit per game. Whether and how to
-run it (seeds, machine) is left open by the plan and is not settled here. It does not enter the
-decision. If it is run, the command is the same as command 1 with `--budget 1000000` and a new
-`--tag`; at A7's cost that is several hours per run, more if cost grows with graph size.
+Secondary arm: skipped (decided by the author on 25 September 2026, before any phase-2 result
+was read). This is a recorded deviation from plan 3.2, which says: "If the agent's published
+configuration uses a different action budget, that budget is run as a secondary arm and reported
+separately". Their published configuration has no action budget: MAX_ACTIONS 1,000,000 and a
+7.9 h time limit per game. It is skipped for three reasons:
+- 25 games at up to 7.9 h per game, repeated over seeds, is not affordable on the lenovo within
+  the E1 deadline (9 October 2026).
+- The registered 20,000-action run answers the question Section 3 asks. The decision uses the
+  20,000 arm in any case (plan 3.2).
+- Their published preview-challenge result is cited as they report it, and is not re-measured.
+The manuscript states that the published configuration was not run, and why, wherever the E1
+result appears.
 
 Command 3 (scoring input): held-out decomposition of the 10-seed file. This reads rows only and
 plays no game.
@@ -187,6 +193,19 @@ $py = "D:\Research\arc3\brutus\.venv\Scripts\python.exe"
 ```
 
 Output: runs/decompose_e1_rudakov_heldout_10.json.
+
+Command 4 (the decision). This reads rows only and plays no game. It needs the E2 file (our
+hash_state at 10 seeds, 20,000 actions, all 25 games), which does not exist yet; E2 runs first.
+
+```powershell
+cd D:\Research\arc3\repo
+$py = "D:\Research\arc3\brutus\.venv\Scripts\python.exe"
+& $py scripts\e1_decide.py --agent runs\e1_rudakov_lenovo_25x10_20k.json --reference runs\navrun_e2_hash_25x10.json
+```
+
+Output: runs/e1_decision.json. It prints M1-M4 for both files with hierarchical bootstrap 95%
+intervals (descriptive; the point values decide), each condition (i)-(vi) with its value, and one
+line "DECISION: REPRODUCES | BREAKS | INCONCLUSIVE | CONFLICT - decided by ...".
 
 ## 4. The decision rule (docs/TOG_PLAN_v2.md Sections 3.2-3.4, verbatim)
 
@@ -246,7 +265,16 @@ How each measure is computed from the rows (fixed now; it adds no threshold):
 - (v): for each held-out game, the number of seeds with `levels >= 3`; count the games where
   that is at least half the seeds.
 
-A small script that computes M1-M4 from the rows is still to be written (it runs no game).
+These computations are implemented in scripts/e1_decide.py (command 4). It was written and tested
+on synthetic rows before any phase-2 or E2 output was read.
+
+An open gap in the registered rule, found while writing that script: Section 3.3 does not say
+what happens when REPRODUCES and BREAKS both hold. This can happen: (i)-(iii) true together with
+(vi), e.g. an agent that wins levels 1 and 2 on many games, slowly, and never level 3, so that
+M4 is at least twice E2's M4 while M1 < 0.5 and M3 = 0. The script does not choose. It prints
+CONFLICT with both sets of conditions. The author should settle the precedence in docs/
+TOG_PLAN_v2.md Section 3.3 before any phase-2 result is read; if that is not done, a CONFLICT
+result is reported as such.
 
 Precondition for scoring (not for running): BREAKS (vi) needs our E2 value of M4 (hash_state,
 10 seeds). E2 has not been run. Plan 3.2 says E2 is recomputed before any external agent is
