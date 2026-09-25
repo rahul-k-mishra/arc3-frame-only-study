@@ -31,6 +31,14 @@ every run (EnvironmentScore.level_baseline_actions).  It never opens a game's .p
     python g_decompose.py --files ablate_stage2.json
     python g_decompose.py --files ablate_stage2.json,seeds_results.json --env-dir environment_files
     python g_decompose.py --files ablate_stage2.json --games train      (train games instead)
+
+JSON RECORD: everything printed is also written to runs/decompose_<tag>.json (--tag; default
+<games>_<file stems>): the inputs, the per-mechanism table, the DISAGREEMENT lines, the largest
+recorded/recomputed disagreement per mechanism, the >25% list, and the per-run won levels.  The
+numbers in the JSON are the unrounded values behind the printed ones; nothing printed changes.
+An existing JSON is never overwritten without --force (runs/ is never edited).
+
+    python g_decompose.py --files ..unsblate_lenovo_6x4.json --env-dir <env> --tag lenovo_6x4_heldout
 """
 from __future__ import annotations
 
@@ -38,9 +46,11 @@ import argparse
 import glob
 import json
 import os
+import time
 from collections import defaultdict
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+RUNS = os.path.join(os.path.dirname(HERE), "runs")
 HELD_OUT = ["ar25", "bp35", "cd82", "cn04", "g50t", "ka59", "r11l", "re86", "s5i5",
             "sb26", "sc25", "sk48", "sp80", "su15", "tn36", "tr87", "wa30"]
 TRAIN = ["tu93", "ls20", "vc33", "m0r0", "ft09", "lp85", "lf52", "dc22"]
@@ -154,7 +164,17 @@ def main():
     ap.add_argument("--files", required=True, help="comma separated result JSONs")
     ap.add_argument("--env-dir", default=os.path.join(HERE, "environment_files"))
     ap.add_argument("--games", default="heldout", help="heldout | train | comma list")
+    ap.add_argument("--tag", default=None,
+                    help="writes runs/decompose_<tag>.json (default: <games>_<file stems>)")
+    ap.add_argument("--out-dir", default=RUNS)
+    ap.add_argument("--force", action="store_true", help="overwrite an existing JSON")
     args = ap.parse_args()
+    tag = args.tag or "_".join([args.games.replace(",", "-")] + [
+        os.path.splitext(os.path.basename(f))[0] for f in args.files.split(",")])
+    out_path = os.path.join(args.out_dir, f"decompose_{tag}.json")
+    if os.path.exists(out_path) and not args.force:
+        print(f"{out_path} exists; runs/ is never overwritten silently (use --force)")
+        return
 
     games = (HELD_OUT if args.games == "heldout" else TRAIN if args.games == "train"
              else args.games.split(","))
@@ -174,6 +194,13 @@ def main():
     by_mode = defaultdict(list)
     for r in rows:
         by_mode[r["mode"]].append(r)
+    rec_json = dict(script="scripts/g_decompose.py", created=time.strftime("%Y-%m-%d %H:%M:%S"),
+                    tag=tag, files=args.files.split(","), env_dir=args.env_dir, games_arg=args.games,
+                    games=games, runs=len(rows),
+                    runs_per_file={f: sum(1 for r in rows if r["_file"] == f)
+                                   for f in sorted({r["_file"] for r in rows})},
+                    mechanisms={}, disagreements=[], largest_disagreement={},
+                    level_log_vs_recorded_over_25pct=[], per_run=[])
 
     hdr = (f"{'mechanism':14} {'runs':>4} {'recorded':>9} {'recomputed':>10} {'maxdiff':>8} "
            f"{'lv1':>4} {'lv2':>4} {'lv3+':>4} {'from lv1':>9} {'AT HUMAN':>9} {'at 2x':>7} "
@@ -194,6 +221,9 @@ def main():
             if int(r.get("levels", len(wl))) != len(wl):
                 print(f"  DISAGREEMENT {r['game']} seed {r.get('seed')} {mode}: levels_completed="
                       f"{r.get('levels')} but level_log has {len(wl)} won entries")
+                rec_json["disagreements"].append(dict(
+                    game=r["game"], seed=r.get("seed"), mode=mode, file=r["_file"],
+                    levels_completed=r.get("levels"), level_log_won=len(wl)))
             acts = [a for _i, a in wl]
             s = game_score(acts, h)
             recomp += s
@@ -215,9 +245,15 @@ def main():
         print(f"{mode:14} {n:4} {rec:9.4f} {recomp / n:10.4f} {maxdiff:+8.3f} "
               f"{idx[1]:4} {idx[2]:4} {idx[3]:4} {from_lv1 / n:9.4f} {at_cap / n:9.4f} "
               f"{at_2x / n:7.4f} {at_5x / n:7.4f} {med:9.1f}")
+        rec_json["mechanisms"][mode] = dict(
+            runs=n, recorded=rec, recomputed=recomp / n, maxdiff=maxdiff, maxdiff_run=maxdiff_game,
+            lv1=idx[1], lv2=idx[2], lv3plus=idx[3], from_lv1=from_lv1 / n, at_human=at_cap / n,
+            at_2x=at_2x / n, at_5x=at_5x / n, median_ratio=None if med != med else med,
+            ratios=ratios)
         if abs(maxdiff) > 0.5:
             print(f"    largest recorded/recomputed disagreement is on {maxdiff_game}: {maxdiff:+.3f} "
                   f"- level_log and the scorecard do not agree there")
+            rec_json["largest_disagreement"][mode] = dict(run=maxdiff_game, diff=maxdiff)
     # every run where the two counters disagree by more than a quarter.  MEASURED in the build
     # sandbox on ft09: recorded 0.1156 implies ~276 actions on level 1, level_log says 152 - the
     # click scan's presses (and probe presses and resets) are stepped outside the per-level
@@ -237,6 +273,9 @@ def main():
                 n_bad += 1
                 print(f"   {r['game']:6} {mode:14} seed {str(r.get('seed')):>5} recorded {rec_r:8.4f} "
                       f"from level_log {s:8.4f}  levels {len(wl)}")
+                rec_json["level_log_vs_recorded_over_25pct"].append(dict(
+                    game=r["game"], mode=mode, seed=r.get("seed"), file=r["_file"],
+                    recorded=rec_r, from_level_log=s, levels=len(wl)))
     if not n_bad:
         print("   none")
     print("\nrecorded    = mean of the scores the scorecard wrote (what the leaderboard would see)")
@@ -257,6 +296,27 @@ def main():
             h = human[r["game"]]
             parts = [f"L{i}: {a}/{h[i - 1]} -> {level_score(h[i - 1], a):.2f}" for i, a in wl]
             print(f"{r['game']:6} {mode:14} {str(r.get('seed')):>5} {'; '.join(parts)}")
+
+    # per-run rows (every run, including those with no won level, which the listing above skips)
+    for mode in sorted(by_mode):
+        for r in sorted(by_mode[mode], key=lambda x: (x["game"], str(x.get("seed")))):
+            h = human[r["game"]]
+            wl = won_levels(r)
+            rec_json["per_run"].append(dict(
+                game=r["game"], mode=mode, seed=r.get("seed"), file=r["_file"],
+                recorded=float(r.get("score", 0.0)), levels_completed=r.get("levels"),
+                recomputed=game_score([a for _i, a in wl], h),
+                won_levels=[dict(level=i, agent=a, human=h[i - 1],
+                                 level_score=level_score(h[i - 1], a)) for i, a in wl],
+                card_levels=r.get("card_levels"), card_baseline=r.get("card_baseline")))
+
+    os.makedirs(args.out_dir, exist_ok=True)
+    tmp = out_path + ".tmp"
+    with open(tmp, "w") as f:
+        json.dump(rec_json, f, indent=1)
+    os.replace(tmp, out_path)
+    print()
+    print(f"wrote {out_path}")
 
 
 if __name__ == "__main__":
