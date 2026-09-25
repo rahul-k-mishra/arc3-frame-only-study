@@ -99,15 +99,23 @@ RQ2. Does mechanism selection on a subset of public games transfer to the rest?
 - 10,000 random splits: NEED (E5, scripts/g_split_transfer.py).
 
 RQ3. For a planner that checks its own assumptions at play time, which assumption fails, per game?
-- v2 census, 4 seeds (runs/navrun_v2_heldout.json): HAVE, with two defects that must be fixed
-  before use:
-  (a) The categories cover 16 of 17 held-out games: no keys r11l s5i5 tn36 (3); no controllable
-      object cd82 sb26 su15 (3); 2-D lattice walker cn04 ka59 re86 sp80 g50t (5); 1-D walker
-      bp35 sk48 (2); key-controlled non-walker ar25 wa30 tr87 (3). sc25 is in no category. Its
-      row must be read from the JSON by a script and stated.
-  (b) The old plan says "none of the fourteen with a controllable object". The categories give
-      10 (5 + 2 + 3), or 11 with sc25. The count must be recomputed from the JSON.
-- goal_confirmed 0 of 17: HAVE (runs/navrun_heldout_full.json).
+- v2 census, 4 seeds (runs/navrun_v2_heldout.json), tabulated for all 25 games by
+  scripts/g_census_table.py (runs/census_v2.json, docs/census_v2.md): HAVE. The census sentence
+  is: "14 of 17 held-out games have keyboard input, 11 have an object the keys move; on none of
+  the 11 did a place recorded at a level end later end a level (goal_confirmed 0 in every seed),
+  and on bp35, ka59 and sk48 the recorded place was reached again without the level ending."
+  The shorter "none ends its first level by reaching a place" is not what the counters measure:
+  nav won level 1 in some seed on ar25, bp35, ka59, sk48 and sp80, and the counters do not
+  record how those first levels ended, only that no recorded place was later confirmed as a
+  goal. On ar25 and sp80 the recorded place was never tested again.
+  Categories (held-out): no keys r11l s5i5 tn36 (3); no controllable object cd82 sb26 su15 (3);
+  2-D lattice walker cn04 g50t ka59 re86 sp80 (5); 1-D walker bp35 sk48 sc25 (3); key-controlled
+  non-walker ar25 tr87 wa30 (3). sc25 was missing from the earlier census; the category rule in
+  g_census_table.py places it as a 1-D walker, a weak assignment (only key 3 passed the
+  agreeing-presses test; the rest of its effect model was filled during play). The rule was
+  written to codify the earlier census after reading it, so it is not pre-registered; E6 freezes
+  it before its runs. The old plan's "fourteen with a controllable object" was wrong; it is 11.
+- goal_confirmed 0 of 17: HAVE (runs/navrun_heldout_full.json and runs/navrun_v2_heldout.json).
 - 10 seeds, all 25 games: NEED (E6).
 - Planner-dependent rows (frontier exhausted, stalled, junk step vectors) are kept separate
   from game-dependent rows (no keys, no controllable object, recorded goal falsified on retry).
@@ -496,10 +504,16 @@ call page, not copied from older editions).
   and are not evidence for a source-blind census. Reading public source was not against any rule.
 - The held-out split was fixed before the first mechanism was measured and never changed. The
   code hash of the census and counters is recorded before each held-out run.
-- The ar25 anomaly: G-NAV won ar25 level 1 on 4 of 4 seeds; hash_state did not win it. The
-  hash_state seed count differs between documents (0/8 in docs/HANDOFF_GNAV.md, 0/12 in
-  CLAUDE.md); the correct count is to be computed from runs/ by a script before it is written. The
-  cause is unknown; it is reported as unexplained and nothing is built on it.
+- The ar25 anomaly: G-NAV won ar25 level 1 on 4 of 4 seeds in runs/navrun_heldout_full.json
+  and on 4 of 4 in runs/navrun_v2_heldout.json; hash_state won it on 0 of 12 seeds (1000-1003
+  in each of runs/ablate_lenovo_6x4.json, runs/navrun_heldout_full.json and
+  runs/navrun_v2_heldout.json, all at 20,000 actions). The 0/8 in docs/HANDOFF_GNAV.md counted
+  two of these files. Seed 1000 of runs/ablate_kaggle_20x1.json (10,000 actions) also did not win
+  it but is a repeat of a seed already counted and is not a 13th run. The counts come from
+  levels completed in each row (and, in the two navrun files, the scorecard's card_levels, which
+  agree); scripts/g_decompose.py --files <the three files> writes them per run into
+  runs/decompose_<tag>.json. The cause is unknown; it is reported as unexplained and nothing is
+  built on it.
 - Engine and scorer versions (arc-agi 0.9.8, arcengine 0.9.3, scorecard.py SHA-256), game file
   versions, dates. Leaderboard state is quoted only with a date and a source.
 - Use of an AI assistant in coding and drafting, per IEEE policy, in the final non-anonymous
