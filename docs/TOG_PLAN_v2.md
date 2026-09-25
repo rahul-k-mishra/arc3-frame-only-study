@@ -484,6 +484,9 @@ E6; E9; E10; E3; E7.
 
 ## 8. Statistics
 
+- Runs are deterministic given the seed (same agent, game files and engine), so the number of
+  distinct seeds is the number of replicates, and a seed repeated in another file or session adds
+  nothing; every count deduplicates by (game, mechanism, seed) before it is reported.
 - Games are the statistical unit. Seeds are nested within games. A mean over games is reported
   with a hierarchical bootstrap: resample games with replacement, then seeds within each resampled
   game. An interval over seeds only is labelled "seed variation for these games" and is never used
@@ -535,16 +538,20 @@ call page, not copied from older editions).
   and are not evidence for a source-blind census. Reading public source was not against any rule.
 - The held-out split was fixed before the first mechanism was measured and never changed. The
   code hash of the census and counters is recorded before each held-out run.
-- The ar25 anomaly: G-NAV won ar25 level 1 on 4 of 4 seeds in runs/navrun_heldout_full.json
-  and on 4 of 4 in runs/navrun_v2_heldout.json; hash_state won it on 0 of 12 seeds (1000-1003
-  in each of runs/ablate_lenovo_6x4.json, runs/navrun_heldout_full.json and
-  runs/navrun_v2_heldout.json, all at 20,000 actions). The 0/8 in docs/HANDOFF_GNAV.md counted
-  two of these files. Seed 1000 of runs/ablate_kaggle_20x1.json (10,000 actions) also did not win
-  it but is a repeat of a seed already counted and is not a 13th run. The counts come from
-  levels completed in each row (and, in the two navrun files, the scorecard's card_levels, which
-  agree); scripts/g_decompose.py --files <the three files> writes them per run into
-  runs/decompose_<tag>.json. The cause is unknown; it is reported as unexplained and nothing is
-  built on it.
+- The ar25 anomaly: hash_state won ar25 level 1 on 0 of 4 seeds (1000-1003, 20,000 actions);
+  the same four runs are present in three files. G-NAV won it on 8 of 8 runs across two planner
+  versions: 4 of 4 with v1 (runs/navrun_heldout_full.json, level 1 in 2,646-10,795 actions) and
+  4 of 4 with v2 (runs/navrun_v2_heldout.json, 84-2,880 actions); the v1 and v2 runs differ in
+  outcome, so they are 8 distinct runs. The hash_state rows of runs/navrun_heldout_full.json and
+  runs/navrun_v2_heldout.json repeat those of runs/ablate_lenovo_6x4.json: identical in score,
+  levels, level_log, actions, state and diag for all 68 held-out rows of each file, differing only
+  in wall-clock seconds and in the scorecard card fields that the older file does not record
+  (runs/decompose_ar25_three_files_heldout.json; g_decompose.py dropped 162 duplicate rows of 680
+  when reading the three files). The earlier "0/12" (this plan, 25 Sep; CLAUDE.md) and "0/8"
+  (docs/HANDOFF_GNAV.md) counted the same four runs three and two times. Seed 1000 of
+  runs/ablate_kaggle_20x1.json (10,000 actions) also did not win it; it is the same seed at a
+  smaller budget, not an additional replicate. The cause is unknown; it is reported as
+  unexplained and nothing is built on it.
 - Engine and scorer versions (arc-agi 0.9.8, arcengine 0.9.3, scorecard.py SHA-256), game file
   versions, dates. Leaderboard state is quoted only with a date and a source.
 - Use of an AI assistant in coding and drafting, per IEEE policy, in the final non-anonymous
