@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.venv/
+environment_files/
+kaggle_*/out/
+ollama_models/
