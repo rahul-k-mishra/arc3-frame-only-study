@@ -243,9 +243,12 @@ Classification (3.3):
 > precedence over REPRODUCES. If any of (iv)-(vi) holds, the label is BREAKS even when (i)-(iii)
 > also hold. Reason: REPRODUCES asserts that the pattern measured on our agent also holds for an
 > independently authored agent. An agent completing at least twice E2's levels has not reproduced
-> that pattern, whatever its score. The card-count clause comes first: if the agent could not
-> produce per-level scorecard counts, the label is INCONCLUSIVE and neither BREAKS nor REPRODUCES is
-> evaluated, because M2 and the AT HUMAN comparison cannot be computed without those counts. (The
+> that pattern, whatever its score. The card-count clause comes first (also decided 25 September
+> 2026, before any phase-2 result was read): if the agent's rows lack per-level scorecard counts,
+> the label is INCONCLUSIVE before any BREAKS or REPRODUCES condition is considered. Reason: M2
+> (AT HUMAN) cannot be computed without those counts, and a label from a partial set of measures
+> would not be the registered one. M1, M3 and M4 could still be computed (from the recorded score
+> and levels completed); they are reported, but no label is given from them alone. (The
 > rule above as first written did not order these labels; the gaps were found while writing
 > scripts/e1_decide.py, and no threshold is changed by this paragraph.)
 
@@ -289,8 +292,9 @@ precedence: **BREAKS takes precedence over REPRODUCES**, with the reason recorde
 TOG_PLAN_v2.md Section 3.3 (quoted above). e1_decide.py now prints BREAKS in that case and lists
 both condition sets with their values; CONFLICT is no longer an outcome. The rule's last clause
 (no per-level scorecard counts gives INCONCLUSIVE) is checked before anything else, as in the
-first version; the author confirmed this order on 25 September 2026 and it is recorded in
-Section 3.3 (quoted above). No threshold changed.
+first version; the author confirmed this order on 25 September 2026, with the reason that
+M2 cannot be computed without per-level counts and a label from partial measures would not be the
+registered one. It is recorded in Section 3.3 (quoted above). No threshold changed.
 
 Precondition for scoring (not for running): BREAKS (vi) needs our E2 value of M4 (hash_state,
 10 seeds). E2 has not been run. Plan 3.2 says E2 is recomputed before any external agent is
