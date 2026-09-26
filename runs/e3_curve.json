@@ -1,0 +1,690 @@
+{
+ "script": "scripts/e3_curve.py",
+ "plan": "docs/TOG_PLAN_v2.md Section 7 (E3)",
+ "created": "2026-09-26 12:24:48",
+ "mode": "hash_state",
+ "seeds": [
+  1000,
+  1001,
+  1002,
+  1003
+ ],
+ "inputs": {
+  "3000": {
+   "path": "D:\\Research\\arc3\\repo\\runs\\navrun_e3_hash_25x4_3k.json",
+   "sha256": "2a17758641ad84e4f7362c11438686f8a47bd41ef6bd12a569ce942d4137db8b"
+  },
+  "20000": {
+   "path": "D:\\Research\\arc3\\repo\\runs\\navrun_e2_hash_25x10.json",
+   "sha256": "1dd3293e45b951af23ed7124beeae5495efd09447be9d89065bfc117a04eb971"
+  },
+  "50000": {
+   "path": "D:\\Research\\arc3\\repo\\runs\\navrun_e3_hash_25x4_50k.json",
+   "sha256": "b2947a55ea6be57e82759943cdf22ad6ef7e66eb2a219d6a48c9254780cb2bf2"
+  },
+  "100000": {
+   "path": "D:\\Research\\arc3\\repo\\runs\\navrun_e3_hash_25x4_100k.json",
+   "sha256": "b61ffe54454629427da27e89e0a5ece476dc9a6221a21ad958fb8ba265d47f30"
+  }
+ },
+ "checks": {
+  "C0": "PASS",
+  "C1": "PASS",
+  "C2": "PASS (600 checks)"
+ },
+ "bootstrap": {
+  "draws": 10000,
+  "seed": 20260925,
+  "method": "games, then seeds within game; paired across budgets"
+ },
+ "heldout": {
+  "point": {
+   "3000": {
+    "M1": 0.3328014705882353,
+    "M3": 0,
+    "M4": 6.25
+   },
+   "20000": {
+    "M1": 0.33287500000000003,
+    "M3": 0,
+    "M4": 11.25
+   },
+   "50000": {
+    "M1": 0.33287500000000003,
+    "M3": 0,
+    "M4": 13.0
+   },
+   "100000": {
+    "M1": 0.33287500000000003,
+    "M3": 0,
+    "M4": 14.75
+   }
+  },
+  "intervals95": {
+   "3000": {
+    "M1": [
+     0.01183319852941177,
+     0.7432084926470588
+    ],
+    "M3": [
+     0.0,
+     0.0
+    ],
+    "M4": [
+     2.5,
+     10.5
+    ]
+   },
+   "20000": {
+    "M1": [
+     0.01186930147058824,
+     0.7434305514705881
+    ],
+    "M3": [
+     0.0,
+     0.0
+    ],
+    "M4": [
+     5.75,
+     17.0
+    ]
+   },
+   "50000": {
+    "M1": [
+     0.01186930147058824,
+     0.7434305514705881
+    ],
+    "M3": [
+     0.0,
+     0.0
+    ],
+    "M4": [
+     7.5,
+     18.75
+    ]
+   },
+   "100000": {
+    "M1": [
+     0.01186930147058824,
+     0.7434305514705881
+    ],
+    "M3": [
+     0.0,
+     0.0
+    ],
+    "M4": [
+     9.0,
+     20.75
+    ]
+   }
+  },
+  "diff_vs_20000": {
+   "3000": {
+    "M1": -7.352941176475003e-05,
+    "M3": 0,
+    "M4": -5.0
+   },
+   "50000": {
+    "M1": 0.0,
+    "M3": 0,
+    "M4": 1.75
+   },
+   "100000": {
+    "M1": 0.0,
+    "M3": 0,
+    "M4": 3.5
+   }
+  },
+  "diff_intervals95": {
+   "3000": {
+    "M1": [
+     -0.00017500000000009313,
+     -5.845588235201518e-06
+    ],
+    "M3": [
+     0.0,
+     0.0
+    ],
+    "M4": [
+     -8.25,
+     -2.0
+    ]
+   },
+   "50000": {
+    "M1": [
+     0.0,
+     0.0
+    ],
+    "M3": [
+     0.0,
+     0.0
+    ],
+    "M4": [
+     0.0,
+     4.0
+    ]
+   },
+   "100000": {
+    "M1": [
+     0.0,
+     0.0
+    ],
+    "M3": [
+     0.0,
+     0.0
+    ],
+    "M4": [
+     0.5,
+     7.75
+    ]
+   }
+  },
+  "per_game": {
+   "ar25": {
+    "3000": {
+     "score": 0.0,
+     "levels": 0.0
+    },
+    "20000": {
+     "score": 0.0,
+     "levels": 0.0
+    },
+    "50000": {
+     "score": 0.0,
+     "levels": 0.75
+    },
+    "100000": {
+     "score": 0.0,
+     "levels": 1.75
+    }
+   },
+   "bp35": {
+    "3000": {
+     "score": 7.500000000000001e-05,
+     "levels": 0.5
+    },
+    "20000": {
+     "score": 7.500000000000001e-05,
+     "levels": 1.0
+    },
+    "50000": {
+     "score": 7.500000000000001e-05,
+     "levels": 1.0
+    },
+    "100000": {
+     "score": 7.500000000000001e-05,
+     "levels": 1.0
+    }
+   },
+   "cd82": {
+    "3000": {
+     "score": 0.08645,
+     "levels": 1.0
+    },
+    "20000": {
+     "score": 0.08645,
+     "levels": 2.0
+    },
+    "50000": {
+     "score": 0.08645,
+     "levels": 2.0
+    },
+    "100000": {
+     "score": 0.08645,
+     "levels": 2.0
+    }
+   },
+   "cn04": {
+    "3000": {
+     "score": 0.0,
+     "levels": 0.0
+    },
+    "20000": {
+     "score": 0.0,
+     "levels": 0.25
+    },
+    "50000": {
+     "score": 0.0,
+     "levels": 0.25
+    },
+    "100000": {
+     "score": 0.0,
+     "levels": 0.25
+    }
+   },
+   "g50t": {
+    "3000": {
+     "score": 0.0,
+     "levels": 0.0
+    },
+    "20000": {
+     "score": 0.0,
+     "levels": 0.0
+    },
+    "50000": {
+     "score": 0.0,
+     "levels": 0.0
+    },
+    "100000": {
+     "score": 0.0,
+     "levels": 0.25
+    }
+   },
+   "ka59": {
+    "3000": {
+     "score": 0.0,
+     "levels": 0.0
+    },
+    "20000": {
+     "score": 5e-05,
+     "levels": 1.0
+    },
+    "50000": {
+     "score": 5e-05,
+     "levels": 1.0
+    },
+    "100000": {
+     "score": 5e-05,
+     "levels": 1.0
+    }
+   },
+   "r11l": {
+    "3000": {
+     "score": 1.611725,
+     "levels": 1.25
+    },
+    "20000": {
+     "score": 1.611775,
+     "levels": 1.5
+    },
+    "50000": {
+     "score": 1.611775,
+     "levels": 2.0
+    },
+    "100000": {
+     "score": 1.611775,
+     "levels": 2.0
+    }
+   },
+   "re86": {
+    "3000": {
+     "score": 0.0,
+     "levels": 0.0
+    },
+    "20000": {
+     "score": 0.0,
+     "levels": 0.25
+    },
+    "50000": {
+     "score": 0.0,
+     "levels": 0.25
+    },
+    "100000": {
+     "score": 0.0,
+     "levels": 0.25
+    }
+   },
+   "s5i5": {
+    "3000": {
+     "score": 0.000825,
+     "levels": 1.0
+    },
+    "20000": {
+     "score": 0.000825,
+     "levels": 1.0
+    },
+    "50000": {
+     "score": 0.000825,
+     "levels": 1.0
+    },
+    "100000": {
+     "score": 0.000825,
+     "levels": 1.0
+    }
+   },
+   "sb26": {
+    "3000": {
+     "score": 0.0,
+     "levels": 0.0
+    },
+    "20000": {
+     "score": 0.0,
+     "levels": 0.0
+    },
+    "50000": {
+     "score": 0.0,
+     "levels": 0.0
+    },
+    "100000": {
+     "score": 0.0,
+     "levels": 0.25
+    }
+   },
+   "sc25": {
+    "3000": {
+     "score": 0.0,
+     "levels": 0.0
+    },
+    "20000": {
+     "score": 0.0,
+     "levels": 0.0
+    },
+    "50000": {
+     "score": 0.0,
+     "levels": 0.0
+    },
+    "100000": {
+     "score": 0.0,
+     "levels": 0.0
+    }
+   },
+   "sk48": {
+    "3000": {
+     "score": 0.0,
+     "levels": 0.0
+    },
+    "20000": {
+     "score": 0.000175,
+     "levels": 0.25
+    },
+    "50000": {
+     "score": 0.000175,
+     "levels": 0.75
+    },
+    "100000": {
+     "score": 0.000175,
+     "levels": 1.0
+    }
+   },
+   "sp80": {
+    "3000": {
+     "score": 1.6142,
+     "levels": 1.25
+    },
+    "20000": {
+     "score": 1.614725,
+     "levels": 2.0
+    },
+    "50000": {
+     "score": 1.614725,
+     "levels": 2.0
+    },
+    "100000": {
+     "score": 1.614725,
+     "levels": 2.0
+    }
+   },
+   "su15": {
+    "3000": {
+     "score": 0.0,
+     "levels": 0.0
+    },
+    "20000": {
+     "score": 0.0,
+     "levels": 0.0
+    },
+    "50000": {
+     "score": 0.0,
+     "levels": 0.0
+    },
+    "100000": {
+     "score": 0.0,
+     "levels": 0.0
+    }
+   },
+   "tn36": {
+    "3000": {
+     "score": 2.26255,
+     "levels": 1.0
+    },
+    "20000": {
+     "score": 2.26255,
+     "levels": 1.0
+    },
+    "50000": {
+     "score": 2.26255,
+     "levels": 1.0
+    },
+    "100000": {
+     "score": 2.26255,
+     "levels": 1.0
+    }
+   },
+   "tr87": {
+    "3000": {
+     "score": 0.0818,
+     "levels": 0.25
+    },
+    "20000": {
+     "score": 0.08224999999999999,
+     "levels": 1.0
+    },
+    "50000": {
+     "score": 0.08224999999999999,
+     "levels": 1.0
+    },
+    "100000": {
+     "score": 0.08224999999999999,
+     "levels": 1.0
+    }
+   },
+   "wa30": {
+    "3000": {
+     "score": 0.0,
+     "levels": 0.0
+    },
+    "20000": {
+     "score": 0.0,
+     "levels": 0.0
+    },
+    "50000": {
+     "score": 0.0,
+     "levels": 0.0
+    },
+    "100000": {
+     "score": 0.0,
+     "levels": 0.0
+    }
+   }
+  }
+ },
+ "train_beside": {
+  "3000": {
+   "measures": {
+    "M1": 0.18192812500000002,
+    "M3": 2,
+    "M4": 8.75
+   },
+   "per_game": {
+    "tu93": {
+     "score": 0.10515000000000001,
+     "levels": 3.0,
+     "source_informed": true
+    },
+    "ls20": {
+     "score": 0.0056,
+     "levels": 1.0,
+     "source_informed": true
+    },
+    "vc33": {
+     "score": 0.024775,
+     "levels": 2.0,
+     "source_informed": false
+    },
+    "m0r0": {
+     "score": 0.002125,
+     "levels": 0.75,
+     "source_informed": false
+    },
+    "ft09": {
+     "score": 0.135925,
+     "levels": 1.0,
+     "source_informed": false
+    },
+    "lp85": {
+     "score": 1.18185,
+     "levels": 1.0,
+     "source_informed": false
+    },
+    "lf52": {
+     "score": 0.0,
+     "levels": 0.0,
+     "source_informed": false
+    },
+    "dc22": {
+     "score": 0.0,
+     "levels": 0.0,
+     "source_informed": true
+    }
+   }
+  },
+  "20000": {
+   "measures": {
+    "M1": 0.18400312500000002,
+    "M3": 3,
+    "M4": 10.5
+   },
+   "per_game": {
+    "tu93": {
+     "score": 0.121525,
+     "levels": 4.25,
+     "source_informed": true
+    },
+    "ls20": {
+     "score": 0.0056,
+     "levels": 1.0,
+     "source_informed": true
+    },
+    "vc33": {
+     "score": 0.024775,
+     "levels": 2.0,
+     "source_informed": false
+    },
+    "m0r0": {
+     "score": 0.0023499999999999997,
+     "levels": 1.25,
+     "source_informed": false
+    },
+    "ft09": {
+     "score": 0.135925,
+     "levels": 1.0,
+     "source_informed": false
+    },
+    "lp85": {
+     "score": 1.18185,
+     "levels": 1.0,
+     "source_informed": false
+    },
+    "lf52": {
+     "score": 0.0,
+     "levels": 0.0,
+     "source_informed": false
+    },
+    "dc22": {
+     "score": 0.0,
+     "levels": 0.0,
+     "source_informed": true
+    }
+   }
+  },
+  "50000": {
+   "measures": {
+    "M1": 0.19136250000000002,
+    "M3": 3,
+    "M4": 13.5
+   },
+   "per_game": {
+    "tu93": {
+     "score": 0.1804,
+     "levels": 7.25,
+     "source_informed": true
+    },
+    "ls20": {
+     "score": 0.0056,
+     "levels": 1.0,
+     "source_informed": true
+    },
+    "vc33": {
+     "score": 0.024775,
+     "levels": 2.0,
+     "source_informed": false
+    },
+    "m0r0": {
+     "score": 0.0023499999999999997,
+     "levels": 1.25,
+     "source_informed": false
+    },
+    "ft09": {
+     "score": 0.135925,
+     "levels": 1.0,
+     "source_informed": false
+    },
+    "lp85": {
+     "score": 1.18185,
+     "levels": 1.0,
+     "source_informed": false
+    },
+    "lf52": {
+     "score": 0.0,
+     "levels": 0.0,
+     "source_informed": false
+    },
+    "dc22": {
+     "score": 0.0,
+     "levels": 0.0,
+     "source_informed": true
+    }
+   }
+  },
+  "100000": {
+   "measures": {
+    "M1": 0.191365625,
+    "M3": 3,
+    "M4": 13.75
+   },
+   "per_game": {
+    "tu93": {
+     "score": 0.1804,
+     "levels": 7.25,
+     "source_informed": true
+    },
+    "ls20": {
+     "score": 0.0056,
+     "levels": 1.0,
+     "source_informed": true
+    },
+    "vc33": {
+     "score": 0.024775,
+     "levels": 2.0,
+     "source_informed": false
+    },
+    "m0r0": {
+     "score": 0.0023750000000000004,
+     "levels": 1.5,
+     "source_informed": false
+    },
+    "ft09": {
+     "score": 0.135925,
+     "levels": 1.0,
+     "source_informed": false
+    },
+    "lp85": {
+     "score": 1.18185,
+     "levels": 1.0,
+     "source_informed": false
+    },
+    "lf52": {
+     "score": 0.0,
+     "levels": 0.0,
+     "source_informed": false
+    },
+    "dc22": {
+     "score": 0.0,
+     "levels": 0.0,
+     "source_informed": true
+    }
+   }
+  }
+ },
+ "note_20000": "seeds [1000, 1001, 1002, 1003] of runs/navrun_e2_hash_25x10.json; not E2's 10-seed values"
+}
