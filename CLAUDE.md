@@ -1,8 +1,9 @@
 # CLAUDE.md — arc3-frame-only-study
 
 Measurement study of frame-only, prior-free, CPU-runnable agents on the ARC-AGI-3 public
-demonstration set (25 games), targeted at a 6-8 page short paper for IEEE CoG or a workshop
-(venue chosen 9 October 2026; double-anonymous). Single author. No GPU. No money. Every number in
+demonstration set (25 games), now being strengthened into a method paper across several
+benchmarks (decided 26 September 2026; method, benchmarks and venue still open; double-anonymous;
+docs/TOG_PLAN_v2.md "Plan of record"). Single author. No GPU. No money. Every number in
 any document must come from a script in this repository run by the author, with its output saved
 under runs/.
 
@@ -86,8 +87,10 @@ under runs/.
   agent", Cryptic2-0, Curio, Hunter-Seeker v2). Related-work finding: most higher-scoring non-LLM
   notebooks load the game's source and search its simulator (docs/E1c_search.md Section 8), so they
   are not frame-only and their scores are not comparable with ours.
-- Plan of record (TOG_PLAN_v2 Sections 0 and 9): the short-paper route, 6-8 pages, IEEE CoG or a
-  workshop, venue chosen 9 Oct 2026. The 10-page ToG full paper is not pursued.
+- Plan of record (docs/TOG_PLAN_v2.md "Plan of record", decided 26 Sep 2026): a method paper across
+  several benchmarks, not the ARC-only short paper. Method, benchmarks and venue are open, each to
+  be fixed in a registered protocol before any new run. The ARC-AGI-3 results above stand as
+  recorded. The short-paper route and the 10-page ToG full paper are both superseded.
 - Ten mechanisms killed with measured reasons (docs/HANDOFF_GNAV.md).
 
 ## Corrections imposed by the audit (audit/TOG_PLAN_RUTHLESS_AUDIT.md) — standing instructions
@@ -110,7 +113,7 @@ under runs/.
 - Cite: ARC-AGI-3 technical report, launch post, preview 30-day learnings, human-performance
   paper, Milestone-1 write-ups; Balla et al. 2020; Kunanusont et al.; Stephenson et al. 2025;
   Blum & Hardt 2015; Roelofs et al. 2019; Introspective Environment Modeling; AgentRx; BALROG.
-- 6-8 page short paper (IEEE CoG or a workshop, venue chosen 9 October 2026); double-anonymous:
+- Method paper across several benchmarks (venue open, re-decided with the method); double-anonymous:
   no names, handles, affiliations in manuscript or code.
 - E1 decision thresholds are written down in docs/ BEFORE any external agent is run.
 
@@ -123,20 +126,24 @@ under runs/.
 - external/  third-party agents for E1, each in its own folder with LICENSE and commit hash
 - kaggle_*/  lab notebook builders' output folders (never a submission kernel)
 
-## Open tasks, in order (updated 26 Sep 2026)
+## Open tasks, in order (updated 27 Sep 2026)
 
 Done: TOG_PLAN_v2 with audit corrections and E1 thresholds (plus the 3.3 precedence); E4
 (runs/ceiling.json); E5 (runs/split_transfer.json); census table (runs/census_v2.json); E1a
 Rudakov et al. adapter, protocol and 10-seed run, INCONCLUSIVE (docs/E1_result.md); E2 hash_state
 10 seeds (runs/navrun_e2_hash_25x10.json); E2 decomposition (runs/decompose_e2_hash_25x10_*.json);
-E1c search, closed with no admissible second agent (docs/E1c_search.md).
+E1c search, closed with no admissible second agent (docs/E1c_search.md); E3 budget curve
+(runs/e3_curve.json); E9 goal oracle, INCONCLUSIVE (runs/e9_report.json, docs/E9_protocol.md).
+Entry point for a new session: docs/STATE.md.
 
-1. E3 budget curve: hash_state at 3,000 / 50,000 / 100,000 actions with E2 as the 20,000 point,
-   reported by scripts/e3_curve.py after its checks pass. Until it exists, no budget claim.
-2. E6 census at 10 seeds on all 25 games, category rule frozen (code hash) before the run.
-3. E9 goal-oracle intervention on tu93/dc22/ls20 (tu93 as positive control); E10 formal
-   goal-identification cost with the restricted ambiguity result.
-4. 9 Oct 2026: venue decision between IEEE CoG and a workshop for the short paper. Optional,
-   baseline only: E1b official non-LLM templates; E7 14B LLM cost.
-5. Manuscript on the short-paper route (6-8 pages), anonymised; reproduction script that
-   regenerates every table from runs/.
+1. Define the method, stated to apply unchanged to every benchmark, in a registered protocol
+   (docs/TOG_PLAN_v2.md "Plan of record"). Nothing new is run before it.
+2. Choose the benchmarks and give each a fixed selection split and a registered protocol before
+   any run (GVGAI learning track is a candidate named in TOG_PLAN_v2 Section 7, not a choice).
+3. Re-decide the venue with the method; the 9 Oct 2026 CoG-or-workshop choice was for the short
+   paper and no longer governs.
+4. ARC-AGI-3 items still open: E6 census at 10 seeds (category rule frozen by code hash before
+   the run); E10 formal goal-identification cost; optional E9 arm P, E1b templates, E7 14B LLM
+   cost.
+5. Manuscript for the method paper, anonymised; reproduction script that regenerates every table
+   from runs/.
