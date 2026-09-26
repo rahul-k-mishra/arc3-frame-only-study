@@ -11,6 +11,21 @@ is named, not averaged away.
 
 Writes navrun_<tag>.json (rows in the ablate format, so g_decompose.py reads it too).
 
+RESUMING (--resume).  Every run appends its row to navrun_<tag>.json.partial.jsonl as it
+completes; the partial file is removed when all runs have finished.  Re-running the SAME command
+with --resume keeps the completed (game, seed, mode) rows found in navrun_<tag>.json (if it exists)
+and in the partial file, runs only the missing ones, and writes the merged file.  A row is kept
+only if it was run with this --budget: it used exactly --budget actions, or it won the game at or
+before --budget (runs are deterministic given the seed, so a won run is the same at any larger
+budget).  A row that used fewer actions without winning (cut by --game-seconds, or run with a
+smaller budget) is not kept and is run again.  A row with more actions than --budget comes from another budget: the script stops.
+Kept rows are copied unchanged.  Without --resume nothing changes: every run is played, and
+navrun_<tag>.json is written (and replaced if it exists) exactly as before; the write is atomic
+(temp file, then rename), and a stale partial file from an earlier stopped run is kept as
+<partial>.prev rather than read.
+
+    python g_nav_run.py --games all --modes hash_state --seeds 4 --budget 100000 --tag e3_hash_25x4_100k --resume
+
 VERDICT RULE (train only): nav is accepted if its train mean score is >= hash_state's and no
 train game loses a level on the seed-mean.  The held-out table is printed and never used to
 choose anything.
@@ -86,6 +101,33 @@ def nav_line(r):
             + f" | eff {n.get('eff')} walls {n.get('walls')} deadly {n.get('deadly')} avoid_near {n.get('avoid_near')} co_movers {n.get('co_movers')}/{n.get('key_presses_sampled')}")
 
 
+def resume_rows(out_path, part, budget, wanted):
+    """Completed rows of this tag run with this budget (see RESUMING in the docstring)."""
+    src = []
+    if os.path.exists(out_path):
+        src += [("output", r) for r in json.load(open(out_path))]
+    if os.path.exists(part):
+        src += [("partial", json.loads(l)) for l in open(part) if l.strip()]
+    kept, rerun = {}, []
+    for where, r in src:
+        key = (r.get("game"), r.get("seed"), r.get("mode"))
+        if key not in wanted or r.get("error"):
+            continue
+        acts = int(r.get("actions", -1))
+        if acts > budget:
+            raise SystemExit(f"STOP: {key} in the {where} file has {acts} actions, more than "
+                             f"--budget {budget}: it was run with another budget; not mixed")
+        if acts == budget or (r.get("state") == "WIN" and acts <= budget):
+            kept.setdefault(key, r)
+        else:
+            rerun.append(key)
+    rerun = sorted(set(rerun) - set(kept))
+    print(f"resume: {len(kept)} completed rows kept from {out_path} and its partial file"
+          + (f"; {len(rerun)} rows that did not use the full budget and did not win (cut by the clock, or run with a smaller budget) will be run again: {rerun[:6]}"
+             f"{' ...' if len(rerun) > 6 else ''}" if rerun else ""))
+    return list(kept.values())
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--games", default="train", help="train | heldout | keyboard | all | comma list")
@@ -98,6 +140,9 @@ def main():
     ap.add_argument("--env-dir", default=os.path.join(HERE, "environment_files"))
     ap.add_argument("--tag", default="navrun")
     ap.add_argument("--quiet", action="store_true")
+    ap.add_argument("--resume", action="store_true",
+                    help="keep completed rows of this tag (output file and partial file) run with "
+                         "the same budget; run only the missing ones")
     args = ap.parse_args()
     games = (M1.TRAIN if args.games == "train" else M1.HELD_OUT if args.games == "heldout"
              else KEYBOARD_TRAIN if args.games == "keyboard"
@@ -106,9 +151,20 @@ def main():
     jobs = [(g, asdict(A.Config(max_actions=args.budget, seed=1000 + s, **MODES[m])),
              args.game_seconds, args.env_dir, m)
             for s in range(args.seeds) for m in modes for g in games]
+    out_path = os.path.join(HERE, f"navrun_{args.tag}.json")
+    part = out_path + ".partial.jsonl"
+    kept = []
+    if args.resume:
+        kept = resume_rows(out_path, part, args.budget, {(g, 1000 + s, m) for s in range(args.seeds)
+                                                         for m in modes for g in games})
+        have = {(r["game"], r["seed"], r["mode"]) for r in kept}
+        jobs = [j for j in jobs if (j[0], j[1]["seed"], j[4]) not in have]
+    elif os.path.exists(part):
+        os.replace(part, part + ".prev")
     print(f"{len(games)} games x {modes} x {args.seeds} seeds = {len(jobs)} runs, "
           f"{args.budget} actions, {args.workers} workers\n", flush=True)
-    t0, rows = time.time(), []
+    t0, rows = time.time(), list(kept)
+    finished = True
     with Pool(args.workers) as pool:
         it = pool.imap_unordered(one, jobs)
         for i in range(len(jobs)):
@@ -117,14 +173,22 @@ def main():
             except Exception:
                 print("TIME CAP REACHED - reporting what finished")
                 pool.terminate()
+                finished = False
                 break
             rows.append(r)
+            with open(part, "a") as f:
+                f.write(json.dumps(r) + "\n")
             if not args.quiet:
                 print(f"[{i + 1}/{len(jobs)} {(time.time() - t0) / 60:.0f} min] {r['game']} {r['mode']:10} "
                       f"seed {r['seed']} score {r.get('score', 0):8.4f} levels {r.get('levels', 0)} "
                       f"actions {r.get('actions', '?')}" + (f"  ERROR {r['error']}" if r.get("error") else ""),
                       flush=True)
-    json.dump(rows, open(os.path.join(HERE, f"navrun_{args.tag}.json"), "w"), indent=1)
+    tmp = out_path + ".tmp"
+    with open(tmp, "w") as f:
+        json.dump(rows, f, indent=1)
+    os.replace(tmp, out_path)
+    if finished and os.path.exists(part):
+        os.remove(part)
 
     # ---- summary
     by = defaultdict(list)
