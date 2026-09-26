@@ -102,8 +102,12 @@ completes the first k levels at a constant action ratio r?
   are different mechanisms, so the comparison did not measure what a larger budget buys. E3
   (hash_state at 3,000 / 20,000 / 50,000 / 100,000 actions, with E2 as the 20,000 point) replaces
   it; no budget claim is made until E3 exists.
-- "1,088 held-out runs": UNTRACED. The number does not follow from one file. Before it is used,
-  a script must list which files and modes it counts.
+- Run count: the reference is E2, 170 held-out runs (17 games x 10 seeds,
+  runs/navrun_e2_hash_25x10.json). The earlier "1,088 held-out runs" is WITHDRAWN (26 September
+  2026): it cannot come from one file, and the run files it could have been summed from overlap: runs are
+  deterministic given the seed, and the same runs appear in several files (hash_state seeds
+  1000-1003 in three files; reading those three together dropped 162 of 680 rows as duplicates,
+  runs/decompose_ar25_three_files_heldout.json), so a sum across them counts runs more than once.
 - Analytic ceiling validated against the scorecard: NEED (E4, scripts/g_ceiling.py).
 
 RQ2. Does mechanism selection on a subset of public games transfer to the rest?

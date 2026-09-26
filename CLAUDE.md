@@ -42,8 +42,11 @@ a script in this repository run by the author, with its output saved under runs/
   M4 10.50 levels per seed, no level 3 won in 170 held-out runs; level 2 won in 23 of them (cd82 10,
   sp80 8, r11l 3, ar25 2), with near-zero level-2 scores (runs/navrun_e2_hash_25x10.json). This
   is the reference for every comparison. The 4-seed 0.3329 (runs/ablate_lenovo_6x4.json) survives
-  only as a record in registered text. "1,088 held-out runs" and "median agent/human ratio 35-145"
-  are UNTRACED; the E2 decomposition (g_decompose.py on the E2 file) replaces them.
+  only as a record in registered text. Run count: 170 held-out runs (17 games x 10 seeds, E2). The
+  earlier "1,088 held-out runs" is WITHDRAWN: no single file produces it, and the files it could be
+  summed from contain the same deterministic runs more than once (hash_state seeds 1000-1003 in
+  three files; 162 of 680 rows dropped as duplicates when those three were read together). "Median
+  agent/human ratio 35-145" is UNTRACED; the E2 decomposition replaces it.
 - 100,000 actions: WITHDRAWN; NO budget claim holds until E3. The old line "0.3615 vs 0.3329 —
   coverage does not pay" compared different mechanisms, so it never measured what a larger budget
   buys: 0.3615 is the held-out mean of mode base, 2 seeds, at 100,000 actions
@@ -115,7 +118,8 @@ Rudakov et al. adapter, protocol and 10-seed run, INCONCLUSIVE (docs/E1_result.m
    (repository, licence, commit, runtime); record sources, dates and queries even if none is
    found. It is the only route back to the full paper; otherwise the short-paper route stands.
 2. E2 decomposition: g_decompose.py on runs/navrun_e2_hash_25x10.json (no games). It replaces the
-   UNTRACED "1,088 runs", "35-145 ratio" and "AT HUMAN 3.0-3.8" with 10-seed values.
+   UNTRACED "35-145 ratio" and "AT HUMAN 3.0-3.8" with 10-seed values ("1,088 runs" is withdrawn;
+   the run count is E2's 170 held-out runs).
 3. E3 budget curve: hash_state at 3,000 / 50,000 / 100,000 actions with E2 as the 20,000 point.
    Until it exists, no budget claim.
 4. E6 census at 10 seeds on all 25 games, category rule frozen (code hash) before the run.
