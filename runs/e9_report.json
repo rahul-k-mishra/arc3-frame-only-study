@@ -1,0 +1,879 @@
+{
+ "script": "scripts/e9_report.py",
+ "protocol": "docs/E9_protocol.md",
+ "goals": "docs/E9_goals.md",
+ "created": "2026-09-26 19:20:26",
+ "inputs": {
+  "e9": {
+   "path": "runs\\navrun_e9_oracle_3x10.json",
+   "sha256": "a5a7088348e29d2db12c66a73cde9c9bf76b75de449d99aae36b769772a4215c"
+  },
+  "e2": {
+   "path": "runs\\navrun_e2_hash_25x10.json",
+   "sha256": "1dd3293e45b951af23ed7124beeae5495efd09447be9d89065bfc117a04eb971"
+  }
+ },
+ "seeds": [
+  1000,
+  1001,
+  1002,
+  1003,
+  1004,
+  1005,
+  1006,
+  1007,
+  1008,
+  1009
+ ],
+ "budget": 20000,
+ "source_informed": [
+  "tu93",
+  "dc22",
+  "ls20"
+ ],
+ "checks": {
+  "C0 complete rows": "PASS",
+  "V1 arm F equals E2": "PASS",
+  "V2 level ends on an oracle colour": "PASS",
+  "V3 positive control tu93": "PASS",
+  "V4 full budget or win": "PASS",
+  "V6 ls20 arm O equals arm N": "PASS"
+ },
+ "v2": {
+  "decision": "D1 (docs/E9_protocol.md Section 8)",
+  "counts": {
+   "tu93": {
+    "wins_with_oracle": 50,
+    "confirmed": 50,
+    "not_seen": 0
+   },
+   "dc22": {
+    "wins_with_oracle": 0,
+    "confirmed": 0,
+    "not_seen": 0
+   }
+  },
+  "ending_not_seen": {
+   "tu93": {},
+   "dc22": {}
+  }
+ },
+ "games": {
+  "tu93": {
+   "n_levels": 9,
+   "arms": {
+    "F": {
+     "levels_mean": 4.9,
+     "score_mean": 0.14393
+    },
+    "N": {
+     "levels_mean": 4.7,
+     "score_mean": 0.24424
+    },
+    "O": {
+     "levels_mean": 5,
+     "score_mean": 1.02833
+    }
+   },
+   "per_level": [
+    {
+     "level": 1,
+     "human": 19,
+     "arms": {
+      "F": {
+       "won": 10,
+       "ratio_median": 21.842105263157894,
+       "ratio_min": 4.684210526315789,
+       "ratio_max": 267.7368421052632,
+       "level_score_mean": 0.6576
+      },
+      "N": {
+       "won": 10,
+       "ratio_median": 3.736842105263158,
+       "ratio_min": 3.736842105263158,
+       "ratio_max": 3.736842105263158,
+       "level_score_mean": 7.161
+      },
+      "O": {
+       "won": 10,
+       "ratio_median": 2.3421052631578947,
+       "ratio_min": 2.210526315789474,
+       "ratio_max": 2.3684210526315788,
+       "level_score_mean": 18.5942
+      }
+     },
+     "oracle_targets_seeds": 10,
+     "ending_not_seen_seeds": [],
+     "v5": {
+      "cells_min": 0,
+      "cells_max": 0,
+      "components_min": 0,
+      "components_max": 0,
+      "seeds": 10
+     }
+    },
+    {
+     "level": 2,
+     "human": 16,
+     "arms": {
+      "F": {
+       "won": 10,
+       "ratio_median": 8.03125,
+       "ratio_min": 5.3125,
+       "ratio_max": 14.0,
+       "level_score_mean": 1.7957
+      },
+      "N": {
+       "won": 10,
+       "ratio_median": 16.65625,
+       "ratio_min": 5.8125,
+       "ratio_max": 23.375,
+       "level_score_mean": 0.8868
+      },
+      "O": {
+       "won": 10,
+       "ratio_median": 16.65625,
+       "ratio_min": 5.8125,
+       "ratio_max": 23.375,
+       "level_score_mean": 0.8868
+      }
+     },
+     "oracle_targets_seeds": 10,
+     "ending_not_seen_seeds": [],
+     "v5": {
+      "cells_min": 0,
+      "cells_max": 0,
+      "components_min": 0,
+      "components_max": 0,
+      "seeds": 10
+     }
+    },
+    {
+     "level": 3,
+     "human": 34,
+     "arms": {
+      "F": {
+       "won": 8,
+       "ratio_median": 24.691176470588236,
+       "ratio_min": 15.352941176470589,
+       "ratio_max": 279.05882352941177,
+       "level_score_mean": 0.1512
+      },
+      "N": {
+       "won": 8,
+       "ratio_median": 25.426470588235293,
+       "ratio_min": 9.5,
+       "ratio_max": 44.14705882352941,
+       "level_score_mean": 0.2126
+      },
+      "O": {
+       "won": 8,
+       "ratio_median": 25.426470588235293,
+       "ratio_min": 9.5,
+       "ratio_max": 44.14705882352941,
+       "level_score_mean": 0.2126
+      }
+     },
+     "oracle_targets_seeds": 2,
+     "ending_not_seen_seeds": [],
+     "v5": {
+      "cells_min": 0,
+      "cells_max": 0,
+      "components_min": 0,
+      "components_max": 0,
+      "seeds": 10
+     }
+    },
+    {
+     "level": 4,
+     "human": 42,
+     "arms": {
+      "F": {
+       "won": 8,
+       "ratio_median": 19.654761904761905,
+       "ratio_min": 16.761904761904763,
+       "ratio_max": 29.452380952380953,
+       "level_score_mean": 0.2114
+      },
+      "N": {
+       "won": 8,
+       "ratio_median": 22.92857142857143,
+       "ratio_min": 14.357142857142858,
+       "ratio_max": 26.5,
+       "level_score_mean": 0.19
+      },
+      "O": {
+       "won": 8,
+       "ratio_median": 22.92857142857143,
+       "ratio_min": 14.357142857142858,
+       "ratio_max": 26.5,
+       "level_score_mean": 0.19
+      }
+     },
+     "oracle_targets_seeds": 8,
+     "ending_not_seen_seeds": [],
+     "v5": {
+      "cells_min": 0,
+      "cells_max": 0,
+      "components_min": 0,
+      "components_max": 0,
+      "seeds": 8
+     }
+    },
+    {
+     "level": 5,
+     "human": 123,
+     "arms": {
+      "F": {
+       "won": 8,
+       "ratio_median": 24.15447154471545,
+       "ratio_min": 20.0,
+       "ratio_max": 27.691056910569106,
+       "level_score_mean": 0.1424
+      },
+      "N": {
+       "won": 8,
+       "ratio_median": 26.03658536585366,
+       "ratio_min": 21.089430894308943,
+       "ratio_max": 28.73170731707317,
+       "level_score_mean": 0.1294
+      },
+      "O": {
+       "won": 8,
+       "ratio_median": 26.03658536585366,
+       "ratio_min": 21.089430894308943,
+       "ratio_max": 28.73170731707317,
+       "level_score_mean": 0.1294
+      }
+     },
+     "oracle_targets_seeds": 8,
+     "ending_not_seen_seeds": [],
+     "v5": {
+      "cells_min": 0,
+      "cells_max": 0,
+      "components_min": 0,
+      "components_max": 0,
+      "seeds": 8
+     }
+    },
+    {
+     "level": 6,
+     "human": 80,
+     "arms": {
+      "F": {
+       "won": 2,
+       "ratio_median": 173.675,
+       "ratio_min": 173.325,
+       "ratio_max": 174.025,
+       "level_score_mean": 0.0006000000000000001
+      },
+      "N": {
+       "won": 3,
+       "ratio_median": 152.575,
+       "ratio_min": 95.175,
+       "ratio_max": 172.2,
+       "level_score_mean": 0.0018
+      },
+      "O": {
+       "won": 4,
+       "ratio_median": 152.8,
+       "ratio_min": 95.175,
+       "ratio_max": 172.2,
+       "level_score_mean": 0.0022
+      }
+     },
+     "oracle_targets_seeds": 3,
+     "ending_not_seen_seeds": [],
+     "v5": {
+      "cells_min": 0,
+      "cells_max": 0,
+      "components_min": 0,
+      "components_max": 0,
+      "seeds": 8
+     }
+    },
+    {
+     "level": 7,
+     "human": 14,
+     "arms": {
+      "F": {
+       "won": 2,
+       "ratio_median": 30.642857142857142,
+       "ratio_min": 30.5,
+       "ratio_max": 30.785714285714285,
+       "level_score_mean": 0.0213
+      },
+      "N": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "O": {
+       "won": 1,
+       "ratio_median": 1.7142857142857142,
+       "ratio_min": 1.7142857142857142,
+       "ratio_max": 1.7142857142857142,
+       "level_score_mean": 3.4028
+      }
+     },
+     "oracle_targets_seeds": 1,
+     "ending_not_seen_seeds": [],
+     "v5": {
+      "cells_min": 0,
+      "cells_max": 0,
+      "components_min": 0,
+      "components_max": 0,
+      "seeds": 4
+     }
+    },
+    {
+     "level": 8,
+     "human": 23,
+     "arms": {
+      "F": {
+       "won": 1,
+       "ratio_median": 35.869565217391305,
+       "ratio_min": 35.869565217391305,
+       "ratio_max": 35.869565217391305,
+       "level_score_mean": 0.0078
+      },
+      "N": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "O": {
+       "won": 1,
+       "ratio_median": 52.34782608695652,
+       "ratio_min": 52.34782608695652,
+       "ratio_max": 52.34782608695652,
+       "level_score_mean": 0.0036
+      }
+     },
+     "oracle_targets_seeds": 1,
+     "ending_not_seen_seeds": [],
+     "v5": {
+      "cells_min": 0,
+      "cells_max": 0,
+      "components_min": 0,
+      "components_max": 0,
+      "seeds": 1
+     }
+    },
+    {
+     "level": 9,
+     "human": 111,
+     "arms": {
+      "F": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "N": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "O": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      }
+     },
+     "oracle_targets_seeds": 0,
+     "ending_not_seen_seeds": [],
+     "v5": {
+      "cells_min": 0,
+      "cells_max": 0,
+      "components_min": 0,
+      "components_max": 0,
+      "seeds": 1
+     }
+    }
+   ],
+   "classification": {
+    "result": "MIXED",
+    "dL": 0.2999999999999998,
+    "eligible_levels": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "shared_levels": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "newly_won_levels": [],
+    "halved_levels": [],
+    "v2_endings_not_seen": 0
+   }
+  },
+  "dc22": {
+   "n_levels": 6,
+   "arms": {
+    "F": {
+     "levels_mean": 0,
+     "score_mean": 0.0
+    },
+    "N": {
+     "levels_mean": 0,
+     "score_mean": 0.0
+    },
+    "O": {
+     "levels_mean": 0,
+     "score_mean": 0.0
+    }
+   },
+   "per_level": [
+    {
+     "level": 1,
+     "human": 59,
+     "arms": {
+      "F": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "N": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "O": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      }
+     },
+     "oracle_targets_seeds": 10,
+     "ending_not_seen_seeds": [],
+     "v5": {
+      "cells_min": 0,
+      "cells_max": 0,
+      "components_min": 0,
+      "components_max": 0,
+      "seeds": 10
+     }
+    },
+    {
+     "level": 2,
+     "human": 102,
+     "arms": {
+      "F": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "N": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "O": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      }
+     },
+     "oracle_targets_seeds": 0,
+     "ending_not_seen_seeds": [],
+     "v5": null
+    },
+    {
+     "level": 3,
+     "human": 67,
+     "arms": {
+      "F": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "N": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "O": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      }
+     },
+     "oracle_targets_seeds": 0,
+     "ending_not_seen_seeds": [],
+     "v5": null
+    },
+    {
+     "level": 4,
+     "human": 98,
+     "arms": {
+      "F": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "N": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "O": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      }
+     },
+     "oracle_targets_seeds": 0,
+     "ending_not_seen_seeds": [],
+     "v5": null
+    },
+    {
+     "level": 5,
+     "human": 324,
+     "arms": {
+      "F": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "N": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "O": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      }
+     },
+     "oracle_targets_seeds": 0,
+     "ending_not_seen_seeds": [],
+     "v5": null
+    },
+    {
+     "level": 6,
+     "human": 578,
+     "arms": {
+      "F": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "N": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "O": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      }
+     },
+     "oracle_targets_seeds": 0,
+     "ending_not_seen_seeds": [],
+     "v5": null
+    }
+   ],
+   "classification": {
+    "result": "NOT BINDING",
+    "dL": 0,
+    "eligible_levels": [
+     1
+    ],
+    "shared_levels": [],
+    "newly_won_levels": [],
+    "halved_levels": [],
+    "v2_endings_not_seen": 0
+   }
+  },
+  "ls20": {
+   "n_levels": 7,
+   "arms": {
+    "F": {
+     "levels_mean": 1,
+     "score_mean": 0.00896
+    },
+    "N": {
+     "levels_mean": 1,
+     "score_mean": 0.01218
+    },
+    "O": {
+     "levels_mean": 1,
+     "score_mean": 0.01218
+    }
+   },
+   "per_level": [
+    {
+     "level": 1,
+     "human": 22,
+     "arms": {
+      "F": {
+       "won": 10,
+       "ratio_median": 24.545454545454547,
+       "ratio_min": 13.0,
+       "ratio_max": 33.0,
+       "level_score_mean": 0.2509
+      },
+      "N": {
+       "won": 10,
+       "ratio_median": 17.65909090909091,
+       "ratio_min": 10.045454545454545,
+       "ratio_max": 117.22727272727273,
+       "level_score_mean": 0.341
+      },
+      "O": {
+       "won": 10,
+       "ratio_median": 17.65909090909091,
+       "ratio_min": 10.045454545454545,
+       "ratio_max": 117.22727272727273,
+       "level_score_mean": 0.341
+      }
+     },
+     "oracle_targets_seeds": 0,
+     "ending_not_seen_seeds": [],
+     "v5": null
+    },
+    {
+     "level": 2,
+     "human": 123,
+     "arms": {
+      "F": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "N": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "O": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      }
+     },
+     "oracle_targets_seeds": 0,
+     "ending_not_seen_seeds": [],
+     "v5": null
+    },
+    {
+     "level": 3,
+     "human": 73,
+     "arms": {
+      "F": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "N": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "O": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      }
+     },
+     "oracle_targets_seeds": 0,
+     "ending_not_seen_seeds": [],
+     "v5": null
+    },
+    {
+     "level": 4,
+     "human": 84,
+     "arms": {
+      "F": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "N": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "O": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      }
+     },
+     "oracle_targets_seeds": 0,
+     "ending_not_seen_seeds": [],
+     "v5": null
+    },
+    {
+     "level": 5,
+     "human": 96,
+     "arms": {
+      "F": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "N": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "O": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      }
+     },
+     "oracle_targets_seeds": 0,
+     "ending_not_seen_seeds": [],
+     "v5": null
+    },
+    {
+     "level": 6,
+     "human": 192,
+     "arms": {
+      "F": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "N": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "O": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      }
+     },
+     "oracle_targets_seeds": 0,
+     "ending_not_seen_seeds": [],
+     "v5": null
+    },
+    {
+     "level": 7,
+     "human": 186,
+     "arms": {
+      "F": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "N": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      },
+      "O": {
+       "won": 0,
+       "ratio_median": null,
+       "ratio_min": null,
+       "ratio_max": null,
+       "level_score_mean": 0.0
+      }
+     },
+     "oracle_targets_seeds": 0,
+     "ending_not_seen_seeds": [],
+     "v5": null
+    }
+   ],
+   "classification": {
+    "result": "NOT TESTABLE (finding)"
+   }
+  }
+ },
+ "verdict": "INCONCLUSIVE ({'tu93': 'MIXED', 'dc22': 'NOT BINDING'})"
+}
