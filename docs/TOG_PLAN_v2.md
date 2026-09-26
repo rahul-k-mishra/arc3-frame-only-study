@@ -37,8 +37,9 @@ random sample of ARC-AGI-3. The 17 held-out games are a split of that subset mad
 No sentence in any document may describe them as "the unseen ARC-AGI-3 test set" or say anything
 about the private set.
 
-Venue constraint: ToG full paper, 10 pages exactly, plus a supplement. Pages above 10 carry
-mandatory charges and the author has no budget. Double-anonymous review: no names, handles,
+Venue constraint (updated 26 September 2026): the plan of record is the short-paper route
+(Section 9: 6-8 pages, IEEE CoG or a workshop). The earlier target, a ToG full paper of 10 pages
+plus a supplement, is not pursued (E1 and E1c, Sections 2 and 7). Double-anonymous review: no names, handles,
 affiliations, acknowledgements, or identifying links in the manuscript, the supplement, or the
 code release.
 
@@ -172,12 +173,14 @@ RQ4. Do agents we did not write show the same pattern?
   their action set; their choose_action raising on most actions in most runs; preview vs 2026
   games and API. Their published preview result is not contradicted.
 - With one INCONCLUSIVE agent and no second admissible independent agent, Section 3.4 permits no
-  family statement. RQ4 can become answerable only if a second admissible independent agent
-  (E1c) is found, run and scored under Section 3 before 9 October 2026.
+  family statement.
+- E1c CLOSED (26 September 2026): no admissible second independent agent was found
+  (docs/E1c_search.md). RQ4 therefore stays NOT ESTABLISHED for this paper.
 - Official non-LLM templates: NEED (E1b); these are a baseline, not independent evidence, and
   cannot establish RQ4.
-- The "public CPU-only 0.26-0.27 agent" of the old plan: not verified (no repository, commit,
-  licence or runtime established). It is dropped from E1 and from the text until it is traceable.
+- The "public CPU-only 0.26-0.27 agent" of the old plan: traced on 26 September 2026 to
+  github.com/BDR-Pro/arc-prize-2026-arc-agi-3 ("v79"). The repository has no licence file, so it
+  is not admissible (A2) (docs/E1c_search.md Section 3.2).
 
 RQ5. What does a CPU-hosted LLM cost per action against the per-action budget?
 - 7B, two machines, two encodings, 218-1,254 s per action against ~2.9 s: HAVE, UNTRACED to a
@@ -302,6 +305,21 @@ E1b. Official ARC-AGI-3-Agents non-LLM templates (random and any deterministic t
      Baseline only.
 E1c. Any other public CPU-only frame-based agent with a repository, licence and commit. If none is
      found, state that and how we searched (sources, dates, queries).
+     CLOSED 26 September 2026: no admissible second independent agent was found. The search
+     (sources, dates, queries, every candidate and its verdict) is recorded in
+     docs/E1c_search.md. The results:
+     - ZubMono "Prometheus" passed the phase-0 screen but was rejected
+       (docs/E1c_prometheus_check.md): its direction priors were measured on all 25 public
+       games, including the 17 held-out games. A5 forbids removing them, and the size of the
+       priors is irrelevant; the contamination is the reason.
+     - The remaining MIT candidates are not pursued. conchocon154's author reports that its
+       agent does not beat their own random control; ReplicaWormhole's explorer is a research
+       harness with a chat-model adapter. The reason for not pursuing them is the cost of an
+       adapter and admissibility checks against the 9 October 2026 deadline, not a judgement of
+       their quality.
+     - The strongest non-LLM agents found have no licence (A2).
+     - Most higher-scoring non-LLM notebooks load the game's source and search its simulator,
+       so they are not frame-only (docs/E1c_search.md Section 8).
 
 What must be true for E1 to mean anything: the adapter must not change the policy (A5, A6), and
 the action accounting must be the scorecard's (3.2). How failure shows: a fidelity mismatch in A6,
@@ -663,16 +681,16 @@ Venue: ToG if E1 has at least two admissible independent agents and E9 or E10 de
 IEEE CoG or a workshop, decided on 9 October 2026 (CoG 2026 page and fee rules to be checked on the
 call page, not copied from older editions).
 
-Status 26 September 2026: **the paper is on the short-paper route** unless a second admissible
-independent agent is found, run and scored under Section 3 before 9 October 2026. E1 gave one
-INCONCLUSIVE agent, so the ToG full-paper condition above is not met. The short paper is the
+Status 26 September 2026: **the short-paper route is the plan of record.** E1 gave one
+INCONCLUSIVE agent, and E1c closed on 26 September 2026 without a second admissible independent
+agent (docs/E1c_search.md), so the ToG full-paper condition above is not met and is not pursued. The short paper is the
 fallback named in the original plan (docs/TOG_PLAN.md: 6-8 pages). Its content:
 - the scoring analysis and ceiling (E4);
 - selection transfer (E5);
 - the goal-identification census with E9/E10 as they deliver;
 - E1 reported by name as INCONCLUSIVE, with its confounds.
-Venue: IEEE CoG or a workshop, chosen on 9 October 2026. The 10-page structure above applies only
-if the full-paper condition is met by then.
+Venue: IEEE CoG or a workshop, chosen on 9 October 2026. The 10-page ToG structure above is not
+used; it is kept as the record of the earlier plan.
 
 ---
 
