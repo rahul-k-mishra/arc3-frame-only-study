@@ -8,21 +8,26 @@ not enter the manuscript until a script ties it to a file.
 
 ## Working title
 
-"Scoring, Selection, and Goal-Identification Failures of Frame-Only Agents on the ARC-AGI-3
-Public Demonstration Set"
+"Scoring, Selection, and Goal-Identification Failures on the ARC-AGI-3 Public Demonstration Set:
+A Measurement Study of One Frame-Only Explorer"
 
-The old title ("Why Frame-Only Agents Plateau on ARC-AGI-3") is withdrawn. It claimed a general
-cause and a general plateau. A published frame-based agent (Rudakov, Shock, Cowley, arXiv
-2512.24156) solved a median 30 of 52 preview levels, so a general plateau statement is false as
-written. The title may be revised again after E1; it may not become broader than this one.
+Changed 26 September 2026 after the E1 result (docs/E1_result.md). The previous working title,
+"... Failures of Frame-Only Agents on ...", named a family of agents. E1 did not establish any
+statement about a family (RQ4 below), so the family claim is removed from the title: the paper is
+about our explorer and planner, named as such. The first title ("Why Frame-Only Agents Plateau on
+ARC-AGI-3") was withdrawn on 25 September 2026. It claimed a general cause and a general
+plateau, and a published frame-based agent (Rudakov, Shock, Cowley, arXiv 2512.24156) solved a
+median 30 of 52 preview levels. No later title may be broader than this one.
 
 ---
 
 ## 0. What this paper is, and what it is not
 
-It is a measurement study of one benchmark's public demonstration set (25 games) and of what
-frame-only, prior-free, CPU-runnable agents do on it, with a formal definition of
-goal-identification cost measured on those games.
+It is a measurement study of one benchmark's public demonstration set (25 games) and of what our
+frame-only, prior-free, CPU-runnable explorer and planner do on it, with a formal definition of
+goal-identification cost measured on those games. One independently authored agent was measured
+through the same harness (E1). Its result was INCONCLUSIVE under the registered rule, so it is
+reported by name and supports no statement about agents other than the ones measured.
 
 It is not a new method, not a competitive result, not a statement about ARC-AGI-3's private
 evaluation set, and not a statement that frame-only agents in general plateau.
@@ -64,6 +69,8 @@ C4. External agents (load-bearing for any statement about more than our own agen
 claimed about "frame-only agents" as a family unless E1 meets its pre-registered rule
 (Section 3). With fewer than two admissible independent agents, the paper speaks only of "the
 agents we measured" and names them.
+Status 26 September 2026: one admissible independent agent measured, INCONCLUSIVE. No family
+statement is permitted. The allowed wording for that agent is in docs/E1_result.md Section 4.
 
 C5. CPU language-model cost (secondary, half a page at most). A feasibility bound for our two
 machines, nothing more. Forbidden: "every leaderboard leader runs a GPU-served vision model", or
@@ -121,8 +128,17 @@ RQ3. For a planner that checks its own assumptions at play time, which assumptio
   from game-dependent rows (no keys, no controllable object, recorded goal falsified on retry).
 
 RQ4. Do agents we did not write show the same pattern?
-- Rudakov et al. agent through our harness: NEED (E1a).
-- Official non-LLM templates: NEED (E1b); these are a baseline, not independent evidence.
+**NOT ESTABLISHED (26 September 2026).**
+- Rudakov et al. agent through our harness: HAVE (E1a; runs/e1_rudakov_lenovo_25x10_20k.json,
+  runs/e1_decision.json, docs/E1_result.md). INCONCLUSIVE, decided by (ii): M2 / M1 = 4.05
+  against > 5. M1 0.1750 vs E2 0.3274; M4 3.30 vs 10.50; M3 0. Confounds: ACTION7 absent from
+  their action set; their choose_action raising on most actions in most runs; preview vs 2026
+  games and API. Their published preview result is not contradicted.
+- With one INCONCLUSIVE agent and no second admissible independent agent, Section 3.4 permits no
+  family statement. RQ4 can become answerable only if a second admissible independent agent
+  (E1c) is found, run and scored under Section 3 before 9 October 2026.
+- Official non-LLM templates: NEED (E1b); these are a baseline, not independent evidence, and
+  cannot establish RQ4.
 - The "public CPU-only 0.26-0.27 agent" of the old plan: not verified (no repository, commit,
   licence or runtime established). It is dropped from E1 and from the text until it is traceable.
 
@@ -541,6 +557,17 @@ source-reading disclosure, E1 admissibility records.
 Venue: ToG if E1 has at least two admissible independent agents and E9 or E10 delivers. Otherwise
 IEEE CoG or a workshop, decided on 9 October 2026 (CoG 2026 page and fee rules to be checked on the
 call page, not copied from older editions).
+
+Status 26 September 2026: **the paper is on the short-paper route** unless a second admissible
+independent agent is found, run and scored under Section 3 before 9 October 2026. E1 gave one
+INCONCLUSIVE agent, so the ToG full-paper condition above is not met. The short paper is the
+fallback named in the original plan (docs/TOG_PLAN.md: 6-8 pages). Its content:
+- the scoring analysis and ceiling (E4);
+- selection transfer (E5);
+- the goal-identification census with E9/E10 as they deliver;
+- E1 reported by name as INCONCLUSIVE, with its confounds.
+Venue: IEEE CoG or a workshop, chosen on 9 October 2026. The 10-page structure above applies only
+if the full-paper condition is met by then.
 
 ---
 
