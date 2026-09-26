@@ -142,6 +142,10 @@ completed and time allows.
 
 The exact commands are in Section 7.
 
+When the colours are read (decision D3, Section 8): at the level's first planner step, which on
+level 1 may follow the explorer's opening actions. Avatar colours are removed when the colours
+are used, not when they are read.
+
 ## 4. Measures and validity checks
 
 Per game, per arm, per level i, over seeds 1000-1009:
@@ -161,10 +165,17 @@ oracle_targets, oracle_reached_no_end, fallback reason).
 Validity checks (V1-V4 and V6 must pass before any E9 number is reported; V5 is reported, not
 passed or failed):
 - **V1:** arm F's rows equal E2's rows for these games and seeds.
-- **V2, the oracle colour is where the level ends:** on every testable level that arm O wins in
-  any seed, `oracle_confirmed` is true for every win. That is, the position the level ended on
-  showed an oracle colour. A win on a position without an oracle colour means the colour set is
-  wrong for that level.
+- **V2, the oracle colour is where the level ends** (revised by decision D1, Section 8): for every
+  win by arm O on a testable level where the oracle handed colours, there are two outcomes that
+  matter:
+  - **The ending position showed no oracle colour** (`oracle_confirmed` false). This FAILS V2 and
+    blocks the report: the colour set is wrong for that level.
+  - **The planner could not read the ending position** (`oracle_confirmed` missing or None). This
+    covers a level won during the explorer's click scan, won by any click action (the planner
+    observes only its keyboard steps), or won when the planner had no position after a fallback.
+    It is **not** a V2 failure. It is reported as "ending not seen", counted per game for arm O
+    (the only arm with an oracle), and excluded from V2's denominator. The exclusion is stated
+    beside every result it affects.
 - **V3, positive control on tu93:** arm O's seed-mean levels completed is not below arm N's by 0.5
   or more. tu93 is the game where N already confirms its goals, so O falling below N there means
   the oracle plumbing is broken.
@@ -198,6 +209,8 @@ Definitions, per game G (arms N and O, seeds 1000-1009):
 
 Only levels expressible in the goal table, and on which arm O used an oracle colour
 (`oracle_targets > 0`), count toward these definitions. Only arm O enters them; arm P never does.
+**Eligible level** (decision D2, Section 8): a level counts as one on which arm O used an oracle
+colour if `oracle_targets > 0` on that level in at least one seed of arm O.
 
 Per game, the goal is:
 - **BINDING** if any of: dL >= 1.0; at least one newly won level; or, on at least one shared
@@ -325,3 +338,39 @@ $py = "D:\Research\arc3\brutus\.venv\Scripts\python.exe"
 $env_dir = "D:\Research\arc3\brutus\environment_files"
 & $py g_nav_run.py --games tu93,dc22 --modes nav_oracle_place --seeds 10 --budget 20000 --game-seconds 36000 --hours 48 --workers 8 --env-dir $env_dir --tag e9_place_2x10 --resume
 ```
+
+## 8. Decisions recorded 26 September 2026, before any E9 output existed
+
+These were decided by the author on 26 September 2026, after the E9 code was written and tested
+at small budgets on tu93 and dc22, and **before any E9 output existed** (the registered E9 run of
+Section 7 had not been started). No threshold in Section 5 changed.
+
+**D1, V2 separates two failure kinds, and only one blocks.**
+- A level that ended on a position showing no oracle colour **fails V2 and blocks the report**.
+- A level whose ending position the planner could not read is **not a V2 failure**. This covers a
+  level won during the explorer's click scan, won by a click action (the planner observes only its
+  keyboard steps), or won when the planner had no position after a fallback. It is reported as
+  "ending not seen", counted per game for arm O, and excluded from the V2 denominator, with that
+  exclusion stated beside every result.
+
+Reason: "not seen" is a limit of the instrument's observation, not evidence that the oracle colour
+was wrong, and blocking on it would make dc22 unreportable for a reason unrelated to the question.
+
+**D2, eligible level, as registered.** A level counts as eligible for Section 5 (shared, newly won)
+if arm O targeted an oracle colour on it (`oracle_targets > 0`) in at least one seed.
+
+**D3, when the oracle colours are read.**
+- They are read at the level's first planner step. On level 1 that step may follow the explorer's
+  opening actions (for example a click scan), so the oracle is **not necessarily available from
+  action 1** of level 1. On later levels the first planner step is the level's first frame.
+- Avatar colours are removed at use, not at read, because the avatar is not yet known at level 1's
+  start (G-NAV learns it in its first steps).
+
+**D4, disclosure of an observation made during testing.** While testing the code at 1,500
+actions (tu93, seed 1000, not a registered run), the author's assistant observed:
+- tu93 level 1 was won in 43 actions with the oracle, against 71 without (human count 19);
+- the oracle colour marked only the exit (V5 = 0 cells).
+
+The protocol and its thresholds (Sections 1-6) were fixed before that observation, and nothing in
+them was changed after it. D1-D3 concern the reporting of V2, the definition of an eligible level
+and the timing of the colour read; none changes a threshold or a prediction.
