@@ -8,6 +8,15 @@ into a scratch folder, read only and never run. The admissibility items are thos
 docs/TOG_PLAN_v2.md Section 3.1 (A1-A7); this document changes none of them. The author decides
 what to pursue.
 
+## 0. Outcome (recorded 26 September 2026)
+
+- **ZubMono "Prometheus": REJECTED by the author.** Its `DIRECTION_PRIORS` were measured on all
+  25 public games, which include the 17 held-out games, so it carries parameters fitted on our
+  evaluation set, and A5 forbids removing them. Size is irrelevant; the contamination is the
+  reason. Evidence: docs/E1c_prometheus_check.md.
+- **The other candidates in Section 7 are not pursued.** E1c is closed in docs/TOG_PLAN_v2.md with
+  no admissible second independent agent found.
+
 ## 1. Result in one paragraph
 
 **No candidate is confirmed admissible.** Admissibility item A5 (the adapter changes I/O only),
@@ -171,7 +180,8 @@ Candidates that could become the second admissible independent agent, in the ord
 favours:
 1. **ZubMono "Prometheus"** (MIT-0, standard library only, offline, no LLM, current API). First
    step: a line-by-line check of `agent/my_agent.py` for game-specific branches on the 25 public
-   game ids; then A5-A7 as for E1a.
+   game ids; then A5-A7 as for E1a. **Checked and REJECTED (Section 0;
+   docs/E1c_prometheus_check.md):** direction priors measured on all 25 public games.
 2. **ReplicaWormhole explorer** (MIT). First step: confirm the explorer never calls the model
    client and plays to a fixed budget.
 3. **conchocon154 novelty agent** (MIT). Admissible on everything checkable, but its author reports
