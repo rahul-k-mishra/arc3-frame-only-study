@@ -3,8 +3,8 @@
 Measurement study of frame-only, prior-free, CPU-runnable agents on the ARC-AGI-3 public
 demonstration set (25 games), targeted at a 6-8 page short paper for IEEE CoG or a workshop
 (venue chosen 9 October 2026; double-anonymous). Single author. No GPU. No money. Every number in
-any document must come from
-a script in this repository run by the author, with its output saved under runs/.
+any document must come from a script in this repository run by the author, with its output saved
+under runs/.
 
 ## Non-negotiable rules (from the author; do not relax them)
 
