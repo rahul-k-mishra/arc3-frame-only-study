@@ -26,7 +26,7 @@ action sequence and no sub-goal.
 What the repository already records about the three goals:
 - **tu93:** the level ends when the avatar reaches the exit, a coloured tile. docs/HANDOFF_GNAV.md
   line 50: "tu93 is the one game in 25 where it is" (the goal is "reach a colour"). G-NAV confirmed
-  that goal on all 4 seeds (HANDOFF line 17: `goal_confirmed on all 4 seeds`).
+  that goal on all 4 seeds (HANDOFF line 18: `goal_confirmed on all 4 seeds`).
 - **dc22 and ls20:** **not recorded.** The repository notes only mechanics: ls20 has a key panel
   and a 12-cell "pusher" (HANDOFF lines 36-37); dc22 has none noted. G-NAV never won a dc22 level
   in any recorded run.
@@ -166,7 +166,8 @@ Across the three games:
 
 What is expected, stated so that a surprise is visible:
 - **tu93:** G-NAV already reaches its goal from level 2 on, so the oracle's room is mainly level 1
-  (N took 71-81 actions against a human 19 in earlier runs) and any level whose goal differs from
+  (N took 81 actions against a human 19 in the v1 runs, docs/HANDOFF_GNAV.md line 17, and 71 in
+  the v2 train-quick census, docs/census_v2.md) and any level whose goal differs from
   level 1's.
 - **dc22:** no G-NAV run has won level 1, so dc22 separates "the goal was unknown" from "the goal
   was known but unreachable by this planner".
