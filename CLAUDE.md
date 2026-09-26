@@ -44,10 +44,12 @@ a script in this repository run by the author, with its output saved under runs/
   is the reference for every comparison. The 4-seed 0.3329 (runs/ablate_lenovo_6x4.json) survives
   only as a record in registered text. "1,088 held-out runs" and "median agent/human ratio 35-145"
   are UNTRACED; the E2 decomposition (g_decompose.py on the E2 file) replaces them.
-- 100,000 actions: NO budget claim until E3. The old line "0.3615 vs 0.3329 — coverage does not pay"
-  compared different mechanisms: 0.3615 is mode base (and its three give-up variants, identical),
-  2 seeds, 100k (runs/ablate_kaggle_giveup_100k.json); 0.3329 was hash_state, 4 seeds, 20k.
-  Corrected 26 Sep 2026; see docs/TOG_PLAN_v2.md RQ1.
+- 100,000 actions: WITHDRAWN; NO budget claim holds until E3. The old line "0.3615 vs 0.3329 —
+  coverage does not pay" compared different mechanisms, so it never measured what a larger budget
+  buys: 0.3615 is the held-out mean of mode base, 2 seeds, at 100,000 actions
+  (runs/ablate_kaggle_giveup_100k.json; its three give-up variants give the same value; the file
+  has no hash_state rows); 0.3329 was hash_state, 4 seeds, at 20,000 actions. Corrected
+  26 Sep 2026; see docs/TOG_PLAN_v2.md RQ1. E3 is registered in TOG_PLAN_v2 Section 7.
 - Selection transfer (runs/split_transfer.json; 4-seed 6-mechanism matrix, corrected 26 Sep 2026):
   on the fixed 8/17 split the train pick is repeat_key (held-out 0.1464). hash_state is
   held-out-best (0.3329, 4-seed value) but ranks 6 of 6 on train, so it was never a train pick;
