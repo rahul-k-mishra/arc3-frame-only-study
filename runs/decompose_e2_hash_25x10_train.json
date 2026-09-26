@@ -1,0 +1,3281 @@
+{
+ "script": "scripts/g_decompose.py",
+ "created": "2026-09-26 07:37:25",
+ "tag": "e2_hash_25x10_train",
+ "files": [
+  "..\\runs\\navrun_e2_hash_25x10.json"
+ ],
+ "env_dir": "D:\\Research\\arc3\\brutus\\environment_files",
+ "games_arg": "train",
+ "games": [
+  "tu93",
+  "ls20",
+  "vc33",
+  "m0r0",
+  "ft09",
+  "lp85",
+  "lf52",
+  "dc22"
+ ],
+ "runs": 80,
+ "runs_per_file": {
+  "navrun_e2_hash_25x10.json": 80
+ },
+ "mechanisms": {
+  "hash_state": {
+   "runs": 80,
+   "recorded": 0.19013375,
+   "recomputed": 0.22767097939234202,
+   "maxdiff": 0.8911076425631983,
+   "maxdiff_run": "ft09/1003",
+   "lv1": 60,
+   "lv2": 22,
+   "lv3plus": 29,
+   "from_lv1": 0.2092949187535175,
+   "at_human": 8.005952380952381,
+   "at_2x": 2.0014880952380953,
+   "at_5x": 0.3202380952380951,
+   "median_ratio": 19.38095238095238,
+   "ratios": [
+    0.9411764705882353,
+    1.1764705882352942,
+    1.2941176470588236,
+    1.411764705882353,
+    1.588235294117647,
+    1.6470588235294117,
+    1.8235294117647058,
+    2.0930232558139537,
+    2.176470588235294,
+    2.2790697674418605,
+    2.2941176470588234,
+    2.411764705882353,
+    3.441860465116279,
+    3.5348837209302326,
+    3.5348837209302326,
+    3.627906976744186,
+    4.558139534883721,
+    4.631578947368421,
+    5.125,
+    5.25,
+    5.6875,
+    6.625,
+    7.375,
+    7.906976744186046,
+    8.0625,
+    9.0625,
+    11.428571428571429,
+    11.5,
+    11.571428571428571,
+    11.571428571428571,
+    12.571428571428571,
+    12.604651162790697,
+    12.909090909090908,
+    13.1875,
+    13.5625,
+    13.714285714285714,
+    13.857142857142858,
+    14.0,
+    14.842105263157896,
+    14.852941176470589,
+    14.857142857142858,
+    15.0,
+    15.0,
+    15.090909090909092,
+    15.227272727272727,
+    15.80952380952381,
+    16.238095238095237,
+    16.952380952380953,
+    17.209302325581394,
+    17.558823529411764,
+    17.952380952380953,
+    18.31578947368421,
+    18.42105263157895,
+    19.238095238095237,
+    19.285714285714285,
+    19.38095238095238,
+    19.382113821138212,
+    20.70731707317073,
+    20.842105263157894,
+    21.045454545454547,
+    22.05263157894737,
+    22.05263157894737,
+    22.055555555555557,
+    22.056910569105693,
+    22.210526315789473,
+    22.227642276422763,
+    22.31578947368421,
+    23.38235294117647,
+    23.705882352941178,
+    23.90909090909091,
+    24.08823529411765,
+    24.466666666666665,
+    24.617886178861788,
+    24.863636363636363,
+    25.11764705882353,
+    25.1869918699187,
+    25.975609756097562,
+    26.555555555555557,
+    26.558823529411764,
+    26.818181818181817,
+    26.863636363636363,
+    26.88617886178862,
+    26.954545454545453,
+    27.904761904761905,
+    28.142857142857142,
+    28.428571428571427,
+    28.5,
+    30.5,
+    30.555555555555557,
+    32.166666666666664,
+    32.77272727272727,
+    33.95652173913044,
+    36.93333333333333,
+    39.4,
+    39.86666666666667,
+    40.44444444444444,
+    45.111111111111114,
+    45.333333333333336,
+    47.0,
+    48.05555555555556,
+    49.9,
+    57.36666666666667,
+    63.266666666666666,
+    85.0,
+    117.76666666666667,
+    129.3963963963964,
+    131.44144144144144,
+    167.825,
+    168.5125,
+    261.42105263157896,
+    266.70588235294116
+   ]
+  }
+ },
+ "disagreements": [],
+ "largest_disagreement": {
+  "hash_state": {
+   "run": "ft09/1003",
+   "diff": 0.8911076425631983
+  }
+ },
+ "level_log_vs_recorded_over_25pct": [
+  {
+   "game": "ft09",
+   "mode": "hash_state",
+   "seed": 1000,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.1156,
+   "from_level_log": 0.3810925339664951,
+   "levels": 1
+  },
+  {
+   "game": "ft09",
+   "mode": "hash_state",
+   "seed": 1001,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.1199,
+   "from_level_log": 0.4019705033218546,
+   "levels": 1
+  },
+  {
+   "game": "ft09",
+   "mode": "hash_state",
+   "seed": 1002,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.1123,
+   "from_level_log": 0.3617998810306503,
+   "levels": 1
+  },
+  {
+   "game": "ft09",
+   "mode": "hash_state",
+   "seed": 1003,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.1959,
+   "from_level_log": 1.0870076425631983,
+   "levels": 1
+  },
+  {
+   "game": "ft09",
+   "mode": "hash_state",
+   "seed": 1004,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.1156,
+   "from_level_log": 0.3810925339664951,
+   "levels": 1
+  },
+  {
+   "game": "ft09",
+   "mode": "hash_state",
+   "seed": 1005,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0192,
+   "from_level_log": 0.029972229084441606,
+   "levels": 1
+  },
+  {
+   "game": "ft09",
+   "mode": "hash_state",
+   "seed": 1006,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.04,
+   "from_level_log": 0.07616576042181578,
+   "levels": 1
+  },
+  {
+   "game": "ft09",
+   "mode": "hash_state",
+   "seed": 1007,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0854,
+   "from_level_log": 0.2291951766129192,
+   "levels": 1
+  },
+  {
+   "game": "ft09",
+   "mode": "hash_state",
+   "seed": 1008,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.1819,
+   "from_level_log": 0.9167807064516768,
+   "levels": 1
+  },
+  {
+   "game": "ft09",
+   "mode": "hash_state",
+   "seed": 1009,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0113,
+   "from_level_log": 0.016078820132874188,
+   "levels": 1
+  }
+ ],
+ "per_run": [
+  {
+   "game": "dc22",
+   "mode": "hash_state",
+   "seed": 1000,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0,
+   "levels_completed": 0,
+   "recomputed": 0.0,
+   "won_levels": [],
+   "card_levels": [
+    20000,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    59,
+    102,
+    67,
+    98,
+    324,
+    578
+   ]
+  },
+  {
+   "game": "dc22",
+   "mode": "hash_state",
+   "seed": 1001,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0,
+   "levels_completed": 0,
+   "recomputed": 0.0,
+   "won_levels": [],
+   "card_levels": [
+    20000,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    59,
+    102,
+    67,
+    98,
+    324,
+    578
+   ]
+  },
+  {
+   "game": "dc22",
+   "mode": "hash_state",
+   "seed": 1002,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0,
+   "levels_completed": 0,
+   "recomputed": 0.0,
+   "won_levels": [],
+   "card_levels": [
+    20000,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    59,
+    102,
+    67,
+    98,
+    324,
+    578
+   ]
+  },
+  {
+   "game": "dc22",
+   "mode": "hash_state",
+   "seed": 1003,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0,
+   "levels_completed": 0,
+   "recomputed": 0.0,
+   "won_levels": [],
+   "card_levels": [
+    20000,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    59,
+    102,
+    67,
+    98,
+    324,
+    578
+   ]
+  },
+  {
+   "game": "dc22",
+   "mode": "hash_state",
+   "seed": 1004,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0,
+   "levels_completed": 0,
+   "recomputed": 0.0,
+   "won_levels": [],
+   "card_levels": [
+    20000,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    59,
+    102,
+    67,
+    98,
+    324,
+    578
+   ]
+  },
+  {
+   "game": "dc22",
+   "mode": "hash_state",
+   "seed": 1005,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0,
+   "levels_completed": 0,
+   "recomputed": 0.0,
+   "won_levels": [],
+   "card_levels": [
+    20000,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    59,
+    102,
+    67,
+    98,
+    324,
+    578
+   ]
+  },
+  {
+   "game": "dc22",
+   "mode": "hash_state",
+   "seed": 1006,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0,
+   "levels_completed": 0,
+   "recomputed": 0.0,
+   "won_levels": [],
+   "card_levels": [
+    20000,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    59,
+    102,
+    67,
+    98,
+    324,
+    578
+   ]
+  },
+  {
+   "game": "dc22",
+   "mode": "hash_state",
+   "seed": 1007,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0,
+   "levels_completed": 0,
+   "recomputed": 0.0,
+   "won_levels": [],
+   "card_levels": [
+    20000,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    59,
+    102,
+    67,
+    98,
+    324,
+    578
+   ]
+  },
+  {
+   "game": "dc22",
+   "mode": "hash_state",
+   "seed": 1008,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0,
+   "levels_completed": 0,
+   "recomputed": 0.0,
+   "won_levels": [],
+   "card_levels": [
+    20000,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    59,
+    102,
+    67,
+    98,
+    324,
+    578
+   ]
+  },
+  {
+   "game": "dc22",
+   "mode": "hash_state",
+   "seed": 1009,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0,
+   "levels_completed": 0,
+   "recomputed": 0.0,
+   "won_levels": [],
+   "card_levels": [
+    20000,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    59,
+    102,
+    67,
+    98,
+    324,
+    578
+   ]
+  },
+  {
+   "game": "ft09",
+   "mode": "hash_state",
+   "seed": 1000,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.1156,
+   "levels_completed": 1,
+   "recomputed": 0.3810925339664951,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 152,
+     "human": 43,
+     "level_score": 8.002943213296398
+    }
+   ],
+   "card_levels": [
+    276,
+    19724,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    43,
+    12,
+    23,
+    28,
+    65,
+    37
+   ]
+  },
+  {
+   "game": "ft09",
+   "mode": "hash_state",
+   "seed": 1001,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.1199,
+   "levels_completed": 1,
+   "recomputed": 0.4019705033218546,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 148,
+     "human": 43,
+     "level_score": 8.441380569758946
+    }
+   ],
+   "card_levels": [
+    271,
+    19729,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    43,
+    12,
+    23,
+    28,
+    65,
+    37
+   ]
+  },
+  {
+   "game": "ft09",
+   "mode": "hash_state",
+   "seed": 1002,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.1123,
+   "levels_completed": 1,
+   "recomputed": 0.3617998810306503,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 156,
+     "human": 43,
+     "level_score": 7.597797501643656
+    }
+   ],
+   "card_levels": [
+    280,
+    19720,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    43,
+    12,
+    23,
+    28,
+    65,
+    37
+   ]
+  },
+  {
+   "game": "ft09",
+   "mode": "hash_state",
+   "seed": 1003,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.1959,
+   "levels_completed": 1,
+   "recomputed": 1.0870076425631983,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 90,
+     "human": 43,
+     "level_score": 22.82716049382716
+    }
+   ],
+   "card_levels": [
+    212,
+    19788,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    43,
+    12,
+    23,
+    28,
+    65,
+    37
+   ]
+  },
+  {
+   "game": "ft09",
+   "mode": "hash_state",
+   "seed": 1004,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.1156,
+   "levels_completed": 1,
+   "recomputed": 0.3810925339664951,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 152,
+     "human": 43,
+     "level_score": 8.002943213296398
+    }
+   ],
+   "card_levels": [
+    276,
+    19724,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    43,
+    12,
+    23,
+    28,
+    65,
+    37
+   ]
+  },
+  {
+   "game": "ft09",
+   "mode": "hash_state",
+   "seed": 1005,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0192,
+   "levels_completed": 1,
+   "recomputed": 0.029972229084441606,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 542,
+     "human": 43,
+     "level_score": 0.6294168107732737
+    }
+   ],
+   "card_levels": [
+    678,
+    19322,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    43,
+    12,
+    23,
+    28,
+    65,
+    37
+   ]
+  },
+  {
+   "game": "ft09",
+   "mode": "hash_state",
+   "seed": 1006,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.04,
+   "levels_completed": 1,
+   "recomputed": 0.07616576042181578,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 340,
+     "human": 43,
+     "level_score": 1.5994809688581313
+    }
+   ],
+   "card_levels": [
+    469,
+    19531,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    43,
+    12,
+    23,
+    28,
+    65,
+    37
+   ]
+  },
+  {
+   "game": "ft09",
+   "mode": "hash_state",
+   "seed": 1007,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0854,
+   "levels_completed": 1,
+   "recomputed": 0.2291951766129192,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 196,
+     "human": 43,
+     "level_score": 4.813098708871303
+    }
+   ],
+   "card_levels": [
+    321,
+    19679,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    43,
+    12,
+    23,
+    28,
+    65,
+    37
+   ]
+  },
+  {
+   "game": "ft09",
+   "mode": "hash_state",
+   "seed": 1008,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.1819,
+   "levels_completed": 1,
+   "recomputed": 0.9167807064516768,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 98,
+     "human": 43,
+     "level_score": 19.252394835485212
+    }
+   ],
+   "card_levels": [
+    220,
+    19780,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    43,
+    12,
+    23,
+    28,
+    65,
+    37
+   ]
+  },
+  {
+   "game": "ft09",
+   "mode": "hash_state",
+   "seed": 1009,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0113,
+   "levels_completed": 1,
+   "recomputed": 0.016078820132874188,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 740,
+     "human": 43,
+     "level_score": 0.337655222790358
+    }
+   ],
+   "card_levels": [
+    882,
+    19118,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    43,
+    12,
+    23,
+    28,
+    65,
+    37
+   ]
+  },
+  {
+   "game": "lf52",
+   "mode": "hash_state",
+   "seed": 1000,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0,
+   "levels_completed": 0,
+   "recomputed": 0.0,
+   "won_levels": [],
+   "card_levels": [
+    20000,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    32,
+    81,
+    60,
+    71,
+    205,
+    148,
+    244,
+    109,
+    164,
+    225
+   ]
+  },
+  {
+   "game": "lf52",
+   "mode": "hash_state",
+   "seed": 1001,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0,
+   "levels_completed": 0,
+   "recomputed": 0.0,
+   "won_levels": [],
+   "card_levels": [
+    20000,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    32,
+    81,
+    60,
+    71,
+    205,
+    148,
+    244,
+    109,
+    164,
+    225
+   ]
+  },
+  {
+   "game": "lf52",
+   "mode": "hash_state",
+   "seed": 1002,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0,
+   "levels_completed": 0,
+   "recomputed": 0.0,
+   "won_levels": [],
+   "card_levels": [
+    20000,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    32,
+    81,
+    60,
+    71,
+    205,
+    148,
+    244,
+    109,
+    164,
+    225
+   ]
+  },
+  {
+   "game": "lf52",
+   "mode": "hash_state",
+   "seed": 1003,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0,
+   "levels_completed": 0,
+   "recomputed": 0.0,
+   "won_levels": [],
+   "card_levels": [
+    20000,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    32,
+    81,
+    60,
+    71,
+    205,
+    148,
+    244,
+    109,
+    164,
+    225
+   ]
+  },
+  {
+   "game": "lf52",
+   "mode": "hash_state",
+   "seed": 1004,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0,
+   "levels_completed": 0,
+   "recomputed": 0.0,
+   "won_levels": [],
+   "card_levels": [
+    20000,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    32,
+    81,
+    60,
+    71,
+    205,
+    148,
+    244,
+    109,
+    164,
+    225
+   ]
+  },
+  {
+   "game": "lf52",
+   "mode": "hash_state",
+   "seed": 1005,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0,
+   "levels_completed": 0,
+   "recomputed": 0.0,
+   "won_levels": [],
+   "card_levels": [
+    20000,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    32,
+    81,
+    60,
+    71,
+    205,
+    148,
+    244,
+    109,
+    164,
+    225
+   ]
+  },
+  {
+   "game": "lf52",
+   "mode": "hash_state",
+   "seed": 1006,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0,
+   "levels_completed": 0,
+   "recomputed": 0.0,
+   "won_levels": [],
+   "card_levels": [
+    20000,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    32,
+    81,
+    60,
+    71,
+    205,
+    148,
+    244,
+    109,
+    164,
+    225
+   ]
+  },
+  {
+   "game": "lf52",
+   "mode": "hash_state",
+   "seed": 1007,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0,
+   "levels_completed": 0,
+   "recomputed": 0.0,
+   "won_levels": [],
+   "card_levels": [
+    20000,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    32,
+    81,
+    60,
+    71,
+    205,
+    148,
+    244,
+    109,
+    164,
+    225
+   ]
+  },
+  {
+   "game": "lf52",
+   "mode": "hash_state",
+   "seed": 1008,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0,
+   "levels_completed": 0,
+   "recomputed": 0.0,
+   "won_levels": [],
+   "card_levels": [
+    20000,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    32,
+    81,
+    60,
+    71,
+    205,
+    148,
+    244,
+    109,
+    164,
+    225
+   ]
+  },
+  {
+   "game": "lf52",
+   "mode": "hash_state",
+   "seed": 1009,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0,
+   "levels_completed": 0,
+   "recomputed": 0.0,
+   "won_levels": [],
+   "card_levels": [
+    20000,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    32,
+    81,
+    60,
+    71,
+    205,
+    148,
+    244,
+    109,
+    164,
+    225
+   ]
+  },
+  {
+   "game": "lp85",
+   "mode": "hash_state",
+   "seed": 1000,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 2.7778,
+   "levels_completed": 1,
+   "recomputed": 2.7777777777777777,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 16,
+     "human": 17,
+     "level_score": 112.890625
+    }
+   ],
+   "card_levels": [
+    16,
+    19984,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    17,
+    38,
+    31,
+    16,
+    41,
+    60,
+    26,
+    159
+   ]
+  },
+  {
+   "game": "lp85",
+   "mode": "hash_state",
+   "seed": 1001,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.5278,
+   "levels_completed": 1,
+   "recomputed": 0.5277960406165535,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 39,
+     "human": 17,
+     "level_score": 19.000657462195925
+    }
+   ],
+   "card_levels": [
+    39,
+    19961,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    17,
+    38,
+    31,
+    16,
+    41,
+    60,
+    26,
+    159
+   ]
+  },
+  {
+   "game": "lp85",
+   "mode": "hash_state",
+   "seed": 1002,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.8354,
+   "levels_completed": 1,
+   "recomputed": 0.8353566886345241,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 31,
+     "human": 17,
+     "level_score": 30.072840790842868
+    }
+   ],
+   "card_levels": [
+    31,
+    19969,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    17,
+    38,
+    31,
+    16,
+    41,
+    60,
+    26,
+    159
+   ]
+  },
+  {
+   "game": "lp85",
+   "mode": "hash_state",
+   "seed": 1003,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.5864,
+   "levels_completed": 1,
+   "recomputed": 0.5863972080188298,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 37,
+     "human": 17,
+     "level_score": 21.11029948867787
+    }
+   ],
+   "card_levels": [
+    37,
+    19963,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    17,
+    38,
+    31,
+    16,
+    41,
+    60,
+    26,
+    159
+   ]
+  },
+  {
+   "game": "lp85",
+   "mode": "hash_state",
+   "seed": 1004,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 2.0069,
+   "levels_completed": 1,
+   "recomputed": 2.006944444444444,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 20,
+     "human": 17,
+     "level_score": 72.24999999999999
+    }
+   ],
+   "card_levels": [
+    20,
+    19980,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    17,
+    38,
+    31,
+    16,
+    41,
+    60,
+    26,
+    159
+   ]
+  },
+  {
+   "game": "lp85",
+   "mode": "hash_state",
+   "seed": 1005,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 1.3937,
+   "levels_completed": 1,
+   "recomputed": 1.3937114197530864,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 24,
+     "human": 17,
+     "level_score": 50.173611111111114
+    }
+   ],
+   "card_levels": [
+    24,
+    19976,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    17,
+    38,
+    31,
+    16,
+    41,
+    60,
+    26,
+    159
+   ]
+  },
+  {
+   "game": "lp85",
+   "mode": "hash_state",
+   "seed": 1006,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 1.024,
+   "levels_completed": 1,
+   "recomputed": 1.0239512471655328,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 28,
+     "human": 17,
+     "level_score": 36.86224489795918
+    }
+   ],
+   "card_levels": [
+    28,
+    19972,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    17,
+    38,
+    31,
+    16,
+    41,
+    60,
+    26,
+    159
+   ]
+  },
+  {
+   "game": "lp85",
+   "mode": "hash_state",
+   "seed": 1007,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 1.1012,
+   "levels_completed": 1,
+   "recomputed": 1.1012040847431797,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 27,
+     "human": 17,
+     "level_score": 39.643347050754464
+    }
+   ],
+   "card_levels": [
+    27,
+    19973,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    17,
+    38,
+    31,
+    16,
+    41,
+    60,
+    26,
+    159
+   ]
+  },
+  {
+   "game": "lp85",
+   "mode": "hash_state",
+   "seed": 1008,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.4776,
+   "levels_completed": 1,
+   "recomputed": 0.47755965364531694,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 41,
+     "human": 17,
+     "level_score": 17.19214753123141
+    }
+   ],
+   "card_levels": [
+    41,
+    19959,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    17,
+    38,
+    31,
+    16,
+    41,
+    60,
+    26,
+    159
+   ]
+  },
+  {
+   "game": "lp85",
+   "mode": "hash_state",
+   "seed": 1009,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 1.6586,
+   "levels_completed": 1,
+   "recomputed": 1.6586317722681359,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 22,
+     "human": 17,
+     "level_score": 59.71074380165289
+    }
+   ],
+   "card_levels": [
+    22,
+    19978,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    17,
+    38,
+    31,
+    16,
+    41,
+    60,
+    26,
+    159
+   ]
+  },
+  {
+   "game": "ls20",
+   "mode": "hash_state",
+   "seed": 1000,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0062,
+   "levels_completed": 1,
+   "recomputed": 0.006247637773321243,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 526,
+     "human": 22,
+     "level_score": 0.17493385765299482
+    }
+   ],
+   "card_levels": [
+    529,
+    19471,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    22,
+    123,
+    73,
+    84,
+    96,
+    192,
+    186
+   ]
+  },
+  {
+   "game": "ls20",
+   "mode": "hash_state",
+   "seed": 1001,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0049,
+   "levels_completed": 1,
+   "recomputed": 0.004965732342922806,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 590,
+     "human": 22,
+     "level_score": 0.13904050560183856
+    }
+   ],
+   "card_levels": [
+    594,
+    19406,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    22,
+    123,
+    73,
+    84,
+    96,
+    192,
+    186
+   ]
+  },
+  {
+   "game": "ls20",
+   "mode": "hash_state",
+   "seed": 1002,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.008,
+   "levels_completed": 1,
+   "recomputed": 0.008063532640313799,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 463,
+     "human": 22,
+     "level_score": 0.22577891392878638
+    }
+   ],
+   "card_levels": [
+    466,
+    19534,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    22,
+    123,
+    73,
+    84,
+    96,
+    192,
+    186
+   ]
+  },
+  {
+   "game": "ls20",
+   "mode": "hash_state",
+   "seed": 1003,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0033,
+   "levels_completed": 1,
+   "recomputed": 0.003325192565748813,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 721,
+     "human": 22,
+     "level_score": 0.09310539184096676
+    }
+   ],
+   "card_levels": [
+    726,
+    19274,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    22,
+    123,
+    73,
+    84,
+    96,
+    192,
+    186
+   ]
+  },
+  {
+   "game": "ls20",
+   "mode": "hash_state",
+   "seed": 1004,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0057,
+   "levels_completed": 1,
+   "recomputed": 0.00577713714684862,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 547,
+     "human": 22,
+     "level_score": 0.16175984011176137
+    }
+   ],
+   "card_levels": [
+    551,
+    19449,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    22,
+    123,
+    73,
+    84,
+    96,
+    192,
+    186
+   ]
+  },
+  {
+   "game": "ls20",
+   "mode": "hash_state",
+   "seed": 1005,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0211,
+   "levels_completed": 1,
+   "recomputed": 0.021431405333408902,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 284,
+     "human": 22,
+     "level_score": 0.6000793493354493
+    }
+   ],
+   "card_levels": [
+    286,
+    19714,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    22,
+    123,
+    73,
+    84,
+    96,
+    192,
+    186
+   ]
+  },
+  {
+   "game": "ls20",
+   "mode": "hash_state",
+   "seed": 1006,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0152,
+   "levels_completed": 1,
+   "recomputed": 0.015402730484040351,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 335,
+     "human": 22,
+     "level_score": 0.4312764535531298
+    }
+   ],
+   "card_levels": [
+    337,
+    19663,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    22,
+    123,
+    73,
+    84,
+    96,
+    192,
+    186
+   ]
+  },
+  {
+   "game": "ls20",
+   "mode": "hash_state",
+   "seed": 1007,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0049,
+   "levels_completed": 1,
+   "recomputed": 0.004948942051160608,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 591,
+     "human": 22,
+     "level_score": 0.13857037743249703
+    }
+   ],
+   "card_levels": [
+    595,
+    19405,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    22,
+    123,
+    73,
+    84,
+    96,
+    192,
+    186
+   ]
+  },
+  {
+   "game": "ls20",
+   "mode": "hash_state",
+   "seed": 1008,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0048,
+   "levels_completed": 1,
+   "recomputed": 0.004915615936833117,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 593,
+     "human": 22,
+     "level_score": 0.13763724623132728
+    }
+   ],
+   "card_levels": [
+    597,
+    19403,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    22,
+    123,
+    73,
+    84,
+    96,
+    192,
+    186
+   ]
+  },
+  {
+   "game": "ls20",
+   "mode": "hash_state",
+   "seed": 1009,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0155,
+   "levels_completed": 1,
+   "recomputed": 0.015682350745494893,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 332,
+     "human": 22,
+     "level_score": 0.43910582087385697
+    }
+   ],
+   "card_levels": [
+    334,
+    19666,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    22,
+    123,
+    73,
+    84,
+    96,
+    192,
+    186
+   ]
+  },
+  {
+   "game": "m0r0",
+   "mode": "hash_state",
+   "seed": 1000,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.004,
+   "levels_completed": 2,
+   "recomputed": 0.004059759365711162,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 1108,
+     "human": 30,
+     "level_score": 0.07330996103168294
+    },
+    {
+     "level": 2,
+     "agent": 14363,
+     "human": 111,
+     "level_score": 0.005972492824125734
+    }
+   ],
+   "card_levels": [
+    1115,
+    14464,
+    4421,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    30,
+    111,
+    203,
+    26,
+    500,
+    237
+   ]
+  },
+  {
+   "game": "m0r0",
+   "mode": "hash_state",
+   "seed": 1001,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0021,
+   "levels_completed": 1,
+   "recomputed": 0.0021556834594408155,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 1410,
+     "human": 30,
+     "level_score": 0.04526935264825713
+    }
+   ],
+   "card_levels": [
+    1419,
+    18581,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    30,
+    111,
+    203,
+    26,
+    500,
+    237
+   ]
+  },
+  {
+   "game": "m0r0",
+   "mode": "hash_state",
+   "seed": 1002,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0003,
+   "levels_completed": 1,
+   "recomputed": 0.00034334912094556336,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 3533,
+     "human": 30,
+     "level_score": 0.007210331539856831
+    }
+   ],
+   "card_levels": [
+    3556,
+    16444,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    30,
+    111,
+    203,
+    26,
+    500,
+    237
+   ]
+  },
+  {
+   "game": "m0r0",
+   "mode": "hash_state",
+   "seed": 1003,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.003,
+   "levels_completed": 1,
+   "recomputed": 0.0029961313951425922,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 1196,
+     "human": 30,
+     "level_score": 0.06291875929799444
+    }
+   ],
+   "card_levels": [
+    1203,
+    18797,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    30,
+    111,
+    203,
+    26,
+    500,
+    237
+   ]
+  },
+  {
+   "game": "m0r0",
+   "mode": "hash_state",
+   "seed": 1004,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0019,
+   "levels_completed": 1,
+   "recomputed": 0.0019124038706289377,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 1497,
+     "human": 30,
+     "level_score": 0.04016048128320769
+    }
+   ],
+   "card_levels": [
+    1506,
+    18494,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    30,
+    111,
+    203,
+    26,
+    500,
+    237
+   ]
+  },
+  {
+   "game": "m0r0",
+   "mode": "hash_state",
+   "seed": 1005,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.003,
+   "levels_completed": 1,
+   "recomputed": 0.0030675260647689724,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 1182,
+     "human": 30,
+     "level_score": 0.06441804736014842
+    }
+   ],
+   "card_levels": [
+    1189,
+    18811,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    30,
+    111,
+    203,
+    26,
+    500,
+    237
+   ]
+  },
+  {
+   "game": "m0r0",
+   "mode": "hash_state",
+   "seed": 1006,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0079,
+   "levels_completed": 1,
+   "recomputed": 0.007954833515940956,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 734,
+     "human": 30,
+     "level_score": 0.16705150383476008
+    }
+   ],
+   "card_levels": [
+    738,
+    19262,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    30,
+    111,
+    203,
+    26,
+    500,
+    237
+   ]
+  },
+  {
+   "game": "m0r0",
+   "mode": "hash_state",
+   "seed": 1007,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0017,
+   "levels_completed": 2,
+   "recomputed": 0.0017409285389668422,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 1898,
+     "human": 30,
+     "level_score": 0.024983316696295034
+    },
+    {
+     "level": 2,
+     "agent": 14590,
+     "human": 111,
+     "level_score": 0.005788091311004327
+    }
+   ],
+   "card_levels": [
+    1910,
+    14713,
+    3377,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    30,
+    111,
+    203,
+    26,
+    500,
+    237
+   ]
+  },
+  {
+   "game": "m0r0",
+   "mode": "hash_state",
+   "seed": 1008,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0014,
+   "levels_completed": 1,
+   "recomputed": 0.0014469764871626416,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 1721,
+     "human": 30,
+     "level_score": 0.030386506230415472
+    }
+   ],
+   "card_levels": [
+    1732,
+    18268,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    30,
+    111,
+    203,
+    26,
+    500,
+    237
+   ]
+  },
+  {
+   "game": "m0r0",
+   "mode": "hash_state",
+   "seed": 1009,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0007,
+   "levels_completed": 1,
+   "recomputed": 0.0006590871642774757,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 2550,
+     "human": 30,
+     "level_score": 0.013840830449826988
+    }
+   ],
+   "card_levels": [
+    2566,
+    17434,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    30,
+    111,
+    203,
+    26,
+    500,
+    237
+   ]
+  },
+  {
+   "game": "tu93",
+   "mode": "hash_state",
+   "seed": 1000,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.1272,
+   "levels_completed": 5,
+   "recomputed": 0.136834472649844,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 350,
+     "human": 19,
+     "level_score": 0.2946938775510204
+    },
+    {
+     "level": 2,
+     "agent": 106,
+     "human": 16,
+     "level_score": 2.278390886436454
+    },
+    {
+     "level": 3,
+     "agent": 9068,
+     "human": 34,
+     "level_score": 0.0014058364882768805
+    },
+    {
+     "level": 4,
+     "agent": 1172,
+     "human": 42,
+     "level_score": 0.12842316159768896
+    },
+    {
+     "level": 5,
+     "agent": 3098,
+     "human": 123,
+     "level_score": 0.15763309259269292
+    }
+   ],
+   "card_levels": [
+    356,
+    110,
+    9488,
+    1237,
+    3193,
+    5616,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    19,
+    16,
+    34,
+    42,
+    123,
+    80,
+    14,
+    23,
+    111
+   ]
+  },
+  {
+   "game": "tu93",
+   "mode": "hash_state",
+   "seed": 1001,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.1672,
+   "levels_completed": 2,
+   "recomputed": 0.17929924840094486,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 282,
+     "human": 19,
+     "level_score": 0.45395100850057846
+    },
+    {
+     "level": 2,
+     "agent": 82,
+     "human": 16,
+     "level_score": 3.8072575847709698
+    }
+   ],
+   "card_levels": [
+    287,
+    85,
+    19628,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    19,
+    16,
+    34,
+    42,
+    123,
+    80,
+    14,
+    23,
+    111
+   ]
+  },
+  {
+   "game": "tu93",
+   "mode": "hash_state",
+   "seed": 1002,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.1085,
+   "levels_completed": 5,
+   "recomputed": 0.11680457667952907,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 424,
+     "human": 19,
+     "level_score": 0.20080544677821285
+    },
+    {
+     "level": 2,
+     "agent": 145,
+     "human": 16,
+     "level_score": 1.2175980975029725
+    },
+    {
+     "level": 3,
+     "agent": 819,
+     "human": 34,
+     "level_score": 0.1723415642829562
+    },
+    {
+     "level": 4,
+     "agent": 810,
+     "human": 42,
+     "level_score": 0.26886145404663925
+    },
+    {
+     "level": 5,
+     "agent": 2713,
+     "human": 123,
+     "level_score": 0.20554675995184485
+    }
+   ],
+   "card_levels": [
+    432,
+    150,
+    846,
+    857,
+    2798,
+    14917,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    19,
+    16,
+    34,
+    42,
+    123,
+    80,
+    14,
+    23,
+    111
+   ]
+  },
+  {
+   "game": "tu93",
+   "mode": "hash_state",
+   "seed": 1003,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0832,
+   "levels_completed": 5,
+   "recomputed": 0.08995682219190462,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 419,
+     "human": 19,
+     "level_score": 0.20562653436697215
+    },
+    {
+     "level": 2,
+     "agent": 211,
+     "human": 16,
+     "level_score": 0.5750095460569171
+    },
+    {
+     "level": 3,
+     "agent": 854,
+     "human": 34,
+     "level_score": 0.15850468109845392
+    },
+    {
+     "level": 4,
+     "agent": 712,
+     "human": 42,
+     "level_score": 0.34796742835500566
+    },
+    {
+     "level": 5,
+     "agent": 3028,
+     "human": 123,
+     "level_score": 0.16500552308790345
+    }
+   ],
+   "card_levels": [
+    427,
+    217,
+    882,
+    755,
+    3122,
+    14597,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    19,
+    16,
+    34,
+    42,
+    123,
+    80,
+    14,
+    23,
+    111
+   ]
+  },
+  {
+   "game": "tu93",
+   "mode": "hash_state",
+   "seed": 1004,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.1646,
+   "levels_completed": 2,
+   "recomputed": 0.17196470512247264,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 88,
+     "human": 19,
+     "level_score": 4.661673553719008
+    },
+    {
+     "level": 2,
+     "agent": 129,
+     "human": 16,
+     "level_score": 1.53836908839613
+    }
+   ],
+   "card_levels": [
+    89,
+    134,
+    19777,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    19,
+    16,
+    34,
+    42,
+    123,
+    80,
+    14,
+    23,
+    111
+   ]
+  },
+  {
+   "game": "tu93",
+   "mode": "hash_state",
+   "seed": 1005,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.1924,
+   "levels_completed": 5,
+   "recomputed": 0.20681832052990176,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 348,
+     "human": 19,
+     "level_score": 0.2980908970801956
+    },
+    {
+     "level": 2,
+     "agent": 91,
+     "human": 16,
+     "level_score": 3.09141408042507
+    },
+    {
+     "level": 3,
+     "agent": 806,
+     "human": 34,
+     "level_score": 0.1779458034961117
+    },
+    {
+     "level": 4,
+     "agent": 664,
+     "human": 42,
+     "level_score": 0.400094353316882
+    },
+    {
+     "level": 5,
+     "agent": 3307,
+     "human": 123,
+     "level_score": 0.13833810843187644
+    }
+   ],
+   "card_levels": [
+    354,
+    94,
+    833,
+    704,
+    3406,
+    14609,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    19,
+    16,
+    34,
+    42,
+    123,
+    80,
+    14,
+    23,
+    111
+   ]
+  },
+  {
+   "game": "tu93",
+   "mode": "hash_state",
+   "seed": 1006,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.1844,
+   "levels_completed": 8,
+   "recomputed": 0.20150241183709053,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 422,
+     "human": 19,
+     "level_score": 0.20271332629545608
+    },
+    {
+     "level": 2,
+     "agent": 118,
+     "human": 16,
+     "level_score": 1.8385521401896008
+    },
+    {
+     "level": 3,
+     "agent": 505,
+     "human": 34,
+     "level_score": 0.45328889324576027
+    },
+    {
+     "level": 4,
+     "agent": 808,
+     "human": 42,
+     "level_score": 0.27019409861778254
+    },
+    {
+     "level": 5,
+     "agent": 2547,
+     "human": 123,
+     "level_score": 0.23321277301224613
+    },
+    {
+     "level": 6,
+     "agent": 13481,
+     "human": 80,
+     "level_score": 0.003521565386877165
+    },
+    {
+     "level": 7,
+     "agent": 398,
+     "human": 14,
+     "level_score": 0.12373424913512286
+    },
+    {
+     "level": 8,
+     "agent": 781,
+     "human": 23,
+     "level_score": 0.08672685630720653
+    }
+   ],
+   "card_levels": [
+    430,
+    123,
+    522,
+    853,
+    2628,
+    13922,
+    431,
+    825,
+    266
+   ],
+   "card_baseline": [
+    19,
+    16,
+    34,
+    42,
+    123,
+    80,
+    14,
+    23,
+    111
+   ]
+  },
+  {
+   "game": "tu93",
+   "mode": "hash_state",
+   "seed": 1007,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0919,
+   "levels_completed": 5,
+   "recomputed": 0.09905946785405369,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 4967,
+     "human": 19,
+     "level_score": 0.0014632511763059991
+    },
+    {
+     "level": 2,
+     "agent": 217,
+     "human": 16,
+     "level_score": 0.5436513835502984
+    },
+    {
+     "level": 3,
+     "agent": 597,
+     "human": 34,
+     "level_score": 0.32434646712063947
+    },
+    {
+     "level": 4,
+     "agent": 814,
+     "human": 42,
+     "level_score": 0.2662255733508805
+    },
+    {
+     "level": 5,
+     "agent": 2384,
+     "human": 123,
+     "level_score": 0.26619366807801453
+    }
+   ],
+   "card_levels": [
+    5087,
+    224,
+    617,
+    861,
+    2460,
+    10751,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    19,
+    16,
+    34,
+    42,
+    123,
+    80,
+    14,
+    23,
+    111
+   ]
+  },
+  {
+   "game": "tu93",
+   "mode": "hash_state",
+   "seed": 1008,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.2296,
+   "levels_completed": 7,
+   "recomputed": 0.2487423370988126,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 396,
+     "human": 19,
+     "level_score": 0.2302061014182226
+    },
+    {
+     "level": 2,
+     "agent": 84,
+     "human": 16,
+     "level_score": 3.628117913832199
+    },
+    {
+     "level": 3,
+     "agent": 795,
+     "human": 34,
+     "level_score": 0.18290415727225978
+    },
+    {
+     "level": 4,
+     "agent": 754,
+     "human": 42,
+     "level_score": 0.3102815048301191
+    },
+    {
+     "level": 5,
+     "agent": 2734,
+     "human": 123,
+     "level_score": 0.20240125563964895
+    },
+    {
+     "level": 6,
+     "agent": 13426,
+     "human": 80,
+     "level_score": 0.0035504768745347353
+    },
+    {
+     "level": 7,
+     "agent": 394,
+     "human": 14,
+     "level_score": 0.12625937282589092
+    }
+   ],
+   "card_levels": [
+    403,
+    87,
+    821,
+    798,
+    2820,
+    13866,
+    427,
+    778,
+    0
+   ],
+   "card_baseline": [
+    19,
+    16,
+    34,
+    42,
+    123,
+    80,
+    14,
+    23,
+    111
+   ]
+  },
+  {
+   "game": "tu93",
+   "mode": "hash_state",
+   "seed": 1009,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0903,
+   "levels_completed": 5,
+   "recomputed": 0.09780602998404926,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 419,
+     "human": 19,
+     "level_score": 0.20562653436697215
+    },
+    {
+     "level": 2,
+     "agent": 184,
+     "human": 16,
+     "level_score": 0.7561436672967863
+    },
+    {
+     "level": 3,
+     "agent": 903,
+     "human": 34,
+     "level_score": 0.1417693451997709
+    },
+    {
+     "level": 4,
+     "agent": 682,
+     "human": 42,
+     "level_score": 0.3792537043885072
+    },
+    {
+     "level": 5,
+     "agent": 3195,
+     "human": 123,
+     "level_score": 0.14820692543366618
+    }
+   ],
+   "card_levels": [
+    427,
+    190,
+    933,
+    723,
+    3294,
+    14433,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    19,
+    16,
+    34,
+    42,
+    123,
+    80,
+    14,
+    23,
+    111
+   ]
+  },
+  {
+   "game": "vc33",
+   "mode": "hash_state",
+   "seed": 1000,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.028,
+   "levels_completed": 2,
+   "recomputed": 0.02872808781338881,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 97,
+     "human": 7,
+     "level_score": 0.5207779785311935
+    },
+    {
+     "level": 2,
+     "agent": 478,
+     "human": 18,
+     "level_score": 0.14180424012184661
+    }
+   ],
+   "card_levels": [
+    98,
+    487,
+    19415,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    7,
+    18,
+    44,
+    61,
+    131,
+    34,
+    152
+   ]
+  },
+  {
+   "game": "vc33",
+   "mode": "hash_state",
+   "seed": 1001,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0327,
+   "levels_completed": 2,
+   "recomputed": 0.03357611257323427,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 81,
+     "human": 7,
+     "level_score": 0.7468373723517756
+    },
+    {
+     "level": 2,
+     "agent": 579,
+     "human": 18,
+     "level_score": 0.09664688984939193
+    }
+   ],
+   "card_levels": [
+    82,
+    590,
+    19328,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    7,
+    18,
+    44,
+    61,
+    131,
+    34,
+    152
+   ]
+  },
+  {
+   "game": "vc33",
+   "mode": "hash_state",
+   "seed": 1002,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0198,
+   "levels_completed": 2,
+   "recomputed": 0.020546442372384288,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 104,
+     "human": 7,
+     "level_score": 0.4530325443786982
+    },
+    {
+     "level": 2,
+     "agent": 728,
+     "human": 18,
+     "level_score": 0.06113392102403091
+    }
+   ],
+   "card_levels": [
+    106,
+    742,
+    19152,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    7,
+    18,
+    44,
+    61,
+    131,
+    34,
+    152
+   ]
+  },
+  {
+   "game": "vc33",
+   "mode": "hash_state",
+   "seed": 1003,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0186,
+   "levels_completed": 2,
+   "recomputed": 0.019348670840885374,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 105,
+     "human": 7,
+     "level_score": 0.4444444444444444
+    },
+    {
+     "level": 2,
+     "agent": 816,
+     "human": 18,
+     "level_score": 0.04865916955017302
+    }
+   ],
+   "card_levels": [
+    107,
+    832,
+    19061,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    7,
+    18,
+    44,
+    61,
+    131,
+    34,
+    152
+   ]
+  },
+  {
+   "game": "vc33",
+   "mode": "hash_state",
+   "seed": 1004,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0208,
+   "levels_completed": 2,
+   "recomputed": 0.02131460881131019,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 98,
+     "human": 7,
+     "level_score": 0.5102040816326531
+    },
+    {
+     "level": 2,
+     "agent": 865,
+     "human": 18,
+     "level_score": 0.0433024825420161
+    }
+   ],
+   "card_levels": [
+    99,
+    882,
+    19019,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    7,
+    18,
+    44,
+    61,
+    131,
+    34,
+    152
+   ]
+  },
+  {
+   "game": "vc33",
+   "mode": "hash_state",
+   "seed": 1005,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0402,
+   "levels_completed": 2,
+   "recomputed": 0.041356478785881286,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 81,
+     "human": 7,
+     "level_score": 0.7468373723517756
+    },
+    {
+     "level": 2,
+     "agent": 397,
+     "human": 18,
+     "level_score": 0.2055720168264502
+    }
+   ],
+   "card_levels": [
+    82,
+    404,
+    19514,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    7,
+    18,
+    44,
+    61,
+    131,
+    34,
+    152
+   ]
+  },
+  {
+   "game": "vc33",
+   "mode": "hash_state",
+   "seed": 1006,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0237,
+   "levels_completed": 2,
+   "recomputed": 0.024666930484105,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 105,
+     "human": 7,
+     "level_score": 0.4444444444444444
+    },
+    {
+     "level": 2,
+     "agent": 513,
+     "human": 18,
+     "level_score": 0.12311480455524776
+    }
+   ],
+   "card_levels": [
+    107,
+    523,
+    19370,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    7,
+    18,
+    44,
+    61,
+    131,
+    34,
+    152
+   ]
+  },
+  {
+   "game": "vc33",
+   "mode": "hash_state",
+   "seed": 1007,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.03,
+   "levels_completed": 2,
+   "recomputed": 0.030853732216090102,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 80,
+     "human": 7,
+     "level_score": 0.7656249999999999
+    },
+    {
+     "level": 2,
+     "agent": 812,
+     "human": 18,
+     "level_score": 0.049139751025261476
+    }
+   ],
+   "card_levels": [
+    81,
+    828,
+    19091,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    7,
+    18,
+    44,
+    61,
+    131,
+    34,
+    152
+   ]
+  },
+  {
+   "game": "vc33",
+   "mode": "hash_state",
+   "seed": 1008,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.026,
+   "levels_completed": 2,
+   "recomputed": 0.026667142735834374,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 96,
+     "human": 7,
+     "level_score": 0.5316840277777779
+    },
+    {
+     "level": 2,
+     "agent": 549,
+     "human": 18,
+     "level_score": 0.10749798441279228
+    }
+   ],
+   "card_levels": [
+    97,
+    559,
+    19344,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    7,
+    18,
+    44,
+    61,
+    131,
+    34,
+    152
+   ]
+  },
+  {
+   "game": "vc33",
+   "mode": "hash_state",
+   "seed": 1009,
+   "file": "navrun_e2_hash_25x10.json",
+   "recorded": 0.0295,
+   "levels_completed": 2,
+   "recomputed": 0.030248671782762693,
+   "won_levels": [
+    {
+     "level": 1,
+     "agent": 88,
+     "human": 7,
+     "level_score": 0.6327479338842975
+    },
+    {
+     "level": 2,
+     "agent": 550,
+     "human": 18,
+     "level_score": 0.10710743801652894
+    }
+   ],
+   "card_levels": [
+    89,
+    560,
+    19351,
+    0,
+    0,
+    0,
+    0
+   ],
+   "card_baseline": [
+    7,
+    18,
+    44,
+    61,
+    131,
+    34,
+    152
+   ]
+  }
+ ]
+}
