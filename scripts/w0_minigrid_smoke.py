@@ -23,7 +23,9 @@ continues from the first seeded reset, so the run stays deterministic).  Per env
                                    for byte (scripts/w0_common.py)
 
 One JSON per env: runs/w0_checks/minigrid/<env_id>.json (fields game, mode "w0_smoke", seed, plus the
-facts above).  Resume-safe: an env whose JSON exists is skipped unless --force.  Environments are
+facts above).  Resume-safe: an env whose JSON exists is skipped unless --force.  With --only id1,id2
+exactly the listed ids are run, even if their JSON exists (overwritten atomically), and nothing
+else; an unregistered id stops the script.  Environments are
 created inside the worker (spawn-safe on Windows).  An env whose constructor rejects a keyword is
 recorded as status "error" with the message, never skipped silently.
 
@@ -124,12 +126,21 @@ def main():
     ap.add_argument("--steps", type=int, default=200)
     ap.add_argument("--out", default=os.path.join(REPO, "runs", "w0_checks", "minigrid"))
     ap.add_argument("--force", action="store_true", help="rerun envs whose JSON exists")
+    ap.add_argument("--only", default="",
+                    help="comma-separated env ids: run exactly these (overwriting their JSON) and nothing else")
     args = ap.parse_args()
 
     import gymnasium
     import minigrid
     ids = env_ids()
-    todo = C.pending(ids, args.out, args.force)
+    if args.only:
+        only = [i.strip() for i in args.only.split(",") if i.strip()]
+        unknown = [i for i in only if i not in ids]
+        if unknown:
+            sys.exit(f"STOP: --only names ids that are not registered: {unknown}")
+        todo = only
+    else:
+        todo = C.pending(ids, args.out, args.force)
     n_bab = sum(i.startswith("BabyAI-") for i in ids)
     print(f"minigrid {getattr(minigrid, '__version__', '?')}, gymnasium {gymnasium.__version__}; "
           f"{len(ids)} env ids ({len(ids) - n_bab} MiniGrid-, {n_bab} BabyAI-), {len(todo)} to run, "

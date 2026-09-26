@@ -147,3 +147,75 @@ cd D:\Research\arc3\repo
 ```
 
 Paste the console output of steps 4–6. The assistant quotes it exactly and does not open runs/w0_checks/.
+
+## Amendment 27 Sep 2026
+
+Recorded after RKM ran blocks 1–6 and pasted the results. The lines above are unchanged. The results below are as RKM pasted them; the assistant did not open runs/w0_checks/.
+
+**C1 — passed.**
+- procgen 0.10.7, numpy 1.26.4 (pip chose it on its own), import ok.
+- The numpy<2 fallback in block 4 was not needed.
+
+**C2 — not run, because the keyword check was defective.**
+- What happened: the script printed ProcgenGym3Env keywords MISSING ['start_level', 'num_levels', 'rand_seed'] and wrote status "keyword_missing" for every game.
+- Cause: the three keywords belong to the parent class, BaseProcgenEnv.__init__ (procgen/env.py lines 77–79). They reach it through ProcgenGym3Env.__init__(**kwargs) and super().__init__(num, env_name, options, **kwargs) (lines 218, 246). A signature check on the child alone therefore reported them absent.
+- Fix (scripts/w0_procgen_smoke.py):
+  - The check now walks the method resolution order. A keyword counts if a class defines it and every class below it forwards **kwargs, and the script prints which class defines each keyword.
+  - The decisive test comes before the pool: one environment (bigfish, the registered settings) is constructed and observed once. If that raises, the traceback is printed and the script stops.
+  - The 16 JSON files marked "keyword_missing" count as not done, so block 5, run unchanged, runs every game again without --force.
+- Side effect of the fix: num_threads (default 4) is also a BaseProcgenEnv parameter (env.py line 83). The first version therefore never passed num_threads=1; the fixed version does, one thread per worker as the script intended. This does not change what any game shows.
+- Settings unchanged: distribution_mode easy, use_backgrounds False, use_monochrome_assets True, start_level 0, num_levels 1, rand_seed 1000, 1,000 steps, action RNG seed [1000, 0].
+
+**C3 — 172 ok, 6 error; determinism PASS on 172 of 172.**
+- The six errors are the MiniGrid-WFC ids:
+  - MiniGrid-WFC-DungeonMazeScaled-v0
+  - MiniGrid-WFC-MazeSimple-v0
+  - MiniGrid-WFC-ObstaclesAngular-v0
+  - MiniGrid-WFC-ObstaclesBlackdots-v0
+  - MiniGrid-WFC-ObstaclesHogs3-v0
+  - MiniGrid-WFC-RoomsFabric-v0
+- Each failed with: DependencyNotInstalled: WFC dependencies are missing, please run pip install "minigrid[wfc]".
+- Decision:
+  - Install the extra, registered here as check **C3b**: pip install "minigrid[wfc]" into D:\Research\arc3\brutus\.venv_games.
+  - Re-run C3 for the six WFC ids only, with the new --only option of scripts/w0_minigrid_smoke.py.
+  - The six stay in suite B.
+- C3b must not silently change the environment the other 172 were checked in. Block C3b-2 below prints the minigrid, gymnasium and numpy versions after the install. If any differs from minigrid 3.1.0, gymnasium 1.3.0, numpy 2.4.6 (the versions C3 ran under), record it here before the WFC re-run.
+
+**Adapter facts for PREREG.** These are infrastructure facts from C3, recorded as RKM pasted them, not results:
+1. Grid size is per environment. Frames are 24×56 to 200×200 pixels at tile size 8, so grids are 3×7 to 25×25 cells. The MiniGrid adapter therefore registers grid size per environment, not per suite.
+2. Distinct RGB colours per environment: 10 to 50.
+3. Five ids exist in both v0 and v1: MultiRoom-N4-S5, ObstructedMaze-1Q, ObstructedMaze-2Dlhb, ObstructedMaze-2Q, ObstructedMaze-Full. Suite B will register the latest version only.
+
+### Commands (PowerShell, in order)
+
+Working directory for every block: D:\Research\arc3\repo
+
+C3b-1. Install the WFC extra into .venv_games:
+
+```powershell
+cd D:\Research\arc3\repo
+& D:\Research\arc3\brutus\.venv_games\Scripts\python.exe -m pip install "minigrid[wfc]"
+```
+
+C3b-2. Print the versions after the install. Expected: minigrid 3.1.0, gymnasium 1.3.0, numpy 2.4.6; any difference is recorded before going on.
+
+```powershell
+cd D:\Research\arc3\repo
+& D:\Research\arc3\brutus\.venv_games\Scripts\python.exe -c "import importlib.metadata as m; print('minigrid', m.version('minigrid'), 'gymnasium', m.version('gymnasium'), 'numpy', m.version('numpy'))"
+```
+
+C2 re-run (block 5, unchanged). The first two lines should now read "keywords confirmed: ..." and "construction test: bigfish built ...". The 16 games are run again because their records say keyword_missing.
+
+```powershell
+cd D:\Research\arc3\repo
+& D:\Research\arc3\brutus\.venv_procgen\Scripts\python.exe scripts\w0_procgen_smoke.py --workers 8
+```
+
+C3 re-run, the six WFC ids only:
+
+```powershell
+cd D:\Research\arc3\repo
+& D:\Research\arc3\brutus\.venv_games\Scripts\python.exe scripts\w0_minigrid_smoke.py --workers 8 --only MiniGrid-WFC-DungeonMazeScaled-v0,MiniGrid-WFC-MazeSimple-v0,MiniGrid-WFC-ObstaclesAngular-v0,MiniGrid-WFC-ObstaclesBlackdots-v0,MiniGrid-WFC-ObstaclesHogs3-v0,MiniGrid-WFC-RoomsFabric-v0
+```
+
+Paste the console output of all four blocks.

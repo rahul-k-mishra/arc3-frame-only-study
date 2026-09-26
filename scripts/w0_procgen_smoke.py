@@ -13,10 +13,14 @@ seeded RNG over the game's own action space:
     steps per second               act + observe + get_info, first run only
     determinism                    the same (start level, seed, actions) run twice; the two frame
                                    sequences compared byte for byte (scripts/w0_common.py)
-The constructor keywords are checked against the INSTALLED procgen (inspect.signature of
-ProcgenGym3Env) before use; a missing keyword is recorded as status "keyword_missing" and that game
-is not run.  The keyword names used here were written from memory of procgen 0.10.x and are
-confirmed only by this check.
+The constructor keywords are checked against the INSTALLED procgen by walking ProcgenGym3Env's method
+resolution order: in procgen 0.10.7, start_level, num_levels, rand_seed and num_threads are
+parameters of BaseProcgenEnv.__init__ and reach it through ProcgenGym3Env.__init__(**kwargs)
+(procgen/env.py lines 71-84, 207-246).  (The first version checked the child's signature only and
+reported those keywords missing; corrected 27 Sep 2026, docs/W0_CHECKS.md amendment.)  Then one
+environment (bigfish, the registered settings) is constructed before the pool starts, as the
+decisive test; if that raises, the traceback is printed and the script stops.  A game whose JSON
+says "keyword_missing" (written by the first version) is not counted as done and is run again.
 
 One JSON per game: runs/w0_checks/procgen/<game>.json (fields game, mode "w0_smoke", seed, plus the
 facts above).  Resume-safe: a game whose JSON exists is skipped unless --force.  Environments are
@@ -27,8 +31,10 @@ Command (PowerShell, from D:\\Research\\arc3\\repo; see docs/W0_CHECKS.md for th
     D:\\Research\\arc3\\brutus\\.venv_procgen\\Scripts\\python.exe scripts\\w0_procgen_smoke.py --workers 8
 
 EXPECTED OUTPUT (shape; values are what the check measures, none is known in advance):
-    procgen <version>; ProcgenGym3Env keywords confirmed: distribution_mode, use_backgrounds, ...
-    16 games, 16 to run (0 already done), 8 workers
+    procgen <version>; ProcgenGym3Env keywords confirmed: distribution_mode (ProcgenGym3Env), ...,
+        start_level (BaseProcgenEnv), num_levels (BaseProcgenEnv), rand_seed (BaseProcgenEnv)
+    construction test: bigfish built with the registered settings, obs['rgb'] <shape>
+    16 games (from procgen.env.ENV_NAMES), 16 to run (0 already done), 8 workers
     done bigfish ... (one line per game as it finishes)
     table: game  status  obs_shape  dtype  n_actions  level_complete_keys  colours  steps_per_s  determinism
     summary: 16 ok, 0 error; determinism PASS on N of 16
@@ -65,10 +71,48 @@ def game_list():
 
 
 def signature_check():
+    """Keywords accepted by ProcgenGym3Env, found by walking its method resolution order.
+
+    In procgen 0.10.7 (procgen/env.py) start_level, num_levels, rand_seed and num_threads are
+    parameters of BaseProcgenEnv.__init__; ProcgenGym3Env.__init__ takes **kwargs and forwards them
+    with super().__init__(num, env_name, options, **kwargs).  A keyword defined on a parent class
+    counts only if every class below it in the MRO forwards **kwargs.  Returns (params, missing,
+    defined_by), defined_by mapping each accepted keyword to the class that defines it."""
     from procgen import ProcgenGym3Env
-    params = list(inspect.signature(ProcgenGym3Env.__init__).parameters)
-    missing = [k for k in REQUIRED_KW if k not in params]
-    return params, missing
+    defined_by, forwarding = {}, True
+    for cls in ProcgenGym3Env.__mro__:
+        init = cls.__dict__.get("__init__")
+        if init is None:
+            continue
+        try:
+            sig = inspect.signature(init)
+        except (TypeError, ValueError):
+            break                                # a C-level __init__: nothing more to read
+        if forwarding:
+            for name, p in sig.parameters.items():
+                if name != "self" and p.kind not in (p.VAR_POSITIONAL, p.VAR_KEYWORD):
+                    defined_by.setdefault(name, cls.__name__)
+        forwarding = forwarding and any(p.kind == p.VAR_KEYWORD for p in sig.parameters.values())
+    missing = [k for k in REQUIRED_KW if k not in defined_by]
+    return sorted(defined_by), missing, defined_by
+
+
+def construction_test(params, seed, start_level):
+    """The decisive test: build one environment (bigfish, the registered settings) and observe it
+    once.  Raises whatever the constructor raises."""
+    from procgen import ProcgenGym3Env
+    kw = dict(num=1, env_name="bigfish", distribution_mode="easy", use_backgrounds=False,
+              use_monochrome_assets=True, start_level=start_level, num_levels=1, rand_seed=seed)
+    if "num_threads" in params:
+        kw["num_threads"] = 1
+    env = ProcgenGym3Env(**kw)
+    _rew, obs, _first = env.observe()
+    shape = tuple(obs["rgb"].shape)
+    try:
+        env.close()
+    except Exception:
+        pass
+    return shape
 
 
 def play_once(game, start_level, seed, actions, params):
@@ -138,11 +182,25 @@ def main():
     args = ap.parse_args()
 
     import procgen
-    params, missing = signature_check()
+    import traceback
+    params, missing, defined_by = signature_check()
     print(f"procgen {getattr(procgen, '__version__', '?')}; ProcgenGym3Env keywords "
-          + ("confirmed: " + ", ".join(REQUIRED_KW) if not missing else f"MISSING: {missing}"))
+          + ("confirmed: " + ", ".join(f"{k} ({defined_by[k]})" for k in REQUIRED_KW)
+             if not missing else f"MISSING: {missing}"))
+    try:
+        shape = construction_test(params, args.seed, args.start_level)
+        print(f"construction test: bigfish built with the registered settings, obs['rgb'] {shape}")
+    except Exception:
+        print("construction test FAILED: bigfish could not be built with the registered settings")
+        traceback.print_exc()
+        sys.exit(1)
     games, src = game_list()
     todo = C.pending(games, args.out, args.force)
+    # a game recorded as keyword_missing was never played (the pre-fix check stopped it), so it is
+    # not done: run it again without --force
+    for r in C.load_all(games, args.out):
+        if r.get("status") == "keyword_missing" and r["game"] not in todo:
+            todo.append(r["game"])
     print(f"{len(games)} games (from {src}), {len(todo)} to run ({len(games) - len(todo)} already done), "
           f"{args.workers} workers")
     if missing:
