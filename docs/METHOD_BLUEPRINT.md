@@ -1,8 +1,8 @@
 # METHOD_BLUEPRINT.md
 
-Draft 1.2 — 27 Sep 2026
+Draft 1.3 — 27 Sep 2026
 
-(Draft 1.1 — corrected 27 Sep 2026 per TOG_PLAN_v3.md Section 3. Draft 1.2 — census input, registered adapter parameters, E6 as the ARC baseline, untraced values closed.)
+(Draft 1.1 — corrected 27 Sep 2026 per TOG_PLAN_v3.md Section 3. Draft 1.2 — census input, registered adapter parameters, E6 as the ARC baseline, untraced values closed. Draft 1.3 — source exposure (Section 2.9), V1 on ARC limited to the 8 train games, W0 infrastructure checks.)
 
 Assumption census and goal-identification cost as a pre-registered measurement method
 
@@ -31,7 +31,7 @@ Two halves, both required:
 
 Neither half is a claim that ARC-AGI-3 is hard. ARC-AGI-3 is where the instrument was built; it is the development instance, not evidence of generality (Section 3).
 
-Explicitly not claimed: that goal inference is "the" barrier on ARC-AGI-3 (E1 was inconclusive; the goal-oracle intervention was run as E9 and returned INCONCLUSIVE: tu93 MIXED — levels 4.7 → 5.0, level-1 agent/human ratio 3.74 → 2.34, game score 0.2442 → 1.0283; dc22 NOT BINDING — no level won by any arm; ls20 NOT TESTABLE — its goal predicate is not a place; two source-informed games, no general claim; runs/e9_report.json, docs/E9_protocol.md. Goal identification is therefore not a single binding barrier across games, which is why the census is a vector of assumptions rather than a one-barrier claim); that any agent here is strong; that anything transfers to hidden ARC-AGI-3 games or the leaderboard; that the census is complete.
+Explicitly not claimed: that goal inference is "the" barrier on ARC-AGI-3 (E1 was inconclusive; the goal-oracle intervention was run as E9 and returned INCONCLUSIVE: tu93 MIXED — levels 4.7 → 5.0, level-1 agent/human ratio 3.74 → 2.34, game score 0.2442 → 1.0283; dc22 NOT BINDING — no level won by any arm; ls20 NOT TESTABLE — its goal predicate is not a place; two source-exposed games, no general claim; runs/e9_report.json, docs/E9_protocol.md. Goal identification is therefore not a single binding barrier across games, which is why the census is a vector of assumptions rather than a one-barrier claim); that any agent here is strong; that anything transfers to hidden ARC-AGI-3 games or the leaderboard; that the census is complete.
 
 ---
 
@@ -116,7 +116,7 @@ Admissibility (registered): no GPU, no LLM, no network; per-action cost at or un
 
 | Test | Passes if | Fails if |
 |---|---|---|
-| V1 instrument validity | per assumption, agreement with source-derived truth ≥ 0.90 and Cohen's κ ≥ 0.70 on the confirmatory set of each suite | agreement < 0.75 for any assumption on any suite |
+| V1 instrument validity | per assumption, agreement with source-derived truth ≥ 0.90 and Cohen's κ ≥ 0.70 on the confirmatory set of each suite. On ARC-AGI-3, V1 is run on the 8 train games only and labelled development, because the held-out sources cannot be opened to build an answer key (Section 2.9); V2 on the ARC held-out games is reported, not tested | agreement < 0.75 for any assumption on any suite |
 | V2 predictive validity | per agent, per suite: AUROC(S → completion) ≥ 0.80 with bootstrap 95% CI lower bound > 0.60; balanced accuracy of P ≥ 0.80; AUROC exceeds B by ≥ 0.10 | AUROC ≤ 0.65 for both an author agent and an independent agent on a suite where the test is not void |
 | V2 precondition | the agent completes level 1 on between 10% and 90% of the suite's games | outside that band the test is void for that agent on that suite and is reported as void, not as pass |
 | V3 parameter transfer | A1–A5 parameters identical to the ARC-train values on every suite | any re-tuning on B or C downgrades the claim to "after re-tuning on suite X" |
@@ -127,11 +127,29 @@ Admissibility (registered): no GPU, no LLM, no network; per-action cost at or un
 - Declared pilot set: at most 6 MiniGrid environments and 2 Procgen games, named in PREREG v1.
 - The pilot may fix adapter bugs and the perception scale rule (pixel thresholds expressed as a multiple of tile size — the scaling rule is registered, new constants are not).
 - Every change is logged as a diff in PREREG v1.1. Pilot games are excluded from every confirmatory analysis.
-- Nothing from a confirmatory game is run before PREREG v1.1 is tagged.
+- Nothing from a confirmatory game is run before PREREG v1.1 is tagged, except the registered W0 infrastructure checks (docs/W0_CHECKS.md): random actions, no census, no agent, infrastructure facts only, none of which enters the manuscript.
 
 ### 2.8 Analysis code is frozen too
 
 scripts/analyze_v1.py, scripts/analyze_v2.py, scripts/analyze_g.py are written, unit-tested on synthetic JSON with known answers, and committed under the prereg tag before confirmatory runs. They read runs/ and write the tables. No analysis script is edited after the tag except to fix a crash, and each such fix is logged.
+
+### 2.9 Source exposure
+
+Definition. An ARC-AGI-3 game is **source-exposed** if its environment_files were opened, or it was studied through an oracle, by RKM at any time.
+
+The record:
+- docs/HELDOUT.md (lines 17–24):
+  - source read: tu93, ls20, vc33, m0r0;
+  - studied through the oracle: ft09, lp85;
+  - partly studied: lf52 (avatar deltas were read from it);
+  - dc22: moved from held-out to train on 21 Sep 2026 to debug BRUTUS-G milestone 2.
+- docs/STATE.md header: tu93, dc22 and ls20. Their sources were read on 24 Sep 2026 while debugging g_nav.py (CLAUDE.md rule 1), and they are the games E9 was run on.
+
+Consequences:
+- All 8 train games (tu93 ls20 vc33 m0r0 ft09 lp85 lf52 dc22) are source-exposed.
+- The 17 held-out games are not source-exposed and are never opened (docs/HELDOUT.md: "NEVER read the source of these, for any reason").
+- Every table and figure labels source-exposed games as such.
+- On ARC, an answer key built from source exists only for source-exposed games. V1 on ARC is therefore run on the 8 train games only and labelled development (Section 2.6), and V2 on the ARC held-out games is reported, not tested.
 
 ---
 
@@ -139,7 +157,7 @@ scripts/analyze_v1.py, scripts/analyze_v2.py, scripts/analyze_g.py are written, 
 
 | Suite | Role | Why | Ground truth from | Main risk |
 |---|---|---|---|---|
-| ARC-AGI-3, 25 public games (8 train / 17 held-out per HELDOUT.md) | development instance | the census was built and its parameters frozen here; the 17 held-out games are the only within-ARC transfer already measured | shipped game sources in environment_files | it does not count toward generality. The census v2 runs predate the repository and their code cannot be shown from git (docs/PREREG_PARAMS.md Section 3), so census_v2 numbers are development only. E6 — census at 10 seeds on all 25 games under the tagged code — is the ARC baseline of the paper, run in W1 after the tag |
+| ARC-AGI-3, 25 public games (8 train / 17 held-out per HELDOUT.md) | development instance | the census was built and its parameters frozen here; the 17 held-out games are the only within-ARC transfer already measured | shipped game sources in environment_files, for the 8 source-exposed train games only (Section 2.9); held-out sources are never opened, so V1 on ARC covers the 8 train games only, labelled development, and V2 on ARC held-out is reported, not tested | it does not count toward generality. The census v2 runs predate the repository and their code cannot be shown from git (docs/PREREG_PARAMS.md Section 3), so census_v2 numbers are development only. E6 — census at 10 seeds on all 25 games under the tagged code — is the ARC baseline of the paper, run in W1 after the tag |
 | MiniGrid + BabyAI (178 environments, already installed in .venv_games) | lattice suite with known mechanics; positive control for V1; predictive test for V2 | cheap; open Python source; place goals (Empty, FourRooms, LavaCrossing, DoorKey, MultiRoom, Crossing) and non-place goals (Fetch, PutNear, Unlock, BabyAI object tasks) both present, so A5 has variance | Python source per environment | raw actions are rotate/forward, so A3 fails by construction — see the two-condition design below |
 | Procgen (16 games) | non-lattice generality test | pixel physics, gravity, enemies, textures, explicit level_complete flag, deterministic per level seed, CPU-native, permissive licence; this is what the census must survive to be called general | C++ source per game (about 300 lines each) | wheels exist only for Python 3.7–3.10 (needs a separate 3.10 venv on the lenovo; Kaggle's image may not run it); perception on textures; lattice agents may complete nothing, voiding V2 |
 | Fallback: ALE / Atari | only if Procgen cannot be installed | pip-installable on 3.12, ROMs bundled | game manuals, not source | most games have no level-end event, so G is undefined and only A1–A4 is testable; Bellemare, Veness & Bowling 2012 already measured controllable regions there, so it invites "already done" |
