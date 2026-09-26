@@ -102,12 +102,25 @@ a script in this repository run by the author, with its output saved under runs/
 - external/  third-party agents for E1, each in its own folder with LICENSE and commit hash
 - kaggle_*/  lab notebook builders' output folders (never a submission kernel)
 
-## Open tasks, in order
+## Open tasks, in order (updated 26 Sep 2026)
 
-1. docs/TOG_PLAN_v2.md: the plan with every audit correction applied; the E1 decision thresholds.
-2. scripts/g_split_transfer.py (E5) and scripts/g_ceiling.py (E4): no game runs; outputs to runs/.
-3. E1 adapters under external/: Rudakov et al. agent first; official non-LLM templates second
-   (baseline, not independent evidence); verify licence, commit, CPU runtime.
-4. E2/E3/E6: 10-seed hash_state, budget curve (3k/20k/50k/100k), 25-game census at 10 seeds.
-5. Goal-oracle intervention on tu93/dc22/ls20; formal goal-identification cost definition.
-6. Manuscript, 10 pages, anonymised; reproduction script that regenerates every table from runs/.
+Done: TOG_PLAN_v2 with audit corrections and E1 thresholds (plus the 3.3 precedence); E4
+(runs/ceiling.json); E5 (runs/split_transfer.json); census table (runs/census_v2.json); E1a
+Rudakov et al. adapter, protocol and 10-seed run, INCONCLUSIVE (docs/E1_result.md); E2 hash_state
+10 seeds (runs/navrun_e2_hash_25x10.json).
+
+1. E1c, deadline 9 Oct 2026: search for a second admissible independent CPU-only frame agent
+   (repository, licence, commit, runtime); record sources, dates and queries even if none is
+   found. It is the only route back to the full paper; otherwise the short-paper route stands.
+2. E2 decomposition: g_decompose.py on runs/navrun_e2_hash_25x10.json (no games). It replaces the
+   UNTRACED "1,088 runs", "35-145 ratio" and "AT HUMAN 3.0-3.8" with 10-seed values.
+3. E3 budget curve: hash_state at 3,000 / 50,000 / 100,000 actions with E2 as the 20,000 point.
+   Until it exists, no budget claim.
+4. E6 census at 10 seeds on all 25 games, category rule frozen (code hash) before the run.
+5. E9 goal-oracle intervention on tu93/dc22/ls20 (tu93 as positive control); E10 formal
+   goal-identification cost with the restricted ambiguity result.
+6. 9 Oct 2026: venue decision (CoG or workshop for the short paper; ToG only if item 1 yields a
+   second agent that is scored). Optional, baseline only: E1b official non-LLM templates; E7 14B
+   LLM cost.
+7. Manuscript on the short-paper route (6-8 pages; 10 + supplement only if the full-paper
+   condition is met), anonymised; reproduction script that regenerates every table from runs/.
