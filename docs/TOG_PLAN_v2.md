@@ -517,7 +517,54 @@ E10. Goal-identification cost, a narrow formal definition, measured on the 25 ga
 
 E2. hash_state at 10 seeds (1000-1009), all 25 games, 20,000 actions, scorecard per-level counts.
     Recomputes M1-M4 of Section 3.2 for our agent before any external agent is scored.
-E3. Budget curve: 3,000, 20,000, 50,000, 100,000 actions, hash_state, 4 seeds, 25 games.
+E3. Budget curve. REGISTERED 26 September 2026, before any E3 run.
+    Question: what a larger (or smaller) action budget buys hash_state on the public games. It
+    replaces the withdrawn "0.3615 vs 0.3329" line (RQ1); no budget claim is made until E3 is
+    reported as registered here.
+    Design:
+    - Mechanism hash_state (g_nav_run.py mode hash_state). All 25 games, seeds 1000-1003, same
+      environment files and engine (arc-agi 0.9.8, arcengine 0.9.3), per-level scorecard counts.
+    - Budgets 3,000, 50,000 and 100,000 actions, one run and one tag per budget:
+      runs/navrun_e3_hash_25x4_3k.json, runs/navrun_e3_hash_25x4_50k.json,
+      runs/navrun_e3_hash_25x4_100k.json.
+    - The 20,000-action point is not re-run. It is the seed 1000-1003 rows of
+      runs/navrun_e2_hash_25x10.json, so all four budgets share games and seeds.
+    - Per-game time cap 36,000 s and total cap 48 h, so that the action budget, not the clock,
+      ends every run.
+    What must be true, and how failure shows (checked before any number is reported):
+    - Every row used its full budget or won. A row cut by the clock is re-run with a larger cap
+      and never mixed in.
+    - Nesting. In hash_state mode the budget is used only as a stop condition (g_agent.py:
+      max_actions appears only in stop checks; no adapt trials, no give-up), and runs are
+      deterministic given the seed. So for each (game, seed), a run at a smaller budget must be
+      the prefix of the run at a larger one:
+      - levels completed never decrease with the budget;
+      - the scorecard's card_levels count for every level completed at the smaller budget is
+        identical in the larger run.
+      Any violation means non-determinism or a harness difference. E3 then stops until it is
+      explained; no curve is reported from inconsistent rows.
+    Reporting (fixed now):
+    - Measures, per budget B in {3,000, 20,000, 50,000, 100,000}, on the 17 held-out games,
+      defined as in Section 3.2 with games as the unit and seeds nested:
+      - M1(B), the mean over games of the seed-mean recorded score;
+      - M4(B), the sum over games of the seed-mean levels completed.
+      Also M3(B), the held-out runs winning level 3 or later.
+    - Intervals: hierarchical bootstrap 95% intervals (resample games, then seeds within each
+      game; 10,000 draws; numpy default_rng(20260925)).
+    - Paired differences: M1(B) - M1(20,000) and M4(B) - M4(20,000), with a paired bootstrap
+      (the same resampled games and seeds at every budget, which the shared seeds allow).
+    - Tables: a per-game table per budget. The 8 train games are reported beside and never pooled
+      with the held-out games; tu93, dc22 and ls20 are marked source-informed.
+    - Scope of the 20,000 point: within E3 it is the 4-seed subset of E2, so that seeds match
+      across budgets. Its M1 and M4 are therefore not E2's 10-seed values (0.3274, 10.50). This is
+      the one place where a 4-seed E2 subset is used; everywhere else the 10-seed E2 is the
+      reference (Section 8).
+    Allowed wording: "for hash_state on the 17 held-out public games, seeds 1000-1003, raising the
+    budget from 20,000 to B actions changed M1 by x [interval] and M4 by y [interval]". Nothing
+    about other mechanisms, other seeds, budgets outside 3,000-100,000, or the private set. The
+    intervals describe variation within this set of games, not a population.
+    Script: the curve is computed by a reporting script (to be written before any E3 output is
+    read) from the three E3 files and the E2 file; it runs no game.
 E6. v2 census, all 25 games, 10 seeds, hash_state and nav. Train games in the same table, tu93 as
     a source-informed positive control; dc22 and ls20 labelled source-informed. The census
     categories and counters are frozen (code hash recorded) before the run.
