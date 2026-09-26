@@ -1,3 +1,5 @@
+> Superseded by docs/TOG_PLAN_v2.md; kept unedited as a record.
+
 # Plan: IEEE Transactions on Games submission
 ## Working title: "Why Frame-Only Agents Plateau on ARC-AGI-3: Scoring Structure, Selection Transfer, and a Goal-Inference Census"
 
