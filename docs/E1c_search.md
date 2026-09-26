@@ -222,9 +222,14 @@ from 1; "last run" is from the Kaggle listing):
 | "ARC-AGI-3 / Graph-Based Exploration Agent" (last run 2026-04-07) | https://www.kaggle.com/code/gourabr0y555/arc-agi-3-graph-based-exploration-agent | cell 1 line 633: `matches = glob.glob(pattern, recursive=True)` | cell 1 line 71: `spec = importlib.util.spec_from_file_location("game_mod", self.game_path)` | cell 1 line 210: `game = self.game_cls()`; line 124: `g = copy.deepcopy(game)` |
 | tantan0327/arc-agi-3-agent, `agent/my_agent.py` at commit 77ab2d911e13789ea39e058ac3ad6c788dbd88d3 | https://github.com/tantan0327/arc-agi-3-agent | lines 933-936: `"environment_files/{gid}/*/{gid}.py",` (and Kaggle and /tmp variants); line 946: `hits = glob.glob(pattern.format(gid=gid), recursive=True)` | line 1010: `text = Path(source).read_text(encoding="utf-8")`; line 1017: `exec(text, module.__dict__)` | line 1139: `return copy.deepcopy(game)`; line 981 (comment): "Cost measured on ls20: `deepcopy` 11.7 ms, a simulated action 0.6 ms" |
 
-Not in this group, for contrast: the non-LLM agents in Sections 3.1-3.2 and garlictoday's and
-poby7722's notebooks. My searches found no such source loading in them; Cryptic2-0, conchocon154
-and ReplicaWormhole's explorer contain no `importlib`/`glob` source loading in the files read.
+For contrast, agents checked and found not to load game source:
+- ZubMono Prometheus: whole-file search, docs/E1c_prometheus_check.md check (2);
+- the entry files read of Cryptic2-0, conchocon154 and ReplicaWormhole's explorer: their imports
+  include no `importlib` or `glob`;
+- the garlictoday and poby7722 notebooks: no `importlib`, `spec_from_file_location` or
+  `environment_files` in their code.
+
+BDR-Pro, Curio and Hunter-Seeker v2 were not searched for this.
 
 How to use this in the manuscript: in related work, when public leaderboard scores of non-LLM
 entries are mentioned, say that several of the higher-scoring ones search on the game's own
