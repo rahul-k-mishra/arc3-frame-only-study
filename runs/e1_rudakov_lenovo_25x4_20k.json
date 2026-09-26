@@ -1,0 +1,8556 @@
+[
+ {
+  "game": "ar25",
+  "mode": "rudakov",
+  "seed": 1000,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 862.5,
+  "play_seconds": 862.33,
+  "sec_per_action": 0.0431,
+  "env_sec_per_action": 0.0032,
+  "diag": {
+   "issued_by_id": {
+    "0": 304,
+    "1": 199,
+    "2": 215,
+    "3": 219,
+    "4": 241,
+    "5": 18622,
+    "6": 200
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 304,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 301,
+    "Lowest dist": 164,
+    "Error": 18456
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   32,
+   50,
+   75,
+   37,
+   89,
+   159,
+   233,
+   73
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "ar25",
+  "mode": "rudakov",
+  "seed": 1001,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 861.4,
+  "play_seconds": 861.26,
+  "sec_per_action": 0.0431,
+  "env_sec_per_action": 0.0033,
+  "diag": {
+   "issued_by_id": {
+    "0": 304,
+    "1": 192,
+    "2": 186,
+    "3": 195,
+    "4": 187,
+    "5": 18753,
+    "6": 183
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 304,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 302,
+    "Lowest dist": 125,
+    "Error": 18603
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   32,
+   50,
+   75,
+   37,
+   89,
+   159,
+   233,
+   73
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "ar25",
+  "mode": "rudakov",
+  "seed": 1002,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 713.9,
+  "play_seconds": 708.61,
+  "sec_per_action": 0.0354,
+  "env_sec_per_action": 0.0028,
+  "diag": {
+   "issued_by_id": {
+    "0": 305,
+    "1": 145,
+    "2": 158,
+    "3": 170,
+    "4": 149,
+    "5": 18926,
+    "6": 147
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 305,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 305,
+    "Lowest dist": 100,
+    "Error": 18807
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   32,
+   50,
+   75,
+   37,
+   89,
+   159,
+   233,
+   73
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "ar25",
+  "mode": "rudakov",
+  "seed": 1003,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 785.4,
+  "play_seconds": 785.07,
+  "sec_per_action": 0.0393,
+  "env_sec_per_action": 0.0029,
+  "diag": {
+   "issued_by_id": {
+    "0": 303,
+    "1": 253,
+    "2": 293,
+    "3": 257,
+    "4": 281,
+    "5": 18363,
+    "6": 250
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 303,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 301,
+    "Lowest dist": 214,
+    "Error": 18154
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   32,
+   50,
+   75,
+   37,
+   89,
+   159,
+   233,
+   73
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "bp35",
+  "mode": "rudakov",
+  "seed": 1000,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1868.9,
+  "play_seconds": 1868.65,
+  "sec_per_action": 0.0934,
+  "env_sec_per_action": 0.0109,
+  "diag": {
+   "issued_by_id": {
+    "0": 797,
+    "3": 32,
+    "4": 19088,
+    "6": 83
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 797,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 800,
+    "Lowest dist": 12,
+    "Error": 19051
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   21,
+   48,
+   44,
+   38,
+   33,
+   87,
+   86,
+   131,
+   163
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "bp35",
+  "mode": "rudakov",
+  "seed": 1001,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 1,
+  "state": "NOT_FINISHED",
+  "score": 0.0129,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 276,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 19724,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 2160.9,
+  "play_seconds": 2160.65,
+  "sec_per_action": 0.108,
+  "env_sec_per_action": 0.0169,
+  "diag": {
+   "issued_by_id": {
+    "0": 1033,
+    "3": 1227,
+    "4": 1310,
+    "6": 16430
+   },
+   "level_wins_at_step": [
+    276
+   ],
+   "graph_resets": 2,
+   "level_wins_followed_by_graph_reset": 1,
+   "resets": 1033,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 1054,
+    "Lowest dist": 1815,
+    "Here we are": 2,
+    "Error": 2
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   276,
+   19724,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   21,
+   48,
+   44,
+   38,
+   33,
+   87,
+   86,
+   131,
+   163
+  ],
+  "card_scores": [
+   0.579,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "bp35",
+  "mode": "rudakov",
+  "seed": 1002,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 1,
+  "state": "NOT_FINISHED",
+  "score": 0.0296,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 182,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 19818,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 2222.5,
+  "play_seconds": 2222.23,
+  "sec_per_action": 0.1111,
+  "env_sec_per_action": 0.0175,
+  "diag": {
+   "issued_by_id": {
+    "0": 1044,
+    "3": 1261,
+    "4": 1312,
+    "6": 16383
+   },
+   "level_wins_at_step": [
+    182
+   ],
+   "graph_resets": 2,
+   "level_wins_followed_by_graph_reset": 1,
+   "resets": 1044,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 1067,
+    "Lowest dist": 1835,
+    "Error": 1
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   182,
+   19818,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   21,
+   48,
+   44,
+   38,
+   33,
+   87,
+   86,
+   131,
+   163
+  ],
+  "card_scores": [
+   1.331,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "bp35",
+  "mode": "rudakov",
+  "seed": 1003,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 1,
+  "state": "NOT_FINISHED",
+  "score": 0.0098,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 316,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 19684,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 2360.6,
+  "play_seconds": 2360.24,
+  "sec_per_action": 0.118,
+  "env_sec_per_action": 0.0185,
+  "diag": {
+   "issued_by_id": {
+    "0": 1049,
+    "3": 1227,
+    "4": 1321,
+    "6": 16403
+   },
+   "level_wins_at_step": [
+    316
+   ],
+   "graph_resets": 2,
+   "level_wins_followed_by_graph_reset": 1,
+   "resets": 1049,
+   "their_prints": {
+    "Will run": 1,
+    "Lowest dist": 1855,
+    "Suspicious transition": 1071,
+    "Here we are": 3,
+    "Error": 3
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   316,
+   19684,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   21,
+   48,
+   44,
+   38,
+   33,
+   87,
+   86,
+   131,
+   163
+  ],
+  "card_scores": [
+   0.442,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "cd82",
+  "mode": "rudakov",
+  "seed": 1000,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 878.3,
+  "play_seconds": 878.21,
+  "sec_per_action": 0.0439,
+  "env_sec_per_action": 0.0021,
+  "diag": {
+   "issued_by_id": {
+    "0": 198,
+    "1": 16,
+    "2": 15,
+    "3": 16,
+    "4": 19666,
+    "5": 23,
+    "6": 66
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 198,
+   "their_prints": {
+    "Will run": 1,
+    "Lowest dist": 7,
+    "Suspicious transition": 198,
+    "Node": 1,
+    "Error": 19643
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   55,
+   8,
+   41,
+   21,
+   23,
+   23
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "cd82",
+  "mode": "rudakov",
+  "seed": 1001,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 844.2,
+  "play_seconds": 844.12,
+  "sec_per_action": 0.0422,
+  "env_sec_per_action": 0.0023,
+  "diag": {
+   "issued_by_id": {
+    "0": 198,
+    "1": 62,
+    "2": 57,
+    "3": 61,
+    "4": 60,
+    "5": 60,
+    "6": 19502
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 198,
+   "their_prints": {
+    "Will run": 1,
+    "Lowest dist": 29,
+    "Suspicious transition": 198,
+    "Node": 1,
+    "Error": 19000
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   55,
+   8,
+   41,
+   21,
+   23,
+   23
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "cd82",
+  "mode": "rudakov",
+  "seed": 1002,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 826.5,
+  "play_seconds": 826.37,
+  "sec_per_action": 0.0413,
+  "env_sec_per_action": 0.0017,
+  "diag": {
+   "issued_by_id": {
+    "0": 198,
+    "1": 35,
+    "2": 30,
+    "3": 27,
+    "4": 28,
+    "5": 30,
+    "6": 19652
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 198,
+   "their_prints": {
+    "Will run": 1,
+    "Lowest dist": 16,
+    "Suspicious transition": 198,
+    "Error": 19561
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   55,
+   8,
+   41,
+   21,
+   23,
+   23
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "cd82",
+  "mode": "rudakov",
+  "seed": 1003,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 780.6,
+  "play_seconds": 780.25,
+  "sec_per_action": 0.039,
+  "env_sec_per_action": 0.0017,
+  "diag": {
+   "issued_by_id": {
+    "0": 198,
+    "1": 18,
+    "2": 18,
+    "3": 19,
+    "4": 21,
+    "5": 18,
+    "6": 19708
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 198,
+   "their_prints": {
+    "Will run": 1,
+    "Lowest dist": 9,
+    "Suspicious transition": 198,
+    "Node": 1,
+    "Error": 19645
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   55,
+   8,
+   41,
+   21,
+   23,
+   23
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "cn04",
+  "mode": "rudakov",
+  "seed": 1000,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 914.5,
+  "play_seconds": 914.44,
+  "sec_per_action": 0.0457,
+  "env_sec_per_action": 0.0022,
+  "diag": {
+   "issued_by_id": {
+    "0": 263,
+    "1": 589,
+    "2": 586,
+    "3": 13988,
+    "4": 526,
+    "5": 588,
+    "6": 3460
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 263,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 263,
+    "Lowest dist": 164,
+    "Error": 13414
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   29,
+   54,
+   85,
+   300,
+   208,
+   113
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "cn04",
+  "mode": "rudakov",
+  "seed": 1001,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 864.0,
+  "play_seconds": 863.95,
+  "sec_per_action": 0.0432,
+  "env_sec_per_action": 0.0019,
+  "diag": {
+   "issued_by_id": {
+    "0": 263,
+    "1": 483,
+    "2": 507,
+    "3": 466,
+    "4": 524,
+    "5": 532,
+    "6": 17225
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 263,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 263,
+    "Lowest dist": 128,
+    "Error": 14130
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   29,
+   54,
+   85,
+   300,
+   208,
+   113
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "cn04",
+  "mode": "rudakov",
+  "seed": 1002,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1693.0,
+  "play_seconds": 1692.19,
+  "sec_per_action": 0.0846,
+  "env_sec_per_action": 0.0178,
+  "diag": {
+   "issued_by_id": {
+    "0": 263,
+    "1": 1750,
+    "2": 1773,
+    "3": 1870,
+    "4": 1825,
+    "5": 1823,
+    "6": 10696
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 263,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 262,
+    "Lowest dist": 830
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   29,
+   54,
+   85,
+   300,
+   208,
+   113
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "cn04",
+  "mode": "rudakov",
+  "seed": 1003,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 1,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 15258,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 4742,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1234.1,
+  "play_seconds": 1233.92,
+  "sec_per_action": 0.0617,
+  "env_sec_per_action": 0.0021,
+  "diag": {
+   "issued_by_id": {
+    "0": 246,
+    "1": 1584,
+    "2": 1655,
+    "3": 1634,
+    "4": 1629,
+    "5": 1680,
+    "6": 11572
+   },
+   "level_wins_at_step": [
+    15258
+   ],
+   "graph_resets": 2,
+   "level_wins_followed_by_graph_reset": 1,
+   "resets": 246,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 246,
+    "Lowest dist": 634
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   15258,
+   4742,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   29,
+   54,
+   85,
+   300,
+   208,
+   113
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "dc22",
+  "mode": "rudakov",
+  "seed": 1000,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 868.6,
+  "play_seconds": 868.39,
+  "sec_per_action": 0.0434,
+  "env_sec_per_action": 0.0029,
+  "diag": {
+   "issued_by_id": {
+    "0": 156,
+    "1": 57,
+    "2": 47,
+    "3": 54,
+    "4": 53,
+    "6": 19633
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 156,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 156,
+    "Lowest dist": 27,
+    "Error": 19297
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   59,
+   102,
+   67,
+   98,
+   324,
+   578
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "dc22",
+  "mode": "rudakov",
+  "seed": 1001,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 879.5,
+  "play_seconds": 879.33,
+  "sec_per_action": 0.044,
+  "env_sec_per_action": 0.003,
+  "diag": {
+   "issued_by_id": {
+    "0": 155,
+    "1": 44,
+    "2": 44,
+    "3": 42,
+    "4": 38,
+    "6": 19677
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 155,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 155,
+    "Lowest dist": 13,
+    "Error": 19417
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   59,
+   102,
+   67,
+   98,
+   324,
+   578
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "dc22",
+  "mode": "rudakov",
+  "seed": 1002,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1056.9,
+  "play_seconds": 1038.92,
+  "sec_per_action": 0.0519,
+  "env_sec_per_action": 0.003,
+  "diag": {
+   "issued_by_id": {
+    "0": 155,
+    "1": 35,
+    "2": 34,
+    "3": 35,
+    "4": 32,
+    "6": 19709
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 155,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 155,
+    "Lowest dist": 2,
+    "Error": 19493
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   59,
+   102,
+   67,
+   98,
+   324,
+   578
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "dc22",
+  "mode": "rudakov",
+  "seed": 1003,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 871.0,
+  "play_seconds": 870.63,
+  "sec_per_action": 0.0435,
+  "env_sec_per_action": 0.0029,
+  "diag": {
+   "issued_by_id": {
+    "0": 155,
+    "1": 40,
+    "2": 40,
+    "3": 45,
+    "4": 41,
+    "6": 19679
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 155,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 155,
+    "Lowest dist": 16,
+    "Error": 19427
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   59,
+   102,
+   67,
+   98,
+   324,
+   578
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "ft09",
+  "mode": "rudakov",
+  "seed": 1000,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 2,
+  "state": "NOT_FINISHED",
+  "score": 0.001,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 2962,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 11456,
+    "ended": "won"
+   },
+   {
+    "level": 2,
+    "actions": 5582,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1095.6,
+  "play_seconds": 1095.55,
+  "sec_per_action": 0.0548,
+  "env_sec_per_action": 0.0022,
+  "diag": {
+   "issued_by_id": {
+    "0": 343,
+    "6": 19657
+   },
+   "level_wins_at_step": [
+    2962,
+    14418
+   ],
+   "graph_resets": 3,
+   "level_wins_followed_by_graph_reset": 2,
+   "resets": 343,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 422,
+    "Lowest dist": 535
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   2962,
+   11456,
+   5582,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   43,
+   12,
+   23,
+   28,
+   65,
+   37
+  ],
+  "card_scores": [
+   0.021,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "ft09",
+  "mode": "rudakov",
+  "seed": 1001,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 2,
+  "state": "NOT_FINISHED",
+  "score": 0.0099,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 944,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 5446,
+    "ended": "won"
+   },
+   {
+    "level": 2,
+    "actions": 13610,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1318.9,
+  "play_seconds": 1316.63,
+  "sec_per_action": 0.0658,
+  "env_sec_per_action": 0.0023,
+  "diag": {
+   "issued_by_id": {
+    "0": 247,
+    "6": 19753
+   },
+   "level_wins_at_step": [
+    944,
+    6390
+   ],
+   "graph_resets": 3,
+   "level_wins_followed_by_graph_reset": 2,
+   "resets": 247,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 309,
+    "Lowest dist": 235
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   944,
+   5446,
+   13610,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   43,
+   12,
+   23,
+   28,
+   65,
+   37
+  ],
+  "card_scores": [
+   0.207,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "ft09",
+  "mode": "rudakov",
+  "seed": 1002,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 2,
+  "state": "NOT_FINISHED",
+  "score": 0.0156,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 751,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 10346,
+    "ended": "won"
+   },
+   {
+    "level": 2,
+    "actions": 8903,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1149.0,
+  "play_seconds": 1146.44,
+  "sec_per_action": 0.0573,
+  "env_sec_per_action": 0.002,
+  "diag": {
+   "issued_by_id": {
+    "0": 324,
+    "6": 19676
+   },
+   "level_wins_at_step": [
+    751,
+    11097
+   ],
+   "graph_resets": 3,
+   "level_wins_followed_by_graph_reset": 2,
+   "resets": 324,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 404,
+    "Lowest dist": 468
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   751,
+   10346,
+   8903,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   43,
+   12,
+   23,
+   28,
+   65,
+   37
+  ],
+  "card_scores": [
+   0.328,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "ft09",
+  "mode": "rudakov",
+  "seed": 1003,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 2,
+  "state": "NOT_FINISHED",
+  "score": 3.0195,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 54,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 6995,
+    "ended": "won"
+   },
+   {
+    "level": 2,
+    "actions": 12951,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1197.5,
+  "play_seconds": 1197.31,
+  "sec_per_action": 0.0599,
+  "env_sec_per_action": 0.002,
+  "diag": {
+   "issued_by_id": {
+    "0": 275,
+    "6": 19725
+   },
+   "level_wins_at_step": [
+    54,
+    7049
+   ],
+   "graph_resets": 3,
+   "level_wins_followed_by_graph_reset": 2,
+   "resets": 275,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 276,
+    "Lowest dist": 331
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   54,
+   6995,
+   12951,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   43,
+   12,
+   23,
+   28,
+   65,
+   37
+  ],
+  "card_scores": [
+   63.409,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "g50t",
+  "mode": "rudakov",
+  "seed": 1000,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 869.3,
+  "play_seconds": 868.94,
+  "sec_per_action": 0.0434,
+  "env_sec_per_action": 0.0023,
+  "diag": {
+   "issued_by_id": {
+    "0": 152,
+    "1": 4650,
+    "2": 13418,
+    "3": 25,
+    "4": 1568,
+    "5": 187
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 152,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 22,
+    "Lowest dist": 599,
+    "Here we are": 10156,
+    "Error": 19138
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   78,
+   175,
+   179,
+   230,
+   96,
+   54,
+   67
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "g50t",
+  "mode": "rudakov",
+  "seed": 1001,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 845.7,
+  "play_seconds": 845.37,
+  "sec_per_action": 0.0423,
+  "env_sec_per_action": 0.0021,
+  "diag": {
+   "issued_by_id": {
+    "0": 153,
+    "1": 24,
+    "2": 653,
+    "3": 21,
+    "4": 18967,
+    "5": 182
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 153,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 19,
+    "Lowest dist": 603,
+    "Here we are": 9416,
+    "Error": 19141
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   78,
+   175,
+   179,
+   230,
+   96,
+   54,
+   67
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "g50t",
+  "mode": "rudakov",
+  "seed": 1002,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 846.0,
+  "play_seconds": 845.7,
+  "sec_per_action": 0.0423,
+  "env_sec_per_action": 0.0023,
+  "diag": {
+   "issued_by_id": {
+    "0": 152,
+    "1": 149,
+    "2": 10149,
+    "3": 1790,
+    "4": 7577,
+    "5": 183
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 152,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 20,
+    "Lowest dist": 599,
+    "Here we are": 9822,
+    "Error": 19136
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   78,
+   175,
+   179,
+   230,
+   96,
+   54,
+   67
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "g50t",
+  "mode": "rudakov",
+  "seed": 1003,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 805.8,
+  "play_seconds": 805.36,
+  "sec_per_action": 0.0403,
+  "env_sec_per_action": 0.0024,
+  "diag": {
+   "issued_by_id": {
+    "0": 152,
+    "1": 130,
+    "2": 1123,
+    "3": 4581,
+    "4": 13825,
+    "5": 189
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 152,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 23,
+    "Lowest dist": 601,
+    "Here we are": 9301,
+    "Error": 19139
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   78,
+   175,
+   179,
+   230,
+   96,
+   54,
+   67
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "ka59",
+  "mode": "rudakov",
+  "seed": 1000,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 867.3,
+  "play_seconds": 866.91,
+  "sec_per_action": 0.0433,
+  "env_sec_per_action": 0.0027,
+  "diag": {
+   "issued_by_id": {
+    "0": 198,
+    "1": 127,
+    "2": 149,
+    "3": 153,
+    "4": 144,
+    "6": 19229
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 198,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 198,
+    "Lowest dist": 14,
+    "Error": 18820
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   28,
+   109,
+   51,
+   51,
+   33,
+   132,
+   326
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "ka59",
+  "mode": "rudakov",
+  "seed": 1001,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 826.3,
+  "play_seconds": 826.0,
+  "sec_per_action": 0.0413,
+  "env_sec_per_action": 0.0024,
+  "diag": {
+   "issued_by_id": {
+    "0": 198,
+    "1": 457,
+    "2": 461,
+    "3": 492,
+    "4": 470,
+    "6": 17922
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 198,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 197,
+    "Lowest dist": 201,
+    "Error": 16674
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   28,
+   109,
+   51,
+   51,
+   33,
+   132,
+   326
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "ka59",
+  "mode": "rudakov",
+  "seed": 1002,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 838.1,
+  "play_seconds": 837.9,
+  "sec_per_action": 0.0419,
+  "env_sec_per_action": 0.0027,
+  "diag": {
+   "issued_by_id": {
+    "0": 198,
+    "1": 168,
+    "2": 152,
+    "3": 178,
+    "4": 159,
+    "6": 19145
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 198,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 198,
+    "Lowest dist": 36,
+    "Error": 18675
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   28,
+   109,
+   51,
+   51,
+   33,
+   132,
+   326
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "ka59",
+  "mode": "rudakov",
+  "seed": 1003,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 809.9,
+  "play_seconds": 809.39,
+  "sec_per_action": 0.0405,
+  "env_sec_per_action": 0.0025,
+  "diag": {
+   "issued_by_id": {
+    "0": 198,
+    "1": 258,
+    "2": 247,
+    "3": 268,
+    "4": 251,
+    "6": 18778
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 198,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 198,
+    "Lowest dist": 59,
+    "Error": 18100
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   28,
+   109,
+   51,
+   51,
+   33,
+   132,
+   326
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "lf52",
+  "mode": "rudakov",
+  "seed": 1000,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1472.6,
+  "play_seconds": 1472.37,
+  "sec_per_action": 0.0736,
+  "env_sec_per_action": 0.0112,
+  "diag": {
+   "issued_by_id": {
+    "0": 307,
+    "1": 6,
+    "2": 6,
+    "3": 6,
+    "4": 6,
+    "6": 19669
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 307,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 19557,
+    "Lowest dist": 20,
+    "Node": 1,
+    "Error": 19465
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   32,
+   81,
+   60,
+   71,
+   205,
+   148,
+   244,
+   109,
+   164,
+   225
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "lf52",
+  "mode": "rudakov",
+  "seed": 1001,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1455.6,
+  "play_seconds": 1455.38,
+  "sec_per_action": 0.0728,
+  "env_sec_per_action": 0.0111,
+  "diag": {
+   "issued_by_id": {
+    "0": 306,
+    "1": 6,
+    "2": 6,
+    "3": 6,
+    "4": 6,
+    "6": 19670
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 306,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 19501,
+    "Lowest dist": 23,
+    "Error": 19429,
+    "Node": 1
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   32,
+   81,
+   60,
+   71,
+   205,
+   148,
+   244,
+   109,
+   164,
+   225
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "lf52",
+  "mode": "rudakov",
+  "seed": 1002,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1139.2,
+  "play_seconds": 1139.02,
+  "sec_per_action": 0.057,
+  "env_sec_per_action": 0.0087,
+  "diag": {
+   "issued_by_id": {
+    "0": 307,
+    "1": 6,
+    "2": 6,
+    "3": 7,
+    "4": 6,
+    "6": 19668
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 307,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 19498,
+    "Lowest dist": 22,
+    "Node": 1,
+    "Error": 19436
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   32,
+   81,
+   60,
+   71,
+   205,
+   148,
+   244,
+   109,
+   164,
+   225
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "lf52",
+  "mode": "rudakov",
+  "seed": 1003,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 860.7,
+  "play_seconds": 858.76,
+  "sec_per_action": 0.0429,
+  "env_sec_per_action": 0.0028,
+  "diag": {
+   "issued_by_id": {
+    "0": 307,
+    "1": 5,
+    "2": 4,
+    "3": 5,
+    "4": 19629,
+    "6": 50
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 307,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 19605,
+    "Lowest dist": 18,
+    "Error": 19624
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   32,
+   81,
+   60,
+   71,
+   205,
+   148,
+   244,
+   109,
+   164,
+   225
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "lp85",
+  "mode": "rudakov",
+  "seed": 1000,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 2,
+  "state": "NOT_FINISHED",
+  "score": 0.0577,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 118,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 11752,
+    "ended": "won"
+   },
+   {
+    "level": 2,
+    "actions": 8130,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1009.6,
+  "play_seconds": 1009.41,
+  "sec_per_action": 0.0505,
+  "env_sec_per_action": 0.0025,
+  "diag": {
+   "issued_by_id": {
+    "0": 63,
+    "6": 19937
+   },
+   "level_wins_at_step": [
+    118,
+    11870
+   ],
+   "graph_resets": 3,
+   "level_wins_followed_by_graph_reset": 2,
+   "resets": 63,
+   "their_prints": {
+    "Will run": 1,
+    "Lowest dist": 121,
+    "Suspicious transition": 63
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   118,
+   11752,
+   8130,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   17,
+   38,
+   31,
+   16,
+   41,
+   60,
+   26,
+   159
+  ],
+  "card_scores": [
+   2.076,
+   0.001,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "lp85",
+  "mode": "rudakov",
+  "seed": 1001,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 2,
+  "state": "NOT_FINISHED",
+  "score": 0.2905,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 86,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 210,
+    "ended": "won"
+   },
+   {
+    "level": 2,
+    "actions": 19704,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1013.5,
+  "play_seconds": 1013.26,
+  "sec_per_action": 0.0507,
+  "env_sec_per_action": 0.0023,
+  "diag": {
+   "issued_by_id": {
+    "0": 51,
+    "6": 19949
+   },
+   "level_wins_at_step": [
+    86,
+    296
+   ],
+   "graph_resets": 3,
+   "level_wins_followed_by_graph_reset": 2,
+   "resets": 51,
+   "their_prints": {
+    "Will run": 1,
+    "Lowest dist": 169,
+    "Suspicious transition": 51
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   86,
+   210,
+   19704,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   17,
+   38,
+   31,
+   16,
+   41,
+   60,
+   26,
+   159
+  ],
+  "card_scores": [
+   3.908,
+   3.274,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "lp85",
+  "mode": "rudakov",
+  "seed": 1002,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 2,
+  "state": "NOT_FINISHED",
+  "score": 0.1062,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 87,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 7575,
+    "ended": "won"
+   },
+   {
+    "level": 2,
+    "actions": 12338,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 936.8,
+  "play_seconds": 936.76,
+  "sec_per_action": 0.0468,
+  "env_sec_per_action": 0.002,
+  "diag": {
+   "issued_by_id": {
+    "0": 59,
+    "6": 19941
+   },
+   "level_wins_at_step": [
+    87,
+    7662
+   ],
+   "graph_resets": 3,
+   "level_wins_followed_by_graph_reset": 2,
+   "resets": 59,
+   "their_prints": {
+    "Will run": 1,
+    "Lowest dist": 116,
+    "Error": 5,
+    "Here we are": 3,
+    "Suspicious transition": 58
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   87,
+   7575,
+   12338,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   17,
+   38,
+   31,
+   16,
+   41,
+   60,
+   26,
+   159
+  ],
+  "card_scores": [
+   3.818,
+   0.003,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "lp85",
+  "mode": "rudakov",
+  "seed": 1003,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 1,
+  "state": "NOT_FINISHED",
+  "score": 0.0235,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 185,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 19815,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1027.2,
+  "play_seconds": 1026.75,
+  "sec_per_action": 0.0513,
+  "env_sec_per_action": 0.0026,
+  "diag": {
+   "issued_by_id": {
+    "0": 73,
+    "6": 19927
+   },
+   "level_wins_at_step": [
+    185
+   ],
+   "graph_resets": 2,
+   "level_wins_followed_by_graph_reset": 1,
+   "resets": 73,
+   "their_prints": {
+    "Will run": 1,
+    "Lowest dist": 160,
+    "Suspicious transition": 73
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   185,
+   19815,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   17,
+   38,
+   31,
+   16,
+   41,
+   60,
+   26,
+   159
+  ],
+  "card_scores": [
+   0.844,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "ls20",
+  "mode": "rudakov",
+  "seed": 1000,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 1,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 6666,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 13334,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1162.7,
+  "play_seconds": 1162.52,
+  "sec_per_action": 0.0581,
+  "env_sec_per_action": 0.0047,
+  "diag": {
+   "issued_by_id": {
+    "0": 225,
+    "1": 6486,
+    "2": 4064,
+    "3": 4489,
+    "4": 4736
+   },
+   "level_wins_at_step": [
+    6666
+   ],
+   "graph_resets": 2,
+   "level_wins_followed_by_graph_reset": 1,
+   "resets": 225,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 225,
+    "Lowest dist": 5205
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   6666,
+   13334,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   22,
+   123,
+   73,
+   84,
+   96,
+   192,
+   186
+  ],
+  "card_scores": [
+   0.001,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "ls20",
+  "mode": "rudakov",
+  "seed": 1001,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 1,
+  "state": "NOT_FINISHED",
+  "score": 0.0001,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 4005,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 15995,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1191.7,
+  "play_seconds": 1191.49,
+  "sec_per_action": 0.0596,
+  "env_sec_per_action": 0.0047,
+  "diag": {
+   "issued_by_id": {
+    "0": 234,
+    "1": 6761,
+    "2": 4017,
+    "3": 4511,
+    "4": 4477
+   },
+   "level_wins_at_step": [
+    4005
+   ],
+   "graph_resets": 2,
+   "level_wins_followed_by_graph_reset": 1,
+   "resets": 234,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 234,
+    "Lowest dist": 6325
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   4005,
+   15995,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   22,
+   123,
+   73,
+   84,
+   96,
+   192,
+   186
+  ],
+  "card_scores": [
+   0.003,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "ls20",
+  "mode": "rudakov",
+  "seed": 1002,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 1,
+  "state": "NOT_FINISHED",
+  "score": 0.0014,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 1124,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 18876,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1026.9,
+  "play_seconds": 1026.55,
+  "sec_per_action": 0.0513,
+  "env_sec_per_action": 0.0041,
+  "diag": {
+   "issued_by_id": {
+    "0": 246,
+    "1": 6956,
+    "2": 3960,
+    "3": 4420,
+    "4": 4418
+   },
+   "level_wins_at_step": [
+    1124
+   ],
+   "graph_resets": 2,
+   "level_wins_followed_by_graph_reset": 1,
+   "resets": 246,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 246,
+    "Lowest dist": 7922
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   1124,
+   18876,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   22,
+   123,
+   73,
+   84,
+   96,
+   192,
+   186
+  ],
+  "card_scores": [
+   0.038,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "ls20",
+  "mode": "rudakov",
+  "seed": 1003,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 1,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 11513,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 8487,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1236.3,
+  "play_seconds": 1236.0,
+  "sec_per_action": 0.0618,
+  "env_sec_per_action": 0.0046,
+  "diag": {
+   "issued_by_id": {
+    "0": 204,
+    "1": 6088,
+    "2": 4281,
+    "3": 4503,
+    "4": 4924
+   },
+   "level_wins_at_step": [
+    11513
+   ],
+   "graph_resets": 2,
+   "level_wins_followed_by_graph_reset": 1,
+   "resets": 204,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 204,
+    "Lowest dist": 3322
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   11513,
+   8487,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   22,
+   123,
+   73,
+   84,
+   96,
+   192,
+   186
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "m0r0",
+  "mode": "rudakov",
+  "seed": 1000,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 850.5,
+  "play_seconds": 850.46,
+  "sec_per_action": 0.0425,
+  "env_sec_per_action": 0.002,
+  "diag": {
+   "issued_by_id": {
+    "0": 131,
+    "1": 34,
+    "2": 19689,
+    "3": 33,
+    "4": 28,
+    "5": 30,
+    "6": 55
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 131,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 131,
+    "Lowest dist": 5,
+    "Error": 19648
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   30,
+   111,
+   203,
+   26,
+   500,
+   237
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "m0r0",
+  "mode": "rudakov",
+  "seed": 1001,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 1,
+  "state": "NOT_FINISHED",
+  "score": 0.081,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 230,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 19770,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 2706.0,
+  "play_seconds": 2705.93,
+  "sec_per_action": 0.1353,
+  "env_sec_per_action": 0.0047,
+  "diag": {
+   "issued_by_id": {
+    "0": 131,
+    "1": 64,
+    "2": 57,
+    "3": 58,
+    "4": 63,
+    "5": 19531,
+    "6": 96
+   },
+   "level_wins_at_step": [
+    230
+   ],
+   "graph_resets": 2,
+   "level_wins_followed_by_graph_reset": 1,
+   "resets": 131,
+   "their_prints": {
+    "Will run": 1,
+    "Lowest dist": 24,
+    "Suspicious transition": 131,
+    "Error": 19486
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   230,
+   19770,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   30,
+   111,
+   203,
+   26,
+   500,
+   237
+  ],
+  "card_scores": [
+   1.701,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "m0r0",
+  "mode": "rudakov",
+  "seed": 1002,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 1,
+  "state": "NOT_FINISHED",
+  "score": 0.0019,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 1511,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 18489,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 3211.9,
+  "play_seconds": 3211.08,
+  "sec_per_action": 0.1606,
+  "env_sec_per_action": 0.0044,
+  "diag": {
+   "issued_by_id": {
+    "0": 130,
+    "1": 447,
+    "2": 738,
+    "3": 596,
+    "4": 522,
+    "5": 263,
+    "6": 17304
+   },
+   "level_wins_at_step": [
+    1511
+   ],
+   "graph_resets": 2,
+   "level_wins_followed_by_graph_reset": 1,
+   "resets": 130,
+   "their_prints": {
+    "Will run": 1,
+    "Lowest dist": 1066,
+    "Suspicious transition": 182,
+    "Error": 16785
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   1511,
+   18489,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   30,
+   111,
+   203,
+   26,
+   500,
+   237
+  ],
+  "card_scores": [
+   0.039,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "m0r0",
+  "mode": "rudakov",
+  "seed": 1003,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 821.3,
+  "play_seconds": 821.1,
+  "sec_per_action": 0.0411,
+  "env_sec_per_action": 0.002,
+  "diag": {
+   "issued_by_id": {
+    "0": 131,
+    "1": 142,
+    "2": 128,
+    "3": 130,
+    "4": 126,
+    "5": 19153,
+    "6": 190
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 131,
+   "their_prints": {
+    "Will run": 1,
+    "Lowest dist": 119,
+    "Suspicious transition": 131,
+    "Error": 19065
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   30,
+   111,
+   203,
+   26,
+   500,
+   237
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "r11l",
+  "mode": "rudakov",
+  "seed": 1000,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 1,
+  "state": "NOT_FINISHED",
+  "score": 4.7619,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 21,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 19979,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 866.3,
+  "play_seconds": 865.97,
+  "sec_per_action": 0.0433,
+  "env_sec_per_action": 0.0019,
+  "diag": {
+   "issued_by_id": {
+    "0": 329,
+    "6": 19671
+   },
+   "level_wins_at_step": [
+    21
+   ],
+   "graph_resets": 2,
+   "level_wins_followed_by_graph_reset": 1,
+   "resets": 329,
+   "their_prints": {
+    "Will run": 1,
+    "Node": 2,
+    "Suspicious transition": 332,
+    "Error": 19624
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   21,
+   19979,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   22,
+   33,
+   51,
+   26,
+   52,
+   49
+  ],
+  "card_scores": [
+   109.751,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "r11l",
+  "mode": "rudakov",
+  "seed": 1001,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 1,
+  "state": "NOT_FINISHED",
+  "score": 4.7619,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 22,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 19978,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 871.0,
+  "play_seconds": 870.65,
+  "sec_per_action": 0.0435,
+  "env_sec_per_action": 0.002,
+  "diag": {
+   "issued_by_id": {
+    "0": 329,
+    "6": 19671
+   },
+   "level_wins_at_step": [
+    22
+   ],
+   "graph_resets": 2,
+   "level_wins_followed_by_graph_reset": 1,
+   "resets": 329,
+   "their_prints": {
+    "Will run": 1,
+    "Node": 3,
+    "Lowest dist": 2,
+    "Suspicious transition": 12,
+    "Here we are": 18755,
+    "Error": 19401
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   22,
+   19978,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   22,
+   33,
+   51,
+   26,
+   52,
+   49
+  ],
+  "card_scores": [
+   100.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "r11l",
+  "mode": "rudakov",
+  "seed": 1002,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 1,
+  "state": "NOT_FINISHED",
+  "score": 1.5153,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 39,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 19961,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 887.2,
+  "play_seconds": 886.03,
+  "sec_per_action": 0.0443,
+  "env_sec_per_action": 0.002,
+  "diag": {
+   "issued_by_id": {
+    "0": 328,
+    "6": 19672
+   },
+   "level_wins_at_step": [
+    39
+   ],
+   "graph_resets": 2,
+   "level_wins_followed_by_graph_reset": 1,
+   "resets": 328,
+   "their_prints": {
+    "Will run": 1,
+    "Node": 2,
+    "Lowest dist": 1,
+    "Suspicious transition": 329,
+    "Error": 19625
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   39,
+   19961,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   22,
+   33,
+   51,
+   26,
+   52,
+   49
+  ],
+  "card_scores": [
+   31.821,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "r11l",
+  "mode": "rudakov",
+  "seed": 1003,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 1,
+  "state": "NOT_FINISHED",
+  "score": 0.8524,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 52,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 19948,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 867.2,
+  "play_seconds": 866.74,
+  "sec_per_action": 0.0433,
+  "env_sec_per_action": 0.002,
+  "diag": {
+   "issued_by_id": {
+    "0": 329,
+    "6": 19671
+   },
+   "level_wins_at_step": [
+    52
+   ],
+   "graph_resets": 2,
+   "level_wins_followed_by_graph_reset": 1,
+   "resets": 329,
+   "their_prints": {
+    "Will run": 1,
+    "Node": 2,
+    "Lowest dist": 2,
+    "Suspicious transition": 9,
+    "Here we are": 18930,
+    "Error": 19582
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   52,
+   19948,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   22,
+   33,
+   51,
+   26,
+   52,
+   49
+  ],
+  "card_scores": [
+   17.899,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "re86",
+  "mode": "rudakov",
+  "seed": 1000,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1788.9,
+  "play_seconds": 1788.55,
+  "sec_per_action": 0.0894,
+  "env_sec_per_action": 0.0022,
+  "diag": {
+   "issued_by_id": {
+    "0": 198,
+    "1": 3930,
+    "2": 3906,
+    "3": 3946,
+    "4": 4062,
+    "5": 3958
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 198,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 198,
+    "Lowest dist": 912
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   26,
+   42,
+   86,
+   108,
+   189,
+   139,
+   424,
+   241
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "re86",
+  "mode": "rudakov",
+  "seed": 1001,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1637.9,
+  "play_seconds": 1637.42,
+  "sec_per_action": 0.0819,
+  "env_sec_per_action": 0.002,
+  "diag": {
+   "issued_by_id": {
+    "0": 198,
+    "1": 3969,
+    "2": 3978,
+    "3": 3991,
+    "4": 3918,
+    "5": 3946
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 198,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 197,
+    "Lowest dist": 889
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   26,
+   42,
+   86,
+   108,
+   189,
+   139,
+   424,
+   241
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "re86",
+  "mode": "rudakov",
+  "seed": 1002,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1655.8,
+  "play_seconds": 1655.14,
+  "sec_per_action": 0.0828,
+  "env_sec_per_action": 0.0021,
+  "diag": {
+   "issued_by_id": {
+    "0": 198,
+    "1": 3950,
+    "2": 3921,
+    "3": 3985,
+    "4": 3916,
+    "5": 4030
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 198,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 198,
+    "Lowest dist": 928
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   26,
+   42,
+   86,
+   108,
+   189,
+   139,
+   424,
+   241
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "re86",
+  "mode": "rudakov",
+  "seed": 1003,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1841.9,
+  "play_seconds": 1841.83,
+  "sec_per_action": 0.0921,
+  "env_sec_per_action": 0.0023,
+  "diag": {
+   "issued_by_id": {
+    "0": 198,
+    "1": 3842,
+    "2": 3984,
+    "3": 3933,
+    "4": 4033,
+    "5": 4010
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 198,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 198,
+    "Lowest dist": 911
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   26,
+   42,
+   86,
+   108,
+   189,
+   139,
+   424,
+   241
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "s5i5",
+  "mode": "rudakov",
+  "seed": 1000,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 808.3,
+  "play_seconds": 808.01,
+  "sec_per_action": 0.0404,
+  "env_sec_per_action": 0.0016,
+  "diag": {
+   "issued_by_id": {
+    "0": 392,
+    "6": 19608
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 392,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 392,
+    "Lowest dist": 17,
+    "Error": 19405
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   20,
+   89,
+   106,
+   54,
+   162,
+   38,
+   86,
+   83
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "s5i5",
+  "mode": "rudakov",
+  "seed": 1001,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 849.2,
+  "play_seconds": 849.09,
+  "sec_per_action": 0.0425,
+  "env_sec_per_action": 0.002,
+  "diag": {
+   "issued_by_id": {
+    "0": 392,
+    "6": 19608
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 392,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 392,
+    "Lowest dist": 5,
+    "Error": 19505
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   20,
+   89,
+   106,
+   54,
+   162,
+   38,
+   86,
+   83
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "s5i5",
+  "mode": "rudakov",
+  "seed": 1002,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 787.8,
+  "play_seconds": 787.23,
+  "sec_per_action": 0.0394,
+  "env_sec_per_action": 0.0016,
+  "diag": {
+   "issued_by_id": {
+    "0": 392,
+    "6": 19608
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 392,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 392,
+    "Lowest dist": 32,
+    "Error": 19297
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   20,
+   89,
+   106,
+   54,
+   162,
+   38,
+   86,
+   83
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "s5i5",
+  "mode": "rudakov",
+  "seed": 1003,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 1,
+  "state": "NOT_FINISHED",
+  "score": 0.0011,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 1014,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 18986,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 900.8,
+  "play_seconds": 900.25,
+  "sec_per_action": 0.045,
+  "env_sec_per_action": 0.0019,
+  "diag": {
+   "issued_by_id": {
+    "0": 144,
+    "6": 19856
+   },
+   "level_wins_at_step": [
+    1014
+   ],
+   "graph_resets": 2,
+   "level_wins_followed_by_graph_reset": 1,
+   "resets": 144,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 142,
+    "Lowest dist": 263,
+    "Error": 15924
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   1014,
+   18986,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   20,
+   89,
+   106,
+   54,
+   162,
+   38,
+   86,
+   83
+  ],
+  "card_scores": [
+   0.039,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "sb26",
+  "mode": "rudakov",
+  "seed": 1000,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1099.9,
+  "play_seconds": 1099.76,
+  "sec_per_action": 0.055,
+  "env_sec_per_action": 0.0034,
+  "diag": {
+   "issued_by_id": {
+    "0": 49,
+    "5": 1692,
+    "6": 18259
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 49,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 49,
+    "Lowest dist": 1132,
+    "Node": 1,
+    "Error": 2
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   18,
+   28,
+   18,
+   19,
+   31,
+   23,
+   58,
+   18
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "sb26",
+  "mode": "rudakov",
+  "seed": 1001,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1099.0,
+  "play_seconds": 1098.52,
+  "sec_per_action": 0.0549,
+  "env_sec_per_action": 0.0034,
+  "diag": {
+   "issued_by_id": {
+    "0": 50,
+    "5": 1726,
+    "6": 18224
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 50,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 50,
+    "Lowest dist": 1200,
+    "Node": 1,
+    "Error": 1
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   18,
+   28,
+   18,
+   19,
+   31,
+   23,
+   58,
+   18
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "sb26",
+  "mode": "rudakov",
+  "seed": 1002,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1093.4,
+  "play_seconds": 1093.19,
+  "sec_per_action": 0.0547,
+  "env_sec_per_action": 0.0034,
+  "diag": {
+   "issued_by_id": {
+    "0": 50,
+    "5": 1701,
+    "6": 18249
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 50,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 50,
+    "Lowest dist": 1139,
+    "Node": 1,
+    "Error": 1
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   18,
+   28,
+   18,
+   19,
+   31,
+   23,
+   58,
+   18
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "sb26",
+  "mode": "rudakov",
+  "seed": 1003,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1188.1,
+  "play_seconds": 1187.95,
+  "sec_per_action": 0.0594,
+  "env_sec_per_action": 0.0037,
+  "diag": {
+   "issued_by_id": {
+    "0": 50,
+    "5": 1797,
+    "6": 18153
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 50,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 50,
+    "Lowest dist": 1198,
+    "Node": 1
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   18,
+   28,
+   18,
+   19,
+   31,
+   23,
+   58,
+   18
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "sc25",
+  "mode": "rudakov",
+  "seed": 1000,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 868.1,
+  "play_seconds": 867.73,
+  "sec_per_action": 0.0434,
+  "env_sec_per_action": 0.0044,
+  "diag": {
+   "issued_by_id": {
+    "0": 374,
+    "1": 19394,
+    "2": 24,
+    "3": 34,
+    "4": 22,
+    "6": 152
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 374,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 757,
+    "Lowest dist": 34,
+    "Error": 19365
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   36,
+   6,
+   32,
+   83,
+   143,
+   50
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "sc25",
+  "mode": "rudakov",
+  "seed": 1001,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 891.3,
+  "play_seconds": 890.81,
+  "sec_per_action": 0.0445,
+  "env_sec_per_action": 0.0048,
+  "diag": {
+   "issued_by_id": {
+    "0": 374,
+    "1": 20,
+    "2": 21,
+    "3": 19434,
+    "4": 18,
+    "6": 133
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 374,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 752,
+    "Lowest dist": 18,
+    "Error": 19409
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   36,
+   6,
+   32,
+   83,
+   143,
+   50
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "sc25",
+  "mode": "rudakov",
+  "seed": 1002,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 903.9,
+  "play_seconds": 903.48,
+  "sec_per_action": 0.0452,
+  "env_sec_per_action": 0.0044,
+  "diag": {
+   "issued_by_id": {
+    "0": 375,
+    "1": 19501,
+    "2": 12,
+    "3": 15,
+    "4": 13,
+    "6": 84
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 375,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 752,
+    "Lowest dist": 4,
+    "Error": 19489
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   36,
+   6,
+   32,
+   83,
+   143,
+   50
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "sc25",
+  "mode": "rudakov",
+  "seed": 1003,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1024.9,
+  "play_seconds": 1024.44,
+  "sec_per_action": 0.0512,
+  "env_sec_per_action": 0.0038,
+  "diag": {
+   "issued_by_id": {
+    "0": 340,
+    "1": 199,
+    "2": 185,
+    "3": 206,
+    "4": 208,
+    "6": 18862
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 340,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 94,
+    "Lowest dist": 659,
+    "Node": 1,
+    "Error": 14503
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   36,
+   6,
+   32,
+   83,
+   143,
+   50
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "sk48",
+  "mode": "rudakov",
+  "seed": 1000,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 1,
+  "state": "NOT_FINISHED",
+  "score": 0.0008,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 3659,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 16341,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1004.4,
+  "play_seconds": 1004.26,
+  "sec_per_action": 0.0502,
+  "env_sec_per_action": 0.0026,
+  "diag": {
+   "issued_by_id": {
+    "0": 30,
+    "1": 1547,
+    "2": 1474,
+    "3": 1482,
+    "4": 1538,
+    "6": 13929
+   },
+   "level_wins_at_step": [
+    3659
+   ],
+   "graph_resets": 2,
+   "level_wins_followed_by_graph_reset": 1,
+   "resets": 30,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 40,
+    "Lowest dist": 106,
+    "Here we are": 6,
+    "Error": 6
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   3659,
+   16341,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   61,
+   177,
+   101,
+   103,
+   230,
+   181,
+   125,
+   92
+  ],
+  "card_scores": [
+   0.028,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "sk48",
+  "mode": "rudakov",
+  "seed": 1001,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1038.6,
+  "play_seconds": 1038.39,
+  "sec_per_action": 0.0519,
+  "env_sec_per_action": 0.0023,
+  "diag": {
+   "issued_by_id": {
+    "0": 35,
+    "1": 1700,
+    "2": 1577,
+    "3": 1670,
+    "4": 2032,
+    "6": 12986
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 35,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 36,
+    "Lowest dist": 183,
+    "Here we are": 14,
+    "Error": 398
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   61,
+   177,
+   101,
+   103,
+   230,
+   181,
+   125,
+   92
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "sk48",
+  "mode": "rudakov",
+  "seed": 1002,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 826.1,
+  "play_seconds": 825.83,
+  "sec_per_action": 0.0413,
+  "env_sec_per_action": 0.0019,
+  "diag": {
+   "issued_by_id": {
+    "0": 85,
+    "1": 15547,
+    "2": 384,
+    "3": 399,
+    "4": 392,
+    "6": 3193
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 85,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 10,
+    "Lowest dist": 11,
+    "Error": 15154
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   61,
+   177,
+   101,
+   103,
+   230,
+   181,
+   125,
+   92
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "sk48",
+  "mode": "rudakov",
+  "seed": 1003,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1087.4,
+  "play_seconds": 1087.28,
+  "sec_per_action": 0.0544,
+  "env_sec_per_action": 0.0025,
+  "diag": {
+   "issued_by_id": {
+    "0": 35,
+    "1": 1854,
+    "2": 1619,
+    "3": 1704,
+    "4": 1717,
+    "6": 13071
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 35,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 40,
+    "Lowest dist": 174,
+    "Here we are": 201,
+    "Error": 205
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   61,
+   177,
+   101,
+   103,
+   230,
+   181,
+   125,
+   92
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "sp80",
+  "mode": "rudakov",
+  "seed": 1000,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 817.6,
+  "play_seconds": 817.47,
+  "sec_per_action": 0.0409,
+  "env_sec_per_action": 0.0022,
+  "diag": {
+   "issued_by_id": {
+    "0": 645,
+    "1": 10,
+    "2": 15,
+    "3": 8,
+    "4": 10,
+    "5": 10,
+    "6": 19302
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 645,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 648,
+    "Lowest dist": 4,
+    "Error": 19264
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   39,
+   58,
+   25,
+   148,
+   96,
+   152
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "sp80",
+  "mode": "rudakov",
+  "seed": 1001,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "GAME_OVER",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "GAME_OVER"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1289.2,
+  "play_seconds": 1289.02,
+  "sec_per_action": 0.0645,
+  "env_sec_per_action": 0.0109,
+  "diag": {
+   "issued_by_id": {
+    "0": 3309,
+    "1": 20,
+    "2": 19,
+    "3": 23,
+    "4": 23,
+    "5": 16542,
+    "6": 64
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 3309,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 16528,
+    "Lowest dist": 14,
+    "Error": 16523
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   39,
+   58,
+   25,
+   148,
+   96,
+   152
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "sp80",
+  "mode": "rudakov",
+  "seed": 1002,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 754.0,
+  "play_seconds": 753.55,
+  "sec_per_action": 0.0377,
+  "env_sec_per_action": 0.002,
+  "diag": {
+   "issued_by_id": {
+    "0": 645,
+    "1": 22,
+    "2": 27,
+    "3": 24,
+    "4": 21,
+    "5": 17,
+    "6": 19244
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 645,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 648,
+    "Lowest dist": 16,
+    "Error": 19170
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   39,
+   58,
+   25,
+   148,
+   96,
+   152
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "sp80",
+  "mode": "rudakov",
+  "seed": 1003,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 877.3,
+  "play_seconds": 877.15,
+  "sec_per_action": 0.0439,
+  "env_sec_per_action": 0.0023,
+  "diag": {
+   "issued_by_id": {
+    "0": 646,
+    "1": 16,
+    "2": 13,
+    "3": 20,
+    "4": 19,
+    "5": 15,
+    "6": 19271
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 646,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 649,
+    "Lowest dist": 10,
+    "Error": 19227
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   39,
+   58,
+   25,
+   148,
+   96,
+   152
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "su15",
+  "mode": "rudakov",
+  "seed": 1000,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 949.5,
+  "play_seconds": 949.33,
+  "sec_per_action": 0.0475,
+  "env_sec_per_action": 0.0037,
+  "diag": {
+   "issued_by_id": {
+    "0": 605,
+    "6": 19395
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 605,
+   "their_prints": {
+    "Will run": 1,
+    "Node": 3,
+    "Suspicious transition": 19259,
+    "Lowest dist": 2,
+    "Error": 19192
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   22,
+   42,
+   26,
+   115,
+   36,
+   31,
+   8,
+   40,
+   41
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "su15",
+  "mode": "rudakov",
+  "seed": 1001,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 917.2,
+  "play_seconds": 916.99,
+  "sec_per_action": 0.0458,
+  "env_sec_per_action": 0.0034,
+  "diag": {
+   "issued_by_id": {
+    "0": 606,
+    "6": 19394
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 606,
+   "their_prints": {
+    "Will run": 1,
+    "Lowest dist": 2,
+    "Here we are": 18173,
+    "Error": 19382,
+    "Suspicious transition": 3
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   22,
+   42,
+   26,
+   115,
+   36,
+   31,
+   8,
+   40,
+   41
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "su15",
+  "mode": "rudakov",
+  "seed": 1002,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 957.6,
+  "play_seconds": 957.25,
+  "sec_per_action": 0.0479,
+  "env_sec_per_action": 0.0034,
+  "diag": {
+   "issued_by_id": {
+    "0": 605,
+    "6": 19395
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 605,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 3,
+    "Lowest dist": 2,
+    "Here we are": 23,
+    "Error": 19380
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   22,
+   42,
+   26,
+   115,
+   36,
+   31,
+   8,
+   40,
+   41
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "su15",
+  "mode": "rudakov",
+  "seed": 1003,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 937.9,
+  "play_seconds": 937.77,
+  "sec_per_action": 0.0469,
+  "env_sec_per_action": 0.0035,
+  "diag": {
+   "issued_by_id": {
+    "0": 605,
+    "6": 19395
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 605,
+   "their_prints": {
+    "Will run": 1,
+    "Node": 3,
+    "Suspicious transition": 19258,
+    "Lowest dist": 1,
+    "Error": 19205
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   22,
+   42,
+   26,
+   115,
+   36,
+   31,
+   8,
+   40,
+   41
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "tn36",
+  "mode": "rudakov",
+  "seed": 1000,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 930.2,
+  "play_seconds": 929.88,
+  "sec_per_action": 0.0465,
+  "env_sec_per_action": 0.002,
+  "diag": {
+   "issued_by_id": {
+    "0": 322,
+    "6": 19678
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 322,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 324,
+    "Node": 3,
+    "Lowest dist": 49,
+    "Error": 16864
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   32,
+   72,
+   26,
+   40,
+   30,
+   55,
+   62
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "tn36",
+  "mode": "rudakov",
+  "seed": 1001,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 888.2,
+  "play_seconds": 887.99,
+  "sec_per_action": 0.0444,
+  "env_sec_per_action": 0.0019,
+  "diag": {
+   "issued_by_id": {
+    "0": 322,
+    "6": 19678
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 322,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 323,
+    "Node": 3,
+    "Lowest dist": 85,
+    "Error": 15282
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   32,
+   72,
+   26,
+   40,
+   30,
+   55,
+   62
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "tn36",
+  "mode": "rudakov",
+  "seed": 1002,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 909.0,
+  "play_seconds": 908.28,
+  "sec_per_action": 0.0454,
+  "env_sec_per_action": 0.002,
+  "diag": {
+   "issued_by_id": {
+    "0": 322,
+    "6": 19678
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 322,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 325,
+    "Node": 3,
+    "Lowest dist": 71,
+    "Error": 15833
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   32,
+   72,
+   26,
+   40,
+   30,
+   55,
+   62
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "tn36",
+  "mode": "rudakov",
+  "seed": 1003,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 899.2,
+  "play_seconds": 898.77,
+  "sec_per_action": 0.0449,
+  "env_sec_per_action": 0.002,
+  "diag": {
+   "issued_by_id": {
+    "0": 322,
+    "6": 19678
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 322,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 324,
+    "Node": 3,
+    "Lowest dist": 37,
+    "Error": 17358
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   32,
+   72,
+   26,
+   40,
+   30,
+   55,
+   62
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "tr87",
+  "mode": "rudakov",
+  "seed": 1000,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1890.3,
+  "play_seconds": 1890.15,
+  "sec_per_action": 0.0945,
+  "env_sec_per_action": 0.0034,
+  "diag": {
+   "issued_by_id": {
+    "0": 155,
+    "1": 4920,
+    "2": 4998,
+    "3": 4959,
+    "4": 4968
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 155,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 154,
+    "Lowest dist": 757
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   54,
+   58,
+   40,
+   45,
+   71,
+   146
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "tr87",
+  "mode": "rudakov",
+  "seed": 1001,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 2111.3,
+  "play_seconds": 2110.96,
+  "sec_per_action": 0.1055,
+  "env_sec_per_action": 0.0041,
+  "diag": {
+   "issued_by_id": {
+    "0": 155,
+    "1": 5020,
+    "2": 4960,
+    "3": 4928,
+    "4": 4937
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 155,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 155,
+    "Lowest dist": 772
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   54,
+   58,
+   40,
+   45,
+   71,
+   146
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "tr87",
+  "mode": "rudakov",
+  "seed": 1002,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 1,
+  "state": "NOT_FINISHED",
+  "score": 0.3272,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 206,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 19794,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1949.2,
+  "play_seconds": 1948.75,
+  "sec_per_action": 0.0974,
+  "env_sec_per_action": 0.004,
+  "diag": {
+   "issued_by_id": {
+    "0": 154,
+    "1": 5005,
+    "2": 4878,
+    "3": 4991,
+    "4": 4972
+   },
+   "level_wins_at_step": [
+    206
+   ],
+   "graph_resets": 2,
+   "level_wins_followed_by_graph_reset": 1,
+   "resets": 154,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 154,
+    "Lowest dist": 656
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   206,
+   19794,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   54,
+   58,
+   40,
+   45,
+   71,
+   146
+  ],
+  "card_scores": [
+   6.872,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "tr87",
+  "mode": "rudakov",
+  "seed": 1003,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 1,
+  "state": "NOT_FINISHED",
+  "score": 0.001,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 3737,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 16263,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 856.3,
+  "play_seconds": 856.02,
+  "sec_per_action": 0.0428,
+  "env_sec_per_action": 0.0024,
+  "diag": {
+   "issued_by_id": {
+    "0": 154,
+    "1": 4885,
+    "2": 4886,
+    "3": 5007,
+    "4": 5068
+   },
+   "level_wins_at_step": [
+    3737
+   ],
+   "graph_resets": 2,
+   "level_wins_followed_by_graph_reset": 1,
+   "resets": 154,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 154,
+    "Lowest dist": 621
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   3737,
+   16263,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   54,
+   58,
+   40,
+   45,
+   71,
+   146
+  ],
+  "card_scores": [
+   0.021,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "tu93",
+  "mode": "rudakov",
+  "seed": 1000,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 894.6,
+  "play_seconds": 894.49,
+  "sec_per_action": 0.0447,
+  "env_sec_per_action": 0.0015,
+  "diag": {
+   "issued_by_id": {
+    "0": 392,
+    "1": 19377,
+    "2": 78,
+    "3": 68,
+    "4": 85
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 392,
+   "their_prints": {
+    "Will run": 1,
+    "Lowest dist": 88,
+    "Suspicious transition": 392,
+    "Error": 19314
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   19,
+   16,
+   34,
+   42,
+   123,
+   80,
+   14,
+   23,
+   111
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "tu93",
+  "mode": "rudakov",
+  "seed": 1001,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 872.8,
+  "play_seconds": 872.7,
+  "sec_per_action": 0.0436,
+  "env_sec_per_action": 0.0015,
+  "diag": {
+   "issued_by_id": {
+    "0": 392,
+    "1": 19485,
+    "2": 41,
+    "3": 34,
+    "4": 48
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 392,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 392,
+    "Lowest dist": 33,
+    "Error": 19446
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   19,
+   16,
+   34,
+   42,
+   123,
+   80,
+   14,
+   23,
+   111
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "tu93",
+  "mode": "rudakov",
+  "seed": 1002,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1030.8,
+  "play_seconds": 795.04,
+  "sec_per_action": 0.0398,
+  "env_sec_per_action": 0.0015,
+  "diag": {
+   "issued_by_id": {
+    "0": 392,
+    "1": 26,
+    "2": 19535,
+    "3": 21,
+    "4": 26
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 392,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 392,
+    "Lowest dist": 16,
+    "Error": 19510
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   19,
+   16,
+   34,
+   42,
+   123,
+   80,
+   14,
+   23,
+   111
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "tu93",
+  "mode": "rudakov",
+  "seed": 1003,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 811.2,
+  "play_seconds": 810.84,
+  "sec_per_action": 0.0405,
+  "env_sec_per_action": 0.0014,
+  "diag": {
+   "issued_by_id": {
+    "0": 392,
+    "1": 15,
+    "2": 19567,
+    "3": 13,
+    "4": 13
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 392,
+   "their_prints": {
+    "Will run": 1,
+    "Lowest dist": 6,
+    "Suspicious transition": 392,
+    "Error": 19551
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   19,
+   16,
+   34,
+   42,
+   123,
+   80,
+   14,
+   23,
+   111
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "vc33",
+  "mode": "rudakov",
+  "seed": 1000,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 2,
+  "state": "NOT_FINISHED",
+  "score": 0.384,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 26,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 136,
+    "ended": "won"
+   },
+   {
+    "level": 2,
+    "actions": 19838,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 793.6,
+  "play_seconds": 793.49,
+  "sec_per_action": 0.0397,
+  "env_sec_per_action": 0.0021,
+  "diag": {
+   "issued_by_id": {
+    "0": 263,
+    "6": 19737
+   },
+   "level_wins_at_step": [
+    26,
+    162
+   ],
+   "graph_resets": 3,
+   "level_wins_followed_by_graph_reset": 2,
+   "resets": 263,
+   "their_prints": {
+    "Will run": 1,
+    "Lowest dist": 200,
+    "Suspicious transition": 262,
+    "Error": 16872
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   26,
+   136,
+   19838,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   7,
+   18,
+   44,
+   61,
+   131,
+   34,
+   152
+  ],
+  "card_scores": [
+   7.249,
+   1.752,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "vc33",
+  "mode": "rudakov",
+  "seed": 1001,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 2,
+  "state": "NOT_FINISHED",
+  "score": 0.5236,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 32,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 81,
+    "ended": "won"
+   },
+   {
+    "level": 2,
+    "actions": 19887,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 831.4,
+  "play_seconds": 828.7,
+  "sec_per_action": 0.0414,
+  "env_sec_per_action": 0.0023,
+  "diag": {
+   "issued_by_id": {
+    "0": 262,
+    "6": 19738
+   },
+   "level_wins_at_step": [
+    32,
+    113
+   ],
+   "graph_resets": 3,
+   "level_wins_followed_by_graph_reset": 2,
+   "resets": 262,
+   "their_prints": {
+    "Will run": 1,
+    "Lowest dist": 54,
+    "Suspicious transition": 262,
+    "Error": 18303
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   32,
+   81,
+   19887,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   7,
+   18,
+   44,
+   61,
+   131,
+   34,
+   152
+  ],
+  "card_scores": [
+   4.785,
+   4.938,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "vc33",
+  "mode": "rudakov",
+  "seed": 1002,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 2,
+  "state": "NOT_FINISHED",
+  "score": 0.7093,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 28,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 69,
+    "ended": "won"
+   },
+   {
+    "level": 2,
+    "actions": 19903,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1060.5,
+  "play_seconds": 1060.09,
+  "sec_per_action": 0.053,
+  "env_sec_per_action": 0.0021,
+  "diag": {
+   "issued_by_id": {
+    "0": 262,
+    "6": 19738
+   },
+   "level_wins_at_step": [
+    28,
+    97
+   ],
+   "graph_resets": 3,
+   "level_wins_followed_by_graph_reset": 2,
+   "resets": 262,
+   "their_prints": {
+    "Will run": 1,
+    "Lowest dist": 15,
+    "Suspicious transition": 262,
+    "Error": 19029
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   28,
+   69,
+   19903,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   7,
+   18,
+   44,
+   61,
+   131,
+   34,
+   152
+  ],
+  "card_scores": [
+   6.25,
+   6.805,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "vc33",
+  "mode": "rudakov",
+  "seed": 1003,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 1,
+  "state": "NOT_FINISHED",
+  "score": 0.3616,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 22,
+    "ended": "won"
+   },
+   {
+    "level": 1,
+    "actions": 19978,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 835.1,
+  "play_seconds": 834.83,
+  "sec_per_action": 0.0417,
+  "env_sec_per_action": 0.0029,
+  "diag": {
+   "issued_by_id": {
+    "0": 391,
+    "6": 19609
+   },
+   "level_wins_at_step": [
+    22
+   ],
+   "graph_resets": 2,
+   "level_wins_followed_by_graph_reset": 1,
+   "resets": 391,
+   "their_prints": {
+    "Will run": 1,
+    "Lowest dist": 3,
+    "Suspicious transition": 391,
+    "Error": 19515
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   22,
+   19978,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   7,
+   18,
+   44,
+   61,
+   131,
+   34,
+   152
+  ],
+  "card_scores": [
+   10.124,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "wa30",
+  "mode": "rudakov",
+  "seed": 1000,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 1292.0,
+  "play_seconds": 1291.9,
+  "sec_per_action": 0.0646,
+  "env_sec_per_action": 0.0022,
+  "diag": {
+   "issued_by_id": {
+    "0": 99,
+    "1": 3570,
+    "2": 3306,
+    "3": 3381,
+    "4": 3399,
+    "5": 6245
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 99,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 97,
+    "Lowest dist": 809,
+    "Error": 3433
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   71,
+   119,
+   183,
+   98,
+   368,
+   68,
+   79,
+   442,
+   415
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "wa30",
+  "mode": "rudakov",
+  "seed": 1001,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 801.5,
+  "play_seconds": 801.31,
+  "sec_per_action": 0.0401,
+  "env_sec_per_action": 0.0018,
+  "diag": {
+   "issued_by_id": {
+    "0": 99,
+    "1": 605,
+    "2": 583,
+    "3": 578,
+    "4": 575,
+    "5": 17560
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 99,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 98,
+    "Lowest dist": 114,
+    "Error": 17064
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   71,
+   119,
+   183,
+   98,
+   368,
+   68,
+   79,
+   442,
+   415
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "wa30",
+  "mode": "rudakov",
+  "seed": 1002,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 792.9,
+  "play_seconds": 792.45,
+  "sec_per_action": 0.0396,
+  "env_sec_per_action": 0.002,
+  "diag": {
+   "issued_by_id": {
+    "0": 99,
+    "1": 501,
+    "2": 498,
+    "3": 520,
+    "4": 498,
+    "5": 17884
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 99,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 99,
+    "Lowest dist": 112,
+    "Error": 17489
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   71,
+   119,
+   183,
+   98,
+   368,
+   68,
+   79,
+   442,
+   415
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ {
+  "game": "wa30",
+  "mode": "rudakov",
+  "seed": 1003,
+  "budget": 20000,
+  "game_seconds": 28440.0,
+  "actions": 20000,
+  "levels": 0,
+  "state": "NOT_FINISHED",
+  "score": 0.0,
+  "level_log": [
+   {
+    "level": 0,
+    "actions": 20000,
+    "ended": "NOT_FINISHED"
+   }
+  ],
+  "stopped": "budget",
+  "time_truncated": false,
+  "seconds": 533.3,
+  "play_seconds": 532.94,
+  "sec_per_action": 0.0266,
+  "env_sec_per_action": 0.0018,
+  "diag": {
+   "issued_by_id": {
+    "0": 99,
+    "1": 716,
+    "2": 712,
+    "3": 728,
+    "4": 707,
+    "5": 17038
+   },
+   "level_wins_at_step": [],
+   "graph_resets": 1,
+   "level_wins_followed_by_graph_reset": 0,
+   "resets": 99,
+   "their_prints": {
+    "Will run": 1,
+    "Suspicious transition": 99,
+    "Lowest dist": 197,
+    "Error": 16462
+   }
+  },
+  "adapter": {
+   "commit": "c2d98318ecca38c8ee9fb49b5af159e51770bad7",
+   "boundary": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7"
+   ]
+  },
+  "card_levels": [
+   20000,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "card_baseline": [
+   71,
+   119,
+   183,
+   98,
+   368,
+   68,
+   79,
+   442,
+   415
+  ],
+  "card_scores": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ]
+ }
+]
