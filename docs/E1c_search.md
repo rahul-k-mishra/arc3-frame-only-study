@@ -196,3 +196,38 @@ Could become admissible if their authors add a licence: BDR-Pro v79, Cryptic2-0 
 Curio, Hunter-Seeker v2.
 
 Deadline for E1c (plan Section 3.4 and CLAUDE.md): 9 October 2026.
+
+## 8. Finding for the related-work section: many high-scoring non-LLM agents use the game's simulator
+
+Most of the higher-scoring non-LLM public agents found load each game's environment source file
+(`environment_files/<game>/<version>/<game>.py`) at play time. They instantiate the game class and
+search over copies of the live game (`copy.deepcopy`), trying actions on the simulator before
+committing to them. They are therefore **not frame-only agents**. Their leaderboard scores are
+not comparable with a frame-only measurement such as ours (our agents and E1a see only frames).
+
+This is a statement about what the agents do, from their code; it makes no claim about the
+competition's rules.
+
+Evidence, from the sources as downloaded on 26 September 2026 (Kaggle notebooks: the version
+current on that date; cell and line numbers count code cells from 0 and lines within the cell
+from 1; "last run" is from the Kaggle listing):
+
+| agent | URL | where it finds the source | where it loads it | where it runs the simulator |
+|---|---|---|---|---|
+| "[0.46] ARC-AGI-3: Persistent Memory BFS ARC Solver" (last run 2026-05-29) | https://www.kaggle.com/code/nihilisticneuralnet/0-46-arc-agi-3-persistent-memory-bfs-arc-solver | cell 1 line 1054: `f"**/environment_files/**/{gid}.py",`; line 1058: `hits = glob.glob(pat, recursive=True)` | cell 1 line 1097: `spec = importlib.util.spec_from_file_location('_arc_game', self.game_path)` | cell 1 line 1108: `return self.game_cls()`; line 874: `g2 = copy.deepcopy(node.game)` |
+| "FORGE ARC-AGI-3 Agent" (last run 2026-03-31) | https://www.kaggle.com/code/projectforty2/forge-arc-agi-3-agent | cell 1 line 424: `matches = glob.glob(pattern, recursive=True)` | cell 1 line 55: `spec = importlib.util.spec_from_file_location('game_mod', self.game_path)`; line 58: `self.game_cls = getattr(mod, self.class_name)` | cell 1 line 168: `game = self.game_cls()`; line 96: `g = copy.deepcopy(game)` |
+| "[0.35] FORGE v16 Trigger-aware BFS submi3" (last run 2026-04-06) | https://www.kaggle.com/code/itsyoursumit/0-35-forge-v16-trigger-aware-bfs-submi3 | cell 1 line 804: `matches = glob.glob(pattern, recursive=True)` | cell 1 line 59: `spec = importlib.util.spec_from_file_location('game_mod', self.game_path)` | cell 1 line 203: `game = self.game_cls()`; line 113: `g = copy.deepcopy(game)` |
+| "ARC-AGI-3: Monte Carlo Tree Search Solver" (last run 2026-04-01) | https://www.kaggle.com/code/nihilisticneuralnet/arc-agi-3-monte-carlo-tree-search-solver | cell 1 line 428: `matches = glob.glob(pattern, recursive=True)` | cell 1 line 436: `spec = importlib.util.spec_from_file_location('_arc_game_mod', src)` | cell 1 line 184: `g = self.game_cls()`; line 283: `g = copy.deepcopy(root.game_ref)` |
+| "Hybrid Search-and-Learn Agent / 0.35+ LB" (last run 2026-04-20) | https://www.kaggle.com/code/marynaborovska/hybrid-search-and-learn-agent-0-35-lb | cell 2 line 616: `matches = glob.glob(pattern, recursive=True)` | cell 2 line 45: `spec = importlib.util.spec_from_file_location('game_mod', self.game_path)` | cell 2 line 174: `game = self.game_cls()`; line 109: `g = copy.deepcopy(game)` |
+| "ARC-AGI-3 / Graph-Based Exploration Agent" (last run 2026-04-07) | https://www.kaggle.com/code/gourabr0y555/arc-agi-3-graph-based-exploration-agent | cell 1 line 633: `matches = glob.glob(pattern, recursive=True)` | cell 1 line 71: `spec = importlib.util.spec_from_file_location("game_mod", self.game_path)` | cell 1 line 210: `game = self.game_cls()`; line 124: `g = copy.deepcopy(game)` |
+| tantan0327/arc-agi-3-agent, `agent/my_agent.py` at commit 77ab2d911e13789ea39e058ac3ad6c788dbd88d3 | https://github.com/tantan0327/arc-agi-3-agent | lines 933-936: `"environment_files/{gid}/*/{gid}.py",` (and Kaggle and /tmp variants); line 946: `hits = glob.glob(pattern.format(gid=gid), recursive=True)` | line 1010: `text = Path(source).read_text(encoding="utf-8")`; line 1017: `exec(text, module.__dict__)` | line 1139: `return copy.deepcopy(game)`; line 981 (comment): "Cost measured on ls20: `deepcopy` 11.7 ms, a simulated action 0.6 ms" |
+
+Not in this group, for contrast: the non-LLM agents in Sections 3.1-3.2 and garlictoday's and
+poby7722's notebooks. My searches found no such source loading in them; Cryptic2-0, conchocon154
+and ReplicaWormhole's explorer contain no `importlib`/`glob` source loading in the files read.
+
+How to use this in the manuscript: in related work, when public leaderboard scores of non-LLM
+entries are mentioned, say that several of the higher-scoring ones search on the game's own
+simulator loaded from its source file, name them with these links, and say that such scores are
+not comparable with frame-only agents. Do not generalise beyond the agents listed; these are the
+100 most-voted notebooks plus the GitHub screen, not all entries.
