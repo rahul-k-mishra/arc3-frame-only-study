@@ -33,6 +33,12 @@ HOW:
              explorer (hash_state) plays.  It wakes up on the next level.
 
 Nothing here reads a game's source.  Run through g_nav_run.py.
+
+E9 (docs/E9_protocol.md): an optional ColourOracle hands the planner the true goal in its own
+language, a colour set, at each level start, for tu93 and dc22 only (source-informed train games).
+It replaces goal_hyps for that level in _replan step 1 and lifts the goal_tries cap; nothing else.
+With oracle=None (mode nav) every line below behaves exactly as before; scripts/e9_equiv.py checks
+this against the pre-E9 file.
 """
 from __future__ import annotations
 
@@ -55,9 +61,59 @@ def _anchor(cells):
     return (min(y for y, _ in cells), min(x for _, x in cells))
 
 
+class ColourOracle:
+    """E9 goal oracle (docs/E9_protocol.md Sections 1-2; rules from docs/E9_goals.md).
+
+    For a game with a rule, at each level start it finds the sprite that the game's level-end
+    predicate names, maps its visible cells into the 64x64 frame with the camera's own scale and
+    offset (arcengine Camera.render), and returns those cells; the hook reads their colours from
+    the frame.  The rule is stated by tag only; no coordinate, colour or layout is stored here.
+    It hands nothing for any other game (ls20: its predicate is not a place; held-out games: never
+    given a rule).  off=True keeps every call but always hands nothing (the equivalence check)."""
+    RULES = {
+        "tu93": ("0015msvpvzxhqf", False),   # every exit sprite (tu93.py 1236-1242)
+        "dc22": ("goknoi", True),            # the first 'goknoi' sprite (dc22.py 10869-10870, 9995)
+    }
+
+    def __init__(self, game, off=False):
+        self.game = str(game)[:4]
+        self.off = off
+        self.rule = None if off else self.RULES.get(self.game)
+        self.env = None
+
+    def bind(self, env):
+        self.env = env
+
+    def target_cells(self):
+        """frame cells (row, col) of the target sprite(s), or None when the oracle hands nothing"""
+        if self.rule is None or self.env is None or getattr(self.env, "_game", None) is None:
+            return None
+        g = self.env._game
+        tag, first_only = self.rule
+        sprites = g.current_level.get_sprites_by_tag(tag)
+        if first_only:
+            sprites = sprites[:1]
+        scale, x_off, y_off = g.camera._calculate_scale_and_offset()
+        cells = set()
+        for sp in sprites:
+            if not sp.is_visible:
+                continue
+            px = np.asarray(sp.render())
+            ys, xs = np.nonzero(px >= 0)
+            for y, x in zip(ys.tolist(), xs.tolist()):
+                gx, gy = sp.x - g.camera.x + x, sp.y - g.camera.y + y
+                for dy in range(scale):
+                    for dx in range(scale):
+                        cells.add((gy * scale + y_off + dy, gx * scale + x_off + dx))
+        cells = {(y, x) for y, x in cells if 0 <= y < 64 and 0 <= x < 64}
+        return cells or None
+
+
 class NavHook:
     def __init__(self, seed=0, avoid_death=True, wall_min=2, deadly_min=2, goal_tries=6,
-                 stall_steps=150, mispredict_max=8, learn_tries=12, block_steps=40, wait_max=12):
+                 stall_steps=150, mispredict_max=8, learn_tries=12, block_steps=40, wait_max=12,
+                 oracle=None):
+        self.oracle = oracle         # E9 ColourOracle, or None (mode nav)
         self.rng = random.Random(seed)
         self.avoid_death = avoid_death
         self.wall_min, self.deadly_min = wall_min, deadly_min
@@ -111,6 +167,8 @@ class NavHook:
         self.lv = dict(level=level, nav_steps=0, ok=0, bumped=0, mispredict=0, goal_targets=0,
                        goal_reached_no_end=0, frontier_targets=0, fallback=None, localise=0)
         self.levels.append(self.lv)
+        # E9: set at the level's first act() when an oracle is attached; None = nothing handed
+        self.oracle_cols, self._oracle_ready, self.target_oracle = None, False, False
 
     def steering(self):
         return self.active and self.pos is not None
@@ -247,12 +305,49 @@ class NavHook:
     def _goal_cells(self, g, p, col):
         return col in self._colours_at(g, self._footprint(p))
 
+    def _oracle_level_start(self, g):
+        """E9: the level's oracle colours, read from this (the level's first planner) frame at the
+        target's cells; background removed as _record_goal does.  V5: cells of those colours
+        outside the target, and their 4-connected components.  Nothing is recorded when the oracle
+        hands nothing, so such a level's report is identical to mode nav's."""
+        self._oracle_ready = True
+        cells = self.oracle.target_cells()
+        if not cells:
+            return
+        body = g[1:63]
+        vals, cnts = np.unique(body, return_counts=True)
+        bg = int(vals[int(cnts.argmax())])
+        cols = sorted(self._colours_at(g, cells) - {bg})
+        self.lv["oracle_colours"] = cols
+        if not cols:
+            return
+        self.oracle_cols = cols
+        others = {(y, x) for y in range(1, 63) for x in range(64)
+                  if int(g[y, x]) in cols and (y, x) not in cells}
+        comps, seen = 0, set()
+        for c0 in others:
+            if c0 in seen:
+                continue
+            comps += 1
+            stack = [c0]
+            seen.add(c0)
+            while stack:
+                y, x = stack.pop()
+                for n in ((y + 1, x), (y - 1, x), (y, x + 1), (y, x - 1)):
+                    if n in others and n not in seen:
+                        seen.add(n)
+                        stack.append(n)
+        self.lv["oracle_ambiguity"] = dict(cells=len(others), components=comps)
+
     def _replan(self, g):
         prev, order = self._bfs(g)
         self.c["replans"] += 1
-        # 1. a recorded goal colour, nearest cell of it first
-        if self.goal_attempts < self.goal_tries:
-            for col in self.goal_hyps:
+        # 1. a recorded goal colour, nearest cell of it first.  E9: the oracle's colours replace
+        # the recorded ones for this level and are never written off (no goal_tries cap).
+        oracle_on = self.oracle_cols is not None
+        hyps = [c for c in self.oracle_cols if c not in self.avatar_colours] if oracle_on else self.goal_hyps
+        if oracle_on or self.goal_attempts < self.goal_tries:
+            for col in hyps:
                 for p in order:
                     if p == self.pos or p in self.goal_tried:
                         continue
@@ -261,6 +356,10 @@ class NavHook:
                         self.goal_attempts += 1
                         self.lv["goal_targets"] += 1
                         self.c["goal_targets"] += 1
+                        if oracle_on:
+                            self.target_oracle = True
+                            self.lv["oracle_targets"] = self.lv.get("oracle_targets", 0) + 1
+                            self.c["oracle_targets"] += 1
                         return True
         # 2. the frontier: nearest position never stood on
         for p in order:
@@ -273,6 +372,8 @@ class NavHook:
 
     # ------------------------------------------------------------------ the policy
     def act(self, g, raw, level):
+        if self.oracle is not None and not self._oracle_ready:
+            self._oracle_level_start(g)
         if self.keys is None:
             avail = [int(a) for a in (raw.available_actions or [])]
             self.keys = [a for a in avail if a in M1.KEYS]
@@ -492,6 +593,9 @@ class NavHook:
             self.goal_tried.add(self.plan_target)
             self.lv["goal_reached_no_end"] += 1
             self.c["goal_reached_no_end"] += 1
+            if self.target_oracle:
+                self.lv["oracle_reached_no_end"] = self.lv.get("oracle_reached_no_end", 0) + 1
+                self.c["oracle_reached_no_end"] += 1
             self.plan_target, self.target_kind = None, None
         if died:
             self._on_death_step(before, act)
@@ -760,6 +864,8 @@ class NavHook:
         if not cells:
             self.c["goal_unreadable"] += 1
             self.lv["goal"] = "unreadable"
+            if self.oracle_cols is not None:
+                self.lv["oracle_confirmed"] = None          # E9 V2: ending position not readable
             return
         body = before[1:63]
         vals, cnts = np.unique(body, return_counts=True)
@@ -782,6 +888,11 @@ class NavHook:
         self.goal_hyps = self.goal_hyps[:6]
         self.c["goal_recorded"] += 1
         self.lv["goal"] = found
+        if self.oracle_cols is not None:
+            # E9 V2: did the position the level ended on show an oracle colour?
+            ok = bool(set(self.oracle_cols) & (stepped | ring))
+            self.lv["oracle_confirmed"] = ok
+            self.c["oracle_confirmed" if ok else "oracle_not_confirmed"] += 1
 
     def on_level(self, level, frame):
         self._new_level(level)
@@ -802,6 +913,21 @@ class NavHook:
                     key_presses_sampled=self.key_presses, levels=self.levels)
 
 
-def play(game, cfg, env_dir, seconds=600.0, nav_kwargs=None):
-    hook = NavHook(seed=cfg.seed, avoid_death=cfg.avoid_death, **(nav_kwargs or {}))
-    return A.play(game, cfg, env_dir, seconds=seconds, hook=hook)
+def play(game, cfg, env_dir, seconds=600.0, nav_kwargs=None, oracle=None):
+    hook = NavHook(seed=cfg.seed, avoid_death=cfg.avoid_death, oracle=oracle, **(nav_kwargs or {}))
+    if oracle is None:
+        return A.play(game, cfg, env_dir, seconds=seconds, hook=hook)
+    # E9: the oracle needs the running game.  g_agent.play creates the environment itself, so the
+    # environment is handed over by wrapping Arcade.make for this call only; g_agent.py is untouched.
+    import arc_agi
+    orig = arc_agi.Arcade.make
+
+    def make(self, *a, **k):
+        env = orig(self, *a, **k)
+        oracle.bind(env)
+        return env
+    arc_agi.Arcade.make = make
+    try:
+        return A.play(game, cfg, env_dir, seconds=seconds, hook=hook)
+    finally:
+        arc_agi.Arcade.make = orig
