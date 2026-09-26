@@ -90,11 +90,36 @@ completes the first k levels at a constant action ratio r?
 - Formula from arc_agi/scorecard.py: HAVE (source read, Section 5 of this plan).
 - Reference (E2): hash_state, held-out, 10 seeds (1000-1009) x 20,000 actions, M1 0.3274 and
   M4 10.50 levels per seed: HAVE (runs/navrun_e2_hash_25x10.json, mode hash_state). It replaces the
-  4-seed values 0.3329 (runs/ablate_lenovo_6x4.json) and 11.2 (untraced). The decomposition by
-  level index, AT HUMAN and ratios is to be recomputed on the E2 file with g_decompose.py; until
-  then no 4-seed decomposition number is quoted as the reference.
-- Counterfactuals AT HUMAN 3.0-3.8 vs recorded 0.30-0.46: HAVE, UNTRACED (the file and the
-  g_decompose.py invocation that produced them must be recorded).
+  4-seed values 0.3329 (runs/ablate_lenovo_6x4.json) and 11.2 (untraced).
+- E2 decomposition: HAVE, 26 September 2026. Files:
+  runs/decompose_e2_hash_25x10_heldout.json and runs/decompose_e2_hash_25x10_train.json.
+  - The commands were not written in the commit message (9ff5574). They are reconstructed from
+    the files' own tag, files, env_dir and games fields; run from scripts/:
+    `g_decompose.py --files ..\runs\navrun_e2_hash_25x10.json --env-dir D:\Research\arc3\brutus\environment_files --games heldout --tag e2_hash_25x10_heldout`
+    and the same with `--games train --tag e2_hash_25x10_train`.
+  - Held-out (17 games x 10 seeds = 170 runs):
+    - recorded 0.3274, recomputed from level_log 0.3286;
+    - AT HUMAN 3.0602, i.e. AT HUMAN / recorded = 9.35;
+    - at 2x the human count 0.7651, at 5x 0.1224;
+    - won levels by index: 82 level 1, 23 level 2, 0 level 3 or later (105 won levels);
+    - level-1 wins alone give 0.3240 of the recomputed 0.3286;
+    - median agent/human action ratio 59.7, over the 105 won levels (not over the 170 runs;
+      88 runs won no level).
+  - Train, as a contrast (8 games x 10 seeds = 80 runs; never pooled with held-out; tu93, dc22,
+    ls20 source-informed):
+    - recorded 0.1901, recomputed 0.2277, AT HUMAN 8.0060;
+    - median ratio 19.4 over 111 won levels;
+    - 29 won levels of index 3 or later, all on tu93, in 8 of the 80 runs;
+    - recorded and recomputed differ most on ft09 seed 1003 (+0.89). level_log undercounts
+      scan, probe and reset presses there, so the recorded (scorecard) value is the one used.
+  - Where these differ from what this plan quoted before: the earlier line read "Counterfactuals
+    AT HUMAN 3.0-3.8 vs recorded 0.30-0.46" (UNTRACED ranges, source files not recorded). The E2
+    values are single numbers:
+    - AT HUMAN 3.0602 lies inside the old range, near its low end;
+    - recorded 0.3274 lies inside its old range.
+    The plan quoted no level-index or median-ratio numbers before. CLAUDE.md quoted "median
+    agent/human ratio 35-145"; that untraced range is RETIRED and replaced by 59.7 (held-out,
+    over won levels), which lies inside it.
 - 100,000 vs 20,000 actions: WITHDRAWN (26 September 2026). The earlier line read "0.3615 vs
   0.3329". The 0.3615 is the held-out mean of mode base, 2 seeds, at 100,000 actions
   (runs/ablate_kaggle_giveup_100k.json; its three giveup variants give the same value; the file

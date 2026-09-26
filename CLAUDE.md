@@ -45,8 +45,13 @@ a script in this repository run by the author, with its output saved under runs/
   only as a record in registered text. Run count: 170 held-out runs (17 games x 10 seeds, E2). The
   earlier "1,088 held-out runs" is WITHDRAWN: no single file produces it, and the files it could be
   summed from contain the same deterministic runs more than once (hash_state seeds 1000-1003 in
-  three files; 162 of 680 rows dropped as duplicates when those three were read together). "Median
-  agent/human ratio 35-145" is UNTRACED; the E2 decomposition replaces it.
+  three files; 162 of 680 rows dropped as duplicates when those three were read together).
+  E2 decomposition (runs/decompose_e2_hash_25x10_heldout.json): AT HUMAN 3.0602 (9.35 x recorded),
+  at 2x 0.7651, at 5x 0.1224; 82 level-1 and 23 level-2 wins, none later; level-1 wins give 0.3240
+  of the recomputed 0.3286; median agent/human ratio 59.7 over the 105 won levels. The untraced
+  "median agent/human ratio 35-145" is RETIRED. Train contrast
+  (runs/decompose_e2_hash_25x10_train.json): AT HUMAN 8.0060, median ratio 19.4, 29 won levels of
+  index 3+ (all tu93, 8 of 80 runs).
 - 100,000 actions: WITHDRAWN; NO budget claim holds until E3. The old line "0.3615 vs 0.3329 —
   coverage does not pay" compared different mechanisms, so it never measured what a larger budget
   buys: 0.3615 is the held-out mean of mode base, 2 seeds, at 100,000 actions
@@ -112,21 +117,18 @@ a script in this repository run by the author, with its output saved under runs/
 Done: TOG_PLAN_v2 with audit corrections and E1 thresholds (plus the 3.3 precedence); E4
 (runs/ceiling.json); E5 (runs/split_transfer.json); census table (runs/census_v2.json); E1a
 Rudakov et al. adapter, protocol and 10-seed run, INCONCLUSIVE (docs/E1_result.md); E2 hash_state
-10 seeds (runs/navrun_e2_hash_25x10.json).
+10 seeds (runs/navrun_e2_hash_25x10.json); E2 decomposition (runs/decompose_e2_hash_25x10_*.json).
 
 1. E1c, deadline 9 Oct 2026: search for a second admissible independent CPU-only frame agent
    (repository, licence, commit, runtime); record sources, dates and queries even if none is
    found. It is the only route back to the full paper; otherwise the short-paper route stands.
-2. E2 decomposition: g_decompose.py on runs/navrun_e2_hash_25x10.json (no games). It replaces the
-   UNTRACED "35-145 ratio" and "AT HUMAN 3.0-3.8" with 10-seed values ("1,088 runs" is withdrawn;
-   the run count is E2's 170 held-out runs).
-3. E3 budget curve: hash_state at 3,000 / 50,000 / 100,000 actions with E2 as the 20,000 point.
+2. E3 budget curve: hash_state at 3,000 / 50,000 / 100,000 actions with E2 as the 20,000 point.
    Until it exists, no budget claim.
-4. E6 census at 10 seeds on all 25 games, category rule frozen (code hash) before the run.
-5. E9 goal-oracle intervention on tu93/dc22/ls20 (tu93 as positive control); E10 formal
+3. E6 census at 10 seeds on all 25 games, category rule frozen (code hash) before the run.
+4. E9 goal-oracle intervention on tu93/dc22/ls20 (tu93 as positive control); E10 formal
    goal-identification cost with the restricted ambiguity result.
-6. 9 Oct 2026: venue decision (CoG or workshop for the short paper; ToG only if item 1 yields a
+5. 9 Oct 2026: venue decision (CoG or workshop for the short paper; ToG only if item 1 yields a
    second agent that is scored). Optional, baseline only: E1b official non-LLM templates; E7 14B
    LLM cost.
-7. Manuscript on the short-paper route (6-8 pages; 10 + supplement only if the full-paper
+6. Manuscript on the short-paper route (6-8 pages; 10 + supplement only if the full-paper
    condition is met), anonymised; reproduction script that regenerates every table from runs/.
