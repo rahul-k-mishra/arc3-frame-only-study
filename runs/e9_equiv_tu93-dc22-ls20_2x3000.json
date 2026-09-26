@@ -1,0 +1,3773 @@
+{
+ "verdict": "IDENTICAL",
+ "ref_commit": "378345f",
+ "games": [
+  "tu93",
+  "dc22",
+  "ls20"
+ ],
+ "seeds": 2,
+ "budget": 3000,
+ "differences": [],
+ "plays": {
+  "dc22/1000/OFF": {
+   "row": {
+    "diag": {
+     "state_NOT_FINISHED": 2977,
+     "nav_steps": 22,
+     "acts": 2967,
+     "changed": 1210,
+     "key": 1400,
+     "key_changed": 1026,
+     "new_state": 90,
+     "click": 1567,
+     "click_changed": 184,
+     "state_GAME_OVER": 23
+    },
+    "effects": {},
+    "chose": null,
+    "trials": {},
+    "game": "dc22",
+    "actions": 3000,
+    "levels": 0,
+    "state": "NOT_FINISHED",
+    "states_seen": 81,
+    "score": 0.0,
+    "level_log": [
+     {
+      "level": 0,
+      "actions": 2967,
+      "states": 81,
+      "resets": 10,
+      "exhausted": 2084,
+      "ended": "NOT_FINISHED"
+     }
+    ],
+    "card_levels": [
+     3000,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "card_baseline": [
+     59,
+     102,
+     67,
+     98,
+     324,
+     578
+    ],
+    "card_scores": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "nav": {
+     "counters": {
+      "avatar_found": 1,
+      "learn_presses": 12,
+      "located_by_colour": 1,
+      "replans": 11,
+      "step_ok": 8,
+      "step_bumped": 2,
+      "frontier_exhausted": 1,
+      "fallback_frontier_exhausted": 1,
+      "obs_ok": 973,
+      "obs_bumped": 372,
+      "wall_contradicted": 1,
+      "deaths": 8
+     },
+     "eff": {
+      "1": [
+       0,
+       -2
+      ],
+      "2": [
+       0,
+       2
+      ],
+      "3": [
+       -2,
+       0
+      ],
+      "4": [
+       2,
+       0
+      ]
+     },
+     "learn": {
+      "1": {
+       "presses": 3,
+       "shift": [
+        0,
+        -2
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "2": {
+       "presses": 3,
+       "shift": [
+        0,
+        2
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "3": {
+       "presses": 3,
+       "shift": [
+        -2,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "4": {
+       "presses": 3,
+       "shift": [
+        2,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      }
+     },
+     "goal_hyps": [],
+     "walls": [
+      4
+     ],
+     "deadly": [
+      4
+     ],
+     "avoid_near": [],
+     "co_movers": {},
+     "key_presses_sampled": 150,
+     "levels": [
+      {
+       "level": 0,
+       "nav_steps": 22,
+       "ok": 981,
+       "bumped": 374,
+       "mispredict": 0,
+       "goal_targets": 0,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 10,
+       "fallback": "frontier_exhausted",
+       "localise": 0,
+       "learn": 12
+      }
+     ]
+    }
+   },
+   "n_actions": 3000
+  },
+  "dc22/1000/REF": {
+   "row": {
+    "diag": {
+     "state_NOT_FINISHED": 2977,
+     "nav_steps": 22,
+     "acts": 2967,
+     "changed": 1210,
+     "key": 1400,
+     "key_changed": 1026,
+     "new_state": 90,
+     "click": 1567,
+     "click_changed": 184,
+     "state_GAME_OVER": 23
+    },
+    "effects": {},
+    "chose": null,
+    "trials": {},
+    "game": "dc22",
+    "actions": 3000,
+    "levels": 0,
+    "state": "NOT_FINISHED",
+    "states_seen": 81,
+    "score": 0.0,
+    "level_log": [
+     {
+      "level": 0,
+      "actions": 2967,
+      "states": 81,
+      "resets": 10,
+      "exhausted": 2084,
+      "ended": "NOT_FINISHED"
+     }
+    ],
+    "card_levels": [
+     3000,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "card_baseline": [
+     59,
+     102,
+     67,
+     98,
+     324,
+     578
+    ],
+    "card_scores": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "nav": {
+     "counters": {
+      "avatar_found": 1,
+      "learn_presses": 12,
+      "located_by_colour": 1,
+      "replans": 11,
+      "step_ok": 8,
+      "step_bumped": 2,
+      "frontier_exhausted": 1,
+      "fallback_frontier_exhausted": 1,
+      "obs_ok": 973,
+      "obs_bumped": 372,
+      "wall_contradicted": 1,
+      "deaths": 8
+     },
+     "eff": {
+      "1": [
+       0,
+       -2
+      ],
+      "2": [
+       0,
+       2
+      ],
+      "3": [
+       -2,
+       0
+      ],
+      "4": [
+       2,
+       0
+      ]
+     },
+     "learn": {
+      "1": {
+       "presses": 3,
+       "shift": [
+        0,
+        -2
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "2": {
+       "presses": 3,
+       "shift": [
+        0,
+        2
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "3": {
+       "presses": 3,
+       "shift": [
+        -2,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "4": {
+       "presses": 3,
+       "shift": [
+        2,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      }
+     },
+     "goal_hyps": [],
+     "walls": [
+      4
+     ],
+     "deadly": [
+      4
+     ],
+     "avoid_near": [],
+     "co_movers": {},
+     "key_presses_sampled": 150,
+     "levels": [
+      {
+       "level": 0,
+       "nav_steps": 22,
+       "ok": 981,
+       "bumped": 374,
+       "mispredict": 0,
+       "goal_targets": 0,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 10,
+       "fallback": "frontier_exhausted",
+       "localise": 0,
+       "learn": 12
+      }
+     ]
+    }
+   },
+   "n_actions": 3000
+  },
+  "dc22/1000/NAV": {
+   "row": {
+    "diag": {
+     "state_NOT_FINISHED": 2977,
+     "nav_steps": 22,
+     "acts": 2967,
+     "changed": 1210,
+     "key": 1400,
+     "key_changed": 1026,
+     "new_state": 90,
+     "click": 1567,
+     "click_changed": 184,
+     "state_GAME_OVER": 23
+    },
+    "effects": {},
+    "chose": null,
+    "trials": {},
+    "game": "dc22",
+    "actions": 3000,
+    "levels": 0,
+    "state": "NOT_FINISHED",
+    "states_seen": 81,
+    "score": 0.0,
+    "level_log": [
+     {
+      "level": 0,
+      "actions": 2967,
+      "states": 81,
+      "resets": 10,
+      "exhausted": 2084,
+      "ended": "NOT_FINISHED"
+     }
+    ],
+    "card_levels": [
+     3000,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "card_baseline": [
+     59,
+     102,
+     67,
+     98,
+     324,
+     578
+    ],
+    "card_scores": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "nav": {
+     "counters": {
+      "avatar_found": 1,
+      "learn_presses": 12,
+      "located_by_colour": 1,
+      "replans": 11,
+      "step_ok": 8,
+      "step_bumped": 2,
+      "frontier_exhausted": 1,
+      "fallback_frontier_exhausted": 1,
+      "obs_ok": 973,
+      "obs_bumped": 372,
+      "wall_contradicted": 1,
+      "deaths": 8
+     },
+     "eff": {
+      "1": [
+       0,
+       -2
+      ],
+      "2": [
+       0,
+       2
+      ],
+      "3": [
+       -2,
+       0
+      ],
+      "4": [
+       2,
+       0
+      ]
+     },
+     "learn": {
+      "1": {
+       "presses": 3,
+       "shift": [
+        0,
+        -2
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "2": {
+       "presses": 3,
+       "shift": [
+        0,
+        2
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "3": {
+       "presses": 3,
+       "shift": [
+        -2,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "4": {
+       "presses": 3,
+       "shift": [
+        2,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      }
+     },
+     "goal_hyps": [],
+     "walls": [
+      4
+     ],
+     "deadly": [
+      4
+     ],
+     "avoid_near": [],
+     "co_movers": {},
+     "key_presses_sampled": 150,
+     "levels": [
+      {
+       "level": 0,
+       "nav_steps": 22,
+       "ok": 981,
+       "bumped": 374,
+       "mispredict": 0,
+       "goal_targets": 0,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 10,
+       "fallback": "frontier_exhausted",
+       "localise": 0,
+       "learn": 12
+      }
+     ]
+    }
+   },
+   "n_actions": 3000
+  },
+  "tu93/1000/OFF": {
+   "row": {
+    "diag": {
+     "state_NOT_FINISHED": 2881,
+     "nav_steps": 156,
+     "acts": 2881,
+     "changed": 2327,
+     "key": 2881,
+     "key_changed": 2327,
+     "new_state": 501,
+     "state_GAME_OVER": 119
+    },
+    "effects": {},
+    "chose": null,
+    "trials": {},
+    "game": "tu93",
+    "actions": 3000,
+    "levels": 4,
+    "state": "NOT_FINISHED",
+    "states_seen": 427,
+    "score": 0.3136,
+    "level_log": [
+     {
+      "level": 0,
+      "actions": 70,
+      "states": 37,
+      "resets": 0,
+      "exhausted": 0,
+      "ended": "won",
+      "rules": [
+       "NODIFF"
+      ]
+     },
+     {
+      "level": 1,
+      "actions": 90,
+      "states": 19,
+      "resets": 0,
+      "exhausted": 21,
+      "ended": "won",
+      "rules": [
+       "NODIFF"
+      ]
+     },
+     {
+      "level": 2,
+      "actions": 898,
+      "states": 107,
+      "resets": 0,
+      "exhausted": 32,
+      "ended": "won",
+      "rules": [
+       "NODIFF"
+      ]
+     },
+     {
+      "level": 3,
+      "actions": 1001,
+      "states": 73,
+      "resets": 0,
+      "exhausted": 9,
+      "ended": "won",
+      "rules": [
+       "onecol:15",
+       "onerow:15",
+       "pieces:15=1",
+       "samecount:12,15",
+       "samecount:14,15",
+       "samecount:4,15",
+       "samecount:9,15",
+       "changed-colour in 1 pieces",
+       "changed-colour in one col",
+       "changed-colour in one row",
+       "samecount: changed-colour with fixed-colour"
+      ]
+     },
+     {
+      "level": 4,
+      "actions": 822,
+      "states": 191,
+      "resets": 0,
+      "exhausted": 17,
+      "ended": "NOT_FINISHED"
+     }
+    ],
+    "card_levels": [
+     71,
+     93,
+     928,
+     1058,
+     850,
+     0,
+     0,
+     0,
+     0
+    ],
+    "card_baseline": [
+     19,
+     16,
+     34,
+     42,
+     123,
+     80,
+     14,
+     23,
+     111
+    ],
+    "card_scores": [
+     7.161,
+     2.96,
+     0.134,
+     0.158,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "nav": {
+     "counters": {
+      "avatar_found": 1,
+      "learn_presses": 22,
+      "replans": 77,
+      "step_ok": 110,
+      "step_bumped": 8,
+      "unblocked_changed": 2,
+      "deaths": 119,
+      "located_by_colour": 7,
+      "goal_recorded": 4,
+      "goal_targets": 5,
+      "frontier_exhausted": 31,
+      "waits": 27,
+      "fallback_frontier_exhausted": 4,
+      "obs_ok": 2021,
+      "obs_bumped": 580,
+      "goal_confirmed": 1,
+      "step_revalidated": 1
+     },
+     "eff": {
+      "2": [
+       0,
+       6
+      ],
+      "1": [
+       0,
+       -6
+      ],
+      "4": [
+       6,
+       0
+      ],
+      "3": [
+       -6,
+       0
+      ]
+     },
+     "learn": {
+      "1": {
+       "presses": 5,
+       "shift": [
+        0,
+        -6
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "2": {
+       "presses": 4,
+       "shift": [
+        0,
+        6
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "3": {
+       "presses": 7,
+       "shift": [
+        -6,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "4": {
+       "presses": 6,
+       "shift": [
+        6,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      }
+     },
+     "goal_hyps": [
+      14,
+      2
+     ],
+     "walls": [
+      5
+     ],
+     "deadly": [
+      5,
+      12
+     ],
+     "avoid_near": [],
+     "co_movers": {
+      "12": 104,
+      "15": 101,
+      "4": 46,
+      "8": 3
+     },
+     "key_presses_sampled": 588,
+     "levels": [
+      {
+       "level": 0,
+       "nav_steps": 70,
+       "ok": 43,
+       "bumped": 2,
+       "mispredict": 0,
+       "goal_targets": 0,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 31,
+       "fallback": null,
+       "localise": 2,
+       "learn": 22,
+       "goal": [
+        14,
+        2
+       ]
+      },
+      {
+       "level": 1,
+       "nav_steps": 25,
+       "ok": 50,
+       "bumped": 34,
+       "mispredict": 0,
+       "goal_targets": 2,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 0,
+       "fallback": "frontier_exhausted",
+       "localise": 4,
+       "waits": 12,
+       "goal_confirmed": 14,
+       "goal": [
+        14,
+        2
+       ]
+      },
+      {
+       "level": 2,
+       "nav_steps": 13,
+       "ok": 702,
+       "bumped": 159,
+       "mispredict": 0,
+       "goal_targets": 0,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 7,
+       "fallback": "frontier_exhausted",
+       "localise": 1,
+       "goal": [
+        14,
+        2
+       ]
+      },
+      {
+       "level": 3,
+       "nav_steps": 16,
+       "ok": 794,
+       "bumped": 143,
+       "mispredict": 0,
+       "goal_targets": 2,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 1,
+       "fallback": "frontier_exhausted",
+       "localise": 4,
+       "waits": 3,
+       "goal": [
+        14,
+        2
+       ]
+      },
+      {
+       "level": 4,
+       "nav_steps": 32,
+       "ok": 542,
+       "bumped": 250,
+       "mispredict": 0,
+       "goal_targets": 1,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 2,
+       "fallback": "frontier_exhausted",
+       "localise": 4,
+       "waits": 12
+      }
+     ]
+    }
+   },
+   "n_actions": 3000
+  },
+  "tu93/1000/REF": {
+   "row": {
+    "diag": {
+     "state_NOT_FINISHED": 2881,
+     "nav_steps": 156,
+     "acts": 2881,
+     "changed": 2327,
+     "key": 2881,
+     "key_changed": 2327,
+     "new_state": 501,
+     "state_GAME_OVER": 119
+    },
+    "effects": {},
+    "chose": null,
+    "trials": {},
+    "game": "tu93",
+    "actions": 3000,
+    "levels": 4,
+    "state": "NOT_FINISHED",
+    "states_seen": 427,
+    "score": 0.3136,
+    "level_log": [
+     {
+      "level": 0,
+      "actions": 70,
+      "states": 37,
+      "resets": 0,
+      "exhausted": 0,
+      "ended": "won",
+      "rules": [
+       "NODIFF"
+      ]
+     },
+     {
+      "level": 1,
+      "actions": 90,
+      "states": 19,
+      "resets": 0,
+      "exhausted": 21,
+      "ended": "won",
+      "rules": [
+       "NODIFF"
+      ]
+     },
+     {
+      "level": 2,
+      "actions": 898,
+      "states": 107,
+      "resets": 0,
+      "exhausted": 32,
+      "ended": "won",
+      "rules": [
+       "NODIFF"
+      ]
+     },
+     {
+      "level": 3,
+      "actions": 1001,
+      "states": 73,
+      "resets": 0,
+      "exhausted": 9,
+      "ended": "won",
+      "rules": [
+       "onecol:15",
+       "onerow:15",
+       "pieces:15=1",
+       "samecount:12,15",
+       "samecount:14,15",
+       "samecount:4,15",
+       "samecount:9,15",
+       "changed-colour in 1 pieces",
+       "changed-colour in one col",
+       "changed-colour in one row",
+       "samecount: changed-colour with fixed-colour"
+      ]
+     },
+     {
+      "level": 4,
+      "actions": 822,
+      "states": 191,
+      "resets": 0,
+      "exhausted": 17,
+      "ended": "NOT_FINISHED"
+     }
+    ],
+    "card_levels": [
+     71,
+     93,
+     928,
+     1058,
+     850,
+     0,
+     0,
+     0,
+     0
+    ],
+    "card_baseline": [
+     19,
+     16,
+     34,
+     42,
+     123,
+     80,
+     14,
+     23,
+     111
+    ],
+    "card_scores": [
+     7.161,
+     2.96,
+     0.134,
+     0.158,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "nav": {
+     "counters": {
+      "avatar_found": 1,
+      "learn_presses": 22,
+      "replans": 77,
+      "step_ok": 110,
+      "step_bumped": 8,
+      "unblocked_changed": 2,
+      "deaths": 119,
+      "located_by_colour": 7,
+      "goal_recorded": 4,
+      "goal_targets": 5,
+      "frontier_exhausted": 31,
+      "waits": 27,
+      "fallback_frontier_exhausted": 4,
+      "obs_ok": 2021,
+      "obs_bumped": 580,
+      "goal_confirmed": 1,
+      "step_revalidated": 1
+     },
+     "eff": {
+      "2": [
+       0,
+       6
+      ],
+      "1": [
+       0,
+       -6
+      ],
+      "4": [
+       6,
+       0
+      ],
+      "3": [
+       -6,
+       0
+      ]
+     },
+     "learn": {
+      "1": {
+       "presses": 5,
+       "shift": [
+        0,
+        -6
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "2": {
+       "presses": 4,
+       "shift": [
+        0,
+        6
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "3": {
+       "presses": 7,
+       "shift": [
+        -6,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "4": {
+       "presses": 6,
+       "shift": [
+        6,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      }
+     },
+     "goal_hyps": [
+      14,
+      2
+     ],
+     "walls": [
+      5
+     ],
+     "deadly": [
+      5,
+      12
+     ],
+     "avoid_near": [],
+     "co_movers": {
+      "12": 104,
+      "15": 101,
+      "4": 46,
+      "8": 3
+     },
+     "key_presses_sampled": 588,
+     "levels": [
+      {
+       "level": 0,
+       "nav_steps": 70,
+       "ok": 43,
+       "bumped": 2,
+       "mispredict": 0,
+       "goal_targets": 0,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 31,
+       "fallback": null,
+       "localise": 2,
+       "learn": 22,
+       "goal": [
+        14,
+        2
+       ]
+      },
+      {
+       "level": 1,
+       "nav_steps": 25,
+       "ok": 50,
+       "bumped": 34,
+       "mispredict": 0,
+       "goal_targets": 2,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 0,
+       "fallback": "frontier_exhausted",
+       "localise": 4,
+       "waits": 12,
+       "goal_confirmed": 14,
+       "goal": [
+        14,
+        2
+       ]
+      },
+      {
+       "level": 2,
+       "nav_steps": 13,
+       "ok": 702,
+       "bumped": 159,
+       "mispredict": 0,
+       "goal_targets": 0,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 7,
+       "fallback": "frontier_exhausted",
+       "localise": 1,
+       "goal": [
+        14,
+        2
+       ]
+      },
+      {
+       "level": 3,
+       "nav_steps": 16,
+       "ok": 794,
+       "bumped": 143,
+       "mispredict": 0,
+       "goal_targets": 2,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 1,
+       "fallback": "frontier_exhausted",
+       "localise": 4,
+       "waits": 3,
+       "goal": [
+        14,
+        2
+       ]
+      },
+      {
+       "level": 4,
+       "nav_steps": 32,
+       "ok": 542,
+       "bumped": 250,
+       "mispredict": 0,
+       "goal_targets": 1,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 2,
+       "fallback": "frontier_exhausted",
+       "localise": 4,
+       "waits": 12
+      }
+     ]
+    }
+   },
+   "n_actions": 3000
+  },
+  "tu93/1000/NAV": {
+   "row": {
+    "diag": {
+     "state_NOT_FINISHED": 2881,
+     "nav_steps": 156,
+     "acts": 2881,
+     "changed": 2327,
+     "key": 2881,
+     "key_changed": 2327,
+     "new_state": 501,
+     "state_GAME_OVER": 119
+    },
+    "effects": {},
+    "chose": null,
+    "trials": {},
+    "game": "tu93",
+    "actions": 3000,
+    "levels": 4,
+    "state": "NOT_FINISHED",
+    "states_seen": 427,
+    "score": 0.3136,
+    "level_log": [
+     {
+      "level": 0,
+      "actions": 70,
+      "states": 37,
+      "resets": 0,
+      "exhausted": 0,
+      "ended": "won",
+      "rules": [
+       "NODIFF"
+      ]
+     },
+     {
+      "level": 1,
+      "actions": 90,
+      "states": 19,
+      "resets": 0,
+      "exhausted": 21,
+      "ended": "won",
+      "rules": [
+       "NODIFF"
+      ]
+     },
+     {
+      "level": 2,
+      "actions": 898,
+      "states": 107,
+      "resets": 0,
+      "exhausted": 32,
+      "ended": "won",
+      "rules": [
+       "NODIFF"
+      ]
+     },
+     {
+      "level": 3,
+      "actions": 1001,
+      "states": 73,
+      "resets": 0,
+      "exhausted": 9,
+      "ended": "won",
+      "rules": [
+       "onecol:15",
+       "onerow:15",
+       "pieces:15=1",
+       "samecount:12,15",
+       "samecount:14,15",
+       "samecount:4,15",
+       "samecount:9,15",
+       "changed-colour in 1 pieces",
+       "changed-colour in one col",
+       "changed-colour in one row",
+       "samecount: changed-colour with fixed-colour"
+      ]
+     },
+     {
+      "level": 4,
+      "actions": 822,
+      "states": 191,
+      "resets": 0,
+      "exhausted": 17,
+      "ended": "NOT_FINISHED"
+     }
+    ],
+    "card_levels": [
+     71,
+     93,
+     928,
+     1058,
+     850,
+     0,
+     0,
+     0,
+     0
+    ],
+    "card_baseline": [
+     19,
+     16,
+     34,
+     42,
+     123,
+     80,
+     14,
+     23,
+     111
+    ],
+    "card_scores": [
+     7.161,
+     2.96,
+     0.134,
+     0.158,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "nav": {
+     "counters": {
+      "avatar_found": 1,
+      "learn_presses": 22,
+      "replans": 77,
+      "step_ok": 110,
+      "step_bumped": 8,
+      "unblocked_changed": 2,
+      "deaths": 119,
+      "located_by_colour": 7,
+      "goal_recorded": 4,
+      "goal_targets": 5,
+      "frontier_exhausted": 31,
+      "waits": 27,
+      "fallback_frontier_exhausted": 4,
+      "obs_ok": 2021,
+      "obs_bumped": 580,
+      "goal_confirmed": 1,
+      "step_revalidated": 1
+     },
+     "eff": {
+      "2": [
+       0,
+       6
+      ],
+      "1": [
+       0,
+       -6
+      ],
+      "4": [
+       6,
+       0
+      ],
+      "3": [
+       -6,
+       0
+      ]
+     },
+     "learn": {
+      "1": {
+       "presses": 5,
+       "shift": [
+        0,
+        -6
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "2": {
+       "presses": 4,
+       "shift": [
+        0,
+        6
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "3": {
+       "presses": 7,
+       "shift": [
+        -6,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "4": {
+       "presses": 6,
+       "shift": [
+        6,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      }
+     },
+     "goal_hyps": [
+      14,
+      2
+     ],
+     "walls": [
+      5
+     ],
+     "deadly": [
+      5,
+      12
+     ],
+     "avoid_near": [],
+     "co_movers": {
+      "12": 104,
+      "15": 101,
+      "4": 46,
+      "8": 3
+     },
+     "key_presses_sampled": 588,
+     "levels": [
+      {
+       "level": 0,
+       "nav_steps": 70,
+       "ok": 43,
+       "bumped": 2,
+       "mispredict": 0,
+       "goal_targets": 0,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 31,
+       "fallback": null,
+       "localise": 2,
+       "learn": 22,
+       "goal": [
+        14,
+        2
+       ]
+      },
+      {
+       "level": 1,
+       "nav_steps": 25,
+       "ok": 50,
+       "bumped": 34,
+       "mispredict": 0,
+       "goal_targets": 2,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 0,
+       "fallback": "frontier_exhausted",
+       "localise": 4,
+       "waits": 12,
+       "goal_confirmed": 14,
+       "goal": [
+        14,
+        2
+       ]
+      },
+      {
+       "level": 2,
+       "nav_steps": 13,
+       "ok": 702,
+       "bumped": 159,
+       "mispredict": 0,
+       "goal_targets": 0,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 7,
+       "fallback": "frontier_exhausted",
+       "localise": 1,
+       "goal": [
+        14,
+        2
+       ]
+      },
+      {
+       "level": 3,
+       "nav_steps": 16,
+       "ok": 794,
+       "bumped": 143,
+       "mispredict": 0,
+       "goal_targets": 2,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 1,
+       "fallback": "frontier_exhausted",
+       "localise": 4,
+       "waits": 3,
+       "goal": [
+        14,
+        2
+       ]
+      },
+      {
+       "level": 4,
+       "nav_steps": 32,
+       "ok": 542,
+       "bumped": 250,
+       "mispredict": 0,
+       "goal_targets": 1,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 2,
+       "fallback": "frontier_exhausted",
+       "localise": 4,
+       "waits": 12
+      }
+     ]
+    }
+   },
+   "n_actions": 3000
+  },
+  "tu93/1001/REF": {
+   "row": {
+    "diag": {
+     "state_NOT_FINISHED": 2897,
+     "nav_steps": 111,
+     "acts": 2889,
+     "changed": 1896,
+     "key": 2889,
+     "key_changed": 1896,
+     "new_state": 219,
+     "state_GAME_OVER": 103
+    },
+    "effects": {},
+    "chose": null,
+    "trials": {},
+    "game": "tu93",
+    "actions": 3000,
+    "levels": 2,
+    "state": "NOT_FINISHED",
+    "states_seen": 155,
+    "score": 0.1796,
+    "level_log": [
+     {
+      "level": 0,
+      "actions": 70,
+      "states": 36,
+      "resets": 0,
+      "exhausted": 0,
+      "ended": "won",
+      "rules": [
+       "NODIFF"
+      ]
+     },
+     {
+      "level": 1,
+      "actions": 229,
+      "states": 18,
+      "resets": 0,
+      "exhausted": 151,
+      "ended": "won",
+      "rules": [
+       "NODIFF"
+      ]
+     },
+     {
+      "level": 2,
+      "actions": 2590,
+      "states": 101,
+      "resets": 8,
+      "exhausted": 1619,
+      "ended": "NOT_FINISHED"
+     }
+    ],
+    "card_levels": [
+     71,
+     236,
+     2693,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "card_baseline": [
+     19,
+     16,
+     34,
+     42,
+     123,
+     80,
+     14,
+     23,
+     111
+    ],
+    "card_scores": [
+     7.161,
+     0.46,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "nav": {
+     "counters": {
+      "avatar_found": 1,
+      "learn_presses": 22,
+      "replans": 53,
+      "step_ok": 73,
+      "step_bumped": 4,
+      "unblocked_changed": 1,
+      "deaths": 103,
+      "located_by_colour": 3,
+      "goal_recorded": 2,
+      "goal_targets": 2,
+      "frontier_exhausted": 14,
+      "waits": 12,
+      "fallback_frontier_exhausted": 2,
+      "obs_bumped": 811,
+      "obs_ok": 1639,
+      "goal_confirmed": 1
+     },
+     "eff": {
+      "2": [
+       0,
+       6
+      ],
+      "1": [
+       0,
+       -6
+      ],
+      "4": [
+       6,
+       0
+      ],
+      "3": [
+       -6,
+       0
+      ]
+     },
+     "learn": {
+      "1": {
+       "presses": 5,
+       "shift": [
+        0,
+        -6
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "2": {
+       "presses": 4,
+       "shift": [
+        0,
+        6
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "3": {
+       "presses": 7,
+       "shift": [
+        -6,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "4": {
+       "presses": 6,
+       "shift": [
+        6,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      }
+     },
+     "goal_hyps": [
+      14,
+      2
+     ],
+     "walls": [
+      5
+     ],
+     "deadly": [
+      5
+     ],
+     "avoid_near": [],
+     "co_movers": {
+      "4": 45,
+      "8": 4,
+      "14": 1
+     },
+     "key_presses_sampled": 348,
+     "levels": [
+      {
+       "level": 0,
+       "nav_steps": 70,
+       "ok": 42,
+       "bumped": 2,
+       "mispredict": 0,
+       "goal_targets": 0,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 30,
+       "fallback": null,
+       "localise": 3,
+       "learn": 22,
+       "goal": [
+        14,
+        2
+       ]
+      },
+      {
+       "level": 1,
+       "nav_steps": 25,
+       "ok": 120,
+       "bumped": 93,
+       "mispredict": 0,
+       "goal_targets": 2,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 0,
+       "fallback": "frontier_exhausted",
+       "localise": 4,
+       "waits": 12,
+       "goal_confirmed": 14,
+       "goal": [
+        14,
+        2
+       ]
+      },
+      {
+       "level": 2,
+       "nav_steps": 16,
+       "ok": 1550,
+       "bumped": 720,
+       "mispredict": 0,
+       "goal_targets": 0,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 7,
+       "fallback": "frontier_exhausted",
+       "localise": 4
+      }
+     ]
+    }
+   },
+   "n_actions": 3000
+  },
+  "tu93/1001/NAV": {
+   "row": {
+    "diag": {
+     "state_NOT_FINISHED": 2897,
+     "nav_steps": 111,
+     "acts": 2889,
+     "changed": 1896,
+     "key": 2889,
+     "key_changed": 1896,
+     "new_state": 219,
+     "state_GAME_OVER": 103
+    },
+    "effects": {},
+    "chose": null,
+    "trials": {},
+    "game": "tu93",
+    "actions": 3000,
+    "levels": 2,
+    "state": "NOT_FINISHED",
+    "states_seen": 155,
+    "score": 0.1796,
+    "level_log": [
+     {
+      "level": 0,
+      "actions": 70,
+      "states": 36,
+      "resets": 0,
+      "exhausted": 0,
+      "ended": "won",
+      "rules": [
+       "NODIFF"
+      ]
+     },
+     {
+      "level": 1,
+      "actions": 229,
+      "states": 18,
+      "resets": 0,
+      "exhausted": 151,
+      "ended": "won",
+      "rules": [
+       "NODIFF"
+      ]
+     },
+     {
+      "level": 2,
+      "actions": 2590,
+      "states": 101,
+      "resets": 8,
+      "exhausted": 1619,
+      "ended": "NOT_FINISHED"
+     }
+    ],
+    "card_levels": [
+     71,
+     236,
+     2693,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "card_baseline": [
+     19,
+     16,
+     34,
+     42,
+     123,
+     80,
+     14,
+     23,
+     111
+    ],
+    "card_scores": [
+     7.161,
+     0.46,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "nav": {
+     "counters": {
+      "avatar_found": 1,
+      "learn_presses": 22,
+      "replans": 53,
+      "step_ok": 73,
+      "step_bumped": 4,
+      "unblocked_changed": 1,
+      "deaths": 103,
+      "located_by_colour": 3,
+      "goal_recorded": 2,
+      "goal_targets": 2,
+      "frontier_exhausted": 14,
+      "waits": 12,
+      "fallback_frontier_exhausted": 2,
+      "obs_bumped": 811,
+      "obs_ok": 1639,
+      "goal_confirmed": 1
+     },
+     "eff": {
+      "2": [
+       0,
+       6
+      ],
+      "1": [
+       0,
+       -6
+      ],
+      "4": [
+       6,
+       0
+      ],
+      "3": [
+       -6,
+       0
+      ]
+     },
+     "learn": {
+      "1": {
+       "presses": 5,
+       "shift": [
+        0,
+        -6
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "2": {
+       "presses": 4,
+       "shift": [
+        0,
+        6
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "3": {
+       "presses": 7,
+       "shift": [
+        -6,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "4": {
+       "presses": 6,
+       "shift": [
+        6,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      }
+     },
+     "goal_hyps": [
+      14,
+      2
+     ],
+     "walls": [
+      5
+     ],
+     "deadly": [
+      5
+     ],
+     "avoid_near": [],
+     "co_movers": {
+      "4": 45,
+      "8": 4,
+      "14": 1
+     },
+     "key_presses_sampled": 348,
+     "levels": [
+      {
+       "level": 0,
+       "nav_steps": 70,
+       "ok": 42,
+       "bumped": 2,
+       "mispredict": 0,
+       "goal_targets": 0,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 30,
+       "fallback": null,
+       "localise": 3,
+       "learn": 22,
+       "goal": [
+        14,
+        2
+       ]
+      },
+      {
+       "level": 1,
+       "nav_steps": 25,
+       "ok": 120,
+       "bumped": 93,
+       "mispredict": 0,
+       "goal_targets": 2,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 0,
+       "fallback": "frontier_exhausted",
+       "localise": 4,
+       "waits": 12,
+       "goal_confirmed": 14,
+       "goal": [
+        14,
+        2
+       ]
+      },
+      {
+       "level": 2,
+       "nav_steps": 16,
+       "ok": 1550,
+       "bumped": 720,
+       "mispredict": 0,
+       "goal_targets": 0,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 7,
+       "fallback": "frontier_exhausted",
+       "localise": 4
+      }
+     ]
+    }
+   },
+   "n_actions": 3000
+  },
+  "tu93/1001/OFF": {
+   "row": {
+    "diag": {
+     "state_NOT_FINISHED": 2897,
+     "nav_steps": 111,
+     "acts": 2889,
+     "changed": 1896,
+     "key": 2889,
+     "key_changed": 1896,
+     "new_state": 219,
+     "state_GAME_OVER": 103
+    },
+    "effects": {},
+    "chose": null,
+    "trials": {},
+    "game": "tu93",
+    "actions": 3000,
+    "levels": 2,
+    "state": "NOT_FINISHED",
+    "states_seen": 155,
+    "score": 0.1796,
+    "level_log": [
+     {
+      "level": 0,
+      "actions": 70,
+      "states": 36,
+      "resets": 0,
+      "exhausted": 0,
+      "ended": "won",
+      "rules": [
+       "NODIFF"
+      ]
+     },
+     {
+      "level": 1,
+      "actions": 229,
+      "states": 18,
+      "resets": 0,
+      "exhausted": 151,
+      "ended": "won",
+      "rules": [
+       "NODIFF"
+      ]
+     },
+     {
+      "level": 2,
+      "actions": 2590,
+      "states": 101,
+      "resets": 8,
+      "exhausted": 1619,
+      "ended": "NOT_FINISHED"
+     }
+    ],
+    "card_levels": [
+     71,
+     236,
+     2693,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "card_baseline": [
+     19,
+     16,
+     34,
+     42,
+     123,
+     80,
+     14,
+     23,
+     111
+    ],
+    "card_scores": [
+     7.161,
+     0.46,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "nav": {
+     "counters": {
+      "avatar_found": 1,
+      "learn_presses": 22,
+      "replans": 53,
+      "step_ok": 73,
+      "step_bumped": 4,
+      "unblocked_changed": 1,
+      "deaths": 103,
+      "located_by_colour": 3,
+      "goal_recorded": 2,
+      "goal_targets": 2,
+      "frontier_exhausted": 14,
+      "waits": 12,
+      "fallback_frontier_exhausted": 2,
+      "obs_bumped": 811,
+      "obs_ok": 1639,
+      "goal_confirmed": 1
+     },
+     "eff": {
+      "2": [
+       0,
+       6
+      ],
+      "1": [
+       0,
+       -6
+      ],
+      "4": [
+       6,
+       0
+      ],
+      "3": [
+       -6,
+       0
+      ]
+     },
+     "learn": {
+      "1": {
+       "presses": 5,
+       "shift": [
+        0,
+        -6
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "2": {
+       "presses": 4,
+       "shift": [
+        0,
+        6
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "3": {
+       "presses": 7,
+       "shift": [
+        -6,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "4": {
+       "presses": 6,
+       "shift": [
+        6,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      }
+     },
+     "goal_hyps": [
+      14,
+      2
+     ],
+     "walls": [
+      5
+     ],
+     "deadly": [
+      5
+     ],
+     "avoid_near": [],
+     "co_movers": {
+      "4": 45,
+      "8": 4,
+      "14": 1
+     },
+     "key_presses_sampled": 348,
+     "levels": [
+      {
+       "level": 0,
+       "nav_steps": 70,
+       "ok": 42,
+       "bumped": 2,
+       "mispredict": 0,
+       "goal_targets": 0,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 30,
+       "fallback": null,
+       "localise": 3,
+       "learn": 22,
+       "goal": [
+        14,
+        2
+       ]
+      },
+      {
+       "level": 1,
+       "nav_steps": 25,
+       "ok": 120,
+       "bumped": 93,
+       "mispredict": 0,
+       "goal_targets": 2,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 0,
+       "fallback": "frontier_exhausted",
+       "localise": 4,
+       "waits": 12,
+       "goal_confirmed": 14,
+       "goal": [
+        14,
+        2
+       ]
+      },
+      {
+       "level": 2,
+       "nav_steps": 16,
+       "ok": 1550,
+       "bumped": 720,
+       "mispredict": 0,
+       "goal_targets": 0,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 7,
+       "fallback": "frontier_exhausted",
+       "localise": 4
+      }
+     ]
+    }
+   },
+   "n_actions": 3000
+  },
+  "dc22/1001/REF": {
+   "row": {
+    "diag": {
+     "state_NOT_FINISHED": 2978,
+     "nav_steps": 22,
+     "acts": 2968,
+     "changed": 1274,
+     "key": 1427,
+     "key_changed": 1014,
+     "new_state": 86,
+     "click": 1541,
+     "click_changed": 260,
+     "state_GAME_OVER": 22
+    },
+    "effects": {},
+    "chose": null,
+    "trials": {},
+    "game": "dc22",
+    "actions": 3000,
+    "levels": 0,
+    "state": "NOT_FINISHED",
+    "states_seen": 81,
+    "score": 0.0,
+    "level_log": [
+     {
+      "level": 0,
+      "actions": 2968,
+      "states": 81,
+      "resets": 10,
+      "exhausted": 2077,
+      "ended": "NOT_FINISHED"
+     }
+    ],
+    "card_levels": [
+     3000,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "card_baseline": [
+     59,
+     102,
+     67,
+     98,
+     324,
+     578
+    ],
+    "card_scores": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "nav": {
+     "counters": {
+      "avatar_found": 1,
+      "learn_presses": 12,
+      "located_by_colour": 1,
+      "replans": 11,
+      "step_ok": 8,
+      "step_bumped": 2,
+      "frontier_exhausted": 1,
+      "fallback_frontier_exhausted": 1,
+      "obs_bumped": 411,
+      "obs_ok": 963,
+      "wall_contradicted": 1,
+      "deaths": 13
+     },
+     "eff": {
+      "1": [
+       0,
+       -2
+      ],
+      "2": [
+       0,
+       2
+      ],
+      "3": [
+       -2,
+       0
+      ],
+      "4": [
+       2,
+       0
+      ]
+     },
+     "learn": {
+      "1": {
+       "presses": 3,
+       "shift": [
+        0,
+        -2
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "2": {
+       "presses": 3,
+       "shift": [
+        0,
+        2
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "3": {
+       "presses": 3,
+       "shift": [
+        -2,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "4": {
+       "presses": 3,
+       "shift": [
+        2,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      }
+     },
+     "goal_hyps": [],
+     "walls": [
+      4
+     ],
+     "deadly": [
+      4
+     ],
+     "avoid_near": [],
+     "co_movers": {},
+     "key_presses_sampled": 150,
+     "levels": [
+      {
+       "level": 0,
+       "nav_steps": 22,
+       "ok": 971,
+       "bumped": 413,
+       "mispredict": 0,
+       "goal_targets": 0,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 10,
+       "fallback": "frontier_exhausted",
+       "localise": 0,
+       "learn": 12
+      }
+     ]
+    }
+   },
+   "n_actions": 3000
+  },
+  "dc22/1001/NAV": {
+   "row": {
+    "diag": {
+     "state_NOT_FINISHED": 2978,
+     "nav_steps": 22,
+     "acts": 2968,
+     "changed": 1274,
+     "key": 1427,
+     "key_changed": 1014,
+     "new_state": 86,
+     "click": 1541,
+     "click_changed": 260,
+     "state_GAME_OVER": 22
+    },
+    "effects": {},
+    "chose": null,
+    "trials": {},
+    "game": "dc22",
+    "actions": 3000,
+    "levels": 0,
+    "state": "NOT_FINISHED",
+    "states_seen": 81,
+    "score": 0.0,
+    "level_log": [
+     {
+      "level": 0,
+      "actions": 2968,
+      "states": 81,
+      "resets": 10,
+      "exhausted": 2077,
+      "ended": "NOT_FINISHED"
+     }
+    ],
+    "card_levels": [
+     3000,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "card_baseline": [
+     59,
+     102,
+     67,
+     98,
+     324,
+     578
+    ],
+    "card_scores": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "nav": {
+     "counters": {
+      "avatar_found": 1,
+      "learn_presses": 12,
+      "located_by_colour": 1,
+      "replans": 11,
+      "step_ok": 8,
+      "step_bumped": 2,
+      "frontier_exhausted": 1,
+      "fallback_frontier_exhausted": 1,
+      "obs_bumped": 411,
+      "obs_ok": 963,
+      "wall_contradicted": 1,
+      "deaths": 13
+     },
+     "eff": {
+      "1": [
+       0,
+       -2
+      ],
+      "2": [
+       0,
+       2
+      ],
+      "3": [
+       -2,
+       0
+      ],
+      "4": [
+       2,
+       0
+      ]
+     },
+     "learn": {
+      "1": {
+       "presses": 3,
+       "shift": [
+        0,
+        -2
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "2": {
+       "presses": 3,
+       "shift": [
+        0,
+        2
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "3": {
+       "presses": 3,
+       "shift": [
+        -2,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "4": {
+       "presses": 3,
+       "shift": [
+        2,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      }
+     },
+     "goal_hyps": [],
+     "walls": [
+      4
+     ],
+     "deadly": [
+      4
+     ],
+     "avoid_near": [],
+     "co_movers": {},
+     "key_presses_sampled": 150,
+     "levels": [
+      {
+       "level": 0,
+       "nav_steps": 22,
+       "ok": 971,
+       "bumped": 413,
+       "mispredict": 0,
+       "goal_targets": 0,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 10,
+       "fallback": "frontier_exhausted",
+       "localise": 0,
+       "learn": 12
+      }
+     ]
+    }
+   },
+   "n_actions": 3000
+  },
+  "dc22/1001/OFF": {
+   "row": {
+    "diag": {
+     "state_NOT_FINISHED": 2978,
+     "nav_steps": 22,
+     "acts": 2968,
+     "changed": 1274,
+     "key": 1427,
+     "key_changed": 1014,
+     "new_state": 86,
+     "click": 1541,
+     "click_changed": 260,
+     "state_GAME_OVER": 22
+    },
+    "effects": {},
+    "chose": null,
+    "trials": {},
+    "game": "dc22",
+    "actions": 3000,
+    "levels": 0,
+    "state": "NOT_FINISHED",
+    "states_seen": 81,
+    "score": 0.0,
+    "level_log": [
+     {
+      "level": 0,
+      "actions": 2968,
+      "states": 81,
+      "resets": 10,
+      "exhausted": 2077,
+      "ended": "NOT_FINISHED"
+     }
+    ],
+    "card_levels": [
+     3000,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "card_baseline": [
+     59,
+     102,
+     67,
+     98,
+     324,
+     578
+    ],
+    "card_scores": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "nav": {
+     "counters": {
+      "avatar_found": 1,
+      "learn_presses": 12,
+      "located_by_colour": 1,
+      "replans": 11,
+      "step_ok": 8,
+      "step_bumped": 2,
+      "frontier_exhausted": 1,
+      "fallback_frontier_exhausted": 1,
+      "obs_bumped": 411,
+      "obs_ok": 963,
+      "wall_contradicted": 1,
+      "deaths": 13
+     },
+     "eff": {
+      "1": [
+       0,
+       -2
+      ],
+      "2": [
+       0,
+       2
+      ],
+      "3": [
+       -2,
+       0
+      ],
+      "4": [
+       2,
+       0
+      ]
+     },
+     "learn": {
+      "1": {
+       "presses": 3,
+       "shift": [
+        0,
+        -2
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "2": {
+       "presses": 3,
+       "shift": [
+        0,
+        2
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "3": {
+       "presses": 3,
+       "shift": [
+        -2,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "4": {
+       "presses": 3,
+       "shift": [
+        2,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      }
+     },
+     "goal_hyps": [],
+     "walls": [
+      4
+     ],
+     "deadly": [
+      4
+     ],
+     "avoid_near": [],
+     "co_movers": {},
+     "key_presses_sampled": 150,
+     "levels": [
+      {
+       "level": 0,
+       "nav_steps": 22,
+       "ok": 971,
+       "bumped": 413,
+       "mispredict": 0,
+       "goal_targets": 0,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 10,
+       "fallback": "frontier_exhausted",
+       "localise": 0,
+       "learn": 12
+      }
+     ]
+    }
+   },
+   "n_actions": 3000
+  },
+  "ls20/1000/NAV": {
+   "row": {
+    "diag": {
+     "state_NOT_FINISHED": 2961,
+     "nav_steps": 211,
+     "acts": 2950,
+     "changed": 2948,
+     "key": 2950,
+     "key_changed": 2948,
+     "new_state": 188,
+     "state_GAME_OVER": 39
+    },
+    "effects": {},
+    "chose": null,
+    "trials": {},
+    "game": "ls20",
+    "actions": 3000,
+    "levels": 1,
+    "state": "NOT_FINISHED",
+    "states_seen": 159,
+    "score": 0.014,
+    "level_log": [
+     {
+      "level": 0,
+      "actions": 349,
+      "states": 109,
+      "resets": 0,
+      "exhausted": 0,
+      "ended": "won",
+      "rules": [
+       "pieces:3=4",
+       "pieces:8=2",
+       "samecount:3,5",
+       "touch:3,11",
+       "touch:5,12",
+       "changed-colour in 2 pieces",
+       "changed-colour in 4 pieces",
+       "samecount: changed-colour with changed-colour",
+       "touch: changed-colour with changed-colour",
+       "touch: changed-colour with fixed-colour"
+      ]
+     },
+     {
+      "level": 1,
+      "actions": 2601,
+      "states": 79,
+      "resets": 11,
+      "exhausted": 2314,
+      "ended": "NOT_FINISHED"
+     }
+    ],
+    "card_levels": [
+     351,
+     2649,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "card_baseline": [
+     22,
+     123,
+     73,
+     84,
+     96,
+     192,
+     186
+    ],
+    "card_scores": [
+     0.393,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "nav": {
+     "counters": {
+      "avatar_found": 1,
+      "learn_presses": 12,
+      "located_by_colour": 2,
+      "replans": 109,
+      "step_ok": 188,
+      "step_bumped": 4,
+      "step_mispredict": 4,
+      "frontier_exhausted": 26,
+      "waits": 24,
+      "fallback_frontier_exhausted": 2,
+      "obs_ok": 1544,
+      "obs_bumped": 1048,
+      "obs_mispredict": 63,
+      "deaths": 39,
+      "goal_recorded": 1,
+      "goal_targets": 2,
+      "goal_reached_no_end": 1,
+      "unblocked_changed": 1
+     },
+     "eff": {
+      "1": [
+       0,
+       -5
+      ],
+      "2": [
+       0,
+       5
+      ],
+      "3": [
+       -5,
+       0
+      ],
+      "4": [
+       5,
+       0
+      ]
+     },
+     "learn": {
+      "1": {
+       "presses": 3,
+       "shift": [
+        0,
+        -5
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "2": {
+       "presses": 3,
+       "shift": [
+        0,
+        5
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "3": {
+       "presses": 3,
+       "shift": [
+        -5,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "4": {
+       "presses": 3,
+       "shift": [
+        5,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      }
+     },
+     "goal_hyps": [
+      5
+     ],
+     "walls": [
+      4
+     ],
+     "deadly": [
+      4
+     ],
+     "avoid_near": [
+      5
+     ],
+     "co_movers": {},
+     "key_presses_sampled": 300,
+     "levels": [
+      {
+       "level": 0,
+       "nav_steps": 68,
+       "ok": 263,
+       "bumped": 66,
+       "mispredict": 5,
+       "goal_targets": 0,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 39,
+       "fallback": "frontier_exhausted",
+       "localise": 0,
+       "learn": 12,
+       "waits": 12,
+       "goal": [
+        5
+       ]
+      },
+      {
+       "level": 1,
+       "nav_steps": 143,
+       "ok": 1469,
+       "bumped": 986,
+       "mispredict": 62,
+       "goal_targets": 2,
+       "goal_reached_no_end": 1,
+       "frontier_targets": 42,
+       "fallback": "frontier_exhausted",
+       "localise": 3,
+       "waits": 12
+      }
+     ]
+    }
+   },
+   "n_actions": 3000
+  },
+  "ls20/1000/REF": {
+   "row": {
+    "diag": {
+     "state_NOT_FINISHED": 2961,
+     "nav_steps": 211,
+     "acts": 2950,
+     "changed": 2948,
+     "key": 2950,
+     "key_changed": 2948,
+     "new_state": 188,
+     "state_GAME_OVER": 39
+    },
+    "effects": {},
+    "chose": null,
+    "trials": {},
+    "game": "ls20",
+    "actions": 3000,
+    "levels": 1,
+    "state": "NOT_FINISHED",
+    "states_seen": 159,
+    "score": 0.014,
+    "level_log": [
+     {
+      "level": 0,
+      "actions": 349,
+      "states": 109,
+      "resets": 0,
+      "exhausted": 0,
+      "ended": "won",
+      "rules": [
+       "pieces:3=4",
+       "pieces:8=2",
+       "samecount:3,5",
+       "touch:3,11",
+       "touch:5,12",
+       "changed-colour in 2 pieces",
+       "changed-colour in 4 pieces",
+       "samecount: changed-colour with changed-colour",
+       "touch: changed-colour with changed-colour",
+       "touch: changed-colour with fixed-colour"
+      ]
+     },
+     {
+      "level": 1,
+      "actions": 2601,
+      "states": 79,
+      "resets": 11,
+      "exhausted": 2314,
+      "ended": "NOT_FINISHED"
+     }
+    ],
+    "card_levels": [
+     351,
+     2649,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "card_baseline": [
+     22,
+     123,
+     73,
+     84,
+     96,
+     192,
+     186
+    ],
+    "card_scores": [
+     0.393,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "nav": {
+     "counters": {
+      "avatar_found": 1,
+      "learn_presses": 12,
+      "located_by_colour": 2,
+      "replans": 109,
+      "step_ok": 188,
+      "step_bumped": 4,
+      "step_mispredict": 4,
+      "frontier_exhausted": 26,
+      "waits": 24,
+      "fallback_frontier_exhausted": 2,
+      "obs_ok": 1544,
+      "obs_bumped": 1048,
+      "obs_mispredict": 63,
+      "deaths": 39,
+      "goal_recorded": 1,
+      "goal_targets": 2,
+      "goal_reached_no_end": 1,
+      "unblocked_changed": 1
+     },
+     "eff": {
+      "1": [
+       0,
+       -5
+      ],
+      "2": [
+       0,
+       5
+      ],
+      "3": [
+       -5,
+       0
+      ],
+      "4": [
+       5,
+       0
+      ]
+     },
+     "learn": {
+      "1": {
+       "presses": 3,
+       "shift": [
+        0,
+        -5
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "2": {
+       "presses": 3,
+       "shift": [
+        0,
+        5
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "3": {
+       "presses": 3,
+       "shift": [
+        -5,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "4": {
+       "presses": 3,
+       "shift": [
+        5,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      }
+     },
+     "goal_hyps": [
+      5
+     ],
+     "walls": [
+      4
+     ],
+     "deadly": [
+      4
+     ],
+     "avoid_near": [
+      5
+     ],
+     "co_movers": {},
+     "key_presses_sampled": 300,
+     "levels": [
+      {
+       "level": 0,
+       "nav_steps": 68,
+       "ok": 263,
+       "bumped": 66,
+       "mispredict": 5,
+       "goal_targets": 0,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 39,
+       "fallback": "frontier_exhausted",
+       "localise": 0,
+       "learn": 12,
+       "waits": 12,
+       "goal": [
+        5
+       ]
+      },
+      {
+       "level": 1,
+       "nav_steps": 143,
+       "ok": 1469,
+       "bumped": 986,
+       "mispredict": 62,
+       "goal_targets": 2,
+       "goal_reached_no_end": 1,
+       "frontier_targets": 42,
+       "fallback": "frontier_exhausted",
+       "localise": 3,
+       "waits": 12
+      }
+     ]
+    }
+   },
+   "n_actions": 3000
+  },
+  "ls20/1000/OFF": {
+   "row": {
+    "diag": {
+     "state_NOT_FINISHED": 2961,
+     "nav_steps": 211,
+     "acts": 2950,
+     "changed": 2948,
+     "key": 2950,
+     "key_changed": 2948,
+     "new_state": 188,
+     "state_GAME_OVER": 39
+    },
+    "effects": {},
+    "chose": null,
+    "trials": {},
+    "game": "ls20",
+    "actions": 3000,
+    "levels": 1,
+    "state": "NOT_FINISHED",
+    "states_seen": 159,
+    "score": 0.014,
+    "level_log": [
+     {
+      "level": 0,
+      "actions": 349,
+      "states": 109,
+      "resets": 0,
+      "exhausted": 0,
+      "ended": "won",
+      "rules": [
+       "pieces:3=4",
+       "pieces:8=2",
+       "samecount:3,5",
+       "touch:3,11",
+       "touch:5,12",
+       "changed-colour in 2 pieces",
+       "changed-colour in 4 pieces",
+       "samecount: changed-colour with changed-colour",
+       "touch: changed-colour with changed-colour",
+       "touch: changed-colour with fixed-colour"
+      ]
+     },
+     {
+      "level": 1,
+      "actions": 2601,
+      "states": 79,
+      "resets": 11,
+      "exhausted": 2314,
+      "ended": "NOT_FINISHED"
+     }
+    ],
+    "card_levels": [
+     351,
+     2649,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "card_baseline": [
+     22,
+     123,
+     73,
+     84,
+     96,
+     192,
+     186
+    ],
+    "card_scores": [
+     0.393,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "nav": {
+     "counters": {
+      "avatar_found": 1,
+      "learn_presses": 12,
+      "located_by_colour": 2,
+      "replans": 109,
+      "step_ok": 188,
+      "step_bumped": 4,
+      "step_mispredict": 4,
+      "frontier_exhausted": 26,
+      "waits": 24,
+      "fallback_frontier_exhausted": 2,
+      "obs_ok": 1544,
+      "obs_bumped": 1048,
+      "obs_mispredict": 63,
+      "deaths": 39,
+      "goal_recorded": 1,
+      "goal_targets": 2,
+      "goal_reached_no_end": 1,
+      "unblocked_changed": 1
+     },
+     "eff": {
+      "1": [
+       0,
+       -5
+      ],
+      "2": [
+       0,
+       5
+      ],
+      "3": [
+       -5,
+       0
+      ],
+      "4": [
+       5,
+       0
+      ]
+     },
+     "learn": {
+      "1": {
+       "presses": 3,
+       "shift": [
+        0,
+        -5
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "2": {
+       "presses": 3,
+       "shift": [
+        0,
+        5
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "3": {
+       "presses": 3,
+       "shift": [
+        -5,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "4": {
+       "presses": 3,
+       "shift": [
+        5,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      }
+     },
+     "goal_hyps": [
+      5
+     ],
+     "walls": [
+      4
+     ],
+     "deadly": [
+      4
+     ],
+     "avoid_near": [
+      5
+     ],
+     "co_movers": {},
+     "key_presses_sampled": 300,
+     "levels": [
+      {
+       "level": 0,
+       "nav_steps": 68,
+       "ok": 263,
+       "bumped": 66,
+       "mispredict": 5,
+       "goal_targets": 0,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 39,
+       "fallback": "frontier_exhausted",
+       "localise": 0,
+       "learn": 12,
+       "waits": 12,
+       "goal": [
+        5
+       ]
+      },
+      {
+       "level": 1,
+       "nav_steps": 143,
+       "ok": 1469,
+       "bumped": 986,
+       "mispredict": 62,
+       "goal_targets": 2,
+       "goal_reached_no_end": 1,
+       "frontier_targets": 42,
+       "fallback": "frontier_exhausted",
+       "localise": 3,
+       "waits": 12
+      }
+     ]
+    }
+   },
+   "n_actions": 3000
+  },
+  "ls20/1001/REF": {
+   "row": {
+    "diag": {
+     "state_NOT_FINISHED": 2961,
+     "nav_steps": 210,
+     "acts": 2950,
+     "changed": 2948,
+     "key": 2950,
+     "key_changed": 2948,
+     "new_state": 174,
+     "state_GAME_OVER": 39
+    },
+    "effects": {},
+    "chose": null,
+    "trials": {},
+    "game": "ls20",
+    "actions": 3000,
+    "levels": 1,
+    "state": "NOT_FINISHED",
+    "states_seen": 144,
+    "score": 0.0354,
+    "level_log": [
+     {
+      "level": 0,
+      "actions": 220,
+      "states": 91,
+      "resets": 0,
+      "exhausted": 0,
+      "ended": "won",
+      "rules": [
+       "pieces:3=4",
+       "pieces:8=2",
+       "samecount:3,5",
+       "touch:5,12",
+       "changed-colour in 2 pieces",
+       "changed-colour in 4 pieces",
+       "samecount: changed-colour with changed-colour",
+       "touch: changed-colour with fixed-colour"
+      ]
+     },
+     {
+      "level": 1,
+      "actions": 2730,
+      "states": 82,
+      "resets": 11,
+      "exhausted": 2395,
+      "ended": "NOT_FINISHED"
+     }
+    ],
+    "card_levels": [
+     221,
+     2779,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "card_baseline": [
+     22,
+     123,
+     73,
+     84,
+     96,
+     192,
+     186
+    ],
+    "card_scores": [
+     0.991,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "nav": {
+     "counters": {
+      "avatar_found": 1,
+      "learn_presses": 12,
+      "located_by_colour": 2,
+      "replans": 109,
+      "step_ok": 188,
+      "step_bumped": 4,
+      "step_mispredict": 4,
+      "frontier_exhausted": 26,
+      "waits": 24,
+      "fallback_frontier_exhausted": 2,
+      "obs_bumped": 1068,
+      "obs_ok": 1531,
+      "obs_mispredict": 68,
+      "deaths": 39,
+      "goal_recorded": 1,
+      "goal_targets": 2,
+      "goal_reached_no_end": 1,
+      "unblocked_changed": 1
+     },
+     "eff": {
+      "1": [
+       0,
+       -5
+      ],
+      "2": [
+       0,
+       5
+      ],
+      "3": [
+       -5,
+       0
+      ],
+      "4": [
+       5,
+       0
+      ]
+     },
+     "learn": {
+      "1": {
+       "presses": 3,
+       "shift": [
+        0,
+        -5
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "2": {
+       "presses": 3,
+       "shift": [
+        0,
+        5
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "3": {
+       "presses": 3,
+       "shift": [
+        -5,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "4": {
+       "presses": 3,
+       "shift": [
+        5,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      }
+     },
+     "goal_hyps": [
+      5
+     ],
+     "walls": [
+      4
+     ],
+     "deadly": [
+      4
+     ],
+     "avoid_near": [
+      5
+     ],
+     "co_movers": {},
+     "key_presses_sampled": 300,
+     "levels": [
+      {
+       "level": 0,
+       "nav_steps": 68,
+       "ok": 169,
+       "bumped": 34,
+       "mispredict": 3,
+       "goal_targets": 0,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 39,
+       "fallback": "frontier_exhausted",
+       "localise": 0,
+       "learn": 12,
+       "waits": 12,
+       "goal": [
+        5
+       ]
+      },
+      {
+       "level": 1,
+       "nav_steps": 142,
+       "ok": 1550,
+       "bumped": 1038,
+       "mispredict": 69,
+       "goal_targets": 2,
+       "goal_reached_no_end": 1,
+       "frontier_targets": 42,
+       "fallback": "frontier_exhausted",
+       "localise": 2,
+       "waits": 12
+      }
+     ]
+    }
+   },
+   "n_actions": 3000
+  },
+  "ls20/1001/NAV": {
+   "row": {
+    "diag": {
+     "state_NOT_FINISHED": 2961,
+     "nav_steps": 210,
+     "acts": 2950,
+     "changed": 2948,
+     "key": 2950,
+     "key_changed": 2948,
+     "new_state": 174,
+     "state_GAME_OVER": 39
+    },
+    "effects": {},
+    "chose": null,
+    "trials": {},
+    "game": "ls20",
+    "actions": 3000,
+    "levels": 1,
+    "state": "NOT_FINISHED",
+    "states_seen": 144,
+    "score": 0.0354,
+    "level_log": [
+     {
+      "level": 0,
+      "actions": 220,
+      "states": 91,
+      "resets": 0,
+      "exhausted": 0,
+      "ended": "won",
+      "rules": [
+       "pieces:3=4",
+       "pieces:8=2",
+       "samecount:3,5",
+       "touch:5,12",
+       "changed-colour in 2 pieces",
+       "changed-colour in 4 pieces",
+       "samecount: changed-colour with changed-colour",
+       "touch: changed-colour with fixed-colour"
+      ]
+     },
+     {
+      "level": 1,
+      "actions": 2730,
+      "states": 82,
+      "resets": 11,
+      "exhausted": 2395,
+      "ended": "NOT_FINISHED"
+     }
+    ],
+    "card_levels": [
+     221,
+     2779,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "card_baseline": [
+     22,
+     123,
+     73,
+     84,
+     96,
+     192,
+     186
+    ],
+    "card_scores": [
+     0.991,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "nav": {
+     "counters": {
+      "avatar_found": 1,
+      "learn_presses": 12,
+      "located_by_colour": 2,
+      "replans": 109,
+      "step_ok": 188,
+      "step_bumped": 4,
+      "step_mispredict": 4,
+      "frontier_exhausted": 26,
+      "waits": 24,
+      "fallback_frontier_exhausted": 2,
+      "obs_bumped": 1068,
+      "obs_ok": 1531,
+      "obs_mispredict": 68,
+      "deaths": 39,
+      "goal_recorded": 1,
+      "goal_targets": 2,
+      "goal_reached_no_end": 1,
+      "unblocked_changed": 1
+     },
+     "eff": {
+      "1": [
+       0,
+       -5
+      ],
+      "2": [
+       0,
+       5
+      ],
+      "3": [
+       -5,
+       0
+      ],
+      "4": [
+       5,
+       0
+      ]
+     },
+     "learn": {
+      "1": {
+       "presses": 3,
+       "shift": [
+        0,
+        -5
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "2": {
+       "presses": 3,
+       "shift": [
+        0,
+        5
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "3": {
+       "presses": 3,
+       "shift": [
+        -5,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "4": {
+       "presses": 3,
+       "shift": [
+        5,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      }
+     },
+     "goal_hyps": [
+      5
+     ],
+     "walls": [
+      4
+     ],
+     "deadly": [
+      4
+     ],
+     "avoid_near": [
+      5
+     ],
+     "co_movers": {},
+     "key_presses_sampled": 300,
+     "levels": [
+      {
+       "level": 0,
+       "nav_steps": 68,
+       "ok": 169,
+       "bumped": 34,
+       "mispredict": 3,
+       "goal_targets": 0,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 39,
+       "fallback": "frontier_exhausted",
+       "localise": 0,
+       "learn": 12,
+       "waits": 12,
+       "goal": [
+        5
+       ]
+      },
+      {
+       "level": 1,
+       "nav_steps": 142,
+       "ok": 1550,
+       "bumped": 1038,
+       "mispredict": 69,
+       "goal_targets": 2,
+       "goal_reached_no_end": 1,
+       "frontier_targets": 42,
+       "fallback": "frontier_exhausted",
+       "localise": 2,
+       "waits": 12
+      }
+     ]
+    }
+   },
+   "n_actions": 3000
+  },
+  "ls20/1001/OFF": {
+   "row": {
+    "diag": {
+     "state_NOT_FINISHED": 2961,
+     "nav_steps": 210,
+     "acts": 2950,
+     "changed": 2948,
+     "key": 2950,
+     "key_changed": 2948,
+     "new_state": 174,
+     "state_GAME_OVER": 39
+    },
+    "effects": {},
+    "chose": null,
+    "trials": {},
+    "game": "ls20",
+    "actions": 3000,
+    "levels": 1,
+    "state": "NOT_FINISHED",
+    "states_seen": 144,
+    "score": 0.0354,
+    "level_log": [
+     {
+      "level": 0,
+      "actions": 220,
+      "states": 91,
+      "resets": 0,
+      "exhausted": 0,
+      "ended": "won",
+      "rules": [
+       "pieces:3=4",
+       "pieces:8=2",
+       "samecount:3,5",
+       "touch:5,12",
+       "changed-colour in 2 pieces",
+       "changed-colour in 4 pieces",
+       "samecount: changed-colour with changed-colour",
+       "touch: changed-colour with fixed-colour"
+      ]
+     },
+     {
+      "level": 1,
+      "actions": 2730,
+      "states": 82,
+      "resets": 11,
+      "exhausted": 2395,
+      "ended": "NOT_FINISHED"
+     }
+    ],
+    "card_levels": [
+     221,
+     2779,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "card_baseline": [
+     22,
+     123,
+     73,
+     84,
+     96,
+     192,
+     186
+    ],
+    "card_scores": [
+     0.991,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "nav": {
+     "counters": {
+      "avatar_found": 1,
+      "learn_presses": 12,
+      "located_by_colour": 2,
+      "replans": 109,
+      "step_ok": 188,
+      "step_bumped": 4,
+      "step_mispredict": 4,
+      "frontier_exhausted": 26,
+      "waits": 24,
+      "fallback_frontier_exhausted": 2,
+      "obs_bumped": 1068,
+      "obs_ok": 1531,
+      "obs_mispredict": 68,
+      "deaths": 39,
+      "goal_recorded": 1,
+      "goal_targets": 2,
+      "goal_reached_no_end": 1,
+      "unblocked_changed": 1
+     },
+     "eff": {
+      "1": [
+       0,
+       -5
+      ],
+      "2": [
+       0,
+       5
+      ],
+      "3": [
+       -5,
+       0
+      ],
+      "4": [
+       5,
+       0
+      ]
+     },
+     "learn": {
+      "1": {
+       "presses": 3,
+       "shift": [
+        0,
+        -5
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "2": {
+       "presses": 3,
+       "shift": [
+        0,
+        5
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "3": {
+       "presses": 3,
+       "shift": [
+        -5,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      },
+      "4": {
+       "presses": 3,
+       "shift": [
+        5,
+        0
+       ],
+       "agree": 3,
+       "decided": "accepted"
+      }
+     },
+     "goal_hyps": [
+      5
+     ],
+     "walls": [
+      4
+     ],
+     "deadly": [
+      4
+     ],
+     "avoid_near": [
+      5
+     ],
+     "co_movers": {},
+     "key_presses_sampled": 300,
+     "levels": [
+      {
+       "level": 0,
+       "nav_steps": 68,
+       "ok": 169,
+       "bumped": 34,
+       "mispredict": 3,
+       "goal_targets": 0,
+       "goal_reached_no_end": 0,
+       "frontier_targets": 39,
+       "fallback": "frontier_exhausted",
+       "localise": 0,
+       "learn": 12,
+       "waits": 12,
+       "goal": [
+        5
+       ]
+      },
+      {
+       "level": 1,
+       "nav_steps": 142,
+       "ok": 1550,
+       "bumped": 1038,
+       "mispredict": 69,
+       "goal_targets": 2,
+       "goal_reached_no_end": 1,
+       "frontier_targets": 42,
+       "fallback": "frontier_exhausted",
+       "localise": 2,
+       "waits": 12
+      }
+     ]
+    }
+   },
+   "n_actions": 3000
+  }
+ }
+}
