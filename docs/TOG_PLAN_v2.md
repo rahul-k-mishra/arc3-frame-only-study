@@ -6,6 +6,37 @@ is handled. Every number below is either marked HAVE and named by the run file i
 marked NEED and does not exist yet. A HAVE number whose file is not named is marked UNTRACED and may
 not enter the manuscript until a script ties it to a file.
 
+## Plan of record (decided 26 September 2026, recorded 27 September 2026)
+
+**The author decided on 26 September 2026 to strengthen the work into a method paper across
+several benchmarks, rather than ship the ARC-only short paper.** This supersedes the short-paper
+route recorded in Sections 0 and 9 on 26 September 2026. Those sections are kept as the record of
+the earlier plan.
+
+What this decision fixes:
+- **The ARC-only short paper is not the target.**
+- **The paper is a method paper whose evidence spans several benchmarks.** ARC-AGI-3's public set
+  is one of them.
+- **Every ARC-AGI-3 result recorded here stands as recorded,** with its protocol, checks and
+  limits: E1, E1c, E2, E3, E4, E5, E9 and the census (docs/STATE.md Section 2). Nothing already
+  measured is re-run or re-decided because of the change of target.
+- **The rules of this plan and of CLAUDE.md apply to every new benchmark:**
+  - a selection split fixed before any mechanism is measured;
+  - a registered protocol before any run;
+  - games as the unit, seeds nested;
+  - CPU only, no money, double-anonymous.
+
+What it does not fix yet. **These are open and must each be decided in a registered protocol
+before any new run:**
+- **What the method is,** stated so that it applies unchanged to every benchmark (its inputs,
+  outputs, and what would show it fails).
+- **Which benchmarks, and why.** The optional second CPU benchmark already named in Section 7
+  (GVGAI learning track) is a candidate, not a choice.
+- **The venue,** re-decided with the method; the 9 October 2026 choice between IEEE CoG and a
+  workshop in Section 9 was made for the short paper and no longer governs.
+- **The working title,** replaced once the method is defined; it may claim no more than the
+  evidence across the chosen benchmarks supports.
+
 ## Working title
 
 "Scoring, Selection, and Goal-Identification Failures on the ARC-AGI-3 Public Demonstration Set:
@@ -37,9 +68,10 @@ random sample of ARC-AGI-3. The 17 held-out games are a split of that subset mad
 No sentence in any document may describe them as "the unseen ARC-AGI-3 test set" or say anything
 about the private set.
 
-Venue constraint (updated 26 September 2026): the plan of record is the short-paper route
-(Section 9: 6-8 pages, IEEE CoG or a workshop). The earlier target, a ToG full paper of 10 pages
-plus a supplement, is not pursued (E1 and E1c, Sections 2 and 7). Double-anonymous review: no names, handles,
+Venue constraint (updated 27 September 2026): the plan of record is a method paper across several
+benchmarks (see "Plan of record" at the top). Its venue is open and is re-decided with the method.
+The short-paper route (26 September 2026; Section 9) and the ToG full paper of 10 pages plus a
+supplement are both superseded. Double-anonymous review: no names, handles,
 affiliations, acknowledgements, or identifying links in the manuscript, the supplement, or the
 code release.
 
@@ -680,6 +712,9 @@ source-reading disclosure, E1 admissibility records.
 Venue: ToG if E1 has at least two admissible independent agents and E9 or E10 delivers. Otherwise
 IEEE CoG or a workshop, decided on 9 October 2026 (CoG 2026 page and fee rules to be checked on the
 call page, not copied from older editions).
+
+Superseded 27 September 2026 by the method-paper decision (see "Plan of record" at the top); the
+paragraph below is kept as the record of the plan it replaced.
 
 Status 26 September 2026: **the short-paper route is the plan of record.** E1 gave one
 INCONCLUSIVE agent, and E1c closed on 26 September 2026 without a second admissible independent
