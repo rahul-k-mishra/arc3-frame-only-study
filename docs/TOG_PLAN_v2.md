@@ -584,6 +584,11 @@ E6; E9; E10; E3; E7.
 - E2 (hash_state, seeds 1000-1009, 20,000 actions, runs/navrun_e2_hash_25x10.json: held-out
   M1 0.3274, M4 10.50) is the reference for every comparison in the paper. 4-seed values
   appear only where they record what was registered or decided earlier, and are marked as such.
+- Run files are never replaced silently. Changed 26 September 2026: scripts/g_nav_run.py now
+  stops if navrun_<tag>.json already exists, naming the file; --force replaces it, a new --tag
+  avoids it, and --resume reads and extends it. Reason: before this change a completed run's file
+  could be replaced silently by a different run with the same tag. scripts/e1_rudakov_adapter.py
+  and the analysis scripts already behaved this way.
 - Runs are deterministic given the seed (same agent, game files and engine), so the number of
   distinct seeds is the number of replicates, and a seed repeated in another file or session adds
   nothing; every count deduplicates by (game, mechanism, seed) before it is reported.
