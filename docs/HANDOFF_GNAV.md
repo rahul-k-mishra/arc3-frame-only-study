@@ -54,7 +54,8 @@ scores, 0.3615 vs 0.3329 at 20k), and now G-NAV.
 [Correction, 26 Sep 2026: at 100k, base and the three give-up variants score identically
 (held-out 0.3615, 2 seeds, runs/ablate_kaggle_giveup_100k.json), which is why give-up was killed.
 The "vs 0.3329 at 20k" is not a budget comparison: 0.3329 was hash_state, 4 seeds, a different
-mechanism. No budget effect is shown by these numbers; E3 measures it for hash_state.]
+mechanism, so the comparison never measured what a larger budget buys; it is withdrawn
+(docs/TOG_PLAN_v2.md RQ1). No budget claim holds until E3, the hash_state budget curve, exists.]
 
 ## Kept from this session
 g_decompose.py (score decomposition; dedupes duplicate runs; counts WON games' last level),
