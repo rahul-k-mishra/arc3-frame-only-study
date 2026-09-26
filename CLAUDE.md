@@ -76,8 +76,17 @@ a script in this repository run by the author, with its output saved under runs/
 - E1 (docs/E1_result.md, runs/e1_decision.json): Rudakov et al. agent, 10 seeds x 20,000 actions,
   INCONCLUSIVE by (ii): M2/M1 = 4.05 against > 5 (M1 0.1750, M4 3.30). Confounded by the absence
   of ACTION7, their choose_action raising on most actions in most runs, and preview vs 2026
-  games/API. RQ4 NOT ESTABLISHED; no family claim; short-paper route unless a second admissible
-  agent is scored before 9 Oct 2026.
+  games/API. RQ4 NOT ESTABLISHED; no family claim.
+- E1c CLOSED 26 Sep 2026 (docs/E1c_search.md): no admissible second independent agent. ZubMono
+  "Prometheus" rejected (docs/E1c_prometheus_check.md): its direction priors were measured on all
+  25 public games, including the 17 held-out; A5 forbids removing them. The remaining MIT
+  candidates (conchocon154, ReplicaWormhole) are not pursued, for cost against the deadline, not
+  quality. The strongest non-LLM agents found have no licence (BDR-Pro v79 = the old "0.26-0.27
+  agent", Cryptic2-0, Curio, Hunter-Seeker v2). Related-work finding: most higher-scoring non-LLM
+  notebooks load the game's source and search its simulator (docs/E1c_search.md Section 8), so they
+  are not frame-only and their scores are not comparable with ours.
+- Plan of record (TOG_PLAN_v2 Sections 0 and 9): the short-paper route, 6-8 pages, IEEE CoG or a
+  workshop, venue chosen 9 Oct 2026. The 10-page ToG full paper is not pursued.
 - Ten mechanisms killed with measured reasons (docs/HANDOFF_GNAV.md).
 
 ## Corrections imposed by the audit (audit/TOG_PLAN_RUTHLESS_AUDIT.md) — standing instructions
@@ -117,18 +126,15 @@ a script in this repository run by the author, with its output saved under runs/
 Done: TOG_PLAN_v2 with audit corrections and E1 thresholds (plus the 3.3 precedence); E4
 (runs/ceiling.json); E5 (runs/split_transfer.json); census table (runs/census_v2.json); E1a
 Rudakov et al. adapter, protocol and 10-seed run, INCONCLUSIVE (docs/E1_result.md); E2 hash_state
-10 seeds (runs/navrun_e2_hash_25x10.json); E2 decomposition (runs/decompose_e2_hash_25x10_*.json).
+10 seeds (runs/navrun_e2_hash_25x10.json); E2 decomposition (runs/decompose_e2_hash_25x10_*.json);
+E1c search, closed with no admissible second agent (docs/E1c_search.md).
 
-1. E1c, deadline 9 Oct 2026: search for a second admissible independent CPU-only frame agent
-   (repository, licence, commit, runtime); record sources, dates and queries even if none is
-   found. It is the only route back to the full paper; otherwise the short-paper route stands.
-2. E3 budget curve: hash_state at 3,000 / 50,000 / 100,000 actions with E2 as the 20,000 point.
-   Until it exists, no budget claim.
-3. E6 census at 10 seeds on all 25 games, category rule frozen (code hash) before the run.
-4. E9 goal-oracle intervention on tu93/dc22/ls20 (tu93 as positive control); E10 formal
+1. E3 budget curve: hash_state at 3,000 / 50,000 / 100,000 actions with E2 as the 20,000 point,
+   reported by scripts/e3_curve.py after its checks pass. Until it exists, no budget claim.
+2. E6 census at 10 seeds on all 25 games, category rule frozen (code hash) before the run.
+3. E9 goal-oracle intervention on tu93/dc22/ls20 (tu93 as positive control); E10 formal
    goal-identification cost with the restricted ambiguity result.
-5. 9 Oct 2026: venue decision (CoG or workshop for the short paper; ToG only if item 1 yields a
-   second agent that is scored). Optional, baseline only: E1b official non-LLM templates; E7 14B
-   LLM cost.
-6. Manuscript on the short-paper route (6-8 pages; 10 + supplement only if the full-paper
-   condition is met), anonymised; reproduction script that regenerates every table from runs/.
+4. 9 Oct 2026: venue decision between IEEE CoG and a workshop for the short paper. Optional,
+   baseline only: E1b official non-LLM templates; E7 14B LLM cost.
+5. Manuscript on the short-paper route (6-8 pages), anonymised; reproduction script that
+   regenerates every table from runs/.
