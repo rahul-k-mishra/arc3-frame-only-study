@@ -40,7 +40,10 @@ a script in this repository run by the author, with its output saved under runs/
 
 - hash_state explorer, held-out 4 seeds x 20,000 actions: mean 0.3329; every point from level 1 of
   tn36/r11l/sp80/cd82; level 3 never won in 1,088 held-out runs; median agent/human ratio 35-145.
-- 100,000 actions (Kaggle, 2 seeds): 0.3615 vs 0.3329 — coverage does not pay.
+- 100,000 actions: NO budget claim until E3. The old line "0.3615 vs 0.3329 — coverage does not pay"
+  compared different mechanisms: 0.3615 is mode base (and its three give-up variants, identical),
+  2 seeds, 100k (runs/ablate_kaggle_giveup_100k.json); 0.3329 was hash_state, 4 seeds, 20k.
+  Corrected 26 Sep 2026; see docs/TOG_PLAN_v2.md RQ1.
 - Selection on the one 8/17 split: train pick is held-out-best for 3 of 17 games; oracle 0.3632.
 - G-NAV planner (g_nav.py, hook on g_agent.py): train 0.70 vs 0.18 (all tu93), held-out 0.24-0.26
   vs 0.33 (loss is sp80); goal_confirmed 0 of 17. v2 census (4 seeds): no keys r11l s5i5 tn36;
