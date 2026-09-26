@@ -100,3 +100,52 @@ Open (decide only through a registered protocol, named here):
   decision and must be re-taken with it.
 - **E1b (organiser templates, baseline only) and E7 (14B LLM cost):** optional
   (`docs/TOG_PLAN_v2.md` §7).
+
+## Amendment 27 Sep 2026
+
+Session-end amendment. The lines above are unchanged; where this section corrects one of them, this section governs.
+
+**W0 commits.**
+- 0c1bf9c "W0: add method-paper blueprint 1.0 and plan of record v3" added:
+  - docs/TOG_PLAN_v3.md, the plan of record for the method paper;
+  - docs/METHOD_BLUEPRINT.md draft 1, the protocol draft.
+- 4d1d8a5 "W0: carry-over, plan archive, blueprint 1.1, reconciliation, frozen params" added:
+  - docs/PLAN_MERGE_20260927.md: 21 items of the method-paper decision carried from TOG_PLAN_v2.md and CLAUDE.md into TOG_PLAN_v3.md Section 10;
+  - TOG_PLAN_v3.md Section 2, listing every named run with its file;
+  - METHOD_BLUEPRINT.md draft 1.1, with the three corrections of TOG_PLAN_v3.md Section 3;
+  - docs/RECONCILE_20260927.md: the blueprint checked against this file;
+  - docs/PREREG_PARAMS.md: the census constants, copied from source with file, line and commit;
+  - the method-paper section of CLAUDE.md.
+- The commit carrying this amendment adds docs/HELDOUT.md, closes the untraced values in RECONCILE_20260927.md, and brings METHOD_BLUEPRINT.md to draft 1.2.
+
+**Archive moves (4d1d8a5, contents unchanged).**
+- docs/TOG_PLAN.md → docs/archive/TOG_PLAN_v1.md
+- docs/TOG_PLAN_v2.md → docs/archive/TOG_PLAN_v2.md
+
+References to the old paths elsewhere in this file are read as the new paths.
+
+**Where the decision is written.**
+- The method-paper decision of 26 September 2026 is now written in docs/TOG_PLAN_v3.md (Sections 1, 3, 5 and 10) and in CLAUDE.md ("Current objective", "Rules that bind every task", "Open decisions").
+- docs/METHOD_BLUEPRINT.md (draft 1.2) is the draft protocol. It is not yet registered: it becomes docs/PREREG.md v1 only at the prereg-v1 tag.
+
+**Venue.**
+- JAIR first, IEEE Transactions on Games second (TOG_PLAN_v3.md Section 1).
+- The venue is pre-committed by outcome at gate G3 (TOG_PLAN_v3.md Section 6):
+  - support → JAIR full article (research note as fallback if V4 is dropped);
+  - partial → IEEE ToG;
+  - refute → repository record, at most an arXiv note.
+
+**The split file.**
+- docs/HELDOUT.md was copied unchanged from D:\Research\arc3\brutus\HELDOUT.md.
+- SHA-256: 8c07813ab01f5228a6af10f91771702dad0291f26b0f920892ef3a79763a122d
+- Its train set and held-out set are identical to this file's header.
+- Its notes on source reading differ from this file's "source-informed" list:
+  - HELDOUT.md marks tu93, ls20, vc33 and m0r0 "source read, family built";
+  - this file's header names tu93, dc22 and ls20.
+- This amendment records the difference and does not resolve it.
+
+**Stale lines listed in docs/RECONCILE_20260927.md, each with its correction.**
+1. Section 1: the decision is "not yet written into docs/TOG_PLAN_v2.md or CLAUDE.md". Correction: it was written there in commits c1eea2c and 1af3a1e, and into docs/TOG_PLAN_v3.md in 0c1bf9c.
+2. Sections 1 and 5 name docs/TOG_PLAN_v2.md and docs/TOG_PLAN.md. Correction: they are docs/archive/TOG_PLAN_v2.md and docs/archive/TOG_PLAN_v1.md.
+3. Section 5 (Open): "There is no protocol file yet" for the method-paper direction. Correction: docs/METHOD_BLUEPRINT.md is its draft protocol, not yet registered.
+4. Section 5 (Open): the venue is listed as open. Correction: TOG_PLAN_v3.md Section 1 records JAIR first and ToG second, pre-committed by outcome at gate G3. Which one is submitted to first remains open (TOG_PLAN_v3.md Section 8, item 4).

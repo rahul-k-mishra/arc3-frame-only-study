@@ -1,6 +1,8 @@
 # METHOD_BLUEPRINT.md
 
-Draft 1.1 — corrected 27 Sep 2026 per TOG_PLAN_v3.md Section 3
+Draft 1.2 — 27 Sep 2026
+
+(Draft 1.1 — corrected 27 Sep 2026 per TOG_PLAN_v3.md Section 3. Draft 1.2 — census input, registered adapter parameters, E6 as the ARC baseline, untraced values closed.)
 
 Assumption census and goal-identification cost as a pre-registered measurement method
 
@@ -40,10 +42,16 @@ Explicitly not claimed: that goal inference is "the" barrier on ARC-AGI-3 (E1 wa
 Every suite is wrapped into one interface and nothing else is exposed to the census or the agents:
 
 ```
-reset(seed)        -> frame                        # uint8, H x W x 3
-step(action_id)    -> frame, level_end, game_end   # bools from the suite's own flags
+reset(seed)        -> grid                         # integer colour-index grid, after the adapter's quantisation and crop
+step(action_id)    -> grid, level_end, game_end    # bools from the suite's own flags
 actions            -> fixed list of integer ids per game
 ```
+
+- The census consumes an integer colour-index grid, not RGB pixels: scripts/g_motion.py best_shift and scripts/g_nav.py compare colour indices cell by cell (docs/PREREG_PARAMS.md). Each suite's adapter therefore registers four parameters:
+  1. palette quantisation from RGB to colour indices (ARC: none, the frame is already an integer grid) — registered per suite before any run;
+  2. frame crop (ARC: rows 1–62; rows 0 and 63 are excluded, scripts/g_motion.py:30–31, scripts/g_nav.py:192) — registered per suite before any run;
+  3. grid size (ARC: 64 × 64, scripts/g_nav.py:192) — registered per suite before any run;
+  4. action list (ARC: KEYS = 1,2,3,4,5,7 from scripts/g_control_probe.py:47) — registered per suite before any run.
 
 - No reward, no symbolic state, no text, no instruction string, no "action accepted" flag. ARC exposes an accepted flag; the census must not read it, because MiniGrid and Procgen have no such flag. Register: the census uses frames only.
 - level_end is the suite's own signal: ARC level completion; MiniGrid episode success; Procgen level_complete. game_end is ARC's WIN or the suite's terminal.
@@ -52,7 +60,11 @@ actions            -> fixed list of integer ids per game
 
 ### 2.2 The census
 
-Five assumptions. Each has a probe, a budget, a decision rule and an output in {holds, fails, undetermined}. The numerical parameters are the ones already frozen on the eight ARC train games in the v2 learner (three agreeing presses, 2:1 margin over the runner-up, at most 10 px, at most 8 presses per key). They are copied into PREREG.md from the script source, not from memory, with the script's commit hash.
+Five assumptions. Each has a probe, a budget, a decision rule and an output in {holds, fails, undetermined}. The numerical parameters are the ones already frozen on the eight ARC train games in the v2 learner (three agreeing presses, 2:1 margin over the runner-up, at most 10 px, at most 8 presses per key). They are copied into PREREG.md from the script source, not from memory, with the script's commit hash; the full list, with file, line and commit, is docs/PREREG_PARAMS.md.
+
+- MAX_STEP = 10 is defined independently in scripts/g_nav.py:57 (the learner) and scripts/g_motion.py:17 (the motion detector). Both are registered; changing one does not change the other.
+- learn_tries (scripts/g_nav.py:114, default 12) is stored and never read. It has no effect and is registered as such.
+- The explorer, scripts/g_agent.py, drives the game while the census observes; its many constants shape which frames the census sees. It is frozen by file hash (git blob hash at the prereg tag), not constant by constant.
 
 | | Assumption | Probe | Holds when |
 |---|---|---|---|
@@ -64,7 +76,7 @@ Five assumptions. Each has a probe, a budget, a decision rule and an output in {
 
 Per-assumption, per-game, per-seed budgets are registered as exact action counts (propose the v2 census values). Output is a five-vector plus the raw counters, written to one JSON per (suite, game, seed).
 
-Perception is registered as frame-difference based (components of changed pixels after an action), not colour-component based. Reason: ARC frames are flat 16-colour grids; Procgen frames are textured; a colour-component census would be an ARC-only instrument. This is a change from how g_nav_run.py finds the avatar today and must be re-verified on the eight ARC train games before freezing (the ARC census numbers must reproduce under the new perception, or the change is not made).
+Perception input is the colour-index grid of Section 2.1, for every suite. The census code is not changed for other suites; what changes per suite is the adapter's four parameters (palette quantisation, frame crop, grid size, action list), each registered per suite before any run. On a textured suite (Procgen) the quantisation decides what the census can see, which is why it is registered before, not tuned after, the first run.
 
 ### 2.3 Goal-identification cost G
 
@@ -127,7 +139,7 @@ scripts/analyze_v1.py, scripts/analyze_v2.py, scripts/analyze_g.py are written, 
 
 | Suite | Role | Why | Ground truth from | Main risk |
 |---|---|---|---|---|
-| ARC-AGI-3, 25 public games (8 train / 17 held-out per HELDOUT.md) | development instance | the census was built and its parameters frozen here; the 17 held-out games are the only within-ARC transfer already measured | shipped game sources in environment_files | none new — but it does not count toward generality |
+| ARC-AGI-3, 25 public games (8 train / 17 held-out per HELDOUT.md) | development instance | the census was built and its parameters frozen here; the 17 held-out games are the only within-ARC transfer already measured | shipped game sources in environment_files | it does not count toward generality. The census v2 runs predate the repository and their code cannot be shown from git (docs/PREREG_PARAMS.md Section 3), so census_v2 numbers are development only. E6 — census at 10 seeds on all 25 games under the tagged code — is the ARC baseline of the paper, run in W1 after the tag |
 | MiniGrid + BabyAI (178 environments, already installed in .venv_games) | lattice suite with known mechanics; positive control for V1; predictive test for V2 | cheap; open Python source; place goals (Empty, FourRooms, LavaCrossing, DoorKey, MultiRoom, Crossing) and non-place goals (Fetch, PutNear, Unlock, BabyAI object tasks) both present, so A5 has variance | Python source per environment | raw actions are rotate/forward, so A3 fails by construction — see the two-condition design below |
 | Procgen (16 games) | non-lattice generality test | pixel physics, gravity, enemies, textures, explicit level_complete flag, deterministic per level seed, CPU-native, permissive licence; this is what the census must survive to be called general | C++ source per game (about 300 lines each) | wheels exist only for Python 3.7–3.10 (needs a separate 3.10 venv on the lenovo; Kaggle's image may not run it); perception on textures; lattice agents may complete nothing, voiding V2 |
 | Fallback: ALE / Atari | only if Procgen cannot be installed | pip-installable on 3.12, ROMs bundled | game manuals, not source | most games have no level-end event, so G is undefined and only A1–A4 is testable; Bellemare, Veness & Bowling 2012 already measured controllable regions there, so it invites "already done" |
@@ -200,7 +212,7 @@ W0 (this week)
 W1 — freeze
 5. docs/PREREG.md v1: Sections 2.1–2.8 with final numbers; the truth tables for B and C; the agent list; the pilot set. Analysis scripts committed with synthetic-data tests.
 6. Git tag prereg-v1. OSF registration of the same file (free, timestamped, independent of the repository). Gate G1: no run on any B or C game before this tag exists.
-7. Re-verify the eight ARC train games under frame-difference perception; if the census vectors do not reproduce, revert to colour-component perception and register that the instrument is lattice-only (this alone changes the Procgen plan).
+7. E6, after the tag: census at 10 seeds on all 25 ARC games under the tagged code. This is the ARC baseline of the paper. The census v2 runs predate the repository and their code cannot be shown from git, so census_v2 numbers are development only and are not the baseline.
 
 W2 — adapters and pilot
 8. scripts/env_frame.py (contract), scripts/adapter_minigrid.py (raw and macro conditions), scripts/adapter_procgen.py, scripts/fidelity_check.py. All parallel (worker pool), all with ordered run commands.
@@ -263,10 +275,15 @@ Why try JAIR anyway: the submission is free, the reviews arrive either way, and 
 2. ARC-AGI-3 cannot be counted as one of three generality tests. It is the development set. The paper has two test suites.
 3. MiniGrid passing is weak evidence: the census was built for lattices. Procgen is the only test that can fail for an interesting reason, and it can fail for a boring one (perception on textures).
 4. G does not exist in code. goal_confirmed counters exist. The measure the paper is named for has never been run on any game.
-5. Perception is currently colour-component based (ARC-specific). Changing it to frame differencing is necessary for Procgen and may break the ARC census reproduction (W1 step 7).
+5. The census consumes an integer colour-index grid. Outside ARC, what it sees is decided by the adapter's palette quantisation, frame crop, grid size and action list; a bad quantisation on a textured suite fails the census for a boring reason. The four parameters are registered per suite before any run and never tuned after.
 6. The formal result is likely thin. The paper must be written so that removing Section 5 changes nothing in the results.
 7. "Assumption fails → agent fails" can be confounded by search budget and by the analytic scoring ceiling. V2 must be budget-matched and the nuisance baseline registered; the ceiling result is ARC-scoring-specific and stays out of V2.
 8. Prior art that a JAIR reviewer will name on sight: contingency awareness (Bellemare et al. 2012), reward identifiability (Ng & Russell; Cao, Cohen & Szpruch; Skalse et al.), reward-free exploration bounds (Jin et al.), the Procgen and BabyAI papers' difficulty analyses, Balla et al. on ARC-AGI-3, Blum & Hardt and Roelofs et al. on held-out reuse. Every one is cited and positioned in W0 or the paper is desk-rejected on related work.
+9. The adapter parameters (Section 2.1) are new, registered per suite, and untested on any suite but ARC; the census has only ever run on ARC's native integer grid.
+10. MAX_STEP is defined twice (scripts/g_nav.py:57, scripts/g_motion.py:17). A change to one alone would silently split the learner from the motion detector; both are registered.
+11. learn_tries is a declared parameter with no effect (scripts/g_nav.py:114, 121). A reader may take it for a live setting; it is registered as having no effect.
+12. The explorer (scripts/g_agent.py) is frozen by file hash only; its constants are not listed, so any edit to it changes what the census sees without changing a registered census parameter.
+13. The census v2 runs predate the repository; the code that produced them cannot be shown from git. The ARC census numbers used so far are development only; the ARC baseline exists only after E6 runs under the tagged code in W1.
 
 ---
 
@@ -292,14 +309,14 @@ Why try JAIR anyway: the submission is free, the reviews arrive either way, and 
 
 ## 12. STATE.md reconciliation checklist
 
-Confirm or correct from docs/STATE.md before Section 2 is frozen. Done 27 September 2026, item by item, in docs/RECONCILE_20260927.md; values that STATE.md does not contain are marked there and are not yet traced.
+Confirm or correct from docs/STATE.md before Section 2 is frozen. Done 27 September 2026, item by item, in docs/RECONCILE_20260927.md; values that STATE.md did not contain were traced to a repository file on 27 September 2026 and are cited below.
 
-- The exact v2 learner parameters and the script/commit they live in.
+- The exact v2 learner parameters and the script/commit they live in. Traced: docs/PREREG_PARAMS.md Section 1 (scripts/g_nav.py:55–57 and :756, commit ccc4d57e26cdee73ea0eabdbd7d7fdfe847ed265).
 - The census_v2 tallies used in the paper (14 of 17 held-out games with keyboard input, 11 with a moved object; goal_confirmed 0 in every seed; the sc25 placement).
 - E2 held-out numbers: M1 0.3274 (10 seeds), M4 10.50; E1 Rudakov M1 0.1750; M2/M1 4.05 against the > 5 rule; the three E1 confounds.
-- The split-transfer numbers Section 4 of the ToG plan reports (1.1% vs 16.7%; rank correlation −0.43; regret 0.092 / 0.206; fixed split 0.1464 / 0.3329 / 0.3632 / 0.2517) and whether any of them survives into the method paper (proposal: only as ARC background, one paragraph).
-- The ceiling numbers (3.52 / 10.57 / 21.14) — proposal: out of the method paper.
-- HELDOUT.md split (dc22 moved to train; 17 held-out) and which ARC games count as "train" for parameter freezing.
-- The 0.28 s per-action admissibility threshold and the E1 fidelity procedure, to be reused as the admissibility rule.
-- Whether ar25's nav-versus-hash_state discrepancy (8/8 vs 0/4) is explained; if not, it is reported as unexplained.
+- The split-transfer numbers Section 4 of the ToG plan reports (1.1% vs 16.7%; rank correlation −0.43; regret 0.092 / 0.206 — runs/split_transfer.json, keys primary.random.summary.regret_best.mean = 0.0923 and primary.random.summary.regret_oracle.mean = 0.2061; fixed split 0.1464 / 0.3329 / 0.3632 / 0.2517) and whether any of them survives into the method paper: none does — docs/TOG_PLAN_v3.md Section 2 limits the ARC background to one paragraph on the census and the E9 verdicts, "Nothing else".
+- The ceiling numbers (3.52 / 10.57 / 21.14) — runs/ceiling.json, keys means.all25.closed["1,1"] = 3.5235, ["2,1"] = 10.5706, ["3,1"] = 21.1411 (key "k,r": first k levels at ratio r; the same values under means.all25.whole). Out of the method paper's tests: docs/TOG_PLAN_v3.md Section 2 (Ceiling row).
+- HELDOUT.md split (dc22 moved to train; 17 held-out) — docs/HELDOUT.md, copied unchanged from D:\Research\arc3\brutus\HELDOUT.md, SHA-256 8c07813ab01f5228a6af10f91771702dad0291f26b0f920892ef3a79763a122d ("dc22 MOVED FROM HELD-OUT on 21 Sep 2026") — and which ARC games count as "train" for parameter freezing: the 8 train games, docs/TOG_PLAN_v3.md Section 3 and Section 2 (Split row).
+- The 0.28 s per-action admissibility threshold (docs/archive/TOG_PLAN_v2.md Section 3.1, A7; measured values in docs/E1_phase2_protocol.md Section 1) and the E1 fidelity procedure (docs/archive/TOG_PLAN_v2.md Section 3.1, A6; results in docs/E1_phase2_protocol.md Section 1), to be reused as the admissibility rule.
+- Whether ar25's nav-versus-hash_state discrepancy (8/8 vs 0/4) is explained: it is not — docs/archive/TOG_PLAN_v2.md Section 10 ("The cause is unknown; it is reported as unexplained") and CLAUDE.md (State of the evidence, "UNEXPLAINED"). It is reported as unexplained.
 - The registered-rule precedence decisions (BREAKS before REPRODUCES; card-count clause first — rows lacking per-level scorecard counts give INCONCLUSIVE; named as in docs/STATE.md Section 5, corrected 27 Sep 2026 from "missing-scorecard clause") — carried into PREREG.md as the template for rule precedence.

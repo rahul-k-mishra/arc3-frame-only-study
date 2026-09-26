@@ -42,7 +42,7 @@ Frozen evidence, by file. Numbers are those recorded in STATE.md and are quoted 
 | E9 | runs/e9_report.json, runs/navrun_e9_oracle_3x10.json; docs/E9_protocol.md | goal-oracle on train games: INCONCLUSIVE; tu93 MIXED, dc22 NOT BINDING, ls20 NOT TESTABLE |
 | ar25 duplicate check | runs/decompose_ar25_three_files_heldout.json | the same four hash_state runs sit in three files; hash_state 0 of 4 seeds on ar25 level 1 vs G-NAV 8 of 8; unexplained |
 | Withdrawn 100k line | runs/ablate_kaggle_giveup_100k.json | mode base, 2 seeds, 100,000 actions; its "0.3615 vs 0.3329" comparison is WITHDRAWN (docs/STATE.md Section 3) and replaced by E3 |
-| Split | D:\Research\arc3\brutus\HELDOUT.md (outside this repository) | 8 train / 17 held-out (dc22 moved to train); the 8 train games are the parameter-freezing set |
+| Split | docs/HELDOUT.md, copied unchanged on 27 Sep 2026 from D:\Research\arc3\brutus\HELDOUT.md; SHA-256 8c07813ab01f5228a6af10f91771702dad0291f26b0f920892ef3a79763a122d | 8 train / 17 held-out (dc22 moved to train); the 8 train games are the parameter-freezing set |
 
 Rules from docs/archive/TOG_PLAN_v1.md and docs/archive/TOG_PLAN_v2.md that carry forward unchanged: the admissibility procedure (per-action time threshold, fidelity check), rule precedence (BREAKS before REPRODUCES; the card-count clause — rows lacking per-level scorecard counts give INCONCLUSIVE — first), and "no statement without a run RKM executed".
 
