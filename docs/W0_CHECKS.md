@@ -219,3 +219,60 @@ cd D:\Research\arc3\repo
 ```
 
 Paste the console output of all four blocks.
+
+## Amendment 27 Sep 2026 (b)
+
+Recorded after RKM ran blocks C3b-1, C3b-2, the C2 re-run and the WFC re-run. The lines above are unchanged. For this amendment only, the assistant read the status and error fields of runs/w0_checks/procgen/*.json and runs/w0_checks/minigrid/MiniGrid-WFC-*.json, as RKM allowed. Nothing else in runs/ was opened.
+
+**C3b — done.**
+- pip installed networkx, imageio and pillow.
+- Versions unchanged: minigrid 3.1.0, gymnasium 1.3.0, numpy 2.4.6. The environment the other 172 checks ran in is therefore the same.
+
+**C2 re-run — keywords confirmed and the construction test passed, but all 16 games ended with status error in the pool.**
+- What passed first: the keyword check, and the construction test (bigfish, obs['rgb'] (1, 64, 64, 3)).
+- Error text, identical in all 16 JSON files: `ValueError: high <= 0`
+- Cause: a bug in our script, not in procgen, not in spawned worker processes, and not in Windows.
+  - The worker read the action count as `getattr(ac, "eval_n", None) or getattr(ac, "n", None)`.
+  - ProcgenGym3Env.ac_space is a gym3 TensorType of shape () whose `.eltype` is `Discrete(15)` (gym3/types.py lines 63–64, 95–97, 126). Neither the TensorType nor the env has `.n` or `.eval_n`, so the count was None.
+  - `numpy.random.default_rng(...).integers(0, None)` then raised "high <= 0" before any step was taken.
+  - The construction test passed because it did not read the action count.
+- Fix (scripts/w0_procgen_smoke.py):
+  - A new `action_count()` reads `ac_space.eltype.n`, and raises on anything that is not a positive integer. On a synthetic gym3 `Discrete(15)` it returned 15; no environment was built.
+  - The construction test now reads the action count too, so this class of failure stops the script before the pool.
+  - A JSON with status "error" (as well as "keyword_missing") now counts as not done, so block 5, run unchanged, runs the 16 games again without --force.
+- Settings unchanged. The worker-pool form stays the registered parallel form for suite C, because nothing here showed that procgen cannot be driven from spawned processes. The fallback to procgen's own vectorisation (ProcgenGym3Env with num > 1) is not needed and is not registered.
+
+**C3 --only, the six WFC ids — all six still error. Excluded from suite B.**
+- Error text, one per id, all of the same form:
+  `FileNotFoundError: [Errno 2] No such file or directory: 'D:\Research\arc3\brutus\.venv_games\Lib\site-packages\minigrid\envs\wfc\patterns\SimpleMaze.png'`
+  The other five name ScaledMaze.png, Angular.png, Blackdots.png, Hogs.png and Fabric.png.
+- Cause: the installed minigrid 3.1.0 distribution ships without the WFC pattern images.
+  - minigrid/envs/wfc/config.py line 9 sets PATTERN_PATH to the package's patterns/ folder, and lines 175–235 load one PNG per configuration from it.
+  - That folder does not exist.
+  - The distribution's RECORD (minigrid-3.1.0.dist-info/RECORD) lists no wfc/patterns file.
+  - No constructor keyword is rejected, and the cause is not in our script.
+- Decision: exclude the six WFC ids from suite B, with this error as the reason. They are:
+  - MiniGrid-WFC-DungeonMazeScaled-v0
+  - MiniGrid-WFC-MazeSimple-v0
+  - MiniGrid-WFC-ObstaclesAngular-v0
+  - MiniGrid-WFC-ObstaclesBlackdots-v0
+  - MiniGrid-WFC-ObstaclesHogs3-v0
+  - MiniGrid-WFC-RoomsFabric-v0
+- Suite B's candidate set is therefore the 172 ids that passed C3. PREREG.md later reduces it by registering only the latest version of the five v0/v1 pairs (amendment of 27 Sep 2026).
+- The six WFC JSON files stay under runs/ as the record of the exclusion.
+
+### Commands (PowerShell, in order)
+
+Working directory: D:\Research\arc3\repo
+
+C2 re-run (block 5, unchanged). Expected first lines:
+- "keywords confirmed: ...";
+- "construction test: bigfish built with the registered settings, obs['rgb'] (1, 64, 64, 3), <n> actions";
+- "16 games (from procgen.env.ENV_NAMES), 16 to run (0 already done), 8 workers".
+
+```powershell
+cd D:\Research\arc3\repo
+& D:\Research\arc3\brutus\.venv_procgen\Scripts\python.exe scripts\w0_procgen_smoke.py --workers 8
+```
+
+No WFC command: the six are excluded. Paste the console output of the C2 re-run.

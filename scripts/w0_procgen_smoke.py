@@ -20,7 +20,9 @@ parameters of BaseProcgenEnv.__init__ and reach it through ProcgenGym3Env.__init
 reported those keywords missing; corrected 27 Sep 2026, docs/W0_CHECKS.md amendment.)  Then one
 environment (bigfish, the registered settings) is constructed before the pool starts, as the
 decisive test; if that raises, the traceback is printed and the script stops.  A game whose JSON
-says "keyword_missing" (written by the first version) is not counted as done and is run again.
+says "keyword_missing" or "error" is not counted as done and is run again.  The action count is
+read from ac_space.eltype.n (gym3 TensorType of Discrete); the construction test reads it too, so
+a failure there stops the script before the pool.
 
 One JSON per game: runs/w0_checks/procgen/<game>.json (fields game, mode "w0_smoke", seed, plus the
 facts above).  Resume-safe: a game whose JSON exists is skipped unless --force.  Environments are
@@ -33,7 +35,7 @@ Command (PowerShell, from D:\\Research\\arc3\\repo; see docs/W0_CHECKS.md for th
 EXPECTED OUTPUT (shape; values are what the check measures, none is known in advance):
     procgen <version>; ProcgenGym3Env keywords confirmed: distribution_mode (ProcgenGym3Env), ...,
         start_level (BaseProcgenEnv), num_levels (BaseProcgenEnv), rand_seed (BaseProcgenEnv)
-    construction test: bigfish built with the registered settings, obs['rgb'] <shape>
+    construction test: bigfish built with the registered settings, obs['rgb'] <shape>, <n> actions
     16 games (from procgen.env.ENV_NAMES), 16 to run (0 already done), 8 workers
     done bigfish ... (one line per game as it finishes)
     table: game  status  obs_shape  dtype  n_actions  level_complete_keys  colours  steps_per_s  determinism
@@ -68,6 +70,18 @@ def game_list():
         return list(ENV_NAMES), "procgen.env.ENV_NAMES"
     except Exception:
         return list(GAMES_FALLBACK), "fallback list in this script"
+
+
+def action_count(ac):
+    """Size of a procgen gym3 action space.  ProcgenGym3Env.ac_space is a gym3 TensorType with
+    shape () whose .eltype is Discrete(n) (gym3/types.py lines 63-64, 95-97, 126); neither the
+    TensorType nor the env has .n or .eval_n.  Reading those (the first version) gave None, and
+    rng.integers(0, None) raised "ValueError: high <= 0" in every worker (27 Sep 2026)."""
+    el = getattr(ac, "eltype", ac)
+    n = getattr(el, "n", None)
+    if not isinstance(n, int) or n <= 0:
+        raise ValueError(f"cannot read a positive action count from ac_space {ac!r}")
+    return n
 
 
 def signature_check():
@@ -108,11 +122,12 @@ def construction_test(params, seed, start_level):
     env = ProcgenGym3Env(**kw)
     _rew, obs, _first = env.observe()
     shape = tuple(obs["rgb"].shape)
+    n_actions = action_count(env.ac_space)
     try:
         env.close()
     except Exception:
         pass
-    return shape
+    return shape, n_actions
 
 
 def play_once(game, start_level, seed, actions, params):
@@ -123,7 +138,7 @@ def play_once(game, start_level, seed, actions, params):
         kw["num_threads"] = 1              # one environment per worker process
     env = ProcgenGym3Env(**kw)
     ac = env.ac_space
-    n_actions = getattr(ac, "eval_n", None) or getattr(ac, "n", None)
+    n_actions = action_count(ac)
     frames, info_keys, lc_true, firsts = [], set(), {}, 0
     _rew, obs, _first = env.observe()
     frames.append(np.array(obs["rgb"][0], copy=True))
@@ -188,18 +203,19 @@ def main():
           + ("confirmed: " + ", ".join(f"{k} ({defined_by[k]})" for k in REQUIRED_KW)
              if not missing else f"MISSING: {missing}"))
     try:
-        shape = construction_test(params, args.seed, args.start_level)
-        print(f"construction test: bigfish built with the registered settings, obs['rgb'] {shape}")
+        shape, n_act = construction_test(params, args.seed, args.start_level)
+        print(f"construction test: bigfish built with the registered settings, obs['rgb'] {shape}, "
+              f"{n_act} actions")
     except Exception:
         print("construction test FAILED: bigfish could not be built with the registered settings")
         traceback.print_exc()
         sys.exit(1)
     games, src = game_list()
     todo = C.pending(games, args.out, args.force)
-    # a game recorded as keyword_missing was never played (the pre-fix check stopped it), so it is
-    # not done: run it again without --force
+    # a game recorded as keyword_missing or error was never played to the end (the pre-fix check
+    # stopped it, or the worker raised), so it is not done: run it again without --force
     for r in C.load_all(games, args.out):
-        if r.get("status") == "keyword_missing" and r["game"] not in todo:
+        if r.get("status") in ("keyword_missing", "error") and r["game"] not in todo:
             todo.append(r["game"])
     print(f"{len(games)} games (from {src}), {len(todo)} to run ({len(games) - len(todo)} already done), "
           f"{args.workers} workers")
