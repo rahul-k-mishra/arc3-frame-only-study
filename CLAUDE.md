@@ -1,8 +1,9 @@
 # CLAUDE.md — arc3-frame-only-study
 
 Measurement study of frame-only, prior-free, CPU-runnable agents on the ARC-AGI-3 public
-demonstration set (25 games), targeted at IEEE Transactions on Games (10-page full paper,
-double-anonymous). Single author. No GPU. No money. Every number in any document must come from
+demonstration set (25 games), targeted at a 6-8 page short paper for IEEE CoG or a workshop
+(venue chosen 9 October 2026; double-anonymous). Single author. No GPU. No money. Every number in
+any document must come from
 a script in this repository run by the author, with its output saved under runs/.
 
 ## Non-negotiable rules (from the author; do not relax them)
@@ -109,7 +110,8 @@ a script in this repository run by the author, with its output saved under runs/
 - Cite: ARC-AGI-3 technical report, launch post, preview 30-day learnings, human-performance
   paper, Milestone-1 write-ups; Balla et al. 2020; Kunanusont et al.; Stephenson et al. 2025;
   Blum & Hardt 2015; Roelofs et al. 2019; Introspective Environment Modeling; AgentRx; BALROG.
-- 10 pages + supplement; double-anonymous: no names, handles, affiliations in manuscript or code.
+- 6-8 page short paper (IEEE CoG or a workshop, venue chosen 9 October 2026); double-anonymous:
+  no names, handles, affiliations in manuscript or code.
 - E1 decision thresholds are written down in docs/ BEFORE any external agent is run.
 
 ## Repository layout
