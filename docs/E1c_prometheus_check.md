@@ -11,6 +11,13 @@ from raw.githubusercontent.com at a fixed commit and read in a scratch folder:
   this file unless another file is named.
 - **Protocol:** docs/TOG_PLAN_v2.md Section 3.1 (A1-A7) and docs/E1c_search.md.
 
+## Verdict (author, 26 September 2026): REJECTED
+
+Prometheus is rejected as an E1 agent. Its `DIRECTION_PRIORS` were measured on all 25 public
+games, which include our 17 held-out games, so the agent carries parameters fitted on our
+evaluation set, and A5 forbids removing them. The size of the priors is irrelevant; the
+contamination is the reason. Check (4) and an adapter are not pursued.
+
 ## Result
 
 **Check (3) fails: the agent ships pretrained weights fitted offline on recorded ARC-AGI-3
@@ -182,6 +189,7 @@ engine types. Its entry point and action loop were not examined.
 | A4 no LLM or network at play time | no LLM import found; network not searched separately (stopped at (3)) | import list in (2) |
 
 **Overall: NO-GO as a prior-free independent agent under the check as specified**, because of (3).
+**Author's verdict (above): rejected**, for the contamination of the direction prior by the held-out games.
 A1 and A2 would be met, and A3 and A4 are not contradicted by anything read.
 
 The deciding question is the author's:
