@@ -8,68 +8,82 @@ Question: for the G-NAV planner (scripts/g_nav.py, a hook on the hash_state expl
 dc22 and ls20, does supplying the true goal, with everything else unchanged, change what the
 planner achieves?
 
+Amended 26 September 2026, before any E9 code, by the author's decision after gate G1
+(docs/E9_goals.md). Changed:
+- the goal is handed in G-NAV's own language, a colour, not as target cells (Sections 1-2);
+- ls20 is NOT TESTABLE, reported as a finding, and the verdict rests on tu93 and dc22 (Section 5);
+- check V2 is rewritten for the colour oracle, and V5 (colour ambiguity) is added (Section 4);
+- the coordinate arm is optional, secondary and outside the verdict (Section 3).
+No threshold in Section 5 changed. The version before this amendment is commit 3d2bde7.
+
 Scope: only tu93, dc22 and ls20, the three train games whose source files were read on 24 September
 2026 while debugging g_nav.py (CLAUDE.md rule 1). **No held-out game is ever used in E9**, and no
 held-out source is ever opened.
 
 ## 1. How the true goal is expressed
 
-G-NAV's goal language, from scripts/g_nav.py, is **a place for the controlled object to reach**:
-- `_replan` step 1 (lines 253-264) targets the nearest position `p` whose footprint shows a goal
-  colour (`_goal_cells`, lines 247-248);
-- goals are learned in `_record_goal` (lines 753-784) as the colours stepped on at a level end.
+The oracle expresses each level's true win condition in G-NAV's own hypothesis language: a goal
+colour. G-NAV names a place only by colour:
+- `goal_hyps` is a list of colours;
+- a position qualifies when its footprint shows a goal colour (`_goal_cells`, scripts/g_nav.py
+  lines 247-248);
+- `_replan` step 1 (lines 253-264) targets the nearest such position.
 
-The oracle therefore expresses each level's true win condition as **a set of target cells in that
-level's own frame**: the cells the object must occupy for the level to end. It gives no colour, no
-action sequence and no sub-goal.
+So the oracle hands the planner, once per level at level start, **the set of colours of the
+target's visible cells**. They are read from the level's first frame at the position of the sprite
+that the game's level-end predicate names (docs/E9_goals.md). The level's background colour and
+the avatar's colours are removed, exactly as G-NAV's own `_record_goal` removes them (lines
+762-765 and 771). This set replaces `goal_hyps` for that level and lifts the `goal_tries` cap; nothing else
+changes.
 
-What the repository already records about the three goals:
-- **tu93:** the level ends when the avatar reaches the exit, a coloured tile. docs/HANDOFF_GNAV.md
-  line 50: "tu93 is the one game in 25 where it is" (the goal is "reach a colour"). G-NAV confirmed
-  that goal on all 4 seeds (HANDOFF line 18: `goal_confirmed on all 4 seeds`).
-- **dc22 and ls20:** **not recorded.** The repository notes only mechanics: ls20 has a key panel
-  and a 12-cell "pusher" (HANDOFF lines 36-37); dc22 has none noted. G-NAV never won a dc22 level
-  in any recorded run.
+This keeps the instrument the same. A result is about identifying the goal in the planner's own
+terms, not about being handed a coordinate the planner could never form.
 
-Required before any code (gate G1): the true win condition of every level of the three games is
-written to `docs/E9_goals.md` from their source files. For each level it records:
-- the source file and line numbers of the win condition, quoted;
-- the condition in plain words;
-- its expression as target cells in the level's initial frame (a list of (row, col)), **or
-  "not expressible"** with the reason. "Not expressible" applies when the win condition is not
-  "the object occupies these cells": for example it also requires a key, a panel state, a push,
-  or several objects. A condition expressible only as a sequence of sub-goals counts as not
-  expressible, because supplying a sequence would give more than the goal.
+The goal table (docs/E9_goals.md) states each target by the rule the game checks ("the position of
+the sprite tagged X"), never by recorded coordinates, colours or layouts. The only read of the
+running game is the oracle's, at each level start: it finds that sprite, its position and its
+visible cells, for tu93 and dc22 only.
 
-The author decides who reads the three sources for G1, and the date of that reading is recorded in
-`docs/E9_goals.md`. The goal table's SHA-256 is recorded before the first E9 run. A level marked
-"not expressible" is played by the oracle arm exactly as the planner arm plays it (Section 2), and
-is reported as such. That a win condition cannot be written as a place is itself a result about the
-instrument.
+A level whose predicate is not "the controlled object reaches a place" (object state, several
+targets, or a sequence) is not expressible. For such a level:
+- the oracle hands nothing, and the oracle arm plays it exactly as the planner arm;
+- the level is reported as **NOT TESTABLE, as a finding**: the planner's goal language cannot
+  represent it, and the predicate is quoted from docs/E9_goals.md.
 
-Disclosure, in every table and figure: **source-informed**. The goals come from reading the games'
-source, and these are the games the planner was debugged on.
+Status after G1 (docs/E9_goals.md, commit 8f8047f, SHA-256
+e87c1778c73752549a2defc9f5bfbddca81a7c96d7b5780bcc370b71576063bd):
+- **tu93: testable.** The level ends when every arrow-controlled sprite stands at an exit
+  sprite's position.
+- **dc22: testable.** The level ends when the controlled sprite stands at the target sprite's
+  position.
+- **ls20: NOT TESTABLE at every level.** The level ends when every target has been reached with
+  matching shape, colour and rotation; this is not expressible as a place.
+
+Disclosure, in every table and figure: **source-informed**. The level-end rules come from reading
+the games' source, and these are the games the planner was debugged on.
 
 ## 2. What the oracle replaces, and what it must not touch
 
 The oracle arm is a new mode, `nav_oracle`, in scripts/g_nav_run.py. It uses the same `NavHook`
 with one addition: at each level start (`on_level` → `_new_level`) it receives that level's
-target cells from the goal table, or nothing if the level is not expressible.
+oracle colours (Section 1), or nothing if the level is not expressible.
 
 It replaces **only the goal hypothesis and its confirmation path**:
-- **`_replan` step 1 (lines 253-264):** instead of candidate positions showing a learned goal
-  colour, the targets are positions whose footprint intersects the level's true target cells.
-  Selection, path search (`_bfs`, `_path`) and one-step execution are unchanged. The attempt cap
-  `goal_tries` does not limit the oracle target: the goal is known, so there is nothing to
-  falsify. If the oracle target is unreachable in the current lattice, `_replan` falls through to
-  step 2 (the frontier) exactly as now.
-- **`_record_goal` (lines 753-784):** still runs and still updates its counters. In the oracle
-  arm, `goal_hyps` is not used for targeting on levels with an oracle target.
-- **The falsification path (lines 490-495, `goal_reached_no_end`, `goal_tried`):** for an oracle
-  target, reaching it without the level ending increments a new counter,
-  `oracle_reached_no_end`, and the target stays. **`oracle_reached_no_end` must be 0 on every
-  expressible level.** Any other value means the goal table is wrong for that level (validity
-  check V2, Section 4).
+- **`goal_hyps` for the level:** replaced by the oracle colours at level start. `_replan` step 1
+  (lines 253-264) then runs unchanged: nearest position whose footprint shows an oracle colour.
+  Selection, `_goal_cells`, path search (`_bfs`, `_path`) and one-step execution are unchanged. If
+  no position showing an oracle colour is reachable, `_replan` falls through to step 2 (the
+  frontier) exactly as now.
+- **The attempt cap `goal_tries`:** lifted for oracle colours. The goal colour is known, so it is
+  never written off.
+- **The per-position path (lines 490-495, `goal_tried`, `goal_reached_no_end`):** unchanged. A
+  position showing an oracle colour that is reached without the level ending is added to
+  `goal_tried`, as now, so the planner moves on to another position of that colour. This can
+  happen legitimately, since the colour can cover more cells than the exact place the game checks.
+  In arm O these arrivals are also counted as `oracle_reached_no_end`, reported beside V5.
+- **`_record_goal` (lines 753-784):** still runs and still updates its counters, but it does not
+  change the oracle colours for the level. At each level end, a new counter `oracle_confirmed`
+  records whether the position the level ended on showed an oracle colour (check V2).
 
 It must not touch, and the code review before the run checks each item:
 - the movement model: key learning (`_learn_observe`, `_finish_learning`,
@@ -89,7 +103,7 @@ g_nav_run.py is recorded after G2 passes; no code changes after that point.
 Known confound, from docs/HANDOFF_GNAV.md (last OPEN item): the planner's presses change the
 explorer's random path after a fallback, so two planner arms can differ on levels where neither
 used its plan. Differences are therefore interpreted only on levels where the oracle arm actually
-targeted its oracle cells (per-level counter `oracle_targets > 0`). Per-level fallback reasons are
+targeted an oracle colour (per-level counter `oracle_targets > 0`). Per-level fallback reasons are
 reported for both planner arms.
 
 ## 3. Arms
@@ -102,14 +116,31 @@ g_nav_run.py.
 |---|---|---|
 | F (floor) | `hash_state` | the plain explorer, no planner |
 | N (planner) | `nav` | G-NAV as it is |
-| O (oracle) | `nav_oracle` | G-NAV plus the true goal (Section 2) |
+| O (oracle) | `nav_oracle` | G-NAV plus the true goal colour (Sections 1-2) |
+| P (optional) | `nav_oracle_place` | secondary; see below; **not in the verdict** |
 
 Arm F is also in runs/navrun_e2_hash_25x10.json (E2). It is re-run in the same E9 command, and the
 E9 rows must equal E2's rows for these three games and seeds (determinism check V1). Any
 difference stops E9.
 
-Command shape (the exact command is written when G1 and G2 pass):
-`g_nav_run.py --games tu93,dc22,ls20 --modes hash_state,nav,nav_oracle --seeds 10 --budget 20000 --tag e9_oracle_3x10`
+ls20 is run in all arms although it is NOT TESTABLE. Arm O plays it exactly as arm N, so its
+rows must equal arm N's rows for ls20 (a free equivalence check, V6).
+
+**Optional secondary arm P, the coordinate arm (`nav_oracle_place`).** Run only if arm O is
+completed and time allows.
+- **What it hands:** once per level, a single lattice position
+  p* = target (x, y) + (G-NAV anchor − controlled-sprite origin). The offset is measured from game
+  state at level start: G-NAV's position is the top-left of the avatar's visible cells (`_anchor`,
+  line 54), while the game's check compares sprite origins. Step 1 targets exactly p*.
+- **How it is reported:** only as "the value of knowing the exact place", never as goal
+  identification. It does not enter the Section 5 verdict.
+- **Rotation caveat, tu93:** the game rotates the controlled sprite when it moves, and rotation
+  can change the offset between the sprite's origin and its top-left visible cell. p* is then
+  wrong on rotated steps. For arm P on tu93, `oracle_reached_no_end` at p* is reported per level
+  with this caveat, and a non-zero count on tu93 is read first as an offset error, not as evidence
+  about the goal.
+
+The exact commands are in Section 7.
 
 ## 4. Measures and validity checks
 
@@ -127,17 +158,35 @@ game is reported on its own, and seed variation within a game is labelled as suc
 per-level G-NAV counters for arms N and O (goal_targets, goal_confirmed, goal_reached_no_end,
 oracle_targets, oracle_reached_no_end, fallback reason).
 
-Validity checks (all must pass before any E9 number is reported):
-- V1 arm F's rows equal E2's rows for these games and seeds;
-- V2 `oracle_reached_no_end = 0` on every expressible level in every seed of arm O;
-- V3 positive control on tu93: arm O's seed-mean levels completed is not below arm N's by 0.5 or
-  more. tu93 is the game where N already confirms its goals; O falling below N there means the
-  oracle plumbing is broken;
-- V4 every run used its full 20,000 actions or won the game.
+Validity checks (V1-V4 and V6 must pass before any E9 number is reported; V5 is reported, not
+passed or failed):
+- **V1:** arm F's rows equal E2's rows for these games and seeds.
+- **V2, the oracle colour is where the level ends:** on every testable level that arm O wins in
+  any seed, `oracle_confirmed` is true for every win. That is, the position the level ended on
+  showed an oracle colour. A win on a position without an oracle colour means the colour set is
+  wrong for that level.
+- **V3, positive control on tu93:** arm O's seed-mean levels completed is not below arm N's by 0.5
+  or more. tu93 is the game where N already confirms its goals, so O falling below N there means
+  the oracle plumbing is broken.
+- **V4:** every run used its full 20,000 actions or won the game.
+- **V5, colour ambiguity:** for each testable level, from the level's first frame alone, with no
+  source read, count the cells showing any oracle colour outside the target sprite's visible
+  cells, and the number of connected components they form. Both counts are reported beside that
+  level's result in every table. A non-zero count means the goal colour also marks other places,
+  and the level's arm-O result is read with that in view: `oracle_reached_no_end` is expected to
+  be non-zero there. V5 excludes no level.
+- **V6:** on ls20 (NOT TESTABLE), arm O's rows equal arm N's rows.
 
-If V2 fails on a level, the goal table was wrong for that level. The correction is dated and
-recorded in `docs/E9_goals.md` with its reason, all arms are run again, and both runs are
-reported. If V3 fails, nothing from E9 is used until the cause is found.
+If V2 fails on a level:
+- the colour-set rule was wrong for that level;
+- the correction is dated and recorded in `docs/E9_goals.md` with its reason;
+- all arms are run again, and both runs are reported.
+
+If V3 or V6 fails, nothing from E9 is used until the cause is found.
+
+(The earlier V2, "`oracle_reached_no_end` = 0", was written for exact target cells. Under the
+colour oracle, arrivals at a colour cell that is not the exact place are legitimate, so V2 now
+tests the colour at the place where the level actually ends.)
 
 ## 5. Predictions, written now
 
@@ -147,8 +196,8 @@ Definitions, per game G (arms N and O, seeds 1000-1009):
   **rN** and **rO** are the median agent/human action ratios over the seeds that won it.
 - **A newly won level** is one O wins in at least 5 seeds and N in at most 4.
 
-Only levels expressible in the goal table, and on which arm O used its oracle target
-(`oracle_targets > 0`), count toward these definitions.
+Only levels expressible in the goal table, and on which arm O used an oracle colour
+(`oracle_targets > 0`), count toward these definitions. Only arm O enters them; arm P never does.
 
 Per game, the goal is:
 - **BINDING** if any of: dL >= 1.0; at least one newly won level; or, on at least one shared
@@ -158,11 +207,17 @@ Per game, the goal is:
 - **MIXED** otherwise;
 - **NOT TESTABLE** if the game has no expressible level on which arm O used its oracle target.
 
-Across the three games:
-- **Goal information is the binding constraint for this instrument on these games** if at least 2
-  games are BINDING and none is NOT BINDING.
-- **It is not** if at least 2 games are testable and every testable game is NOT BINDING.
-- **Inconclusive** otherwise, including when fewer than 2 games are testable.
+Across games. ls20 is NOT TESTABLE (docs/E9_goals.md), so the verdict rests on tu93 and dc22
+only, both source-informed:
+- **Goal identification is the binding constraint for this instrument on these two games** if
+  both are BINDING.
+- **It is not** if both are NOT BINDING.
+- **Inconclusive** otherwise, including if either game turns out NOT TESTABLE in practice (no
+  level on which arm O used an oracle colour).
+
+This is the same rule as before applied to two testable games. **Two games cannot support a
+general claim** about the planner, about goal identification, or about any other game; Section 6
+limits the wording accordingly.
 
 What is expected, stated so that a surprise is visible:
 - **tu93:** G-NAV already reaches its goal from level 2 on, so the oracle's room is mainly level 1
@@ -171,29 +226,31 @@ What is expected, stated so that a surprise is visible:
   level 1's.
 - **dc22:** no G-NAV run has won level 1, so dc22 separates "the goal was unknown" from "the goal
   was known but unreachable by this planner".
-- **ls20:** its mechanics (key panel, pusher) suggest the win condition may not be a place; if so,
-  ls20 is NOT TESTABLE, and that is reported as a finding about the goal language, not as missing
-  data.
+- **ls20:** NOT TESTABLE (docs/E9_goals.md). Its predicate, every target reached with matching
+  shape, colour and rotation, is not expressible as a place. This is reported as a finding about
+  the planner's goal language, not as missing data.
 
 ## 6. What the paper may and may not conclude
 
 Constraints that hold in every outcome:
-- three games, all source-informed (the goal table and the planner's debugging both used their
+- the verdict rests on two games, tu93 and dc22; ls20 is reported as NOT TESTABLE;
+- all three are source-informed (the level-end rules and the planner's debugging both used their
   source);
 - all three are train games, on which the planner was developed;
 - one planner (G-NAV) over one explorer (hash_state);
-- seeds are nested in games, and three games support no population statement.
+- seeds are nested in games, and **two games cannot support a general claim**: no statement about
+  a population of games, about other planners, or about goal identification in general.
 
 The paper never says "the barrier is goal inference" in general, never extends E9 to the held-out
 games, to other agents, to "frame-only agents", or to ARC-AGI-3, and always names the three games
 and the instrument.
 
 - **BINDING (goal information is the binding constraint):**
-  - *May say:* "For our planner on three train games whose source we read (tu93, dc22, ls20),
-    supplying the true goal with everything else unchanged [raised levels completed by x / cut the
-    actions per level by a factor y / won level(s) z]; for this instrument on these games, goal
-    information was the binding constraint." It may then connect this, as consistent and not as
-    proof, to the held-out census, where no goal was ever confirmed.
+  - *May say:* "For our planner on two train games whose source we read (tu93, dc22), supplying
+    the true goal colour with everything else unchanged [raised levels completed by x / cut the
+    actions per level by a factor y / won level(s) z]; for this instrument on these two games,
+    identifying the goal was the binding constraint." It may then connect this, as consistent and
+    not as proof, to the held-out census, where no goal was ever confirmed.
   - *May not say:* that goal identification is the barrier on the held-out games or for other
     agents.
 - **NOT BINDING:**
@@ -209,14 +266,62 @@ and the instrument.
   - *May not:* support any causal wording. The census stays descriptive, and the allowed sentence
     remains "goal identification is the dominant observed failure mode for this instrument on this
     public subset".
-- **NOT TESTABLE on a game:** reported as a limit of the planner's goal language (the win condition
-  is not "reach these cells"), with the quoted win condition from `docs/E9_goals.md`.
+- **NOT TESTABLE (ls20):** reported as a finding: the planner's goal language (reach a place,
+  named by colour) cannot represent ls20's predicate, quoted from `docs/E9_goals.md` ("every
+  target reached with matching shape, colour and rotation").
+- **Arm P, if run:** reported only as "the value of knowing the exact place", beside the verdict
+  and never as part of it, with the tu93 rotation caveat (Section 3).
 
-## 7. Gates before any run
+## 7. Gates and commands
 
-- G1: `docs/E9_goals.md` written from the three sources (Section 1), with its SHA-256 recorded.
-- G2: `nav_oracle` implemented and equivalence with `nav` shown on an empty goal table (Section 2),
-  with the code hashes recorded.
-- G3: the exact E9 command and output file names written into this document.
+- **G1 done:** docs/E9_goals.md, commit 8f8047f, SHA-256
+  e87c1778c73752549a2defc9f5bfbddca81a7c96d7b5780bcc370b71576063bd.
+- **G2:** `nav_oracle` implemented, and equivalence with `nav` shown with the oracle switched off
+  (no colours handed), on all three games, seeds 1000-1001, 3,000 actions. The code hashes of
+  g_nav.py and g_nav_run.py are recorded after G2 passes; no code changes after that point.
+- **G3:** a reporting script that computes Sections 4-5 from the rows, written before any E9
+  output is read.
 
-No E9 game is run before G1-G3 are committed.
+No E9 game is run before G2 and G3 are committed.
+
+Commands, once the code exists. Run from `D:\Research\arc3\repo\scripts`; each output is
+written to `scripts\` and moved to `runs\` by the author. Script names for G2 and G3 are
+provisional until that code is written.
+
+G2, equivalence with the oracle off (no game outcome is read; only whether the two modes' rows are
+identical):
+
+```powershell
+cd D:\Research\arc3\repo\scripts
+$py = "D:\Research\arc3\brutus\.venv\Scripts\python.exe"
+$env_dir = "D:\Research\arc3\brutus\environment_files"
+& $py e9_equiv.py --games tu93,dc22,ls20 --seeds 2 --budget 3000 --env-dir $env_dir
+```
+
+The E9 run, arms F, N, O:
+
+```powershell
+cd D:\Research\arc3\repo\scripts
+$py = "D:\Research\arc3\brutus\.venv\Scripts\python.exe"
+$env_dir = "D:\Research\arc3\brutus\environment_files"
+& $py g_nav_run.py --games tu93,dc22,ls20 --modes hash_state,nav,nav_oracle --seeds 10 --budget 20000 --game-seconds 36000 --hours 48 --workers 8 --env-dir $env_dir --tag e9_oracle_3x10 --resume
+```
+
+Output `scripts\navrun_e9_oracle_3x10.json` (90 rows), moved by the author to
+`runs\navrun_e9_oracle_3x10.json`.
+
+The report (G3; reads the E9 file and the E2 file, plays no game):
+
+```powershell
+cd D:\Research\arc3\repo
+D:\Research\arc3\brutus\.venv\Scripts\python.exe scripts\e9_report.py --e9 runs\navrun_e9_oracle_3x10.json --e2 runs\navrun_e2_hash_25x10.json
+```
+
+Optional arm P, only after the report of arms F, N, O exists and time allows:
+
+```powershell
+cd D:\Research\arc3\repo\scripts
+$py = "D:\Research\arc3\brutus\.venv\Scripts\python.exe"
+$env_dir = "D:\Research\arc3\brutus\environment_files"
+& $py g_nav_run.py --games tu93,dc22 --modes nav_oracle_place --seeds 10 --budget 20000 --game-seconds 36000 --hours 48 --workers 8 --env-dir $env_dir --tag e9_place_2x10 --resume
+```
