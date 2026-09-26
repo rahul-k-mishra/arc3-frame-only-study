@@ -8,7 +8,7 @@ output saved under runs/.
 
 ## Current objective (decision of 26 September 2026)
 
-The ARC-only short paper is dropped. The ARC-AGI-3 measurement programme on the 25 public games is complete and frozen; every number in it is traceable to a file in runs/. It is background, not a paper. Every ARC-AGI-3 result stands as recorded; nothing already measured is re-run or re-decided because of the change of target. The ARC-AGI-3 items docs/STATE.md Section 5 still lists as open (E6, E10, E9 arm P, E1b, E7) are listed in docs/TOG_PLAN_v3.md Section 10.
+The ARC-only short paper is dropped. The ARC-AGI-3 measurement programme on the 25 public games is complete and frozen; every number in it is traceable to a file in runs/. It is background, not a paper. Every ARC-AGI-3 result stands as recorded; nothing already measured is re-run or re-decided because of the change of target. Of the ARC-AGI-3 items docs/STATE.md Section 5 listed as open, E6 is mandatory in W1 under the tagged code and E10 is carried by G; E9 arm P, E1b and E7 were dropped on 27 Sep 2026 (docs/TOG_PLAN_v3.md Section 8).
 
 The paper now being built is a method paper: the assumption census (A1–A5) and the goal-identification cost G, pre-registered and frozen, demonstrated on three CPU-runnable benchmarks — ARC-AGI-3 (development instance, does not count toward generality), MiniGrid/BabyAI, and one more suite (Procgen recommended; ALE fallback). The claim has two halves and both must hold: the census reports ground-truth mechanics of unseen games at a registered accuracy, and it predicts, before any agent runs, where assumption-driven frame-only agents complete the first level.
 
@@ -33,7 +33,17 @@ Plan of record: docs/TOG_PLAN_v3.md (docs/archive/TOG_PLAN_v1.md and docs/archiv
 
 ## Open decisions (RKM decides; do not pre-empt)
 
-Suite C (Procgen or ALE); whether the formal result is attempted after the prior-art kill; the per-suite action budget; JAIR-first or ToG-first; OSF registration alongside the git tag; whether install, timing and fidelity probes before the tag count as new runs; the working title (it may claim no more than the evidence across the chosen benchmarks supports); the open ARC-AGI-3 items E6, E10, E9 arm P, E1b, E7.
+All eight closed by RKM on 27 Sep 2026 (docs/TOG_PLAN_v3.md Section 8):
+1. Suite C: Procgen.
+2. The formal result: dropped; cite, do not prove.
+3. Budget: 20,000 actions per game on every suite, unless the fidelity script forces a registered per-suite value.
+4. JAIR-first or ToG-first: decided at gate G3 by outcome.
+5. OSF registration: yes, alongside the git tag.
+6. W0 probes: registered infrastructure checks, not experiments (docs/W0_CHECKS.md).
+7. Working title: deferred to G3.
+8. ARC-AGI-3 items: E6 mandatory in W1 under the tagged code; E10 carried by G; E9 arm P, E1b and E7 dropped.
+
+Gate G0 is closed: cite and drop the theorem (docs/PRIOR_ART_KILL.md Part D). There are no open decisions until gate G1.
 
 ## Non-negotiable rules (from the author; do not relax them)
 
@@ -122,7 +132,7 @@ Suite C (Procgen or ALE); whether the formal result is attempted after the prior
 
 ## Corrections imposed by the audit (audit/TOG_PLAN_RUTHLESS_AUDIT.md) — standing instructions
 
-- Rudakov, Shock, Cowley, "Graph-Based Exploration for ARC-AGI-3" (arXiv 2512.24156, code at
+- Rudakov, Shock, Cowley, "Graph-Based Exploration for ARC-AGI-3 Interactive Reasoning Tasks" (arXiv 2512.24156, code at
   github.com/dolphin-in-a-coma/arc-agi-3-just-explore) is a published frame-based agent that solved a
   median 30/52 preview levels. Never write that frame-only agents plateau. Run their agent on the
   current 25 public games through our harness (E1) and report what happens.
@@ -140,6 +150,23 @@ Suite C (Procgen or ALE); whether the formal result is attempted after the prior
 - Cite: ARC-AGI-3 technical report, launch post, preview 30-day learnings, human-performance
   paper, Milestone-1 write-ups; Balla et al. 2020; Kunanusont et al.; Stephenson et al. 2025;
   Blum & Hardt 2015; Roelofs et al. 2019; Introspective Environment Modeling; AgentRx; BALROG.
+  Corrections from docs/PRIOR_ART_KILL.md (27 Sep 2026):
+  - Kunanusont, Lucas, Pérez-Liébana 2017 (CEC) is a pixel-input DQN paper, not a forward-model
+    paper. The GVGAI forward-model paper is Dockhorn & Apeldoorn 2018 (IEEE CIG).
+  - MDP Playground (Rajan et al.) is JAIR 77, 2023, not JMLR.
+  - "Stephenson et al. 2025" is UNIDENTIFIED; RKM to confirm which paper (PRIOR_ART_KILL.md 14b).
+  - Rudakov et al.'s full title ends "for ARC-AGI-3 Interactive Reasoning Tasks".
+  - The "human-performance paper" appears to be the ARC Prize blog post "Measuring Human
+    Performance on ARC-AGI-3" plus the technical report's human section.
+  Must-cite additions (PRIOR_ART_KILL.md Part B):
+  - Twin (Skoutnev et al., arXiv:2608.14490);
+  - Tycho (Lehmann et al., arXiv:2607.28287);
+  - OPINE-World (Courtis et al., arXiv:2607.01531);
+  - Liew, "Explore Before You Solve" (arXiv:2605.25931);
+  - DiG-bench (Battleday et al., arXiv:2608.12593);
+  - Bontrager et al. 2016 (AIIDE);
+  - Gaina et al. 2018 (IEEE CIG);
+  - Laidlaw et al. 2023 (NeurIPS).
 - Method paper across three benchmarks (venues in "Current objective"); double-anonymous:
   no names, handles, affiliations in manuscript or code.
 - E1 decision thresholds are written down in docs/ BEFORE any external agent is run.
@@ -172,12 +199,12 @@ Entry point for a new session: docs/STATE.md.
    test in a Python 3.10 venv; suite C decision.
 2. W1: docs/PREREG.md v1 with final numbers, ground-truth tables, agent list, pilot set (each
    benchmark's selection split fixed before any mechanism is measured on it); analysis scripts
-   with synthetic tests; tag prereg-v1 (+ OSF); re-verify the ARC train census under
-   frame-difference perception. No new run before the tag (TOG_PLAN_v3 Section 10, item 4).
+   with synthetic tests; tag prereg-v1 (+ OSF); then E6 (census at 10 seeds on all 25 ARC games
+   under the tagged code, mandatory). No new run before the tag except the registered W0
+   infrastructure checks (docs/W0_CHECKS.md).
 3. W2-W5: adapters, fidelity script, I1 feasibility, pilot, PREREG v1.1; confirmatory runs (RKM);
-   frozen analysis; V4 verdict.
-4. ARC-AGI-3 items still open (docs/STATE.md Section 5): E6 census at 10 seeds (category rule
-   frozen by code hash before the run); E10 formal goal-identification cost (carried by G and V4);
-   optional E9 arm P, E1b templates, E7 14B LLM cost.
+   frozen analysis.
+4. ARC-AGI-3 items (closed 27 Sep 2026): E6 census at 10 seeds (category rule frozen by code
+   hash before the run) is W1 above; E10 is carried by G; E9 arm P, E1b and E7 are dropped.
 5. Manuscript for the method paper, anonymised (JAIR format); reproduction script that regenerates
    every table from runs/.

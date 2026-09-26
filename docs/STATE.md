@@ -149,3 +149,31 @@ References to the old paths elsewhere in this file are read as the new paths.
 2. Sections 1 and 5 name docs/TOG_PLAN_v2.md and docs/TOG_PLAN.md. Correction: they are docs/archive/TOG_PLAN_v2.md and docs/archive/TOG_PLAN_v1.md.
 3. Section 5 (Open): "There is no protocol file yet" for the method-paper direction. Correction: docs/METHOD_BLUEPRINT.md is its draft protocol, not yet registered.
 4. Section 5 (Open): the venue is listed as open. Correction: TOG_PLAN_v3.md Section 1 records JAIR first and ToG second, pre-committed by outcome at gate G3. Which one is submitted to first remains open (TOG_PLAN_v3.md Section 8, item 4).
+
+## Amendment 27 Sep 2026 (b)
+
+Second session-end amendment of 27 September 2026. The lines above are unchanged; where this section corrects one of them, this section governs.
+
+**Decisions 1–8, taken by RKM on 27 Sep 2026** (recorded in docs/TOG_PLAN_v3.md Section 8, CLAUDE.md "Open decisions", METHOD_BLUEPRINT.md draft 1.4):
+1. Suite C is **Procgen** (W0 check C1 passed: procgen 0.10.7 in D:\Research\arc3\brutus\.venv_procgen).
+2. The formal result is **dropped**: cite, do not prove.
+3. Budget: **20,000 actions per game on every suite**, unless the fidelity script forces a registered per-suite value.
+4. JAIR-first or ToG-first is **decided at gate G3 by outcome** (support → JAIR full article; partial → IEEE ToG; refute → repository record, at most an arXiv note).
+5. **OSF registration** alongside the git tag.
+6. The W0 checks are **registered infrastructure checks, not experiments** (docs/W0_CHECKS.md).
+7. Working title: **deferred to G3**.
+8. ARC-AGI-3 items:
+   - **E6** (census at 10 seeds on all 25 games under the tagged code) is **mandatory** in W1;
+   - **E10** is carried by the goal-identification cost G;
+   - **E9 arm P, E1b and E7 are dropped.**
+
+**Gate G0 outcome: cite and drop the theorem** (docs/PRIOR_ART_KILL.md Part D).
+- No paper kills any claim component.
+- Statement 1's identification half and Statement 2 are covered by Goldman & Kearns 1995 and version-space elimination; Statement 1's cost half is covered by immobile-hider search games (PROVISIONAL: Gal 1979 not read directly).
+- METHOD_BLUEPRINT.md draft 1.4 therefore:
+  - removes Statements 1–2, the enumeration check and V4;
+  - keeps G_end and G_act as registered, measured quantities.
+
+**Consequences for this file.**
+- Section 5 "Open" listed E9 arm P, E1b and E7 as optional, and E6 and E10 as open. This amendment closes all five: E9 arm P, E1b and E7 are dropped, E6 is mandatory, and E10 is carried by G.
+- Section 5 "Open" also listed the venue and the method-paper direction. Both are closed by decisions 1–8 above and by the first amendment of 27 Sep 2026.

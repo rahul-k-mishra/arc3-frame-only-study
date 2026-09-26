@@ -1,8 +1,8 @@
 # METHOD_BLUEPRINT.md
 
-Draft 1.3 — 27 Sep 2026
+Draft 1.4 — 27 Sep 2026
 
-(Draft 1.1 — corrected 27 Sep 2026 per TOG_PLAN_v3.md Section 3. Draft 1.2 — census input, registered adapter parameters, E6 as the ARC baseline, untraced values closed. Draft 1.3 — source exposure (Section 2.9), V1 on ARC limited to the 8 train games, W0 infrastructure checks.)
+(Draft 1.1 — corrected 27 Sep 2026 per TOG_PLAN_v3.md Section 3. Draft 1.2 — census input, registered adapter parameters, E6 as the ARC baseline, untraced values closed. Draft 1.3 — source exposure (Section 2.9), V1 on ARC limited to the 8 train games, W0 infrastructure checks. Draft 1.4 — gate G0 closed as cite-and-drop (docs/PRIOR_ART_KILL.md Part D): Statements 1–2, the enumeration check and V4 removed; G registered as measured definitions; agent family restated; RKM decisions 1–8 of 27 Sep 2026.)
 
 Assumption census and goal-identification cost as a pre-registered measurement method
 
@@ -80,7 +80,7 @@ Perception input is the colour-index grid of Section 2.1, for every suite. The c
 
 ### 2.3 Goal-identification cost G
 
-Two measured quantities and one formal statement to be attempted (Section 5).
+Two measured quantities. Their registered definitions (elimination rules, "identified", h_0) are in Section 5; there is no formal statement to prove (gate G0, docs/PRIOR_ART_KILL.md Part D).
 
 Hypothesis classes, registered:
 
@@ -89,17 +89,19 @@ Hypothesis classes, registered:
 
 The consistent set H(t) is every hypothesis not contradicted by the observed (cell entered, feature, level_end) pairs up to action t.
 
-- G_end: number of observed level-end events after which |H(t)| = 1, per class; ∞ if never within budget.
-- G_act: actions from level start to the first level end under the registered coverage policy, divided by the number of distinct cells the controlled object has occupied by then. This is the per-cell price of finding the goal by exhaustion, and it is what a frame-only agent in this class pays.
+- G_end: number of observed level-end events until the goal is identified (exactly one non-h_0 hypothesis survives, Section 5), per class; ∞ if h_0 is the verdict or the budget ends first.
+- G_act: actions from level start to the first level end under the registered coverage policy, divided by the number of distinct cells the controlled object has occupied by then. This is the per-cell price of finding the goal by exhaustion under the registered prior-free class; it is an identity used as a measurement, not a bound.
 
 Both are measured on every game where A2 holds; on games where A2 fails, G is recorded as undefined, not as ∞. G is not measured on the ARC 25 today — the goal_confirmed counters exist, G does not; scripts/g_goal_cost.py is new work.
 
 ### 2.4 Agents
 
-The claim in half (ii) is about a class: frame-only agents whose behaviour is a deterministic function of A1–A5 holding. It has to be instantiated by more than the author's own code, or it shrinks to "predicts my agent".
+The claim in half (ii) is about a family: frame-only, prior-free, CPU-runnable agents that do not read game source (the definition of docs/archive/TOG_PLAN_v2.md Section 0). It has to be instantiated by more than the author's own code, or it shrinks to "predicts my agent".
+
+V2 evidence comes only from agents that do not use A1–A5 in their policy: R (the hash_state explorer) and I1 (the Rudakov graph explorer). N uses A1–A5 by construction — it completes a level exactly when the assumptions let it walk to an end-place — so predicting N from the census is circular; N's V2 row is reported as an instrument check, not as evidence.
 
 - R (reference explorer): the E2 hash_state explorer. Author-written, deterministic given seed, code released.
-- N (reference navigator): the G-NAV planner. Rejected as a competition agent, but it is the purest instantiation of A1–A5 — it completes a level exactly when it can walk a controlled object to an end-place. Author-written.
+- N (reference navigator): the G-NAV planner. Rejected as a competition agent, but it is the purest instantiation of A1–A5 — it completes a level exactly when it can walk a controlled object to an end-place. Author-written. Instrument check only (see above); not V2 evidence.
 - I1 (independent): the Rudakov, Shock & Cowley agent (MIT, no GPU/LLM/network, 0.02–0.056 s per action on ARC). Adaptability to MiniGrid/Procgen is unknown: if it hard-codes the 64×64 grid or the 16-colour palette, that is recorded and the paper states that no independent agent could be run outside ARC.
 - No I2. E1c searched for a second admissible independent agent and closed with none (docs/E1c_search.md, docs/E1c_prometheus_check.md). The search reopens only if ARC-AGI-3 Milestone-2 releases after 30 September add a permissive-licence, non-LLM, CPU frame-only agent.
 
@@ -109,7 +111,8 @@ Admissibility (registered): no GPU, no LLM, no network; per-action cost at or un
 
 - Unit: the game. Seeds (10) are nested replications; runs are deterministic given the seed, so seed count is replication count and is said so.
 - Outcome per (agent, game): completed level 1 within budget (binary); number of levels completed (count).
-- Census score S: number of A1–A5 holding (0–5). Binary prediction P: "R and N complete level 1 iff A2 ∧ A3 ∧ A4 ∧ A5 hold".
+- The family measured: frame-only, prior-free, CPU-runnable agents that do not read game source. V2 evidence agents: R and I1; N is reported as an instrument check (Section 2.4).
+- Census score S: number of A1–A5 holding (0–5). Binary prediction P: "the agent completes level 1 iff A2 ∧ A3 ∧ A4 ∧ A5 hold", tested for R and I1, reported for N.
 - Nuisance baseline B: logistic prediction from frame size, number of actions, number of distinct colours — things any reviewer will suspect drive the result.
 
 ### 2.6 Registered thresholds (proposals — RKM registers the final numbers)
@@ -120,7 +123,6 @@ Admissibility (registered): no GPU, no LLM, no network; per-action cost at or un
 | V2 predictive validity | per agent, per suite: AUROC(S → completion) ≥ 0.80 with bootstrap 95% CI lower bound > 0.60; balanced accuracy of P ≥ 0.80; AUROC exceeds B by ≥ 0.10 | AUROC ≤ 0.65 for both an author agent and an independent agent on a suite where the test is not void |
 | V2 precondition | the agent completes level 1 on between 10% and 90% of the suite's games | outside that band the test is void for that agent on that suite and is reported as void, not as pass |
 | V3 parameter transfer | A1–A5 parameters identical to the ARC-train values on every suite | any re-tuning on B or C downgrades the claim to "after re-tuning on suite X" |
-| V4 formal | theorem proved line by line, enumeration-checked by script on grids up to a registered size; measured G within the bound on ≥ 95% of (game, seed) pairs where A5 holds | either part fails → the theorem is dropped from the paper, not weakened |
 
 ### 2.7 Pilot rules
 
@@ -178,15 +180,14 @@ Ground truth. Before any run on B or C, a truth table docs/GROUND_TRUTH_minigrid
 Support — all of the following:
 
 1. V1 passes on B (both conditions) and C.
-2. V2 passes for at least one author agent and at least one independent agent on B-macro and on C (not void).
+2. V2 passes for R and for I1 on B-macro and on C (not void); N's rows are instrument checks and do not count (Section 2.4).
 3. V3 untouched: no parameter changed after the ARC-train freeze.
 4. The ARC-AGI-3 held-out results are consistent with rule P when the same analysis script is run on the existing E2 and G-NAV runs (reported, not tested — they predate the registration).
-5. V4 either passes or the theorem is absent; a weakened theorem is not an option.
 
 Partial — publishable at ToG, not JAIR:
 
 - V1 passes everywhere but V2 passes on B-macro only, or is void on C because no agent completes any Procgen level. Claim shrinks to "the census predicts lattice agents on lattice games", which is true and narrow.
-- V2 passes on C for author agents only (I1 not adaptable). Claim shrinks to "predicts the author's agents".
+- V2 passes on C for R only (I1 not adaptable). Claim shrinks to "predicts the author's explorer".
 
 Refute — the method claim is dropped:
 
@@ -198,24 +199,32 @@ Pre-commitment table (which outcome sends the manuscript where):
 
 | Outcome | Venue |
 |---|---|
-| Support, with V4 | JAIR full article |
-| Support, V4 dropped | JAIR full article, lower odds; JAIR research note as fallback |
+| Support | JAIR full article |
 | Partial | IEEE ToG full paper |
 | Refute | repository record only, at most an arXiv note |
 
 ---
 
-## 5. The formal component, and the rule if it is thin
+## 5. Goal-identification cost: definitions and cited observations
 
-What is to be attempted:
+Gate G0 closed on 27 September 2026 as "cite and drop the theorem" (docs/PRIOR_ART_KILL.md Part D, decided by RKM). The paper proves no theorem. G_end and G_act are measured quantities with the registered definitions below.
 
-- Statement 1 (identification before the first end). For any frame-only policy and any goal in H_place(m), the consistent set before the first level end contains every not-yet-entered reachable cell plus h_0; therefore no policy in this class identifies the goal before the first level end, and the expected G_act is at least the expected first-hitting time of the goal cell under the policy divided by cells visited — for the registered coverage policy, a quantity computable from the reachable-cell graph.
-- Statement 2 (transfer across levels). After one level end, H_feat is reduced to the feature values carried by the end cell, so G_end ≤ 1 + (number of distinct feature values on that cell − 1) further ends in the worst case, and equals 1 when the end cell carries a unique feature.
-- Verification: scripts/g_theorem_enum.py enumerates every goal placement on grids up to the registered size and every policy in a registered finite family, and checks both statements exhaustively. Then measured G on A5-holding games is compared to the bound (V4).
+Registered definitions:
 
-The honest assessment: Statement 1 is close to a treasure-hunt or cover-time fact and Statement 2 is a version-space count. A reviewer who has read Goldman & Kearns (teaching dimension), Ng & Russell / Cao et al. / Skalse et al. (reward identifiability), or the reward-free exploration literature (Jin et al. 2020) may call both trivial. The novelty, if any, is in tying the bound to a quantity the census measures before the agent runs, and in showing measured G tracks it across suites — not in the theorem itself.
+- The hypothesis classes H_place(m) and H_feat(k) (Section 2.3) are prior-free and registered: every reachable cell, or every observed feature value, is a hypothesis on equal footing, plus h_0 ("level end is not a function of the controlled object's cell").
+- A level end at cell c with feature set F(c) eliminates every place hypothesis except c, and every feature hypothesis outside F(c).
+- An entry into a cell without a level end eliminates that cell's place hypothesis and, for H_feat, nothing.
+- "Identified" means exactly one non-h_0 hypothesis survives.
+- h_0 is the verdict when no non-h_0 hypothesis survives.
+- G_end is the number of level ends until identified; ∞ if the verdict is h_0 or if the budget ends first.
+- G_act is the number of actions from level start to the first level end, divided by the number of distinct cells the controlled object has occupied by then. It is an identity used as a measurement, not a bound.
 
-Rule: a prior-art kill on the list above (plus contingency awareness, Bellemare et al. 2012; Balla et al. on ARC-AGI-3; the Procgen and BabyAI papers' own difficulty analyses) is done in W0, before the theorem is written. If either statement is a one-line corollary of a cited result, it is cited, not proved, and the paper's formal contribution is stated as "none". The paper must stand on halves (i) and (ii) without it.
+Cited observations (cite, do not prove; docs/PRIOR_ART_KILL.md Part C1 and C2):
+
+- Elimination per example over the place class is the singletons-plus-empty example of Goldman & Kearns 1995, Lemma 1: each observation separates one singleton from the empty concept.
+- Elimination over H_feat is version-space candidate elimination (Mitchell 1982), bounded by the teaching-dimension count of Goldman & Kearns 1995.
+
+Scope: an agent with visual priors or an LLM can identify the goal before any level end (Twin, arXiv:2608.14490), so G is a property of the registered prior-free class, not of frame-only agents in general.
 
 ---
 
@@ -224,7 +233,7 @@ Rule: a prior-art kill on the list above (plus contingency awareness, Bellemare 
 W0 (this week)
 1. Reconcile this document with docs/STATE.md (Section 12).
 2. Prior-art kill: one document, docs/PRIOR_ART_KILL.md, one paragraph per paper, verdict per paper on what it already covers.
-3. Gate G0: is there a non-trivial formal result? Record yes/no. Either answer continues; "no" removes Section 5 and lowers Section 8.
+3. Gate G0: is there a non-trivial formal result? Closed 27 Sep 2026: no — cite and drop (docs/PRIOR_ART_KILL.md Part D; Section 5).
 4. Decide suite C (Procgen vs ALE fallback) after installing Procgen in a 3.10 venv and running one game for 1,000 steps.
 
 W1 — freeze
@@ -243,8 +252,8 @@ W3–W4 — confirmatory runs (RKM runs, pastes console)
 13. G measurement on B, C and the ARC 25 (new script; ARC runs are re-executed, not reconstructed).
 14. Gate G3: outcome classified by Section 4 before a word of the results section is written.
 
-W5 — analysis and theorem
-15. Frozen analysis scripts run once; outputs committed. Enumeration check. V4 verdict.
+W5 — analysis
+15. Frozen analysis scripts run once; outputs committed.
 
 W6–W7 — manuscript
 16. JAIR format, code release (MIT), data release (all runs/ JSON), OSF link in the paper. Submit.
@@ -270,12 +279,13 @@ JAIR's own published statistics (2025 submissions): overall acceptance 13.4%; 58
 
 For this paper, my estimate:
 
-| Scenario | JAIR | ToG (if JAIR rejects) |
+| Scenario | JAIR | ToG |
 |---|---|---|
-| Support with a non-trivial V4 | 20–30% | 45–55% |
-| Support, V4 dropped | 15–20% | 40–50% |
-| Partial (lattice-only or author-agents-only) | 5–10% | 30–40% |
-| Refute | do not submit | repository record only, at most an arXiv note |
+| Support | 15–20% | 40–50% |
+| Partial (lattice-only or R-only) | under 5% | 30–40% |
+| Refute | no submission | no submission |
+
+The JAIR case rests on V1 and V2 holding across three suites with an independent agent (I1) outside ARC.
 
 Why the ceiling is low even in the best case:
 
@@ -283,7 +293,7 @@ Why the ceiling is low even in the best case:
 - Single author, no institution, code-heavy. Not a formal barrier at JAIR; it is a barrier to benefit of the doubt.
 - Two of the three suites are the real test, and one of them (Procgen) can kill the method outright. That is the correct design, and it is why the odds are not higher.
 
-Why try JAIR anyway: the submission is free, the reviews arrive either way, and the same manuscript reformats to ToG. The cost is calendar time, roughly four to nine months. If calendar time matters more than the JAIR label, submit to ToG first; that is a decision, not a recommendation.
+Why try JAIR anyway: the submission is free, the reviews arrive either way, and the same manuscript reformats to ToG. The cost is calendar time, roughly four to nine months. Whether JAIR or ToG comes first is decided at gate G3 by outcome (RKM, 27 Sep 2026; Section 4 pre-commitment table).
 
 ---
 
@@ -294,18 +304,27 @@ Why try JAIR anyway: the submission is free, the reviews arrive either way, and 
 3. MiniGrid passing is weak evidence: the census was built for lattices. Procgen is the only test that can fail for an interesting reason, and it can fail for a boring one (perception on textures).
 4. G does not exist in code. goal_confirmed counters exist. The measure the paper is named for has never been run on any game.
 5. The census consumes an integer colour-index grid. Outside ARC, what it sees is decided by the adapter's palette quantisation, frame crop, grid size and action list; a bad quantisation on a textured suite fails the census for a boring reason. The four parameters are registered per suite before any run and never tuned after.
-6. The formal result is likely thin. The paper must be written so that removing Section 5 changes nothing in the results.
+6. There is no formal result (gate G0: cite and drop). G is a measured quantity; its elimination rules are cited observations (Section 5).
 7. "Assumption fails → agent fails" can be confounded by search budget and by the analytic scoring ceiling. V2 must be budget-matched and the nuisance baseline registered; the ceiling result is ARC-scoring-specific and stays out of V2.
-8. Prior art that a JAIR reviewer will name on sight: contingency awareness (Bellemare et al. 2012), reward identifiability (Ng & Russell; Cao, Cohen & Szpruch; Skalse et al.), reward-free exploration bounds (Jin et al.), the Procgen and BabyAI papers' difficulty analyses, Balla et al. on ARC-AGI-3, Blum & Hardt and Roelofs et al. on held-out reuse. Every one is cited and positioned in W0 or the paper is desk-rejected on related work.
+8. Prior art that a JAIR reviewer will name on sight: contingency awareness (Bellemare et al. 2012), reward identifiability (Ng & Russell; Cao, Cohen & Szpruch; Skalse et al.), reward-free exploration bounds (Jin et al.), the Procgen and BabyAI papers' difficulty analyses, Balla et al. on ARC-AGI-3, Blum & Hardt and Roelofs et al. on held-out reuse. Every one is cited and positioned (docs/PRIOR_ART_KILL.md) or the paper is desk-rejected on related work.
 9. The adapter parameters (Section 2.1) are new, registered per suite, and untested on any suite but ARC; the census has only ever run on ARC's native integer grid.
 10. MAX_STEP is defined twice (scripts/g_nav.py:57, scripts/g_motion.py:17). A change to one alone would silently split the learner from the motion detector; both are registered.
 11. learn_tries is a declared parameter with no effect (scripts/g_nav.py:114, 121). A reader may take it for a live setting; it is registered as having no effect.
 12. The explorer (scripts/g_agent.py) is frozen by file hash only; its constants are not listed, so any edit to it changes what the census sees without changing a registered census parameter.
 13. The census v2 runs predate the repository; the code that produced them cannot be shown from git. The ARC census numbers used so far are development only; the ARC baseline exists only after E6 runs under the tagged code in W1.
+14. Prior negative result on component (iii): Bontrager et al. 2016 (AIIDE) read mechanics features from GVGAI rule files and found they did not predict which controllers succeed. The paper's answer has three parts (docs/PRIOR_ART_KILL.md C3):
+    - our properties are measured from frames by interaction, and their accuracy against source-derived ground truth is itself tested (V1);
+    - our target is first-level completion by a stated family of agents, not the best controller in a portfolio;
+    - our rule is frozen on the 8 ARC train games and registered before any held-out run.
+    If V2 fails, it fails in the same way theirs did, and that is reported.
+15. Circularity of N: the G-NAV planner uses A1–A5 by construction, so its agreement with the census is not evidence. V2 rests on R and I1 alone; if I1 cannot be adapted outside ARC, V2 on B and C rests on R only.
+16. The ARC taxonomy of Liew (arXiv:2605.25931) classifies the same 25 games by the cheapest blind strategy that reaches a level. The census must be compared with it category by category, and every disagreement reported.
 
 ---
 
 ## 10. Decisions needed from RKM now
+
+All closed by RKM on 27 Sep 2026 (docs/TOG_PLAN_v3.md Section 8): suite C is Procgen; the formal result is dropped (cite, do not prove); 20,000 actions per game on every suite unless the fidelity script forces a registered per-suite value; JAIR-first or ToG-first decided at G3 by outcome; OSF registration alongside the git tag. The list below is kept as the record of the questions.
 
 1. Suite C: Procgen (requires a Python 3.10 venv on the lenovo) or the ALE fallback (A1–A4 only, no G). Recommendation: Procgen; decide after the W0 install test.
 2. Whether Section 5 is attempted at all, given Gate G0's likely answer.
@@ -317,7 +336,7 @@ Why try JAIR anyway: the submission is free, the reviews arrive either way, and 
 
 ## 11. First Claude Code tasks once Section 10 is settled
 
-1. docs/PRIOR_ART_KILL.md (W0 step 2).
+1. docs/PRIOR_ART_KILL.md (W0 step 2). Done 27 Sep 2026.
 2. scripts/env_frame.py, scripts/adapter_minigrid.py (raw + macro), scripts/fidelity_check.py — parallel, ordered run commands, working directory stated.
 3. docs/GROUND_TRUTH_minigrid.md from source, with file and line per entry.
 4. docs/PREREG.md v1 assembled from Section 2 with the final numbers.
@@ -337,4 +356,6 @@ Confirm or correct from docs/STATE.md before Section 2 is frozen. Done 27 Septem
 - HELDOUT.md split (dc22 moved to train; 17 held-out) — docs/HELDOUT.md, copied unchanged from D:\Research\arc3\brutus\HELDOUT.md, SHA-256 8c07813ab01f5228a6af10f91771702dad0291f26b0f920892ef3a79763a122d ("dc22 MOVED FROM HELD-OUT on 21 Sep 2026") — and which ARC games count as "train" for parameter freezing: the 8 train games, docs/TOG_PLAN_v3.md Section 3 and Section 2 (Split row).
 - The 0.28 s per-action admissibility threshold (docs/archive/TOG_PLAN_v2.md Section 3.1, A7; measured values in docs/E1_phase2_protocol.md Section 1) and the E1 fidelity procedure (docs/archive/TOG_PLAN_v2.md Section 3.1, A6; results in docs/E1_phase2_protocol.md Section 1), to be reused as the admissibility rule.
 - Whether ar25's nav-versus-hash_state discrepancy (8/8 vs 0/4) is explained: it is not — docs/archive/TOG_PLAN_v2.md Section 10 ("The cause is unknown; it is reported as unexplained") and CLAUDE.md (State of the evidence, "UNEXPLAINED"). It is reported as unexplained.
+- W6 reading list, before the related-work section is written (docs/PRIOR_ART_KILL.md "Open reads"): Gal 1979 and Alpern & Gal 2003; Zoroa et al. 2013; Angluin 1988; Mitchell 1982; Deng & Papadimitriou 1990; Dockhorn & Apeldoorn 2018; the full texts of Skalse et al. 2023, Keren et al. 2016 and Mendes et al. 2016.
+- Read by RKM directly before the manuscript relies on them (the prior-art verdicts rest on sub-agent readings): Goldman & Kearns 1995, Lemma 1; Bontrager et al. 2016; Keren, Gal & Karpas 2014, Definitions 1–3 and Theorem 2.
 - The registered-rule precedence decisions (BREAKS before REPRODUCES; card-count clause first — rows lacking per-level scorecard counts give INCONCLUSIVE; named as in docs/STATE.md Section 5, corrected 27 Sep 2026 from "missing-scorecard clause") — carried into PREREG.md as the template for rule precedence.

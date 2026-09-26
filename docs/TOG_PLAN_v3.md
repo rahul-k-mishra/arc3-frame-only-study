@@ -20,6 +20,8 @@ Why (the two closures that forced it):
 - E1c closed with no admissible second independent agent. The ARC-only paper's transfer claim rested on a single independent agent (Rudakov, Shock & Cowley) whose E1 result was inconclusive with three recorded confounds. Without a second, the ARC-only paper could not make the class claim.
 - E9, the goal-oracle intervention on the source-informed train games, returned tu93 MIXED, dc22 NOT BINDING, ls20 NOT TESTABLE (its goal predicate is not a place); overall verdict INCONCLUSIVE (docs/STATE.md Section 2, runs/e9_report.json). Goal identification is not a single binding barrier across games. That removes the thesis the short paper was built around and is exactly why the new paper is a census (a vector of assumptions, each measured) rather than a one-barrier claim.
 
+Gate G0 outcome (27 September 2026): cite and drop the theorem. The prior-art check (docs/PRIOR_ART_KILL.md) found no paper that kills any claim component. Statement 1's identification half and Statement 2 are covered by Goldman & Kearns 1995 and version-space elimination, and Statement 1's cost half by immobile-hider search games. G_end and G_act stay as registered, measured quantities (METHOD_BLUEPRINT.md Section 5, draft 1.4); the paper proves no theorem, and V4 is removed.
+
 Constraints that shape everything below: CPU only (lenovo, 8 workers; Kaggle CPU sessions); no GPU; no money for fees or travel; runtime is not a constraint — full-scale designs, no scope trimmed for compute.
 
 ---
@@ -72,7 +74,7 @@ PREREG.md is the authority once tagged. Until then, this is the skeleton (detail
 - Census: five assumptions, one probe each, parameters copied from the v2 learner source with its commit hash (three agreeing presses, 2:1 margin, ≤10 px, ≤8 presses per key), outputs in {holds, fails, undetermined}, one JSON per (suite, game, seed). Perception on frame differences, to be re-verified on the 8 ARC train games before the change is accepted.
 - G: two measured quantities (G_end, level ends until the registered hypothesis class is a singleton; G_act, actions to first level end per cell visited under the registered coverage policy). New script; never yet run on any game.
 - Agents: R (E2 explorer), N (G-NAV planner), I1 (Rudakov, if adaptable outside ARC — feasibility documented either way). No I2.
-- Tests and thresholds: V1 instrument validity, V2 predictive validity with a void precondition, V3 parameter transfer, V4 formal (or absent). Proposed numbers in METHOD_BLUEPRINT.md Section 2.6; RKM registers the final ones.
+- Tests and thresholds: V1 instrument validity, V2 predictive validity with a void precondition, V3 parameter transfer. (V4 removed at gate G0, 27 Sep 2026.) Proposed numbers in METHOD_BLUEPRINT.md Section 2.6; RKM registers the final ones.
 - Pilot: at most 6 MiniGrid environments and 2 games of suite C, named in advance, excluded from confirmatory analysis; changes logged as PREREG v1.1 diffs.
 - Analysis scripts committed and unit-tested on synthetic data under the prereg tag; not edited afterwards except logged crash fixes.
 
@@ -95,14 +97,14 @@ Ground-truth tables docs/GROUND_TRUTH_minigrid.md and docs/GROUND_TRUTH_<suiteC>
 
 | Week | Work | Gate |
 |---|---|---|
-| W0 | reconcile METHOD_BLUEPRINT.md with STATE.md; docs/PRIOR_ART_KILL.md; Procgen install test in a 3.10 venv; decide suite C | G0: formal result non-trivial, yes or no (either continues) |
-| W1 | PREREG.md v1 with final numbers, ground-truth tables, agent list, pilot set; analysis scripts with synthetic tests; git tag prereg-v1; OSF registration of the same file; re-verify ARC train census under frame-difference perception | G1: no run on any B or C game before the tag |
+| W0 | reconcile METHOD_BLUEPRINT.md with STATE.md; docs/PRIOR_ART_KILL.md; Procgen install test in a 3.10 venv; decide suite C | G0: formal result non-trivial, yes or no — closed 27 Sep 2026: no; cite and drop (docs/PRIOR_ART_KILL.md Part D) |
+| W1 | PREREG.md v1 with final numbers, ground-truth tables, agent list, pilot set; analysis scripts with synthetic tests; git tag prereg-v1; OSF registration of the same file; E6 (census at 10 seeds on all 25 ARC games under the tagged code, mandatory) | G1: no run on any B or C game before the tag |
 | W2 | env contract, MiniGrid adapter (raw + macro), suite C adapter, fidelity script; I1 adaptability documented; pilot; PREREG v1.1 with diff; tag prereg-v1.1 | G2 |
 | W3–W4 | confirmatory census (V1) on B and C; agents on B-macro and C (V2); G on B, C and ARC 25 — RKM runs, pastes console | G3: outcome classified (support / partial / refute) before any results text is written |
-| W5 | frozen analysis scripts run once; enumeration check; V4 verdict | |
+| W5 | frozen analysis scripts run once | |
 | W6–W7 | manuscript in JAIR format; code and runs/ released; OSF link in the paper; submit | |
 
-Outcome → venue, pre-committed: support → JAIR full article (research note as fallback if V4 is dropped); partial → IEEE ToG; refute → repository record, at most an arXiv note.
+Outcome → venue, pre-committed: support → JAIR full article; partial → IEEE ToG; refute → repository record, at most an arXiv note.
 
 ---
 
@@ -118,16 +120,16 @@ Outcome → venue, pre-committed: support → JAIR full article (research note a
 
 ---
 
-## 8. Open decisions (owner: RKM)
+## 8. Decisions (owner: RKM) — all closed 27 September 2026
 
-1. Suite C: Procgen (3.10 venv) or ALE fallback — after the W0 install test.
-2. Whether Section 5 of METHOD_BLUEPRINT.md (the formal result) is attempted, given G0.
-3. Per-suite action budget: the E2 value of 20,000 everywhere, or registered per suite after the fidelity script.
-4. JAIR first (calendar cost, roughly four to nine months to a decision) or ToG first.
-5. OSF registration in addition to the git tag (recommended: both).
-6. Whether install, timing and fidelity probes before the tag count as new runs (Section 10, item 4).
-7. The working title (Section 10, item 12).
-8. The open ARC-AGI-3 items E6, E10, E9 arm P, E1b, E7 (Section 10, items 8–10), each decided only through a registered protocol (docs/STATE.md Section 5).
+1. Suite C: **Procgen** (3.10 venv; W0 check C1 passed).
+2. The formal result (METHOD_BLUEPRINT.md Section 5): **dropped** per docs/PRIOR_ART_KILL.md Part D. Cite, do not prove.
+3. Per-suite action budget: **20,000 actions per game on every suite**, unless the fidelity script forces a registered per-suite value.
+4. JAIR first or ToG first: **decided at gate G3 by outcome** (Section 6 pre-commitment).
+5. OSF registration: **yes**, alongside the git tag.
+6. Install, timing and fidelity probes before the tag: **registered infrastructure checks, not experiments** (docs/W0_CHECKS.md).
+7. The working title: **deferred to G3**.
+8. The open ARC-AGI-3 items: **E6 is mandatory in W1 under the tagged code; E10 is carried by G; E9 arm P, E1b and E7 are dropped.**
 
 ---
 
@@ -155,9 +157,9 @@ Standing, from the 26 September decision:
 
 Open ARC-AGI-3 items (docs/STATE.md Section 5 lists each as open; STATE.md is followed over Section 2's word "complete"):
 
-8. E6: census at 10 seeds on all 25 games, category rule frozen by code hash before the run (docs/archive/TOG_PLAN_v2.md Section 7). Relation to W1 step 7 (re-verifying the 8 train games under frame-difference perception) is for RKM to decide.
-9. E10: formal goal-identification cost; hypothesis class fixed and hashed before use (docs/archive/TOG_PLAN_v2.md Section 6). In this plan it is carried by G (Section 4) and V4; the E10 name is kept so the ARC record stays traceable.
-10. Optional: E9 arm P (coordinate oracle, outside the verdict; run or drop, docs/E9_protocol.md Section 3); E1b organiser templates (baseline only); E7 14B LLM cost.
+8. E6: census at 10 seeds on all 25 games, category rule frozen by code hash before the run (docs/archive/TOG_PLAN_v2.md Section 7). Relation to W1 step 7 (re-verifying the 8 train games under frame-difference perception) is for RKM to decide. Closed 27 Sep 2026: E6 is mandatory in W1 under the tagged code (Section 8, item 8).
+9. E10: formal goal-identification cost; hypothesis class fixed and hashed before use (docs/archive/TOG_PLAN_v2.md Section 6). In this plan it is carried by G (Section 4); the E10 name is kept so the ARC record stays traceable. (V4 removed at G0, 27 Sep 2026.)
+10. Optional: E9 arm P (coordinate oracle, outside the verdict; run or drop, docs/E9_protocol.md Section 3); E1b organiser templates (baseline only); E7 14B LLM cost. Closed 27 Sep 2026: all three dropped (Section 8, item 8).
 
 Open decisions added to Section 8 by this carry-over (owner: RKM):
 
