@@ -19,10 +19,14 @@ only if it was run with this --budget: it used exactly --budget actions, or it w
 before --budget (runs are deterministic given the seed, so a won run is the same at any larger
 budget).  A row that used fewer actions without winning (cut by --game-seconds, or run with a
 smaller budget) is not kept and is run again.  A row with more actions than --budget comes from another budget: the script stops.
-Kept rows are copied unchanged.  Without --resume nothing changes: every run is played, and
-navrun_<tag>.json is written (and replaced if it exists) exactly as before; the write is atomic
-(temp file, then rename), and a stale partial file from an earlier stopped run is kept as
-<partial>.prev rather than read.
+Kept rows are copied unchanged.  Without --resume every run is played and navrun_<tag>.json is
+written atomically (temp file, then rename); a stale partial file from an earlier stopped run is
+kept as <partial>.prev rather than read.
+
+EXISTING OUTPUT (changed 26 Sep 2026; docs/TOG_PLAN_v2.md Section 8).  If navrun_<tag>.json
+already exists the script stops before playing anything, naming the file: pass --force to replace
+it, or use a new --tag.  --resume reads and extends it as above.  Before this change a completed
+run's file could be replaced silently by a different run with the same tag.
 
     python g_nav_run.py --games all --modes hash_state --seeds 4 --budget 100000 --tag e3_hash_25x4_100k --resume
 
@@ -140,6 +144,8 @@ def main():
     ap.add_argument("--env-dir", default=os.path.join(HERE, "environment_files"))
     ap.add_argument("--tag", default="navrun")
     ap.add_argument("--quiet", action="store_true")
+    ap.add_argument("--force", action="store_true",
+                    help="replace an existing navrun_<tag>.json (without it the script stops)")
     ap.add_argument("--resume", action="store_true",
                     help="keep completed rows of this tag (output file and partial file) run with "
                          "the same budget; run only the missing ones")
@@ -152,6 +158,9 @@ def main():
              args.game_seconds, args.env_dir, m)
             for s in range(args.seeds) for m in modes for g in games]
     out_path = os.path.join(HERE, f"navrun_{args.tag}.json")
+    if os.path.exists(out_path) and not args.resume and not args.force:
+        raise SystemExit(f"STOP: {out_path} already exists. Pass --force to replace it, or use a new "
+                         f"--tag (or --resume to continue it).")
     part = out_path + ".partial.jsonl"
     kept = []
     if args.resume:
