@@ -38,18 +38,36 @@ a script in this repository run by the author, with its output saved under runs/
 
 ## State of the evidence (all HAVE, all under runs/)
 
-- hash_state explorer, held-out 4 seeds x 20,000 actions: mean 0.3329; every point from level 1 of
-  tn36/r11l/sp80/cd82; level 3 never won in 1,088 held-out runs; median agent/human ratio 35-145.
+- Reference, E2 (updated 26 Sep 2026): hash_state, held-out, 10 seeds x 20,000 actions: M1 0.3274,
+  M4 10.50 levels per seed, no level 3 won in 170 held-out runs; level 2 won in 23 of them (cd82 10,
+  sp80 8, r11l 3, ar25 2), with near-zero level-2 scores (runs/navrun_e2_hash_25x10.json). This
+  is the reference for every comparison. The 4-seed 0.3329 (runs/ablate_lenovo_6x4.json) survives
+  only as a record in registered text. "1,088 held-out runs" and "median agent/human ratio 35-145"
+  are UNTRACED; the E2 decomposition (g_decompose.py on the E2 file) replaces them.
 - 100,000 actions: NO budget claim until E3. The old line "0.3615 vs 0.3329 — coverage does not pay"
   compared different mechanisms: 0.3615 is mode base (and its three give-up variants, identical),
   2 seeds, 100k (runs/ablate_kaggle_giveup_100k.json); 0.3329 was hash_state, 4 seeds, 20k.
   Corrected 26 Sep 2026; see docs/TOG_PLAN_v2.md RQ1.
-- Selection on the one 8/17 split: train pick is held-out-best for 3 of 17 games; oracle 0.3632.
+- Selection transfer (runs/split_transfer.json; 4-seed 6-mechanism matrix, corrected 26 Sep 2026):
+  on the fixed 8/17 split the train pick is repeat_key (held-out 0.1464). hash_state is
+  held-out-best (0.3329, 4-seed value) but ranks 6 of 6 on train, so it was never a train pick;
+  the old "train pick held-out-best for 3 of 17 games" described hash_state. Per-game oracle 0.3632,
+  cross-fitted 0.2517. Over 10,000 random splits the pick is held-out-best in 1.1% of splits vs
+  16.7% chance; mean Kendall tau -0.43. The 1-seed exploratory matrix gives mean tau +0.37, so
+  "rankings reverse" is not general.
 - G-NAV planner (g_nav.py, hook on g_agent.py): train 0.70 vs 0.18 (all tu93), held-out 0.24-0.26
-  vs 0.33 (loss is sp80); goal_confirmed 0 of 17. v2 census (4 seeds): no keys r11l s5i5 tn36;
-  no controllable object cd82 sb26 su15; 2-D lattice walker cn04 ka59 re86 sp80 g50t; 1-D walker
-  bp35 sk48; key-controlled non-walker ar25 wa30 tr87. ar25 level 1: 4/4 nav seeds vs 0/12
-  hash_state seeds — UNEXPLAINED, report as such, never build on it.
+  vs 0.33 (hash_state on the same 4 seeds; loss is sp80); goal_confirmed 0 of 17. v2 census
+  (runs/census_v2.json, 4 seeds): 14 of 17 held-out games have keyboard input, 11 an object the keys
+  move. No keys r11l s5i5 tn36; no controllable object cd82 sb26 su15; 2-D lattice walker cn04 ka59
+  re86 sp80 g50t; 1-D walker bp35 sk48 sc25 (sc25 weak: only key 3 passed the press test);
+  key-controlled non-walker ar25 wa30 tr87. The category rule codifies the earlier census and is not
+  pre-registered. ar25 level 1: G-NAV 8 of 8 runs (v1 and v2, 4 seeds each) vs hash_state 0 of 4
+  seeds (the same four runs appear in three files) — UNEXPLAINED, report as such, never build on it.
+- E1 (docs/E1_result.md, runs/e1_decision.json): Rudakov et al. agent, 10 seeds x 20,000 actions,
+  INCONCLUSIVE by (ii): M2/M1 = 4.05 against > 5 (M1 0.1750, M4 3.30). Confounded by the absence
+  of ACTION7, their choose_action raising on most actions in most runs, and preview vs 2026
+  games/API. RQ4 NOT ESTABLISHED; no family claim; short-paper route unless a second admissible
+  agent is scored before 9 Oct 2026.
 - Ten mechanisms killed with measured reasons (docs/HANDOFF_GNAV.md).
 
 ## Corrections imposed by the audit (audit/TOG_PLAN_RUTHLESS_AUDIT.md) — standing instructions
