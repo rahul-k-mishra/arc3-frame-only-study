@@ -1,0 +1,44 @@
+{
+ "game": "MiniGrid-MultiRoom-N6-v0",
+ "mode": "w0_smoke",
+ "seed": 1000,
+ "suite": "minigrid",
+ "steps": 200,
+ "make_kwargs": {
+  "render_mode": "rgb_array",
+  "highlight": false,
+  "tile_size": 8,
+  "agent_pov": false
+ },
+ "status": "ok",
+ "frame_shape": [
+  200,
+  200,
+  3
+ ],
+ "frame_dtype": "uint8",
+ "obs_image_shape": [
+  7,
+  7,
+  3
+ ],
+ "n_actions": 7,
+ "primitive_action_count": 7,
+ "info_keys": [],
+ "level_complete_keys": [],
+ "level_complete_true_counts": {},
+ "episode_end_steps": [
+  120
+ ],
+ "successes_reward_gt_0": 0,
+ "distinct_rgb_colours": 19,
+ "steps_per_second": 52.0,
+ "determinism": {
+  "pass_": true,
+  "n_a": 202,
+  "n_b": 202,
+  "first_diff_step": null,
+  "reason": "identical"
+ },
+ "determinism_flags_equal": true
+}

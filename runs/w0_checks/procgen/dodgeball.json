@@ -1,0 +1,14 @@
+{
+ "game": "dodgeball",
+ "mode": "w0_smoke",
+ "seed": 1000,
+ "suite": "procgen",
+ "start_level": 0,
+ "steps": 1000,
+ "distribution_mode": "easy",
+ "use_backgrounds": false,
+ "use_monochrome_assets": true,
+ "num_levels": 1,
+ "status": "error",
+ "error": "ValueError: high <= 0"
+}

@@ -1,0 +1,15 @@
+{
+ "game": "MiniGrid-WFC-DungeonMazeScaled-v0",
+ "mode": "w0_smoke",
+ "seed": 1000,
+ "suite": "minigrid",
+ "steps": 200,
+ "make_kwargs": {
+  "render_mode": "rgb_array",
+  "highlight": false,
+  "tile_size": 8,
+  "agent_pov": false
+ },
+ "status": "error",
+ "error": "FileNotFoundError: [Errno 2] No such file or directory: 'D:\\\\Research\\\\arc3\\\\brutus\\\\.venv_games\\\\Lib\\\\site-packages\\\\minigrid\\\\envs\\\\wfc\\\\patterns\\\\ScaledMaze.png'"
+}

@@ -1,0 +1,52 @@
+{
+ "game": "MiniGrid-PutNear-6x6-N2-v0",
+ "mode": "w0_smoke",
+ "seed": 1000,
+ "suite": "minigrid",
+ "steps": 200,
+ "make_kwargs": {
+  "render_mode": "rgb_array",
+  "highlight": false,
+  "tile_size": 8,
+  "agent_pov": false
+ },
+ "status": "ok",
+ "frame_shape": [
+  48,
+  48,
+  3
+ ],
+ "frame_dtype": "uint8",
+ "obs_image_shape": [
+  7,
+  7,
+  3
+ ],
+ "n_actions": 7,
+ "primitive_action_count": 7,
+ "info_keys": [],
+ "level_complete_keys": [],
+ "level_complete_true_counts": {},
+ "episode_end_steps": [
+  4,
+  35,
+  66,
+  97,
+  128,
+  130,
+  161,
+  169,
+  200
+ ],
+ "successes_reward_gt_0": 1,
+ "distinct_rgb_colours": 40,
+ "steps_per_second": 302.4,
+ "determinism": {
+  "pass_": true,
+  "n_a": 210,
+  "n_b": 210,
+  "first_diff_step": null,
+  "reason": "identical"
+ },
+ "determinism_flags_equal": true
+}
