@@ -9,10 +9,15 @@ CHECKS (registered; the report refuses, prints every failure and writes nothing 
 fails; V5 is reported, never passed or failed):
   C0 every (game, arm, seed) present exactly once, no error rows
   V1 arm F rows equal E2's rows for these games and seeds (every field except "seconds")
-  V2 on each testable game, every level won by arm O on which the oracle handed colours has
-     oracle_confirmed == True.  A False (the level ended on a position without an oracle colour)
-     and a missing/None value (the ending was not seen by the planner: a click, a scan, or an
-     unreadable position) are both failures, reported separately so the cause is visible
+  V2 (decision D1, docs/E9_protocol.md Section 8) on each testable game, over the levels won by
+     arm O on which the oracle handed colours:
+       oracle_confirmed == False  the level ended on a position without an oracle colour: FAILS V2
+                                  and blocks the report
+       missing or None            the planner could not read the ending (a click, the click scan,
+                                  or no position after a fallback): "ending not seen" - NOT a
+                                  failure; counted per game and per level for arm O, excluded from
+                                  V2's denominator, and printed beside every result it affects
+                                  (the V2 line, the per-level table, the classification line)
   V3 tu93: arm O's seed-mean levels completed is not below arm N's by 0.5 or more
   V4 every row used its full budget or won
   V5 per testable level: oracle-colour cells outside the target, and their components, from the
@@ -130,8 +135,10 @@ def main():
                                    for g in games for s in seeds
                                    if (g, "hash_state", s) not in E2
                                    or strip(E9[(g, "hash_state", s)]) != strip(E2[(g, "hash_state", s)])]
-    # V2
+    # V2 (decision D1): only a False blocks; an ending not seen is counted and excluded
     v2 = []
+    not_seen = {g: {} for g in testable}            # game -> {level (1-based): [seeds]}
+    v2_counts = {g: dict(wins_with_oracle=0, confirmed=0, not_seen=0) for g in testable}
     for g in testable:
         for s in seeds:
             r = E9[(g, "nav_oracle", s)]
@@ -140,12 +147,15 @@ def main():
                 L = lv.get(i, {})
                 if not L.get("oracle_colours"):
                     continue                        # the oracle handed nothing on this level
+                v2_counts[g]["wins_with_oracle"] += 1
                 ok = L.get("oracle_confirmed", None)
                 if ok is False:
                     v2.append(f"{g} seed {s} level {i + 1}: won on a position WITHOUT an oracle colour")
-                elif ok is not True:
-                    v2.append(f"{g} seed {s} level {i + 1}: level end not seen by the planner "
-                              f"(oracle_confirmed missing/None)")
+                elif ok is True:
+                    v2_counts[g]["confirmed"] += 1
+                else:
+                    v2_counts[g]["not_seen"] += 1
+                    not_seen[g].setdefault(i + 1, []).append(s)
     fails["V2 level ends on an oracle colour"] = v2
     # V3
     v3 = []
@@ -168,6 +178,13 @@ def main():
         report_and_stop(fails)
     for k in fails:
         print(f"{k} ... PASS")
+        if k.startswith("V2"):
+            for g in testable:
+                c = v2_counts[g]
+                print(f"    {g}: {c['confirmed']} of {c['wins_with_oracle'] - c['not_seen']} seen endings on an "
+                      f"oracle colour; {c['not_seen']} ending(s) not seen, excluded from V2"
+                      + (f" (levels: {', '.join(f'{lv} x{len(v)}' for lv, v in sorted(not_seen[g].items()))})"
+                         if c['not_seen'] else ""))
     for k, g in (("V3 positive control tu93", "tu93"), ("V6 ls20 arm O equals arm N", "ls20")):
         if g not in games:
             print(f"{k} ... not applicable ({g} not in --games)")
@@ -176,7 +193,10 @@ def main():
                created=time.strftime("%Y-%m-%d %H:%M:%S"),
                inputs=dict(e9=dict(path=args.e9, sha256=sha256(args.e9)), e2=dict(path=args.e2, sha256=sha256(args.e2))),
                seeds=seeds, budget=args.budget, source_informed=SOURCE_INFORMED,
-               checks={k: "PASS" for k in fails}, games={})
+               checks={k: "PASS" for k in fails},
+               v2=dict(decision="D1 (docs/E9_protocol.md Section 8)", counts=v2_counts,
+                       ending_not_seen={g: {str(k): v for k, v in d.items()} for g, d in not_seen.items()}),
+               games={})
     for g in games:
         base = E9[(g, "hash_state", seeds[0])].get("card_baseline") or []
         nlev = len(base)
@@ -190,7 +210,7 @@ def main():
             print(f"  arm {a} ({ARMS[a]:10}) levels completed {gm['arms'][a]['levels_mean']:.2f}  "
                   f"game score {gm['arms'][a]['score_mean']:.4f}")
         print(f"  {'lvl':>3} {'human':>5} | " + " | ".join(f"arm {a}: won  ratio med [range]  lvscore" for a in ARMS)
-              + " | O oracle_targets seeds  V5 cells/comps")
+              + " | O oracle_targets seeds  V5 cells/comps  O ending not seen (excluded from V2)")
         for i in range(nlev):
             h = base[i]
             row = dict(level=i + 1, human=h, arms={})
@@ -208,12 +228,15 @@ def main():
             v5 = [nav_levels(r).get(i, {}).get("oracle_ambiguity") for r in rows["O"]]
             v5 = [x for x in v5 if x]
             row["oracle_targets_seeds"] = len(used)
+            ns = not_seen.get(g, {}).get(i + 1, [])
+            row["ending_not_seen_seeds"] = ns
             row["v5"] = (dict(cells_min=min(x["cells"] for x in v5), cells_max=max(x["cells"] for x in v5),
                               components_min=min(x["components"] for x in v5),
                               components_max=max(x["components"] for x in v5), seeds=len(v5)) if v5 else None)
             v5txt = (f"{row['v5']['cells_min']}-{row['v5']['cells_max']} / "
                      f"{row['v5']['components_min']}-{row['v5']['components_max']}" if v5 else "-")
-            print(f"  {i + 1:>3} {h:>5} | " + " | ".join(parts) + f" | {len(used):2}/{len(seeds)}  {v5txt}")
+            print(f"  {i + 1:>3} {h:>5} | " + " | ".join(parts) + f" | {len(used):2}/{len(seeds)}  {v5txt}"
+                  + (f"  {len(ns)} seed(s) {ns}" if ns else ""))
             gm["per_level"].append(row)
         # classification (Section 5)
         if g in testable:
@@ -234,10 +257,12 @@ def main():
             gm["classification"] = dict(result=cls, dL=dL, eligible_levels=[r["level"] for r in elig],
                                         shared_levels=[r["level"] for r in shared],
                                         newly_won_levels=[r["level"] for r in newly],
-                                        halved_levels=[r["level"] for r in halved])
+                                        halved_levels=[r["level"] for r in halved],
+                                        v2_endings_not_seen=v2_counts[g]["not_seen"])
             print(f"  -> {cls}: dL = {dL:+.2f}; eligible levels {[r['level'] for r in elig]}; shared "
                   f"{[r['level'] for r in shared]}; newly won {[r['level'] for r in newly]}; "
-                  f"actions halved on {[r['level'] for r in halved]}")
+                  f"actions halved on {[r['level'] for r in halved]}"
+                  f"; V2: {v2_counts[g]['not_seen']} arm-O ending(s) not seen, excluded")
         else:
             gm["classification"] = dict(result="NOT TESTABLE (finding)")
         out["games"][g] = gm
