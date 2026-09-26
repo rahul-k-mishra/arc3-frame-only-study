@@ -9,6 +9,34 @@
  "use_backgrounds": false,
  "use_monochrome_assets": true,
  "num_levels": 1,
- "status": "error",
- "error": "ValueError: high <= 0"
+ "status": "ok",
+ "obs_shape": [
+  64,
+  64,
+  3
+ ],
+ "obs_dtype": "uint8",
+ "n_actions": 15,
+ "info_keys": [
+  "level_seed",
+  "prev_level_complete",
+  "prev_level_seed"
+ ],
+ "level_complete_keys": [
+  "prev_level_complete"
+ ],
+ "level_complete_true_counts": {
+  "prev_level_complete": 0
+ },
+ "episode_starts": 1,
+ "distinct_rgb_colours": 11,
+ "steps_per_second": 6667.2,
+ "determinism": {
+  "pass_": true,
+  "n_a": 1001,
+  "n_b": 1001,
+  "first_diff_step": null,
+  "reason": "identical"
+ },
+ "determinism_flags_equal": true
 }
