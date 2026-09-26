@@ -1,6 +1,6 @@
 # TOG_PLAN_v3.md
 
-Plan of record for the paper from the ARC-AGI-3 frame-only work. Supersedes TOG_PLAN.md (the ARC-only measurement plan) and TOG_PLAN_v2.md (the E1 external-agents protocol). Archive both, do not delete them — they are the record of the ARC-only programme and its registered rules.
+Plan of record for the paper from the ARC-AGI-3 frame-only work. Supersedes docs/archive/TOG_PLAN_v1.md (formerly docs/TOG_PLAN.md, the ARC-only measurement plan) and docs/archive/TOG_PLAN_v2.md (formerly docs/TOG_PLAN_v2.md, the E1 external-agents protocol). Both were archived on 27 September 2026, not deleted — they are the record of the ARC-only programme and its registered rules. Everything in the method-paper decision as first recorded in docs/archive/TOG_PLAN_v2.md ("Plan of record") and CLAUDE.md (commit 1af3a1e) that this file lacked is in Section 10; the item-by-item record is docs/PLAN_MERGE_20260927.md.
 
 Written 27 September 2026 from the decision of 26 September 2026. docs/STATE.md remains the single source of truth for numbers and run files; where this file and STATE.md disagree, STATE.md wins and this file is corrected.
 
@@ -18,7 +18,7 @@ What was decided:
 Why (the two closures that forced it):
 
 - E1c closed with no admissible second independent agent. The ARC-only paper's transfer claim rested on a single independent agent (Rudakov, Shock & Cowley) whose E1 result was inconclusive with three recorded confounds. Without a second, the ARC-only paper could not make the class claim.
-- E9, the goal-oracle intervention on the source-informed train games, returned tu93 MIXED, dc22 NOT BINDING, ls20 not expressible. Goal identification is not a single binding barrier across games. That removes the thesis the short paper was built around and is exactly why the new paper is a census (a vector of assumptions, each measured) rather than a one-barrier claim.
+- E9, the goal-oracle intervention on the source-informed train games, returned tu93 MIXED, dc22 NOT BINDING, ls20 NOT TESTABLE (its goal predicate is not a place); overall verdict INCONCLUSIVE (docs/STATE.md Section 2, runs/e9_report.json). Goal identification is not a single binding barrier across games. That removes the thesis the short paper was built around and is exactly why the new paper is a census (a vector of assumptions, each measured) rather than a one-barrier claim.
 
 Constraints that shape everything below: CPU only (lenovo, 8 workers; Kaggle CPU sessions); no GPU; no money for fees or travel; runtime is not a constraint — full-scale designs, no scope trimmed for compute.
 
@@ -30,16 +30,21 @@ Frozen evidence, by file. Numbers are those recorded in STATE.md and are quoted 
 
 | Item | File | What it established |
 |---|---|---|
-| E1 | runs/ (Rudakov, 25 × 10 × 20,000) | independent agent M1 0.1750; inconclusive against the rules, three confounds recorded in docs/E1_result.md |
-| E1c | STATE.md entry | search for a second admissible independent agent: closed, none |
-| E2 | runs/navrun_e2_hash_25x10.json | reference explorer held-out M1 0.3274 (10 seeds), M4 10.50; M2/M1 4.05 against the > 5 rule |
-| Census v2 | runs/census_v2.json, docs/census_v2.md | assumption tallies on all 25 games; goal_confirmed 0 in every seed |
-| Selection transfer | runs/split_transfer.json | ranking on train does not transfer to held-out |
+| E1 | runs/e1_decision.json, runs/e1_rudakov_lenovo_25x10_20k.json (Rudakov, 25 × 10 × 20,000) | independent agent M1 0.1750, M4 3.30; INCONCLUSIVE by (ii), M2/M1 4.05 against the > 5 rule; three confounds recorded in docs/E1_result.md |
+| E1c | no run file; docs/E1c_search.md, docs/E1c_prometheus_check.md | search for a second admissible independent agent: closed, none; Prometheus rejected |
+| E2 | runs/navrun_e2_hash_25x10.json | reference explorer (hash_state) held-out M1 0.3274 (10 seeds × 20,000 actions, 170 runs), M4 10.50; the reference for every comparison |
+| E2 decomposition | runs/decompose_e2_hash_25x10_heldout.json, runs/decompose_e2_hash_25x10_train.json | where E2's score comes from, by level index and agent/human ratio |
+| E3 | runs/e3_curve.json; inputs runs/navrun_e3_hash_25x4_3k.json, runs/navrun_e3_hash_25x4_50k.json, runs/navrun_e3_hash_25x4_100k.json (20k point = 4-seed subset of runs/navrun_e2_hash_25x10.json) | hash_state budget curve, 3k / 20k / 50k / 100k actions: M1 flat, more actions buy levels worth nothing |
+| Census v2 | runs/census_v2.json, docs/census_v2.md; inputs runs/navrun_v2_heldout.json (G-NAV v2, held-out, 4 seeds), runs/navrun_v2_train_quick.json (train, 2 seeds × 3,000: below the 4-seed minimum) | assumption tallies on all 25 games; goal_confirmed 0 in every seed |
+| G-NAV v1 | runs/navrun_heldout_full.json | G-NAV v1 held-out runs, 4 seeds; goal_confirmed 0; ar25 level-1 wins (4 of the 8) |
+| Selection transfer | runs/split_transfer.json; matrices runs/ablate_lenovo_6x4.json (primary, 6 × 4) and runs/ablate_kaggle_20x1.json (exploratory, 20 × 1) | ranking on train does not transfer to held-out |
 | Ceiling | runs/ceiling.json | analytic scoring ceiling — ARC-scoring-specific, stays out of the method paper's tests |
-| E9 | STATE.md entry | goal-oracle on train games: tu93 MIXED, dc22 NOT BINDING, ls20 not expressible |
-| Split | HELDOUT.md | 8 train / 17 held-out (dc22 moved to train); the 8 train games are the parameter-freezing set |
+| E9 | runs/e9_report.json, runs/navrun_e9_oracle_3x10.json; docs/E9_protocol.md | goal-oracle on train games: INCONCLUSIVE; tu93 MIXED, dc22 NOT BINDING, ls20 NOT TESTABLE |
+| ar25 duplicate check | runs/decompose_ar25_three_files_heldout.json | the same four hash_state runs sit in three files; hash_state 0 of 4 seeds on ar25 level 1 vs G-NAV 8 of 8; unexplained |
+| Withdrawn 100k line | runs/ablate_kaggle_giveup_100k.json | mode base, 2 seeds, 100,000 actions; its "0.3615 vs 0.3329" comparison is WITHDRAWN (docs/STATE.md Section 3) and replaced by E3 |
+| Split | D:\Research\arc3\brutus\HELDOUT.md (outside this repository) | 8 train / 17 held-out (dc22 moved to train); the 8 train games are the parameter-freezing set |
 
-Rules from TOG_PLAN.md and TOG_PLAN_v2.md that carry forward unchanged: the admissibility procedure (per-action time threshold, fidelity check), rule precedence (BREAKS before REPRODUCES; missing-scorecard clause first), and "no statement without a run RKM executed".
+Rules from docs/archive/TOG_PLAN_v1.md and docs/archive/TOG_PLAN_v2.md that carry forward unchanged: the admissibility procedure (per-action time threshold, fidelity check), rule precedence (BREAKS before REPRODUCES; the card-count clause — rows lacking per-level scorecard counts give INCONCLUSIVE — first), and "no statement without a run RKM executed".
 
 What from the ARC record enters the method paper: one background paragraph (the census exists, was frozen on 8 games, and its held-out ARC results are reported, not tested) and the E9 verdicts as the reason a vector measure is needed. Nothing else.
 
@@ -120,11 +125,45 @@ Outcome → venue, pre-committed: support → JAIR full article (research note a
 3. Per-suite action budget: the E2 value of 20,000 everywhere, or registered per suite after the fidelity script.
 4. JAIR first (calendar cost, roughly four to nine months to a decision) or ToG first.
 5. OSF registration in addition to the git tag (recommended: both).
+6. Whether install, timing and fidelity probes before the tag count as new runs (Section 10, item 4).
+7. The working title (Section 10, item 12).
+8. The open ARC-AGI-3 items E6, E10, E9 arm P, E1b, E7 (Section 10, items 8–10), each decided only through a registered protocol (docs/STATE.md Section 5).
 
 ---
 
 ## 9. What supersedes what
 
-- TOG_PLAN.md → archived as docs/archive/TOG_PLAN_v1.md; TOG_PLAN_v2.md (E1 external-agents protocol) → archived as docs/archive/TOG_PLAN_v2.md. Their rules remain the ARC record.
-- METHOD_BLUEPRINT.md draft 1 → corrected per Section 3 → PREREG.md v1 at the W1 tag.
-- CLAUDE.md → the method-paper section (see CLAUDE_md_method_paper_section.md) replaces any earlier "current objective" section; everything else in CLAUDE.md stays.
+- TOG_PLAN.md → archived as docs/archive/TOG_PLAN_v1.md; TOG_PLAN_v2.md (E1 external-agents protocol) → archived as docs/archive/TOG_PLAN_v2.md (done 27 September 2026). Their rules remain the ARC record.
+- METHOD_BLUEPRINT.md draft 1 → corrected per Section 3 (draft 1.1, 27 September 2026; reconciled against STATE.md in docs/RECONCILE_20260927.md) → PREREG.md v1 at the W1 tag. The census parameters it copies are listed from source in docs/PREREG_PARAMS.md.
+- CLAUDE.md → the method-paper section ("Current objective", "Rules that bind every task", "Open decisions") replaced the 1af3a1e method-paper text on 27 September 2026; everything else in CLAUDE.md stays.
+
+---
+
+## 10. Carried over from TOG_PLAN_v2.md and CLAUDE.md, 27 Sep 2026
+
+Items of the method-paper decision as recorded in docs/archive/TOG_PLAN_v2.md "Plan of record" (commit c1eea2c) and CLAUDE.md (commit 1af3a1e) that Sections 1–9 lacked. One row each in docs/PLAN_MERGE_20260927.md. Where docs/STATE.md contradicts an item, STATE.md is followed and the contradiction is recorded there.
+
+Standing, from the 26 September decision:
+
+1. Every ARC-AGI-3 result stands as recorded, with its protocol, checks and limits: E1, E1c, E2, E3, E4, E5, E9 and the census (docs/STATE.md Section 2; files in Section 2 above). Nothing already measured is re-run or re-decided because of the change of target. New ARC measurements named in this plan (G on the ARC 25; the ARC train census under frame-difference perception) are new runs under PREREG.md, not re-runs of recorded results, and change no recorded number.
+2. The rules of the ARC programme apply to every new benchmark: a selection split fixed before any mechanism is measured (for suites B and C: the declared pilot set against the confirmatory set, named in PREREG.md v1 before any run); a registered protocol before any run; games as the unit, seeds nested; CPU only, no money; double-anonymous.
+3. Double-anonymous: no names, handles, affiliations, acknowledgements or identifying links in the manuscript, the supplement or the code release. This holds whatever the venue's own review policy.
+4. No new run before a registered protocol. This is stricter than gate G1, which names only B and C games. Whether the W0 Procgen install test (one game, 1,000 steps) and the timing and fidelity probes count as "new runs" is an open decision for RKM (item 11); none of them may produce a number that enters a document.
+5. The method is stated so that it applies unchanged to every benchmark: its inputs, its outputs, and what would show it fails. Sections 3–4 and METHOD_BLUEPRINT.md Sections 2 and 4 are that statement in draft; it is registered only when PREREG.md v1 is tagged.
+6. Superseded: the ARC-only short paper (6–8 pages, IEEE CoG or a workshop, the 9 October 2026 venue choice) and the ARC-only 10-page ToG full paper. IEEE ToG as the second venue of the method paper (Section 1) is a different paper and is not affected.
+7. The GVGAI learning track, named in docs/archive/TOG_PLAN_v2.md Section 7 as an optional second CPU benchmark, was a candidate, not a choice. It is not among the suites of Section 5 and is not added as an option without RKM's decision.
+
+Open ARC-AGI-3 items (docs/STATE.md Section 5 lists each as open; STATE.md is followed over Section 2's word "complete"):
+
+8. E6: census at 10 seeds on all 25 games, category rule frozen by code hash before the run (docs/archive/TOG_PLAN_v2.md Section 7). Relation to W1 step 7 (re-verifying the 8 train games under frame-difference perception) is for RKM to decide.
+9. E10: formal goal-identification cost; hypothesis class fixed and hashed before use (docs/archive/TOG_PLAN_v2.md Section 6). In this plan it is carried by G (Section 4) and V4; the E10 name is kept so the ARC record stays traceable.
+10. Optional: E9 arm P (coordinate oracle, outside the verdict; run or drop, docs/E9_protocol.md Section 3); E1b organiser templates (baseline only); E7 14B LLM cost.
+
+Open decisions added to Section 8 by this carry-over (owner: RKM):
+
+11. Whether install, timing and fidelity probes before the tag count as new runs (item 4).
+12. The working title: replaced once the method is registered; it may claim no more than the evidence across the chosen benchmarks supports.
+
+Deliverables carried:
+
+13. The manuscript is anonymised, and a reproduction script regenerates every table from runs/.

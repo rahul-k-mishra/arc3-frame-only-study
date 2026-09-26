@@ -9,7 +9,7 @@ from raw.githubusercontent.com at a fixed commit and read in a scratch folder:
   `arc_agent/` modules, each introduced by a marker line such as
   `# ============ arc_agent/priors.py ============` (line 415). Every line number below is in
   this file unless another file is named.
-- **Protocol:** docs/TOG_PLAN_v2.md Section 3.1 (A1-A7) and docs/E1c_search.md.
+- **Protocol:** docs/archive/TOG_PLAN_v2.md Section 3.1 (A1-A7) and docs/E1c_search.md.
 
 ## Verdict (author, 26 September 2026): REJECTED
 

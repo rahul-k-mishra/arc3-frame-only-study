@@ -2,7 +2,7 @@
 
 Written 26 September 2026 from runs/e1_decision.json (created 2026-09-26 07:06:39 by
 scripts/e1_decide.py). The protocol was docs/E1_phase2_protocol.md and the rule
-docs/TOG_PLAN_v2.md Section 3; both were fixed before any phase-2 result was read. No threshold
+docs/archive/TOG_PLAN_v2.md Section 3; both were fixed before any phase-2 result was read. No threshold
 has been changed since.
 
 Inputs (SHA-256 from the decision file):

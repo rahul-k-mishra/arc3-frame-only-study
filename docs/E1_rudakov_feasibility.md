@@ -1,7 +1,7 @@
 # E1a feasibility: Rudakov, Shock & Cowley's graph-exploration agent
 
 Written 25 September 2026, E1 phase 1 (feasibility and adapter). No held-out game was played.
-The protocol is docs/TOG_PLAN_v2.md Section 3; nothing here changes a threshold in it.
+The protocol is docs/archive/TOG_PLAN_v2.md Section 3; nothing here changes a threshold in it.
 
 Code: external/rudakov_just_explore, vendored unedited from
 github.com/dolphin-in-a-coma/arc-agi-3-just-explore at commit

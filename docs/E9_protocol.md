@@ -1,7 +1,7 @@
 # E9 protocol: the goal-oracle intervention
 
 Written 26 September 2026: protocol only, before any code or run. Registered here; once any E9
-output exists, no threshold or prediction below may change. The plan entry is docs/TOG_PLAN_v2.md
+output exists, no threshold or prediction below may change. The plan entry is docs/archive/TOG_PLAN_v2.md
 Section 6 (E9).
 
 Question: for the G-NAV planner (scripts/g_nav.py, a hook on the hash_state explorer), on tu93,

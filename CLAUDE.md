@@ -1,11 +1,39 @@
 # CLAUDE.md — arc3-frame-only-study
 
 Measurement study of frame-only, prior-free, CPU-runnable agents on the ARC-AGI-3 public
-demonstration set (25 games), now being strengthened into a method paper across several
-benchmarks (decided 26 September 2026; method, benchmarks and venue still open; double-anonymous;
-docs/TOG_PLAN_v2.md "Plan of record"). Single author. No GPU. No money. Every number in
-any document must come from a script in this repository run by the author, with its output saved
-under runs/.
+demonstration set (25 games), now the development instance of a method paper across three
+benchmarks (see "Current objective"; docs/TOG_PLAN_v3.md). Single author. No GPU. No money. Every
+number in any document must come from a script in this repository run by the author, with its
+output saved under runs/.
+
+## Current objective (decision of 26 September 2026)
+
+The ARC-only short paper is dropped. The ARC-AGI-3 measurement programme on the 25 public games is complete and frozen; every number in it is traceable to a file in runs/. It is background, not a paper. Every ARC-AGI-3 result stands as recorded; nothing already measured is re-run or re-decided because of the change of target. The ARC-AGI-3 items docs/STATE.md Section 5 still lists as open (E6, E10, E9 arm P, E1b, E7) are listed in docs/TOG_PLAN_v3.md Section 10.
+
+The paper now being built is a method paper: the assumption census (A1–A5) and the goal-identification cost G, pre-registered and frozen, demonstrated on three CPU-runnable benchmarks — ARC-AGI-3 (development instance, does not count toward generality), MiniGrid/BabyAI, and one more suite (Procgen recommended; ALE fallback). The claim has two halves and both must hold: the census reports ground-truth mechanics of unseen games at a registered accuracy, and it predicts, before any agent runs, where assumption-driven frame-only agents complete the first level.
+
+Venues: JAIR first, IEEE Transactions on Games second. TMLR rejected. No conference that requires paid registration or travel (IEEE CoG is out). No venue with an APC. Double-anonymous whatever the venue: no names, handles, affiliations, acknowledgements or identifying links in the manuscript, the supplement or the code release. The ARC-only short paper and the ARC-only 10-page ToG full paper are superseded.
+
+Plan of record: docs/TOG_PLAN_v3.md (docs/archive/TOG_PLAN_v1.md and docs/archive/TOG_PLAN_v2.md are archived ARC-programme records; what the 26 September decision first recorded in them is carried in TOG_PLAN_v3.md Section 10). Protocol draft: docs/METHOD_BLUEPRINT.md, which becomes docs/PREREG.md when tagged; its frozen census constants are listed from source in docs/PREREG_PARAMS.md. Single source of truth for numbers and run files: docs/STATE.md — update it at the end of every session.
+
+## Rules that bind every task on this repository
+
+1. You do not run experiments. You write scripts; RKM runs them and pastes the console output. You never estimate, extrapolate, or fill in a number. Every number in any document cites the runs/ file and the script that produced it. If a number does not exist yet, the document says "not yet run".
+2. No result sentence without three things: a run file, the script, and a decision rule that was in the tagged PREREG.md before the run. Anything else is labelled exploratory and stays out of claims.
+3. Once prereg-v1 is tagged, PREREG.md changes only by a new version (v1.1, v1.2) carrying an explicit diff section. Analysis scripts are frozen at the tag; a crash fix is allowed and must be logged in PREREG's diff section.
+4. No run touches a confirmatory MiniGrid, BabyAI or suite-C game before the prereg tag exists. Only the declared pilot set may be run before it, and pilot games are excluded from every confirmatory analysis. Every benchmark has its selection split (pilot against confirmatory) fixed in PREREG.md before any mechanism is measured on it; games are the unit, seeds nested.
+5. Ground-truth tables (docs/GROUND_TRUTH_<suite>.md) are built from source code, one line per game with the file and line that justifies each A1–A5 entry. Never from documentation summaries, never from memory.
+6. The census reads frames only: no reward, no symbolic state, no text, no ARC "accepted" flag. Any code path that reads more than the frame is a bug.
+7. Scripts are parallel (multiprocessing worker pool), deterministic given seed, resume-safe, and write one JSON per (suite, game, seed). Every script is delivered with its run commands in order, copy-pasteable, with the working directory stated, in a fenced code block. No inline code spans in prose.
+8. Deliverables are complete and self-contained, not patches. Zips are flat.
+9. Manuscript text: plain human language, no overclaiming, no "state of the art", every mathematical step written out, and an explicit statement of what the method can and cannot do. A theorem that turns out to be a corollary of cited work is cited, not proved, and the paper is written to stand without it.
+10. Hardware: CPU only. lenovo (8 workers) and Kaggle CPU sessions. No GPU, no LLM, no network in any admissible agent. No money. Runtime is not a constraint; do not trim scope to save compute. Procgen wheels exist only for Python 3.7–3.10 and need a separate venv; the ARC venv stays on its pinned Python.
+11. Rule precedence carries over from the ARC programme: BREAKS before REPRODUCES; the card-count clause (rows lacking per-level scorecard counts give INCONCLUSIVE) is evaluated first; the per-action admissibility threshold and fidelity procedure from E1 are reused unchanged.
+12. When a task would require a number, a threshold, or a design choice that is not yet registered, stop and ask RKM. Do not choose it silently.
+
+## Open decisions (RKM decides; do not pre-empt)
+
+Suite C (Procgen or ALE); whether the formal result is attempted after the prior-art kill; the per-suite action budget; JAIR-first or ToG-first; OSF registration alongside the git tag; whether install, timing and fidelity probes before the tag count as new runs; the working title (it may claim no more than the evidence across the chosen benchmarks supports); the open ARC-AGI-3 items E6, E10, E9 arm P, E1b, E7.
 
 ## Non-negotiable rules (from the author; do not relax them)
 
@@ -59,7 +87,7 @@ under runs/.
   buys: 0.3615 is the held-out mean of mode base, 2 seeds, at 100,000 actions
   (runs/ablate_kaggle_giveup_100k.json; its three give-up variants give the same value; the file
   has no hash_state rows); 0.3329 was hash_state, 4 seeds, at 20,000 actions. Corrected
-  26 Sep 2026; see docs/TOG_PLAN_v2.md RQ1. E3 is registered in TOG_PLAN_v2 Section 7.
+  26 Sep 2026; see docs/archive/TOG_PLAN_v2.md RQ1. E3 is registered in docs/archive/TOG_PLAN_v2.md Section 7.
 - Selection transfer (runs/split_transfer.json; 4-seed 6-mechanism matrix, corrected 26 Sep 2026):
   on the fixed 8/17 split the train pick is repeat_key (held-out 0.1464). hash_state is
   held-out-best (0.3329, 4-seed value) but ranks 6 of 6 on train, so it was never a train pick;
@@ -87,10 +115,9 @@ under runs/.
   agent", Cryptic2-0, Curio, Hunter-Seeker v2). Related-work finding: most higher-scoring non-LLM
   notebooks load the game's source and search its simulator (docs/E1c_search.md Section 8), so they
   are not frame-only and their scores are not comparable with ours.
-- Plan of record (docs/TOG_PLAN_v2.md "Plan of record", decided 26 Sep 2026): a method paper across
-  several benchmarks, not the ARC-only short paper. Method, benchmarks and venue are open, each to
-  be fixed in a registered protocol before any new run. The ARC-AGI-3 results above stand as
-  recorded. The short-paper route and the 10-page ToG full paper are both superseded.
+- Plan of record: docs/TOG_PLAN_v3.md (see "Current objective"; decided 26 Sep 2026, first
+  recorded in docs/archive/TOG_PLAN_v2.md "Plan of record"). The ARC-AGI-3 results above stand as
+  recorded.
 - Ten mechanisms killed with measured reasons (docs/HANDOFF_GNAV.md).
 
 ## Corrections imposed by the audit (audit/TOG_PLAN_RUTHLESS_AUDIT.md) — standing instructions
@@ -113,7 +140,7 @@ under runs/.
 - Cite: ARC-AGI-3 technical report, launch post, preview 30-day learnings, human-performance
   paper, Milestone-1 write-ups; Balla et al. 2020; Kunanusont et al.; Stephenson et al. 2025;
   Blum & Hardt 2015; Roelofs et al. 2019; Introspective Environment Modeling; AgentRx; BALROG.
-- Method paper across several benchmarks (venue open, re-decided with the method); double-anonymous:
+- Method paper across three benchmarks (venues in "Current objective"); double-anonymous:
   no names, handles, affiliations in manuscript or code.
 - E1 decision thresholds are written down in docs/ BEFORE any external agent is run.
 
@@ -121,29 +148,36 @@ under runs/.
 
 - scripts/   all runnable code (g_agent.py, g_nav.py, g_nav_run.py, g_decompose.py, ...)
 - runs/      every JSON a script produced, named <experiment>_<machine>_<seeds>.json, never edited
-- docs/      HANDOFF_GNAV.md, TOG_PLAN.md, TOG_PLAN_v2.md, manuscript drafts
+- docs/      STATE.md, TOG_PLAN_v3.md, METHOD_BLUEPRINT.md, HANDOFF_GNAV.md, manuscript drafts;
+             docs/archive/ TOG_PLAN_v1.md (was docs/TOG_PLAN.md), TOG_PLAN_v2.md
 - audit/     external reviews of the plan or drafts
 - external/  third-party agents for E1, each in its own folder with LICENSE and commit hash
 - kaggle_*/  lab notebook builders' output folders (never a submission kernel)
 
 ## Open tasks, in order (updated 27 Sep 2026)
 
-Done: TOG_PLAN_v2 with audit corrections and E1 thresholds (plus the 3.3 precedence); E4
+Done: docs/archive/TOG_PLAN_v2.md with audit corrections and E1 thresholds (plus the 3.3 precedence); E4
 (runs/ceiling.json); E5 (runs/split_transfer.json); census table (runs/census_v2.json); E1a
 Rudakov et al. adapter, protocol and 10-seed run, INCONCLUSIVE (docs/E1_result.md); E2 hash_state
 10 seeds (runs/navrun_e2_hash_25x10.json); E2 decomposition (runs/decompose_e2_hash_25x10_*.json);
 E1c search, closed with no admissible second agent (docs/E1c_search.md); E3 budget curve
 (runs/e3_curve.json); E9 goal oracle, INCONCLUSIVE (runs/e9_report.json, docs/E9_protocol.md).
+Method, benchmarks and venue decided 26 Sep 2026 (docs/TOG_PLAN_v3.md Sections 1, 3, 5); the method
+is registered only when docs/PREREG.md is tagged. W0 so far: plan archive, carry-over
+(docs/PLAN_MERGE_20260927.md), METHOD_BLUEPRINT.md draft 1.1, reconciliation with STATE.md
+(docs/RECONCILE_20260927.md), frozen census constants (docs/PREREG_PARAMS.md).
 Entry point for a new session: docs/STATE.md.
 
-1. Define the method, stated to apply unchanged to every benchmark, in a registered protocol
-   (docs/TOG_PLAN_v2.md "Plan of record"). Nothing new is run before it.
-2. Choose the benchmarks and give each a fixed selection split and a registered protocol before
-   any run (GVGAI learning track is a candidate named in TOG_PLAN_v2 Section 7, not a choice).
-3. Re-decide the venue with the method; the 9 Oct 2026 CoG-or-workshop choice was for the short
-   paper and no longer governs.
-4. ARC-AGI-3 items still open: E6 census at 10 seeds (category rule frozen by code hash before
-   the run); E10 formal goal-identification cost; optional E9 arm P, E1b templates, E7 14B LLM
-   cost.
-5. Manuscript for the method paper, anonymised; reproduction script that regenerates every table
-   from runs/.
+1. W0, rest (docs/TOG_PLAN_v3.md Section 6): docs/PRIOR_ART_KILL.md; gate G0; Procgen install
+   test in a Python 3.10 venv; suite C decision.
+2. W1: docs/PREREG.md v1 with final numbers, ground-truth tables, agent list, pilot set (each
+   benchmark's selection split fixed before any mechanism is measured on it); analysis scripts
+   with synthetic tests; tag prereg-v1 (+ OSF); re-verify the ARC train census under
+   frame-difference perception. No new run before the tag (TOG_PLAN_v3 Section 10, item 4).
+3. W2-W5: adapters, fidelity script, I1 feasibility, pilot, PREREG v1.1; confirmatory runs (RKM);
+   frozen analysis; V4 verdict.
+4. ARC-AGI-3 items still open (docs/STATE.md Section 5): E6 census at 10 seeds (category rule
+   frozen by code hash before the run); E10 formal goal-identification cost (carried by G and V4);
+   optional E9 arm P, E1b templates, E7 14B LLM cost.
+5. Manuscript for the method paper, anonymised (JAIR format); reproduction script that regenerates
+   every table from runs/.

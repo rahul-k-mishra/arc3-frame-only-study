@@ -1,5 +1,7 @@
 # METHOD_BLUEPRINT.md
 
+Draft 1.1 — corrected 27 Sep 2026 per TOG_PLAN_v3.md Section 3
+
 Assumption census and goal-identification cost as a pre-registered measurement method
 
 Draft 1 — 26 September 2026 — for review before anything is frozen. Target: JAIR (full article), then IEEE Transactions on Games.
@@ -8,7 +10,7 @@ Draft 1 — 26 September 2026 — for review before anything is frozen. Target: 
 
 ## 0. What this document is, and what it is not
 
-- It was drafted from the repository record as it stood at the end of the 25–26 September sessions: E1 inconclusive (Rudakov agent, 25 × 10 × 20,000), E2 (runs/navrun_e2_hash_25x10.json), the census (runs/census_v2.json, docs/census_v2.md), selection transfer (runs/split_transfer.json), the analytic ceiling (runs/ceiling.json), HELDOUT.md, HANDOFF_GNAV.md, docs/E1_result.md. docs/STATE.md was not available when this was written. Section 12 lists what must be reconciled against it before Section 2 is frozen. Where STATE.md and this document differ, STATE.md wins.
+- It was drafted from the repository record as it stood at the end of the 25–26 September sessions: E1 inconclusive (Rudakov agent, 25 × 10 × 20,000), E2 (runs/navrun_e2_hash_25x10.json), the census (runs/census_v2.json, docs/census_v2.md), selection transfer (runs/split_transfer.json), the analytic ceiling (runs/ceiling.json), HELDOUT.md, HANDOFF_GNAV.md, docs/E1_result.md. docs/STATE.md was not available when this was written. Section 12 lists what must be reconciled against it before Section 2 is frozen. Where STATE.md and this document differ, STATE.md wins. Reconciled on 27 September 2026: docs/RECONCILE_20260927.md.
 - Nothing here is a result. Every number quoted below already exists in a named run file. Every threshold is a proposal to be registered, not a finding.
 - The governing rule for everything downstream: a sentence goes into the paper only if a script in scripts/ produced its number from a run recorded in runs/, executed by RKM, and the decision rule for that sentence was in docs/PREREG.md — git-tagged and OSF-timestamped — before the run started.
 
@@ -27,7 +29,7 @@ Two halves, both required:
 
 Neither half is a claim that ARC-AGI-3 is hard. ARC-AGI-3 is where the instrument was built; it is the development instance, not evidence of generality (Section 3).
 
-Explicitly not claimed: that goal inference is "the" barrier on ARC-AGI-3 (E1 was inconclusive; the goal-oracle intervention was never run); that any agent here is strong; that anything transfers to hidden ARC-AGI-3 games or the leaderboard; that the census is complete.
+Explicitly not claimed: that goal inference is "the" barrier on ARC-AGI-3 (E1 was inconclusive; the goal-oracle intervention was run as E9 and returned INCONCLUSIVE: tu93 MIXED — levels 4.7 → 5.0, level-1 agent/human ratio 3.74 → 2.34, game score 0.2442 → 1.0283; dc22 NOT BINDING — no level won by any arm; ls20 NOT TESTABLE — its goal predicate is not a place; two source-informed games, no general claim; runs/e9_report.json, docs/E9_protocol.md. Goal identification is therefore not a single binding barrier across games, which is why the census is a vector of assumptions rather than a one-barrier claim); that any agent here is strong; that anything transfers to hidden ARC-AGI-3 games or the leaderboard; that the census is complete.
 
 ---
 
@@ -87,7 +89,7 @@ The claim in half (ii) is about a class: frame-only agents whose behaviour is a 
 - R (reference explorer): the E2 hash_state explorer. Author-written, deterministic given seed, code released.
 - N (reference navigator): the G-NAV planner. Rejected as a competition agent, but it is the purest instantiation of A1–A5 — it completes a level exactly when it can walk a controlled object to an end-place. Author-written.
 - I1 (independent): the Rudakov, Shock & Cowley agent (MIT, no GPU/LLM/network, 0.02–0.056 s per action on ARC). Adaptability to MiniGrid/Procgen is unknown: if it hard-codes the 64×64 grid or the 16-colour palette, that is recorded and the paper states that no independent agent could be run outside ARC.
-- I2 (independent, to find): a second public non-LLM frame-only ARC-AGI-3 agent with a permissive licence, from the Milestone-2 releases after 30 September, if any exists.
+- No I2. E1c searched for a second admissible independent agent and closed with none (docs/E1c_search.md, docs/E1c_prometheus_check.md). The search reopens only if ARC-AGI-3 Milestone-2 releases after 30 September add a permissive-licence, non-LLM, CPU frame-only agent.
 
 Admissibility (registered): no GPU, no LLM, no network; per-action cost at or under the E1 threshold; deterministic given seed. Budget: 20,000 actions per game per seed on every suite (the E2 budget) unless the fidelity script shows a suite's level is unreachable in that budget by the coverage policy, in which case the per-suite budget is registered once, before the confirmatory run, and never changed.
 
@@ -169,7 +171,7 @@ Pre-commitment table (which outcome sends the manuscript where):
 | Support, with V4 | JAIR full article |
 | Support, V4 dropped | JAIR full article, lower odds; JAIR research note as fallback |
 | Partial | IEEE ToG full paper |
-| Refute | the ARC-only measurement note (CoG / workshop) or nothing |
+| Refute | repository record only, at most an arXiv note |
 
 ---
 
@@ -207,7 +209,7 @@ W2 — adapters and pilot
 
 W3–W4 — confirmatory runs (RKM runs, pastes console)
 11. Census on all of B (both conditions) and C, 10 seeds → V1 tables.
-12. Agents R, N, I1 (if adaptable), I2 (if found) on B-macro and C, 10 seeds → V2 tables.
+12. Agents R, N, I1 (if adaptable) on B-macro and C, 10 seeds → V2 tables (no I2: E1c closed with none).
 13. G measurement on B, C and the ARC 25 (new script; ARC runs are re-executed, not reconstructed).
 14. Gate G3: outcome classified by Section 4 before a word of the results section is written.
 
@@ -243,7 +245,7 @@ For this paper, my estimate:
 | Support with a non-trivial V4 | 20–30% | 45–55% |
 | Support, V4 dropped | 15–20% | 40–50% |
 | Partial (lattice-only or author-agents-only) | 5–10% | 30–40% |
-| Refute | do not submit | ARC-only note at CoG / workshop |
+| Refute | do not submit | repository record only, at most an arXiv note |
 
 Why the ceiling is low even in the best case:
 
@@ -290,7 +292,7 @@ Why try JAIR anyway: the submission is free, the reviews arrive either way, and 
 
 ## 12. STATE.md reconciliation checklist
 
-Confirm or correct from docs/STATE.md before Section 2 is frozen:
+Confirm or correct from docs/STATE.md before Section 2 is frozen. Done 27 September 2026, item by item, in docs/RECONCILE_20260927.md; values that STATE.md does not contain are marked there and are not yet traced.
 
 - The exact v2 learner parameters and the script/commit they live in.
 - The census_v2 tallies used in the paper (14 of 17 held-out games with keyboard input, 11 with a moved object; goal_confirmed 0 in every seed; the sc25 placement).
@@ -300,4 +302,4 @@ Confirm or correct from docs/STATE.md before Section 2 is frozen:
 - HELDOUT.md split (dc22 moved to train; 17 held-out) and which ARC games count as "train" for parameter freezing.
 - The 0.28 s per-action admissibility threshold and the E1 fidelity procedure, to be reused as the admissibility rule.
 - Whether ar25's nav-versus-hash_state discrepancy (8/8 vs 0/4) is explained; if not, it is reported as unexplained.
-- The registered-rule precedence decisions (BREAKS before REPRODUCES; missing-scorecard clause first) — carried into PREREG.md as the template for rule precedence.
+- The registered-rule precedence decisions (BREAKS before REPRODUCES; card-count clause first — rows lacking per-level scorecard counts give INCONCLUSIVE; named as in docs/STATE.md Section 5, corrected 27 Sep 2026 from "missing-scorecard clause") — carried into PREREG.md as the template for rule precedence.

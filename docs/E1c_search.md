@@ -5,7 +5,7 @@ GitHub (README, licence and dependency files, agent entry files) through raw.git
 and the public GitHub API. Latest commits came from `git ls-remote`, which reads one ref and does
 not clone. Kaggle notebook sources were downloaded with the Kaggle CLI (`kaggle kernels pull`)
 into a scratch folder, read only and never run. The admissibility items are those of
-docs/TOG_PLAN_v2.md Section 3.1 (A1-A7); this document changes none of them. The author decides
+docs/archive/TOG_PLAN_v2.md Section 3.1 (A1-A7); this document changes none of them. The author decides
 what to pursue.
 
 ## 0. Outcome (recorded 26 September 2026)
@@ -14,7 +14,7 @@ what to pursue.
   25 public games, which include the 17 held-out games, so it carries parameters fitted on our
   evaluation set, and A5 forbids removing them. Size is irrelevant; the contamination is the
   reason. Evidence: docs/E1c_prometheus_check.md.
-- **The other candidates in Section 7 are not pursued.** E1c is closed in docs/TOG_PLAN_v2.md with
+- **The other candidates in Section 7 are not pursued.** E1c is closed in docs/archive/TOG_PLAN_v2.md with
   no admissible second independent agent found.
 
 ## 1. Result in one paragraph

@@ -1,7 +1,7 @@
 # E1 phase 2 protocol: Rudakov et al. agent on the 25 public games
 
 Written 25 September 2026, before any held-out game has been played by this agent. The plan is
-docs/TOG_PLAN_v2.md Section 3; no threshold in it is changed here. The author runs every command
+docs/archive/TOG_PLAN_v2.md Section 3; no threshold in it is changed here. The author runs every command
 below; nothing in this document is a result of phase 2.
 
 Agent: Rudakov, Shock & Cowley's "heuristicagent" (arXiv 2512.24156), vendored unedited at
@@ -209,7 +209,7 @@ line "DECISION: REPRODUCES | BREAKS | INCONCLUSIVE - decided by ...". When a BRE
 and the REPRODUCES conditions both hold, it prints BREAKS and lists both condition sets with
 their values (precedence, Section 4).
 
-## 4. The decision rule (docs/TOG_PLAN_v2.md Sections 3.2-3.4, verbatim)
+## 4. The decision rule (docs/archive/TOG_PLAN_v2.md Sections 3.2-3.4, verbatim)
 
 Measures (3.2):
 
@@ -289,7 +289,7 @@ registered did not say what happens when REPRODUCES and BREAKS both hold. This c
 and never level 3, so that M4 is at least twice E2's M4 while M1 < 0.5 and M3 = 0. The first
 version of e1_decide.py (commit e82dc11) printed CONFLICT in that case. The author settled the
 precedence: **BREAKS takes precedence over REPRODUCES**, with the reason recorded in docs/
-TOG_PLAN_v2.md Section 3.3 (quoted above). e1_decide.py now prints BREAKS in that case and lists
+archive/TOG_PLAN_v2.md Section 3.3 (quoted above). e1_decide.py now prints BREAKS in that case and lists
 both condition sets with their values; CONFLICT is no longer an outcome. The rule's last clause
 (no per-level scorecard counts gives INCONCLUSIVE) is checked before anything else, as in the
 first version; the author confirmed this order on 25 September 2026, with the reason that
