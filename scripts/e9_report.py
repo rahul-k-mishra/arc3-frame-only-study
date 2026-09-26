@@ -22,7 +22,9 @@ fails; V5 is reported, never passed or failed):
   V4 every row used its full budget or won
   V5 per testable level: oracle-colour cells outside the target, and their components, from the
      level's first planner frame (reported per seed, min-max)
-  V6 ls20 (NOT TESTABLE): arm O rows equal arm N rows (every field except "seconds")
+  V6 ls20 (NOT TESTABLE): arm O rows equal arm N rows, every field except "seconds" (wall
+     clock) and "mode" (the arm label written by g_nav_run.py after play); any other differing
+     field is named per seed (docs/E9_V6_diagnosis.md)
 
 MEASURES (Section 4), per game, arm and level; games are the unit, seeds nested, no pooling:
 levels completed (seed mean); seeds winning the level; scorecard actions / human count over the
@@ -89,6 +91,15 @@ def load(path, games, seeds, modes):
             errs.append(f"{k} duplicate")
         cells[k] = r
     return cells, errs
+
+
+V6_EXCLUDED = ("seconds", "mode")     # docs/E9_V6_diagnosis.md
+
+
+def differing_fields(a, b, exclude=V6_EXCLUDED):
+    """top-level fields of two rows that differ, ignoring the excluded ones"""
+    return sorted(k for k in set(a) | set(b) if k not in exclude
+                  and json.dumps(a.get(k), sort_keys=True, default=str) != json.dumps(b.get(k), sort_keys=True, default=str))
 
 
 def won(r, i):
@@ -172,8 +183,10 @@ def main():
                                       if not (int(r.get("actions", -1)) == args.budget or r.get("state") == "WIN")]
     # V6
     if "ls20" in games:
-        fails["V6 ls20 arm O equals arm N"] = [f"ls20 seed {s}: arm O row differs from arm N" for s in seeds
-                                               if strip(E9[("ls20", "nav_oracle", s)]) != strip(E9[("ls20", "nav", s)])]
+        fails["V6 ls20 arm O equals arm N"] = [
+            f"ls20 seed {s}: arm O differs from arm N in {d}"
+            for s in seeds
+            for d in [differing_fields(E9[("ls20", "nav_oracle", s)], E9[("ls20", "nav", s)])] if d]
     if any(v for v in fails.values()):
         report_and_stop(fails)
     for k in fails:
@@ -185,6 +198,8 @@ def main():
                       f"oracle colour; {c['not_seen']} ending(s) not seen, excluded from V2"
                       + (f" (levels: {', '.join(f'{lv} x{len(v)}' for lv, v in sorted(not_seen[g].items()))})"
                          if c['not_seen'] else ""))
+        if k.startswith("V6"):
+            print(f"    ls20: rows compared excluding {list(V6_EXCLUDED)} (docs/E9_V6_diagnosis.md)")
     for k, g in (("V3 positive control tu93", "tu93"), ("V6 ls20 arm O equals arm N", "ls20")):
         if g not in games:
             print(f"{k} ... not applicable ({g} not in --games)")
