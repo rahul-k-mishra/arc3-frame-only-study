@@ -8,6 +8,7 @@ is named, not averaged away.
     python g_nav_run.py --games train    --seeds 4 --budget 20000 --workers 8      (train verdict)
     python g_nav_run.py --games heldout  --seeds 4 --budget 20000 --workers 8      (measured, never chosen on)
     python g_nav_run.py --games tu93,ls20 --modes nav --seeds 1 --budget 2000     (one game, look at it)
+    python g_nav_run.py --games tu93,dc22,ls20 --modes hash_state,nav,nav_oracle --seeds 10 --budget 20000 --tag e9_oracle_3x10   (E9)
 
 Writes navrun_<tag>.json (rows in the ablate format, so g_decompose.py reads it too).
 
@@ -52,6 +53,7 @@ KEYBOARD_TRAIN = ["tu93", "ls20", "dc22", "m0r0", "lf52"]
 MODES = {
     "hash_state": {"mode": "hash"},
     "nav":        {"mode": "hash"},            # same explorer underneath, plus the hook
+    "nav_oracle": {"mode": "hash"},            # E9: nav plus the true goal colour (tu93, dc22 only)
 }
 
 
@@ -63,6 +65,10 @@ def one(job):
         if mode == "nav":
             import g_nav
             r = g_nav.play(game, A.Config(**cfg_d), env_dir, seconds=seconds)
+        elif mode == "nav_oracle":
+            import g_nav
+            r = g_nav.play(game, A.Config(**cfg_d), env_dir, seconds=seconds,
+                           oracle=g_nav.ColourOracle(game))
         else:
             r = A.play(game, A.Config(**cfg_d), env_dir, seconds=seconds)
     except Exception as e:
@@ -154,6 +160,9 @@ def main():
              else KEYBOARD_TRAIN if args.games == "keyboard"
              else M1.TRAIN + M1.HELD_OUT if args.games == "all" else args.games.split(","))
     modes = [m for m in args.modes.split(",") if m in MODES]
+    if "nav_oracle" in modes and any(g in M1.HELD_OUT for g in games):
+        raise SystemExit("STOP: nav_oracle (E9) is for the source-informed train games tu93, dc22 and "
+                         "ls20 only; never a held-out game (docs/E9_protocol.md)")
     jobs = [(g, asdict(A.Config(max_actions=args.budget, seed=1000 + s, **MODES[m])),
              args.game_seconds, args.env_dir, m)
             for s in range(args.seeds) for m in modes for g in games]
