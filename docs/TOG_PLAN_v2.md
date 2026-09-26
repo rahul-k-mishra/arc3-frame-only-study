@@ -88,20 +88,28 @@ sentence that cannot be pointed to a run.
 RQ1. How does the scoring rule allocate credit, and what is the ceiling for an agent that
 completes the first k levels at a constant action ratio r?
 - Formula from arc_agi/scorecard.py: HAVE (source read, Section 5 of this plan).
-- Measured decomposition of hash_state, held-out, 4 seeds x 20,000 actions, mean 0.3329:
-  HAVE (runs/ablate_lenovo_6x4.json, mode hash_state).
+- Reference (E2): hash_state, held-out, 10 seeds (1000-1009) x 20,000 actions, M1 0.3274 and
+  M4 10.50 levels per seed: HAVE (runs/navrun_e2_hash_25x10.json, mode hash_state). It replaces the
+  4-seed values 0.3329 (runs/ablate_lenovo_6x4.json) and 11.2 (untraced). The decomposition by
+  level index, AT HUMAN and ratios is to be recomputed on the E2 file with g_decompose.py; until
+  then no 4-seed decomposition number is quoted as the reference.
 - Counterfactuals AT HUMAN 3.0-3.8 vs recorded 0.30-0.46: HAVE, UNTRACED (the file and the
   g_decompose.py invocation that produced them must be recorded).
-- 100,000 vs 20,000 actions, 0.3615 vs 0.3329: HAVE (runs/ablate_kaggle_giveup_100k.json against
-  runs/ablate_lenovo_6x4.json). Only 2 seeds at 100k, below the 4-seed minimum; it may be
-  reported only as a 2-seed observation until E3 replaces it.
+- 100,000 vs 20,000 actions: WITHDRAWN (26 September 2026). The earlier line read "0.3615 vs
+  0.3329". The 0.3615 is the held-out mean of mode base, 2 seeds, at 100,000 actions
+  (runs/ablate_kaggle_giveup_100k.json; its three giveup variants give the same value; the file
+  has no hash_state rows). The 0.3329 was hash_state, 4 seeds, at 20,000 actions. The two numbers
+  are different mechanisms, so the comparison did not measure what a larger budget buys. E3
+  (hash_state at 3,000 / 20,000 / 50,000 / 100,000 actions, with E2 as the 20,000 point) replaces
+  it; no budget claim is made until E3 exists.
 - "1,088 held-out runs": UNTRACED. The number does not follow from one file. Before it is used,
   a script must list which files and modes it counts.
 - Analytic ceiling validated against the scorecard: NEED (E4, scripts/g_ceiling.py).
 
 RQ2. Does mechanism selection on a subset of public games transfer to the rest?
 - One split and 10,000 random splits: HAVE (runs/split_transfer.json; Section 4). The old
-  one-split sentence ("train pick held-out-best for 3 of 17; oracle 0.3632 vs selected 0.3329")
+  one-split sentence ("train pick held-out-best for 3 of 17; oracle 0.3632 vs selected 0.3329",
+  4-seed values of runs/ablate_lenovo_6x4.json)
   described hash_state, the held-out-best mechanism, not the train pick; it is withdrawn
   (Section 4.2).
 
@@ -203,6 +211,11 @@ source-informed, are reported beside them but do not enter the decision):
 Reference values from our agent (hash_state, 4 seeds): M1 = 0.3329 (runs/ablate_lenovo_6x4.json);
 M4 = 11.2 levels per seed summed over the 17 held-out games (docs/HANDOFF_GNAV.md, UNTRACED to a
 script output; E2 recomputes it at 10 seeds before any external agent is scored).
+[Annotation, 26 September 2026: the two values above are the 4-seed values as registered, left
+as written. The E2 values at 10 seeds are M1 = 0.3274 and M4 = 10.50
+(runs/navrun_e2_hash_25x10.json). Condition (vi) was evaluated against 10.50
+(runs/e1_decision.json). The 1.0 in condition (iv) was derived from the 4-seed 0.3329 and is
+unchanged, as is every threshold.]
 
 ### 3.3 Classification of each admissible agent (fixed)
 
@@ -217,6 +230,7 @@ BREAKS if any of:
   (vi)  M4 at least twice our E2 value of M4.
 INCONCLUSIVE otherwise (for example M1 = 0.6, or a single lucky lv3 win), or if the agent
 could not produce per-level scorecard counts.
+[0.3329 in (iv) is the 4-seed value, as registered.]
 
 Precedence (added 25 September 2026, decided before any phase-2 result was read): BREAKS takes
 precedence over REPRODUCES. If any of (iv)-(vi) holds, the label is BREAKS even when (i)-(iii)
@@ -269,7 +283,8 @@ or scorecard and level_log totals that disagree by more than probe and reset pre
 ## 4. E5: selection transfer
 
 Script: scripts/g_split_transfer.py. No game runs. Output: runs/split_transfer.json (the author's
-run, created 2026-09-25 10:00:58; self-check hash_state held-out mean 0.3329 passed). Every
+run, created 2026-09-25 10:00:58; self-check hash_state held-out mean 0.3329, the 4-seed value of
+the primary matrix, passed). Every
 number in 4.2-4.4 is from that file; 4.1 is the specification fixed before it was run.
 
 ### 4.1 Specification (fixed before the run; unchanged)
@@ -295,6 +310,11 @@ number in 4.2-4.4 is from that file; 4.1 is the specification fixed before it wa
 
 ### 4.2 The fixed split, primary matrix (train tu93 ls20 vc33 m0r0 ft09 lp85 lf52 dc22)
 
+All numbers in 4.2-4.4 come from runs/split_transfer.json, which analyses the 4-seed primary
+matrix and the 1-seed exploratory matrix. The hash_state value 0.3329 in this section is its
+4-seed held-out mean in that matrix, kept because it is the matrix the analysis was registered
+on. It is not the paper's reference value, which is E2's 0.3274 (Section 8).
+
 Three numbers, each with what it is:
 - The train pick is repeat_key (train mean 0.5344). Its held-out mean is 0.1464.
 - The held-out-best mechanism is hash_state, held-out mean 0.3329. On the train games it ranks
@@ -308,9 +328,10 @@ What this corrects. The old plan and CLAUDE.md report "train pick held-out-best 
 games; oracle 0.3632 vs selected 0.3329". The 0.3329 and the 3 of 17 are hash_state's, and
 hash_state is not what the train games select: it is the held-out-best mechanism, and we
 ourselves reported it as our explorer's result. Reporting the held-out-best mechanism's held-out
-score is selection on the held-out games. From here on, 0.3329 is described as "the held-out
-mean of hash_state, the mechanism that is best on the held-out games and worst on the train
-games", never as a selected or train-chosen result. The old plan's "a per-game oracle over 20
+score is selection on the held-out games. Within this selection-transfer analysis, 0.3329 (the
+4-seed value) is described as "the held-out mean of hash_state, the mechanism that is best on the
+held-out games and worst on the train games", never as a selected or train-chosen result.
+Elsewhere the paper's hash_state reference is E2's 0.3274 (runs/navrun_e2_hash_25x10.json). The old plan's "a per-game oracle over 20
 mechanisms is worth 0.03" was wrong twice: the 0.3632 is over the 6 primary mechanisms, and the
 0.03 gap to 0.3329 is in-sample; cross-fitted, the per-game oracle scores below hash_state.
 
@@ -513,6 +534,9 @@ E6; E9; E10; E3; E7.
 
 ## 8. Statistics
 
+- E2 (hash_state, seeds 1000-1009, 20,000 actions, runs/navrun_e2_hash_25x10.json: held-out
+  M1 0.3274, M4 10.50) is the reference for every comparison in the paper. 4-seed values
+  appear only where they record what was registered or decided earlier, and are marked as such.
 - Runs are deterministic given the seed (same agent, game files and engine), so the number of
   distinct seeds is the number of replicates, and a seed repeated in another file or session adds
   nothing; every count deduplicates by (game, mechanism, seed) before it is reported.
