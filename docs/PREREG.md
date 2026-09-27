@@ -688,3 +688,28 @@ Consequences:
 | scripts/analyze_common.py | 0737dbc5779e92eca3b06e5b9e31f70dce3d3475 | 4482e551e829c73d99319a2453f794163dc71891 |
 
 scripts/analyze_v1.py and scripts/analyze_g.py are unchanged. The v1.1 hashes are re-recorded at the v1.1 tag if anything changes before it.
+
+**D12. ARC wall-clock cap** (Section 9.1/9.2 changed).
+
+*What v1 inherited.* PREREG v1 ran E6 with scripts/g_nav_run.py's default `--game-seconds 900` (g_nav_run.py:148) without registering it.
+
+*What it cut.* Eight E6 nav rows stopped at the 900 s clock before 20,000 actions (scripts/e6_check.py (c); runs/navrun_prereg_e6_arc_25x10.json):
+
+| game | mode | seed | actions | seconds |
+|---|---|---|---|---|
+| re86 | nav | 1004 | 1015 | 900.7 |
+| re86 | nav | 1006 | 11240 | 900.0 |
+| re86 | nav | 1007 | 16221 | 900.0 |
+| re86 | nav | 1008 | 6083 | 900.0 |
+| sp80 | nav | 1001 | 7150 | 900.0 |
+| sp80 | nav | 1003 | 18086 | 900.0 |
+| sp80 | nav | 1004 | 7003 | 900.0 |
+| sp80 | nav | 1006 | 19123 | 900.0 |
+
+*The fix.*
+- **The registered ARC cap is now 3600 s per run.**
+- The eight cut rows are re-run under the tagged code with that cap, and the new rows replace the cut ones. A run is deterministic given the seed, so the re-run reproduces each cut row's actions up to the point it was cut, then continues to the budget.
+- g_nav_run.py `--resume` does not keep a row with actions < budget that did not win: it runs it again (g_nav_run.py:114-139, the test at line 130). No row has to be removed from the file first.
+- **But `--resume` rewrites the output file from the kept rows of the selection given on the command line.** The re-run must therefore use the full E6 selection (all 25 games, both modes, 10 seeds), not only re86 and sp80. Otherwise the other 492 rows would be dropped.
+- Commands: docs/E6_RERUN.md. After the re-run, scripts/e6_check.py must report 0 rows with actions < 20000.
+- The two census-v2 differences of e6_check.py (b), sp80 seeds 1001 and 1003, are two of these eight cut rows. Their level logs agree with census v2 up to the cut. The check is repeated after the re-run.

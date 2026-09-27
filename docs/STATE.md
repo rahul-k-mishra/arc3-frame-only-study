@@ -235,3 +235,30 @@ Fourth amendment of 27 September 2026. The lines above are unchanged.
   - docs/W2_COMMANDS.md.
 
   No run on a confirmatory suite-B or suite-C game has been made. Whether the fidelity check may run on confirmatory games before v1.1 is RKM's decision (W2_COMMANDS.md).
+
+## Amendment 27 Sep 2026 (e)
+
+Fifth amendment of 27 September 2026. The lines above are unchanged.
+
+- **E6 completed** (runs/navrun_prereg_e6_arc_25x10.json, committed by RKM in 248a12f). 500 runs in 173 minutes: 25 games × {hash_state, nav} × 10 seeds × 20,000 actions, under the tag prereg-v1. RKM's numbers:
+
+  | split | hash_state M1 | hash_state levels per seed | nav M1 | nav levels per seed |
+  |---|---|---|---|---|
+  | train (8 games; tu93, dc22, ls20 source-informed) | 0.1901 | 11.1 | 0.2035 | 10.8 |
+  | held-out (17 games) | 0.3274 | 10.5 | 0.2612 | 11.1 |
+
+  goal_confirmed fired on tu93 only (a source-informed train game). It fired on no held-out game.
+  These numbers include the eight cut nav rows below, so the nav values are provisional until the re-run.
+- **Identity checks** (scripts/e6_check.py, run 27 Sep 2026):
+  - (a) The 250 hash_state rows of E6 are identical to E2 (runs/navrun_e2_hash_25x10.json) in every field except `seconds`, 250 of 250. The tagged code is the E2 code for hash_state, and E6's hash_state held-out 0.3274 is E2's value.
+  - (b) E6 nav rows for seeds 1000-1003 against census v2's nav rows (runs/navrun_v2_heldout.json, 17 held-out games): 66 of 68 are identical except `seconds`. The two that differ, sp80 seeds 1001 and 1003, are E6 rows cut by the 900 s clock (7,150 and 18,086 actions against 20,000 in v2). Their level logs agree with v2 up to the cut. So census v2's nav rows were produced by the code now tagged, as far as these rows can show. The full 68 of 68 is checked after the re-run.
+  - (c) Eight E6 rows stopped before 20,000 actions, all nav and all at the 900 s clock:
+    - re86 seeds 1004, 1006, 1007, 1008 (1,015 / 11,240 / 16,221 / 6,083 actions, 0 levels);
+    - sp80 seeds 1001, 1003, 1004, 1006 (7,150 / 18,086 / 7,003 / 19,123 actions, 2 levels each).
+- **The wall-clock cap, PREREG v1.1 draft D12.**
+  - v1 inherited g_nav_run.py's 900 s default without registering it.
+  - The registered ARC cap is now 3600 s per run.
+  - The eight cut rows are re-run under the tagged code with that cap. The new rows replace the cut ones; a run is deterministic given the seed.
+  - `--resume` re-runs them without a removal script. The command must name the full E6 selection. Commands are in docs/E6_RERUN.md.
+  - The E6 census (runs/census_e6.json, docs/census_e6.md) is made only after the re-run.
+- **ar25 at 10 seeds** (update to the "UNEXPLAINED" ar25 note in CLAUDE.md): hash_state completes level 1 on 6 of 10 seeds; nav completes it on 10 of 10. The earlier "hash_state 0 of 4" was seeds 1000-1003 only. The difference between the two arms is smaller at 10 seeds than at 4, and it is still not explained. Nothing is built on it.
