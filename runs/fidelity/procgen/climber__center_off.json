@@ -1,0 +1,74 @@
+{
+ "game": "climber",
+ "suite": "procgen",
+ "condition": "center_off",
+ "seed": 1000,
+ "steps": 200,
+ "status": "ok",
+ "identical": true,
+ "first_diff_step": null,
+ "flags_equal": true,
+ "n_actions": 15,
+ "grid": [
+  64,
+  64
+ ],
+ "n_colours": 8,
+ "level_ends": 0,
+ "game_ends": 0,
+ "steps_per_second": 497.3,
+ "adapter": {
+  "suite": "procgen",
+  "game": "climber",
+  "condition": "center_off",
+  "palette": "rgb64",
+  "n_colours": 8,
+  "palette_entries": 8,
+  "crop": null,
+  "grid": [
+   64,
+   64
+  ],
+  "action_list": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14
+  ],
+  "camera": {
+   "center_agent": false
+  },
+  "levels": {
+   "use_sequential_levels": true,
+   "num_levels": 0,
+   "start_level": 1000,
+   "rand_seed": 1000
+  },
+  "settings": {
+   "distribution_mode": "easy",
+   "use_backgrounds": false,
+   "use_monochrome_assets": true
+  },
+  "adapter_blob": "91cca0f59ea632da8b5b0f6652c7b1a13f1fbb3d",
+  "env_frame_blob": "bb3ff60acf88c220ec64e287c6c1d6bb899f879b",
+  "frozen": {
+   "scripts/g_agent.py": "72585a4dbb926d4512ff9596f58118a176bb0646",
+   "scripts/g_nav.py": "a8a7eb61e62a658c239b98e0224e3588a662d1a0",
+   "scripts/g_motion.py": "14018512a5c6b0efc81aed61c5466654d338be0b",
+   "scripts/g_control_probe.py": "d5ff2a4dc77b9e1148929e7db03fe99a9d2b0bf8",
+   "scripts/g_nav_run.py": "2cc0146a697e525e5873d4e29cb80f4ae8bd6297",
+   "scripts/g_census_table.py": "488feaca9c10985c4d0ff62791ceb4fa6fa6b9a8"
+  }
+ }
+}
