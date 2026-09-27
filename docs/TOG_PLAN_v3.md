@@ -12,6 +12,7 @@ What was decided:
 
 - The ARC-only short paper is not shipped. The measurement programme on the 25 public ARC-AGI-3 games is complete and every number in it is traceable to a file in runs/; it becomes background for a larger paper, not a paper of its own.
 - The work is strengthened, with more compute and more datasets, into a method paper: the assumption census and the goal-identification measure, pre-registered and frozen, demonstrated on three CPU-runnable benchmarks — ARC-AGI-3 as one instance, MiniGrid/BabyAI, and one more suite (Section 5).
+- Pre-registration (27 September 2026): docs/PREREG.md v1, git tag prereg-v1 on commit 19f2a9f25043997d1deffd5976f2f2150e5f086f. OSF open-ended registration https://osf.io/2znhw (embargoed until 30 June 2030, to be ended early at acceptance). The manuscript for review cites the anonymised view-only link https://osf.io/2znhw/overview?view_only=f82b8a3e8a7f48ca94a952495e9520d3; the camera-ready cites the public URL.
 - Venue order: JAIR first, IEEE Transactions on Games second. TMLR is rejected. IEEE CoG and any conference whose acceptance requires paid registration or travel is ruled out. No venue with an APC.
 - Work continues in the private GitHub repository with Claude Code writing scripts and documents; RKM runs every experiment and pastes console output; a fresh chat starts from docs/STATE.md.
 

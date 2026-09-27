@@ -216,3 +216,22 @@ Also written:
 - No ARC train truth table exists yet. V1 on ARC waits for docs/GROUND_TRUTH_arc_train.md.
 
 **Tag.** `prereg-v1` is to be created by RKM on the commit that adds docs/PREREG.md. The OSF registration follows, with that commit's hash filled in. No run on a confirmatory suite-B or suite-C game before the tag. The adapters, I1 feasibility and scripts/g_goal_cost.py are W2 work under PREREG v1.1.
+
+## Amendment 27 Sep 2026 (d)
+
+Fourth amendment of 27 September 2026. The lines above are unchanged.
+
+- **Tag.** `prereg-v1` created by RKM on commit 19f2a9f25043997d1deffd5976f2f2150e5f086f (annotated tag object 9696ce13ee15aaba26fc09a52b30c8b3aeb82fc9). docs/PREREG.md v1 at that commit is the registered protocol.
+- **OSF.**
+  - Open-ended registration https://osf.io/2znhw, approved by RKM from the OSF email.
+  - Embargoed until 30 June 2030, to be ended early at acceptance.
+  - Anonymised view-only link for reviewers: https://osf.io/2znhw/overview?view_only=f82b8a3e8a7f48ca94a952495e9520d3. The manuscript for review uses this link; the camera-ready uses the public URL.
+- **Suite-level FAIL rule** as coded (decided by whichever evidence agents are present and non-void) accepted by RKM as tagged.
+- **E6** launched by RKM from the worktree D:\Research\arc3\repo_prereg_v1 under the tag.
+- **W2 begins:**
+  - docs/ADAPTER_FEASIBILITY.md, whose Section 2 lists the parameters that need PREREG v1.1;
+  - scripts/env_frame.py (contract and ARC shim), scripts/adapter_minigrid.py, scripts/adapter_procgen.py and scripts/fidelity_check.py;
+  - docs/I1_feasibility.md (I1 adaptable through the same contract with boundary changes);
+  - docs/W2_COMMANDS.md.
+
+  No run on a confirmatory suite-B or suite-C game has been made. Whether the fidelity check may run on confirmatory games before v1.1 is RKM's decision (W2_COMMANDS.md).
