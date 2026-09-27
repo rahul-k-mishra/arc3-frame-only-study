@@ -177,3 +177,42 @@ Second session-end amendment of 27 September 2026. The lines above are unchanged
 **Consequences for this file.**
 - Section 5 "Open" listed E9 arm P, E1b and E7 as optional, and E6 and E10 as open. This amendment closes all five: E9 arm P, E1b and E7 are dropped, E6 is mandatory, and E10 is carried by G.
 - Section 5 "Open" also listed the venue and the method-paper direction. Both are closed by decisions 1–8 above and by the first amendment of 27 Sep 2026.
+
+## Amendment 27 Sep 2026 (c)
+
+Third session-end amendment of 27 September 2026. The lines above are unchanged.
+
+**PREREG v1 written.** docs/PREREG.md v1 is the registered protocol, assembled from:
+- METHOD_BLUEPRINT.md draft 1.4;
+- PREREG_PARAMS.md;
+- the two truth tables;
+- W0_CHECKS.md.
+
+It carries a preface listing six details this session filled in (marked "[registered here]" in the file). Tagging confirms them.
+
+Also written:
+- the analysis scripts scripts/analyze_common.py, analyze_v1.py, analyze_v2.py and analyze_g.py;
+- their synthetic tests (10 tests, all passing, no runs/ file read);
+- docs/OSF_REGISTRATION.md.
+
+**Decisions taken by RKM on 27 Sep 2026:**
+- **Camera (suite C):**
+  - primary: center_agent False for all 16 Procgen games;
+  - secondary, reported: the default scrolling view;
+  - an instrument operating range derived from source (PREREG.md Section 4). Outside the range: caveflyer, climber, coinrun, fruitbot, jumper, ninja.
+- **Levels (suite C):**
+  - use_sequential_levels True, num_levels 0, start_level = rand_seed = the seed (1000–1009);
+  - level end = prev_level_complete.
+  - Finding recorded in PREREG.md Section 3.3: with num_levels 0, procgen ignores start_level (vecgame.cpp:287-289), so the level sequence is set by rand_seed alone.
+- **Pilots:**
+  - suite B: MiniGrid-Empty-5x5-v0, MiniGrid-FourRooms-v0, MiniGrid-DoorKey-8x8-v0, MiniGrid-Dynamic-Obstacles-6x6-v0, MiniGrid-Fetch-5x5-N2-v0, BabyAI-GoToRedBallGrey-v0;
+  - suite C: coinrun, bigfish.
+- **A5 readings:** fruitbot holds; leaper fails.
+- **V1 on constant truth columns:** agreement rate only; κ only where both truth values have at least three members.
+
+**Truth tables.**
+- docs/GROUND_TRUTH_minigrid.md (commit f12e529): 178 ids. Suite B confirmatory = 161 (A5 holds on 36).
+- docs/GROUND_TRUTH_procgen.md (commit 8d209b3): 16 games. Suite C confirmatory = 14 (A5 holds on 6).
+- No ARC train truth table exists yet. V1 on ARC waits for docs/GROUND_TRUTH_arc_train.md.
+
+**Tag.** `prereg-v1` is to be created by RKM on the commit that adds docs/PREREG.md. The OSF registration follows, with that commit's hash filled in. No run on a confirmatory suite-B or suite-C game before the tag. The adapters, I1 feasibility and scripts/g_goal_cost.py are W2 work under PREREG v1.1.
