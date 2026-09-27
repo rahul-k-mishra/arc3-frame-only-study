@@ -33,7 +33,10 @@ cd D:\Research\arc3\repo
 
 A4. If any job ends with status error, rerun the same command. Error rows rerun; ok rows are skipped.
 
-**The cap for block C (v1.1 draft D5).** Cap = 3 × the slowest game's time for 20,000 actions = 3 × 20,000 / (the smallest steps_per_s in the suite's table). Rounded up to a whole minute, one value per suite. The assistant computes it from the pasted tables if asked, and the value is recorded in the v1.1 diff section.
+**The cap (v1.1 draft D5).**
+- The fidelity check does not set the cap; its speeds are recorded as infrastructure facts only.
+- The pilot (block C) runs with --seconds 86400.
+- The confirmatory cap per suite is three times the longest pilot run's wall time in that suite, over all modes and conditions, rounded up to a whole minute. scripts/pilot_cap.py computes it from the pilot rows (block D), and it is recorded in D5 at the v1.1 tag.
 
 ## Block B — dry run of run_suite.py on the eight pilot games
 
@@ -72,21 +75,32 @@ cd D:\Research\arc3\repo
 & D:\Research\arc3\brutus\.venv_procgen\Scripts\python.exe -c "import importlib.metadata as m; print('procgen', 'numpy', m.version('numpy'), 'requests', m.version('requests'), 'pydantic', m.version('pydantic'))"
 ```
 
-C1. Suite B pilots, raw and macro, modes hash_state, nav and i1. That is 6 games × 10 seeds × 3 modes × 2 conditions = 360 runs of 20,000 actions. Replace `<CAP_B_SECONDS>` with the suite-B cap from block A.
+C1. Suite B pilots, raw and macro, modes hash_state, nav and i1. That is 6 games × 10 seeds × 3 modes × 2 conditions = 360 runs of 20,000 actions, with no cap in practice (86,400 s).
 
 ```powershell
 cd D:\Research\arc3\repo
 Remove-Item Env:BABYAI_DONE_ACTIONS -ErrorAction SilentlyContinue
-& D:\Research\arc3\brutus\.venv_games\Scripts\python.exe scripts\run_suite.py --suite minigrid --condition raw,macro --games pilot --modes hash_state,nav,i1 --seeds 10 --budget 20000 --workers 8 --seconds <CAP_B_SECONDS> --resume
+& D:\Research\arc3\brutus\.venv_games\Scripts\python.exe scripts\run_suite.py --suite minigrid --condition raw,macro --games pilot --modes hash_state,nav,i1 --seeds 10 --budget 20000 --workers 8 --seconds 86400 --resume
 ```
 
-C2. Suite C pilots, center_off and center_on, modes hash_state, nav and i1. That is 2 games × 10 seeds × 3 modes × 2 conditions = 120 runs. Replace `<CAP_C_SECONDS>` with the suite-C cap from block A.
+C2. Suite C pilots, center_off and center_on, modes hash_state, nav and i1. That is 2 games × 10 seeds × 3 modes × 2 conditions = 120 runs, with no cap in practice (86,400 s).
 
 ```powershell
 cd D:\Research\arc3\repo
-& D:\Research\arc3\brutus\.venv_procgen\Scripts\python.exe scripts\run_suite.py --suite procgen --condition center_off,center_on --games pilot --modes hash_state,nav,i1 --seeds 10 --budget 20000 --workers 8 --seconds <CAP_C_SECONDS> --resume
+& D:\Research\arc3\brutus\.venv_procgen\Scripts\python.exe scripts\run_suite.py --suite procgen --condition center_off,center_on --games pilot --modes hash_state,nav,i1 --seeds 10 --budget 20000 --workers 8 --seconds 86400 --resume
 ```
 
 C3. If a run ends with an error, rerun the same command. Rows written without error are skipped; errored rows rerun.
 
 **Output:** runs/suites/<suite>/<condition>/<mode>/<game>__<seed>.json, one per run. The console ends with `summary: N rows written this call, N errors, N cut by the cap`.
+
+## Block D — the confirmatory cap from the pilot rows
+
+D1. After blocks C1 and C2 finish, compute the cap per suite (v1.1 draft D5). It reads runs/suites/ and plays nothing.
+
+```powershell
+cd D:\Research\arc3\repo
+& D:\Research\arc3\brutus\.venv\Scripts\python.exe scripts\pilot_cap.py
+```
+
+Expected: one line per suite, `<suite>: N pilot rows, N with an error; longest <game> <condition> <mode> seed <s> <t> s -> cap <c> s`.

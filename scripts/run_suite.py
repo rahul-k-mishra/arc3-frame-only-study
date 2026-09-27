@@ -11,7 +11,8 @@ adapters, without editing any frozen file:
 At start it checks the six frozen blob hashes against PREREG.md Section 5.4 and refuses to run if any
 differs.  Rows follow PREREG.md Section 9.3: one JSON file per (suite, condition, agent, game, seed),
 runs/suites/<suite>/<condition>/<mode>/<game>__<seed>.json, holding a one-element list (the format
-scripts/analyze_*.py read).  Rows cut by the wall-clock cap (actions < budget) are kept and marked
+scripts/analyze_*.py read).  Field `seconds` is the run's wall time measured by this script (the cap of
+PREREG v1.1 D5 is computed from the pilot rows by scripts/pilot_cap.py).  Rows cut by the wall-clock cap (actions < budget) are kept and marked
 cut_by_cap.  Worker pool, spawn-safe (the shim is installed inside the worker), resume-safe (an
 existing row without error is skipped unless --force), atomic writes.
 
@@ -130,7 +131,11 @@ def one(job):
     r["level1_completed"] = int(r.get("levels", 0) or 0) >= 1
     r["level1_actions"] = env.first_level_end if env is not None else None
     r["cut_by_cap"] = ("error" not in r) and acts < budget
-    r["budget"], r["seconds_cap"], r["wall_seconds"] = budget, seconds, round(time.time() - t0, 1)
+    # seconds = this run's wall time, measured here for every mode (PREREG v1.1 D5; scripts/pilot_cap.py);
+    # the agent's own timer, if it reported one, is kept as agent_seconds
+    if "seconds" in r:
+        r["agent_seconds"] = r["seconds"]
+    r["budget"], r["seconds_cap"], r["seconds"] = budget, seconds, round(time.time() - t0, 1)
     if env is not None:
         rec = env.adapter.record()
         rec["key_map"] = {str(k): env.adapter.actions[i] for k, i in env.key_map.items()}

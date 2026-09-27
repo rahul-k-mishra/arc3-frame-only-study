@@ -625,7 +625,9 @@ Drafted 27 September 2026 after the tag prereg-v1 (commit 19f2a9f), from RKM's d
 - **The sentence the paper carries:** *"The ARC RESET restarts the current level on ARC-AGI-3 and replays the current layout on MiniGrid/BabyAI, but is a no-op on Procgen, which cannot restart a level; on Procgen a failed level is followed by a new level."*
 
 **D5. Wall-clock cap** (new; Section 9.1).
-- The cap per run is three times the slowest game's measured time for 20,000 actions in that suite. That time is computed from the fidelity check's steps per second (runs/fidelity), and the cap is one value per suite. **Value pending: filled in after the fidelity check.**
+- **Pilot runs are uncapped in practice**: they run with --seconds 86400 (one day per run).
+- **The confirmatory cap per suite** is three times the longest pilot run's wall time in that suite, over all modes and conditions, rounded up to a whole minute. It is computed from the pilot rows' `seconds` field (run_suite.py's wall time per run) by scripts/pilot_cap.py, not by hand, and recorded here at the v1.1 tag. **Value pending: filled in from the pilot.**
+- The fidelity check does not set the cap. Its speeds are recorded as infrastructure facts only.
 - Rows cut by the cap (actions < budget) are kept, marked cut_by_cap, and reported as cut.
 
 **D6. The runner** (new; Section 9.2).
@@ -635,7 +637,8 @@ Drafted 27 September 2026 after the tag prereg-v1 (commit 19f2a9f), from RKM's d
 
 | file | blob hash |
 |---|---|
-| scripts/run_suite.py | d51f56edbe7e9a69497c123864d1df96383874f6 |
+| scripts/run_suite.py | 1360b0a65c587ee04ab47e4ab2dca8625a67ad6e |
+| scripts/pilot_cap.py | 8cc76900582ca49097b3fe5b721b7ee26d94ce6c |
 | scripts/env_frame.py | bb3ff60acf88c220ec64e287c6c1d6bb899f879b |
 | scripts/adapter_minigrid.py | 370028ab178eaed65803d2f0f7d86c29adf14328 |
 | scripts/adapter_procgen.py | 91cca0f59ea632da8b5b0f6652c7b1a13f1fbb3d |
@@ -660,10 +663,11 @@ Consequences:
 - V1 is unaffected: the truth of A1–A5 does not depend on the key map.
 - The list below is derived from the truth table's success predicates (docs/GROUND_TRUTH_minigrid.md, with file and line there):
   - **Suite B raw (done absent) — 5:** MiniGrid-GoToDoor-5x5-v0, MiniGrid-GoToDoor-6x6-v0, MiniGrid-GoToDoor-8x8-v0, MiniGrid-GoToObject-6x6-N2-v0, MiniGrid-GoToObject-8x8-N2-v0. Their success is a done action beside the target (gotodoor.py:144-147; gotoobject.py:155-158).
-  - **Suite B macro (drop and done absent) — 27:**
+  - **Suite B macro (drop and done absent) — 20:**
     - The 5 above.
     - Success on a drop (PutNear, putnear.py:193-197; PutNextInstr, verifier.py:411-435; MoveTwoAcross, BeforeInstr of two PutNextInstr, other.py:423-426) — 15: MiniGrid-PutNear-6x6-N2-v0, MiniGrid-PutNear-8x8-N3-v0, BabyAI-PutNextLocal-v0, BabyAI-PutNextLocalS5N3-v0, BabyAI-PutNextLocalS6N4-v0, BabyAI-PutNextS4N1-v0, BabyAI-PutNextS5N1-v0, BabyAI-PutNextS5N2-v0, BabyAI-PutNextS5N2Carrying-v0, BabyAI-PutNextS6N3-v0, BabyAI-PutNextS6N3Carrying-v0, BabyAI-PutNextS7N4-v0, BabyAI-PutNextS7N4Carrying-v0, BabyAI-MoveTwoAcrossS5N2-v0, BabyAI-MoveTwoAcrossS8N9-v0.
-    - LevelGen levels whose instruction may be a PutNext (action kinds include putnext, levelgen.py:41; synth.py:91, 173 and defaults) — 7: BabyAI-Synth-v0, BabyAI-SynthS5R2-v0, BabyAI-SynthLoc-v0, BabyAI-SynthSeq-v0, BabyAI-MiniBossLevel-v0, BabyAI-BossLevel-v0, BabyAI-BossLevelNoUnlock-v0. Excluded because the predicate can require the absent action.
+  - **"Requires" means on every seed (RKM, 27 Sep 2026).** The seven LevelGen levels draw their instruction per seed (levelgen.py:41, 158-207; synth.py:91, 173): BabyAI-Synth-v0, BabyAI-SynthS5R2-v0, BabyAI-SynthLoc-v0, BabyAI-SynthSeq-v0, BabyAI-MiniBossLevel-v0, BabyAI-BossLevel-v0, BabyAI-BossLevelNoUnlock-v0. They stay in the primary analysis.
+  - On these LevelGen levels some seeds draw a PutNext instruction that cannot be completed under macro; the game outcome Y over ten seeds (completed in at least half of them) absorbs this.
   - **Suite C — none.** No Procgen success predicate requires a diagonal or specials 11–14. Special 1 (fire), which bossfight, dodgeball and plunder need, is mapped.
 - **Code change:** scripts/analyze_v2.py gains these lists, implemented and tested at the v1.1 tag. The v1 script is otherwise unchanged. I1's narrower key map (D7) is not an exclusion criterion; its effect is reported per suite.
 
