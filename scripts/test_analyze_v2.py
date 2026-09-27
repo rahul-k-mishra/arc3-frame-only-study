@@ -59,11 +59,43 @@ Primary line (T1-T6; the verdict rules apply):
     1 only (2).  AUROC = 12/15 = 0.8.
     TP 2, FN 1, FP 1, TN 4; TPR 2/3, TNR 4/5; BA = (0.6667 + 0.8) / 2 = 0.7333.
     Verdict and suite line: "reported, not tested".
-The N rows (instrument check) get the same two lines.
+The N rows (instrument check) get the same two lines.  R and N get no "primary, D9b included" line.
+
+Test 7, the D9b I1 lists (PREREG v1.1 draft D9b), suite "minigrid", condition "macro".  Eight
+confirmatory games: five test ids T1..T5 on no list, and three registered ids:
+    MiniGrid-PutNear-6x6-N2-v0     on the D9 list (drop is the success action): excluded for R, N, I1
+    MiniGrid-KeyCorridorS3R1-v0    on the D9 macro list (drop precondition) and on I1's: excluded for all
+    MiniGrid-DoorKey-5x5-v0        on I1's list only (toggle precondition): kept for R and N
+Census (one N seed each), S and P = A2..A5 all hold; outcomes Y for R (N identical) and for I1:
+    T1  h h h h h  S=5 P=1   R 1  I1 1        T2  h h h h f  S=4 P=0   R 1  I1 0
+    T3  h h h f f  S=3 P=0   R 0  I1 1        T4  h h f f f  S=2 P=0   R 1  I1 0
+    T5  h f f f f  S=1 P=0   R 0  I1 0        DoorKey  h h h h h  S=5 P=1   R 1  I1 0
+    KeyCorridor h h h h h  S=5 P=1  R 0  I1 0  PutNear  h h h h f  S=4 P=0   R 0  I1 0
+R primary (T1-T5, DoorKey; 6 games): positives S = 5, 4, 2, 5; negatives S = 3, 1; 8 pairs.  Each 5 beats
+    both (4), the 4 beats both (2), the 2 beats 1 only (1): AUROC = 7/8 = 0.875.  P: TP 2 (T1, DoorKey),
+    FN 2 (T2, T4), TN 2, FP 0: BA = (0.5 + 1) / 2 = 0.75.  Share 4/6, not void.  B constant: 0.5.
+    Verdict "neither" (BA < 0.80).
+R all games (8): negatives add KeyCorridor 5 and PutNear 4.  Pair credit: T1 5 -> 1+1+0.5+1 = 3.5,
+    T2 4 -> 1+1+0+0.5 = 2.5, T4 2 -> 0+1+0+0 = 1, DoorKey 5 -> 3.5; 10.5/16 = 0.65625.  TN 3 (T3, T5,
+    PutNear), FP 1 (KeyCorridor): BA = (0.5 + 0.75) / 2 = 0.625.  Reported, not tested.
+I1 primary (T1-T5; 5 games): positives S = 5, 3; negatives S = 4, 2, 1; 6 pairs.  The 5 beats all three
+    (3), the 3 beats 2 and 1 (2): AUROC = 5/6 = 0.8333.  P: TP 1 (T1), FN 1 (T3), TN 3, FP 0: BA = 0.75.
+    Share 2/5 = 0.4, not void.  Verdict "neither".
+I1 "primary, D9b included" (R's primary set, 6 games): negatives add DoorKey 5.  T1 ties it (0.5):
+    3.5 + 2 = 5.5/8 = 0.6875.  FP 1 (DoorKey), TN 3: BA = (0.5 + 0.75) / 2 = 0.625.  Reported, not tested.
+I1 all games (8): negatives 4, 2, 1, 5, 5, 4.  T1: 1+1+1+0.5+0.5+1 = 5; T3: 0+1+1+0+0+0 = 2; 7/12 =
+    0.58333.  FP 2 (DoorKey, KeyCorridor), TN 4: BA = (0.5 + 4/6) / 2 = 0.58333.  Reported, not tested.
+Suite line, primary: R (0.875) and I1 (0.8333) both non-void and > 0.65: "not failed (decided by R and
+I1)".  The "primary, D9b included" and "all games" suite lines: "reported, not tested".
+
+Test 8, the registered lists themselves, against docs/GROUND_TRUTH_minigrid.md (a document; no runs/
+file): R/N raw 5 and macro 48; I1 raw 62 and macro 77; no duplicates; every id is a confirmatory
+suite-B environment; I1's list contains the R/N list of the same condition; raw is contained in macro;
+no procgen list for either.
 
 Command (PowerShell, from D:\\Research\\arc3\\repo):
     D:\\Research\\arc3\\brutus\\.venv\\Scripts\\python.exe scripts\\test_analyze_v2.py
-Expected: "Ran 6 tests ... OK".
+Expected: "Ran 8 tests ... OK".
 """
 from __future__ import annotations
 
@@ -200,6 +232,70 @@ class T(unittest.TestCase):
             sl = {s[2]: s[3] for s in suite_lines}
             self.assertEqual(sl["primary"], "not failed (decided by R alone)")
             self.assertEqual(sl["all games"], "reported, not tested")
+
+    def test_d9b_i1_exclusions(self):
+        ids = ["MiniGrid-T1-v0", "MiniGrid-T2-v0", "MiniGrid-T3-v0", "MiniGrid-T4-v0", "MiniGrid-T5-v0",
+               "MiniGrid-DoorKey-5x5-v0", "MiniGrid-KeyCorridorS3R1-v0", "MiniGrid-PutNear-6x6-N2-v0"]
+        census = ["hhhhh", "hhhhf", "hhhff", "hhfff", "hffff", "hhhhh", "hhhhh", "hhhhf"]
+        y_r = [1, 1, 0, 1, 0, 1, 0, 0]
+        y_i1 = [1, 0, 1, 0, 0, 0, 0, 0]
+        with tempfile.TemporaryDirectory() as tmp:
+            lines = ["| id | reg | A1 | A2 | A3-raw | A3-macro | A4 | A5 | pred | src | status |", "|---|---|---|---|---|---|---|---|---|---|---|"]
+            lines += [f"| {g} | r | holds | holds | fails | holds | holds | holds | p | s | confirmatory |" for g in ids]
+            _write(os.path.join(tmp, "gt_minigrid.md"), "\n".join(lines) + "\n")
+            _write(os.path.join(tmp, "gt_procgen.md"), "\n")
+            rows = []
+            ad = dict(grid=[7, 7], action_list=list(range(6)), n_colours=5)
+            for i, g in enumerate(ids):
+                rows.append(dict(game=g, agent="N", mode="nav", suite="minigrid", condition="macro", seed=1000,
+                                 census={a: W[c] for a, c in zip(C.ASSUMPTIONS, census[i])},
+                                 level1_completed=bool(y_r[i]), adapter=ad))
+                rows.append(dict(game=g, agent="R", mode="hash_state", suite="minigrid", condition="macro", seed=1000,
+                                 level1_completed=bool(y_r[i]), adapter=ad))
+                rows.append(dict(game=g, agent="I1", mode="i1", suite="minigrid", condition="macro", seed=1000,
+                                 level1_completed=bool(y_i1[i]), adapter=ad))
+            _write(os.path.join(tmp, "runs.json"), json.dumps(rows))
+            table, suite_lines = analyze_v2.main(["--runs", os.path.join(tmp, "runs.json"), "--truth-minigrid",
+                                                  os.path.join(tmp, "gt_minigrid.md"), "--truth-procgen",
+                                                  os.path.join(tmp, "gt_procgen.md"), "--out", tmp, "--workers", "2"])
+            by = {(x[2], x[3]): x for x in table}
+            self.assertEqual(sorted(by), [("all games", "I1"), ("all games", "N"), ("all games", "R"),
+                                          ("primary", "I1"), ("primary", "N"), ("primary", "R"),
+                                          ("primary, D9b included", "I1")])
+            expect = {("primary", "R"): (6, 4, 7 / 8, 0.75, "neither"),
+                      ("primary", "N"): (6, 4, 7 / 8, 0.75, "neither"),
+                      ("all games", "R"): (8, 4, 10.5 / 16, 0.625, "reported, not tested"),
+                      ("primary", "I1"): (5, 2, 5 / 6, 0.75, "neither"),
+                      ("primary, D9b included", "I1"): (6, 2, 5.5 / 8, 0.625, "reported, not tested"),
+                      ("all games", "I1"): (8, 2, 7 / 12, 7 / 12, "reported, not tested")}
+            for k, (n, pos, auc, ba, verdict) in expect.items():
+                x = by[k]
+                self.assertEqual((x[5], x[6]), (n, pos), k)
+                self.assertAlmostEqual(x[7], auc, msg=str(k))
+                self.assertAlmostEqual(x[10], ba, msg=str(k))
+                self.assertAlmostEqual(x[11], 0.5, msg=str(k))
+                self.assertEqual(x[12], verdict, k)
+            sl = {s[2]: s[3] for s in suite_lines}
+            self.assertEqual(sl["primary"], "not failed (decided by R and I1)")
+            self.assertEqual(sl["primary, D9b included"], "reported, not tested")
+            self.assertEqual(sl["all games"], "reported, not tested")
+
+    def test_registered_lists(self):
+        truth = C.parse_truth_minigrid(os.path.join(os.path.dirname(HERE), "docs", "GROUND_TRUTH_minigrid.md"))
+        conf = set(C.confirmatory("minigrid", truth))
+        self.assertEqual(len(conf), 161)
+        sizes = {("R", "raw"): 5, ("R", "macro"): 48, ("I1", "raw"): 62, ("I1", "macro"): 77}
+        for (agent, cond), n in sizes.items():
+            lst = C.v2_exclusions("minigrid", cond, agent)
+            self.assertEqual(len(lst), n, (agent, cond))
+            self.assertEqual(len(set(lst)), n, (agent, cond))
+            self.assertEqual(set(lst) - conf, set(), (agent, cond))
+            self.assertTrue(set(C.v2_exclusions("minigrid", cond, "R")) <= set(lst))
+            self.assertEqual(C.v2_exclusions("minigrid", cond, "N"), C.v2_exclusions("minigrid", cond, "R"))
+        for agent in ("R", "I1"):
+            self.assertTrue(set(C.v2_exclusions("minigrid", "raw", agent)) <= set(C.v2_exclusions("minigrid", "macro", agent)))
+            for cond in ("center_off", "center_on"):
+                self.assertEqual(C.v2_exclusions("procgen", cond, agent), ())
 
     def test_bootstrap(self):
         s = [5, 5, 4, 4, 3, 2, 1, 1]

@@ -94,9 +94,11 @@ C3. If a run ends with an error, rerun the same command. Rows written without er
 
 **Output:** runs/suites/<suite>/<condition>/<mode>/<game>__<seed>.json, one per run. The console ends with `summary: N rows written this call, N errors, N cut by the cap`.
 
-## Block D — the confirmatory cap from the pilot rows
+## Block C4 — the confirmatory cap from the pilot rows (done 27 Sep 2026)
 
-D1. After blocks C1 and C2 finish, compute the cap per suite (v1.1 draft D5). It reads runs/suites/ and plays nothing.
+*This block was "Block D" until 27 Sep 2026 (f). It was renamed so that D and E can hold the confirmatory runs and the analysis.*
+
+C4. After blocks C1 and C2 finish, compute the cap per suite (v1.1 draft D5). It reads runs/suites/ and plays nothing.
 
 ```powershell
 cd D:\Research\arc3\repo
@@ -104,3 +106,162 @@ cd D:\Research\arc3\repo
 ```
 
 Expected: one line per suite, `<suite>: N pilot rows, N with an error; longest <game> <condition> <mode> seed <s> <t> s -> cap <c> s`.
+
+**Result (RKM, 27 Sep 2026), recorded in PREREG v1.1 draft D5:**
+- minigrid: longest 1081.6 s (MiniGrid-FourRooms-v0, raw, I1, seed 1003), cap 3300 s;
+- procgen: longest 2481.5 s (bigfish, center_off, I1, seed 1003), cap 7500 s.
+
+## Block D — the confirmatory runs (only after the tag prereg-v1.1 exists)
+
+**Do not start block D before RKM has created the tag `prereg-v1.1`.** This is a registered rule, not a precaution: no run on a confirmatory suite-B or suite-C game before v1.1 is tagged (PREREG.md Section 8).
+
+**What must be true first, and how a failure shows:**
+- **The tag exists and the worktree is on it.** D1 prints `prereg-v1.1`. Any other output (an error, or a different name): stop.
+- **The six frozen files match PREREG Section 5.4.** Every run_suite.py call prints `frozen blob hashes: 6 of 6 match PREREG.md Section 5.4` first. Otherwise it stops by itself.
+- **The two D13 code items are in the tagged analysis** (the center_on subset in analyze_v1/v2, and the nine-game determinism check). Block D does not depend on them, but block E does.
+- **BABYAI_DONE_ACTIONS is unset.** The suite-B adapter raises if it is set.
+
+**Why a worktree.** The runs are made from a worktree checked out at the tag, as E6 was. The code that plays is then exactly the tagged code. The rows are written into the main repository's runs\suites with `--out`, and the console logs into the main repository's runs\logs.
+
+**Why Tee-Object.** Every console line is kept in the log file. BabyAI prints one `Sampling rejected: ...` line per rejected layout (minigrid/envs/babyai/core/roomgrid_level.py:137). These lines stay in the log, but a filter keeps them off the window.
+
+D1. Create the worktree at the tag and the log folder (once):
+
+```powershell
+cd D:\Research\arc3\repo
+git worktree add D:\Research\arc3\repo_prereg_v1_1 prereg-v1.1
+git -C D:\Research\arc3\repo_prereg_v1_1 describe --tags --exact-match
+New-Item -ItemType Directory -Force D:\Research\arc3\repo\runs\logs | Out-Null
+```
+
+Expected last line of output: `prereg-v1.1`.
+
+D2. Construction check on every confirmatory environment, under the tag. It makes one reset per environment, takes no step, and plays nothing:
+
+```powershell
+cd D:\Research\arc3\repo_prereg_v1_1
+Remove-Item Env:BABYAI_DONE_ACTIONS -ErrorAction SilentlyContinue
+& D:\Research\arc3\brutus\.venv_games\Scripts\python.exe scripts\run_suite.py --suite minigrid --condition raw,macro --games confirmatory --dry-run 2>&1 | Tee-Object -FilePath D:\Research\arc3\repo\runs\logs\dryrun_confirmatory_minigrid.log | Where-Object { "$_" -notmatch 'Sampling rejected' }
+& D:\Research\arc3\brutus\.venv_procgen\Scripts\python.exe scripts\run_suite.py --suite procgen --condition center_off,center_on --games confirmatory --dry-run 2>&1 | Tee-Object -FilePath D:\Research\arc3\repo\runs\logs\dryrun_confirmatory_procgen.log
+Select-String -Path D:\Research\arc3\repo\runs\logs\dryrun_confirmatory_*.log -Pattern 'ERROR' | Measure-Object | Select-Object Count
+```
+
+Expected:
+- each run_suite call prints `frozen blob hashes: 6 of 6 match PREREG.md Section 5.4` first;
+- suite B then prints 161 × 2 = 322 environment blocks, and suite C 14 × 2 = 28;
+- the last command prints `Count : 0`.
+
+D3. Suite B, confirmatory: 161 games × 2 conditions × 3 modes × 10 seeds = **9,660 runs** of 20,000 actions, cap 3300 s (PREREG v1.1 D5):
+
+```powershell
+cd D:\Research\arc3\repo_prereg_v1_1
+Remove-Item Env:BABYAI_DONE_ACTIONS -ErrorAction SilentlyContinue
+& D:\Research\arc3\brutus\.venv_games\Scripts\python.exe scripts\run_suite.py --suite minigrid --condition raw,macro --games confirmatory --modes hash_state,nav,i1 --seeds 10 --budget 20000 --workers 8 --seconds 3300 --resume --out D:\Research\arc3\repo\runs\suites 2>&1 | Tee-Object -FilePath D:\Research\arc3\repo\runs\logs\confirmatory_minigrid.log -Append | Where-Object { "$_" -notmatch 'Sampling rejected' }
+```
+
+D4. Suite C, confirmatory: 14 games × 2 conditions × 3 modes × 10 seeds = **840 runs** of 20,000 actions, cap 7500 s (PREREG v1.1 D5). On the nine in-range games the center_on rows are required to equal the center_off rows (D13):
+
+```powershell
+cd D:\Research\arc3\repo_prereg_v1_1
+& D:\Research\arc3\brutus\.venv_procgen\Scripts\python.exe scripts\run_suite.py --suite procgen --condition center_off,center_on --games confirmatory --modes hash_state,nav,i1 --seeds 10 --budget 20000 --workers 8 --seconds 7500 --resume --out D:\Research\arc3\repo\runs\suites 2>&1 | Tee-Object -FilePath D:\Research\arc3\repo\runs\logs\confirmatory_procgen.log -Append
+```
+
+D5. If the last line of D3 or D4 reports errors, run the same command again. Rows written without error are skipped. Errored rows run again. Rows cut by the cap are kept, not re-run (PREREG v1.1 D5).
+
+D6. Verify the row counts. This reads runs\suites and plays nothing. It counts only the confirmatory games; the pilot rows sit in the same folders and are not counted:
+
+```powershell
+cd D:\Research\arc3\repo_prereg_v1_1
+$check = @'
+import json, os, sys
+sys.path.insert(0, "scripts")
+import analyze_common as C
+OUT = r"D:\Research\arc3\repo\runs\suites"
+truth = {"minigrid": C.parse_truth_minigrid("docs/GROUND_TRUTH_minigrid.md"),
+         "procgen": C.parse_truth_procgen("docs/GROUND_TRUTH_procgen.md")}
+conds = {"minigrid": ("raw", "macro"), "procgen": ("center_off", "center_on")}
+for suite in ("minigrid", "procgen"):
+    games = C.confirmatory(suite, truth[suite])
+    tot = missing = err = cut = 0
+    for cond in conds[suite]:
+        for mode in ("hash_state", "nav", "i1"):
+            n = 0
+            for g in games:
+                for s in range(1000, 1010):
+                    p = os.path.join(OUT, suite, cond, mode, f"{g}__{s}.json")
+                    if not os.path.exists(p):
+                        missing += 1
+                        continue
+                    r = json.load(open(p, encoding="utf-8"))[0]
+                    n += 1
+                    err += "error" in r
+                    cut += bool(r.get("cut_by_cap"))
+            print(f"{suite} {cond} {mode}: {n} of {len(games) * 10} rows")
+            tot += n
+    print(f"{suite}: {tot} of {len(games) * len(conds[suite]) * 3 * 10} confirmatory rows; missing {missing}; with an error {err}; cut by the cap {cut}")
+'@
+$check | & D:\Research\arc3\brutus\.venv\Scripts\python.exe -
+```
+
+Expected:
+- six lines `minigrid <condition> <mode>: 1610 of 1610 rows`, then `minigrid: 9660 of 9660 confirmatory rows; missing 0; with an error 0; cut by the cap <n>`;
+- six lines `procgen <condition> <mode>: 140 of 140 rows`, then `procgen: 840 of 840 confirmatory rows; missing 0; with an error 0; cut by the cap <n>`.
+- Any missing or errored row: go back to D5. A non-zero cut count is not an error. Those rows are reported as cut (PREREG v1.1 D5), and the count goes into STATE.md.
+
+D7. **Not yet available:** the nine-game center_on = center_off determinism check (PREREG v1.1 draft D13). Its script must be written, tested and hashed before the v1.1 tag. Its command is added here when it exists.
+
+## Block E — the analysis (after block D is verified)
+
+**What must be true first:**
+- D6 shows every confirmatory row present, with 0 errors.
+- The analysis scripts in the worktree carry the D11 blob hashes of the v1.1 tag.
+- The synthetic tests pass under the tag (E1).
+
+E runs from the tag worktree, so the tagged analysis code is what runs. The tables are written into the main repository's docs\tables.
+
+E1. The synthetic tests, under the tag:
+
+```powershell
+cd D:\Research\arc3\repo_prereg_v1_1
+& D:\Research\arc3\brutus\.venv\Scripts\python.exe -W error scripts\test_analyze_v1.py
+& D:\Research\arc3\brutus\.venv\Scripts\python.exe -W error scripts\test_analyze_v2.py
+& D:\Research\arc3\brutus\.venv\Scripts\python.exe -W error scripts\test_analyze_g.py
+```
+
+Expected: `Ran 4 tests ... OK`, `Ran 8 tests ... OK` and `Ran 2 tests ... OK` (as of 27 Sep 2026 (f); if the D13 code adds tests before the tag, the counts in D11 govern).
+
+E2. V1, instrument validity, suites B and C. It writes docs\tables\v1.md and docs\tables\v1.json:
+
+```powershell
+cd D:\Research\arc3\repo_prereg_v1_1
+& D:\Research\arc3\brutus\.venv\Scripts\python.exe scripts\analyze_v1.py --runs "D:\Research\arc3\repo\runs\suites\minigrid\*\*\*.json" "D:\Research\arc3\repo\runs\suites\procgen\*\*\*.json" --out D:\Research\arc3\repo\docs\tables 2>&1 | Tee-Object -FilePath D:\Research\arc3\repo\runs\logs\analyze_v1.log
+```
+
+Expected shape: one line per (suite, condition, subset, assumption), then `wrote ...\docs\tables\v1.md, ...\docs\tables\v1.json`. ARC V1 is not computed: docs/GROUND_TRUTH_arc_train.md does not exist.
+
+E3. V2, predictive validity: suites B and C, with ARC E6 as the reported line. It writes docs\tables\v2.md and docs\tables\v2.json:
+
+```powershell
+cd D:\Research\arc3\repo_prereg_v1_1
+& D:\Research\arc3\brutus\.venv\Scripts\python.exe scripts\analyze_v2.py --runs "D:\Research\arc3\repo\runs\suites\minigrid\*\*\*.json" "D:\Research\arc3\repo\runs\suites\procgen\*\*\*.json" "D:\Research\arc3\repo\runs\navrun_prereg_e6_arc_25x10.json" --workers 8 --out D:\Research\arc3\repo\docs\tables 2>&1 | Tee-Object -FilePath D:\Research\arc3\repo\runs\logs\analyze_v2.log
+```
+
+Expected shape:
+- one line per (suite, condition, subset, agent). The subsets are:
+  - suite B: "primary" (verdict), "primary, D9b included" (I1 only; reported) and "all games" (reported);
+  - suite C: "all" and "in_range".
+- one suite line per subset;
+- then `wrote ...\docs\tables\v2.md, ...\docs\tables\v2.json`.
+
+E4. G, goal-identification cost. **Not runnable yet.**
+- analyze_g.py reads the rows of scripts/g_goal_cost.py (agent "G"), and that script does not exist.
+- Once it exists and its rows are made, the command has this form, with the G rows' location filled in when g_goal_cost.py fixes it:
+
+```powershell
+cd D:\Research\arc3\repo_prereg_v1_1
+& D:\Research\arc3\brutus\.venv\Scripts\python.exe scripts\analyze_g.py --runs "<G rows, location fixed by g_goal_cost.py>" --out D:\Research\arc3\repo\docs\tables 2>&1 | Tee-Object -FilePath D:\Research\arc3\repo\runs\logs\analyze_g.log
+```
+
+Expected shape: one line per (suite, condition, game), one summary line per suite, then `wrote ...\docs\tables\g.md, ...\docs\tables\g.json`.
+
+E5. Paste the console output of D6 and E1–E3. The tables are committed by RKM with the run files.

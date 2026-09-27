@@ -26,9 +26,14 @@ PILOTS_C = ("coinrun", "bigfish")
 IN_RANGE_C = ("bossfight", "chaser", "dodgeball", "heist", "leaper", "maze", "miner", "plunder", "starpilot")
 ARC_TRAIN = ("tu93", "ls20", "vc33", "m0r0", "ft09", "lp85", "lf52", "dc22")
 
-# V2 exclusions (docs/PREREG.md v1.1 draft, D9; RKM 27 Sep 2026): confirmatory environments whose
-# success predicate requires, on every seed, an action absent from the condition's key map (D1).
-# V2's primary line excludes them; an "all games" line reports them included, not tested.
+# V2 exclusions (docs/PREREG.md v1.1 draft, D9 and D9b; RKM 27 Sep 2026): confirmatory environments
+# where success cannot be reached, on any seed, without an action absent from the agent's key map
+# (D1; I1: ids 1-5 only, D7).  "Requires" is read as reachability (RKM, 27 Sep 2026 (f)): the action
+# is either the success-triggering action or a precondition of every successful episode (a locked or
+# closed door on every path to the target, or a carried key that must be put down before the target
+# can be picked up; minigrid_env.py:562-563 picks up only with empty hands).  V2's primary line
+# excludes them; the other lines report them included, not tested.
+# -- the action is the success predicate itself or a precondition of it (docs/PREREG.md D9, D9b)
 _DONE_ABSENT = ("MiniGrid-GoToDoor-5x5-v0", "MiniGrid-GoToDoor-6x6-v0", "MiniGrid-GoToDoor-8x8-v0",
                 "MiniGrid-GoToObject-6x6-N2-v0", "MiniGrid-GoToObject-8x8-N2-v0")
 _DROP_ABSENT = ("MiniGrid-PutNear-6x6-N2-v0", "MiniGrid-PutNear-8x8-N3-v0", "BabyAI-PutNextLocal-v0",
@@ -36,11 +41,46 @@ _DROP_ABSENT = ("MiniGrid-PutNear-6x6-N2-v0", "MiniGrid-PutNear-8x8-N3-v0", "Bab
                 "BabyAI-PutNextS5N1-v0", "BabyAI-PutNextS5N2-v0", "BabyAI-PutNextS5N2Carrying-v0",
                 "BabyAI-PutNextS6N3-v0", "BabyAI-PutNextS6N3Carrying-v0", "BabyAI-PutNextS7N4-v0",
                 "BabyAI-PutNextS7N4Carrying-v0", "BabyAI-MoveTwoAcrossS5N2-v0", "BabyAI-MoveTwoAcrossS8N9-v0")
+# drop as a precondition: the key used on the door is still carried when the target must be picked up
+_DROP_PRECOND = ("MiniGrid-KeyCorridorS3R1-v0", "MiniGrid-KeyCorridorS3R2-v0", "MiniGrid-KeyCorridorS3R3-v0",
+                 "MiniGrid-KeyCorridorS4R3-v0", "MiniGrid-KeyCorridorS5R3-v0", "MiniGrid-KeyCorridorS6R3-v0",
+                 "MiniGrid-UnlockPickup-v0", "MiniGrid-BlockedUnlockPickup-v0",
+                 "MiniGrid-ObstructedMaze-1Dl-v0", "MiniGrid-ObstructedMaze-1Dlh-v0", "MiniGrid-ObstructedMaze-1Dlhb-v0",
+                 "MiniGrid-ObstructedMaze-1Q-v1", "MiniGrid-ObstructedMaze-2Dl-v0", "MiniGrid-ObstructedMaze-2Dlh-v0",
+                 "MiniGrid-ObstructedMaze-2Dlhb-v1", "MiniGrid-ObstructedMaze-2Q-v1", "MiniGrid-ObstructedMaze-Full-v1",
+                 "BabyAI-KeyCorridor-v0", "BabyAI-KeyCorridorS3R1-v0", "BabyAI-KeyCorridorS3R2-v0",
+                 "BabyAI-KeyCorridorS3R3-v0", "BabyAI-KeyCorridorS4R3-v0", "BabyAI-KeyCorridorS5R3-v0",
+                 "BabyAI-KeyCorridorS6R3-v0", "BabyAI-UnlockPickup-v0", "BabyAI-UnlockPickupDist-v0",
+                 "BabyAI-BlockedUnlockPickup-v0", "BabyAI-UnlockToUnlock-v0")
+# toggle required (D9b): toggle is the success action, or a locked/closed door stands on every path
+_TOGGLE_PRED = ("MiniGrid-Unlock-v0", "MiniGrid-RedBlueDoors-6x6-v0", "MiniGrid-RedBlueDoors-8x8-v0",
+                "BabyAI-Open-v0", "BabyAI-OpenDoor-v0", "BabyAI-OpenDoorColor-v0", "BabyAI-OpenDoorDebug-v0",
+                "BabyAI-OpenDoorLoc-v0", "BabyAI-OpenDoorsOrderN2-v0", "BabyAI-OpenDoorsOrderN2Debug-v0",
+                "BabyAI-OpenDoorsOrderN4-v0", "BabyAI-OpenDoorsOrderN4Debug-v0", "BabyAI-OpenRedBlueDoors-v0",
+                "BabyAI-OpenRedBlueDoorsDebug-v0", "BabyAI-OpenRedDoor-v0", "BabyAI-OpenTwoDoors-v0",
+                "BabyAI-Unlock-v0", "BabyAI-UnlockLocal-v0", "BabyAI-UnlockLocalDist-v0", "BabyAI-KeyInBox-v0")
+_TOGGLE_PRECOND = ("MiniGrid-DoorKey-5x5-v0", "MiniGrid-DoorKey-6x6-v0", "MiniGrid-DoorKey-16x16-v0",
+                   "MiniGrid-LockedRoom-v0", "MiniGrid-MultiRoom-N2-S4-v0", "MiniGrid-MultiRoom-N4-S5-v1",
+                   "MiniGrid-MultiRoom-N6-v0", "BabyAI-GoToImpUnlock-v0", "BabyAI-PickupAbove-v0") + _DROP_PRECOND
 V2_EXCLUDE = {
-    ("minigrid", "raw"): _DONE_ABSENT,                    # 5: done absent
-    ("minigrid", "macro"): _DONE_ABSENT + _DROP_ABSENT,   # 20: drop and done absent
+    ("minigrid", "raw"): _DONE_ABSENT,                                    # 5: done absent
+    ("minigrid", "macro"): _DONE_ABSENT + _DROP_ABSENT + _DROP_PRECOND,   # 48: drop and done absent
     # procgen: none
 }
+# I1 presses ids 1-5 only (D7, D9b): toggle absent in both suite-B conditions, special 2 absent on
+# suite C.  No suite-C level end requires special 2 (D9b), so procgen has no I1 list.
+V2_EXCLUDE_I1 = {
+    ("minigrid", "raw"): V2_EXCLUDE[("minigrid", "raw")] + _TOGGLE_PRED + _TOGGLE_PRECOND,       # 62
+    ("minigrid", "macro"): V2_EXCLUDE[("minigrid", "macro")] + _TOGGLE_PRED + tuple(
+        g for g in _TOGGLE_PRECOND if g not in _DROP_PRECOND),                                     # 77
+}
+
+
+def v2_exclusions(suite, condition, agent):
+    """The registered V2 exclusion list for one agent (D9 for R and N, D9 + D9b for I1)."""
+    if agent == "I1" and (suite, condition) in V2_EXCLUDE_I1:
+        return V2_EXCLUDE_I1[(suite, condition)]
+    return V2_EXCLUDE.get((suite, condition), ())
 
 
 # ---------------------------------------------------------------- input

@@ -262,3 +262,74 @@ Fifth amendment of 27 September 2026. The lines above are unchanged.
   - `--resume` re-runs them without a removal script. The command must name the full E6 selection. Commands are in docs/E6_RERUN.md.
   - The E6 census (runs/census_e6.json, docs/census_e6.md) is made only after the re-run.
 - **ar25 at 10 seeds** (update to the "UNEXPLAINED" ar25 note in CLAUDE.md): hash_state completes level 1 on 6 of 10 seeds; nav completes it on 10 of 10. The earlier "hash_state 0 of 4" was seeds 1000-1003 only. The difference between the two arms is smaller at 10 seeds than at 4, and it is still not explained. Nothing is built on it.
+
+## Amendment 27 Sep 2026 (f)
+
+Sixth amendment of 27 September 2026. The lines above are unchanged; where this section corrects one of them, this section governs. The Claude Code session was restarted on 27 Sep 2026; this amendment was written in the first working session after the restart.
+
+**E6, completed.**
+- **Re-run of the eight cut nav rows** under the tag with the 3600 s cap (PREREG v1.1 draft D12): commit b3509de. scripts/e6_check.py then reported:
+  - (a) 250 of 250 hash_state rows identical to E2 except `seconds`;
+  - (b) 68 of 68 nav rows (seeds 1000–1003, 17 held-out games) identical to census v2 except `seconds`;
+  - (c) 0 rows under 20,000 actions.
+- **The E6 census** (commit e75551a):
+  - files: runs/census_e6.json, docs/census_e6.md;
+  - CLAUDE.md category agreement: 16 of 16 assigned games, with sc25 unassigned (the rule gives 1-D walker);
+  - docs/census_e6_NOTE.md names the labels the frozen script printed from its census-v2 defaults, and adds sc25 to the category table (17 of 17 with it).
+- **Still provisional: the nav numbers of amendment (e).** Its table (nav M1 train 0.2035, held-out 0.2612; levels per seed 10.8 and 11.1) was computed with the eight cut rows included. No document yet gives the nav values after the re-run. **Not yet run:** the recomputation from runs/navrun_prereg_e6_arc_25x10.json as committed in b3509de. The hash_state values are unaffected: every cut row was a nav row.
+
+**W2 infrastructure, done (RKM).**
+- **Fidelity check** (commit 51eba49): suite B 334 of 334 identical, suite C 32 of 32 (runs/fidelity/).
+- **Dry run** (W2_COMMANDS block B), both suites: `frozen blob hashes: 6 of 6 match`.
+- **C0 installs:** requests 2.34.2 and pydantic 2.13.5 in both suite venvs. numpy unchanged: 2.4.6 in .venv_games, 1.26.4 in .venv_procgen.
+
+**The pilot** (commit db1e6ac; W2_COMMANDS block C).
+- 360 suite-B rows and 120 suite-C rows. Every row is at 20,000 actions, none was cut, and all ran uncapped (--seconds 86400).
+- **Caps, from scripts/pilot_cap.py:**
+  - minigrid: longest 1081.6 s (MiniGrid-FourRooms-v0, raw, I1, seed 1003) → cap 3300 s;
+  - procgen: longest 2481.5 s (bigfish, center_off, I1, seed 1003) → cap 7500 s.
+  - Both are recorded in PREREG v1.1 draft D5.
+- **Checks** (commits 387314c and cda7aa0). scripts/pilot_check.py (runs/pilot_checks/pilot_check.json) and scripts/procgen_camera_check.py (runs/pilot_checks/procgen_camera_check.json) are infrastructure checks in the class of fidelity_check.py (PREREG v1.1 D8, extended). From pilot_check.json:
+  - no row has an error field;
+  - 0 rows under 20,000 actions;
+  - **structural zeros** (0 levels on every row of a (game, mode), both conditions): MiniGrid-DoorKey-8x8-v0 I1 (20 rows), bigfish R (20 rows) and bigfish N (20 rows). The bigfish zeros are pilot facts, recorded here and not explained. bigfish is a pilot and enters no confirmatory analysis;
+  - cap projection: 0 confirmatory (game, condition, mode) over its cap. The largest projections are 1517.8 s on suite B (MiniGrid-MultiRoom-N2-S4-v0, macro, I1) and 2550.0 s on suite C (ninja, center_off, I1). This is an infrastructure check, not a guarantee (D5).
+- **No confirmatory row exists.** The D6 count code of docs/W2_COMMANDS.md was run once on 27 Sep 2026 against runs/suites while it was written. It read 0 of 9,660 suite-B and 0 of 840 suite-C confirmatory rows.
+
+**Three findings from the pilot, and RKM's decisions** (all written into the PREREG v1.1 draft; nothing is registered until the tag prereg-v1.1):
+1. **Camera identity (D13).**
+   - Finding: ten Procgen games set center_agent inside game_reset. At procgen 0.10.7, bigfish, bossfight, chaser, leaper, plunder and starpilot set it to false; dodgeball, heist, maze and miner set it to `distribution_mode == MemoryMode`, which is false under easy. center_on therefore draws the same frame as center_off on them. procgen_camera_check.py agrees: 401 of 401 identical frames on those ten, and a difference at step 0 on caveflyer, climber, coinrun, fruitbot, jumper and ninja. The 30 bigfish pilot pairs are identical in every non-timing field.
+   - Decision: center_on is a distinct condition only on caveflyer, climber, fruitbot, jumper and ninja among the confirmatory games. V1's and V2's secondary line is reported on those five. On the other nine, the center_on rows are still run and must equal the center_off rows in every non-timing field, as a determinism check. The nine are exactly the Section 4 operating range.
+2. **The I1 key set (D9b).**
+   - Finding: I1 presses ids 1–5 only, so it has no toggle on suite B and no special 2 on suite C. It completed 0 levels on MiniGrid-DoorKey-8x8-v0 in all 20 rows, while R and N completed it in both conditions.
+   - Decision: I1's map stays ids 1–5, with no remapping. D9's rule is applied to I1's own map for I1's evidence line, and a secondary line reports I1 with those environments included.
+   - **Decision taken in this session (RKM, answering the assistant's question): "requires" is read as reachability, for every agent.** An action is required when success cannot be reached on any seed without it: either it triggers success, or it is a precondition, such as a locked or closed door on every path, or a carried key that must be put down before the target can be picked up. Under the predicate-only reading D9 had used, DoorKey would not have been excluded for I1.
+   - Consequences:
+     - D9's macro list for R and N grows from 20 to 48 (28 drop-precondition ids: KeyCorridor, UnlockPickup, BlockedUnlockPickup, UnlockToUnlock, ObstructedMaze);
+     - raw stays 5;
+     - I1's lists are 62 (raw) and 77 (macro), each with a source reason per id;
+     - suite C has no D9b exclusion (no level end needs special 2).
+   - The code change is in analyze_common.py and analyze_v2.py with two new synthetic tests. 14 of 14 synthetic tests pass with warnings as errors, and no run file was read. New blobs: analyze_v2.py fd68354e2c5a20c9ddcad9713178a575c4355f1c, analyze_common.py ddb807171046c0c10b5f7fd2839f4cbccff04600 (D11).
+3. **Environments with fewer actions than the key map (D1).**
+   - Finding: the suite-B adapter builds its action list from the action space, and the shim drops map entries the environment lacks. MiniGrid-Dynamic-Obstacles-6x6-v0 therefore has three entries under raw (ids 1–3: left, right, forward) and four under macro (ids 1–4, id 4 = east).
+   - Correction to the question as posed: there is no id 4 under raw. `adapter.key_map.4` appears in pilot_check's list of keys that differ between conditions because it exists under macro only.
+   - Decision: recorded, behaviour unchanged.
+- **No adapter change after the pilot** (D14).
+
+**Open before the tag prereg-v1.1** (named here so that the tag is not created early):
+- **D13 in code.**
+  - analyze_v1.py and analyze_v2.py still report center_on on all 14 confirmatory games.
+  - No script yet runs the nine-game determinism check on confirmatory rows.
+  - Both are registered in D13 but not implemented.
+- **scripts/g_goal_cost.py does not exist.** PREREG Section 6 has it add a per-step log to N's run. RKM must decide whether G's rows come from the confirmatory N runs, which would need the script before block D, or from a separate logged re-run, whose action sequence is checked against N's.
+- **Wording in D12.** "The registered ARC cap is now 3600 s" sits inside the unregistered v1.1 draft. It becomes registered only at the v1.1 tag. The re-run used that cap under the v1 tag.
+- **The OSF v1.1 registration:** text in docs/OSF_REGISTRATION_v1_1.md, pasted by RKM after the tag.
+
+**Files written in this session.**
+- docs/PREREG.md v1.1 draft: D1 addition, D5 values, D8 extension, D9 amendment, D9b, D11, D12 outcome, D13, D14.
+- docs/census_e6_NOTE.md.
+- docs/W2_COMMANDS.md: blocks D (confirmatory runs, after the tag) and E (analysis); the old block D, the cap, is now C4.
+- docs/OSF_REGISTRATION_v1_1.md.
+- scripts/analyze_common.py, scripts/analyze_v2.py, scripts/test_analyze_v2.py.
+
+**Source reading.** The procgen 0.10.7 sources were fetched raw from GitHub to verify D13 and D9b, into the session scratchpad and not into the repository. The minigrid 3.1.0 sources were read in the installed package. The assistant read runs/pilot_checks/*.json and a few pilot rows in runs/suites (the key maps). It also listed the file names at the top of runs/ once, and opened no other file there.

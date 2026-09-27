@@ -19,11 +19,13 @@ if R and I1 are both non-void, both must have AUROC <= 0.65; if only R is non-vo
 void), R alone decides; with no non-void evidence agent the suite is not decidable.  Support
 still requires I1 to pass (PREREG.md Section 10).  ARC held-out rows are reported, not
 tested (the script labels suite "arc" as "reported").
-D9 exclusions (PREREG v1.1 draft; analyze_common.V2_EXCLUDE): for a (suite, condition) with an
-exclusion list, every agent (N included) gets two lines: "primary", with the listed environments
-excluded, to which every verdict rule applies (VOID, PASS, FAIL, suite-level FAIL), and "all games",
-with them included, reported and not tested.  Suites without a list keep the "all" line (and, for
-suite C, the "in_range" line).
+D9 and D9b exclusions (PREREG v1.1 draft; analyze_common.V2_EXCLUDE, V2_EXCLUDE_I1,
+v2_exclusions): for a (suite, condition) with an exclusion list, every agent (N included) gets a
+"primary" line, with its own registered list excluded (D9 for R and N; D9 plus D9b for I1), to which
+every verdict rule applies (VOID, PASS, FAIL, suite-level FAIL; the suite line combines R's and I1's
+primary lines), and an "all games" line, with nothing excluded, reported and not tested.  I1 also gets
+"primary, D9b included": only the D9 list excluded, i.e. R's primary game set; reported, not tested.
+Suites without a list keep the "all" line (and, for suite C, the "in_range" line).
 
 Reads no game.  Writes docs/tables/v2.md and docs/tables/v2.json (or --out).
 
@@ -109,19 +111,31 @@ def v2_rows(rows, truth_by_suite, n_resamples=2000, seed=20260927, workers=8):
             if truth is None:
                 continue
             games = C.confirmatory(suite, truth)
-        excl = C.V2_EXCLUDE.get((suite, cond))
-        if excl:
-            # D9: every verdict rule applies to the primary line; "all games" is reported, not tested
-            subsets = [("primary", [g for g in games if g not in excl]), ("all games", games)]
+        excl = C.V2_EXCLUDE.get((suite, cond), ())
+        excl_i1 = C.V2_EXCLUDE_I1.get((suite, cond), excl)
+        if excl or excl_i1:
+            # D9/D9b: every verdict rule applies to the primary line (each agent excludes its own
+            # registered list); the other lines are reported, not tested
+            subsets = [("primary", None), ("primary, D9b included", None), ("all games", games)]
         else:
             subsets = [("all", games)]
         if suite == "procgen":
             subsets.append(("in_range", [g for g in games if g in C.IN_RANGE_C]))
+
+        def games_for(name, agent, gs):
+            if name == "primary":
+                return [g for g in games if g not in C.v2_exclusions(suite, cond, agent)]
+            if name == "primary, D9b included":
+                return [g for g in games if g not in excl]
+            return gs
+
         for name, gs in subsets:
-            tested = name != "all games"
+            tested = name in ("primary", "all", "in_range")
             per_agent = {}
             for agent in sorted(k[2] for k in keys if k[0] == suite and k[1] == cond):
-                gt = game_table(rows, suite, cond, agent, gs, census)
+                if name == "primary, D9b included" and (agent != "I1" or set(excl_i1) == set(excl)):
+                    continue                    # the D9b line exists only where I1's list is longer
+                gt = game_table(rows, suite, cond, agent, games_for(name, agent, gs), census)
                 st = v2_stats(gt, n_resamples, seed, workers)
                 if not tested:
                     st["verdict"] = "reported, not tested"
@@ -129,6 +143,8 @@ def v2_rows(rows, truth_by_suite, n_resamples=2000, seed=20260927, workers=8):
                 per_agent[agent] = st
                 table.append([suite, cond, name, agent, role, st["n"], st["pos"], st["auroc"], st["ci_low"],
                               st["ci_high"], st["ba"], st["auroc_B"], st["verdict"]])
+            if not per_agent:
+                continue
             r, i1 = per_agent.get("R"), per_agent.get("I1")
             if suite == "arc" or not tested:
                 sv = "reported, not tested"

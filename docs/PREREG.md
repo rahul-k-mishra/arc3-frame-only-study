@@ -602,6 +602,16 @@ Drafted 27 September 2026 after the tag prereg-v1 (commit 19f2a9f), from RKM's d
 - The pilot (Section 8) runs under this draft. It may still change adapter code and the tile-size scaling rule, never a census constant, threshold, truth-table entry or frozen blob hash.
 - Every change made before the tag is added to this diff section.
 
+**Revision of 27 September 2026, after the pilot (STATE.md amendment (f)).** This revision:
+- adds to D1 how an environment with fewer actions than the key map is handled;
+- fills in D5's caps from the pilot;
+- extends D8 to the two pilot checks;
+- amends D9 to the reachability reading of "requires" (RKM), which lengthens the macro list from 20 to 48;
+- adds D9b (I1's key set), D13 (camera identity per Procgen game) and D14 (no adapter change after the pilot);
+- updates D11 to the new analysis blob hashes.
+
+Nothing else in D1–D12 changed.
+
 ## Diff section (v1 → v1.1)
 
 **D1. The six-action limit of the frozen code** (new; Section 3). The frozen explorer presses only ARC action ids 1, 2, 3, 4, 5 and 7 as keys (g_agent.py:326; g_nav.py:379; g_control_probe.py:47). Id 6 is a click, and the runner never offers it. Every suite is therefore presented through a key map of at most six actions, applied by the ARC shim (scripts/env_frame.py `KEY_MAPS`):
@@ -614,6 +624,18 @@ Drafted 27 September 2026 after the tag prereg-v1 (commit 19f2a9f), from RKM's d
 
 - On Dynamic-Obstacles only left, right and forward (raw) or the four macros exist.
 - Section 3.3's "action list: all 15 actions" becomes these six for every agent. The adapter keeps all 15 internally, and the fidelity check exercises all 15.
+- **An environment with fewer actions than the map (recorded after the pilot, 27 Sep 2026; behaviour unchanged).**
+  - The suite-B adapter builds its action list from the environment's action space (scripts/adapter_minigrid.py:67-71):
+    - raw: the first n primitive actions (`RAW[:n]`);
+    - macro: the four macros, plus pickup, drop, toggle and done only when n > 3.
+  - The shim then keeps only the map entries whose label is in that list (scripts/env_frame.py:57-65, `resolve_key_map`).
+  - MiniGrid-Dynamic-Obstacles has n = 3 (left, right, forward; envs/dynamicobstacles.py:104). Its maps are therefore:
+    - raw: {1: left, 2: right, 3: forward}, three entries. **Ids 4, 5 and 7 do not exist there. There is no id 4 under raw.**
+    - macro: {1: north, 2: south, 3: west, 4: east}, four entries. Id 4 is east.
+  - The pilot rows confirm both (adapter.key_map in runs/suites/minigrid/raw/*/MiniGrid-Dynamic-Obstacles-6x6-v0__*.json and runs/suites/minigrid/macro/*/…).
+  - pilot_check.json lists `adapter.key_map.4` among the keys that differ between conditions in every pair on this game (`differ_in_every_pair`). It differs because it exists under macro and not under raw.
+  - Every other suite-B environment offers all seven primitives. R and N see ids 1, 2, 3, 4, 5 and 7; I1 sees ids 1–5 (D7).
+  - The explorer is offered only the ids in the map (env_frame.py:182, `available = sorted(key_map)`).
 
 **D2. Canvas placement** (new; Section 3.2). A suite-B grid is placed at rows 1..h, columns 0..w−1 of a 64 × 64 canvas; every other cell holds palette index 0, reserved as padding (adapter palettes start at 1). Reason: the frozen code reads rows 1–62 only and anchors the frame at the top-left (g_control_probe.py:50-56; g_motion.py:30-31).
 
@@ -626,7 +648,29 @@ Drafted 27 September 2026 after the tag prereg-v1 (commit 19f2a9f), from RKM's d
 
 **D5. Wall-clock cap** (new; Section 9.1).
 - **Pilot runs are uncapped in practice**: they run with --seconds 86400 (one day per run).
-- **The confirmatory cap per suite** is three times the longest pilot run's wall time in that suite, over all modes and conditions, rounded up to a whole minute. It is computed from the pilot rows' `seconds` field (run_suite.py's wall time per run) by scripts/pilot_cap.py, not by hand, and recorded here at the v1.1 tag. **Value pending: filled in from the pilot.**
+- **The confirmatory cap per suite** is three times the longest pilot run's wall time in that suite, over all modes and conditions, rounded up to a whole minute. It is computed from the pilot rows' `seconds` field (run_suite.py's wall time per run) by scripts/pilot_cap.py, not by hand, and recorded here at the v1.1 tag.
+- **Values (filled in 27 Sep 2026 from the pilot; scripts/pilot_cap.py over the pilot rows of commit db1e6ac):**
+
+| suite | longest pilot row | its wall time | × 3 | cap (whole minutes, rounded up) |
+|---|---|---|---|---|
+| minigrid | MiniGrid-FourRooms-v0, raw, I1, seed 1003 | 1081.6 s | 3244.8 s | **3300 s** (55 min) |
+| procgen | bigfish, center_off, I1, seed 1003 | 2481.5 s | 7444.5 s | **7500 s** (125 min) |
+
+  - The pilot had 480 rows: 360 suite-B, 120 suite-C. Every row reached 20,000 actions and none was cut. They ran with --seconds 86400.
+  - The same two rows are the longest per suite in runs/pilot_checks/pilot_check.json ("longest").
+- **Projection to the confirmatory games (an infrastructure check, not a guarantee).**
+  - Source: scripts/pilot_check.py (blob d62dc8f13ad44a7fe45fb6ccc2800c0e41d9719a), output runs/pilot_checks/pilot_check.json.
+  - For every (game, condition, mode) in the fidelity outputs (runs/fidelity/), the projected wall time is:
+    projected = 20,000 / (fidelity steps per second, same game and condition) + (largest pilot agent overhead for that mode).
+  - An agent overhead is a pilot row's wall time minus its environment-only time, where environment-only time = actions / fidelity steps per second. The largest overheads (pilot_check.json "max_overhead"):
+    - suite B: I1 816.0 s, N 77.0 s, R 34.5 s;
+    - suite C: I1 2452.7 s, N 216.9 s, R 38.4 s.
+  - The two terms add because the environment steps and the agent computes in turn.
+  - **Result: no confirmatory (game, condition, mode) is projected over its cap.** That is 0 of 966 on suite B (161 × 2 × 3) and 0 of 84 on suite C (14 × 2 × 3). Including the pilot games, 0 of 1,002 and 0 of 96.
+  - The largest confirmatory projections:
+    - suite B: MiniGrid-MultiRoom-N2-S4-v0, macro, I1 = 701.8 s (20,000 at 28.5 steps/s) + 816.0 s = **1517.8 s**, against 3300 s;
+    - suite C: ninja, center_off, I1 = 97.3 s (20,000 at 205.5 steps/s) + 2452.7 s = **2550.0 s**, against 7500 s.
+  - **What this does not show.** The overhead term is the largest seen on 8 pilot games; an agent's overhead on another game can be larger, because its per-action cost depends on the game. The projection is therefore not a bound. **The cut-row rule below stands unchanged.**
 - The fidelity check does not set the cap. Its speeds are recorded as infrastructure facts only.
 - Rows cut by the cap (actions < budget) are kept, marked cut_by_cap, and reported as cut.
 
@@ -658,6 +702,14 @@ Consequences:
 
 **D8. The fidelity check** (Section 8 exception extended). The fidelity check (scripts/fidelity_check.py; Section 2.1 of METHOD_BLUEPRINT.md) is an infrastructure check under the Section 8 exception, like the W0 checks. It plays every game with 200 random actions twice, with no census and no agent, and produces infrastructure facts only.
 
+*Extended 27 Sep 2026.* Two further scripts are infrastructure checks in the same class. They produce no census, no agent decision and no V1/V2/G number:
+- **scripts/pilot_check.py** (blob d62dc8f13ad44a7fe45fb6ccc2800c0e41d9719a).
+  - It reads the pilot rows and the fidelity outputs and plays nothing. It reports the inventory, cross-condition identity, structural zeros, wall time and the D5 projection.
+  - Output: runs/pilot_checks/pilot_check.json (commits 387314c, cda7aa0).
+- **scripts/procgen_camera_check.py** (blob c0f49cebafa2d344c4248b483ccd42d16b948311).
+  - For each of the 16 Procgen games it builds two environments that differ only in center_agent. It drives both with the same 400 random actions (RandomState(1000)) and compares the frames byte for byte.
+  - Output: runs/pilot_checks/procgen_camera_check.json (procgen 0.10.7). The result is used in D13.
+
 **D9. V2 exclusions** (Section 10 changed).
 - V2's primary analysis excludes confirmatory environments whose success predicate requires an action absent from the condition's key map (D1). A secondary line reports V2 with them included.
 - V1 is unaffected: the truth of A1–A5 does not depend on the key map.
@@ -676,18 +728,121 @@ Consequences:
   - **No run file was read when the change was made.**
   - Blob hashes (tag prereg-v1 → now): scripts/analyze_v2.py 4bdef89d9259e9f47b208f898094a56a834e8ab7 → be4591b512a13f730e81cf801b3443a7f7367f5c; scripts/analyze_common.py 0737dbc5779e92eca3b06e5b9e31f70dce3d3475 → 4482e551e829c73d99319a2453f794163dc71891.
   - The v1 scripts are otherwise unchanged.
-- I1's narrower key map (D7) is not an exclusion criterion; its effect is reported per suite.
+- ~~I1's narrower key map (D7) is not an exclusion criterion; its effect is reported per suite.~~ Superseded 27 Sep 2026 by D9b: RKM decided that I1's key map is an exclusion criterion for I1's own V2 evidence line.
+
+**D9, amended 27 Sep 2026 after the pilot (RKM): "requires" is read as reachability.**
+- **The rule.** An environment is excluded for an agent when, on every seed, success cannot be reached without an action that the agent's key map lacks. "Cannot be reached without" covers two cases:
+  - the action is the success-triggering action itself (the reading used for the 20 ids above);
+  - the action is a precondition of every successful episode.
+- **Why the change.** Under the predicate-only reading, MiniGrid-DoorKey-8x8-v0 would not be excluded for I1: its success is entering the goal cell. Yet I1 cannot open the locked door on the way, and it completed 0 levels there in the pilot (D9b). RKM chose the reachability reading and applied it to every agent, so that R, N and I1 share one rule.
+- **Consequence for R and N.**
+  - **Raw: unchanged, 5.** No suite-B success needs done as a precondition.
+  - **Macro: 48 = the 20 above plus 28.** In these 28 the target must be picked up while the agent still carries the key it used on the door. MiniGrid picks up only with empty hands (`if self.carrying is None:`, minigrid_env.py:563), so a drop comes first on every seed, and macro has no drop.
+- **The 28 drop-precondition ids.** Source lines are in the installed minigrid 3.1.0. A locked room gets no door from connect_all (`if room.locked or neighbor_room.locked: continue`, core/roomgrid.py:387; room.locked is set by add_door, :260).
+  - MiniGrid-KeyCorridorS3R1-v0, S3R2-v0, S3R3-v0, S4R3-v0, S5R3-v0, S6R3-v0 (6):
+    - the target is in the room behind a locked door (keycorridor.py:113-114);
+    - its key is elsewhere (keycorridor.py:117);
+    - success is carrying the target after a pickup (keycorridor.py:131-134).
+  - MiniGrid-UnlockPickup-v0: the box is in room (1,0), and the only door is locked (unlockpickup.py:86-90). Success is picking up the box (unlockpickup.py:101-103).
+  - MiniGrid-BlockedUnlockPickup-v0: as UnlockPickup (blockedunlockpickup.py:93-100, 111-113). In addition, a ball blocks the door (:98) and must itself be picked up and put down.
+  - MiniGrid-ObstructedMaze-1Dl-v0, 1Dlh-v0, 1Dlhb-v0 (3): the ball is in room (1,0) behind the locked door (obstructedmaze.py:184-195). Success is carrying the ball (obstructedmaze.py:128-131).
+  - MiniGrid-ObstructedMaze-2Dl-v0, 2Dlh-v0 (2; obstructedmaze.py:223-255) and 1Q-v1, 2Dlhb-v1, 2Q-v1, Full-v1 (4; obstructedmaze_v1.py:37-75):
+    - the ball is in a corner room (obstructedmaze.py:249-254; obstructedmaze_v1.py:69-74);
+    - the corner rooms are entered only through the side rooms' locked doors (obstructedmaze.py:238-247; obstructedmaze_v1.py:52-59).
+  - BabyAI-KeyCorridor-v0, S3R1-v0, S3R2-v0, S3R3-v0, S4R3-v0, S5R3-v0, S6R3-v0 (7): the target is in the locked room (other.py:260-261), and the key is elsewhere (:264). PickupInstr (other.py:272).
+  - BabyAI-UnlockPickup-v0, UnlockPickupDist-v0 (2): the box is behind the only (locked) door (unlock.py:309-313). PickupInstr (:319).
+  - BabyAI-BlockedUnlockPickup-v0: as UnlockPickup, with a blocking ball (unlock.py:382-393, ball :387).
+  - BabyAI-UnlockToUnlock-v0: the ball is behind locked door 0, whose key is behind locked door 1 (unlock.py:457-472). Two keys are used in turn and each must be put down.
+- **Candidates checked and kept.**
+  - MiniGrid-DoorKey-*, MiniGrid-LockedRoom-v0, MiniGrid-MultiRoom-* and BabyAI-GoToImpUnlock-v0 need toggle but no drop. The goal is a cell, or GoTo accepts a carried key. They are unaffected for R and N, who have toggle.
+  - LevelGen levels, and levels whose target may lie in the agent's own room (BabyAI GoTo, Pickup, FindObj, UnblockPickup and their variants), do not need the action on every seed. They stay.
+- **Code.** analyze_common.V2_EXCLUDE now holds 5 (raw) and 48 (macro), as constants copied from this section. analyze_v2.py is unchanged in its D9 behaviour.
+
+**D9b. The I1 key set** (new; Section 10 and D9 extended; RKM 27 Sep 2026).
+- **What I1 presses.** I1 presses ids 1 to 5 only (docs/I1_feasibility.md C2; scripts/i1_suite_adapter.py; env_frame.I1_KEYS = (1, 2, 3, 4, 5)). Its maps are therefore:
+  - suite B raw: left, right, forward, pickup, drop. No toggle and no done.
+  - suite B macro: north, south, west, east, pickup. No toggle, drop or done.
+  - suite C: up, down, left, right and special 1 (Procgen action 9). No special 2 (action 10).
+- **What the pilot showed.** On MiniGrid-DoorKey-8x8-v0, from pilot_check.json "levels" and "structural_zeros":
+  - I1 completed 0 levels in all 20 of its rows (both conditions, 10 seeds each).
+  - R and N completed at least one level in every one of their 40 rows. Levels per row: R raw 2–6, R macro 22–32, N raw 1–6, N macro 18–31.
+- **Decision (RKM).** I1's map stays ids 1 to 5, with no remapping. D9's rule, in its reachability reading, is applied to I1's own map.
+- **The I1 evidence line of V2.** Its primary analysis excludes the D9 list of the condition plus every environment below. A secondary line reports I1 on R's primary game set, with the D9b ids included (analyze_v2 subset "primary, D9b included"). The "all games" line includes everything. Both of these lines are reported, not tested.
+- **The D9 lists for R and N are unchanged by D9b.**
+
+*Suite B: success needs toggle on every seed (57 ids, in both conditions).* A door opens, and a box releases its contents, only through toggle: Door.toggle (core/world_object.py:184-194); Box.toggle (:290-293). A closed or locked door cannot be overlapped (`return self.is_open`, world_object.py:177-179). Every door made by add_door or connect_all starts closed (core/roomgrid.py:261, 391), and connect_all never connects a locked room (:387).
+
+(a) Toggle is the success action (20):
+
+| id | source reason |
+|---|---|
+| MiniGrid-Unlock-v0 | success on the toggle that opens the locked door (unlock.py:91-94) |
+| MiniGrid-RedBlueDoors-6x6-v0, MiniGrid-RedBlueDoors-8x8-v0 | success when the blue door opens after the red one (redbluedoors.py:104-116); doors open only by toggle |
+| BabyAI-Open-v0 | OpenInstr (open.py:86); OpenInstr succeeds only on a toggle that leaves the target door open (verifier.py:270-282) |
+| BabyAI-OpenDoor-v0, BabyAI-OpenDoorColor-v0, BabyAI-OpenDoorDebug-v0, BabyAI-OpenDoorLoc-v0 | OpenInstr (open.py:229) |
+| BabyAI-OpenDoorsOrderN2-v0, BabyAI-OpenDoorsOrderN2Debug-v0, BabyAI-OpenDoorsOrderN4-v0, BabyAI-OpenDoorsOrderN4Debug-v0 | OpenInstr, alone or in sequence (open.py:411-420) |
+| BabyAI-OpenTwoDoors-v0, BabyAI-OpenRedBlueDoors-v0, BabyAI-OpenRedBlueDoorsDebug-v0 | two OpenInstr in sequence (open.py:321-324) |
+| BabyAI-OpenRedDoor-v0 | OpenInstr (open.py:146) |
+| BabyAI-Unlock-v0 | OpenInstr on a locked door (unlock.py:71, 111) |
+| BabyAI-UnlockLocal-v0, BabyAI-UnlockLocalDist-v0 | OpenInstr on a locked door (unlock.py:169, 175) |
+| BabyAI-KeyInBox-v0 | OpenInstr on a locked door (unlock.py:233, 242); the key is inside a box (unlock.py:237), opened by toggle |
+
+(b) Toggle is a precondition on every seed (37):
+
+| id | source reason |
+|---|---|
+| MiniGrid-DoorKey-5x5-v0, MiniGrid-DoorKey-6x6-v0, MiniGrid-DoorKey-16x16-v0 | goal at (w−2, h−2) (doorkey.py:82), beyond a locked door in the splitting wall (doorkey.py:94) |
+| MiniGrid-LockedRoom-v0 | the goal is placed in the room chosen to be locked (lockedroom.py:139-142), whose door is locked (lockedroom.py:150-151) |
+| MiniGrid-MultiRoom-N2-S4-v0, MiniGrid-MultiRoom-N4-S5-v1, MiniGrid-MultiRoom-N6-v0 | the goal is in the last room (multiroom.py:187); each room after the first is walled (multiroom.py:155-163) and entered only through a closed Door (multiroom.py:176-177); 2, 4 and 6 rooms (__init__.py:365, 378, 384) |
+| BabyAI-GoToImpUnlock-v0 | the target is in the room behind the locked door (goto.py:488, 524); GoToInstr needs the agent adjacent to and facing it (verifier.py:309-316), which needs a cell inside that room |
+| BabyAI-PickupAbove-v0 | the target is in room (1,0) (pickup.py:356), the agent in room (1,1) (pickup.py:359); every door is closed (pickup.py:358; connect_all :360) |
+| the 28 drop-precondition ids of the D9 amendment | each target is behind a locked door (reasons listed there) |
+
+*Suite C: level end needs special 2 — none.*
+- The adapter's map is the same in both conditions (env_frame.KEY_MAPS). It sends id 5 → Procgen action 9 = special 1, and id 7 → action 10 = special 2. basic-abstract-game.cpp:689-693 sets `special_action = action - 8` and makes the agent stand still (procgen 0.10.7, commit 5e1dbf3).
+- What special 2 does, per confirmatory game (from `special_action` in each game's source at 0.10.7):
+  - ninja: throws a star at 45° (ninja.cpp:387-399).
+  - starpilot: fires backwards (`theta = special_action == 2 ? PI : 0`, starpilot.cpp:371, 409).
+  - every other confirmatory game: special 2 is identical to action 4, no move, because the game never reads special_action == 2. bossfight (:383), caveflyer (:290), dodgeball (:386), fruitbot (:255) and plunder (:217) read special 1 only; chaser, climber, heist, jumper, leaper, maze and miner never read special_action at all.
+- Neither use is a level end:
+  - ninja completes on touching the goal (ninja.cpp:81-85). Bombs kill and are cleared by stars in any direction, and special 1, which I1 has, also throws a star.
+  - starpilot completes on touching the finish line after t = 500 (starpilot.cpp:23, 129-132, 423-428).
+  - The level ends of all 14 games (docs/GROUND_TRUTH_procgen.md, predicate column) need no special 2.
+- **Suite C: no D9b exclusion.** analyze_common.V2_EXCLUDE_I1 has no procgen entry.
+
+*Counts and code.*
+
+| agent, condition | primary exclusions | primary games |
+|---|---|---|
+| R/N raw | 5 | 156 |
+| R/N macro | 48 | 113 |
+| I1 raw | 62 = 5 + 57 | 99 |
+| I1 macro | 77 = 48 + 20 (a) + 9 (b, not already in the 48) | 84 |
+
+- The lists are registered constants in scripts/analyze_common.py, copied from this section: `V2_EXCLUDE` and `V2_EXCLUDE_I1`, read through `v2_exclusions(suite, condition, agent)`.
+- scripts/analyze_v2.py gives each agent its own primary line. The suite-level line combines R's primary and I1's primary. I1 also gets "primary, D9b included", reported and not tested.
+- Tests: test_d9b_i1_exclusions (hand-worked) and test_registered_lists in scripts/test_analyze_v2.py. The latter checks against the truth table:
+  - the sizes 5 / 48 / 62 / 77;
+  - no duplicates;
+  - every id is confirmatory;
+  - I1's list contains R's;
+  - raw is contained in macro;
+  - there is no procgen list.
+- **No run file was read** when this code was written.
 
 **D10. Section 3.2 seeding text** is replaced by D4. Section 9.2 gains the run_suite.py commands (docs/W2_COMMANDS.md blocks B and C).
 
-**D11. Section 11 (v1.1): the frozen analysis scripts.** Changed by D9 only; each row is blob at tag prereg-v1 → blob at v1.1:
+**D11. Section 11 (v1.1): the frozen analysis scripts.** Changed by D9, its amendment, and D9b only. Each row gives the blob at tag prereg-v1, the blob after the first D9 change (commit 6f6f090), and the blob now:
 
-| script | prereg-v1 | v1.1 |
-|---|---|---|
-| scripts/analyze_v2.py | 4bdef89d9259e9f47b208f898094a56a834e8ab7 | be4591b512a13f730e81cf801b3443a7f7367f5c |
-| scripts/analyze_common.py | 0737dbc5779e92eca3b06e5b9e31f70dce3d3475 | 4482e551e829c73d99319a2453f794163dc71891 |
+| script | prereg-v1 | after D9 (6f6f090) | now: D9 amended + D9b (27 Sep 2026 (f)) |
+|---|---|---|---|
+| scripts/analyze_v2.py | 4bdef89d9259e9f47b208f898094a56a834e8ab7 | be4591b512a13f730e81cf801b3443a7f7367f5c | fd68354e2c5a20c9ddcad9713178a575c4355f1c |
+| scripts/analyze_common.py | 0737dbc5779e92eca3b06e5b9e31f70dce3d3475 | 4482e551e829c73d99319a2453f794163dc71891 | ddb807171046c0c10b5f7fd2839f4cbccff04600 |
+| scripts/test_analyze_v2.py (tests, not analysis) | — | — | 3eb68e88df2dea1855c4c9874ef249d6c821c91a |
 
-scripts/analyze_v1.py and scripts/analyze_g.py are unchanged. The v1.1 hashes are re-recorded at the v1.1 tag if anything changes before it.
+- scripts/analyze_v1.py (1f20be79c62c4b22b0941c5bc4321f46f96467f0) and scripts/analyze_g.py (46bf991d86400f0189d8898a7e068044d25c629a) are unchanged.
+- **Synthetic tests on 27 Sep 2026 (f), with warnings as errors:** test_analyze_v1 4 OK, test_analyze_v2 8 OK, test_analyze_g 2 OK, 14 in all. No runs/ file was read.
+- The v1.1 hashes are re-recorded at the v1.1 tag if anything changes before it.
 
 **D12. ARC wall-clock cap** (Section 9.1/9.2 changed).
 
@@ -713,3 +868,66 @@ scripts/analyze_v1.py and scripts/analyze_g.py are unchanged. The v1.1 hashes ar
 - **But `--resume` rewrites the output file from the kept rows of the selection given on the command line.** The re-run must therefore use the full E6 selection (all 25 games, both modes, 10 seeds), not only re86 and sp80. Otherwise the other 492 rows would be dropped.
 - Commands: docs/E6_RERUN.md. After the re-run, scripts/e6_check.py must report 0 rows with actions < 20000.
 - The two census-v2 differences of e6_check.py (b), sp80 seeds 1001 and 1003, are two of these eight cut rows. Their level logs agree with census v2 up to the cut. The check is repeated after the re-run.
+- *Done (recorded 27 Sep 2026 (f)).*
+  - The eight rows were re-run under the tag with the 3600 s cap (commit b3509de).
+  - scripts/e6_check.py then reported:
+    - (a) 250 of 250 hash_state rows identical to E2 except `seconds`;
+    - (b) 68 of 68 nav rows identical to census v2 except `seconds`;
+    - (c) 0 rows under 20,000 actions.
+  - The E6 census followed: runs/census_e6.json and docs/census_e6.md (commit e75551a), with the wording note docs/census_e6_NOTE.md.
+
+**D13. Camera identity per Procgen game** (new; Sections 3.3, 4 and 10 changed).
+
+*Source (procgen tag 0.10.7, commit 5e1dbf341d291eff40d1f9e0c0a0d5003643aebf, files fetched raw from github.com/openai/procgen/0.10.7/procgen/src/ on 27 Sep 2026).*
+- **The option.** center_agent is read into the game's options at construction (game.cpp:49) and defaults to false in C++ (game.h:51).
+- **Games that overwrite it.** Ten games overwrite it inside their own `game_reset()`, which runs at every level start, after `BasicAbstractGame::game_reset()`:
+
+| game | game_reset() begins | assignment (line) | value under distribution_mode easy |
+|---|---|---|---|
+| bigfish | bigfish.cpp:61 | `options.center_agent = false;` (bigfish.cpp:64) | false |
+| bossfight | bossfight.cpp:202 | `options.center_agent = false;` (bossfight.cpp:210) | false |
+| chaser | chaser.cpp:140 | `options.center_agent = false;` (chaser.cpp:166) | false |
+| leaper | leaper.cpp:122 | `options.center_agent = false;` (leaper.cpp:125) | false |
+| plunder | plunder.cpp:116 | `options.center_agent = false;` (plunder.cpp:178) | false |
+| starpilot | starpilot.cpp:329 | `options.center_agent = false;` (starpilot.cpp:332) | false |
+| dodgeball | dodgeball.cpp:259 | `options.center_agent = options.distribution_mode == MemoryMode;` (dodgeball.cpp:262) | false |
+| heist | heist.cpp:115 | same expression (heist.cpp:122) | false |
+| maze | maze.cpp:55 | same expression (maze.cpp:66) | false |
+| miner | miner.cpp:132 | same expression (miner.cpp:140) | false |
+
+  - The line numbers RKM gave from master all match the 0.10.7 tag exactly.
+  - Each assignment lies between its game_reset() opening line and the next member-function definition (checked for all ten).
+- **How the option is used.**
+  - basic-abstract-game.cpp:819-838, `prepare_for_drawing`: `if (options.center_agent) { choose_center(center_x, center_y); } else { visibility = main_width > main_height ? main_width : main_height; ... }` (lines 823-829).
+    - When the option is set, the view is centred on the agent (choose_center, basic-abstract-game.cpp:664-667, or a game's override).
+    - Otherwise the whole level is drawn into the 64 × 64 frame. This is the formula of Section 4.
+  - basic-abstract-game.cpp:928-940, `draw_foreground`: the drawn tile range branches on the same option.
+- **The other six games** (caveflyer, climber, coinrun, fruitbot, jumper, ninja) do not touch the option. For them, center_on and center_off draw different frames.
+
+*Empirical check.* scripts/procgen_camera_check.py (D8 extension), output runs/pilot_checks/procgen_camera_check.json (procgen 0.10.7; seed 1000; 400 random actions from RandomState(1000)):
+- bigfish, bossfight, chaser, dodgeball, heist, leaper, maze, miner, plunder and starpilot: **401 of 401 frames identical**. The frames are compared byte for byte: the initial frame and one after every action.
+- caveflyer, climber, coinrun, fruitbot, jumper and ninja: **0 of 401 identical, first difference at step 0**.
+- In the pilot, the 30 bigfish (mode, seed) pairs are identical between center_off and center_on in every field except timing and the condition labels (pilot_check.json "cross_condition", procgen, bigfish: 10 of 10 pairs for each of R, N and I1). The only differing fields are condition, adapter.condition and adapter.camera.center_agent.
+
+*What is registered.*
+- **The secondary condition center_on is a distinct condition only on caveflyer, climber, fruitbot, jumper and ninja** among the 14 confirmatory games. Among the pilots it is distinct on coinrun.
+- V1's and V2's center_on line is reported on those five games only.
+- On the other nine confirmatory games (bossfight, chaser, dodgeball, heist, leaper, maze, miner, plunder, starpilot):
+  - the center_on rows are still run (docs/W2_COMMANDS.md block D);
+  - they are required to equal the center_off rows of the same (game, mode, seed) in every non-timing field, apart from the condition labels (`condition`, `adapter.condition`, `adapter.camera.center_agent`);
+  - this is recorded as a determinism check, not as evidence.
+- **These nine are exactly the Section 4 operating range.** On them the frame does not depend on the condition. The in-range line is therefore the same under both conditions, and it coincides with the primary (center_off) line restricted to those nine. The secondary line adds information only on the five out-of-range games, where center_on shows a scrolling view and center_off the whole level at under 2 pixels per agent.
+- **Not yet in code (stated so that it is done before the v1.1 tag).**
+  - scripts/analyze_v1.py and scripts/analyze_v2.py still report center_on on all 14 confirmatory games.
+  - No script yet performs the nine-game determinism check on confirmatory rows. pilot_check.py does it for the pilot rows only.
+  - Both changes must be written, tested and hashed in D11 before the tag, or this registration is not implemented.
+
+**D14. Adapter changes after the pilot: none.**
+- The pilot found no adapter fault:
+  - 0 rows with an error. No pilot row has an `error` field (pilot_check.json keys.error is null), and run_suite.py writes that field into the row on any exception (run_suite.py:125-127);
+  - 0 rows under 20,000 actions (pilot_check.json "short_rows"), so none was cut;
+  - 480 rows = 360 + 120, as commanded;
+  - cross-condition identity is exactly what the source predicts (D13);
+  - runs are deterministic given the seed (the bigfish identity above; E6 (a) and (b) for the frozen code).
+- **No adapter change after the pilot.** scripts/adapter_minigrid.py, scripts/adapter_procgen.py, scripts/env_frame.py, scripts/i1_suite_adapter.py and scripts/run_suite.py keep the D6 blob hashes.
+- The tile-size scaling rule was not used.
