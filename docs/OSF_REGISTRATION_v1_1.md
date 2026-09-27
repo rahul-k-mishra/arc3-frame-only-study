@@ -20,7 +20,7 @@ RKM pastes the text between the two rules into a new OSF open-ended registration
 
 **Claim.** A fixed, cheap, frame-only probe battery (the assumption census: A1 input coupling, A2 one controlled object, A3 lattice motion, A4 blocking by a fixed obstacle set, A5 place goal), with every parameter frozen on eight ARC-AGI-3 training games, (i) reports the ground-truth mechanics of unseen games at a registered accuracy, and (ii) predicts, before any agent is run, on which unseen games assumption-driven frame-only agents complete the first level. Ground truth is derived from each game's source code and committed before any run. A goal-identification cost G is measured and reported alongside, not tested. ARC-AGI-3 is the development instance and does not count toward generality.
 
-**The changes, D1 to D14.**
+**The changes, D1 to D15.**
 
 **D1. Six actions at most.**
 - The frozen census code presses only six action ids (ARC ids 1, 2, 3, 4, 5 and 7). Every suite is therefore presented through a key map of at most six actions:
