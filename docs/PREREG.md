@@ -669,6 +669,22 @@ Consequences:
   - **"Requires" means on every seed (RKM, 27 Sep 2026).** The seven LevelGen levels draw their instruction per seed (levelgen.py:41, 158-207; synth.py:91, 173): BabyAI-Synth-v0, BabyAI-SynthS5R2-v0, BabyAI-SynthLoc-v0, BabyAI-SynthSeq-v0, BabyAI-MiniBossLevel-v0, BabyAI-BossLevel-v0, BabyAI-BossLevelNoUnlock-v0. They stay in the primary analysis.
   - On these LevelGen levels some seeds draw a PutNext instruction that cannot be completed under macro; the game outcome Y over ten seeds (completed in at least half of them) absorbs this.
   - **Suite C — none.** No Procgen success predicate requires a diagonal or specials 11–14. Special 1 (fire), which bossfight, dodgeball and plunder need, is mapped.
-- **Code change:** scripts/analyze_v2.py gains these lists, implemented and tested at the v1.1 tag. The v1 script is otherwise unchanged. I1's narrower key map (D7) is not an exclusion criterion; its effect is reported per suite.
+- **Code change — implemented 27 Sep 2026.**
+  - The lists are registered constants in scripts/analyze_common.py (`V2_EXCLUDE`), copied verbatim from this section and checked against it by script.
+  - scripts/analyze_v2.py prints and writes two lines for every (suite, condition, agent) with a list: "primary", with the listed environments excluded, to which every verdict rule applies; and "all games", with them included, reported and not tested. The N instrument-check row takes the same two-line form.
+  - Tested by the hand-worked test_d9_exclusions in scripts/test_analyze_v2.py. All 12 synthetic tests passed with warnings as errors.
+  - **No run file was read when the change was made.**
+  - Blob hashes (tag prereg-v1 → now): scripts/analyze_v2.py 4bdef89d9259e9f47b208f898094a56a834e8ab7 → be4591b512a13f730e81cf801b3443a7f7367f5c; scripts/analyze_common.py 0737dbc5779e92eca3b06e5b9e31f70dce3d3475 → 4482e551e829c73d99319a2453f794163dc71891.
+  - The v1 scripts are otherwise unchanged.
+- I1's narrower key map (D7) is not an exclusion criterion; its effect is reported per suite.
 
 **D10. Section 3.2 seeding text** is replaced by D4. Section 9.2 gains the run_suite.py commands (docs/W2_COMMANDS.md blocks B and C).
+
+**D11. Section 11 (v1.1): the frozen analysis scripts.** Changed by D9 only; each row is blob at tag prereg-v1 → blob at v1.1:
+
+| script | prereg-v1 | v1.1 |
+|---|---|---|
+| scripts/analyze_v2.py | 4bdef89d9259e9f47b208f898094a56a834e8ab7 | be4591b512a13f730e81cf801b3443a7f7367f5c |
+| scripts/analyze_common.py | 0737dbc5779e92eca3b06e5b9e31f70dce3d3475 | 4482e551e829c73d99319a2453f794163dc71891 |
+
+scripts/analyze_v1.py and scripts/analyze_g.py are unchanged. The v1.1 hashes are re-recorded at the v1.1 tag if anything changes before it.

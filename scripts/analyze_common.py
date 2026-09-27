@@ -26,6 +26,22 @@ PILOTS_C = ("coinrun", "bigfish")
 IN_RANGE_C = ("bossfight", "chaser", "dodgeball", "heist", "leaper", "maze", "miner", "plunder", "starpilot")
 ARC_TRAIN = ("tu93", "ls20", "vc33", "m0r0", "ft09", "lp85", "lf52", "dc22")
 
+# V2 exclusions (docs/PREREG.md v1.1 draft, D9; RKM 27 Sep 2026): confirmatory environments whose
+# success predicate requires, on every seed, an action absent from the condition's key map (D1).
+# V2's primary line excludes them; an "all games" line reports them included, not tested.
+_DONE_ABSENT = ("MiniGrid-GoToDoor-5x5-v0", "MiniGrid-GoToDoor-6x6-v0", "MiniGrid-GoToDoor-8x8-v0",
+                "MiniGrid-GoToObject-6x6-N2-v0", "MiniGrid-GoToObject-8x8-N2-v0")
+_DROP_ABSENT = ("MiniGrid-PutNear-6x6-N2-v0", "MiniGrid-PutNear-8x8-N3-v0", "BabyAI-PutNextLocal-v0",
+                "BabyAI-PutNextLocalS5N3-v0", "BabyAI-PutNextLocalS6N4-v0", "BabyAI-PutNextS4N1-v0",
+                "BabyAI-PutNextS5N1-v0", "BabyAI-PutNextS5N2-v0", "BabyAI-PutNextS5N2Carrying-v0",
+                "BabyAI-PutNextS6N3-v0", "BabyAI-PutNextS6N3Carrying-v0", "BabyAI-PutNextS7N4-v0",
+                "BabyAI-PutNextS7N4Carrying-v0", "BabyAI-MoveTwoAcrossS5N2-v0", "BabyAI-MoveTwoAcrossS8N9-v0")
+V2_EXCLUDE = {
+    ("minigrid", "raw"): _DONE_ABSENT,                    # 5: done absent
+    ("minigrid", "macro"): _DONE_ABSENT + _DROP_ABSENT,   # 20: drop and done absent
+    # procgen: none
+}
+
 
 # ---------------------------------------------------------------- input
 def load_rows(patterns):

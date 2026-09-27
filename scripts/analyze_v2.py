@@ -19,6 +19,11 @@ if R and I1 are both non-void, both must have AUROC <= 0.65; if only R is non-vo
 void), R alone decides; with no non-void evidence agent the suite is not decidable.  Support
 still requires I1 to pass (PREREG.md Section 10).  ARC held-out rows are reported, not
 tested (the script labels suite "arc" as "reported").
+D9 exclusions (PREREG v1.1 draft; analyze_common.V2_EXCLUDE): for a (suite, condition) with an
+exclusion list, every agent (N included) gets two lines: "primary", with the listed environments
+excluded, to which every verdict rule applies (VOID, PASS, FAIL, suite-level FAIL), and "all games",
+with them included, reported and not tested.  Suites without a list keep the "all" line (and, for
+suite C, the "in_range" line).
 
 Reads no game.  Writes docs/tables/v2.md and docs/tables/v2.json (or --out).
 
@@ -104,20 +109,28 @@ def v2_rows(rows, truth_by_suite, n_resamples=2000, seed=20260927, workers=8):
             if truth is None:
                 continue
             games = C.confirmatory(suite, truth)
-        subsets = [("all", games)]
+        excl = C.V2_EXCLUDE.get((suite, cond))
+        if excl:
+            # D9: every verdict rule applies to the primary line; "all games" is reported, not tested
+            subsets = [("primary", [g for g in games if g not in excl]), ("all games", games)]
+        else:
+            subsets = [("all", games)]
         if suite == "procgen":
             subsets.append(("in_range", [g for g in games if g in C.IN_RANGE_C]))
         for name, gs in subsets:
+            tested = name != "all games"
             per_agent = {}
             for agent in sorted(k[2] for k in keys if k[0] == suite and k[1] == cond):
                 gt = game_table(rows, suite, cond, agent, gs, census)
                 st = v2_stats(gt, n_resamples, seed, workers)
+                if not tested:
+                    st["verdict"] = "reported, not tested"
                 role = "reported" if suite == "arc" else ("evidence" if agent in ("R", "I1") else "instrument check")
                 per_agent[agent] = st
                 table.append([suite, cond, name, agent, role, st["n"], st["pos"], st["auroc"], st["ci_low"],
                               st["ci_high"], st["ba"], st["auroc_B"], st["verdict"]])
             r, i1 = per_agent.get("R"), per_agent.get("I1")
-            if suite == "arc":
+            if suite == "arc" or not tested:
                 sv = "reported, not tested"
             else:
                 live = [(a, st) for a, st in (("R", r), ("I1", i1))

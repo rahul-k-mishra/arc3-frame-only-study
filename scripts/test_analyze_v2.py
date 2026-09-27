@@ -37,9 +37,33 @@ void).  Every positive-negative pair ties, so AUROC = 16 x 0.5 / 16 = 0.5 <= 0.6
 FAIL.  BA: TPR 4/4 = 1, TNR 0/4 = 0, BA = 0.5.  B is constant, AUROC_B = 0.5.  I1 is absent and R is
 non-void, so R alone decides: "suite FAIL (decided by R alone)".
 
+Test 6, the D9 exclusions (PREREG v1.1 draft), suite "minigrid", condition "macro".  Eight
+confirmatory games.  Two are on the registered macro exclusion list (analyze_common.V2_EXCLUDE):
+MiniGrid-PutNear-6x6-N2-v0 and MiniGrid-GoToDoor-5x5-v0.  The other six are test ids
+(MiniGrid-T1-v0 ... MiniGrid-T6-v0).  Census (A1..A5; one N seed each), S, P = A2..A5 all hold, and R's
+outcome Y (one seed each):
+    T1  h h h h h  S=5 P=1 Y=1        T2  h h h h h  S=5 P=1 Y=1
+    T3  f h h h h  S=4 P=1 Y=0        T4  h h h f f  S=3 P=0 Y=1
+    T5  h h f f f  S=2 P=0 Y=0        T6  h f f f f  S=1 P=0 Y=0
+    PutNear-6x6  h h h h f  S=4 P=0 Y=0   (excluded)
+    GoToDoor-5x5 h h h f h  S=4 P=0 Y=0   (excluded)
+Primary line (T1-T6; the verdict rules apply):
+    positives S = 5, 5, 3; negatives S = 4, 2, 1; 9 pairs.  Each 5 beats all three (6); the 3 loses to
+    4 and beats 2 and 1 (2).  AUROC = 8/9 = 0.8889.
+    P against Y: TP 2 (T1, T2), FN 1 (T4), FP 1 (T3), TN 2 (T5, T6); TPR 2/3, TNR 2/3; BA = 0.6667.
+    Precondition 3/6 = 0.5, not void.  Nuisance features constant, AUROC_B = 0.5.
+    Verdict: AUROC >= 0.80 but BA < 0.80, so not PASS; AUROC > 0.65, so not FAIL: "neither".
+    Suite line: I1 absent, R non-void with 0.8889 > 0.65: "not failed (decided by R alone)".
+"All games" line (all 8; reported, not tested):
+    positives 5, 5, 3; negatives 4, 2, 1, 4, 4; 15 pairs.  Each 5 beats all five (10); the 3 beats 2 and
+    1 only (2).  AUROC = 12/15 = 0.8.
+    TP 2, FN 1, FP 1, TN 4; TPR 2/3, TNR 4/5; BA = (0.6667 + 0.8) / 2 = 0.7333.
+    Verdict and suite line: "reported, not tested".
+The N rows (instrument check) get the same two lines.
+
 Command (PowerShell, from D:\\Research\\arc3\\repo):
     D:\\Research\\arc3\\brutus\\.venv\\Scripts\\python.exe scripts\\test_analyze_v2.py
-Expected: "Ran 5 tests ... OK".
+Expected: "Ran 6 tests ... OK".
 """
 from __future__ import annotations
 
@@ -136,6 +160,46 @@ class T(unittest.TestCase):
             self.assertEqual(r[12], "FAIL")
             lines = {s[2]: s[3] for s in suite_lines}
             self.assertEqual(lines["all"], "suite FAIL (decided by R alone)")
+
+    def test_d9_exclusions(self):
+        ids = ["MiniGrid-T1-v0", "MiniGrid-T2-v0", "MiniGrid-T3-v0", "MiniGrid-T4-v0", "MiniGrid-T5-v0",
+               "MiniGrid-T6-v0", "MiniGrid-PutNear-6x6-N2-v0", "MiniGrid-GoToDoor-5x5-v0"]
+        census = ["hhhhh", "hhhhh", "fhhhh", "hhhff", "hhfff", "hffff", "hhhhf", "hhhfh"]
+        y = [1, 1, 0, 1, 0, 0, 0, 0]
+        with tempfile.TemporaryDirectory() as tmp:
+            lines = ["| id | reg | A1 | A2 | A3-raw | A3-macro | A4 | A5 | pred | src | status |", "|---|---|---|---|---|---|---|---|---|---|---|"]
+            lines += [f"| {g} | r | holds | holds | fails | holds | holds | holds | p | s | confirmatory |" for g in ids]
+            _write(os.path.join(tmp, "gt_minigrid.md"), "\n".join(lines) + "\n")
+            _write(os.path.join(tmp, "gt_procgen.md"), "\n")
+            rows = []
+            ad = dict(grid=[7, 7], action_list=list(range(6)), n_colours=5)
+            for i, g in enumerate(ids):
+                rows.append(dict(game=g, agent="N", mode="nav", suite="minigrid", condition="macro", seed=1000,
+                                 census={a: W[c] for a, c in zip(C.ASSUMPTIONS, census[i])},
+                                 level1_completed=bool(y[i]), adapter=ad))
+                rows.append(dict(game=g, agent="R", mode="hash_state", suite="minigrid", condition="macro", seed=1000,
+                                 level1_completed=bool(y[i]), adapter=ad))
+            _write(os.path.join(tmp, "runs.json"), json.dumps(rows))
+            table, suite_lines = analyze_v2.main(["--runs", os.path.join(tmp, "runs.json"), "--truth-minigrid",
+                                                  os.path.join(tmp, "gt_minigrid.md"), "--truth-procgen",
+                                                  os.path.join(tmp, "gt_procgen.md"), "--out", tmp, "--workers", "2"])
+            by = {(x[2], x[3]): x for x in table}
+            self.assertEqual(sorted({x[2] for x in table}), ["all games", "primary"])
+            for agent in ("R", "N"):
+                p, a = by[("primary", agent)], by[("all games", agent)]
+                self.assertEqual((p[5], p[6]), (6, 3))
+                self.assertAlmostEqual(p[7], 8 / 9)
+                self.assertAlmostEqual(p[10], 2 / 3)
+                self.assertAlmostEqual(p[11], 0.5)
+                self.assertEqual(p[12], "neither")
+                self.assertEqual((a[5], a[6]), (8, 3))
+                self.assertAlmostEqual(a[7], 0.8)
+                self.assertAlmostEqual(a[10], (2 / 3 + 0.8) / 2)
+                self.assertEqual(a[12], "reported, not tested")
+            self.assertEqual(by[("primary", "N")][4], "instrument check")
+            sl = {s[2]: s[3] for s in suite_lines}
+            self.assertEqual(sl["primary"], "not failed (decided by R alone)")
+            self.assertEqual(sl["all games"], "reported, not tested")
 
     def test_bootstrap(self):
         s = [5, 5, 4, 4, 3, 2, 1, 1]
