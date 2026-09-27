@@ -591,3 +591,80 @@ D:\Research\arc3\brutus\.venv\Scripts\python.exe scripts\test_analyze_g.py
 ## 13. Diff section
 
 Empty in v1.
+
+---
+---
+
+# PREREG.md — v1.1 (DRAFT — not registered until tagged prereg-v1.1 after the pilot)
+
+Drafted 27 September 2026 after the tag prereg-v1 (commit 19f2a9f), from RKM's decisions on docs/ADAPTER_FEASIBILITY.md Section 2.
+- Version v1 above is the registered protocol; this block changes it only where the diff section below says so.
+- The pilot (Section 8) runs under this draft. It may still change adapter code and the tile-size scaling rule, never a census constant, threshold, truth-table entry or frozen blob hash.
+- Every change made before the tag is added to this diff section.
+
+## Diff section (v1 → v1.1)
+
+**D1. The six-action limit of the frozen code** (new; Section 3). The frozen explorer presses only ARC action ids 1, 2, 3, 4, 5 and 7 as keys (g_agent.py:326; g_nav.py:379; g_control_probe.py:47). Id 6 is a click, and the runner never offers it. Every suite is therefore presented through a key map of at most six actions, applied by the ARC shim (scripts/env_frame.py `KEY_MAPS`):
+
+| suite, condition | 1 | 2 | 3 | 4 | 5 | 7 | not exposed |
+|---|---|---|---|---|---|---|---|
+| B raw (Section 3.2 changed) | left | right | forward | pickup | drop | toggle | done |
+| B macro (Section 3.2 changed) | north | south | west | east | pickup | toggle | drop, done |
+| C center_off / center_on (Section 3.3 changed) | action 5 (up) | action 3 (down) | action 1 (left) | action 7 (right) | action 9 (special 1) | action 10 (special 2) | the diagonals 0, 2, 6, 8; the no-op 4; specials 11–14 |
+
+- On Dynamic-Obstacles only left, right and forward (raw) or the four macros exist.
+- Section 3.3's "action list: all 15 actions" becomes these six for every agent. The adapter keeps all 15 internally, and the fidelity check exercises all 15.
+
+**D2. Canvas placement** (new; Section 3.2). A suite-B grid is placed at rows 1..h, columns 0..w−1 of a 64 × 64 canvas; every other cell holds palette index 0, reserved as padding (adapter palettes start at 1). Reason: the frozen code reads rows 1–62 only and anchors the frame at the top-left (g_control_probe.py:50-56; g_motion.py:30-31).
+
+**D3. Procgen rows 0 and 63** (new; Section 3.3). The 64 × 64 Procgen grid fills the canvas, and the frozen code does not see its top and bottom pixel rows. This is recorded, not corrected. No rescaling is applied.
+
+**D4. RESET semantics per suite** (Section 3.2 changed; Section 3.3 new).
+- Suite B, "replay": episode k is reset with seed seed·100000 + k; k advances only on a success; a RESET (the explorer's stuck rule, or the RESET after a failure) replays episode k's layout. This replaces v1's "later resets are unseeded".
+- Suite C: a RESET takes no step and returns the current grid, because procgen cannot restart a level. It still counts as an action.
+- **The sentence the paper carries:** *"The ARC RESET restarts the current level on ARC-AGI-3 and replays the current layout on MiniGrid/BabyAI, but is a no-op on Procgen, which cannot restart a level; on Procgen a failed level is followed by a new level."*
+
+**D5. Wall-clock cap** (new; Section 9.1).
+- The cap per run is three times the slowest game's measured time for 20,000 actions in that suite. That time is computed from the fidelity check's steps per second (runs/fidelity), and the cap is one value per suite. **Value pending: filled in after the fidelity check.**
+- Rows cut by the cap (actions < budget) are kept, marked cut_by_cap, and reported as cut.
+
+**D6. The runner** (new; Section 9.2).
+- scripts/run_suite.py is the registered runner for suites B and C. It installs the shim with D1–D4. It calls R and N exactly as scripts/g_nav_run.py does (Config(max_actions=20000, seed=s, **MODES[mode]); g_nav.play for nav, g_agent.play for hash_state). Before playing, it refuses to run if any of the six frozen blob hashes differs from Section 5.4.
+- Rows are written to runs/suites/<suite>/<condition>/<mode>/<game>__<seed>.json in the Section 9.3 schema.
+- Blob hashes at this draft (re-recorded at the v1.1 tag):
+
+| file | blob hash |
+|---|---|
+| scripts/run_suite.py | d51f56edbe7e9a69497c123864d1df96383874f6 |
+| scripts/env_frame.py | bb3ff60acf88c220ec64e287c6c1d6bb899f879b |
+| scripts/adapter_minigrid.py | 370028ab178eaed65803d2f0f7d86c29adf14328 |
+| scripts/adapter_procgen.py | 91cca0f59ea632da8b5b0f6652c7b1a13f1fbb3d |
+| scripts/i1_suite_adapter.py | 9d8a18548b958e70b1365b2eacb25d25f83284ba |
+| scripts/fidelity_check.py | 9e483f2ca2fb33bdeaaaa404166fcdca8c1740f7 |
+
+**D7. I1 boundary on suites B and C** (Section 2 extended). scripts/i1_suite_adapter.py applies C1–C5 of docs/I1_feasibility.md around the unchanged scripts/e1_rudakov_adapter.py (blob 39ab52f82f2fef3460ce83cb9db30d892b571d5b):
+- C1: the shim;
+- C2: the suite key map restricted to ids 1–5 (I1 maps only ACTION1–5);
+- C3: palette indices ≥ 16 presented as k + 1, since 16 is their status-bar marker;
+- C4: level count seen by I1 capped at 254, with the true count kept in the row;
+- C5: B1–B7 unchanged.
+
+Consequences:
+- I1 lacks toggle in both suite-B conditions and special 2 on suite C.
+- Their code needs requests 2.34.2 and pydantic 2.13.5, the versions of the ARC venv, installed in the suite venvs as an infrastructure step (docs/W2_COMMANDS.md).
+
+**D8. The fidelity check** (Section 8 exception extended). The fidelity check (scripts/fidelity_check.py; Section 2.1 of METHOD_BLUEPRINT.md) is an infrastructure check under the Section 8 exception, like the W0 checks. It plays every game with 200 random actions twice, with no census and no agent, and produces infrastructure facts only.
+
+**D9. V2 exclusions** (Section 10 changed).
+- V2's primary analysis excludes confirmatory environments whose success predicate requires an action absent from the condition's key map (D1). A secondary line reports V2 with them included.
+- V1 is unaffected: the truth of A1–A5 does not depend on the key map.
+- The list below is derived from the truth table's success predicates (docs/GROUND_TRUTH_minigrid.md, with file and line there):
+  - **Suite B raw (done absent) — 5:** MiniGrid-GoToDoor-5x5-v0, MiniGrid-GoToDoor-6x6-v0, MiniGrid-GoToDoor-8x8-v0, MiniGrid-GoToObject-6x6-N2-v0, MiniGrid-GoToObject-8x8-N2-v0. Their success is a done action beside the target (gotodoor.py:144-147; gotoobject.py:155-158).
+  - **Suite B macro (drop and done absent) — 27:**
+    - The 5 above.
+    - Success on a drop (PutNear, putnear.py:193-197; PutNextInstr, verifier.py:411-435; MoveTwoAcross, BeforeInstr of two PutNextInstr, other.py:423-426) — 15: MiniGrid-PutNear-6x6-N2-v0, MiniGrid-PutNear-8x8-N3-v0, BabyAI-PutNextLocal-v0, BabyAI-PutNextLocalS5N3-v0, BabyAI-PutNextLocalS6N4-v0, BabyAI-PutNextS4N1-v0, BabyAI-PutNextS5N1-v0, BabyAI-PutNextS5N2-v0, BabyAI-PutNextS5N2Carrying-v0, BabyAI-PutNextS6N3-v0, BabyAI-PutNextS6N3Carrying-v0, BabyAI-PutNextS7N4-v0, BabyAI-PutNextS7N4Carrying-v0, BabyAI-MoveTwoAcrossS5N2-v0, BabyAI-MoveTwoAcrossS8N9-v0.
+    - LevelGen levels whose instruction may be a PutNext (action kinds include putnext, levelgen.py:41; synth.py:91, 173 and defaults) — 7: BabyAI-Synth-v0, BabyAI-SynthS5R2-v0, BabyAI-SynthLoc-v0, BabyAI-SynthSeq-v0, BabyAI-MiniBossLevel-v0, BabyAI-BossLevel-v0, BabyAI-BossLevelNoUnlock-v0. Excluded because the predicate can require the absent action.
+  - **Suite C — none.** No Procgen success predicate requires a diagonal or specials 11–14. Special 1 (fire), which bossfight, dodgeball and plunder need, is mapped.
+- **Code change:** scripts/analyze_v2.py gains these lists, implemented and tested at the v1.1 tag. The v1 script is otherwise unchanged. I1's narrower key map (D7) is not an exclusion criterion; its effect is reported per suite.
+
+**D10. Section 3.2 seeding text** is replaced by D4. Section 9.2 gains the run_suite.py commands (docs/W2_COMMANDS.md blocks B and C).

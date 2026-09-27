@@ -42,6 +42,28 @@ FROZEN_FILES = ("scripts/g_agent.py", "scripts/g_nav.py", "scripts/g_motion.py",
 PAD = 0                     # canvas padding index; adapter palettes start at 1
 CANVAS = 64
 
+# Key maps accepted by RKM on 27 Sep 2026 (docs/ADAPTER_FEASIBILITY.md items 9-11; PREREG v1.1 draft):
+# ARC action id -> adapter action label.  The frozen code presses only ids 1, 2, 3, 4, 5, 7
+# (g_control_probe.py:47); id 6 (click) is never offered.  A label the environment lacks is dropped.
+KEY_MAPS = {
+    ("minigrid", "raw"): {1: "left", 2: "right", 3: "forward", 4: "pickup", 5: "drop", 7: "toggle"},
+    ("minigrid", "macro"): {1: "north", 2: "south", 3: "west", 4: "east", 5: "pickup", 7: "toggle"},
+    ("procgen", "center_off"): {1: 5, 2: 3, 3: 1, 4: 7, 5: 9, 7: 10},
+    ("procgen", "center_on"): {1: 5, 2: 3, 3: 1, 4: 7, 5: 9, 7: 10},
+}
+I1_KEYS = (1, 2, 3, 4, 5)          # I1 maps only ACTION1-5 (heuristic_agent.py:54-58); item 18
+
+
+def resolve_key_map(suite, condition, adapter, ids=None):
+    """{ARC id: adapter action index} for the labels this environment offers."""
+    out = {}
+    for k, label in KEY_MAPS[(suite, condition)].items():
+        if ids is not None and k not in ids:
+            continue
+        if label in adapter.actions:
+            out[k] = adapter.actions.index(label)
+    return out
+
 
 def git_blob_hash(path):
     """The git blob id of a file as `git hash-object` computes it (with the repository's filters);
@@ -113,6 +135,8 @@ class _Raw:
         self.state = _State(state)
         self.levels_completed = levels
         self.available_actions = list(available)
+        self.guid = None                  # read by the E1 adapter's to_their_frame (I1)
+        self.full_reset = False
 
 
 class _GameAction:
@@ -137,22 +161,38 @@ for _k in range(1, 8):
     setattr(_GameActionNS, f"ACTION{_k}", _GameAction(_k, f"ACTION{_k}"))
 
 
+class _Info:
+    def __init__(self, game_id):
+        self.game_id = game_id
+
+
 class ShimEnv:
     """An adapter presented as an arc_agi environment.  key_map: {ARC action id: adapter action index}.
     RESET calls adapter.restart().  A level end increments levels_completed and keeps the game
-    running; a game end sets state GAME_OVER until the next RESET."""
+    running; a game end sets state GAME_OVER until the next RESET.
+    frame_transform and levels_cap exist for I1's boundary (docs/I1_feasibility.md C3, C4).
+    steps counts every step (RESET included) and first_level_end the step of the first level end."""
 
-    def __init__(self, adapter, seed, key_map, row_offset=1):
+    def __init__(self, adapter, seed, key_map, row_offset=1, frame_transform=None, levels_cap=None,
+                 game_id="game"):
         self.adapter, self.key_map, self.row_offset = adapter, dict(key_map), row_offset
+        self.frame_transform, self.levels_cap = frame_transform, levels_cap
         self.levels, self.state = 0, "NOT_FINISHED"
+        self.steps, self.first_level_end = 0, None
         self.available = sorted(self.key_map)
+        self.environment_info = _Info(game_id)
         self.observation_space = self._raw(adapter.reset(seed))
 
     def _raw(self, grid):
-        return _Raw(to_canvas(grid, self.row_offset), self.state, self.levels, self.available)
+        c = to_canvas(grid, self.row_offset)
+        if self.frame_transform is not None:
+            c = self.frame_transform(c)
+        lv = self.levels if self.levels_cap is None else min(self.levels, self.levels_cap)
+        return _Raw(c, self.state, lv, self.available)
 
     def step(self, action, data=None):
         a = int(getattr(action, "value", action))
+        self.steps += 1
         if a == 0:
             self.state = "NOT_FINISHED"
             self.observation_space = self._raw(self.adapter.restart())
@@ -162,6 +202,8 @@ class ShimEnv:
         grid, level_end, game_end = self.adapter.step(self.key_map[a])
         if level_end:
             self.levels += 1
+            if self.first_level_end is None:
+                self.first_level_end = self.steps
         self.state = "GAME_OVER" if game_end else "NOT_FINISHED"
         self.observation_space = self._raw(grid)
         return self.observation_space
@@ -171,9 +213,10 @@ class _Card:
     environments: list = []
 
 
-def install_arc_shim(make_adapter, seed, key_map, row_offset=1):
-    """Register stand-in arc_agi / arcengine modules.  make_adapter(game) -> FrameEnv.  Returns the
-    list of ShimEnv objects created (for the runner's adapter records)."""
+def install_arc_shim(make_adapter, seed, key_map, row_offset=1, frame_transform=None, levels_cap=None):
+    """Register stand-in arc_agi / arcengine modules.  make_adapter(game) -> FrameEnv.  key_map is a
+    dict {ARC id: adapter action index} or a callable adapter -> such a dict.  Returns the list of
+    ShimEnv objects created (for the runner's adapter records)."""
     made = []
 
     class Arcade:
@@ -184,7 +227,9 @@ def install_arc_shim(make_adapter, seed, key_map, row_offset=1):
             return "shim-card"
 
         def make(self, game, scorecard_id=None, **kw):
-            env = ShimEnv(make_adapter(game), seed, key_map, row_offset)
+            ad = make_adapter(game)
+            km = key_map(ad) if callable(key_map) else key_map
+            env = ShimEnv(ad, seed, km, row_offset, frame_transform, levels_cap, game_id=game)
             made.append(env)
             return env
 

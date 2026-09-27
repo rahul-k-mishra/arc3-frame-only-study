@@ -20,9 +20,10 @@ Suite-B adapter (MiniGrid + BabyAI), docs/PREREG.md v1 Section 3.2.  Runs in .ve
                    Dynamic-Obstacles).  One macro counts as one adapter action; primitive steps are
                    counted separately in the record.  The macro reads env.unwrapped.agent_dir to
                    choose the turns: it is part of the action's definition, not an observation.
-    seeding        env.reset(seed=seed) once; later episodes per the registered episode_seeding
-                   ("unseeded", PREREG v1 as tagged: later resets unseeded; "replay", proposed for
-                   v1.1 in docs/ADAPTER_FEASIBILITY.md).  BABYAI_DONE_ACTIONS must be unset.
+    seeding        episode_seeding "replay" (accepted by RKM 27 Sep 2026, PREREG v1.1 draft; ADAPTER_
+                   FEASIBILITY item 14): episode k is reset with seed seed*100000 + k; k advances only
+                   on a success; restart() (the ARC RESET) replays episode k's layout.  "unseeded"
+                   (PREREG v1 as tagged) is kept for reference.  BABYAI_DONE_ACTIONS must be unset.
     level_end      the episode terminates with reward > 0; the next episode begins at once and its
                    first frame is returned (ARC semantics: a won level is followed by the next)
     game_end       termination with reward <= 0, or truncation; the final frame is returned and the
@@ -51,7 +52,7 @@ PRIM = {n: i for i, n in enumerate(RAW)}                     # minigrid/core/act
 class MinigridAdapter(EF.FrameEnv):
     suite = "minigrid"
 
-    def __init__(self, env_id, condition, episode_seeding="unseeded"):
+    def __init__(self, env_id, condition, episode_seeding="replay"):
         if condition not in ("raw", "macro"):
             raise ValueError(condition)
         if episode_seeding not in ("unseeded", "replay"):
@@ -126,7 +127,8 @@ class MinigridAdapter(EF.FrameEnv):
 
     def step(self, i):
         if self.need_reset:
-            self._new_episode(advance=True)
+            # after a failure: replay keeps episode k (k advances only on success); unseeded moves on
+            self._new_episode(advance=self.episode_seeding == "unseeded")
         label = self.actions[i]
         seq = []
         if self.condition == "macro" and label in DIR:
