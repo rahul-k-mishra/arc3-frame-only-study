@@ -1,0 +1,213 @@
+{
+ "procgen_version": "0.10.7\n",
+ "kwargs": {
+  "num": 1,
+  "use_sequential_levels": true,
+  "num_levels": 0,
+  "start_level": 1000,
+  "rand_seed": 1000,
+  "distribution_mode": "easy",
+  "use_backgrounds": false,
+  "use_monochrome_assets": true
+ },
+ "actions": 400,
+ "action_seed": 1000,
+ "results": [
+  {
+   "game": "bigfish",
+   "steps_compared": 401,
+   "identical_frames": 401,
+   "first_differing_step": null,
+   "verdict": "identical",
+   "episode_starts_seen": [
+    2,
+    2
+   ]
+  },
+  {
+   "game": "bossfight",
+   "steps_compared": 401,
+   "identical_frames": 401,
+   "first_differing_step": null,
+   "verdict": "identical",
+   "episode_starts_seen": [
+    10,
+    10
+   ]
+  },
+  {
+   "game": "caveflyer",
+   "steps_compared": 401,
+   "identical_frames": 0,
+   "first_differing_step": 0,
+   "verdict": "differs",
+   "episode_starts_seen": [
+    0,
+    0
+   ]
+  },
+  {
+   "game": "chaser",
+   "steps_compared": 401,
+   "identical_frames": 401,
+   "first_differing_step": null,
+   "verdict": "identical",
+   "episode_starts_seen": [
+    3,
+    3
+   ]
+  },
+  {
+   "game": "climber",
+   "steps_compared": 401,
+   "identical_frames": 0,
+   "first_differing_step": 0,
+   "verdict": "differs",
+   "episode_starts_seen": [
+    0,
+    0
+   ]
+  },
+  {
+   "game": "coinrun",
+   "steps_compared": 401,
+   "identical_frames": 0,
+   "first_differing_step": 0,
+   "verdict": "differs",
+   "episode_starts_seen": [
+    0,
+    0
+   ]
+  },
+  {
+   "game": "dodgeball",
+   "steps_compared": 401,
+   "identical_frames": 401,
+   "first_differing_step": null,
+   "verdict": "identical",
+   "episode_starts_seen": [
+    15,
+    15
+   ]
+  },
+  {
+   "game": "fruitbot",
+   "steps_compared": 401,
+   "identical_frames": 0,
+   "first_differing_step": 0,
+   "verdict": "differs",
+   "episode_starts_seen": [
+    5,
+    5
+   ]
+  },
+  {
+   "game": "heist",
+   "steps_compared": 401,
+   "identical_frames": 401,
+   "first_differing_step": null,
+   "verdict": "identical",
+   "episode_starts_seen": [
+    0,
+    0
+   ]
+  },
+  {
+   "game": "jumper",
+   "steps_compared": 401,
+   "identical_frames": 0,
+   "first_differing_step": 0,
+   "verdict": "differs",
+   "episode_starts_seen": [
+    2,
+    2
+   ]
+  },
+  {
+   "game": "leaper",
+   "steps_compared": 401,
+   "identical_frames": 401,
+   "first_differing_step": null,
+   "verdict": "identical",
+   "episode_starts_seen": [
+    4,
+    4
+   ]
+  },
+  {
+   "game": "maze",
+   "steps_compared": 401,
+   "identical_frames": 401,
+   "first_differing_step": null,
+   "verdict": "identical",
+   "episode_starts_seen": [
+    0,
+    0
+   ]
+  },
+  {
+   "game": "miner",
+   "steps_compared": 401,
+   "identical_frames": 401,
+   "first_differing_step": null,
+   "verdict": "identical",
+   "episode_starts_seen": [
+    1,
+    1
+   ]
+  },
+  {
+   "game": "ninja",
+   "steps_compared": 401,
+   "identical_frames": 0,
+   "first_differing_step": 0,
+   "verdict": "differs",
+   "episode_starts_seen": [
+    0,
+    0
+   ]
+  },
+  {
+   "game": "plunder",
+   "steps_compared": 401,
+   "identical_frames": 401,
+   "first_differing_step": null,
+   "verdict": "identical",
+   "episode_starts_seen": [
+    1,
+    1
+   ]
+  },
+  {
+   "game": "starpilot",
+   "steps_compared": 401,
+   "identical_frames": 401,
+   "first_differing_step": null,
+   "verdict": "identical",
+   "episode_starts_seen": [
+    4,
+    4
+   ]
+  }
+ ],
+ "identical": [
+  "bigfish",
+  "bossfight",
+  "chaser",
+  "dodgeball",
+  "heist",
+  "leaper",
+  "maze",
+  "miner",
+  "plunder",
+  "starpilot"
+ ],
+ "differs": [
+  "caveflyer",
+  "climber",
+  "coinrun",
+  "fruitbot",
+  "jumper",
+  "ninja"
+ ]
+}
