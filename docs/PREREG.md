@@ -20,6 +20,11 @@ Registered protocol for the method paper "assumption census and goal-identificat
 5. The details of the nuisance baseline B and of the bootstrap (Section 10.2).
 6. The G coverage policy (N's frontier rule) and the feature set F(c) (Section 6).
 
+**Corrected before v1 tag (27 Sep 2026).** Three corrections made by RKM before the tag. They are part of v1 as tagged, not amendments:
+1. **A4 rule (Section 5.3).** The "at least one wall colour learned" clause is dropped. On games whose only blocker is the world boundary no wall colour can be learned, and the truth table gives A4 holds there.
+2. **Suite-level FAIL (Section 10).** Decided by the evidence agents present and non-void: R and I1 together when both are non-void, R alone when I1 is absent or void. Support still requires I1 to pass.
+3. **Suite C power note (Section 10).** Added under V2.
+
 Two facts found while writing this file, recorded rather than resolved:
 - **start_level has no effect when num_levels is 0** (vecgame.cpp:287-289, Section 3.3). The Procgen level sequence is fixed by rand_seed alone.
 - **No ARC truth table exists** for the 8 train games. V1 on ARC (development) is computed only after docs/GROUND_TRUTH_arc_train.md is written from source (W2).
@@ -151,7 +156,7 @@ These rules are applied to NavHook.report() (scripts/g_nav.py:899-915) and imple
 - **A1** holds iff some key's learned shift is not None and the tried keys' shifts are not all equal.
 - **A2** holds iff some key was decided "accepted" (LEARN_AGREE agreeing presses with a 2:1 margin) and counters.avatar_found == 1.
 - **A3** holds iff A2 holds and the level-1 fallback is not "mispredicted" or "localise_failed" (scripts/g_census_table.py:77). Suite B: evaluated separately in the raw and macro conditions.
-- **A4** holds iff A3 holds, at least one wall colour was learned (report.walls non-empty), and counters.wall_contradicted == 0.
+- **A4** holds iff A3 holds and counters.wall_contradicted == 0. (Corrected before v1 tag: the earlier clause "at least one wall colour was learned" is dropped. On games whose only blocker is the world boundary no wall colour can be learned, and the truth table gives A4 holds there.)
 - **A5** holds iff counters.goal_confirmed ≥ 1. It fails iff counters.goal_reached_no_end ≥ 1 and goal_confirmed == 0. It is undetermined otherwise.
 
 **Game verdict:** the seed majority (analyze_common.majority). Holds if at least half the seeds say holds; else fails if at least half say fails; else undetermined. This follows the half-the-seeds convention of scripts/g_census_table.py:146,148.
@@ -526,9 +531,15 @@ One row per (suite, condition, agent, game, seed). Every run file is a JSON list
 - **FAIL** if AUROC ≤ 0.65. Otherwise neither.
 - **Evidence and suite-level failure:**
   - Evidence comes from R and I1. N's rows are reported as an instrument check.
-  - **Suite-level FAIL:** R and I1 are both non-void and both have AUROC ≤ 0.65. If I1 is absent, the suite cannot fail by this rule, and the table says so.
+  - **Suite-level FAIL** is decided by the evidence agents present and non-void (corrected before v1 tag):
+    - if R and I1 are both non-void, both must have AUROC ≤ 0.65;
+    - if only R is non-void (I1 absent or void), R alone decides: the suite FAILs if R's AUROC ≤ 0.65;
+    - with no non-void evidence agent, the suite is not decidable.
+    - Support still requires I1 to pass.
   - ARC held-out: reported, not tested.
 - Suite C is reported on all 14 games and again on the 9 in range. B is tested in the macro condition; the raw condition is reported.
+
+*Power on suite C (recorded before any run).* Suite C has 14 confirmatory games, 9 of them in the operating range. With games as the unit, the bootstrap CI of AUROC over 14 games, let alone 9, is wide. The criterion "CI lower bound > 0.60" is therefore demanding at this size: a suite-C AUROC well above 0.80 can still fail to PASS on the CI alone. This was known before any run, and the thresholds are kept unchanged. A suite-C result that is not a PASS only because of the CI criterion is reported as such, with the interval.
 
 **V3, parameter transfer.** Every census constant and frozen blob hash of Section 5.4 is identical on every suite (checked from the adapter and code fields of every row). Any re-tuning downgrades the claim to "after re-tuning on suite X".
 
@@ -557,10 +568,10 @@ The bootstrap runs on a worker pool (--workers).
 
 **Synthetic tests**, whose expected numbers are computed by hand in each file's docstring:
 - scripts/test_analyze_v1.py (4 tests, including the Section 5.3 census rules);
-- scripts/test_analyze_v2.py (4 tests);
+- scripts/test_analyze_v2.py (5 tests);
 - scripts/test_analyze_g.py (2 tests).
 
-All ten passed on 27 Sep 2026 without reading any runs/ file or playing any game.
+All eleven passed on 27 Sep 2026 (after the pre-tag corrections) without reading any runs/ file or playing any game.
 
 The analysis code is frozen at the tag. The only permitted change is a crash fix, logged in Section 13.
 

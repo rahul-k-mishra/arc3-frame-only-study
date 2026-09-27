@@ -109,7 +109,9 @@ def census_from_report(nav):
         A1 holds iff some key's learned shift is not None and the tried keys' shifts are not all equal
         A2 holds iff some key was decided "accepted" and counters.avatar_found == 1
         A3 holds iff A2 holds and the level-1 fallback is not in MODEL_FAILS
-        A4 holds iff A3 holds, at least one wall colour was learned, and counters.wall_contradicted == 0
+        A4 holds iff A3 holds and counters.wall_contradicted == 0 (corrected before the v1 tag: no
+           learned-wall requirement, because a game whose only blocker is the world boundary has no
+           wall colour to learn and its truth is A4 holds)
         A5 holds iff counters.goal_confirmed >= 1; fails iff counters.goal_reached_no_end >= 1 and
            goal_confirmed == 0; undetermined otherwise"""
     nav = nav or {}
@@ -120,7 +122,7 @@ def census_from_report(nav):
     a1 = any(s is not None for s in shifts) and len(set(shifts)) >= 2
     a2 = any(v.get("decided") == "accepted" for v in learn.values()) and c.get("avatar_found", 0) == 1
     a3 = a2 and (levels[0] or {}).get("fallback") not in MODEL_FAILS
-    a4 = a3 and len(nav.get("walls") or []) >= 1 and c.get("wall_contradicted", 0) == 0
+    a4 = a3 and c.get("wall_contradicted", 0) == 0
     gc, grne = c.get("goal_confirmed", 0), c.get("goal_reached_no_end", 0)
     a5 = HOLDS if gc >= 1 else (FAILS if grne >= 1 else UNDET)
     v = lambda b: HOLDS if b else FAILS  # noqa: E731

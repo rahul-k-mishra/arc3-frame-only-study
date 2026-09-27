@@ -14,7 +14,10 @@ suite (and, for suite C, again over the in-range subset):
     verdict  VOID; PASS if AUROC >= 0.80 and CI low > 0.60 and BA >= 0.80 and AUROC - AUROC_B >= 0.10;
              FAIL if AUROC <= 0.65; otherwise neither
 Evidence agents are R and I1; N's rows are labelled "instrument check" (circular: N uses A1-A5).
-Suite-level FAIL: both R and I1 non-void with AUROC <= 0.65.  ARC held-out rows are reported, not
+Suite-level FAIL, decided by the evidence agents present and non-void (corrected before the v1 tag):
+if R and I1 are both non-void, both must have AUROC <= 0.65; if only R is non-void (I1 absent or
+void), R alone decides; with no non-void evidence agent the suite is not decidable.  Support
+still requires I1 to pass (PREREG.md Section 10).  ARC held-out rows are reported, not
 tested (the script labels suite "arc" as "reported").
 
 Reads no game.  Writes docs/tables/v2.md and docs/tables/v2.json (or --out).
@@ -116,13 +119,16 @@ def v2_rows(rows, truth_by_suite, n_resamples=2000, seed=20260927, workers=8):
             r, i1 = per_agent.get("R"), per_agent.get("I1")
             if suite == "arc":
                 sv = "reported, not tested"
-            elif r and i1 and r["verdict"] != "VOID" and i1["verdict"] != "VOID" \
-                    and r["auroc"] is not None and i1["auroc"] is not None and r["auroc"] <= 0.65 and i1["auroc"] <= 0.65:
-                sv = "suite FAIL"
-            elif i1 is None:
-                sv = "not failed (I1 absent: the suite-level FAIL rule needs both R and I1)"
             else:
-                sv = "not failed"
+                live = [(a, st) for a, st in (("R", r), ("I1", i1))
+                        if st and st["verdict"] != "VOID" and st["auroc"] is not None]
+                by = " and ".join(a for a, _ in live) + (" alone" if len(live) == 1 else "")
+                if not live:
+                    sv = "not decidable (no non-void evidence agent)"
+                elif all(st["auroc"] <= 0.65 for _, st in live):
+                    sv = f"suite FAIL (decided by {by})"
+                else:
+                    sv = f"not failed (decided by {by})"
             suite_lines.append([suite, cond, name, sv])
     return table, suite_lines
 

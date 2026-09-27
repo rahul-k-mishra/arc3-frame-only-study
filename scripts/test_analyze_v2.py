@@ -21,18 +21,25 @@ BA = 0.75.
 Test 1, constant nuisance features (grid 64x64, 15 actions, 10 colours on every game): no feature
 varies, B predicts the base rate for every game, AUROC_B = 0.5.  Verdict: AUROC >= 0.80 but BA < 0.80,
 so not PASS; AUROC > 0.65, so not FAIL: "neither".  Agent N (same outcomes) has role
-"instrument check".  I1 is absent, so the suite line says "not failed (I1 absent ...)".
-In-range subset: maze only, 0 of 1 positive, share 0 < 0.10: VOID.
+"instrument check".  I1 is absent, so R alone decides the suite line: R is non-void with AUROC
+0.90625 > 0.65, so "not failed (decided by R alone)".
+In-range subset: maze only, 0 of 1 positive, share 0 < 0.10: VOID; no non-void evidence agent, so the
+suite line is "not decidable".
 Test 2, grid area varies: grid [x, 1] with x = 8 7 6 5 4 3 2 1 in the game order.  B is a one-feature
 logistic regression, increasing in x (x and Y are positively associated), so AUROC_B = AUROC(x):
 positives x = 8,7,6,4, negatives x = 5,3,2,1; 8, 7, 6 beat all four (12), 4 beats 3,2,1 (3): 15/16 =
 0.9375.
 Test 3, every game completed: share 1.0 > 0.90: VOID.
 Test 4, the bootstrap is deterministic for a fixed seed and 0 <= low <= high <= 1.
+Test 5, R alone decides a suite-level FAIL (corrected before the v1 tag).  Every game's census is
+h h h h h, so S = 5 on all 8 games and P is true on all 8.  Outcomes as above (4 of 8 positive, not
+void).  Every positive-negative pair ties, so AUROC = 16 x 0.5 / 16 = 0.5 <= 0.65: R's verdict is
+FAIL.  BA: TPR 4/4 = 1, TNR 0/4 = 0, BA = 0.5.  B is constant, AUROC_B = 0.5.  I1 is absent and R is
+non-void, so R alone decides: "suite FAIL (decided by R alone)".
 
 Command (PowerShell, from D:\\Research\\arc3\\repo):
     D:\\Research\\arc3\\brutus\\.venv\\Scripts\\python.exe scripts\\test_analyze_v2.py
-Expected: "Ran 4 tests ... OK".
+Expected: "Ran 5 tests ... OK".
 """
 from __future__ import annotations
 
@@ -58,7 +65,7 @@ DONE = [[1, 1], [1, 0], [1, 1, 0], [0, 0, 1], [1], [0], [0, 0], [0]]
 W = {"h": "holds", "f": "fails", "u": "undetermined"}
 
 
-def build(tmp, grids=None, done=None):
+def build(tmp, grids=None, done=None, census=None):
     lines = ["| game | A1 | A2 | A3 | A4 | A5 | p | a | n | status |", "|---|---|---|---|---|---|---|---|---|---|"]
     for g in GAMES:
         lines.append(f"| {g} | holds | holds | holds | holds | holds | p | a | n | confirmatory |")
@@ -67,7 +74,7 @@ def build(tmp, grids=None, done=None):
     rows = []
     for i, g in enumerate(GAMES):
         rows.append(dict(game=g, agent="N", mode="nav", suite="procgen", condition="center_off", seed=1000,
-                         census={a: W[c] for a, c in zip(C.ASSUMPTIONS, CENSUS[i])},
+                         census={a: W[c] for a, c in zip(C.ASSUMPTIONS, (census or CENSUS)[i])},
                          level1_completed=bool((done or DONE)[i][0]),
                          adapter=dict(grid=[64, 64], action_list=list(range(15)), n_colours=10)))
         for k, d in enumerate((done or DONE)[i]):
@@ -98,7 +105,9 @@ class T(unittest.TestCase):
             self.assertEqual(n[4], "instrument check")
             ir = [x for x in table if x[2] == "in_range" and x[3] == "R"][0]
             self.assertEqual((ir[5], ir[6], ir[12]), (1, 0, "VOID"))
-            self.assertTrue(any("I1 absent" in s[3] for s in suite_lines))
+            lines = {s[2]: s[3] for s in suite_lines}
+            self.assertEqual(lines["all"], "not failed (decided by R alone)")
+            self.assertEqual(lines["in_range"], "not decidable (no non-void evidence agent)")
 
     def test_varying_grid(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -115,6 +124,18 @@ class T(unittest.TestCase):
             table, _ = run(tmp)
             r = [x for x in table if x[2] == "all" and x[3] == "R"][0]
             self.assertEqual(r[12], "VOID")
+
+    def test_r_alone_fail(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            build(tmp, census=["hhhhh"] * 8)
+            table, suite_lines = run(tmp)
+            r = [x for x in table if x[2] == "all" and x[3] == "R"][0]
+            self.assertAlmostEqual(r[7], 0.5)
+            self.assertAlmostEqual(r[10], 0.5)
+            self.assertAlmostEqual(r[11], 0.5)
+            self.assertEqual(r[12], "FAIL")
+            lines = {s[2]: s[3] for s in suite_lines}
+            self.assertEqual(lines["all"], "suite FAIL (decided by R alone)")
 
     def test_bootstrap(self):
         s = [5, 5, 4, 4, 3, 2, 1, 1]

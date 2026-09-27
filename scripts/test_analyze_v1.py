@@ -104,7 +104,10 @@ class T(unittest.TestCase):
         Report 2: one key with shift None, decided no_move, avatar_found 0, goal_reached_no_end 2:
             A1 fails (no shift), A2 fails, A3 fails, A4 fails, A5 fails (reached without end, never confirmed).
         Report 3 = report 1 with fallback "mispredicted", walls [] and no goal counters:
-            A1 holds, A2 holds, A3 fails, A4 fails, A5 undetermined.
+            A1 holds, A2 holds, A3 fails, A4 fails (because A3 fails), A5 undetermined.
+        Report 4 = report 1 with walls [] (no wall colour learned), wall_contradicted 0:
+            A3 holds, so A4 holds (the rule has no learned-wall clause, corrected before the v1 tag:
+            a game whose only blocker is the world boundary has no wall colour to learn).
         ARC row (mode nav, levels 2, nav = report 1): normalised to suite arc, condition native,
         agent N, level1_completed True, census as report 1."""
         r1 = dict(learn={"1": dict(shift=[0, -6], decided="accepted"), "2": dict(shift=[0, 6], decided="-")},
@@ -117,6 +120,8 @@ class T(unittest.TestCase):
         self.assertEqual(C.census_from_report(r1), dict(A1=h, A2=h, A3=h, A4=h, A5=h))
         self.assertEqual(C.census_from_report(r2), dict(A1=f, A2=f, A3=f, A4=f, A5=f))
         self.assertEqual(C.census_from_report(r3), dict(A1=h, A2=h, A3=f, A4=f, A5=u))
+        r4 = dict(r1, walls=[])
+        self.assertEqual(C.census_from_report(r4), dict(A1=h, A2=h, A3=h, A4=h, A5=h))
         n = C.normalise(dict(game="tu93", mode="nav", seed=1000, levels=2, nav=r1))
         self.assertEqual((n["suite"], n["condition"], n["agent"], n["level1_completed"]), ("arc", "native", "N", True))
         self.assertEqual(n["census"], dict(A1=h, A2=h, A3=h, A4=h, A5=h))
