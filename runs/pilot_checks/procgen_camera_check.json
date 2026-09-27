@@ -1,5 +1,5 @@
 {
- "procgen_version": "0.10.7\n",
+ "procgen_version": "0.10.7",
  "kwargs": {
   "num": 1,
   "use_sequential_levels": true,

@@ -34,7 +34,7 @@ from collections import defaultdict
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
-TIMING_RE = re.compile(r"(second|_time|time_|^time$|wall|elapsed|started|finished|timestamp|date|host|pid|duration|\bsec\b)", re.I)
+TIMING_RE = re.compile(r"(seconds|sec_per|elapsed|timestamp|started_at|finished_at|wall_time|wallclock|duration|hostname)", re.I)
 SPS_RE = re.compile(r"(steps_per|per_second|per_sec|\bsps\b|step_rate|steps/s)", re.I)
 
 
@@ -181,9 +181,12 @@ def main():
             short.append((r["path"], a))
     for key in sorted(inv, key=lambda t: tuple(str(x) for x in t)):
         print(f"  {key[0]:9s} {key[1]:11s} {key[2]:11s} rows {inv[key]}")
-    print(f"  rows with an error: {len(errors)}")
-    for p, e in errors[:20]:
-        print(f"    {p}: {e}")
+    if k_error is None:
+        print("  no error field in the rows; errors are reported on the runner's console, and a failed job leaves no row, so the row counts above are the check")
+    else:
+        print(f"  rows with an error: {len(errors)}")
+        for p, e in errors[:20]:
+            print(f"    {p}: {e}")
     print(f"  rows with {k_actions} < {args.budget}: {len(short)}")
     for p, a in short[:20]:
         print(f"    {p}: {a}")

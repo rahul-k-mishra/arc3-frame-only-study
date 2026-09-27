@@ -69,7 +69,7 @@ def main():
     args = ap.parse_args()
     try:
         import procgen
-        version = getattr(procgen, "__version__", "unknown")
+        version = str(getattr(procgen, "__version__", "unknown")).strip()
     except Exception as e:
         print(f"procgen import failed: {e}")
         sys.exit(1)

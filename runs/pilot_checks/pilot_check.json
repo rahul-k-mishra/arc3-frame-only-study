@@ -13,15 +13,12 @@
   "error": null,
   "timing_dropped": [
    "agent_seconds",
-   "diag.state_NOT_FINISHED",
+   "env_sec_per_action",
    "game_seconds",
-   "nav.counters.eff_updated",
-   "nav.counters.wall_contradicted",
-   "nav.walls",
    "play_seconds",
+   "sec_per_action",
    "seconds",
-   "seconds_cap",
-   "time_truncated"
+   "seconds_cap"
   ],
   "top_level_keys": [
    "actions",
@@ -106,10 +103,8 @@
       "diag.their_prints.Error",
       "diag.their_prints.Lowest dist",
       "diag.their_prints.Suspicious transition",
-      "env_sec_per_action",
       "level1_actions",
-      "level_log",
-      "sec_per_action"
+      "level_log"
      ],
      "differ_in_some_pairs": [
       "diag.graph_resets",
@@ -146,12 +141,10 @@
         "diag.their_prints.Here we are",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -179,12 +172,10 @@
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -210,10 +201,8 @@
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
-        "level_log",
-        "sec_per_action"
+        "level_log"
        ]
       },
       {
@@ -241,12 +230,10 @@
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -275,12 +262,10 @@
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Node",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -309,12 +294,10 @@
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Node",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -342,12 +325,10 @@
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -375,12 +356,10 @@
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -408,12 +387,10 @@
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -442,12 +419,10 @@
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Node",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       }
      ]
@@ -473,6 +448,7 @@
       "diag.nav_steps",
       "diag.new_state",
       "diag.state_GAME_OVER",
+      "diag.state_NOT_FINISHED",
       "level1_actions",
       "level_log",
       "levels",
@@ -512,6 +488,7 @@
       "nav.learn.4.presses",
       "nav.learn.4.shift",
       "nav.levels",
+      "nav.walls",
       "states_seen"
      ],
      "differ_in_some_pairs": [
@@ -530,12 +507,14 @@
       "nav.counters.avatar_ambiguous",
       "nav.counters.avatar_found",
       "nav.counters.displaced",
+      "nav.counters.eff_updated",
       "nav.counters.fallback_localise_failed",
       "nav.counters.fallback_no_avatar",
       "nav.counters.goal_confirmed",
       "nav.counters.located_by_colour",
       "nav.counters.pos_corrected",
       "nav.counters.unblocked_expired",
+      "nav.counters.wall_contradicted",
       "nav.deadly",
       "nav.eff.1",
       "nav.eff.2",
@@ -570,6 +549,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -602,6 +582,7 @@
         "nav.counters.unblocked_changed",
         "nav.counters.unblocked_expired",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.deadly",
         "nav.eff.1",
         "nav.eff.2",
@@ -628,6 +609,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -652,6 +634,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -663,6 +646,7 @@
         "nav.co_movers.9",
         "nav.counters.deaths",
         "nav.counters.displaced",
+        "nav.counters.eff_updated",
         "nav.counters.fallback_frontier_exhausted",
         "nav.counters.fallback_localise_failed",
         "nav.counters.fallback_mispredicted",
@@ -684,6 +668,7 @@
         "nav.counters.step_ok",
         "nav.counters.unblocked_changed",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.eff.1",
         "nav.eff.2",
         "nav.eff.3",
@@ -704,6 +689,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -728,6 +714,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -783,6 +770,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -806,6 +794,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -839,6 +828,7 @@
         "nav.counters.step_ok",
         "nav.counters.unblocked_changed",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.deadly",
         "nav.eff.1",
         "nav.eff.3",
@@ -861,6 +851,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -885,6 +876,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -919,6 +911,7 @@
         "nav.counters.step_ok",
         "nav.counters.unblocked_changed",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.deadly",
         "nav.eff.1",
         "nav.eff.2",
@@ -940,6 +933,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "state",
         "states_seen"
        ]
@@ -967,6 +961,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -1021,6 +1016,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -1047,6 +1043,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -1101,6 +1098,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -1125,6 +1123,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -1178,6 +1177,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -1204,6 +1204,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -1260,6 +1261,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -1284,6 +1286,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -1317,6 +1320,7 @@
         "nav.counters.step_ok",
         "nav.counters.unblocked_changed",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.deadly",
         "nav.eff.2",
         "nav.eff.3",
@@ -1337,6 +1341,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       }
@@ -1362,6 +1367,7 @@
       "diag.key_changed",
       "diag.new_state",
       "diag.state_GAME_OVER",
+      "diag.state_NOT_FINISHED",
       "level1_actions",
       "level_log",
       "levels",
@@ -1389,6 +1395,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -1413,6 +1420,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -1437,6 +1445,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -1461,6 +1470,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -1486,6 +1496,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -1510,6 +1521,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -1534,6 +1546,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -1558,6 +1571,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -1582,6 +1596,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -1606,6 +1621,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -1617,7 +1633,7 @@
     "MiniGrid-DoorKey-8x8-v0 | I1": {
      "pairs": 10,
      "identical": 0,
-     "same_apart_from_every_pair_keys": 0,
+     "same_apart_from_every_pair_keys": 1,
      "differ_in_every_pair": [
       "adapter.action_list",
       "adapter.condition",
@@ -1634,15 +1650,13 @@
       "diag.issued_by_id.4",
       "diag.issued_by_id.5",
       "diag.their_prints.Error",
-      "diag.their_prints.Lowest dist",
-      "env_sec_per_action"
+      "diag.their_prints.Lowest dist"
      ],
      "differ_in_some_pairs": [
       "diag.issued_by_id.0",
       "diag.resets",
       "diag.their_prints.Node",
-      "diag.their_prints.Suspicious transition",
-      "sec_per_action"
+      "diag.their_prints.Suspicious transition"
      ],
      "per_seed": [
       {
@@ -1667,9 +1681,7 @@
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Node",
-        "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "diag.their_prints.Suspicious transition"
        ]
       },
       {
@@ -1694,9 +1706,7 @@
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Node",
-        "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "diag.their_prints.Suspicious transition"
        ]
       },
       {
@@ -1721,9 +1731,7 @@
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Node",
-        "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "diag.their_prints.Suspicious transition"
        ]
       },
       {
@@ -1745,8 +1753,7 @@
         "diag.issued_by_id.5",
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
-        "diag.their_prints.Suspicious transition",
-        "env_sec_per_action"
+        "diag.their_prints.Suspicious transition"
        ]
       },
       {
@@ -1771,9 +1778,7 @@
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Node",
-        "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "diag.their_prints.Suspicious transition"
        ]
       },
       {
@@ -1798,9 +1803,7 @@
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Node",
-        "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "diag.their_prints.Suspicious transition"
        ]
       },
       {
@@ -1821,9 +1824,7 @@
         "diag.issued_by_id.4",
         "diag.issued_by_id.5",
         "diag.their_prints.Error",
-        "diag.their_prints.Lowest dist",
-        "env_sec_per_action",
-        "sec_per_action"
+        "diag.their_prints.Lowest dist"
        ]
       },
       {
@@ -1848,9 +1849,7 @@
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Node",
-        "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "diag.their_prints.Suspicious transition"
        ]
       },
       {
@@ -1875,9 +1874,7 @@
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Node",
-        "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "diag.their_prints.Suspicious transition"
        ]
       },
       {
@@ -1902,9 +1899,7 @@
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Node",
-        "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "diag.their_prints.Suspicious transition"
        ]
       }
      ]
@@ -1942,6 +1937,7 @@
       "census.A5",
       "diag.nav_steps",
       "diag.state_GAME_OVER",
+      "diag.state_NOT_FINISHED",
       "nav.avoid_near",
       "nav.co_movers.2",
       "nav.co_movers.3",
@@ -1953,6 +1949,7 @@
       "nav.counters.avatar_found",
       "nav.counters.deaths",
       "nav.counters.displaced",
+      "nav.counters.eff_updated",
       "nav.counters.fallback_frontier_exhausted",
       "nav.counters.fallback_localise_failed",
       "nav.counters.fallback_mispredicted",
@@ -1974,6 +1971,7 @@
       "nav.counters.unblocked_changed",
       "nav.counters.unblocked_expired",
       "nav.counters.waits",
+      "nav.counters.wall_contradicted",
       "nav.deadly",
       "nav.eff.1",
       "nav.eff.2",
@@ -1998,7 +1996,8 @@
       "nav.learn.4.agree",
       "nav.learn.4.decided",
       "nav.learn.4.presses",
-      "nav.learn.4.shift"
+      "nav.learn.4.shift",
+      "nav.walls"
      ],
      "per_seed": [
       {
@@ -2021,6 +2020,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -2032,6 +2032,7 @@
         "nav.counters.avatar_ambiguous",
         "nav.counters.deaths",
         "nav.counters.displaced",
+        "nav.counters.eff_updated",
         "nav.counters.fallback_frontier_exhausted",
         "nav.counters.fallback_localise_failed",
         "nav.counters.frontier_exhausted",
@@ -2050,6 +2051,7 @@
         "nav.counters.unblocked_changed",
         "nav.counters.unblocked_expired",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.eff.1",
         "nav.eff.2",
         "nav.eff.3",
@@ -2071,6 +2073,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -2096,6 +2099,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -2125,6 +2129,7 @@
         "nav.counters.step_ok",
         "nav.counters.unblocked_changed",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.deadly",
         "nav.eff.1",
         "nav.eff.2",
@@ -2150,6 +2155,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -2171,6 +2177,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -2200,6 +2207,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -2256,6 +2264,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -2280,6 +2289,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -2335,6 +2345,7 @@
         "nav.learn.4.decided",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -2362,6 +2373,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -2409,6 +2421,7 @@
         "nav.learn.2.presses",
         "nav.learn.2.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -2461,6 +2474,7 @@
         "nav.counters.unblocked_changed",
         "nav.counters.unblocked_expired",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.eff.1",
         "nav.eff.2",
         "nav.eff.3",
@@ -2483,6 +2497,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -2509,6 +2524,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -2561,6 +2577,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -2585,6 +2602,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -2617,6 +2635,7 @@
         "nav.counters.unblocked_changed",
         "nav.counters.unblocked_expired",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.deadly",
         "nav.eff.1",
         "nav.eff.2",
@@ -2642,6 +2661,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -2669,6 +2689,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -2714,6 +2735,7 @@
         "nav.learn.2.presses",
         "nav.learn.2.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       }
@@ -2744,7 +2766,8 @@
       "states_seen"
      ],
      "differ_in_some_pairs": [
-      "diag.state_GAME_OVER"
+      "diag.state_GAME_OVER",
+      "diag.state_NOT_FINISHED"
      ],
      "per_seed": [
       {
@@ -2765,6 +2788,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -2789,6 +2813,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -2813,6 +2838,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -2837,6 +2863,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -2861,6 +2888,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -2885,6 +2913,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -2909,6 +2938,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -2933,6 +2963,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -2980,6 +3011,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -3013,12 +3045,10 @@
       "diag.their_prints.Error",
       "diag.their_prints.Lowest dist",
       "diag.their_prints.Suspicious transition",
-      "env_sec_per_action",
       "level1_actions",
       "level_log",
       "levels",
-      "levels_true",
-      "sec_per_action"
+      "levels_true"
      ],
      "differ_in_some_pairs": [
       "diag.their_prints.Here we are",
@@ -3052,13 +3082,11 @@
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Node",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level1_completed",
         "level_log",
         "levels",
         "levels_true",
-        "sec_per_action",
         "state"
        ]
       },
@@ -3086,12 +3114,10 @@
         "diag.their_prints.Here we are",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
         "levels_true",
-        "sec_per_action",
         "state"
        ]
       },
@@ -3120,12 +3146,10 @@
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Node",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
         "levels_true",
-        "sec_per_action",
         "state"
        ]
       },
@@ -3153,12 +3177,10 @@
         "diag.their_prints.Here we are",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -3185,13 +3207,11 @@
         "diag.their_prints.Here we are",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level1_completed",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -3218,12 +3238,10 @@
         "diag.their_prints.Here we are",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -3251,12 +3269,10 @@
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Node",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
         "levels_true",
-        "sec_per_action",
         "state"
        ]
       },
@@ -3285,12 +3301,10 @@
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Node",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -3316,13 +3330,11 @@
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level1_completed",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -3350,13 +3362,11 @@
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Node",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level1_completed",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       }
      ]
@@ -3380,6 +3390,7 @@
       "diag.key_changed",
       "diag.nav_steps",
       "diag.state_GAME_OVER",
+      "diag.state_NOT_FINISHED",
       "level_log",
       "nav.avoid_near",
       "nav.co_movers.2",
@@ -3390,12 +3401,14 @@
       "nav.counters.obs_mispredict",
       "nav.counters.obs_ok",
       "nav.counters.replans",
+      "nav.counters.wall_contradicted",
       "nav.deadly",
       "nav.learn.4.agree",
       "nav.learn.4.decided",
       "nav.learn.4.presses",
       "nav.learn.4.shift",
-      "nav.levels"
+      "nav.levels",
+      "nav.walls"
      ],
      "differ_in_some_pairs": [
       "census.A1",
@@ -3411,6 +3424,7 @@
       "nav.co_movers.8",
       "nav.counters.avatar_ambiguous",
       "nav.counters.displaced",
+      "nav.counters.eff_updated",
       "nav.counters.fallback_frontier_exhausted",
       "nav.counters.fallback_localise_failed",
       "nav.counters.fallback_mispredicted",
@@ -3465,6 +3479,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "nav.avoid_near",
@@ -3475,12 +3490,14 @@
         "nav.co_movers.8",
         "nav.counters.avatar_ambiguous",
         "nav.counters.deaths",
+        "nav.counters.eff_updated",
         "nav.counters.learn_presses",
         "nav.counters.obs_bumped",
         "nav.counters.obs_mispredict",
         "nav.counters.obs_ok",
         "nav.counters.replans",
         "nav.counters.step_bumped",
+        "nav.counters.wall_contradicted",
         "nav.deadly",
         "nav.eff.1",
         "nav.eff.2",
@@ -3502,6 +3519,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -3523,6 +3541,7 @@
         "diag.key_changed",
         "diag.nav_steps",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level1_completed",
         "level_log",
@@ -3545,6 +3564,7 @@
         "nav.counters.step_bumped",
         "nav.counters.unblocked_changed",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.deadly",
         "nav.eff.2",
         "nav.eff.3",
@@ -3562,6 +3582,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -3584,6 +3605,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level1_completed",
         "level_log",
@@ -3596,6 +3618,7 @@
         "nav.co_movers.8",
         "nav.counters.avatar_ambiguous",
         "nav.counters.deaths",
+        "nav.counters.eff_updated",
         "nav.counters.fallback_frontier_exhausted",
         "nav.counters.frontier_exhausted",
         "nav.counters.goal_recorded",
@@ -3609,6 +3632,7 @@
         "nav.counters.step_ok",
         "nav.counters.unblocked_changed",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.deadly",
         "nav.eff.1",
         "nav.eff.2",
@@ -3629,6 +3653,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -3652,6 +3677,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -3664,6 +3690,7 @@
         "nav.counters.avatar_ambiguous",
         "nav.counters.deaths",
         "nav.counters.displaced",
+        "nav.counters.eff_updated",
         "nav.counters.fallback_frontier_exhausted",
         "nav.counters.fallback_localise_failed",
         "nav.counters.frontier_exhausted",
@@ -3676,6 +3703,7 @@
         "nav.counters.step_bumped",
         "nav.counters.step_mispredict",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.deadly",
         "nav.eff.1",
         "nav.eff.2",
@@ -3697,6 +3725,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -3720,6 +3749,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level1_completed",
         "level_log",
@@ -3731,6 +3761,7 @@
         "nav.co_movers.8",
         "nav.counters.avatar_ambiguous",
         "nav.counters.deaths",
+        "nav.counters.eff_updated",
         "nav.counters.fallback_frontier_exhausted",
         "nav.counters.fallback_mispredicted",
         "nav.counters.frontier_exhausted",
@@ -3746,6 +3777,7 @@
         "nav.counters.step_ok",
         "nav.counters.unblocked_changed",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.deadly",
         "nav.eff.1",
         "nav.eff.2",
@@ -3765,7 +3797,8 @@
         "nav.learn.4.decided",
         "nav.learn.4.presses",
         "nav.learn.4.shift",
-        "nav.levels"
+        "nav.levels",
+        "nav.walls"
        ]
       },
       {
@@ -3787,6 +3820,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level_log",
         "nav.avoid_near",
         "nav.co_movers.2",
@@ -3803,6 +3837,7 @@
         "nav.counters.step_mispredict",
         "nav.counters.unblocked_changed",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.deadly",
         "nav.eff.1",
         "nav.eff.3",
@@ -3820,6 +3855,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -3842,6 +3878,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level1_completed",
         "level_log",
@@ -3853,6 +3890,7 @@
         "nav.counters.avatar_ambiguous",
         "nav.counters.deaths",
         "nav.counters.displaced",
+        "nav.counters.eff_updated",
         "nav.counters.fallback_frontier_exhausted",
         "nav.counters.frontier_exhausted",
         "nav.counters.goal_recorded",
@@ -3866,6 +3904,7 @@
         "nav.counters.step_bumped",
         "nav.counters.step_mispredict",
         "nav.counters.step_ok",
+        "nav.counters.wall_contradicted",
         "nav.deadly",
         "nav.eff.2",
         "nav.eff.3",
@@ -3887,6 +3926,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -3910,6 +3950,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -3920,6 +3961,7 @@
         "nav.co_movers.8",
         "nav.counters.avatar_ambiguous",
         "nav.counters.deaths",
+        "nav.counters.eff_updated",
         "nav.counters.fallback_frontier_exhausted",
         "nav.counters.fallback_mispredicted",
         "nav.counters.frontier_exhausted",
@@ -3937,6 +3979,7 @@
         "nav.counters.step_ok",
         "nav.counters.unblocked_changed",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.deadly",
         "nav.eff.1",
         "nav.eff.2",
@@ -3957,6 +4000,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "state",
         "states_seen"
        ]
@@ -3980,6 +4024,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level1_completed",
         "level_log",
@@ -4007,6 +4052,7 @@
         "nav.counters.step_ok",
         "nav.counters.unblocked_changed",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.deadly",
         "nav.eff.3",
         "nav.goal_hyps",
@@ -4026,6 +4072,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "state",
         "states_seen"
        ]
@@ -4049,6 +4096,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level_log",
         "nav.avoid_near",
         "nav.co_movers.2",
@@ -4063,6 +4111,7 @@
         "nav.counters.replans",
         "nav.counters.step_bumped",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.deadly",
         "nav.eff.1",
         "nav.eff.2",
@@ -4078,7 +4127,8 @@
         "nav.learn.4.decided",
         "nav.learn.4.presses",
         "nav.learn.4.shift",
-        "nav.levels"
+        "nav.levels",
+        "nav.walls"
        ]
       }
      ]
@@ -4101,6 +4151,7 @@
       "diag.key",
       "diag.key_changed",
       "diag.state_GAME_OVER",
+      "diag.state_NOT_FINISHED",
       "level_log"
      ],
      "differ_in_some_pairs": [
@@ -4129,6 +4180,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -4151,6 +4203,7 @@
         "diag.key",
         "diag.key_changed",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level1_completed",
         "level_log",
@@ -4175,6 +4228,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level1_completed",
         "level_log",
@@ -4200,6 +4254,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level1_completed",
         "level_log",
@@ -4224,6 +4279,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level1_completed",
         "level_log",
@@ -4247,6 +4303,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level1_completed",
         "level_log",
@@ -4271,6 +4328,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level_log",
         "states_seen"
        ]
@@ -4292,6 +4350,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -4316,6 +4375,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level1_completed",
         "level_log",
@@ -4341,6 +4401,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level_log"
        ]
       }
@@ -4373,12 +4434,10 @@
       "diag.their_prints.Error",
       "diag.their_prints.Lowest dist",
       "diag.their_prints.Suspicious transition",
-      "env_sec_per_action",
       "level1_actions",
       "level_log",
       "levels",
-      "levels_true",
-      "sec_per_action"
+      "levels_true"
      ],
      "differ_in_some_pairs": [
       "diag.their_prints.Node",
@@ -4410,12 +4469,10 @@
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -4444,12 +4501,10 @@
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Node",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -4478,12 +4533,10 @@
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Node",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -4512,12 +4565,10 @@
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Node",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -4545,12 +4596,10 @@
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -4579,12 +4628,10 @@
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Node",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -4613,12 +4660,10 @@
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Node",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -4647,12 +4692,10 @@
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Node",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -4680,12 +4723,10 @@
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -4713,12 +4754,10 @@
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
         "levels_true",
-        "sec_per_action",
         "state"
        ]
       }
@@ -4749,6 +4788,7 @@
       "diag.nav_steps",
       "diag.new_state",
       "diag.state_GAME_OVER",
+      "diag.state_NOT_FINISHED",
       "level1_actions",
       "level_log",
       "levels",
@@ -4798,6 +4838,7 @@
       "nav.learn.4.presses",
       "nav.learn.4.shift",
       "nav.levels",
+      "nav.walls",
       "states_seen"
      ],
      "differ_in_some_pairs": [],
@@ -4825,6 +4866,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -4874,6 +4916,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -4900,6 +4943,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -4949,6 +4993,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -4975,6 +5020,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -5024,6 +5070,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -5050,6 +5097,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -5099,6 +5147,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -5125,6 +5174,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -5174,6 +5224,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -5200,6 +5251,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -5249,6 +5301,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -5275,6 +5328,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -5324,6 +5378,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -5350,6 +5405,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -5399,6 +5455,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -5425,6 +5482,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -5474,6 +5532,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -5500,6 +5559,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -5549,6 +5609,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       }
@@ -5573,6 +5634,7 @@
       "diag.key",
       "diag.key_changed",
       "diag.state_GAME_OVER",
+      "diag.state_NOT_FINISHED",
       "level1_actions",
       "level_log",
       "levels",
@@ -5600,6 +5662,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -5624,6 +5687,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -5648,6 +5712,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -5672,6 +5737,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -5696,6 +5762,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -5720,6 +5787,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -5744,6 +5812,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -5767,6 +5836,7 @@
         "diag.key",
         "diag.key_changed",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -5791,6 +5861,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -5815,6 +5886,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -5848,10 +5920,8 @@
       "diag.their_prints.Error",
       "diag.their_prints.Lowest dist",
       "diag.their_prints.Suspicious transition",
-      "env_sec_per_action",
       "level1_actions",
-      "level_log",
-      "sec_per_action"
+      "level_log"
      ],
      "differ_in_some_pairs": [
       "diag.graph_resets",
@@ -5886,12 +5956,10 @@
         "diag.their_prints.Here we are",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -5918,12 +5986,10 @@
         "diag.their_prints.Here we are",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -5950,12 +6016,10 @@
         "diag.their_prints.Here we are",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -5982,12 +6046,10 @@
         "diag.their_prints.Here we are",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
         "levels_true",
-        "sec_per_action",
         "state"
        ]
       },
@@ -6017,12 +6079,10 @@
         "diag.their_prints.Here we are",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -6049,12 +6109,10 @@
         "diag.their_prints.Here we are",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -6082,12 +6140,10 @@
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -6114,10 +6170,8 @@
         "diag.their_prints.Here we are",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
-        "level_log",
-        "sec_per_action"
+        "level_log"
        ]
       },
       {
@@ -6144,12 +6198,10 @@
         "diag.their_prints.Here we are",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -6175,12 +6227,10 @@
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
         "levels",
         "levels_true",
-        "sec_per_action",
         "state"
        ]
       }
@@ -6206,6 +6256,7 @@
       "diag.key_changed",
       "diag.new_state",
       "diag.state_GAME_OVER",
+      "diag.state_NOT_FINISHED",
       "level1_actions",
       "level_log",
       "levels",
@@ -6284,7 +6335,8 @@
       "nav.learn.4.shift",
       "nav.learn.5.agree",
       "nav.learn.5.presses",
-      "nav.learn.5.shift"
+      "nav.learn.5.shift",
+      "nav.walls"
      ],
      "per_seed": [
       {
@@ -6311,6 +6363,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -6368,6 +6421,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -6391,6 +6445,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -6446,6 +6501,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -6472,6 +6528,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -6531,6 +6588,7 @@
         "nav.learn.5.presses",
         "nav.learn.5.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -6557,6 +6615,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -6611,6 +6670,7 @@
         "nav.learn.5.presses",
         "nav.learn.5.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -6632,6 +6692,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -6665,6 +6726,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -6722,6 +6784,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -6748,6 +6811,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -6807,6 +6871,7 @@
         "nav.learn.5.presses",
         "nav.learn.5.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -6833,6 +6898,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -6888,6 +6954,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -6914,6 +6981,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -6969,6 +7037,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -6995,6 +7064,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -7049,6 +7119,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       }
@@ -7074,6 +7145,7 @@
       "diag.key_changed",
       "diag.new_state",
       "diag.state_GAME_OVER",
+      "diag.state_NOT_FINISHED",
       "level1_actions",
       "level_log",
       "levels",
@@ -7101,6 +7173,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -7126,6 +7199,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -7150,6 +7224,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -7175,6 +7250,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -7199,6 +7275,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -7223,6 +7300,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -7247,6 +7325,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -7271,6 +7350,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -7295,6 +7375,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -7319,6 +7400,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -7350,9 +7432,7 @@
       "diag.resets",
       "diag.their_prints.Error",
       "diag.their_prints.Lowest dist",
-      "diag.their_prints.Suspicious transition",
-      "env_sec_per_action",
-      "sec_per_action"
+      "diag.their_prints.Suspicious transition"
      ],
      "differ_in_some_pairs": [
       "diag.graph_resets",
@@ -7388,9 +7468,7 @@
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level_log",
-        "sec_per_action",
         "state"
        ]
       },
@@ -7417,10 +7495,8 @@
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
-        "level_log",
-        "sec_per_action"
+        "level_log"
        ]
       },
       {
@@ -7448,13 +7524,11 @@
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level1_completed",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -7478,9 +7552,7 @@
         "diag.resets",
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
-        "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "diag.their_prints.Suspicious transition"
        ]
       },
       {
@@ -7504,9 +7576,7 @@
         "diag.resets",
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
-        "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "diag.their_prints.Suspicious transition"
        ]
       },
       {
@@ -7530,9 +7600,7 @@
         "diag.resets",
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
-        "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "diag.their_prints.Suspicious transition"
        ]
       },
       {
@@ -7558,10 +7626,8 @@
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level_log",
-        "sec_per_action",
         "state"
        ]
       },
@@ -7586,9 +7652,7 @@
         "diag.resets",
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
-        "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "diag.their_prints.Suspicious transition"
        ]
       },
       {
@@ -7612,9 +7676,7 @@
         "diag.resets",
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
-        "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "diag.their_prints.Suspicious transition"
        ]
       },
       {
@@ -7638,9 +7700,7 @@
         "diag.resets",
         "diag.their_prints.Error",
         "diag.their_prints.Lowest dist",
-        "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "diag.their_prints.Suspicious transition"
        ]
       }
      ]
@@ -7666,6 +7726,7 @@
       "diag.nav_steps",
       "diag.new_state",
       "diag.state_GAME_OVER",
+      "diag.state_NOT_FINISHED",
       "level1_actions",
       "level_log",
       "nav.avoid_near",
@@ -7717,11 +7778,13 @@
       "nav.co_movers.7",
       "nav.counters.avatar_found",
       "nav.counters.displaced",
+      "nav.counters.eff_updated",
       "nav.counters.fallback_localise_failed",
       "nav.counters.fallback_no_avatar",
       "nav.counters.goal_recorded",
       "nav.counters.goal_unreadable",
       "nav.counters.located_by_colour",
+      "nav.counters.wall_contradicted",
       "nav.deadly",
       "nav.eff.1",
       "nav.eff.2",
@@ -7730,6 +7793,7 @@
       "nav.learn.3.decided",
       "nav.learn.3.presses",
       "nav.learn.3.shift",
+      "nav.walls",
       "state"
      ],
      "per_seed": [
@@ -7754,6 +7818,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -7806,6 +7871,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -7831,6 +7897,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "nav.avoid_near",
@@ -7882,6 +7949,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "state",
         "states_seen"
        ]
@@ -7906,6 +7974,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -7935,6 +8004,7 @@
         "nav.counters.step_ok",
         "nav.counters.unblocked_changed",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.eff.1",
         "nav.eff.2",
         "nav.eff.3",
@@ -7955,6 +8025,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -7979,6 +8050,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -7988,6 +8060,7 @@
         "nav.co_movers.6",
         "nav.counters.deaths",
         "nav.counters.displaced",
+        "nav.counters.eff_updated",
         "nav.counters.fallback_frontier_exhausted",
         "nav.counters.fallback_localise_failed",
         "nav.counters.fallback_mispredicted",
@@ -8006,6 +8079,7 @@
         "nav.counters.step_ok",
         "nav.counters.unblocked_changed",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.eff.1",
         "nav.eff.3",
         "nav.eff.4",
@@ -8025,6 +8099,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -8050,6 +8125,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "nav.avoid_near",
@@ -8097,6 +8173,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -8120,6 +8197,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -8149,6 +8227,7 @@
         "nav.counters.step_ok",
         "nav.counters.unblocked_changed",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.deadly",
         "nav.eff.4",
         "nav.goal_hyps",
@@ -8166,6 +8245,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -8190,6 +8270,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -8243,6 +8324,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -8267,6 +8349,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -8318,6 +8401,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -8343,6 +8427,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -8395,6 +8480,7 @@
         "nav.learn.4.presses",
         "nav.learn.4.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -8419,6 +8505,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -8428,6 +8515,7 @@
         "nav.co_movers.6",
         "nav.co_movers.7",
         "nav.counters.deaths",
+        "nav.counters.eff_updated",
         "nav.counters.fallback_frontier_exhausted",
         "nav.counters.fallback_localise_failed",
         "nav.counters.fallback_mispredicted",
@@ -8447,6 +8535,7 @@
         "nav.counters.step_ok",
         "nav.counters.unblocked_changed",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.eff.2",
         "nav.eff.4",
         "nav.goal_hyps",
@@ -8489,6 +8578,7 @@
       "diag.key_changed",
       "diag.new_state",
       "diag.state_GAME_OVER",
+      "diag.state_NOT_FINISHED",
       "level1_actions",
       "level_log",
       "states_seen"
@@ -8515,6 +8605,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -8539,6 +8630,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -8563,6 +8655,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -8587,6 +8680,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -8611,6 +8705,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "states_seen"
@@ -8634,6 +8729,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -8658,6 +8754,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -8682,6 +8779,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -8706,6 +8804,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -8730,6 +8829,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -8749,24 +8849,20 @@
     "bigfish | I1": {
      "pairs": 10,
      "identical": 0,
-     "same_apart_from_every_pair_keys": 1,
+     "same_apart_from_every_pair_keys": 10,
      "differ_in_every_pair": [
       "adapter.camera.center_agent",
       "adapter.condition",
-      "condition",
-      "sec_per_action"
+      "condition"
      ],
-     "differ_in_some_pairs": [
-      "env_sec_per_action"
-     ],
+     "differ_in_some_pairs": [],
      "per_seed": [
       {
        "seed": "1000",
        "diff": [
         "adapter.camera.center_agent",
         "adapter.condition",
-        "condition",
-        "sec_per_action"
+        "condition"
        ]
       },
       {
@@ -8774,9 +8870,7 @@
        "diff": [
         "adapter.camera.center_agent",
         "adapter.condition",
-        "condition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "condition"
        ]
       },
       {
@@ -8784,9 +8878,7 @@
        "diff": [
         "adapter.camera.center_agent",
         "adapter.condition",
-        "condition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "condition"
        ]
       },
       {
@@ -8794,9 +8886,7 @@
        "diff": [
         "adapter.camera.center_agent",
         "adapter.condition",
-        "condition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "condition"
        ]
       },
       {
@@ -8804,9 +8894,7 @@
        "diff": [
         "adapter.camera.center_agent",
         "adapter.condition",
-        "condition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "condition"
        ]
       },
       {
@@ -8814,9 +8902,7 @@
        "diff": [
         "adapter.camera.center_agent",
         "adapter.condition",
-        "condition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "condition"
        ]
       },
       {
@@ -8824,9 +8910,7 @@
        "diff": [
         "adapter.camera.center_agent",
         "adapter.condition",
-        "condition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "condition"
        ]
       },
       {
@@ -8834,9 +8918,7 @@
        "diff": [
         "adapter.camera.center_agent",
         "adapter.condition",
-        "condition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "condition"
        ]
       },
       {
@@ -8844,9 +8926,7 @@
        "diff": [
         "adapter.camera.center_agent",
         "adapter.condition",
-        "condition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "condition"
        ]
       },
       {
@@ -8854,9 +8934,7 @@
        "diff": [
         "adapter.camera.center_agent",
         "adapter.condition",
-        "condition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "condition"
        ]
       }
      ]
@@ -9064,9 +9142,7 @@
       "diag.issued_by_id.5",
       "diag.their_prints.Error",
       "diag.their_prints.Here we are",
-      "diag.their_prints.Lowest dist",
-      "env_sec_per_action",
-      "sec_per_action"
+      "diag.their_prints.Lowest dist"
      ],
      "differ_in_some_pairs": [
       "diag.graph_resets",
@@ -9098,9 +9174,7 @@
         "diag.their_prints.Error",
         "diag.their_prints.Here we are",
         "diag.their_prints.Lowest dist",
-        "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "diag.their_prints.Suspicious transition"
        ]
       },
       {
@@ -9118,9 +9192,7 @@
         "diag.issued_by_id.5",
         "diag.their_prints.Error",
         "diag.their_prints.Here we are",
-        "diag.their_prints.Lowest dist",
-        "env_sec_per_action",
-        "sec_per_action"
+        "diag.their_prints.Lowest dist"
        ]
       },
       {
@@ -9139,9 +9211,7 @@
         "diag.their_prints.Error",
         "diag.their_prints.Here we are",
         "diag.their_prints.Lowest dist",
-        "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "diag.their_prints.Suspicious transition"
        ]
       },
       {
@@ -9160,9 +9230,7 @@
         "diag.their_prints.Error",
         "diag.their_prints.Here we are",
         "diag.their_prints.Lowest dist",
-        "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "diag.their_prints.Suspicious transition"
        ]
       },
       {
@@ -9185,13 +9253,11 @@
         "diag.their_prints.Here we are",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level1_completed",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -9210,9 +9276,7 @@
         "diag.their_prints.Error",
         "diag.their_prints.Here we are",
         "diag.their_prints.Lowest dist",
-        "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "diag.their_prints.Suspicious transition"
        ]
       },
       {
@@ -9237,13 +9301,11 @@
         "diag.their_prints.Here we are",
         "diag.their_prints.Lowest dist",
         "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
         "level1_actions",
         "level1_completed",
         "level_log",
         "levels",
-        "levels_true",
-        "sec_per_action"
+        "levels_true"
        ]
       },
       {
@@ -9264,9 +9326,7 @@
         "diag.their_prints.Error",
         "diag.their_prints.Here we are",
         "diag.their_prints.Lowest dist",
-        "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "diag.their_prints.Suspicious transition"
        ]
       },
       {
@@ -9285,9 +9345,7 @@
         "diag.their_prints.Error",
         "diag.their_prints.Here we are",
         "diag.their_prints.Lowest dist",
-        "diag.their_prints.Suspicious transition",
-        "env_sec_per_action",
-        "sec_per_action"
+        "diag.their_prints.Suspicious transition"
        ]
       },
       {
@@ -9305,9 +9363,7 @@
         "diag.issued_by_id.5",
         "diag.their_prints.Error",
         "diag.their_prints.Here we are",
-        "diag.their_prints.Lowest dist",
-        "env_sec_per_action",
-        "sec_per_action"
+        "diag.their_prints.Lowest dist"
        ]
       }
      ]
@@ -9332,12 +9388,14 @@
       "level_log",
       "nav.counters.avatar_found",
       "nav.counters.deaths",
+      "nav.counters.eff_updated",
       "nav.counters.fallback_localise_failed",
       "nav.counters.fallback_no_avatar",
       "nav.counters.learn_presses",
       "nav.counters.obs_bumped",
       "nav.counters.obs_mispredict",
       "nav.counters.obs_ok",
+      "nav.counters.wall_contradicted",
       "nav.eff.1",
       "nav.eff.2",
       "nav.eff.3",
@@ -9364,11 +9422,13 @@
       "nav.learn.7.presses",
       "nav.learn.7.shift",
       "nav.levels",
+      "nav.walls",
       "states_seen"
      ],
      "differ_in_some_pairs": [
       "diag.nav_steps",
       "diag.state_GAME_OVER",
+      "diag.state_NOT_FINISHED",
       "level1_completed",
       "levels",
       "nav.co_movers.10",
@@ -9410,6 +9470,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -9418,6 +9479,7 @@
         "nav.counters.avatar_ambiguous",
         "nav.counters.avatar_found",
         "nav.counters.deaths",
+        "nav.counters.eff_updated",
         "nav.counters.fallback_frontier_exhausted",
         "nav.counters.fallback_localise_failed",
         "nav.counters.fallback_no_avatar",
@@ -9431,6 +9493,7 @@
         "nav.counters.step_bumped",
         "nav.counters.unblocked_changed",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.eff.1",
         "nav.eff.2",
         "nav.eff.3",
@@ -9457,6 +9520,7 @@
         "nav.learn.7.presses",
         "nav.learn.7.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -9476,6 +9540,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -9485,6 +9550,7 @@
         "nav.counters.avatar_ambiguous",
         "nav.counters.avatar_found",
         "nav.counters.deaths",
+        "nav.counters.eff_updated",
         "nav.counters.fallback_frontier_exhausted",
         "nav.counters.fallback_localise_failed",
         "nav.counters.fallback_no_avatar",
@@ -9499,6 +9565,7 @@
         "nav.counters.step_ok",
         "nav.counters.unblocked_changed",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.eff.1",
         "nav.eff.2",
         "nav.eff.3",
@@ -9525,6 +9592,7 @@
         "nav.learn.7.presses",
         "nav.learn.7.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -9552,6 +9620,7 @@
         "nav.counters.avatar_ambiguous",
         "nav.counters.avatar_found",
         "nav.counters.deaths",
+        "nav.counters.eff_updated",
         "nav.counters.fallback_frontier_exhausted",
         "nav.counters.fallback_localise_failed",
         "nav.counters.fallback_no_avatar",
@@ -9566,6 +9635,7 @@
         "nav.counters.step_ok",
         "nav.counters.unblocked_changed",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.eff.1",
         "nav.eff.2",
         "nav.eff.3",
@@ -9592,6 +9662,7 @@
         "nav.learn.7.presses",
         "nav.learn.7.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -9611,6 +9682,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "nav.co_movers.19",
@@ -9621,6 +9693,7 @@
         "nav.counters.avatar_found",
         "nav.counters.deaths",
         "nav.counters.displaced",
+        "nav.counters.eff_updated",
         "nav.counters.fallback_frontier_exhausted",
         "nav.counters.fallback_localise_failed",
         "nav.counters.fallback_no_avatar",
@@ -9634,6 +9707,7 @@
         "nav.counters.step_bumped",
         "nav.counters.step_ok",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.eff.1",
         "nav.eff.2",
         "nav.eff.3",
@@ -9660,6 +9734,7 @@
         "nav.learn.7.presses",
         "nav.learn.7.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -9679,6 +9754,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -9687,6 +9763,7 @@
         "nav.co_movers.8",
         "nav.counters.avatar_found",
         "nav.counters.deaths",
+        "nav.counters.eff_updated",
         "nav.counters.fallback_frontier_exhausted",
         "nav.counters.fallback_localise_failed",
         "nav.counters.fallback_no_avatar",
@@ -9700,6 +9777,7 @@
         "nav.counters.step_bumped",
         "nav.counters.unblocked_changed",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.eff.1",
         "nav.eff.2",
         "nav.eff.3",
@@ -9726,6 +9804,7 @@
         "nav.learn.7.presses",
         "nav.learn.7.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -9745,6 +9824,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "nav.co_movers.8",
@@ -9752,6 +9832,7 @@
         "nav.counters.avatar_ambiguous",
         "nav.counters.avatar_found",
         "nav.counters.deaths",
+        "nav.counters.eff_updated",
         "nav.counters.fallback_frontier_exhausted",
         "nav.counters.fallback_localise_failed",
         "nav.counters.fallback_no_avatar",
@@ -9763,6 +9844,7 @@
         "nav.counters.obs_ok",
         "nav.counters.replans",
         "nav.counters.step_ok",
+        "nav.counters.wall_contradicted",
         "nav.eff.1",
         "nav.eff.2",
         "nav.eff.3",
@@ -9790,6 +9872,7 @@
         "nav.learn.7.presses",
         "nav.learn.7.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -9809,6 +9892,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "nav.co_movers.10",
@@ -9817,6 +9901,7 @@
         "nav.counters.avatar_ambiguous",
         "nav.counters.avatar_found",
         "nav.counters.deaths",
+        "nav.counters.eff_updated",
         "nav.counters.fallback_frontier_exhausted",
         "nav.counters.fallback_localise_failed",
         "nav.counters.fallback_no_avatar",
@@ -9831,6 +9916,7 @@
         "nav.counters.step_bumped",
         "nav.counters.unblocked_changed",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.eff.1",
         "nav.eff.2",
         "nav.eff.3",
@@ -9858,6 +9944,7 @@
         "nav.learn.7.presses",
         "nav.learn.7.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -9877,6 +9964,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level1_completed",
         "level_log",
@@ -9888,6 +9976,7 @@
         "nav.counters.avatar_ambiguous",
         "nav.counters.avatar_found",
         "nav.counters.deaths",
+        "nav.counters.eff_updated",
         "nav.counters.fallback_frontier_exhausted",
         "nav.counters.fallback_localise_failed",
         "nav.counters.fallback_no_avatar",
@@ -9900,6 +9989,7 @@
         "nav.counters.replans",
         "nav.counters.step_bumped",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.eff.1",
         "nav.eff.2",
         "nav.eff.3",
@@ -9926,6 +10016,7 @@
         "nav.learn.7.presses",
         "nav.learn.7.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -9945,6 +10036,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -9954,6 +10046,7 @@
         "nav.counters.avatar_found",
         "nav.counters.deaths",
         "nav.counters.displaced",
+        "nav.counters.eff_updated",
         "nav.counters.fallback_frontier_exhausted",
         "nav.counters.fallback_localise_failed",
         "nav.counters.fallback_no_avatar",
@@ -9967,6 +10060,7 @@
         "nav.counters.step_bumped",
         "nav.counters.unblocked_changed",
         "nav.counters.waits",
+        "nav.counters.wall_contradicted",
         "nav.eff.1",
         "nav.eff.2",
         "nav.eff.3",
@@ -9993,6 +10087,7 @@
         "nav.learn.7.presses",
         "nav.learn.7.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       },
@@ -10012,6 +10107,7 @@
         "diag.nav_steps",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level1_completed",
         "level_log",
@@ -10022,12 +10118,14 @@
         "nav.counters.avatar_ambiguous",
         "nav.counters.avatar_found",
         "nav.counters.deaths",
+        "nav.counters.eff_updated",
         "nav.counters.fallback_localise_failed",
         "nav.counters.fallback_no_avatar",
         "nav.counters.learn_presses",
         "nav.counters.obs_bumped",
         "nav.counters.obs_mispredict",
         "nav.counters.obs_ok",
+        "nav.counters.wall_contradicted",
         "nav.eff.1",
         "nav.eff.2",
         "nav.eff.3",
@@ -10054,6 +10152,7 @@
         "nav.learn.7.presses",
         "nav.learn.7.shift",
         "nav.levels",
+        "nav.walls",
         "states_seen"
        ]
       }
@@ -10080,6 +10179,7 @@
      ],
      "differ_in_some_pairs": [
       "diag.state_GAME_OVER",
+      "diag.state_NOT_FINISHED",
       "level1_completed",
       "levels"
      ],
@@ -10098,6 +10198,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -10118,6 +10219,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -10138,6 +10240,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "levels",
@@ -10196,6 +10299,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level1_completed",
         "level_log",
@@ -10217,6 +10321,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level1_completed",
         "level_log",
@@ -10257,6 +10362,7 @@
         "diag.key_changed",
         "diag.new_state",
         "diag.state_GAME_OVER",
+        "diag.state_NOT_FINISHED",
         "level1_actions",
         "level_log",
         "states_seen"
