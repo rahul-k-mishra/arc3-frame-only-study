@@ -118,7 +118,7 @@ Expected: one line per suite, `<suite>: N pilot rows, N with an error; longest <
 **What must be true first, and how a failure shows:**
 - **The tag exists and the worktree is on it.** D1 prints `prereg-v1.1`. Any other output (an error, or a different name): stop.
 - **The six frozen files match PREREG Section 5.4.** Every run_suite.py call prints `frozen blob hashes: 6 of 6 match PREREG.md Section 5.4` first. Otherwise it stops by itself.
-- **The two D13 code items are in the tagged analysis** (the center_on subset in analyze_v1/v2, and the nine-game determinism check). Block D does not depend on them, but block E does.
+- **The two D13 code items are in the tagged code** (implemented 27 Sep 2026 (g)): the center_on "camera_distinct" subset in analyze_v1/v2, and scripts/determinism_check.py (D7).
 - **BABYAI_DONE_ACTIONS is unset.** The suite-B adapter raises if it is set.
 
 **Why a worktree.** The runs are made from a worktree checked out at the tag, as E6 was. The code that plays is then exactly the tagged code. The rows are written into the main repository's runs\suites with `--out`, and the console logs into the main repository's runs\logs.
@@ -208,7 +208,21 @@ Expected:
 - six lines `procgen <condition> <mode>: 140 of 140 rows`, then `procgen: 840 of 840 confirmatory rows; missing 0; with an error 0; cut by the cap <n>`.
 - Any missing or errored row: go back to D5. A non-zero cut count is not an error. Those rows are reported as cut (PREREG v1.1 D5), and the count goes into STATE.md.
 
-D7. **Not yet available:** the nine-game center_on = center_off determinism check (PREREG v1.1 draft D13). Its script must be written, tested and hashed before the v1.1 tag. Its command is added here when it exists.
+D7. The nine-game determinism check (PREREG v1.1 draft D8, D13). Run it after D4 and D6. It reads runs\suites, plays nothing, and writes runs\checks\determinism_check.json.
+- For each of bossfight, chaser, dodgeball, heist, leaper, maze, miner, plunder and starpilot, every mode and every seed, the center_on row must equal the center_off row.
+- Two sets of fields are left out of the comparison: the seven timing fields, and the three condition labels.
+
+```powershell
+cd D:\Research\arc3\repo_prereg_v1_1
+& D:\Research\arc3\brutus\.venv\Scripts\python.exe scripts\determinism_check.py --suites D:\Research\arc3\repo\runs\suites --out D:\Research\arc3\repo\runs\checks\determinism_check.json --workers 8 2>&1 | Tee-Object -FilePath D:\Research\arc3\repo\runs\logs\determinism_check.log
+"exit code $LASTEXITCODE"
+```
+
+Expected:
+- nine lines `<game> pairs  30  identical  30`;
+- then `total: 270 pairs compared, 270 identical, 0 differing, 0 missing -> PASS`, the `wrote ...` line, and `exit code 0`.
+- Exit code 1 (a pair differs; the differing field names are printed): stop and report. The two conditions are then not identical as D13 registers, and the D13 reporting rule does not hold as written.
+- Exit code 2 (rows missing): go back to D5 and D6.
 
 ## Block E — the analysis (after block D is verified)
 
@@ -226,9 +240,10 @@ cd D:\Research\arc3\repo_prereg_v1_1
 & D:\Research\arc3\brutus\.venv\Scripts\python.exe -W error scripts\test_analyze_v1.py
 & D:\Research\arc3\brutus\.venv\Scripts\python.exe -W error scripts\test_analyze_v2.py
 & D:\Research\arc3\brutus\.venv\Scripts\python.exe -W error scripts\test_analyze_g.py
+& D:\Research\arc3\brutus\.venv\Scripts\python.exe -W error scripts\test_determinism_check.py
 ```
 
-Expected: `Ran 4 tests ... OK`, `Ran 8 tests ... OK` and `Ran 2 tests ... OK` (as of 27 Sep 2026 (f); if the D13 code adds tests before the tag, the counts in D11 govern).
+Expected: `Ran 5 tests ... OK`, `Ran 9 tests ... OK`, `Ran 2 tests ... OK` and `Ran 4 tests ... OK` (as of 27 Sep 2026 (g); the counts in PREREG v1.1 D11 at the tag govern).
 
 E2. V1, instrument validity, suites B and C. It writes docs\tables\v1.md and docs\tables\v1.json:
 
@@ -237,7 +252,9 @@ cd D:\Research\arc3\repo_prereg_v1_1
 & D:\Research\arc3\brutus\.venv\Scripts\python.exe scripts\analyze_v1.py --runs "D:\Research\arc3\repo\runs\suites\minigrid\*\*\*.json" "D:\Research\arc3\repo\runs\suites\procgen\*\*\*.json" --out D:\Research\arc3\repo\docs\tables 2>&1 | Tee-Object -FilePath D:\Research\arc3\repo\runs\logs\analyze_v1.log
 ```
 
-Expected shape: one line per (suite, condition, subset, assumption), then `wrote ...\docs\tables\v1.md, ...\docs\tables\v1.json`. ARC V1 is not computed: docs/GROUND_TRUTH_arc_train.md does not exist.
+Expected shape: one line per (suite, condition, subset, assumption), then `wrote ...\docs\tables\v1.md, ...\docs\tables\v1.json`.
+- Suite C center_on has only the "camera_distinct" subset, with verdict "reported, not tested" (D13).
+- ARC V1 is not computed: docs/GROUND_TRUTH_arc_train.md does not exist.
 
 E3. V2, predictive validity: suites B and C, with ARC E6 as the reported line. It writes docs\tables\v2.md and docs\tables\v2.json:
 
@@ -249,13 +266,16 @@ cd D:\Research\arc3\repo_prereg_v1_1
 Expected shape:
 - one line per (suite, condition, subset, agent). The subsets are:
   - suite B: "primary" (verdict), "primary, D9b included" (I1 only; reported) and "all games" (reported);
-  - suite C: "all" and "in_range".
+  - suite C center_off: "all" and "in_range" (verdicts);
+  - suite C center_on: "camera_distinct" only (the five games of D13; reported, not tested).
 - one suite line per subset;
 - then `wrote ...\docs\tables\v2.md, ...\docs\tables\v2.json`.
 
-E4. G, goal-identification cost. **Not runnable yet.**
-- analyze_g.py reads the rows of scripts/g_goal_cost.py (agent "G"), and that script does not exist.
-- Once it exists and its rows are made, the command has this form, with the G rows' location filled in when g_goal_cost.py fixes it:
+E4. G, goal-identification cost. **After prereg-v1.2 and the replay; not part of this block's run** (PREREG v1.1 draft D15).
+- G's rows come from a separate replay of N on every confirmatory (game, condition, seed), made after block D. The replay script (scripts/g_goal_cost.py) does not exist at the v1.1 tag.
+- It is registered as prereg-v1.2 before any replay runs. Each replay must reproduce the confirmatory N row's action sequence and level log exactly, and the script reports that check per row.
+- G is reported, not tested. Blocks D, E1–E3 and E5 do not wait for it.
+- After the replay, the command has this form, with the G rows' location filled in by v1.2:
 
 ```powershell
 cd D:\Research\arc3\repo_prereg_v1_1
@@ -264,4 +284,4 @@ cd D:\Research\arc3\repo_prereg_v1_1
 
 Expected shape: one line per (suite, condition, game), one summary line per suite, then `wrote ...\docs\tables\g.md, ...\docs\tables\g.json`.
 
-E5. Paste the console output of D6 and E1–E3. The tables are committed by RKM with the run files.
+E5. Paste the console output of D6, D7 and E1–E3. The tables are committed by RKM with the run files.

@@ -28,9 +28,24 @@ Hand computation, subset "all" (n = 6):
 Subset "in_range" (maze only, n = 1): A2 truth f, census h -> agreement 0.0, kappa undefined, FAIL;
 A1 agreement 1.0 PASS.
 
+Test 5, the secondary condition center_on (PREREG v1.1 draft D13).  Suite "procgen", confirmatory
+games alpha, maze, caveflyer, jumper, ninja; caveflyer, jumper and ninja are in the registered
+camera-distinct set (analyze_common.CAMERA_DISTINCT_C), alpha and maze are not.  Truth: A1 h, A3 f,
+A4 h, A5 h everywhere; A2 h on alpha, maze, caveflyer, jumper and f on ninja.  One N seed per game in
+each condition.  center_off census = truth on every game; center_on census = truth except A2, which is
+f on jumper, alpha and maze (so the camera-distinct A2 census is caveflyer h, jumper f, ninja f).
+    center_off, "all" (n = 5): A2 agreement 5/5 = 1.0; kappa undefined (fails has 1 < 3): PASS.
+    center_off, "in_range" (maze, n = 1): A2 agreement 1.0: PASS.
+    center_on has one subset only, "camera_distinct" (n = 3: caveflyer, jumper, ninja):
+        A2 truth holds on 2 (caveflyer, jumper); agreement 2/3 = 0.6667 (jumper disagrees); kappa
+        undefined (holds 2, fails 1); verdict "reported, not tested" (v1_verdict would have said FAIL;
+        it is not applied).  A1 agreement 1.0, verdict "reported, not tested".
+    center_on has no "all" and no "in_range" line; center_off has no "camera_distinct" line.  alpha
+    and maze, which disagree on A2 under center_on, enter no center_on line.
+
 Command (PowerShell, from D:\\Research\\arc3\\repo):
     D:\\Research\\arc3\\brutus\\.venv\\Scripts\\python.exe scripts\\test_analyze_v1.py
-Expected: "Ran 4 tests ... OK".
+Expected: "Ran 5 tests ... OK".
 """
 from __future__ import annotations
 
@@ -152,6 +167,36 @@ class T(unittest.TestCase):
                     self.assertAlmostEqual(r[7], kappa, msg=str(key))
                 self.assertEqual(r[8], verdict, key)
             self.assertTrue(os.path.exists(os.path.join(tmp, "v1.md")))
+
+    def test_center_on(self):
+        games = ["alpha", "maze", "caveflyer", "jumper", "ninja"]
+        a2_truth = {"alpha": "h", "maze": "h", "caveflyer": "h", "jumper": "h", "ninja": "f"}
+        a2_on = {"alpha": "f", "maze": "f", "caveflyer": "h", "jumper": "f", "ninja": "f"}
+        with tempfile.TemporaryDirectory() as tmp:
+            procgen_table(os.path.join(tmp, "gt_procgen.md"),
+                          [(g, "confirmatory", dict(A1="h", A2=a2_truth[g], A3="f", A4="h", A5="h")) for g in games])
+            _write(os.path.join(tmp, "gt_minigrid.md"), "\n")
+            rows = []
+            for g in games:
+                for cond, a2 in (("center_off", a2_truth[g]), ("center_on", a2_on[g])):
+                    rows.append(dict(game=g, mode="nav", agent="N", suite="procgen", condition=cond, seed=1000,
+                                     census=dict(A1="holds", A2=W[a2], A3="fails", A4="holds", A5="holds")))
+            _write(os.path.join(tmp, "runs.json"), json.dumps(rows))
+            table = analyze_v1.main(["--runs", os.path.join(tmp, "runs.json"), "--truth-procgen",
+                                     os.path.join(tmp, "gt_procgen.md"), "--truth-minigrid",
+                                     os.path.join(tmp, "gt_minigrid.md"), "--out", tmp])
+            got = {(r[1], r[2], r[3]): r for r in table}
+            self.assertEqual(sorted({(r[1], r[2]) for r in table}),
+                             [("center_off", "all"), ("center_off", "in_range"), ("center_on", "camera_distinct")])
+            r = got[("center_off", "all", "A2")]
+            self.assertEqual((r[4], r[6], r[7], r[8]), (5, 1.0, None, "PASS"))
+            r = got[("center_off", "in_range", "A2")]
+            self.assertEqual((r[4], r[6], r[8]), (1, 1.0, "PASS"))
+            r = got[("center_on", "camera_distinct", "A2")]
+            self.assertEqual((r[4], r[5], r[7], r[8]), (3, 2, None, "reported, not tested"))
+            self.assertAlmostEqual(r[6], 2 / 3)
+            r = got[("center_on", "camera_distinct", "A1")]
+            self.assertEqual((r[4], r[6], r[8]), (3, 1.0, "reported, not tested"))
 
 
 if __name__ == "__main__":

@@ -612,6 +612,13 @@ Drafted 27 September 2026 after the tag prereg-v1 (commit 19f2a9f), from RKM's d
 
 Nothing else in D1–D12 changed.
 
+**Second revision of 27 September 2026 (STATE.md amendment (g)).** RKM decided three things: D13 goes into the code before the tag; G's rows come from a separate registered replay (D15); and the OSF v1.1 claim sentence is v1's, verbatim. This revision:
+- implements D13 in analyze_v1.py and analyze_v2.py, and adds scripts/determinism_check.py (D8, D13);
+- adds MiniGrid-Playground-v0 to every agent's D9 list, because it has no success at all. The counts become R/N raw 6, macro 49; I1 raw 63, macro 78;
+- rewords D12 ("3600 s, registered at prereg-v1.1");
+- adds D15 (G's rows);
+- re-records D11.
+
 ## Diff section (v1 → v1.1)
 
 **D1. The six-action limit of the frozen code** (new; Section 3). The frozen explorer presses only ARC action ids 1, 2, 3, 4, 5 and 7 as keys (g_agent.py:326; g_nav.py:379; g_control_probe.py:47). Id 6 is a click, and the runner never offers it. Every suite is therefore presented through a key map of at most six actions, applied by the ARC shim (scripts/env_frame.py `KEY_MAPS`):
@@ -709,6 +716,15 @@ Consequences:
 - **scripts/procgen_camera_check.py** (blob c0f49cebafa2d344c4248b483ccd42d16b948311).
   - For each of the 16 Procgen games it builds two environments that differ only in center_agent. It drives both with the same 400 random actions (RandomState(1000)) and compares the frames byte for byte.
   - Output: runs/pilot_checks/procgen_camera_check.json (procgen 0.10.7). The result is used in D13.
+- **scripts/determinism_check.py** (blob 4f98f6430e9221deb1a43f2313eb00f5ca676969; added 27 Sep 2026 (g); synthetic test scripts/test_determinism_check.py, blob c0fc140faaed7aa7983fcc44b7a2284a5e6bc4f0).
+  - It uses the standard library only, runs in the ARC venv and plays nothing.
+  - For each of the nine identical-frame confirmatory Procgen games (D13), each mode and each seed, it compares the center_on row with the center_off row in every field. Two sets of fields are left out:
+    - the seven timing fields pilot_check.py drops: agent_seconds, env_sec_per_action, game_seconds, play_seconds, sec_per_action, seconds, seconds_cap;
+    - the three condition labels: condition, adapter.condition, adapter.camera.center_agent.
+  - It prints, per game, the pairs compared, the pairs identical and every differing field.
+  - Exit code: 0 if all pairs are present and identical, 1 if any pair differs, 2 if a row is missing.
+  - Output: runs/checks/determinism_check.json. Command: docs/W2_COMMANDS.md block D7, run after D4.
+  - Before commit it was run once on the 30 bigfish pilot pairs, which are not among the nine, by calling its comparison function directly: 30 of 30 identical, no differing field. That agrees with pilot_check.json.
 
 **D9. V2 exclusions** (Section 10 changed).
 - V2's primary analysis excludes confirmatory environments whose success predicate requires an action absent from the condition's key map (D1). A secondary line reports V2 with them included.
@@ -736,8 +752,8 @@ Consequences:
   - the action is a precondition of every successful episode.
 - **Why the change.** Under the predicate-only reading, MiniGrid-DoorKey-8x8-v0 would not be excluded for I1: its success is entering the goal cell. Yet I1 cannot open the locked door on the way, and it completed 0 levels there in the pilot (D9b). RKM chose the reachability reading and applied it to every agent, so that R, N and I1 share one rule.
 - **Consequence for R and N.**
-  - **Raw: unchanged, 5.** No suite-B success needs done as a precondition.
-  - **Macro: 48 = the 20 above plus 28.** In these 28 the target must be picked up while the agent still carries the key it used on the door. MiniGrid picks up only with empty hands (`if self.carrying is None:`, minigrid_env.py:563), so a drop comes first on every seed, and macro has no drop.
+  - **Raw: 6.** The 5 above plus MiniGrid-Playground-v0 (see "No success at all" below). No suite-B success needs done as a precondition.
+  - **Macro: 49 = the 20 above, plus MiniGrid-Playground-v0, plus 28.** In these 28 the target must be picked up while the agent still carries the key it used on the door. MiniGrid picks up only with empty hands (`if self.carrying is None:`, minigrid_env.py:563), so a drop comes first on every seed, and macro has no drop.
 - **The 28 drop-precondition ids.** Source lines are in the installed minigrid 3.1.0. A locked room gets no door from connect_all (`if room.locked or neighbor_room.locked: continue`, core/roomgrid.py:387; room.locked is set by add_door, :260).
   - MiniGrid-KeyCorridorS3R1-v0, S3R2-v0, S3R3-v0, S4R3-v0, S5R3-v0, S6R3-v0 (6):
     - the target is in the room behind a locked door (keycorridor.py:113-114);
@@ -756,7 +772,14 @@ Consequences:
 - **Candidates checked and kept.**
   - MiniGrid-DoorKey-*, MiniGrid-LockedRoom-v0, MiniGrid-MultiRoom-* and BabyAI-GoToImpUnlock-v0 need toggle but no drop. The goal is a cell, or GoTo accepts a carried key. They are unaffected for R and N, who have toggle.
   - LevelGen levels, and levels whose target may lie in the agent's own room (BabyAI GoTo, Pickup, FindObj, UnblockPickup and their variants), do not need the action on every seed. They stay.
-- **Code.** analyze_common.V2_EXCLUDE now holds 5 (raw) and 48 (macro), as constants copied from this section. analyze_v2.py is unchanged in its D9 behaviour.
+- **No success at all (added 27 Sep 2026 (g), RKM's one-more-pass check).**
+  - Every one of the 161 confirmatory suite-B environments was checked against its success predicate in docs/GROUND_TRUTH_minigrid.md (predicate column). The question: can some action sequence under the full six-key map (D1: left, right, forward, pickup, drop, toggle; or north, south, west, east, pickup, toggle) reach success on at least one seed?
+  - **One cannot, under any key map: MiniGrid-Playground-v0.**
+    - It places doors and objects but no goal, and it has no step() override. The only terminations are those of the base step (playground.py:16-31; GROUND_TRUTH_minigrid.md, its row and note 4: "no success termination at all … only truncation").
+    - Its level-1 outcome is "not completed" by construction, for every agent. It is excluded from every agent's primary line in both conditions.
+  - Five more cannot under the six-key map, because it lacks done: MiniGrid-GoToDoor-5x5/6x6/8x8-v0 and MiniGrid-GoToObject-6x6-N2/8x8-N2-v0. They are already on every list.
+  - Every other predicate is reachable on some seed. The predicates are: forward onto a goal cell or a success position (Crossing, LavaGap, DistShift, DoorKey, Dynamic-Obstacles, Empty, LockedRoom, MultiRoom, Memory); pickup (Fetch, KeyCorridor, ObstructedMaze, UnlockPickup, BlockedUnlockPickup, BabyAI Pickup family); drop (PutNear, BabyAI PutNext, MoveTwoAcross); toggle (Unlock, RedBlueDoors, BabyAI Open family); adjacent-and-facing (BabyAI GoTo family); and composites of these (LevelGen levels, which draw an instruction per seed that can be completed on some seed). A predicate needing drop or toggle is reachable with the six-key map in the condition that has the action; its absence from a condition's map is what D9 and D9b already exclude.
+- **Code.** analyze_common.V2_EXCLUDE holds 6 (raw) and 49 (macro), as constants copied from this section. Playground is `_NO_SUCCESS` and is also in both of I1's lists. analyze_v2.py is unchanged in its D9 behaviour.
 
 **D9b. The I1 key set** (new; Section 10 and D9 extended; RKM 27 Sep 2026).
 - **What I1 presses.** I1 presses ids 1 to 5 only (docs/I1_feasibility.md C2; scripts/i1_suite_adapter.py; env_frame.I1_KEYS = (1, 2, 3, 4, 5)). Its maps are therefore:
@@ -814,15 +837,15 @@ Consequences:
 
 | agent, condition | primary exclusions | primary games |
 |---|---|---|
-| R/N raw | 5 | 156 |
-| R/N macro | 48 | 113 |
-| I1 raw | 62 = 5 + 57 | 99 |
-| I1 macro | 77 = 48 + 20 (a) + 9 (b, not already in the 48) | 84 |
+| R/N raw | 6 = 5 + Playground | 155 |
+| R/N macro | 49 = 48 + Playground | 112 |
+| I1 raw | 63 = 6 + 57 | 98 |
+| I1 macro | 78 = 49 + 20 (a) + 9 (b, not already in the 49) | 83 |
 
 - The lists are registered constants in scripts/analyze_common.py, copied from this section: `V2_EXCLUDE` and `V2_EXCLUDE_I1`, read through `v2_exclusions(suite, condition, agent)`.
 - scripts/analyze_v2.py gives each agent its own primary line. The suite-level line combines R's primary and I1's primary. I1 also gets "primary, D9b included", reported and not tested.
 - Tests: test_d9b_i1_exclusions (hand-worked) and test_registered_lists in scripts/test_analyze_v2.py. The latter checks against the truth table:
-  - the sizes 5 / 48 / 62 / 77;
+  - the sizes 6 / 49 / 63 / 78 (27 Sep 2026 (g); 5 / 48 / 62 / 77 before Playground was added);
   - no duplicates;
   - every id is confirmatory;
   - I1's list contains R's;
@@ -832,17 +855,29 @@ Consequences:
 
 **D10. Section 3.2 seeding text** is replaced by D4. Section 9.2 gains the run_suite.py commands (docs/W2_COMMANDS.md blocks B and C).
 
-**D11. Section 11 (v1.1): the frozen analysis scripts.** Changed by D9, its amendment, and D9b only. Each row gives the blob at tag prereg-v1, the blob after the first D9 change (commit 6f6f090), and the blob now:
+**D11. Section 11 (v1.1): the frozen analysis scripts.**
+- Changed by D9 (the first change, its amendment, Playground), D9b and D13 only.
+- Each row gives the blob at tag prereg-v1, after the first D9 change (commit 6f6f090), at commit 3cd61d2 (27 Sep 2026 (f)), and now (27 Sep 2026 (g); to be re-recorded at the v1.1 tag if anything changes before it):
 
-| script | prereg-v1 | after D9 (6f6f090) | now: D9 amended + D9b (27 Sep 2026 (f)) |
-|---|---|---|---|
-| scripts/analyze_v2.py | 4bdef89d9259e9f47b208f898094a56a834e8ab7 | be4591b512a13f730e81cf801b3443a7f7367f5c | fd68354e2c5a20c9ddcad9713178a575c4355f1c |
-| scripts/analyze_common.py | 0737dbc5779e92eca3b06e5b9e31f70dce3d3475 | 4482e551e829c73d99319a2453f794163dc71891 | ddb807171046c0c10b5f7fd2839f4cbccff04600 |
-| scripts/test_analyze_v2.py (tests, not analysis) | — | — | 3eb68e88df2dea1855c4c9874ef249d6c821c91a |
+| script | prereg-v1 | 6f6f090 | 3cd61d2 (f) | now (g) |
+|---|---|---|---|---|
+| scripts/analyze_common.py | 0737dbc5779e92eca3b06e5b9e31f70dce3d3475 | 4482e551e829c73d99319a2453f794163dc71891 | ddb807171046c0c10b5f7fd2839f4cbccff04600 | caad22731807db78aff9c92c993a79a63f042ec3 |
+| scripts/analyze_v1.py | 1f20be79c62c4b22b0941c5bc4321f46f96467f0 | unchanged | unchanged | 515f44b0f007182172022272383de548e80d5a11 |
+| scripts/analyze_v2.py | 4bdef89d9259e9f47b208f898094a56a834e8ab7 | be4591b512a13f730e81cf801b3443a7f7367f5c | fd68354e2c5a20c9ddcad9713178a575c4355f1c | 90a849c44e47addd8efdbfa579efdb16288edd50 |
+| scripts/analyze_g.py | 46bf991d86400f0189d8898a7e068044d25c629a | unchanged | unchanged | unchanged |
+| scripts/test_analyze_v1.py (tests) | 02c60a4e5394f13fe4db3540ce25bbfa0a46aece | unchanged | unchanged | 61877fbb342ca02aca44a9c35c865361803d8de0 |
+| scripts/test_analyze_v2.py (tests) | 6f8271a43fd749f4daf6ab78dcbbe1504abdc815 | e22ae85e9990cd9474b10dd7a4d02c179a99d9bf | 3eb68e88df2dea1855c4c9874ef249d6c821c91a | ca3f477b45fceff43a92de297f899e791d95b8af |
+| scripts/test_analyze_g.py (tests) | 433ac890705d6cbf2847cb40799a4976d29b0477 | unchanged | unchanged | unchanged |
 
-- scripts/analyze_v1.py (1f20be79c62c4b22b0941c5bc4321f46f96467f0) and scripts/analyze_g.py (46bf991d86400f0189d8898a7e068044d25c629a) are unchanged.
-- **Synthetic tests on 27 Sep 2026 (f), with warnings as errors:** test_analyze_v1 4 OK, test_analyze_v2 8 OK, test_analyze_g 2 OK, 14 in all. No runs/ file was read.
-- The v1.1 hashes are re-recorded at the v1.1 tag if anything changes before it.
+- The determinism check and its test are recorded under D8: determinism_check.py 4f98f6430e9221deb1a43f2313eb00f5ca676969, test_determinism_check.py c0fc140faaed7aa7983fcc44b7a2284a5e6bc4f0.
+- scripts/e6_summary.py (f962759ff9b25e50f2d15547176ea3f41e95ce6c) is an ARC infrastructure summary, not part of the analysis (STATE.md amendment (g)).
+- **Synthetic tests on 27 Sep 2026 (g), with warnings as errors:**
+  - test_analyze_v1: 5 OK;
+  - test_analyze_v2: 9 OK;
+  - test_analyze_g: 2 OK;
+  - test_determinism_check: 4 OK.
+  - That is 20 in all. No runs/ file was read by any test.
+- At (f): 4 + 8 + 2 = 14.
 
 **D12. ARC wall-clock cap** (Section 9.1/9.2 changed).
 
@@ -862,7 +897,7 @@ Consequences:
 | sp80 | nav | 1006 | 19123 | 900.0 |
 
 *The fix.*
-- **The registered ARC cap is now 3600 s per run.**
+- **The ARC cap: 3600 s per run, registered at prereg-v1.1.** Until that tag it is a draft value. The re-run below used it under the v1 tag.
 - The eight cut rows are re-run under the tagged code with that cap, and the new rows replace the cut ones. A run is deterministic given the seed, so the re-run reproduces each cut row's actions up to the point it was cut, then continues to the budget.
 - g_nav_run.py `--resume` does not keep a row with actions < budget that did not win: it runs it again (g_nav_run.py:114-139, the test at line 130). No row has to be removed from the file first.
 - **But `--resume` rewrites the output file from the kept rows of the selection given on the command line.** The re-run must therefore use the full E6 selection (all 25 games, both modes, 10 seeds), not only re86 and sp80. Otherwise the other 492 rows would be dropped.
@@ -917,10 +952,12 @@ Consequences:
   - they are required to equal the center_off rows of the same (game, mode, seed) in every non-timing field, apart from the condition labels (`condition`, `adapter.condition`, `adapter.camera.center_agent`);
   - this is recorded as a determinism check, not as evidence.
 - **These nine are exactly the Section 4 operating range.** On them the frame does not depend on the condition. The in-range line is therefore the same under both conditions, and it coincides with the primary (center_off) line restricted to those nine. The secondary line adds information only on the five out-of-range games, where center_on shows a scrolling view and center_off the whole level at under 2 pixels per agent.
-- **Not yet in code (stated so that it is done before the v1.1 tag).**
-  - scripts/analyze_v1.py and scripts/analyze_v2.py still report center_on on all 14 confirmatory games.
-  - No script yet performs the nine-game determinism check on confirmatory rows. pilot_check.py does it for the pilot rows only.
-  - Both changes must be written, tested and hashed in D11 before the tag, or this registration is not implemented.
+- **In code (27 Sep 2026 (g), RKM decision (1)).**
+  - analyze_common.CAMERA_DISTINCT_C = (caveflyer, climber, fruitbot, jumper, ninja) is registered next to IN_RANGE_C.
+  - scripts/analyze_v1.py and scripts/analyze_v2.py report center_on on one subset only, "camera_distinct" (the five games). Every center_on line has the verdict "reported, not tested", and so has the V2 suite line. This is v1's "secondary, reported" condition.
+  - center_off keeps its "all" and "in_range" lines with verdicts, unchanged.
+  - Tests: test_center_on in scripts/test_analyze_v1.py and scripts/test_analyze_v2.py, hand-worked.
+  - The nine-game determinism check is scripts/determinism_check.py (D8), block D7 of docs/W2_COMMANDS.md. Blob hashes are in D11 and D8.
 
 **D14. Adapter changes after the pilot: none.**
 - The pilot found no adapter fault:
@@ -931,3 +968,11 @@ Consequences:
   - runs are deterministic given the seed (the bigfish identity above; E6 (a) and (b) for the frozen code).
 - **No adapter change after the pilot.** scripts/adapter_minigrid.py, scripts/adapter_procgen.py, scripts/env_frame.py, scripts/i1_suite_adapter.py and scripts/run_suite.py keep the D6 blob hashes.
 - The tile-size scaling rule was not used.
+
+**D15. G's rows: a separate registered replay of N** (new; Sections 6 and 9.1 changed; RKM decision (2), 27 Sep 2026 (g)).
+- **scripts/g_goal_cost.py does not exist at the v1.1 tag.** v1 Section 6 has it add a per-step log to N's run. At v1.1 no G row can yet be made.
+- **Where G's rows come from.** From a separate replay of N on every confirmatory (game, condition, seed) of suites B and C. The replay runs after the confirmatory runs of block D.
+- **Registration first.** The replay script, which adds the per-step log of (anchor cell, F(cell), level_end) of Section 6, is registered as prereg-v1.2 (PREREG v1.2 with a diff section, git tag, OSF amendment) before any replay runs. Whether ARC games are replayed too is fixed in v1.2.
+- **Exact reproduction, checked per row.** Each replay must reproduce the confirmatory N row's action sequence and level log exactly. The replay script reports that check for every row. A replay that does not reproduce is reported as such, and its G row is not used.
+- **G is reported, not tested.** There is no threshold. analyze_g.py reads the replay's G rows.
+- **The confirmatory runs (block D) do not wait for it.** Block E4 of docs/W2_COMMANDS.md is marked "after prereg-v1.2 and the replay".

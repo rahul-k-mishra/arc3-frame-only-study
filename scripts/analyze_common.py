@@ -24,6 +24,10 @@ PILOTS_B = ("MiniGrid-Empty-5x5-v0", "MiniGrid-FourRooms-v0", "MiniGrid-DoorKey-
             "MiniGrid-Dynamic-Obstacles-6x6-v0", "MiniGrid-Fetch-5x5-N2-v0", "BabyAI-GoToRedBallGrey-v0")
 PILOTS_C = ("coinrun", "bigfish")
 IN_RANGE_C = ("bossfight", "chaser", "dodgeball", "heist", "leaper", "maze", "miner", "plunder", "starpilot")
+# the confirmatory suite-C games whose frame depends on center_agent (PREREG v1.1 draft D13): the other
+# nine (IN_RANGE_C) set center_agent false in their own game_reset, so center_on = center_off there.
+# The secondary condition center_on is reported on these five only, never tested.
+CAMERA_DISTINCT_C = ("caveflyer", "climber", "fruitbot", "jumper", "ninja")
 ARC_TRAIN = ("tu93", "ls20", "vc33", "m0r0", "ft09", "lp85", "lf52", "dc22")
 
 # V2 exclusions (docs/PREREG.md v1.1 draft, D9 and D9b; RKM 27 Sep 2026): confirmatory environments
@@ -33,6 +37,9 @@ ARC_TRAIN = ("tu93", "ls20", "vc33", "m0r0", "ft09", "lp85", "lf52", "dc22")
 # closed door on every path to the target, or a carried key that must be put down before the target
 # can be picked up; minigrid_env.py:562-563 picks up only with empty hands).  V2's primary line
 # excludes them; the other lines report them included, not tested.
+# -- no success exists at all, under any key map (D9 amendment of 27 Sep 2026 (g)): no goal is placed
+#    and step() is not overridden (playground.py:16-31; GROUND_TRUTH_minigrid.md note 4)
+_NO_SUCCESS = ("MiniGrid-Playground-v0",)
 # -- the action is the success predicate itself or a precondition of it (docs/PREREG.md D9, D9b)
 _DONE_ABSENT = ("MiniGrid-GoToDoor-5x5-v0", "MiniGrid-GoToDoor-6x6-v0", "MiniGrid-GoToDoor-8x8-v0",
                 "MiniGrid-GoToObject-6x6-N2-v0", "MiniGrid-GoToObject-8x8-N2-v0")
@@ -63,16 +70,16 @@ _TOGGLE_PRECOND = ("MiniGrid-DoorKey-5x5-v0", "MiniGrid-DoorKey-6x6-v0", "MiniGr
                    "MiniGrid-LockedRoom-v0", "MiniGrid-MultiRoom-N2-S4-v0", "MiniGrid-MultiRoom-N4-S5-v1",
                    "MiniGrid-MultiRoom-N6-v0", "BabyAI-GoToImpUnlock-v0", "BabyAI-PickupAbove-v0") + _DROP_PRECOND
 V2_EXCLUDE = {
-    ("minigrid", "raw"): _DONE_ABSENT,                                    # 5: done absent
-    ("minigrid", "macro"): _DONE_ABSENT + _DROP_ABSENT + _DROP_PRECOND,   # 48: drop and done absent
+    ("minigrid", "raw"): _NO_SUCCESS + _DONE_ABSENT,                                  # 6
+    ("minigrid", "macro"): _NO_SUCCESS + _DONE_ABSENT + _DROP_ABSENT + _DROP_PRECOND,  # 49
     # procgen: none
 }
 # I1 presses ids 1-5 only (D7, D9b): toggle absent in both suite-B conditions, special 2 absent on
 # suite C.  No suite-C level end requires special 2 (D9b), so procgen has no I1 list.
 V2_EXCLUDE_I1 = {
-    ("minigrid", "raw"): V2_EXCLUDE[("minigrid", "raw")] + _TOGGLE_PRED + _TOGGLE_PRECOND,       # 62
+    ("minigrid", "raw"): V2_EXCLUDE[("minigrid", "raw")] + _TOGGLE_PRED + _TOGGLE_PRECOND,       # 63
     ("minigrid", "macro"): V2_EXCLUDE[("minigrid", "macro")] + _TOGGLE_PRED + tuple(
-        g for g in _TOGGLE_PRECOND if g not in _DROP_PRECOND),                                     # 77
+        g for g in _TOGGLE_PRECOND if g not in _DROP_PRECOND),                                     # 78
 }
 
 

@@ -89,13 +89,34 @@ Suite line, primary: R (0.875) and I1 (0.8333) both non-void and > 0.65: "not fa
 I1)".  The "primary, D9b included" and "all games" suite lines: "reported, not tested".
 
 Test 8, the registered lists themselves, against docs/GROUND_TRUTH_minigrid.md (a document; no runs/
-file): R/N raw 5 and macro 48; I1 raw 62 and macro 77; no duplicates; every id is a confirmatory
+file): R/N raw 6 and macro 49; I1 raw 63 and macro 78 (each including MiniGrid-Playground-v0, which
+has no success at all; D9 amendment of 27 Sep 2026 (g)); no duplicates; every id is a confirmatory
 suite-B environment; I1's list contains the R/N list of the same condition; raw is contained in macro;
 no procgen list for either.
 
+Test 9, the secondary condition center_on (PREREG v1.1 draft D13).  Suite "procgen", 7 confirmatory
+games: alpha, maze (not camera-distinct; maze is in range) and caveflyer, climber, fruitbot, jumper,
+ninja (analyze_common.CAMERA_DISTINCT_C).  The same census, one N seed per game, in both conditions,
+and the same R outcome Y (one seed) in both:
+    caveflyer h h h h h  S=5 P=1 Y=1     climber h h h h f  S=4 P=0 Y=0     fruitbot h h h f f  S=3 P=0 Y=1
+    jumper    h h f f f  S=2 P=0 Y=0     ninja   h f f f f  S=1 P=0 Y=0
+    alpha     h h h h h  S=5 P=1 Y=1     maze    h h h h h  S=5 P=1 Y=0
+center_on, "camera_distinct" (the five; reported, not tested): positives S = 5, 3; negatives S = 4, 2,
+    1; 6 pairs.  The 5 beats all three (3), the 3 beats 2 and 1 (2): AUROC = 5/6 = 0.8333.  P: TP 1
+    (caveflyer), FN 1 (fruitbot), TN 3, FP 0: BA = 0.75.  Share 2/5 = 0.4.  B constant: 0.5.  Verdict
+    "reported, not tested"; suite line "reported, not tested".  No "all" or "in_range" line exists
+    under center_on.
+center_off, "all" (7 games; tested): positives 5 (caveflyer), 3 (fruitbot), 5 (alpha); negatives 4, 2, 1,
+    5 (maze); 12 pairs.  Each 5 beats 4, 2, 1 and ties 5 (3.5 each, 7), the 3 beats 2 and 1 (2):
+    AUROC = 9/12 = 0.75.  P: TP 2 (caveflyer, alpha), FN 1 (fruitbot), TN 3, FP 1 (maze): BA =
+    (2/3 + 3/4) / 2 = 0.70833.  Verdict "neither" (0.65 < 0.75 < 0.80).  Suite line: "not failed
+    (decided by R alone)".
+center_off, "in_range" (maze only): 0 of 1 positive: VOID; suite line "not decidable (no non-void
+    evidence agent)".
+
 Command (PowerShell, from D:\\Research\\arc3\\repo):
     D:\\Research\\arc3\\brutus\\.venv\\Scripts\\python.exe scripts\\test_analyze_v2.py
-Expected: "Ran 8 tests ... OK".
+Expected: "Ran 9 tests ... OK".
 """
 from __future__ import annotations
 
@@ -284,7 +305,7 @@ class T(unittest.TestCase):
         truth = C.parse_truth_minigrid(os.path.join(os.path.dirname(HERE), "docs", "GROUND_TRUTH_minigrid.md"))
         conf = set(C.confirmatory("minigrid", truth))
         self.assertEqual(len(conf), 161)
-        sizes = {("R", "raw"): 5, ("R", "macro"): 48, ("I1", "raw"): 62, ("I1", "macro"): 77}
+        sizes = {("R", "raw"): 6, ("R", "macro"): 49, ("I1", "raw"): 63, ("I1", "macro"): 78}
         for (agent, cond), n in sizes.items():
             lst = C.v2_exclusions("minigrid", cond, agent)
             self.assertEqual(len(lst), n, (agent, cond))
@@ -296,6 +317,45 @@ class T(unittest.TestCase):
             self.assertTrue(set(C.v2_exclusions("minigrid", "raw", agent)) <= set(C.v2_exclusions("minigrid", "macro", agent)))
             for cond in ("center_off", "center_on"):
                 self.assertEqual(C.v2_exclusions("procgen", cond, agent), ())
+
+    def test_center_on(self):
+        games = ["caveflyer", "climber", "fruitbot", "jumper", "ninja", "alpha", "maze"]
+        census = ["hhhhh", "hhhhf", "hhhff", "hhfff", "hffff", "hhhhh", "hhhhh"]
+        y = [1, 0, 1, 0, 0, 1, 0]
+        with tempfile.TemporaryDirectory() as tmp:
+            lines = ["| game | A1 | A2 | A3 | A4 | A5 | p | a | n | status |", "|---|---|---|---|---|---|---|---|---|---|"]
+            lines += [f"| {g} | holds | holds | holds | holds | holds | p | a | n | confirmatory |" for g in games]
+            _write(os.path.join(tmp, "gt_procgen.md"), "\n".join(lines) + "\n")
+            _write(os.path.join(tmp, "gt_minigrid.md"), "\n")
+            rows = []
+            ad = dict(grid=[64, 64], action_list=list(range(6)), n_colours=10)
+            for cond in ("center_off", "center_on"):
+                for i, g in enumerate(games):
+                    rows.append(dict(game=g, agent="N", mode="nav", suite="procgen", condition=cond, seed=1000,
+                                     census={a: W[c] for a, c in zip(C.ASSUMPTIONS, census[i])},
+                                     level1_completed=bool(y[i]), adapter=ad))
+                    rows.append(dict(game=g, agent="R", mode="hash_state", suite="procgen", condition=cond,
+                                     seed=1000, level1_completed=bool(y[i]), adapter=ad))
+            _write(os.path.join(tmp, "runs.json"), json.dumps(rows))
+            table, suite_lines = run(tmp)
+            by = {(x[1], x[2], x[3]): x for x in table}
+            self.assertEqual(sorted({(x[1], x[2]) for x in table}),
+                             [("center_off", "all"), ("center_off", "in_range"), ("center_on", "camera_distinct")])
+            r = by[("center_on", "camera_distinct", "R")]
+            self.assertEqual((r[5], r[6], r[12]), (5, 2, "reported, not tested"))
+            self.assertAlmostEqual(r[7], 5 / 6)
+            self.assertAlmostEqual(r[10], 0.75)
+            self.assertAlmostEqual(r[11], 0.5)
+            r = by[("center_off", "all", "R")]
+            self.assertEqual((r[5], r[6], r[12]), (7, 3, "neither"))
+            self.assertAlmostEqual(r[7], 0.75)
+            self.assertAlmostEqual(r[10], (2 / 3 + 3 / 4) / 2)
+            r = by[("center_off", "in_range", "R")]
+            self.assertEqual((r[5], r[6], r[12]), (1, 0, "VOID"))
+            sl = {(s[1], s[2]): s[3] for s in suite_lines}
+            self.assertEqual(sl[("center_on", "camera_distinct")], "reported, not tested")
+            self.assertEqual(sl[("center_off", "all")], "not failed (decided by R alone)")
+            self.assertEqual(sl[("center_off", "in_range")], "not decidable (no non-void evidence agent)")
 
     def test_bootstrap(self):
         s = [5, 5, 4, 4, 3, 2, 1, 1]

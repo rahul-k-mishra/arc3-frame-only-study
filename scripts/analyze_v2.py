@@ -26,6 +26,10 @@ every verdict rule applies (VOID, PASS, FAIL, suite-level FAIL; the suite line c
 primary lines), and an "all games" line, with nothing excluded, reported and not tested.  I1 also gets
 "primary, D9b included": only the D9 list excluded, i.e. R's primary game set; reported, not tested.
 Suites without a list keep the "all" line (and, for suite C, the "in_range" line).
+Suite C, condition center_on (the secondary condition; PREREG v1.1 draft D13): one line per agent,
+subset "camera_distinct", over the five games whose frame depends on the camera
+(analyze_common.CAMERA_DISTINCT_C); verdict and suite line "reported, not tested".  center_off keeps
+"all" and "in_range" with verdicts.
 
 Reads no game.  Writes docs/tables/v2.md and docs/tables/v2.json (or --out).
 
@@ -120,7 +124,11 @@ def v2_rows(rows, truth_by_suite, n_resamples=2000, seed=20260927, workers=8):
         else:
             subsets = [("all", games)]
         if suite == "procgen":
-            subsets.append(("in_range", [g for g in games if g in C.IN_RANGE_C]))
+            if cond == "center_on":
+                # D13: the secondary condition, on the five camera-distinct games only; reported
+                subsets = [("camera_distinct", [g for g in games if g in C.CAMERA_DISTINCT_C])]
+            else:
+                subsets.append(("in_range", [g for g in games if g in C.IN_RANGE_C]))
 
         def games_for(name, agent, gs):
             if name == "primary":

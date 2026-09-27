@@ -333,3 +333,72 @@ Sixth amendment of 27 September 2026. The lines above are unchanged; where this 
 - scripts/analyze_common.py, scripts/analyze_v2.py, scripts/test_analyze_v2.py.
 
 **Source reading.** The procgen 0.10.7 sources were fetched raw from GitHub to verify D13 and D9b, into the session scratchpad and not into the repository. The minigrid 3.1.0 sources were read in the installed package. The assistant read runs/pilot_checks/*.json and a few pilot rows in runs/suites (the key maps). It also listed the file names at the top of runs/ once, and opened no other file there.
+
+## Amendment 27 Sep 2026 (g)
+
+Seventh amendment of 27 September 2026. The lines above are unchanged; where this section corrects one of them, this section governs.
+
+**Decisions by RKM (27 Sep 2026):**
+1. **D13 goes into the code before the tag.**
+2. **G's rows come from a separate logged replay of N**, made after the confirmatory runs and registered as prereg-v1.2 before that replay (option B). This is PREREG v1.1 draft D15.
+3. **The OSF v1.1 claim sentence is the v1 sentence verbatim.** docs/OSF_REGISTRATION_v1_1.md now carries the claim paragraph of docs/OSF_REGISTRATION_final.txt word for word, checked by string comparison. It includes the sentences on G ("measured and reported alongside, not tested") and on ARC-AGI-3 as the development instance.
+
+**D13 implemented.**
+- analyze_common.CAMERA_DISTINCT_C = (caveflyer, climber, fruitbot, jumper, ninja) is registered next to IN_RANGE_C.
+- analyze_v1.py and analyze_v2.py report suite C center_on on the "camera_distinct" subset only. Every such line, and the V2 suite line, reads "reported, not tested". center_off keeps "all" and "in_range" unchanged.
+- Hand-worked tests: test_center_on in test_analyze_v1.py and test_analyze_v2.py.
+- **scripts/determinism_check.py** (D8 class, standard library only) compares, on the nine identical-frame games, every center_on row with its center_off row. It leaves out the seven timing fields and the three condition labels. It exits non-zero on any difference (1) or missing row (2) and writes runs/checks/determinism_check.json.
+  - It has a synthetic test with 4 cases.
+  - Its command is block D7 of docs/W2_COMMANDS.md, run after D4.
+  - Before commit, its comparison function was applied to the 30 bigfish pilot pairs, which are not among the nine: 30 of 30 identical. That agrees with pilot_check.json.
+
+**The reachability rule, one more pass (RKM's Step 3).**
+- All 161 confirmatory suite-B environments were checked against their success predicates in docs/GROUND_TRUTH_minigrid.md.
+- **MiniGrid-Playground-v0 has no success at all.** It places no goal and does not override step(), so it ends only by truncation (playground.py:16-31; truth-table note 4). It is now on every agent's list in both conditions (D9 amendment; analyze_common `_NO_SUCCESS`).
+- The five done-requiring ids were already listed.
+- Every other predicate is reachable on some seed under the six-key map.
+- **Counts now:**
+
+| agent | raw | macro |
+|---|---|---|
+| R and N | 6 | 49 |
+| I1 | 63 | 78 |
+
+  Primary games: 155, 112, 98 and 83. D9, D9b, test_registered_lists and the OSF text were changed accordingly.
+
+**D15 (new).**
+- scripts/g_goal_cost.py does not exist at the v1.1 tag.
+- G's rows come from a separate replay of N on every confirmatory (game, condition, seed), after block D. The replay script is registered as prereg-v1.2 before any replay runs.
+- Each replay must reproduce the confirmatory N row's action sequence and level log exactly. The script reports that check per row.
+- G stays reported, not tested. Block D does not wait for it, and block E4 is marked "after prereg-v1.2 and the replay".
+
+**D12 reworded.** "The registered ARC cap is now 3600 s" became "3600 s per run, registered at prereg-v1.1". This resolves the wording item of amendment (f).
+
+**D11 re-recorded.** The table in docs/PREREG.md now gives each script's blob at prereg-v1, at 6f6f090, at 3cd61d2 and now. New blobs:
+- analyze_common.py caad22731807db78aff9c92c993a79a63f042ec3;
+- analyze_v1.py 515f44b0f007182172022272383de548e80d5a11;
+- analyze_v2.py 90a849c44e47addd8efdbfa579efdb16288edd50;
+- test_analyze_v1.py 61877fbb342ca02aca44a9c35c865361803d8de0;
+- test_analyze_v2.py ca3f477b45fceff43a92de297f899e791d95b8af;
+- determinism_check.py 4f98f6430e9221deb1a43f2313eb00f5ca676969 and test_determinism_check.py c0fc140faaed7aa7983fcc44b7a2284a5e6bc4f0, both under D8.
+
+analyze_g.py is unchanged. **Synthetic tests, with warnings as errors: 5 + 9 + 2 + 4 = 20 of 20 OK. No runs/ file was read by any test.**
+
+**scripts/e6_summary.py written, not yet run.**
+- Blob: f962759ff9b25e50f2d15547176ea3f41e95ce6c. Standard library only; it writes nothing.
+- It reads runs/navrun_prereg_e6_arc_25x10.json and prints the amendment (e) table per mode and split, with the definitions of docs/archive/TOG_PLAN_v2.md Section 3.2:
+  - M1 = the mean over games of the seed-mean score;
+  - levels per seed = the sum over games of the seed-mean levels;
+  - the games where goal_confirmed fired.
+- It also prints g_nav_run.py's form of each number and whether the two agree, and the row checks.
+- It was exercised on a fabricated 500-row file only. The E6 file was not read.
+- **Not yet run:** the post-re-run nav values. Amendment (e)'s nav values stay provisional until RKM runs it. The hash_state values must reproduce (e) exactly (0.1901 / 11.1 train, 0.3274 / 10.5 held-out).
+
+**Open before the tag prereg-v1.1** (the list of amendment (f), reduced):
+- RKM runs scripts/e6_summary.py. Its nav values replace amendment (e)'s provisional ones in the next STATE amendment. This does not block the tag: E6 is ARC development, outside v1.1.
+- RKM reviews the v1.1 draft (D1–D15) and creates the tag. Then:
+  - fill the commit hash and D11 blob hashes into docs/OSF_REGISTRATION_v1_1.md;
+  - register it on OSF.
+- Resolved since (f): D13 in code; the G sequencing (D15); the D12 wording.
+- Still outside v1.1, by D15: scripts/g_goal_cost.py and PREREG v1.2, before the replay.
+- Still outside v1.1: docs/GROUND_TRUTH_arc_train.md, for ARC V1, development only.

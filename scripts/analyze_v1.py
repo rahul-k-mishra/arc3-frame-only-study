@@ -8,7 +8,10 @@ derived truth (docs/GROUND_TRUTH_minigrid.md, docs/GROUND_TRUTH_procgen.md), per
     kappa      Cohen's kappa, only if both truth values have >= 3 games (constant-column rule)
     verdict    PASS if agreement >= 0.90 and (kappa >= 0.70 or kappa not defined);
                FAIL if agreement < 0.75; otherwise neither
-Suite C is reported on all 14 confirmatory games and again on the in-range subset (Section 4).
+Suite C, condition center_off (primary): reported on all 14 confirmatory games ("all") and again on
+the in-range subset ("in_range", Section 4); both carry verdicts.  Condition center_on (secondary,
+PREREG v1.1 draft D13): reported only on the five games whose frame depends on the camera
+(analyze_common.CAMERA_DISTINCT_C; subset "camera_distinct"), verdict "reported, not tested".
 Suite B uses A3-raw truth for condition "raw" and A3-macro truth for "macro".  ARC V1 (8 train games,
 development) is computed only if --truth-arc names a table; none exists at v1.
 
@@ -45,16 +48,22 @@ def v1_rows(rows, truth_by_suite):
         census = C.census_by_game(rows, suite, cond)
         games = [g for g in C.confirmatory(suite, truth) if g in census] if suite != "arc" \
             else [g for g in C.ARC_TRAIN if g in census and g in truth]
-        subsets = [("all", games)]
-        if suite == "procgen":
-            subsets.append(("in_range", [g for g in games if g in C.IN_RANGE_C]))
+        if suite == "procgen" and cond == "center_on":
+            # D13: the secondary condition differs from center_off only on the five camera-distinct
+            # games; it is reported there, never tested
+            subsets = [("camera_distinct", [g for g in games if g in C.CAMERA_DISTINCT_C])]
+        else:
+            subsets = [("all", games)]
+            if suite == "procgen":
+                subsets.append(("in_range", [g for g in games if g in C.IN_RANGE_C]))
         for name, gs in subsets:
+            tested = name != "camera_distinct"
             for a in C.ASSUMPTIONS:
                 t = [C.truth_for(suite, cond, truth[g], a) for g in gs]
                 p = [census[g][a] for g in gs]
                 agree, kappa = C.agreement_kappa(t, p)
                 out.append([suite, cond, name, a, len(gs), sum(x == C.HOLDS for x in t), agree, kappa,
-                            C.v1_verdict(agree, kappa)])
+                            C.v1_verdict(agree, kappa) if tested else "reported, not tested"])
     return out
 
 

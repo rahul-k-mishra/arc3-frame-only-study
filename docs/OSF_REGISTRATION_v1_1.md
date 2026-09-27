@@ -16,7 +16,9 @@ RKM pastes the text between the two rules into a new OSF open-ended registration
 - The changes were written after the tag `prereg-v1` and after a pilot on the registered pilot games only (six MiniGrid/BabyAI environments, two Procgen games). **No confirmatory MiniGrid, BabyAI or Procgen game had been played by any agent when this amendment was written.**
 - The only earlier contact with confirmatory games was infrastructure checks that play random actions and compute no census, agent or test statistic (items D8 and D13).
 
-**The claim (unchanged from v1).** A fixed, cheap, frame-only probe battery (the assumption census) together with a defined goal-identification cost G, with every parameter frozen on eight ARC-AGI-3 training games, (i) reports the ground-truth mechanics of unseen games in three suites at a registered accuracy, and (ii) predicts, before any agent is run, on which unseen games assumption-driven frame-only agents complete the first level.
+**The claim, unchanged: the paragraph of the v1 registration, verbatim.**
+
+**Claim.** A fixed, cheap, frame-only probe battery (the assumption census: A1 input coupling, A2 one controlled object, A3 lattice motion, A4 blocking by a fixed obstacle set, A5 place goal), with every parameter frozen on eight ARC-AGI-3 training games, (i) reports the ground-truth mechanics of unseen games at a registered accuracy, and (ii) predicts, before any agent is run, on which unseen games assumption-driven frame-only agents complete the first level. Ground truth is derived from each game's source code and committed before any run. A goal-identification cost G is measured and reported alongside, not tested. ARC-AGI-3 is the development instance and does not count toward generality.
 
 **The changes, D1 to D14.**
 
@@ -56,7 +58,8 @@ RKM pastes the text between the two rules into a new OSF open-ended registration
 **D8. Infrastructure checks.** Three scripts are registered as infrastructure checks. They play random actions or read existing rows, and they produce no census, agent decision or test statistic:
 - a fidelity check: 200 random actions twice per game, to confirm determinism and measure speed;
 - a pilot row check: inventory, cross-condition identity, wall time and the D5 projection;
-- a Procgen camera check (see D13).
+- a Procgen camera check (see D13);
+- a determinism check: on the nine Procgen games where the camera setting has no effect, every secondary-condition run must equal the primary one, apart from timing and the condition labels (see D13).
 
 **D9. V2 exclusions for all agents.**
 - The primary V2 analysis excludes a confirmatory environment for an agent when, on every seed, success cannot be reached without an action that is missing from that agent's key map.
@@ -64,9 +67,10 @@ RKM pastes the text between the two rules into a new OSF open-ended registration
 - A secondary line reports V2 with these environments included, and is not tested.
 - Environments that draw their instruction per seed (BabyAI LevelGen levels) stay in, as do levels whose target may lie in the agent's own room.
 - For the author's agents (explorer R, planner N), from the environments' source code:
-  - Primitive condition ("done" missing), 5 excluded: MiniGrid-GoToDoor-5x5-v0, -6x6-v0, -8x8-v0; MiniGrid-GoToObject-6x6-N2-v0, -8x8-N2-v0. Their success is a "done" beside the target.
-  - Absolute-move condition ("drop" and "done" missing), 48 excluded:
-    - the 5 above;
+  - One environment has no success at all, under any key map, and is excluded for every agent in both conditions: MiniGrid-Playground-v0. It places no goal and ends only when its step limit is reached.
+  - Primitive condition ("done" missing), 6 excluded: MiniGrid-Playground-v0, and MiniGrid-GoToDoor-5x5-v0, -6x6-v0, -8x8-v0; MiniGrid-GoToObject-6x6-N2-v0, -8x8-N2-v0, whose success is a "done" beside the target.
+  - Absolute-move condition ("drop" and "done" missing), 49 excluded:
+    - the 6 above;
     - 15 whose success is a "drop": MiniGrid-PutNear-6x6-N2-v0, -8x8-N3-v0; BabyAI-PutNextLocal-v0, -PutNextLocalS5N3-v0, -PutNextLocalS6N4-v0, -PutNextS4N1-v0, -PutNextS5N1-v0, -PutNextS5N2-v0, -PutNextS5N2Carrying-v0, -PutNextS6N3-v0, -PutNextS6N3Carrying-v0, -PutNextS7N4-v0, -PutNextS7N4Carrying-v0, -MoveTwoAcrossS5N2-v0, -MoveTwoAcrossS8N9-v0;
     - 28 where the key used on a locked door must be put down before the target can be picked up: MiniGrid-KeyCorridorS3R1-v0, S3R2-v0, S3R3-v0, S4R3-v0, S5R3-v0, S6R3-v0; MiniGrid-UnlockPickup-v0; MiniGrid-BlockedUnlockPickup-v0; MiniGrid-ObstructedMaze-1Dl-v0, -1Dlh-v0, -1Dlhb-v0, -1Q-v1, -2Dl-v0, -2Dlh-v0, -2Dlhb-v1, -2Q-v1, -Full-v1; BabyAI-KeyCorridor-v0, -KeyCorridorS3R1-v0, S3R2-v0, S3R3-v0, S4R3-v0, S5R3-v0, S6R3-v0; BabyAI-UnlockPickup-v0, -UnlockPickupDist-v0, -BlockedUnlockPickup-v0, -UnlockToUnlock-v0.
   - Procgen: none.
@@ -86,16 +90,20 @@ RKM pastes the text between the two rules into a new OSF open-ended registration
 
 | agent | primitive condition | absolute-move condition |
 |---|---|---|
-| R and N | 5 | 48 |
-| I1 | 62 | 77 |
+| R and N | 6 | 49 |
+| I1 | 63 | 78 |
 
-  The primary line then covers 156, 113, 99 and 84 of the 161 confirmatory environments respectively.
+  The primary line then covers 155, 112, 98 and 83 of the 161 confirmatory environments respectively.
 - **Procgen: no exclusion.** "Special 2" throws a star diagonally in ninja and fires backwards in starpilot; in every other confirmatory game it does nothing. No Procgen level end needs it.
 
 **D10.** The v1 seeding text for MiniGrid/BabyAI is replaced by D4, and the protocol gains the runner's commands.
 
 **D11. Analysis code.**
-- The V2 script and its shared module changed only to implement D9 and D9b. Blob hashes at `prereg-v1.1`: analyze_v2.py `<fill: fd68354e2c5a20c9ddcad9713178a575c4355f1c unless changed before the tag>`, analyze_common.py `<fill: ddb807171046c0c10b5f7fd2839f4cbccff04600 unless changed before the tag>`. The V1 and G scripts are unchanged from v1, except as listed in D13 if implemented before the tag.
+- The analysis code changed only to implement D9, D9b and D13. The G script is unchanged from v1.
+- Blob hashes at `prereg-v1.1` (fill from `git ls-files -s` at the tag; the values of 27 Sep 2026 are given):
+  - analyze_common.py `<fill: caad22731807db78aff9c92c993a79a63f042ec3>`;
+  - analyze_v1.py `<fill: 515f44b0f007182172022272383de548e80d5a11>`;
+  - analyze_v2.py `<fill: 90a849c44e47addd8efdbfa579efdb16288edd50>`.
 - Synthetic tests with hand-computed expected values cover the exclusions and the registered lists. All pass; they read no run file.
 
 **D12. ARC-AGI-3 wall-clock cap.**
@@ -111,7 +119,14 @@ RKM pastes the text between the two rules into a new OSF open-ended registration
 - **The secondary condition is therefore distinct only on caveflyer, climber, fruitbot, jumper and ninja** among the 14 confirmatory Procgen games. V1's and V2's secondary line is reported on those five.
 - On the other nine the secondary runs are still made. They are required to equal the primary runs in every non-timing field, and this is recorded as a determinism check, not as evidence.
 - These nine are exactly the games inside the registered operating range of the instrument (v1 Section 4). Within that range, the results are the same under both camera settings.
+- In the analysis code, the secondary condition is reported on the five games only, as a single line marked "reported, not tested". The primary condition keeps its lines over all 14 games and over the nine in range, with verdicts.
 
 **D14. No adapter change after the pilot.** The pilot produced no errors and no cut runs. Cross-condition identity was as the source predicts, and runs were deterministic given the seed. No adapter was changed and the tile-size scaling rule was not used.
+
+**D15. The goal-identification cost G comes from a separately registered replay.**
+- The script that logs what G needs does not exist at this amendment's tag, so no G value can be computed under v1.1.
+- G's data will come from a separate replay of the planner N on every confirmatory (game, condition, seed), made after the confirmatory runs. The replay script will be registered as a further amendment (v1.2, git tag and OSF registration) before any replay runs.
+- Each replay must reproduce the confirmatory run's actions and level history exactly. The script reports this check for every run, and a replay that does not reproduce is reported and not used.
+- G remains reported, not tested. The confirmatory runs do not wait for the replay.
 
 ---
