@@ -1,0 +1,6709 @@
+{
+ "script": "scripts/g_census_table.py",
+ "created": "2026-09-27 14:28:51",
+ "inputs": [
+  "navrun_prereg_e6_arc_25x10.json",
+  "empty_rows.json"
+ ],
+ "rule": "(from the nav arm's counters; applied in this order, first match wins)\n    1 no keys                     the learn phase pressed no keyboard action in any seed\n    2 no controllable object      keys tried, no key accepted in any seed\n    3 key-controlled non-walker   a key accepted, and the level-1 fallback is \"mispredicted\" or\n                                  \"localise_failed\" in at least half the seeds (the movement model\n                                  fails during play)\n    4 2-D lattice walker          the final effect model (nav.eff) has step vectors spanning two\n                                  dimensions in at least half the seeds\n    5 1-D walker                  otherwise\nThis rule was written on 25 Sep 2026 to codify the census already recorded in CLAUDE.md, after\nthat census had been read; it is not a pre-registered classifier.  The script prints every game\nwhere the rule and CLAUDE.md disagree (sc25 was in no CLAUDE.md category).  E6 freezes the rule\n(code hash) before its runs.  Rows 1-2 depend on the game as the planner sees it; rows 3-5 also\ndepend on the planner (its step learning and localisation).",
+ "summary": {
+  "heldout_category_counts": {
+   "no keys": 3,
+   "no controllable object": 3,
+   "2-D lattice walker": 5,
+   "1-D walker": 3,
+   "key-controlled non-walker": 3
+  },
+  "train_category_counts": {
+   "no keys": 3,
+   "no controllable object": 1,
+   "2-D lattice walker": 4,
+   "1-D walker": 0,
+   "key-controlled non-walker": 0
+  },
+  "heldout_keyboard": 14,
+  "heldout_object_moved_by_keys": 11,
+  "heldout_goal_confirmed_any_seed": [],
+  "heldout_goal_recorded_any_seed": [
+   "ar25",
+   "bp35",
+   "ka59",
+   "sk48",
+   "sp80",
+   "tr87"
+  ],
+  "heldout_goal_reached_no_end_any_seed": [
+   "bp35",
+   "ka59",
+   "sk48",
+   "sp80"
+  ],
+  "heldout_l1_won_by_nav_any_seed": [
+   "ar25",
+   "bp35",
+   "ka59",
+   "sk48",
+   "sp80",
+   "tr87"
+  ],
+  "claude_md_agree": [
+   "ar25",
+   "bp35",
+   "cd82",
+   "cn04",
+   "g50t",
+   "ka59",
+   "r11l",
+   "re86",
+   "s5i5",
+   "sb26",
+   "sk48",
+   "sp80",
+   "su15",
+   "tn36",
+   "tr87",
+   "wa30"
+  ],
+  "claude_md_differ": [],
+  "claude_md_unassigned": [
+   [
+    "sc25",
+    "1-D walker"
+   ]
+  ]
+ },
+ "rows": [
+  {
+   "game": "ar25",
+   "split": "held-out",
+   "source_informed": false,
+   "seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009
+   ],
+   "actions": [
+    20000
+   ],
+   "below_minimum_seeds": false,
+   "keys_tried": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "7"
+   ],
+   "keys_accepted": {
+    "1": [
+     {
+      "decided": "accepted",
+      "shift": [
+       -3,
+       -3
+      ],
+      "agree": 3,
+      "presses": 4,
+      "seeds": 10
+     }
+    ],
+    "2": [
+     {
+      "decided": "accepted",
+      "shift": [
+       3,
+       3
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ],
+    "3": [
+     {
+      "decided": "accepted",
+      "shift": [
+       3,
+       3
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ],
+    "4": [
+     {
+      "decided": "accepted",
+      "shift": [
+       -3,
+       -3
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ],
+    "7": [
+     {
+      "decided": "accepted",
+      "shift": [
+       3,
+       3
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ]
+   },
+   "keys_not_accepted": {
+    "5": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ]
+   },
+   "category": "key-controlled non-walker",
+   "eff_per_seed": [
+    {
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ],
+     "7": [
+      3,
+      3
+     ],
+     "1": [
+      0,
+      -3
+     ]
+    },
+    {
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ],
+     "7": [
+      3,
+      3
+     ],
+     "1": [
+      0,
+      -3
+     ]
+    },
+    {
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      9,
+      0
+     ],
+     "7": [
+      -9,
+      0
+     ],
+     "1": [
+      0,
+      -3
+     ]
+    },
+    {
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      3,
+      0
+     ],
+     "4": [
+      -3,
+      0
+     ],
+     "7": [
+      3,
+      3
+     ],
+     "1": [
+      0,
+      -3
+     ]
+    },
+    {
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ],
+     "7": [
+      3,
+      0
+     ],
+     "1": [
+      0,
+      -3
+     ]
+    },
+    {
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ],
+     "7": [
+      3,
+      3
+     ],
+     "1": [
+      0,
+      -3
+     ]
+    },
+    {
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      3,
+      0
+     ],
+     "4": [
+      -3,
+      0
+     ],
+     "7": [
+      3,
+      0
+     ],
+     "1": [
+      0,
+      -3
+     ]
+    },
+    {
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      3,
+      0
+     ],
+     "4": [
+      -3,
+      0
+     ],
+     "7": [
+      3,
+      3
+     ],
+     "1": [
+      0,
+      -3
+     ]
+    },
+    {
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ],
+     "7": [
+      9,
+      0
+     ],
+     "1": [
+      0,
+      -3
+     ]
+    },
+    {
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      3,
+      0
+     ],
+     "4": [
+      -3,
+      0
+     ],
+     "7": [
+      -3,
+      0
+     ],
+     "1": [
+      0,
+      -3
+     ]
+    }
+   ],
+   "l1_fallback": [
+    "mispredicted",
+    "mispredicted",
+    "mispredicted",
+    "mispredicted",
+    "mispredicted",
+    "mispredicted",
+    "mispredicted",
+    "mispredicted",
+    "mispredicted",
+    "frontier_exhausted"
+   ],
+   "l1_nav": [
+    105,
+    1575,
+    84,
+    2880,
+    88,
+    107,
+    2148,
+    3076,
+    66,
+    2881
+   ],
+   "l1_hash_state": [
+    null,
+    null,
+    null,
+    null,
+    17001,
+    14135,
+    null,
+    7570,
+    5262,
+    4426
+   ],
+   "l1_nav_won": 10,
+   "l1_hash_state_won": 5,
+   "goal_recorded": [
+    2,
+    1,
+    1,
+    2,
+    1,
+    1,
+    1,
+    2,
+    2,
+    2
+   ],
+   "goal_reached_no_end": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_confirmed": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "avatar_found": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "game": "bp35",
+   "split": "held-out",
+   "source_informed": false,
+   "seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009
+   ],
+   "actions": [
+    20000
+   ],
+   "below_minimum_seeds": false,
+   "keys_tried": [
+    "3",
+    "4",
+    "7"
+   ],
+   "keys_accepted": {
+    "4": [
+     {
+      "decided": "accepted",
+      "shift": [
+       6,
+       0
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ],
+    "7": [
+     {
+      "decided": "accepted",
+      "shift": [
+       -6,
+       0
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ]
+   },
+   "keys_not_accepted": {
+    "3": [
+     {
+      "decided": "no_move",
+      "shift": [
+       -6,
+       0
+      ],
+      "agree": 1,
+      "presses": 7,
+      "seeds": 10
+     }
+    ]
+   },
+   "category": "1-D walker",
+   "eff_per_seed": [
+    {
+     "4": [
+      6,
+      0
+     ],
+     "7": [
+      -6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ]
+    },
+    {
+     "4": [
+      6,
+      0
+     ],
+     "7": [
+      -6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ]
+    },
+    {
+     "4": [
+      6,
+      0
+     ],
+     "7": [
+      -6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ]
+    },
+    {
+     "4": [
+      6,
+      0
+     ],
+     "7": [
+      -6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ]
+    },
+    {
+     "4": [
+      6,
+      0
+     ],
+     "7": [
+      -6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ]
+    },
+    {
+     "4": [
+      6,
+      0
+     ],
+     "7": [
+      -6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ]
+    },
+    {
+     "4": [
+      6,
+      0
+     ],
+     "7": [
+      -6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ]
+    },
+    {
+     "4": [
+      6,
+      0
+     ],
+     "7": [
+      -6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ]
+    },
+    {
+     "4": [
+      6,
+      0
+     ],
+     "7": [
+      -6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ]
+    },
+    {
+     "4": [
+      6,
+      0
+     ],
+     "7": [
+      -6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ]
+    }
+   ],
+   "l1_fallback": [
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted"
+   ],
+   "l1_nav": [
+    8764,
+    4396,
+    5900,
+    9533,
+    4866,
+    6016,
+    12937,
+    4839,
+    1781,
+    8799
+   ],
+   "l1_hash_state": [
+    8964,
+    4440,
+    2563,
+    2047,
+    5165,
+    3157,
+    10077,
+    7028,
+    3304,
+    7637
+   ],
+   "l1_nav_won": 10,
+   "l1_hash_state_won": 10,
+   "goal_recorded": [
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0
+   ],
+   "goal_reached_no_end": [
+    6,
+    0,
+    6,
+    6,
+    6,
+    6,
+    6,
+    0,
+    6,
+    0
+   ],
+   "goal_confirmed": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "avatar_found": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "game": "cd82",
+   "split": "held-out",
+   "source_informed": false,
+   "seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009
+   ],
+   "actions": [
+    20000
+   ],
+   "below_minimum_seeds": false,
+   "keys_tried": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+   ],
+   "keys_accepted": {},
+   "keys_not_accepted": {
+    "1": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ],
+    "2": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ],
+    "3": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ],
+    "4": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ],
+    "5": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ]
+   },
+   "category": "no controllable object",
+   "eff_per_seed": [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
+   ],
+   "l1_fallback": [
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar"
+   ],
+   "l1_nav": [
+    139,
+    672,
+    770,
+    552,
+    747,
+    153,
+    490,
+    257,
+    542,
+    719
+   ],
+   "l1_hash_state": [
+    773,
+    240,
+    787,
+    546,
+    428,
+    1120,
+    619,
+    200,
+    370,
+    213
+   ],
+   "l1_nav_won": 10,
+   "l1_hash_state_won": 10,
+   "goal_recorded": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_reached_no_end": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_confirmed": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "avatar_found": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "game": "cn04",
+   "split": "held-out",
+   "source_informed": false,
+   "seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009
+   ],
+   "actions": [
+    20000
+   ],
+   "below_minimum_seeds": false,
+   "keys_tried": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+   ],
+   "keys_accepted": {
+    "1": [
+     {
+      "decided": "accepted",
+      "shift": [
+       0,
+       -3
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ],
+    "2": [
+     {
+      "decided": "accepted",
+      "shift": [
+       0,
+       3
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ],
+    "3": [
+     {
+      "decided": "accepted",
+      "shift": [
+       -3,
+       0
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ],
+    "4": [
+     {
+      "decided": "accepted",
+      "shift": [
+       3,
+       0
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ]
+   },
+   "keys_not_accepted": {
+    "5": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ]
+   },
+   "category": "2-D lattice walker",
+   "eff_per_seed": [
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ]
+    }
+   ],
+   "l1_fallback": [
+    "stalled",
+    "stalled",
+    "stalled",
+    "stalled",
+    "stalled",
+    "stalled",
+    "stalled",
+    "stalled",
+    "stalled",
+    "stalled"
+   ],
+   "l1_nav": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "l1_hash_state": [
+    14276,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    5976,
+    null
+   ],
+   "l1_nav_won": 0,
+   "l1_hash_state_won": 2,
+   "goal_recorded": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_reached_no_end": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_confirmed": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "avatar_found": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "game": "g50t",
+   "split": "held-out",
+   "source_informed": false,
+   "seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009
+   ],
+   "actions": [
+    20000
+   ],
+   "below_minimum_seeds": false,
+   "keys_tried": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+   ],
+   "keys_accepted": {
+    "2": [
+     {
+      "decided": "accepted",
+      "shift": [
+       0,
+       6
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ],
+    "3": [
+     {
+      "decided": "accepted",
+      "shift": [
+       -6,
+       0
+      ],
+      "agree": 3,
+      "presses": 7,
+      "seeds": 10
+     }
+    ],
+    "4": [
+     {
+      "decided": "accepted",
+      "shift": [
+       6,
+       0
+      ],
+      "agree": 3,
+      "presses": 6,
+      "seeds": 10
+     }
+    ],
+    "5": [
+     {
+      "decided": "accepted",
+      "shift": [
+       0,
+       -6
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ]
+   },
+   "keys_not_accepted": {
+    "1": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ]
+   },
+   "category": "2-D lattice walker",
+   "eff_per_seed": [
+    {
+     "2": [
+      0,
+      6
+     ],
+     "5": [
+      0,
+      -6
+     ],
+     "4": [
+      6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ],
+     "1": [
+      0,
+      -6
+     ]
+    },
+    {
+     "2": [
+      0,
+      6
+     ],
+     "5": [
+      -6,
+      0
+     ],
+     "4": [
+      6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ],
+     "1": [
+      0,
+      -6
+     ]
+    },
+    {
+     "2": [
+      0,
+      6
+     ],
+     "5": [
+      -6,
+      0
+     ],
+     "4": [
+      6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ],
+     "1": [
+      0,
+      -6
+     ]
+    },
+    {
+     "2": [
+      0,
+      6
+     ],
+     "5": [
+      -6,
+      0
+     ],
+     "4": [
+      6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ],
+     "1": [
+      0,
+      -6
+     ]
+    },
+    {
+     "2": [
+      0,
+      6
+     ],
+     "5": [
+      0,
+      -6
+     ],
+     "4": [
+      6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ],
+     "1": [
+      0,
+      -6
+     ]
+    },
+    {
+     "2": [
+      0,
+      6
+     ],
+     "5": [
+      0,
+      -6
+     ],
+     "4": [
+      6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ],
+     "1": [
+      0,
+      -6
+     ]
+    },
+    {
+     "2": [
+      0,
+      6
+     ],
+     "5": [
+      0,
+      -6
+     ],
+     "4": [
+      6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ],
+     "1": [
+      0,
+      -6
+     ]
+    },
+    {
+     "2": [
+      0,
+      6
+     ],
+     "5": [
+      0,
+      -6
+     ],
+     "4": [
+      6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ],
+     "1": [
+      0,
+      -6
+     ]
+    },
+    {
+     "2": [
+      0,
+      6
+     ],
+     "5": [
+      0,
+      -6
+     ],
+     "4": [
+      6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ],
+     "1": [
+      0,
+      -6
+     ]
+    },
+    {
+     "2": [
+      0,
+      6
+     ],
+     "5": [
+      0,
+      -6
+     ],
+     "4": [
+      6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ],
+     "1": [
+      0,
+      -6
+     ]
+    }
+   ],
+   "l1_fallback": [
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted"
+   ],
+   "l1_nav": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "l1_hash_state": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "l1_nav_won": 0,
+   "l1_hash_state_won": 0,
+   "goal_recorded": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_reached_no_end": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_confirmed": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "avatar_found": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "game": "ka59",
+   "split": "held-out",
+   "source_informed": false,
+   "seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009
+   ],
+   "actions": [
+    20000
+   ],
+   "below_minimum_seeds": false,
+   "keys_tried": [
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "keys_accepted": {
+    "1": [
+     {
+      "decided": "accepted",
+      "shift": [
+       0,
+       -3
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ],
+    "2": [
+     {
+      "decided": "accepted",
+      "shift": [
+       0,
+       3
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ],
+    "3": [
+     {
+      "decided": "accepted",
+      "shift": [
+       -3,
+       0
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ],
+    "4": [
+     {
+      "decided": "accepted",
+      "shift": [
+       3,
+       0
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ]
+   },
+   "keys_not_accepted": {},
+   "category": "2-D lattice walker",
+   "eff_per_seed": [
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ]
+    }
+   ],
+   "l1_fallback": [
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted"
+   ],
+   "l1_nav": [
+    14135,
+    14206,
+    11398,
+    null,
+    18830,
+    null,
+    null,
+    13272,
+    18897,
+    18932
+   ],
+   "l1_hash_state": [
+    16992,
+    5398,
+    19235,
+    4618,
+    8477,
+    18412,
+    8453,
+    null,
+    null,
+    null
+   ],
+   "l1_nav_won": 7,
+   "l1_hash_state_won": 7,
+   "goal_recorded": [
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1
+   ],
+   "goal_reached_no_end": [
+    4,
+    4,
+    4,
+    0,
+    4,
+    0,
+    0,
+    5,
+    4,
+    4
+   ],
+   "goal_confirmed": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "avatar_found": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "game": "r11l",
+   "split": "held-out",
+   "source_informed": false,
+   "seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009
+   ],
+   "actions": [
+    20000
+   ],
+   "below_minimum_seeds": false,
+   "keys_tried": [],
+   "keys_accepted": {},
+   "keys_not_accepted": {},
+   "category": "no keys",
+   "eff_per_seed": [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
+   ],
+   "l1_fallback": [
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys"
+   ],
+   "l1_nav": [
+    25,
+    31,
+    133,
+    105,
+    85,
+    67,
+    55,
+    19,
+    115,
+    119
+   ],
+   "l1_hash_state": [
+    25,
+    31,
+    133,
+    105,
+    85,
+    67,
+    55,
+    19,
+    115,
+    119
+   ],
+   "l1_nav_won": 10,
+   "l1_hash_state_won": 10,
+   "goal_recorded": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_reached_no_end": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_confirmed": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "avatar_found": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "game": "re86",
+   "split": "held-out",
+   "source_informed": false,
+   "seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009
+   ],
+   "actions": [
+    20000
+   ],
+   "below_minimum_seeds": false,
+   "keys_tried": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+   ],
+   "keys_accepted": {
+    "1": [
+     {
+      "decided": "accepted",
+      "shift": [
+       0,
+       -3
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ],
+    "2": [
+     {
+      "decided": "accepted",
+      "shift": [
+       0,
+       3
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ],
+    "3": [
+     {
+      "decided": "accepted",
+      "shift": [
+       -3,
+       0
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ],
+    "4": [
+     {
+      "decided": "accepted",
+      "shift": [
+       3,
+       0
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ]
+   },
+   "keys_not_accepted": {
+    "5": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ]
+   },
+   "category": "2-D lattice walker",
+   "eff_per_seed": [
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ],
+     "5": [
+      9,
+      9
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ],
+     "5": [
+      -6,
+      9
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ],
+     "5": [
+      6,
+      9
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -3
+     ],
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      3,
+      0
+     ],
+     "5": [
+      9,
+      9
+     ]
+    }
+   ],
+   "l1_fallback": [
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted"
+   ],
+   "l1_nav": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "l1_hash_state": [
+    null,
+    null,
+    18756,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "l1_nav_won": 0,
+   "l1_hash_state_won": 1,
+   "goal_recorded": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_reached_no_end": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_confirmed": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "avatar_found": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "game": "s5i5",
+   "split": "held-out",
+   "source_informed": false,
+   "seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009
+   ],
+   "actions": [
+    20000
+   ],
+   "below_minimum_seeds": false,
+   "keys_tried": [],
+   "keys_accepted": {},
+   "keys_not_accepted": {},
+   "category": "no keys",
+   "eff_per_seed": [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
+   ],
+   "l1_fallback": [
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys"
+   ],
+   "l1_nav": [
+    2189,
+    1085,
+    1059,
+    962,
+    847,
+    1342,
+    null,
+    1068,
+    894,
+    1217
+   ],
+   "l1_hash_state": [
+    2189,
+    1085,
+    1059,
+    962,
+    847,
+    1342,
+    null,
+    1068,
+    894,
+    1217
+   ],
+   "l1_nav_won": 9,
+   "l1_hash_state_won": 9,
+   "goal_recorded": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_reached_no_end": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_confirmed": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "avatar_found": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "game": "sb26",
+   "split": "held-out",
+   "source_informed": false,
+   "seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009
+   ],
+   "actions": [
+    20000
+   ],
+   "below_minimum_seeds": false,
+   "keys_tried": [
+    "5",
+    "7"
+   ],
+   "keys_accepted": {},
+   "keys_not_accepted": {
+    "5": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ],
+    "7": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ]
+   },
+   "category": "no controllable object",
+   "eff_per_seed": [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
+   ],
+   "l1_fallback": [
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar"
+   ],
+   "l1_nav": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "l1_hash_state": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "l1_nav_won": 0,
+   "l1_hash_state_won": 0,
+   "goal_recorded": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_reached_no_end": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_confirmed": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "avatar_found": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "game": "sc25",
+   "split": "held-out",
+   "source_informed": false,
+   "seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009
+   ],
+   "actions": [
+    20000
+   ],
+   "below_minimum_seeds": false,
+   "keys_tried": [
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "keys_accepted": {
+    "3": [
+     {
+      "decided": "accepted",
+      "shift": [
+       4,
+       0
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ]
+   },
+   "keys_not_accepted": {
+    "1": [
+     {
+      "decided": "no_move",
+      "shift": [
+       -2,
+       -2
+      ],
+      "agree": 2,
+      "presses": 8,
+      "seeds": 10
+     }
+    ],
+    "2": [
+     {
+      "decided": "no_move",
+      "shift": [
+       0,
+       2
+      ],
+      "agree": 2,
+      "presses": 8,
+      "seeds": 10
+     }
+    ],
+    "4": [
+     {
+      "decided": "no_move",
+      "shift": [
+       6,
+       0
+      ],
+      "agree": 2,
+      "presses": 8,
+      "seeds": 10
+     }
+    ]
+   },
+   "category": "1-D walker",
+   "eff_per_seed": [
+    {
+     "3": [
+      4,
+      0
+     ],
+     "4": [
+      -4,
+      0
+     ],
+     "1": [
+      8,
+      0
+     ],
+     "2": [
+      8,
+      0
+     ]
+    },
+    {
+     "3": [
+      4,
+      0
+     ],
+     "4": [
+      -4,
+      0
+     ],
+     "2": [
+      8,
+      0
+     ],
+     "1": [
+      8,
+      0
+     ]
+    },
+    {
+     "3": [
+      4,
+      0
+     ],
+     "4": [
+      -4,
+      0
+     ],
+     "1": [
+      8,
+      0
+     ],
+     "2": [
+      8,
+      0
+     ]
+    },
+    {
+     "3": [
+      4,
+      0
+     ],
+     "4": [
+      -4,
+      0
+     ],
+     "1": [
+      8,
+      0
+     ],
+     "2": [
+      8,
+      0
+     ]
+    },
+    {
+     "3": [
+      4,
+      0
+     ],
+     "4": [
+      -4,
+      0
+     ],
+     "1": [
+      8,
+      0
+     ],
+     "2": [
+      8,
+      0
+     ]
+    },
+    {
+     "3": [
+      -4,
+      0
+     ],
+     "4": [
+      -4,
+      0
+     ],
+     "1": [
+      8,
+      0
+     ],
+     "2": [
+      8,
+      0
+     ]
+    },
+    {
+     "3": [
+      4,
+      0
+     ],
+     "4": [
+      -4,
+      0
+     ],
+     "1": [
+      8,
+      0
+     ],
+     "2": [
+      8,
+      0
+     ]
+    },
+    {
+     "3": [
+      4,
+      0
+     ],
+     "4": [
+      -4,
+      0
+     ],
+     "2": [
+      8,
+      0
+     ],
+     "1": [
+      8,
+      0
+     ]
+    },
+    {
+     "3": [
+      4,
+      0
+     ],
+     "4": [
+      -4,
+      0
+     ],
+     "2": [
+      8,
+      0
+     ],
+     "1": [
+      8,
+      0
+     ]
+    },
+    {
+     "3": [
+      4,
+      0
+     ],
+     "4": [
+      -4,
+      0
+     ],
+     "1": [
+      8,
+      0
+     ],
+     "2": [
+      8,
+      0
+     ]
+    }
+   ],
+   "l1_fallback": [
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted"
+   ],
+   "l1_nav": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "l1_hash_state": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "l1_nav_won": 0,
+   "l1_hash_state_won": 0,
+   "goal_recorded": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_reached_no_end": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_confirmed": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "avatar_found": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "game": "sk48",
+   "split": "held-out",
+   "source_informed": false,
+   "seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009
+   ],
+   "actions": [
+    20000
+   ],
+   "below_minimum_seeds": false,
+   "keys_tried": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "7"
+   ],
+   "keys_accepted": {
+    "1": [
+     {
+      "decided": "accepted",
+      "shift": [
+       0,
+       -6
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ],
+    "2": [
+     {
+      "decided": "accepted",
+      "shift": [
+       0,
+       6
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ]
+   },
+   "keys_not_accepted": {
+    "3": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ],
+    "4": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ],
+    "7": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ]
+   },
+   "category": "1-D walker",
+   "eff_per_seed": [
+    {
+     "1": [
+      0,
+      -6
+     ],
+     "2": [
+      0,
+      6
+     ],
+     "7": [
+      0,
+      -6
+     ]
+    },
+    {
+     "1": [
+      0,
+      -6
+     ],
+     "2": [
+      0,
+      6
+     ],
+     "7": [
+      0,
+      -6
+     ],
+     "3": [
+      0,
+      -6
+     ]
+    },
+    {
+     "1": [
+      0,
+      -6
+     ],
+     "2": [
+      0,
+      6
+     ],
+     "7": [
+      0,
+      -6
+     ],
+     "3": [
+      0,
+      -6
+     ]
+    },
+    {
+     "1": [
+      0,
+      -6
+     ],
+     "2": [
+      0,
+      6
+     ],
+     "3": [
+      0,
+      6
+     ],
+     "7": [
+      0,
+      -6
+     ]
+    },
+    {
+     "1": [
+      0,
+      -6
+     ],
+     "2": [
+      0,
+      6
+     ],
+     "3": [
+      0,
+      6
+     ],
+     "7": [
+      0,
+      6
+     ]
+    },
+    {
+     "1": [
+      0,
+      -6
+     ],
+     "2": [
+      0,
+      6
+     ],
+     "7": [
+      0,
+      6
+     ],
+     "3": [
+      0,
+      -6
+     ]
+    },
+    {
+     "1": [
+      0,
+      -6
+     ],
+     "2": [
+      0,
+      6
+     ],
+     "3": [
+      0,
+      6
+     ]
+    },
+    {
+     "1": [
+      0,
+      -6
+     ],
+     "2": [
+      0,
+      6
+     ],
+     "7": [
+      0,
+      6
+     ],
+     "3": [
+      0,
+      -6
+     ]
+    },
+    {
+     "1": [
+      0,
+      -6
+     ],
+     "2": [
+      0,
+      6
+     ],
+     "7": [
+      0,
+      6
+     ],
+     "3": [
+      0,
+      6
+     ]
+    },
+    {
+     "1": [
+      0,
+      -6
+     ],
+     "2": [
+      0,
+      6
+     ],
+     "7": [
+      0,
+      -6
+     ],
+     "3": [
+      0,
+      -6
+     ]
+    }
+   ],
+   "l1_fallback": [
+    "stalled",
+    "stalled",
+    "stalled",
+    "stalled",
+    "stalled",
+    "stalled",
+    "stalled",
+    "stalled",
+    "stalled",
+    "stalled"
+   ],
+   "l1_nav": [
+    null,
+    5744,
+    null,
+    9664,
+    null,
+    null,
+    null,
+    5113,
+    null,
+    null
+   ],
+   "l1_hash_state": [
+    3825,
+    null,
+    null,
+    null,
+    null,
+    8745,
+    null,
+    18164,
+    null,
+    null
+   ],
+   "l1_nav_won": 3,
+   "l1_hash_state_won": 3,
+   "goal_recorded": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "goal_reached_no_end": [
+    0,
+    6,
+    0,
+    0,
+    0,
+    0,
+    0,
+    6,
+    0,
+    0
+   ],
+   "goal_confirmed": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "avatar_found": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "game": "sp80",
+   "split": "held-out",
+   "source_informed": false,
+   "seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009
+   ],
+   "actions": [
+    20000
+   ],
+   "below_minimum_seeds": false,
+   "keys_tried": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+   ],
+   "keys_accepted": {
+    "1": [
+     {
+      "decided": "accepted",
+      "shift": [
+       0,
+       -4
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ],
+    "2": [
+     {
+      "decided": "accepted",
+      "shift": [
+       0,
+       4
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ]
+   },
+   "keys_not_accepted": {
+    "3": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ],
+    "4": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ],
+    "5": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ]
+   },
+   "category": "2-D lattice walker",
+   "eff_per_seed": [
+    {
+     "1": [
+      0,
+      -4
+     ],
+     "2": [
+      0,
+      4
+     ],
+     "4": [
+      4,
+      0
+     ],
+     "3": [
+      -4,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -4
+     ],
+     "2": [
+      0,
+      4
+     ],
+     "4": [
+      4,
+      0
+     ],
+     "3": [
+      -4,
+      0
+     ],
+     "5": [
+      4,
+      4
+     ]
+    },
+    {
+     "1": [
+      0,
+      -4
+     ],
+     "2": [
+      0,
+      4
+     ],
+     "3": [
+      -4,
+      0
+     ],
+     "4": [
+      4,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -4
+     ],
+     "2": [
+      0,
+      4
+     ],
+     "3": [
+      -4,
+      0
+     ],
+     "4": [
+      4,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -4
+     ],
+     "2": [
+      0,
+      4
+     ],
+     "3": [
+      -4,
+      0
+     ],
+     "4": [
+      4,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -4
+     ],
+     "2": [
+      0,
+      4
+     ],
+     "4": [
+      4,
+      0
+     ],
+     "3": [
+      -4,
+      0
+     ],
+     "5": [
+      4,
+      4
+     ]
+    },
+    {
+     "1": [
+      0,
+      -4
+     ],
+     "2": [
+      0,
+      4
+     ],
+     "4": [
+      4,
+      0
+     ],
+     "3": [
+      -4,
+      0
+     ],
+     "5": [
+      4,
+      4
+     ]
+    },
+    {
+     "1": [
+      0,
+      -4
+     ],
+     "2": [
+      0,
+      4
+     ],
+     "3": [
+      -4,
+      0
+     ],
+     "4": [
+      4,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -4
+     ],
+     "2": [
+      0,
+      4
+     ],
+     "4": [
+      4,
+      0
+     ],
+     "3": [
+      -4,
+      0
+     ],
+     "5": [
+      2,
+      4
+     ]
+    },
+    {
+     "1": [
+      0,
+      -4
+     ],
+     "2": [
+      0,
+      4
+     ],
+     "3": [
+      -4,
+      0
+     ],
+     "4": [
+      4,
+      0
+     ]
+    }
+   ],
+   "l1_fallback": [
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted"
+   ],
+   "l1_nav": [
+    171,
+    458,
+    204,
+    348,
+    76,
+    279,
+    453,
+    230,
+    65,
+    182
+   ],
+   "l1_hash_state": [
+    11,
+    465,
+    91,
+    365,
+    203,
+    254,
+    29,
+    235,
+    22,
+    81
+   ],
+   "l1_nav_won": 10,
+   "l1_hash_state_won": 10,
+   "goal_recorded": [
+    1,
+    1,
+    1,
+    2,
+    2,
+    2,
+    1,
+    2,
+    2,
+    0
+   ],
+   "goal_reached_no_end": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    6,
+    0,
+    0,
+    6,
+    0
+   ],
+   "goal_confirmed": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "avatar_found": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "game": "su15",
+   "split": "held-out",
+   "source_informed": false,
+   "seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009
+   ],
+   "actions": [
+    20000
+   ],
+   "below_minimum_seeds": false,
+   "keys_tried": [
+    "7"
+   ],
+   "keys_accepted": {},
+   "keys_not_accepted": {
+    "7": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ]
+   },
+   "category": "no controllable object",
+   "eff_per_seed": [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
+   ],
+   "l1_fallback": [
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar"
+   ],
+   "l1_nav": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "l1_hash_state": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "l1_nav_won": 0,
+   "l1_hash_state_won": 0,
+   "goal_recorded": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_reached_no_end": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_confirmed": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "avatar_found": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "game": "tn36",
+   "split": "held-out",
+   "source_informed": false,
+   "seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009
+   ],
+   "actions": [
+    20000
+   ],
+   "below_minimum_seeds": false,
+   "keys_tried": [],
+   "keys_accepted": {},
+   "keys_not_accepted": {},
+   "category": "no keys",
+   "eff_per_seed": [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
+   ],
+   "l1_fallback": [
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys"
+   ],
+   "l1_nav": [
+    36,
+    35,
+    47,
+    48,
+    22,
+    104,
+    28,
+    31,
+    57,
+    41
+   ],
+   "l1_hash_state": [
+    36,
+    35,
+    47,
+    48,
+    22,
+    104,
+    28,
+    31,
+    57,
+    41
+   ],
+   "l1_nav_won": 10,
+   "l1_hash_state_won": 10,
+   "goal_recorded": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_reached_no_end": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_confirmed": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "avatar_found": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "game": "tr87",
+   "split": "held-out",
+   "source_informed": false,
+   "seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009
+   ],
+   "actions": [
+    20000
+   ],
+   "below_minimum_seeds": false,
+   "keys_tried": [
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "keys_accepted": {
+    "1": [
+     {
+      "decided": "accepted",
+      "shift": [
+       -1,
+       1
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ],
+    "2": [
+     {
+      "decided": "accepted",
+      "shift": [
+       1,
+       -1
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ]
+   },
+   "keys_not_accepted": {
+    "3": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ],
+    "4": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ]
+   },
+   "category": "key-controlled non-walker",
+   "eff_per_seed": [
+    {
+     "1": [
+      1,
+      1
+     ],
+     "2": [
+      1,
+      -1
+     ]
+    },
+    {
+     "1": [
+      1,
+      1
+     ],
+     "2": [
+      1,
+      -1
+     ]
+    },
+    {
+     "1": [
+      1,
+      1
+     ],
+     "2": [
+      1,
+      -1
+     ]
+    },
+    {
+     "1": [
+      1,
+      1
+     ],
+     "2": [
+      1,
+      -1
+     ]
+    },
+    {
+     "1": [
+      1,
+      1
+     ],
+     "2": [
+      1,
+      -1
+     ]
+    },
+    {
+     "1": [
+      1,
+      1
+     ],
+     "2": [
+      0,
+      -1
+     ]
+    },
+    {
+     "1": [
+      1,
+      1
+     ],
+     "2": [
+      1,
+      -1
+     ]
+    },
+    {
+     "1": [
+      1,
+      1
+     ],
+     "2": [
+      0,
+      -1
+     ]
+    },
+    {
+     "1": [
+      1,
+      1
+     ],
+     "2": [
+      1,
+      -1
+     ]
+    },
+    {
+     "1": [
+      1,
+      1
+     ],
+     "2": [
+      1,
+      -1
+     ],
+     "3": [
+      -7,
+      0
+     ],
+     "4": [
+      7,
+      0
+     ]
+    }
+   ],
+   "l1_fallback": [
+    "localise_failed",
+    "frontier_exhausted",
+    "localise_failed",
+    "localise_failed",
+    "localise_failed",
+    "localise_failed",
+    "localise_failed",
+    "frontier_exhausted",
+    "localise_failed",
+    "frontier_exhausted"
+   ],
+   "l1_nav": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    16726
+   ],
+   "l1_hash_state": [
+    3022,
+    14317,
+    206,
+    8861,
+    null,
+    null,
+    null,
+    null,
+    14694,
+    null
+   ],
+   "l1_nav_won": 1,
+   "l1_hash_state_won": 5,
+   "goal_recorded": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "goal_reached_no_end": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_confirmed": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "avatar_found": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "game": "wa30",
+   "split": "held-out",
+   "source_informed": false,
+   "seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009
+   ],
+   "actions": [
+    20000
+   ],
+   "below_minimum_seeds": false,
+   "keys_tried": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+   ],
+   "keys_accepted": {
+    "1": [
+     {
+      "decided": "accepted",
+      "shift": [
+       0,
+       -3
+      ],
+      "agree": 3,
+      "presses": 4,
+      "seeds": 10
+     }
+    ],
+    "2": [
+     {
+      "decided": "accepted",
+      "shift": [
+       0,
+       3
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ],
+    "3": [
+     {
+      "decided": "accepted",
+      "shift": [
+       -3,
+       0
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ],
+    "4": [
+     {
+      "decided": "accepted",
+      "shift": [
+       3,
+       0
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ]
+   },
+   "keys_not_accepted": {
+    "5": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ]
+   },
+   "category": "key-controlled non-walker",
+   "eff_per_seed": [
+    {
+     "2": [
+      0,
+      4
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      4,
+      0
+     ],
+     "1": [
+      0,
+      -3
+     ]
+    },
+    {
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      4,
+      0
+     ],
+     "1": [
+      0,
+      -3
+     ]
+    },
+    {
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      4,
+      0
+     ],
+     "1": [
+      0,
+      -3
+     ]
+    },
+    {
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      4,
+      0
+     ],
+     "1": [
+      0,
+      -3
+     ]
+    },
+    {
+     "2": [
+      0,
+      4
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      4,
+      0
+     ],
+     "1": [
+      0,
+      -3
+     ]
+    },
+    {
+     "2": [
+      0,
+      4
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      4,
+      0
+     ],
+     "1": [
+      0,
+      -3
+     ]
+    },
+    {
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      4,
+      0
+     ],
+     "1": [
+      0,
+      -3
+     ]
+    },
+    {
+     "2": [
+      0,
+      4
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      4,
+      0
+     ],
+     "1": [
+      0,
+      -3
+     ]
+    },
+    {
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      4,
+      0
+     ],
+     "1": [
+      0,
+      -3
+     ]
+    },
+    {
+     "2": [
+      0,
+      3
+     ],
+     "3": [
+      -3,
+      0
+     ],
+     "4": [
+      4,
+      0
+     ],
+     "1": [
+      0,
+      -3
+     ]
+    }
+   ],
+   "l1_fallback": [
+    "mispredicted",
+    "mispredicted",
+    "mispredicted",
+    "mispredicted",
+    "mispredicted",
+    "mispredicted",
+    "mispredicted",
+    "mispredicted",
+    "mispredicted",
+    "mispredicted"
+   ],
+   "l1_nav": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "l1_hash_state": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "l1_nav_won": 0,
+   "l1_hash_state_won": 0,
+   "goal_recorded": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_reached_no_end": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_confirmed": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "avatar_found": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "game": "tu93",
+   "split": "train",
+   "source_informed": true,
+   "seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009
+   ],
+   "actions": [
+    20000
+   ],
+   "below_minimum_seeds": false,
+   "keys_tried": [
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "keys_accepted": {
+    "1": [
+     {
+      "decided": "accepted",
+      "shift": [
+       0,
+       -6
+      ],
+      "agree": 3,
+      "presses": 5,
+      "seeds": 10
+     }
+    ],
+    "2": [
+     {
+      "decided": "accepted",
+      "shift": [
+       0,
+       6
+      ],
+      "agree": 3,
+      "presses": 4,
+      "seeds": 10
+     }
+    ],
+    "3": [
+     {
+      "decided": "accepted",
+      "shift": [
+       -6,
+       0
+      ],
+      "agree": 3,
+      "presses": 7,
+      "seeds": 10
+     }
+    ],
+    "4": [
+     {
+      "decided": "accepted",
+      "shift": [
+       6,
+       0
+      ],
+      "agree": 3,
+      "presses": 6,
+      "seeds": 10
+     }
+    ]
+   },
+   "keys_not_accepted": {},
+   "category": "2-D lattice walker",
+   "eff_per_seed": [
+    {
+     "2": [
+      0,
+      6
+     ],
+     "1": [
+      0,
+      -6
+     ],
+     "4": [
+      6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ]
+    },
+    {
+     "2": [
+      0,
+      6
+     ],
+     "1": [
+      0,
+      -6
+     ],
+     "4": [
+      6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ]
+    },
+    {
+     "2": [
+      0,
+      6
+     ],
+     "1": [
+      0,
+      -6
+     ],
+     "4": [
+      6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ]
+    },
+    {
+     "2": [
+      0,
+      6
+     ],
+     "1": [
+      0,
+      -6
+     ],
+     "4": [
+      6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ]
+    },
+    {
+     "2": [
+      0,
+      6
+     ],
+     "1": [
+      0,
+      -6
+     ],
+     "4": [
+      6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ]
+    },
+    {
+     "2": [
+      0,
+      6
+     ],
+     "1": [
+      0,
+      -6
+     ],
+     "4": [
+      6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ]
+    },
+    {
+     "2": [
+      0,
+      6
+     ],
+     "1": [
+      0,
+      -6
+     ],
+     "4": [
+      6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ]
+    },
+    {
+     "2": [
+      0,
+      6
+     ],
+     "1": [
+      0,
+      -6
+     ],
+     "4": [
+      6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ]
+    },
+    {
+     "2": [
+      0,
+      6
+     ],
+     "1": [
+      0,
+      -6
+     ],
+     "4": [
+      6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ]
+    },
+    {
+     "2": [
+      0,
+      6
+     ],
+     "1": [
+      0,
+      -6
+     ],
+     "4": [
+      6,
+      0
+     ],
+     "3": [
+      -6,
+      0
+     ]
+    }
+   ],
+   "l1_fallback": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "l1_nav": [
+    71,
+    71,
+    71,
+    71,
+    71,
+    71,
+    71,
+    71,
+    71,
+    71
+   ],
+   "l1_hash_state": [
+    356,
+    287,
+    432,
+    427,
+    89,
+    354,
+    430,
+    5087,
+    403,
+    427
+   ],
+   "l1_nav_won": 10,
+   "l1_hash_state_won": 10,
+   "goal_recorded": [
+    5,
+    2,
+    5,
+    2,
+    6,
+    6,
+    5,
+    6,
+    5,
+    5
+   ],
+   "goal_reached_no_end": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_confirmed": [
+    1,
+    1,
+    3,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "avatar_found": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "game": "ls20",
+   "split": "train",
+   "source_informed": true,
+   "seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009
+   ],
+   "actions": [
+    20000
+   ],
+   "below_minimum_seeds": false,
+   "keys_tried": [
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "keys_accepted": {
+    "1": [
+     {
+      "decided": "accepted",
+      "shift": [
+       0,
+       -5
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ],
+    "2": [
+     {
+      "decided": "accepted",
+      "shift": [
+       0,
+       5
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ],
+    "3": [
+     {
+      "decided": "accepted",
+      "shift": [
+       -5,
+       0
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ],
+    "4": [
+     {
+      "decided": "accepted",
+      "shift": [
+       5,
+       0
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ]
+   },
+   "keys_not_accepted": {},
+   "category": "2-D lattice walker",
+   "eff_per_seed": [
+    {
+     "1": [
+      0,
+      -5
+     ],
+     "2": [
+      0,
+      5
+     ],
+     "3": [
+      -5,
+      0
+     ],
+     "4": [
+      5,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -5
+     ],
+     "2": [
+      0,
+      5
+     ],
+     "3": [
+      -5,
+      0
+     ],
+     "4": [
+      5,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -5
+     ],
+     "2": [
+      0,
+      5
+     ],
+     "3": [
+      -5,
+      0
+     ],
+     "4": [
+      5,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -5
+     ],
+     "2": [
+      0,
+      5
+     ],
+     "3": [
+      -5,
+      0
+     ],
+     "4": [
+      5,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -5
+     ],
+     "2": [
+      0,
+      5
+     ],
+     "3": [
+      -5,
+      0
+     ],
+     "4": [
+      5,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -5
+     ],
+     "2": [
+      0,
+      5
+     ],
+     "3": [
+      -5,
+      0
+     ],
+     "4": [
+      5,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -5
+     ],
+     "2": [
+      0,
+      5
+     ],
+     "3": [
+      -5,
+      0
+     ],
+     "4": [
+      5,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -5
+     ],
+     "2": [
+      0,
+      5
+     ],
+     "3": [
+      -5,
+      0
+     ],
+     "4": [
+      5,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -5
+     ],
+     "2": [
+      0,
+      5
+     ],
+     "3": [
+      -5,
+      0
+     ],
+     "4": [
+      5,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -5
+     ],
+     "2": [
+      0,
+      5
+     ],
+     "3": [
+      -5,
+      0
+     ],
+     "4": [
+      5,
+      0
+     ]
+    }
+   ],
+   "l1_fallback": [
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted"
+   ],
+   "l1_nav": [
+    351,
+    221,
+    600,
+    340,
+    347,
+    2579,
+    514,
+    464,
+    355,
+    422
+   ],
+   "l1_hash_state": [
+    529,
+    594,
+    466,
+    726,
+    551,
+    286,
+    337,
+    595,
+    597,
+    334
+   ],
+   "l1_nav_won": 10,
+   "l1_hash_state_won": 10,
+   "goal_recorded": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "goal_reached_no_end": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "goal_confirmed": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "avatar_found": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "game": "vc33",
+   "split": "train",
+   "source_informed": false,
+   "seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009
+   ],
+   "actions": [
+    20000
+   ],
+   "below_minimum_seeds": false,
+   "keys_tried": [],
+   "keys_accepted": {},
+   "keys_not_accepted": {},
+   "category": "no keys",
+   "eff_per_seed": [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
+   ],
+   "l1_fallback": [
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys"
+   ],
+   "l1_nav": [
+    98,
+    82,
+    106,
+    107,
+    99,
+    82,
+    107,
+    81,
+    97,
+    89
+   ],
+   "l1_hash_state": [
+    98,
+    82,
+    106,
+    107,
+    99,
+    82,
+    107,
+    81,
+    97,
+    89
+   ],
+   "l1_nav_won": 10,
+   "l1_hash_state_won": 10,
+   "goal_recorded": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_reached_no_end": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_confirmed": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "avatar_found": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "game": "m0r0",
+   "split": "train",
+   "source_informed": false,
+   "seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009
+   ],
+   "actions": [
+    20000
+   ],
+   "below_minimum_seeds": false,
+   "keys_tried": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+   ],
+   "keys_accepted": {
+    "1": [
+     {
+      "decided": "accepted",
+      "shift": [
+       0,
+       -5
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ],
+    "2": [
+     {
+      "decided": "accepted",
+      "shift": [
+       0,
+       5
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ]
+   },
+   "keys_not_accepted": {
+    "3": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ],
+    "4": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ],
+    "5": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ]
+   },
+   "category": "2-D lattice walker",
+   "eff_per_seed": [
+    {
+     "1": [
+      0,
+      -4
+     ],
+     "2": [
+      0,
+      4
+     ],
+     "3": [
+      4,
+      0
+     ],
+     "4": [
+      -4,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -4
+     ],
+     "2": [
+      0,
+      4
+     ],
+     "3": [
+      4,
+      0
+     ],
+     "4": [
+      -4,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -4
+     ],
+     "2": [
+      0,
+      4
+     ],
+     "4": [
+      5,
+      0
+     ],
+     "3": [
+      -5,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -4
+     ],
+     "2": [
+      0,
+      4
+     ],
+     "4": [
+      -4,
+      0
+     ],
+     "3": [
+      -4,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -4
+     ],
+     "2": [
+      0,
+      4
+     ],
+     "4": [
+      5,
+      0
+     ],
+     "3": [
+      -5,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -4
+     ],
+     "2": [
+      0,
+      4
+     ],
+     "4": [
+      -4,
+      0
+     ],
+     "3": [
+      4,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -4
+     ],
+     "2": [
+      0,
+      4
+     ],
+     "4": [
+      -4,
+      0
+     ],
+     "3": [
+      -5,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -4
+     ],
+     "2": [
+      0,
+      4
+     ],
+     "3": [
+      4,
+      0
+     ],
+     "4": [
+      -4,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -4
+     ],
+     "2": [
+      0,
+      4
+     ],
+     "4": [
+      -4,
+      0
+     ],
+     "3": [
+      4,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -4
+     ],
+     "2": [
+      0,
+      4
+     ],
+     "4": [
+      -4,
+      0
+     ],
+     "3": [
+      4,
+      0
+     ]
+    }
+   ],
+   "l1_fallback": [
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted"
+   ],
+   "l1_nav": [
+    423,
+    724,
+    2272,
+    1815,
+    1141,
+    2228,
+    1208,
+    1349,
+    537,
+    1211
+   ],
+   "l1_hash_state": [
+    1115,
+    1419,
+    3556,
+    1203,
+    1506,
+    1189,
+    738,
+    1910,
+    1732,
+    2566
+   ],
+   "l1_nav_won": 10,
+   "l1_hash_state_won": 10,
+   "goal_recorded": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "goal_reached_no_end": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_confirmed": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "avatar_found": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "game": "ft09",
+   "split": "train",
+   "source_informed": false,
+   "seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009
+   ],
+   "actions": [
+    20000
+   ],
+   "below_minimum_seeds": false,
+   "keys_tried": [],
+   "keys_accepted": {},
+   "keys_not_accepted": {},
+   "category": "no keys",
+   "eff_per_seed": [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
+   ],
+   "l1_fallback": [
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys"
+   ],
+   "l1_nav": [
+    276,
+    271,
+    280,
+    212,
+    276,
+    678,
+    469,
+    321,
+    220,
+    882
+   ],
+   "l1_hash_state": [
+    276,
+    271,
+    280,
+    212,
+    276,
+    678,
+    469,
+    321,
+    220,
+    882
+   ],
+   "l1_nav_won": 10,
+   "l1_hash_state_won": 10,
+   "goal_recorded": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_reached_no_end": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_confirmed": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "avatar_found": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "game": "lp85",
+   "split": "train",
+   "source_informed": false,
+   "seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009
+   ],
+   "actions": [
+    20000
+   ],
+   "below_minimum_seeds": false,
+   "keys_tried": [],
+   "keys_accepted": {},
+   "keys_not_accepted": {},
+   "category": "no keys",
+   "eff_per_seed": [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
+   ],
+   "l1_fallback": [
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys",
+    "no_keys"
+   ],
+   "l1_nav": [
+    16,
+    39,
+    31,
+    37,
+    20,
+    24,
+    28,
+    27,
+    41,
+    22
+   ],
+   "l1_hash_state": [
+    16,
+    39,
+    31,
+    37,
+    20,
+    24,
+    28,
+    27,
+    41,
+    22
+   ],
+   "l1_nav_won": 10,
+   "l1_hash_state_won": 10,
+   "goal_recorded": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_reached_no_end": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_confirmed": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "avatar_found": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "game": "lf52",
+   "split": "train",
+   "source_informed": false,
+   "seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009
+   ],
+   "actions": [
+    20000
+   ],
+   "below_minimum_seeds": false,
+   "keys_tried": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "7"
+   ],
+   "keys_accepted": {},
+   "keys_not_accepted": {
+    "1": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ],
+    "2": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ],
+    "3": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ],
+    "4": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ],
+    "7": [
+     {
+      "decided": "no_move",
+      "shift": null,
+      "agree": 0,
+      "presses": 6,
+      "seeds": 10
+     }
+    ]
+   },
+   "category": "no controllable object",
+   "eff_per_seed": [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
+   ],
+   "l1_fallback": [
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar",
+    "no_avatar"
+   ],
+   "l1_nav": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "l1_hash_state": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "l1_nav_won": 0,
+   "l1_hash_state_won": 0,
+   "goal_recorded": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_reached_no_end": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_confirmed": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "avatar_found": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "game": "dc22",
+   "split": "train",
+   "source_informed": true,
+   "seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009
+   ],
+   "actions": [
+    20000
+   ],
+   "below_minimum_seeds": false,
+   "keys_tried": [
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "keys_accepted": {
+    "1": [
+     {
+      "decided": "accepted",
+      "shift": [
+       0,
+       -2
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ],
+    "2": [
+     {
+      "decided": "accepted",
+      "shift": [
+       0,
+       2
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ],
+    "3": [
+     {
+      "decided": "accepted",
+      "shift": [
+       -2,
+       0
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ],
+    "4": [
+     {
+      "decided": "accepted",
+      "shift": [
+       2,
+       0
+      ],
+      "agree": 3,
+      "presses": 3,
+      "seeds": 10
+     }
+    ]
+   },
+   "keys_not_accepted": {},
+   "category": "2-D lattice walker",
+   "eff_per_seed": [
+    {
+     "1": [
+      0,
+      -2
+     ],
+     "2": [
+      0,
+      2
+     ],
+     "3": [
+      -2,
+      0
+     ],
+     "4": [
+      2,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -2
+     ],
+     "2": [
+      0,
+      2
+     ],
+     "3": [
+      -2,
+      0
+     ],
+     "4": [
+      2,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -2
+     ],
+     "2": [
+      0,
+      2
+     ],
+     "3": [
+      -2,
+      0
+     ],
+     "4": [
+      2,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -2
+     ],
+     "2": [
+      0,
+      2
+     ],
+     "3": [
+      -2,
+      0
+     ],
+     "4": [
+      2,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -2
+     ],
+     "2": [
+      0,
+      2
+     ],
+     "3": [
+      -2,
+      0
+     ],
+     "4": [
+      2,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -2
+     ],
+     "2": [
+      0,
+      2
+     ],
+     "3": [
+      -2,
+      0
+     ],
+     "4": [
+      2,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -2
+     ],
+     "2": [
+      0,
+      2
+     ],
+     "3": [
+      -2,
+      0
+     ],
+     "4": [
+      2,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -2
+     ],
+     "2": [
+      0,
+      2
+     ],
+     "3": [
+      -2,
+      0
+     ],
+     "4": [
+      2,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -2
+     ],
+     "2": [
+      0,
+      2
+     ],
+     "3": [
+      -2,
+      0
+     ],
+     "4": [
+      2,
+      0
+     ]
+    },
+    {
+     "1": [
+      0,
+      -2
+     ],
+     "2": [
+      0,
+      2
+     ],
+     "3": [
+      -2,
+      0
+     ],
+     "4": [
+      2,
+      0
+     ]
+    }
+   ],
+   "l1_fallback": [
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted",
+    "frontier_exhausted"
+   ],
+   "l1_nav": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "l1_hash_state": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "l1_nav_won": 0,
+   "l1_hash_state_won": 0,
+   "goal_recorded": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_reached_no_end": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "goal_confirmed": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "avatar_found": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  }
+ ]
+}
