@@ -402,3 +402,64 @@ analyze_g.py is unchanged. **Synthetic tests, with warnings as errors: 5 + 9 + 2
 - Resolved since (f): D13 in code; the G sequencing (D15); the D12 wording.
 - Still outside v1.1, by D15: scripts/g_goal_cost.py and PREREG v1.2, before the replay.
 - Still outside v1.1: docs/GROUND_TRUTH_arc_train.md, for ARC V1, development only.
+
+## Amendment 27 Sep 2026 (h)
+
+Eighth amendment of 27 September 2026. The lines above are unchanged; where this section corrects one of them, this section governs.
+
+**The tag prereg-v1.1.**
+- Created by RKM on commit 8b2b2b9b432dbea4ba5f62cfceb1aad5558d1ecc (annotated tag object 76179fa87d218e412b21a2f2c20a28ffb13c30ce).
+- `git ls-tree` at the tag gives analyze_common.py caad22731807db78aff9c92c993a79a63f042ec3, analyze_v1.py 515f44b0f007182172022272383de548e80d5a11 and analyze_v2.py 90a849c44e47addd8efdbfa579efdb16288edd50. These equal PREREG v1.1 D11 (checked again when this amendment was written).
+- docs/PREREG.md v1.1 at that commit is the registered protocol. The heading "(DRAFT — not registered until tagged prereg-v1.1 after the pilot)" in the file describes it before the tag.
+- Commits just before the tag:
+  - a376170 (OSF v1.1 heading D1 to D15);
+  - 8b2b2b9 (docs/OSF_REGISTRATION_final.txt, the v1 registration text as pasted; osf.io/2znhw).
+- Commit after the tag: 3a8ff62 (docs/OSF_REGISTRATION_v1_1_final.txt, the v1.1 registration text as pasted).
+
+**OSF v1.1.**
+- https://osf.io/zu5vq, an Open-Ended Registration from project https://osf.io/29eas, embargoed until 30 June 2030, approved by RKM from the OSF email.
+- The registered text is docs/OSF_REGISTRATION_v1_1_final.txt.
+- One difference was found and corrected. In D11 the file had "(fill from `git ls-files -s` at the tag; the values of 27 Sep 2026 are given)", but the registered text reads "(checked against the tag on 27 Sep 2026)". That one line was changed in the commit carrying this amendment. **The file now matches the registered text as RKM reports it.** No other line was changed.
+
+**E6 summary (scripts/e6_summary.py, run by RKM on runs/navrun_prereg_e6_arc_25x10.json).**
+- Checks: 500 rows (25 games × 2 modes × 10 seeds), 0 errors, 0 rows short of 20,000 actions without a win.
+
+| split | hash_state M1 | hash_state levels per seed | nav M1 | nav levels per seed |
+|---|---|---|---|---|
+| train (8 games; tu93, dc22, ls20 source-informed) | 0.1901 | 11.10 | 0.2035 | 10.80 |
+| held-out (17 games) | 0.3274 | 10.50 | 0.2612 | 11.10 |
+
+- The per-game form and the g_nav_run.py form agree ("same") on every line.
+- goal_confirmed ≥ 1 in some seed: train tu93 only; held-out none.
+- The hash_state values reproduce amendment (e) exactly, as they had to.
+- **The nav values equal amendment (e)'s provisional ones.** So the re-run of the eight cut rows changed no level count, and the M1 values are unchanged to four decimals. **The "provisional" label on amendment (e)'s nav values is dropped.**
+
+**Block D1 done.** The worktree D:\Research\arc3\repo_prereg_v1_1 is at prereg-v1.1; `git describe --tags --exact-match` prints prereg-v1.1.
+
+**Block D2 done** (construction check, one reset per environment, no step). From runs/logs/dryrun_confirmatory_minigrid.log and runs/logs/dryrun_confirmatory_procgen.log (UTF-16, as Tee-Object writes them; read, not changed):
+
+| | suite B (minigrid) | suite C (procgen) |
+|---|---|---|
+| frozen-hash line | `frozen blob hashes: 6 of 6 match PREREG.md Section 5.4` (line 1) | `frozen blob hashes: 6 of 6 match PREREG.md Section 5.4` (line 11, after the gym warning) |
+| environment blocks | `minigrid raw ` 161, `minigrid macro ` 161: 322 = 161 × 2 | `procgen center_off ` 14, `procgen center_on ` 14: 28 = 14 × 2 |
+| pilot games | none of the six appear | coinrun and bigfish do not appear |
+| MiniGrid-Playground-v0 | appears, in both conditions (log lines 472 and 974) | — |
+
+- **The single case-insensitive "ERROR" match** is in the procgen log, line 6:
+  `    + FullyQualifiedErrorId : NativeCommandError`
+  It is not a construction error. PowerShell 5.1 wraps a native program's stderr line in an error record when `2>&1` is used. The stderr line here is gym's import-time notice, log line 1: `python.exe : Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.`, followed by its migration advice (lines 8-10).
+- No environment line carries ERROR. The minigrid log has no match.
+- The minigrid log's other 38 lines are BabyAI "Sampling rejected: …" notices: 30 "unreachable object", 6 "objs already next to", 2 "there are objects tha…". They come from layout rejection during reset (roomgrid_level.py:137) and are not errors.
+
+**Operating rule for block D (RKM).**
+- The caps were measured with 8 workers on an otherwise idle machine.
+- D3 and D4 therefore run one at a time, never together, with no other Python job on the machine.
+- The order is D4 (suite C) first, then D3.
+- This rule is also written at the head of block D in docs/W2_COMMANDS.md.
+
+**Next.**
+1. D4 (suite C confirmatory, 840 runs, cap 7500 s).
+2. D6 and D7 for suite C: the row count, then the nine-game determinism check.
+3. D3 (suite B confirmatory, 9,660 runs, cap 3300 s).
+
+**Still outside v1.1:** scripts/g_goal_cost.py and PREREG v1.2 before the G replay (D15); docs/GROUND_TRUTH_arc_train.md (ARC V1, development only).

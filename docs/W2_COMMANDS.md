@@ -115,6 +115,11 @@ Expected: one line per suite, `<suite>: N pilot rows, N with an error; longest <
 
 **Do not start block D before RKM has created the tag `prereg-v1.1`.** This is a registered rule, not a precaution: no run on a confirmatory suite-B or suite-C game before v1.1 is tagged (PREREG.md Section 8).
 
+**Operating rule for block D (RKM, 27 Sep 2026; STATE.md amendment (h)).**
+- The caps of PREREG v1.1 D5 were measured with 8 workers on an otherwise idle machine. A run cut by the cap is a result, so the load on the machine must match the load at which the caps were measured.
+- D3 and D4 therefore run **one at a time, never together**, with **no other Python job on the machine** while either runs.
+- **Order: D4 (suite C) first, then D6 and D7 for suite C, then D3 (suite B).**
+
 **What must be true first, and how a failure shows:**
 - **The tag exists and the worktree is on it.** D1 prints `prereg-v1.1`. Any other output (an error, or a different name): stop.
 - **The six frozen files match PREREG Section 5.4.** Every run_suite.py call prints `frozen blob hashes: 6 of 6 match PREREG.md Section 5.4` first. Otherwise it stops by itself.

@@ -100,7 +100,7 @@ RKM pastes the text between the two rules into a new OSF open-ended registration
 
 **D11. Analysis code.**
 - The analysis code changed only to implement D9, D9b and D13. The G script is unchanged from v1.
-- Blob hashes at `prereg-v1.1` (fill from `git ls-files -s` at the tag; the values of 27 Sep 2026 are given):
+- Blob hashes at `prereg-v1.1` (checked against the tag on 27 Sep 2026):
   - analyze_common.py `caad22731807db78aff9c92c993a79a63f042ec3`;
   - analyze_v1.py `515f44b0f007182172022272383de548e80d5a11`;
   - analyze_v2.py `90a849c44e47addd8efdbfa579efdb16288edd50`.
