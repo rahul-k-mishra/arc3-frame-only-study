@@ -1,0 +1,104 @@
+{
+ "script": "scripts/determinism_check.py",
+ "games": [
+  "bossfight",
+  "chaser",
+  "dodgeball",
+  "heist",
+  "leaper",
+  "maze",
+  "miner",
+  "plunder",
+  "starpilot"
+ ],
+ "modes": [
+  "hash_state",
+  "nav",
+  "i1"
+ ],
+ "seeds": 10,
+ "timing_fields_dropped": [
+  "agent_seconds",
+  "env_sec_per_action",
+  "game_seconds",
+  "play_seconds",
+  "sec_per_action",
+  "seconds",
+  "seconds_cap"
+ ],
+ "label_fields_dropped": [
+  "condition",
+  "adapter.condition",
+  "adapter.camera.center_agent"
+ ],
+ "pairs_compared": 270,
+ "pairs_identical": 270,
+ "pairs_missing": 0,
+ "verdict": "PASS",
+ "per_game": {
+  "bossfight": {
+   "compared": 30,
+   "identical": 30,
+   "missing": 0,
+   "differing_fields": [],
+   "differing_pairs": []
+  },
+  "chaser": {
+   "compared": 30,
+   "identical": 30,
+   "missing": 0,
+   "differing_fields": [],
+   "differing_pairs": []
+  },
+  "dodgeball": {
+   "compared": 30,
+   "identical": 30,
+   "missing": 0,
+   "differing_fields": [],
+   "differing_pairs": []
+  },
+  "heist": {
+   "compared": 30,
+   "identical": 30,
+   "missing": 0,
+   "differing_fields": [],
+   "differing_pairs": []
+  },
+  "leaper": {
+   "compared": 30,
+   "identical": 30,
+   "missing": 0,
+   "differing_fields": [],
+   "differing_pairs": []
+  },
+  "maze": {
+   "compared": 30,
+   "identical": 30,
+   "missing": 0,
+   "differing_fields": [],
+   "differing_pairs": []
+  },
+  "miner": {
+   "compared": 30,
+   "identical": 30,
+   "missing": 0,
+   "differing_fields": [],
+   "differing_pairs": []
+  },
+  "plunder": {
+   "compared": 30,
+   "identical": 30,
+   "missing": 0,
+   "differing_fields": [],
+   "differing_pairs": []
+  },
+  "starpilot": {
+   "compared": 30,
+   "identical": 30,
+   "missing": 0,
+   "differing_fields": [],
+   "differing_pairs": []
+  }
+ },
+ "missing": []
+}
