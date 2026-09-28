@@ -463,3 +463,45 @@ Eighth amendment of 27 September 2026. The lines above are unchanged; where this
 3. D3 (suite B confirmatory, 9,660 runs, cap 3300 s).
 
 **Still outside v1.1:** scripts/g_goal_cost.py and PREREG v1.2 before the G replay (D15); docs/GROUND_TRUTH_arc_train.md (ARC V1, development only).
+
+## Amendment 28 Sep 2026 (i)
+
+Ninth amendment (28 September 2026). The lines above are unchanged.
+
+**OSF v1.1 (https://osf.io/zu5vq).** The embargo is confirmed on the registration page: "embargoed until Sun Jun 30 2030".
+
+**Block D4 done: suite C confirmatory,** under the tag prereg-v1.1, from the worktree D:\Research\arc3\repo_prereg_v1_1. Log: runs/logs/confirmatory_procgen.log (UTF-16; read, not changed).
+- `frozen blob hashes: 6 of 6 match PREREG.md Section 5.4`.
+- `run_suite procgen center_off,center_on: 14 games x 10 seeds x 3 modes x 2 conditions = 840 jobs, 840 to run, 8 workers`.
+- `summary: 840 rows written this call, 0 errors, 0 cut by the cap`.
+- The log has 840 per-row "done" lines. Every one ends in "actions 20000", and none carries CUT or ERROR.
+- The log's other lines are notices, not errors:
+  - gym's import-time notice (8 times, once with PowerShell's NativeCommandError wrapper, as in D2);
+  - 7 × "matplotlib is not installed, plots will not be available", I1's own notices.
+
+**Block D6 for suite C** (RKM's output):
+- six lines "140 of 140 rows";
+- then "procgen: 840 of 840 confirmatory rows; missing 0; with an error 0; cut by the cap 0".
+- Suite B showed 0 of 9,660, as expected before D3.
+
+**Block D7: the determinism check** (scripts/determinism_check.py, PREREG v1.1 D8 and D13).
+- Log: runs/logs/determinism_check.log. Output: runs/checks/determinism_check.json (pairs_compared 270, pairs_identical 270, pairs_missing 0, verdict "PASS"). Exit code 0, as RKM reports; the log does not contain that line.
+- It covered 9 games × 30 pairs (3 modes × 10 seeds): bossfight, chaser, dodgeball, heist, leaper, maze, miner, plunder, starpilot. 30 of 30 were identical on each, 270 of 270 in all, with 0 differing and 0 missing.
+- **What this establishes.** D13's identity holds on the confirmatory rows. On the nine in-range games, every center_on run equals its center_off run in every field except the seven timing fields and the three condition labels. That is what the source (game_reset sets center_agent false) and procgen_camera_check.py predicted. On those nine the secondary condition carries no information, which is why D13 reports center_on on the five camera-distinct games only.
+- **What it does not establish.**
+  - Nothing about V1 or V2. It compares rows with rows; it does not compare census verdicts with truth, or census scores with level-1 outcomes.
+  - Nothing about the five camera-distinct games, where the two conditions are expected to differ.
+  - Nothing about suite B.
+  - It is an infrastructure check with no threshold of its own and enters no claim.
+
+**Committed by RKM:** commit 5ac65c1, 845 files. It holds the suite-C rows, the determinism check output and the logs, including the D2 dry-run logs.
+
+**Block D3 started (suite B confirmatory,** 161 games × 2 conditions × 3 modes × 10 seeds = 9,660 runs, cap 3300 s).
+- Started on 28 Sep 2026 from the worktree under the tag, alone on the machine per the load rule of amendment (h).
+- Log: runs/logs/confirmatory_minigrid.log.
+- Its rows are being written into runs/suites while this amendment is written. This commit stages docs/STATE.md only.
+
+**Next.**
+1. D5 if D3 ends with errors.
+2. D6 for suite B. D7 applies to suite C only.
+3. Block E under the tag.
