@@ -505,3 +505,37 @@ Ninth amendment (28 September 2026). The lines above are unchanged.
 1. D5 if D3 ends with errors.
 2. D6 for suite B. D7 applies to suite C only.
 3. Block E under the tag.
+
+## Amendment 13 Oct 2026 (j)
+
+Tenth amendment (13 October 2026). The lines above are unchanged.
+
+**Block D3 done: suite B confirmatory,** under the tag prereg-v1.1, from the worktree D:\Research\arc3\repo_prereg_v1_1. It started 28 Sep 2026, finished by 13 Oct 2026, and had one start. Log: runs/logs/confirmatory_minigrid.log (UTF-16; read, not changed).
+- The log has one `run_suite` line: `run_suite minigrid raw,macro: 161 games x 10 seeds x 3 modes x 2 conditions = 9660 jobs, 9660 to run, 8 workers`.
+- It has one `frozen blob hashes: 6 of 6 match PREREG.md Section 5.4` line.
+- It has one summary line: `summary: 9660 rows written this call, 0 errors, 0 cut by the cap` (with a prefix, see below).
+- **Counts on the log** (RKM's, and checked again when this amendment was written):
+  - 9,660 "done" lines, counted without a line anchor;
+  - 0 of them with actions other than 20000;
+  - 0 carrying CUT or ERROR.
+- **A console artefact, not a run fault.**
+  - 261 of the "done" lines carry a prefix, and so does the summary line, which reads `Sampling rejected: summary: …`. 236 of the 261 begin exactly "Sampling rejected: done ".
+  - Eight workers share one console pipe. A BabyAI "Sampling rejected: …" notice from one worker (layout rejection during reset, roomgrid_level.py:137) and a "done" line from another landed on the same line.
+  - The rows themselves are unaffected: each row is its own JSON file, written atomically by its worker.
+  - The window filter of block D3 (`-notmatch 'Sampling rejected'`) hid those merged lines at the time. The log keeps them.
+
+**Block D6 for both suites** (RKM's output):
+- suite B: six lines "1610 of 1610 rows", then "minigrid: 9660 of 9660 confirmatory rows; missing 0; with an error 0; cut by the cap 0";
+- suite C: six lines "140 of 140 rows", then "procgen: 840 of 840 confirmatory rows; missing 0; with an error 0; cut by the cap 0".
+- **No row of either suite was cut by the D5 caps** (3300 s for suite B, 7500 s for suite C).
+
+**Committed by RKM:** commit 8a986d9, "Confirmatory suite B under prereg-v1.1: 9660 rows, 0 errors, 0 cut; console log", 9,661 files: the 9,660 rows and runs/logs/confirmatory_minigrid.log (13.3 MB).
+
+**State of the confirmatory data.**
+- The confirmatory rows of both suites are committed, all produced under the tag prereg-v1.1: 9,660 for suite B (8a986d9) and 840 for suite C (5ac65c1).
+- **No analysis script has yet been run on them.** No V1, V2 or G number exists for suite B or C. Every such number is "not yet run".
+
+**Next.**
+1. Block E under the tag: E1 (synthetic tests), E2 (analyze_v1.py), E3 (analyze_v2.py). The tables go into docs/tables.
+2. Gate G3, decided by the registered outcome table (PREREG.md v1 Section 10, "Outcome and venue, pre-committed").
+3. G (E4) waits for scripts/g_goal_cost.py, prereg-v1.2 and the replay (D15). G is reported, not tested, and is not part of the G3 decision.
