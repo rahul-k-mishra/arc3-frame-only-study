@@ -539,3 +539,149 @@ Tenth amendment (13 October 2026). The lines above are unchanged.
 1. Block E under the tag: E1 (synthetic tests), E2 (analyze_v1.py), E3 (analyze_v2.py). The tables go into docs/tables.
 2. Gate G3, decided by the registered outcome table (PREREG.md v1 Section 10, "Outcome and venue, pre-committed").
 3. G (E4) waits for scripts/g_goal_cost.py, prereg-v1.2 and the replay (D15). G is reported, not tested, and is not part of the G3 decision.
+
+## Amendment 13 Oct 2026 (k)
+
+Eleventh amendment (13 October 2026). The lines above are unchanged. docs/PREREG.md is not changed by this amendment.
+
+**Block E run** under the tag prereg-v1.1, from the worktree D:\Research\arc3\repo_prereg_v1_1.
+- **E1:** 5 + 9 + 2 + 4 = 20 synthetic tests OK, with warnings as errors (test_analyze_v1, test_analyze_v2, test_analyze_g, test_determinism_check).
+- **E2 and E3:**
+  - Outputs: docs/tables/v1.md, docs/tables/v1.json, docs/tables/v2.md and docs/tables/v2.json.
+  - Logs: runs/logs/analyze_v1.log and runs/logs/analyze_v2.log.
+  - All committed by RKM in **commit bb0f1a1** ("Block E under prereg-v1.1: V1 and V2 tables (docs/tables), analysis logs; gate G3 outcome REFUTE").
+- **No change after the tag.** `git diff prereg-v1.1 HEAD` over scripts/, docs/PREREG.md and the two truth tables is empty at the commit carrying this amendment. No threshold, parameter, exclusion list, truth entry or analysis script was changed after the tag. The verdicts below are those of the tagged code.
+
+**E2: V1, every verdict line of docs/tables/v1.md, verbatim (commit bb0f1a1):**
+
+| suite | condition | subset | assumption | n | truth_holds | agreement | kappa | verdict |
+|---|---|---|---|---|---|---|---|---|
+| minigrid | macro | all | A1 | 161 | 161 | 0.9876 |  | PASS |
+| minigrid | macro | all | A2 | 161 | 161 | 0.9876 |  | PASS |
+| minigrid | macro | all | A3 | 161 | 161 | 0.4286 |  | FAIL |
+| minigrid | macro | all | A4 | 161 | 156 | 0.3354 | -0.0435 | FAIL |
+| minigrid | macro | all | A5 | 161 | 36 | 0.2671 | -0.4125 | FAIL |
+| minigrid | raw | all | A1 | 161 | 161 | 0.9379 |  | PASS |
+| minigrid | raw | all | A2 | 161 | 161 | 0.4596 |  | FAIL |
+| minigrid | raw | all | A3 | 161 | 0 | 0.5466 |  | FAIL |
+| minigrid | raw | all | A4 | 161 | 156 | 0.0621 | 0.0021 | FAIL |
+| minigrid | raw | all | A5 | 161 | 36 | 0.0994 | -0.3374 | FAIL |
+| procgen | center_off | all | A1 | 14 | 14 | 0.9286 |  | PASS |
+| procgen | center_off | all | A2 | 14 | 6 | 0.5714 | 0.2222 | FAIL |
+| procgen | center_off | all | A3 | 14 | 2 | 0.5714 |  | FAIL |
+| procgen | center_off | all | A4 | 14 | 13 | 0.0714 |  | FAIL |
+| procgen | center_off | all | A5 | 14 | 6 | 0.0714 | -0.7843 | FAIL |
+| procgen | center_off | in_range | A1 | 9 | 9 | 0.8889 |  | neither |
+| procgen | center_off | in_range | A2 | 9 | 4 | 0.4444 | 0.0000 | FAIL |
+| procgen | center_off | in_range | A3 | 9 | 2 | 0.4444 |  | FAIL |
+| procgen | center_off | in_range | A4 | 9 | 8 | 0.1111 |  | FAIL |
+| procgen | center_off | in_range | A5 | 9 | 2 | 0.1111 |  | FAIL |
+| procgen | center_on | camera_distinct | A1 | 5 | 5 | 0.8000 |  | reported, not tested |
+| procgen | center_on | camera_distinct | A2 | 5 | 2 | 0.8000 |  | reported, not tested |
+| procgen | center_on | camera_distinct | A3 | 5 | 0 | 0.6000 |  | reported, not tested |
+| procgen | center_on | camera_distinct | A4 | 5 | 5 | 0.0000 |  | reported, not tested |
+| procgen | center_on | camera_distinct | A5 | 5 | 4 | 0.0000 |  | reported, not tested |
+
+**E3: V2, every verdict line of docs/tables/v2.md, verbatim (commit bb0f1a1):**
+
+| suite | condition | subset | agent | role | n | positives | auroc | ci_low | ci_high | balanced_acc | auroc_B | verdict |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| arc | native | all | N | reported | 25 | 14 | 0.4188 | 0.1978 | 0.6379 | 0.5357 | 0.5000 | FAIL |
+| arc | native | all | R | reported | 25 | 15 | 0.4100 | 0.1850 | 0.6354 | 0.5333 | 0.5000 | FAIL |
+| minigrid | macro | primary | I1 | evidence | 83 | 61 | 0.7187 | 0.5902 | 0.8298 | 0.5838 | 0.8413 | neither |
+| minigrid | macro | primary | N | instrument check | 112 | 100 | 0.6613 | 0.5049 | 0.7941 | 0.5700 | 0.8725 | neither |
+| minigrid | macro | primary | R | evidence | 112 | 101 | 0.6985 |  |  | 0.5693 | 0.8515 | VOID |
+| minigrid | macro | primary, D9b included | I1 | evidence | 112 | 61 | 0.7719 | 0.6840 | 0.8529 | 0.5968 | 0.8734 | reported, not tested |
+| minigrid | macro | all games | I1 | evidence | 161 | 61 | 0.7517 | 0.6764 | 0.8223 | 0.6016 | 0.7562 | reported, not tested |
+| minigrid | macro | all games | N | instrument check | 161 | 100 | 0.6352 | 0.5514 | 0.7114 | 0.5700 | 0.5752 | reported, not tested |
+| minigrid | macro | all games | R | evidence | 161 | 101 | 0.6434 | 0.5609 | 0.7208 | 0.5693 | 0.5589 | reported, not tested |
+| minigrid | raw | primary | I1 | evidence | 98 | 71 | 0.5370 | 0.4324 | 0.6410 | 0.5070 | 0.8534 | FAIL |
+| minigrid | raw | primary | N | instrument check | 155 | 130 | 0.5255 | 0.4320 | 0.6156 | 0.5038 | 0.6202 | FAIL |
+| minigrid | raw | primary | R | evidence | 155 | 126 | 0.5224 | 0.4330 | 0.6096 | 0.5040 | 0.6561 | FAIL |
+| minigrid | raw | primary, D9b included | I1 | evidence | 155 | 71 | 0.6258 | 0.5405 | 0.7065 | 0.5070 | 0.8184 | reported, not tested |
+| minigrid | raw | all games | I1 | evidence | 161 | 71 | 0.6069 | 0.5235 | 0.6926 | 0.5070 | 0.8086 | reported, not tested |
+| minigrid | raw | all games | N | instrument check | 161 | 130 | 0.4772 | 0.3829 | 0.5696 | 0.5038 | 0.6036 | reported, not tested |
+| minigrid | raw | all games | R | evidence | 161 | 126 | 0.4805 | 0.3919 | 0.5687 | 0.5040 | 0.6472 | reported, not tested |
+| procgen | center_off | all | I1 | evidence | 14 | 6 | 0.6458 | 0.3333 | 0.9445 | 0.5000 | 0.5104 | FAIL |
+| procgen | center_off | all | N | instrument check | 14 | 9 | 0.7222 | 0.5000 | 0.9333 | 0.5000 | 0.5667 | neither |
+| procgen | center_off | all | R | evidence | 14 | 9 | 0.7222 | 0.5000 | 0.9333 | 0.5000 | 0.5667 | neither |
+| procgen | center_off | in_range | I1 | evidence | 9 | 4 | 0.8750 | 0.5000 | 1.0000 | 0.5000 | 0.4750 | neither |
+| procgen | center_off | in_range | N | instrument check | 9 | 5 | 0.8000 | 0.5000 | 1.0000 | 0.5000 | 0.7000 | neither |
+| procgen | center_off | in_range | R | evidence | 9 | 5 | 0.8000 | 0.5000 | 1.0000 | 0.5000 | 0.7000 | neither |
+| procgen | center_on | camera_distinct | I1 | evidence | 5 | 3 | 0.3333 | 0.0000 | 1.0000 | 0.5000 | 0.6667 | reported, not tested |
+| procgen | center_on | camera_distinct | N | instrument check | 5 | 4 | 0.3750 | 0.0000 | 0.8333 | 0.5000 | 1.0000 | reported, not tested |
+| procgen | center_on | camera_distinct | R | evidence | 5 | 4 | 0.3750 | 0.0000 | 0.8333 | 0.5000 | 1.0000 | reported, not tested |
+
+**E3, the V2 suite lines, verbatim** (docs/tables/v2.json "suite_lines"; runs/logs/analyze_v2.log):
+
+```text
+suite arc native all: reported, not tested
+suite minigrid macro primary: not failed (decided by I1 alone)
+suite minigrid macro primary, D9b included: reported, not tested
+suite minigrid macro all games: reported, not tested
+suite minigrid raw primary: suite FAIL (decided by R and I1)
+suite minigrid raw primary, D9b included: reported, not tested
+suite minigrid raw all games: reported, not tested
+suite procgen center_off all: not failed (decided by R and I1)
+suite procgen center_off in_range: not failed (decided by R and I1)
+suite procgen center_on camera_distinct: reported, not tested
+```
+
+**A defect in the ARC rows of the V2 table** (found while writing this amendment; recorded, not corrected, because the analysis code is frozen).
+- The two ARC lines (suite arc, role "reported") carry the per-agent verdict "FAIL", and they are computed over 25 games.
+- PREREG v1 says ARC held-out is "reported, not tested", and the suite line says so. analyze_v2.py overrides the per-agent verdict only on untested subsets, and it takes every ARC game that has a census, train games included.
+- So the ARC per-agent "FAIL" has no registered meaning. Those two lines are development numbers over the 25 public games, not a test and not a held-out-only figure.
+- They enter no gate. The G3 outcome below does not use them.
+
+**Gate G3, applied by the registered outcome table** (PREREG.md v1 Section 10, "Outcome and venue, pre-committed", unchanged at v1.1; OSF https://osf.io/2znhw and https://osf.io/zu5vq).
+
+*V1 (verdict lines above):*
+- **Suite B, macro:** A1 PASS, A2 PASS; **A3, A4, A5 FAIL**.
+- **Suite B, raw:** A1 PASS; **A2, A3, A4, A5 FAIL**.
+- **Suite C, center_off, all 14:** A1 PASS; **A2, A3, A4, A5 FAIL**.
+- **Suite C, center_off, in_range (9):** A1 "neither" (agreement 0.8889); A2, A3, A4, A5 FAIL.
+- center_on is reported, not tested.
+- So A1 passes on every "all" line, but not on the suite-C in-range subset, where it is "neither". A2 passes under macro only.
+- Cohen's κ is negative:
+  - for A5 on macro (−0.4125), on raw (−0.3374) and on suite C (−0.7843);
+  - for A4 on macro (−0.0435).
+
+*V2:*
+- **No agent reaches PASS on any suite or subset.**
+- Suite B macro, primary:
+  - R VOID: 101 of 112 completed level 1, share 0.9018 > 0.90;
+  - I1 "neither";
+  - N (instrument check) "neither";
+  - suite line "not failed (decided by I1 alone)".
+- Suite B raw, primary:
+  - R, I1 and N FAIL;
+  - suite line "suite FAIL (decided by R and I1)".
+- Suite C, center_off, all:
+  - I1 FAIL (0.6458), R "neither" (0.7222);
+  - suite line "not failed (decided by R and I1)".
+- Suite C, in_range: all "neither".
+- **The nuisance baseline B** (grid area, action count, colour count):
+  - it has a higher AUROC than the census on every tested (primary) suite-B line, and on 12 of the 14 suite-B lines in all;
+  - the exceptions are the reported "all games" macro lines of N (census 0.6352 against B 0.5752) and R (0.6434 against 0.5589).
+
+*Outcome:*
+- **REFUTE, by the clause "V1 fails on any suite".** V1 fails on suite B, in both conditions, and on suite C.
+- The other refute clauses do not apply: the V2 macro suite line is "not failed", and V2 is not void everywhere. They are not needed, because one clause decides the outcome.
+- **Pre-committed consequence: repository record only, at most an arXiv note.** No JAIR, no IEEE ToG.
+- **This classification was written before any results prose.** No results text, abstract, discussion or figure exists for these runs.
+
+**Corrections to the summary as it was given for this amendment** (each checked against the tables in commit bb0f1a1; the outcome is unaffected):
+1. "A1 PASS everywhere": A1 is PASS on every "all" line, but "neither" on the suite-C in-range subset (0.8889).
+2. "The nuisance baseline exceeds the census AUROC on every suite-B line": true on every primary (tested) suite-B line. Not true on the two reported macro "all games" lines of N and R.
+3. "A5's kappa is negative on macro and on suite C": also negative on raw (−0.3374), and A4's κ on macro is negative too (−0.0435).
+
+**A lesson, recorded as a lesson and not as a change.**
+- The pilot rows (commit db1e6ac) contained census vectors (the N rows' `census` field) for eight games with truth-table entries. These were the six suite-B pilots and the two suite-C pilots, whose truth rows are in docs/GROUND_TRUTH_minigrid.md and docs/GROUND_TRUTH_procgen.md.
+- A V1-style comparison on them before the v1.1 tag would have shown the instrument failure before the confirmatory runs.
+- That comparison was not registered, and it was not done. It would have been a pilot diagnostic on 8 games, excluded from every confirmatory analysis. It could have changed adapter code, but no registered census constant, threshold or truth entry.
+- Nothing in v1 or v1.1 is changed by this lesson.
+
+**Open decisions for RKM** (none is pre-empted here):
+- (a) Whether to write the pre-registered negative result as an arXiv note. That is the only venue the pre-commitment allows.
+- (b) Whether the G replay (D15, prereg-v1.2) is still run, or dropped by a dated amendment, given that the instrument it accompanies failed V1.
+- (c) Whether to do an exploratory diagnosis of the V1 failures, after this amendment: per-assumption confusion tables per suite, from docs/tables/v1.json and the rows. If done, it is labelled exploratory and used only in the note's discussion, never as a claim.
