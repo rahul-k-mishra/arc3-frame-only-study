@@ -976,3 +976,17 @@ Consequences:
 - **Exact reproduction, checked per row.** Each replay must reproduce the confirmatory N row's action sequence and level log exactly. The replay script reports that check for every row. A replay that does not reproduce is reported as such, and its G row is not used.
 - **G is reported, not tested.** There is no threshold. analyze_g.py reads the replay's G rows.
 - **The confirmatory runs (block D) do not wait for it.** Block E4 of docs/W2_COMMANDS.md is marked "after prereg-v1.2 and the replay".
+
+---
+---
+
+# PREREG.md — v1.2
+
+Written 13 October 2026, after the tag prereg-v1.1 (commit 8b2b2b9) and after gate G3 returned REFUTE (docs/STATE.md amendment (k)).
+- **Registration.** v1.2 is registered when RKM tags it `prereg-v1.2`.
+- Versions v1 and v1.1 above stand as registered. This block changes them only by the diff entry below.
+- Nothing else in this file changes.
+
+## Diff section (v1.1 → v1.2)
+
+**D16. G is not measured.** D15's replay is withdrawn by RKM on 13 Oct 2026 after gate G3 returned REFUTE; the instrument G would accompany failed V1 on both suites, so no G value is produced for suites B or C. G_end and G_act remain defined in Section 6; none is reported.

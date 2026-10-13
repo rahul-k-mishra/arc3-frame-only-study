@@ -685,3 +685,32 @@ suite procgen center_on camera_distinct: reported, not tested
 - (a) Whether to write the pre-registered negative result as an arXiv note. That is the only venue the pre-commitment allows.
 - (b) Whether the G replay (D15, prereg-v1.2) is still run, or dropped by a dated amendment, given that the instrument it accompanies failed V1.
 - (c) Whether to do an exploratory diagnosis of the V1 failures, after this amendment: per-assumption confusion tables per suite, from docs/tables/v1.json and the rows. If done, it is labelled exploratory and used only in the note's discussion, never as a claim.
+
+## Amendment 13 Oct 2026 (l)
+
+Twelfth amendment (13 October 2026). The lines above are unchanged.
+
+**The exploratory V1 diagnosis, after gate G3.** It is labelled EXPLORATORY everywhere, enters no claim, and does not alter the G3 outcome of amendment (k).
+- **Script:** scripts/explore_v1_diagnosis.py (commit f43526a), run by RKM in the ARC venv from the main checkout.
+- **Output:** runs/exploratory/v1_diagnosis.json.
+- **Document:** docs/EXPLORATORY_V1_DIAGNOSIS.md, written from that JSON. Its tables were generated with jq, not by hand.
+- **Checks:**
+  - The stored census field and `census_from_report` recomputed agree: 0 mismatches over 3,500 N rows (1,610 + 1,610 + 140 + 140).
+  - The ARC 25-game line reproduces docs/tables/v2.md to four decimals.
+- **The exploratory ARC line on the 17 held-out games** (reported, never tested):
+  - N: n 17, 8 positive, AUROC 0.3542, CI [0.1041, 0.6346];
+  - R: n 17, 9 positive, AUROC 0.3403, CI [0.0909, 0.6213].
+- **Its reading, in one sentence:** for A2 under raw, A3, A4 and A5, the census probes and the truth-table definitions are not the same constructs (document, Section 7). That is a description, not a fix.
+- **Corrections the document makes to how the diagnosis was summarised before writing:**
+  - Under macro, four step vectors were accepted on 850 of 920 seeds of the A3-disagreeing games, not on every seed.
+  - On suite C, wall_contradicted is > 0 on some seeds of every one of the 13 truth-holds A4 games, but on all 10 seeds of only five of them.
+  - The negative κ for A5 comes mainly from "undetermined" verdicts, which the registered κ rule maps to the opposite of the truth:
+    - 61 of 84 on macro and 105 of 120 on raw are undetermined, against 23 and 15 GoTo/OpenDoor-family "holds";
+    - on suite C it comes entirely from undetermined games.
+
+**RKM's decisions (13 Oct 2026):**
+- **G replay dropped.** PREREG v1.2, diff entry D16: "G is not measured." D15's replay is withdrawn, and no G value is produced for suites B or C. v1.2 is registered when RKM tags it `prereg-v1.2`; the tag is not yet created.
+- **The preprint goes to OSF Preprints.** arXiv endorsement is not available to the author. The registered clause "repository record only, at most an arXiv note" is read as "at most a preprint".
+- **No journal submission of this result.**
+
+**Next:** the preprint draft, in docs/preprint/.
