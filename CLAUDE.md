@@ -208,3 +208,6 @@ Entry point for a new session: docs/STATE.md.
    hash before the run) is W1 above; E10 is carried by G; E9 arm P, E1b and E7 are dropped.
 5. Manuscript for the method paper, anonymised (JAIR format); reproduction script that regenerates
    every table from runs/.
+
+## Commit messages
+A commit message is one subject line, nothing more. No trailers, no attribution lines, no "Co-Authored-By", no "Generated with" lines, in any commit, ever.
