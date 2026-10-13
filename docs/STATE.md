@@ -714,3 +714,21 @@ Twelfth amendment (13 October 2026). The lines above are unchanged.
 - **No journal submission of this result.**
 
 **Next:** the preprint draft, in docs/preprint/.
+
+## Amendment 14 Oct 2026 (m)
+
+Thirteenth amendment (14 October 2026). The lines above are unchanged.
+
+- **Tag prereg-v1.2** created by RKM on 66e5606 (13 Oct 2026); D16 is registered.
+- **Preprint drafts.** Draft 1 (13 Oct) and draft 2 (14 Oct) are written into docs/preprint/: preprint.md, references.bib, REFERENCES_CHECK.md.
+  - Title as in the file, with the two alternatives recorded.
+  - Sections 1, 5, 6 and 7 are prose; Sections 2 to 4, 8, 9 and Appendix A still carry labels and bullets.
+  - All 17 references verified against publisher, PMLR or arXiv pages; the sources are listed in REFERENCES_CHECK.md. The word check found nothing outside the Cobbe et al. title.
+  - Items RKM must settle himself before release:
+    - read Goldman and Kearns 1995, Bontrager et al. 2016 and Keren et al. 2014;
+    - confirm Liew's name order;
+    - confirm the Rudakov journal-ref as arXiv shows it.
+- **LICENSE** (MIT, copyright 2026 Rahul Kumar Mishra) added at the root. external/rudakov_just_explore keeps its upstream MIT notice; Section 9 of the preprint says so.
+- **Commit history after prereg-v1.2 rewritten** by RKM on 14 Oct 2026: 542735f, 2a5b04e and edf806e were replaced by the single commit 8bed48b, to remove attribution trailers from commit messages. No tag and no registered commit was touched. The 88 earlier commits that carry such trailers are unchanged, because the three tags and both OSF registrations point to their hashes. The rule "one subject line, nothing more" is now in CLAUDE.md.
+
+**Next:** RKM reads the full draft; the PDF build; the release tag and the repository visibility decision; the OSF embargo end; the OSF Preprints upload.
