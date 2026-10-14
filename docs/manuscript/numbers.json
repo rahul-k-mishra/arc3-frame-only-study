@@ -2777,7 +2777,7 @@
  "lastcommit.docs/STATE.md": {
   "class": "hash",
   "source": "git log -1 -- docs/STATE.md",
-  "value": "350f68b"
+  "value": "687983a"
  },
  "lastcommit.docs/manuscript/REVIEW_draft1.md": {
   "class": "hash",
@@ -3053,6 +3053,31 @@
   "class": "identifier",
   "source": "docs/preprint/references.bib",
   "value": 2019
+ },
+ "ref.chevalierboisvert2023minigrid.doi": {
+  "class": "url",
+  "source": "docs/manuscript/REFERENCES_CHECK.md (chevalierboisvert2023minigrid, NeurIPS proceedings page)",
+  "value": "https://doi.org/10.52202/075280-3209"
+ },
+ "ref.chevalierboisvert2023minigrid.page_first": {
+  "class": "identifier",
+  "source": "docs/manuscript/REFERENCES_CHECK.md (chevalierboisvert2023minigrid, NeurIPS proceedings page)",
+  "value": 73383
+ },
+ "ref.chevalierboisvert2023minigrid.page_last": {
+  "class": "identifier",
+  "source": "docs/manuscript/REFERENCES_CHECK.md (chevalierboisvert2023minigrid, NeurIPS proceedings page)",
+  "value": 73394
+ },
+ "ref.chevalierboisvert2023minigrid.volume": {
+  "class": "identifier",
+  "source": "docs/manuscript/REFERENCES_CHECK.md (chevalierboisvert2023minigrid, NeurIPS proceedings page)",
+  "value": 36
+ },
+ "ref.chevalierboisvert2023minigrid.year": {
+  "class": "identifier",
+  "source": "docs/manuscript/REFERENCES_CHECK.md (chevalierboisvert2023minigrid, NeurIPS proceedings page)",
+  "value": 2023
  },
  "ref.choi.url": {
   "class": "url",

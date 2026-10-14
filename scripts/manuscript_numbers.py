@@ -15,7 +15,8 @@ Nothing here plays a game or reads runs/suites.  The inputs are:
     docs/PREREG.md, docs/STATE.md, docs/EXPLORATORY_V1_DIAGNOSIS.md, docs/OSF_REGISTRATION_final.txt,
     docs/OSF_REGISTRATION_v1_1_final.txt, docs/preprint/preprint.md, docs/preprint/references.bib,
     docs/GROUND_TRUTH_minigrid.md, docs/GROUND_TRUTH_procgen.md (through analyze_common's parsers)
-    docs/HELDOUT.md (the ARC split and the dc22 move), docs/manuscript/REVIEW_draft1.md (reference URLs)
+    docs/HELDOUT.md (the ARC split and the dc22 move), docs/manuscript/REVIEW_draft1.md (reference URLs),
+    docs/manuscript/REFERENCES_CHECK.md (fields of the references added for the manuscript)
     the three annotated tag objects and `git ls-tree` at the tags (committed objects, read only)
 
 Every value taken from prose is matched by a regular expression against its file; the script stops
@@ -546,6 +547,15 @@ def provenance():
                      ("chevalierboisvert", "https://openreview.net/forum?id=rJeXCo0cYX")):
         need(R, re.escape(url))
         add(f"ref.{key}.url", url, R + " Section 6.1 (page fetched)", "url")
+    # Chevalier-Boisvert et al. (2023), MiniGrid: fields from the NeurIPS proceedings page and its BibTeX
+    RC = "docs/manuscript/REFERENCES_CHECK.md"
+    m = need(RC, r"chevalierboisvert2023minigrid .*?volume (\d+); year (\d{4}); pages (\d+)–(\d+); DOI (10\.52202/075280-3209)")
+    src = RC + " (chevalierboisvert2023minigrid, NeurIPS proceedings page)"
+    add("ref.chevalierboisvert2023minigrid.volume", int(m.group(1)), src, "identifier")
+    add("ref.chevalierboisvert2023minigrid.year", int(m.group(2)), src, "identifier")
+    add("ref.chevalierboisvert2023minigrid.page_first", int(m.group(3)), src, "identifier")
+    add("ref.chevalierboisvert2023minigrid.page_last", int(m.group(4)), src, "identifier")
+    add("ref.chevalierboisvert2023minigrid.doi", "https://doi.org/" + m.group(5), src, "url")
     # commits named in the text
     for h, src in (("bb0f1a1", "docs/STATE.md amendment (k)"), ("f43526a", "docs/STATE.md amendment (l)"),
                    ("db1e6ac", "docs/STATE.md amendment (f)"), ("51eba49", "docs/STATE.md amendment (f)"),
@@ -615,6 +625,10 @@ def appendix_c():
         for f in files:
             if f.startswith("git"):
                 commit_of[f] = "the tag objects themselves"
+                continue
+            if git("status", "--porcelain", "--", f):
+                # new or changed since the last commit: it is committed together with this table
+                commit_of[f] = "changed in the commit that carries this table"
                 continue
             h = git("log", "-1", "--format=%h", "--", f)
             commit_of[f] = h
