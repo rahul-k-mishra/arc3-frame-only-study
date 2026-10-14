@@ -2777,7 +2777,7 @@
  "lastcommit.docs/STATE.md": {
   "class": "hash",
   "source": "git log -1 -- docs/STATE.md",
-  "value": "687983a"
+  "value": "2048f36"
  },
  "lastcommit.docs/manuscript/REFERENCES_CHECK.md": {
   "class": "hash",
