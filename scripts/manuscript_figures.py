@@ -112,8 +112,9 @@ def fig2():
     lo, hi = _thr("thr.v2_fail_auroc"), _thr("thr.v2_pass_auroc")
     drawn = [f"threshold FAIL at or below {lo:.2f}", f"threshold PASS needs at least {hi:.2f}"]
     suite_name = {"arc": "ARC-AGI-3", "minigrid": "MiniGrid/BabyAI", "procgen": "Procgen"}
-    cond_name = {"native": "", "macro": "abs. moves", "raw": "primitive", "center_off": "camera off",
+    cond_name = {"native": "", "macro": "absolute moves", "raw": "primitive actions", "center_off": "camera off",
                  "center_on": "camera on"}
+    subset_name = {"in_range": "in range", "camera_distinct": "camera-distinct"}
     fig, ax = plt.subplots(figsize=(WIDTH, 175 * MM))
     labels = []
     n = len(rows)
@@ -121,10 +122,12 @@ def fig2():
         y = n - 1 - i
         if r["ci_low"] is not None:
             ax.plot([r["ci_low"], r["ci_high"]], [y, y], color="black", linewidth=0.9)
-        ax.plot(r["auroc"], y, "o", color="black", markersize=4)
-        ax.plot(r["auroc_B"], y + 0.0, "s", markerfacecolor="white", markeredgecolor="0.35", markersize=4.2)
+        # the baseline square is unfilled and drawn below the census point, so that a census point at
+        # nearly the same AUROC (minigrid macro all games I1: 0.7517 against 0.7562) stays visible
+        ax.plot(r["auroc_B"], y, "s", markerfacecolor="none", markeredgecolor="0.35", markersize=5.2, zorder=2)
+        ax.plot(r["auroc"], y, "o", color="black", markersize=4, zorder=3)
         ax.text(1.06, y, r["verdict"], va="center", fontsize=6.5, transform=ax.get_yaxis_transform())
-        labels.append((f"{suite_name[r['suite']]} {cond_name[r['condition']]}".strip() + f", {r['subset']}: {r['agent']}"))
+        labels.append((f"{suite_name[r['suite']]} {cond_name[r['condition']]}".strip() + f", {subset_name.get(r['subset'], r['subset'])}: {r['agent']}"))
         ci = "no interval (VOID)" if r["ci_low"] is None else f"[{r['ci_low']:.4f}, {r['ci_high']:.4f}]"
         drawn.append(f"{r['suite']} {r['condition']} {r['subset']} {r['agent']}: AUROC {r['auroc']:.4f}, CI {ci}, "
                      f"AUROC_B {r['auroc_B']:.4f}, verdict {r['verdict']}")
@@ -139,7 +142,7 @@ def fig2():
     from matplotlib.lines import Line2D
     handles = [Line2D([], [], color="black", marker="o", linestyle="-", markersize=4, linewidth=0.9,
                       label="census AUROC with 95% bootstrap interval"),
-               Line2D([], [], color="0.35", marker="s", markerfacecolor="white", linestyle="none", markersize=4.2,
+               Line2D([], [], color="0.35", marker="s", markerfacecolor="none", linestyle="none", markersize=5.2,
                       label="nuisance baseline AUROC"),
                Line2D([], [], color="black", linestyle="--", linewidth=0.8, label=f"{lo:.2f}: FAIL at or below"),
                Line2D([], [], color="black", linestyle=":", linewidth=1.0, label=f"{hi:.2f}: PASS needs at least")]

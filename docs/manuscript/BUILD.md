@@ -34,8 +34,8 @@ Step 4. Build the submission file and the cover letter with pandoc. The only met
 
 ```powershell
 cd D:\Research\arc3\repo
-& "C:\Users\Shivani Mishra\AppData\Local\Pandoc\pandoc.exe" docs\manuscript\manuscript.md -o docs\manuscript\manuscript.docx --resource-path=docs\manuscript -M author="Rahul Kumar Mishra"
+& "C:\Users\Shivani Mishra\AppData\Local\Pandoc\pandoc.exe" docs\manuscript\manuscript.md -o docs\manuscript\manuscript.docx --resource-path=docs\manuscript --shift-heading-level-by=-1 -M author="Rahul Kumar Mishra"
 & "C:\Users\Shivani Mishra\AppData\Local\Pandoc\pandoc.exe" docs\manuscript\cover_letter.md -o docs\manuscript\cover_letter.docx -M author="Rahul Kumar Mishra" -M title="Cover letter"
 ```
 
-Expected: no output, and the two .docx files in docs\manuscript. The figures are embedded in manuscript.docx at the point of first reference.
+Expected: no output, and the two .docx files in docs\manuscript. The figures are embedded in manuscript.docx at the point of first reference. The option --shift-heading-level-by=-1 makes the sections Heading 1 and the subsections Heading 2 in Word.

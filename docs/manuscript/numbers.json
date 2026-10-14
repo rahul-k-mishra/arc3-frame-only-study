@@ -14,6 +14,11 @@
   "source": "docs/PREREG.md v1 Section 8",
   "value": 17
  },
+ "arc.heldout_before_dc22": {
+  "class": "count",
+  "source": "docs/HELDOUT.md ('eighteen until dc22 was moved')",
+  "value": 18
+ },
  "arc.modes": {
   "class": "count",
   "source": "docs/STATE.md amendment (h) ('2 modes')",
@@ -284,10 +289,20 @@
   "source": "docs/PREREG.md v1.1 preface (two revisions of 27 September 2026)",
   "value": "27 September 2026"
  },
+ "date.dc22_moved": {
+  "class": "date",
+  "source": "docs/HELDOUT.md (TRAIN list, dc22)",
+  "value": "21 September 2026"
+ },
  "date.embargo": {
   "class": "date",
   "source": "docs/STATE.md amendment (d)",
   "value": "30 June 2030"
+ },
+ "date.fifth_deviation": {
+  "class": "date",
+  "source": "docs/STATE.md amendment (n) (dated 14 Oct 2026)",
+  "value": "14 October 2026"
  },
  "date.gate_g3": {
   "class": "date",
@@ -2749,6 +2764,11 @@
   "source": "git log -1 -- docs/GROUND_TRUTH_procgen.md",
   "value": "8d209b3"
  },
+ "lastcommit.docs/HELDOUT.md": {
+  "class": "hash",
+  "source": "git log -1 -- docs/HELDOUT.md",
+  "value": "4d2c02c"
+ },
  "lastcommit.docs/PREREG.md": {
   "class": "hash",
   "source": "git log -1 -- docs/PREREG.md",
@@ -2757,7 +2777,12 @@
  "lastcommit.docs/STATE.md": {
   "class": "hash",
   "source": "git log -1 -- docs/STATE.md",
-  "value": "f5d7591"
+  "value": "350f68b"
+ },
+ "lastcommit.docs/manuscript/REVIEW_draft1.md": {
+  "class": "hash",
+  "source": "git log -1 -- docs/manuscript/REVIEW_draft1.md",
+  "value": "48931d2"
  },
  "lastcommit.docs/preprint/preprint.md": {
   "class": "hash",
@@ -2939,6 +2964,11 @@
   "source": "docs/preprint/references.bib",
   "value": 2012
  },
+ "ref.bertinetto.url": {
+  "class": "url",
+  "source": "docs/manuscript/REVIEW_draft1.md Section 6.1 (page fetched)",
+  "value": "https://proceedings.mlr.press/v148/bertinetto21a.html"
+ },
  "ref.bertinetto2021preregistration.booktitle_num0": {
   "class": "identifier",
   "source": "docs/preprint/references.bib",
@@ -2953,6 +2983,11 @@
   "class": "identifier",
   "source": "docs/preprint/references.bib",
   "value": 2021
+ },
+ "ref.blum.url": {
+  "class": "url",
+  "source": "docs/manuscript/REVIEW_draft1.md Section 6.1 (page fetched)",
+  "value": "https://proceedings.mlr.press/v37/blum15.html"
  },
  "ref.blum2015ladder.page_first": {
   "class": "identifier",
@@ -3004,6 +3039,11 @@
   "source": "docs/preprint/references.bib",
   "value": 2016
  },
+ "ref.chevalierboisvert.url": {
+  "class": "url",
+  "source": "docs/manuscript/REVIEW_draft1.md Section 6.1 (page fetched)",
+  "value": "https://openreview.net/forum?id=rJeXCo0cYX"
+ },
  "ref.chevalierboisvert2019babyai.arxiv": {
   "class": "url",
   "source": "docs/preprint/references.bib",
@@ -3014,6 +3054,11 @@
   "source": "docs/preprint/references.bib",
   "value": 2019
  },
+ "ref.choi.url": {
+  "class": "url",
+  "source": "docs/manuscript/REVIEW_draft1.md Section 6.1 (page fetched)",
+  "value": "https://openreview.net/forum?id=HyxGB2AcY7"
+ },
  "ref.choi2019contingency.arxiv": {
   "class": "url",
   "source": "docs/preprint/references.bib",
@@ -3023,6 +3068,11 @@
   "class": "identifier",
   "source": "docs/preprint/references.bib",
   "value": 2019
+ },
+ "ref.cobbe.url": {
+  "class": "url",
+  "source": "docs/manuscript/REVIEW_draft1.md Section 6.1 (page fetched)",
+  "value": "https://proceedings.mlr.press/v119/cobbe20a.html"
  },
  "ref.cobbe2020procgen.page_first": {
   "class": "identifier",
@@ -3194,6 +3244,11 @@
   "source": "docs/preprint/references.bib",
   "value": 1982
  },
+ "ref.roelofs.url": {
+  "class": "url",
+  "source": "docs/manuscript/REVIEW_draft1.md Section 6.1 (page fetched)",
+  "value": "https://papers.nips.cc/paper_files/paper/2019/hash/ee39e503b6bedf0c98c388b7e8589aca-Abstract.html"
+ },
  "ref.roelofs2019metaanalysis.volume": {
   "class": "identifier",
   "source": "docs/preprint/references.bib",
@@ -3223,6 +3278,11 @@
   "class": "identifier",
   "source": "docs/preprint/references.bib",
   "value": 2026
+ },
+ "ref.wayllace.url": {
+  "class": "url",
+  "source": "docs/manuscript/REVIEW_draft1.md Section 6.1 (page fetched)",
+  "value": "https://www.ijcai.org/Proceedings/16/Papers/464.pdf"
  },
  "ref.wayllace2016grd.page_first": {
   "class": "identifier",

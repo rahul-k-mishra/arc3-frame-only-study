@@ -15,6 +15,7 @@ Nothing here plays a game or reads runs/suites.  The inputs are:
     docs/PREREG.md, docs/STATE.md, docs/EXPLORATORY_V1_DIAGNOSIS.md, docs/OSF_REGISTRATION_final.txt,
     docs/OSF_REGISTRATION_v1_1_final.txt, docs/preprint/preprint.md, docs/preprint/references.bib,
     docs/GROUND_TRUTH_minigrid.md, docs/GROUND_TRUTH_procgen.md (through analyze_common's parsers)
+    docs/HELDOUT.md (the ARC split and the dc22 move), docs/manuscript/REVIEW_draft1.md (reference URLs)
     the three annotated tag objects and `git ls-tree` at the tags (committed objects, read only)
 
 Every value taken from prose is matched by a regular expression against its file; the script stops
@@ -425,6 +426,12 @@ def protocol():
     add("arc.source_informed", 3, "docs/EXPLORATORY_V1_DIAGNOSIS.md Section 6 ('three of which are source-informed')",
         "count")
     need("docs/EXPLORATORY_V1_DIAGNOSIS.md", r"three of which are source-informed")
+    # the split file: dc22 moved from held-out to train during development
+    H = "docs/HELDOUT.md"
+    m = need(H, r"dc22\s+MOVED FROM HELD-OUT on (\d+) Sep (\d{4})")
+    add("date.dc22_moved", fmt_date(_dt.date(int(m.group(2)), 9, int(m.group(1)))), H + " (TRAIN list, dc22)", "date")
+    m = need(H, r"Seventeen games \((eighteen) until dc22 was moved")
+    add("arc.heldout_before_dc22", 18, H + " ('eighteen until dc22 was moved')", "count")
     # truth counts on the confirmatory sets, through the registered parsers
     tb = C.parse_truth_minigrid(os.path.join(ROOT, "docs", "GROUND_TRUTH_minigrid.md"))
     conf_b = C.confirmatory("minigrid", tb)
@@ -525,6 +532,20 @@ def provenance():
     need("docs/STATE.md", r"## Amendment 27 Sep 2026 \(f\)[\s\S]*?\*\*The pilot\*\* \(commit db1e6ac")
     add("date.pilot", "27 September 2026", "docs/STATE.md amendment (f) (dated 27 Sep 2026)", "date")
     add("date.d1_d15", "27 September 2026", P + " v1.1 preface (two revisions of 27 September 2026)", "date")
+    need("docs/STATE.md", r"## Amendment 14 Oct 2026 \(n\)[\s\S]*?A fifth deviation, found while the manuscript was written")
+    add("date.fifth_deviation", "14 October 2026", "docs/STATE.md amendment (n) (dated 14 Oct 2026)", "date")
+    # reference URLs for entries without a DOI, as fetched in the review of draft 1
+    R = "docs/manuscript/REVIEW_draft1.md"
+    for key, url in (("bertinetto", "https://proceedings.mlr.press/v148/bertinetto21a.html"),
+                     ("blum", "https://proceedings.mlr.press/v37/blum15.html"),
+                     ("cobbe", "https://proceedings.mlr.press/v119/cobbe20a.html"),
+                     ("roelofs", "https://papers.nips.cc/paper_files/paper/2019/hash/"
+                                 "ee39e503b6bedf0c98c388b7e8589aca-Abstract.html"),
+                     ("wayllace", "https://www.ijcai.org/Proceedings/16/Papers/464.pdf"),
+                     ("choi", "https://openreview.net/forum?id=HyxGB2AcY7"),
+                     ("chevalierboisvert", "https://openreview.net/forum?id=rJeXCo0cYX")):
+        need(R, re.escape(url))
+        add(f"ref.{key}.url", url, R + " Section 6.1 (page fetched)", "url")
     # commits named in the text
     for h, src in (("bb0f1a1", "docs/STATE.md amendment (k)"), ("f43526a", "docs/STATE.md amendment (l)"),
                    ("db1e6ac", "docs/STATE.md amendment (f)"), ("51eba49", "docs/STATE.md amendment (f)"),
