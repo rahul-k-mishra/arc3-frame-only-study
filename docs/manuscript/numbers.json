@@ -2787,7 +2787,7 @@
  "lastcommit.docs/STATE.md": {
   "class": "hash",
   "source": "git log -1 -- docs/STATE.md",
-  "value": "b48793f"
+  "value": "36c1760"
  },
  "lastcommit.docs/manuscript/REFERENCES_CHECK.md": {
   "class": "hash",
