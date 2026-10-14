@@ -843,3 +843,17 @@ Eighteenth amendment (14 October 2026). The lines above are unchanged; where thi
   - a rebuild;
   - the tag jote-submission-v1;
   - the submission to JOTE.
+
+## Amendment 14 Oct 2026 (s)
+
+Nineteenth amendment (14 October 2026). The lines above are unchanged; where this section corrects one of them, this section governs.
+
+- **The JOTE submission version** is committed as 8f99b24 ("JOTE submission version: Zenodo DOI, cover letter, rebuild") and tagged jote-submission-v1. The tag and the commit are pushed.
+  - The preprint line in manuscript.md (in its two places) and in cover_letter.md now gives Zenodo under CC-BY 4.0 with https://doi.org/10.5281/zenodo.23375065; no mention of OSF Preprints remains in either file.
+  - scripts/manuscript_numbers.py reads the license, the DOI, the Zenodo URL, the preprint date and the embargo end date from amendment (r); numbers.json holds 1,113 values. The "CC-BY 4.0" exemption is removed from scripts/manuscript_check.py.
+  - manuscript_check.py exits 0 on manuscript.md, (a) to (g) 0 issues, main text 8,733 words; the docx metadata checks of manuscript.docx and cover_letter.docx are clean.
+  - JOTE_CHECKLIST.md J7 names Zenodo, the DOI and the reason OSF Preprints was not used.
+- **Embargo wording fixed.** After the embargoes were ended (amendment (r)), the manuscript still said twice that both registrations are "under embargo until 30 June 2030", and the cover letter said they are "under embargo". These now read: "Both registrations have been public since 14 October 2026, when I ended their embargoes, and their registered texts are also in the repository." (Method, preregistration), "Both have been public since 14 October 2026, …" (Data and code availability), and "both registrations are public, and their registered texts are also in the repository." (cover letter). The date is read from amendment (r).
+- **Not changed:** preprint_variant.md, .docx and .pdf, the published preprint (tag manuscript-v1). They keep the preprint sentence and embargo wording of 895f3ac, and their Appendix C no longer matches the current numbers.json.
+- **Next:** the submission to JOTE.
+- docs/STATE.md is a source file of scripts/manuscript_numbers.py. After this amendment is committed, Appendix C of manuscript.md names an older STATE.md commit, so a rebuild needs BUILD.md step 1 and the copy into Appendix C before check (g) passes. The tagged submission version (8f99b24) is consistent as tagged.
