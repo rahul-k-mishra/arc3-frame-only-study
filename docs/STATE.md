@@ -742,3 +742,73 @@ Fourteenth amendment (14 October 2026). The lines above are unchanged.
 - A fifth deviation, found while the manuscript was written: the registered text tests V2 on suite B under macro and only reports it under raw, but the frozen analyze_v2.py prints verdicts and a suite line for the raw lines as well; those verdicts enter no outcome clause. Recorded, not corrected.
 - Two limits of the number check, recorded: small integers pass when any value in numbers.json equals them, so context is checked by reading; "CC-BY 4.0" is exempt until the preprint licence is a committed fact.
 - Open before submission: RKM's reading of the full draft; Goldman and Kearns 1995, Bontrager et al. 2016, Keren et al. 2014 read by RKM; Liew's name order and the Rudakov reference form confirmed by RKM; the OSF embargoes on 2znhw and zu5vq ended early so reviewers can open the registrations; the repository made public at a release tag; the preprint posted and its DOI inserted; then the JOTE submission.
+
+## Amendment 14 Oct 2026 (o)
+
+Fifteenth amendment (14 October 2026). The lines above are unchanged; where this section corrects one of them, this section governs.
+
+**Review of manuscript draft 1** (docs/manuscript/REVIEW_draft1.md, commit 48931d2). Three readings (hostile reviewer, fact checker, copy editor and production desk), plus the cover letter, the checklist, and every cited paper fetched again. 52 findings: 6 BLOCKING, 22 MAJOR, 24 MINOR.
+- BLOCKING:
+  - F01: the manuscript said the 8/17 ARC split "was fixed before development began". docs/HELDOUT.md records that dc22 was moved from held-out to train on 21 Sep 2026 to debug the agent's wall learning; the held-out set had 18 games until then.
+  - F02: v1 provided for an ARC development truth table (docs/GROUND_TRUTH_arc_train.md) and ARC V1 (PREREG v1 preface, Sections 8 and 10). It was never written. Not listed as a deviation in draft 1.
+  - F03: v1 Section 9.1 lists I1 on ARC; the registered ARC baseline ran R and N only (500 rows). Not listed.
+  - F04: V3 was registered as a check of every row's adapter and code fields; no analysis script computes it and no V3 line exists in docs/tables. Draft 1 said V3 "holds by construction". Not listed.
+  - F05: draft 1 said the census uses frames "and nothing else"; the registered contract also gives level_end and game_end, and A5 depends on level ends.
+  - F42: Roelofs et al. (2019) was cited for holdout reuse turning a held-out set into training data; their meta-analysis found "little evidence of substantial overfitting".
+- MAJOR, among others: the Purpose quotes the OSF claim, whose wording differs from the git-tagged PREREG v1 Section 1 claim (F06); "every tested MiniGrid line" counted the raw lines, which are reported only (F07, F08); the fifth deviation was undated (F09); the conclusion's baseline sentence held for MiniGrid only (F11); two exploratory clauses overstated the counts (F12, F13); no Procgen line misses a pass on the interval alone, since balanced accuracy is 0.5000 on every one (F15); in fig2.png the census point of minigrid macro all games I1 (0.7517) was hidden under the baseline square (0.7562) (F16); Table 2 had 13 columns (F18); six characterizations of cited papers only partly supported, Bontrager et al. (2016) among them: their positive selection-agent result was omitted (F43 to F48).
+- Reference fields: all 17 confirmed against publisher, PMLR, NeurIPS, OpenReview, Crossref or arXiv pages. Liew's family name is Liew (arXiv "Liew Keong Han", paper title block "Keong Han Liew"; no personal page found). Rudakov et al.: the AAAI 2026 workshop is non-archival, no proceedings page; the arXiv form stays.
+
+**The deviations are now eight, not five.** Amendment (n) recorded five. The review adds three, all found on 14 Oct 2026 and none changing a test, a threshold or the outcome: (6) the ARC development truth table and ARC V1 never done; (7) I1 not run on ARC-AGI-3 under the registered code; (8) the registered row-field V3 check never computed. ARC lines are reported, not tested, and V3 bears only on the outcome Support, so G3 stays REFUTE.
+
+**Manuscript draft 2** (commit dfebd3d, "JOTE manuscript draft 2: review fixes"). Every BLOCKING and MAJOR finding and the mechanical MINOR ones applied; one row per edit in docs/manuscript/CHANGES_draft2.md. No registered number, verdict or quoted registered text changed.
+- scripts/manuscript_numbers.py now also reads docs/HELDOUT.md (date 21 September 2026, count 18), STATE.md amendment (n) (date of the fifth deviation) and REVIEW_draft1.md Section 6.1 (seven reference URLs): 1,102 values.
+- scripts/manuscript_figures.py: the baseline square in fig2 is unfilled and drawn under the census point; labels use the words of fig1. fig2.png redrawn; fig1, fig3, fig4 unchanged in content.
+- Table 2 split into Tables 2a and 2b (8 and 9 columns), same rows and values.
+- The docx is built with --shift-heading-level-by=-1 (BUILD.md step 4): sections Heading 1, subsections Heading 2.
+- manuscript_check.py: 0 issues in (a) to (g), exit code 0; take-home 49 words, 3 sentences; abstract 240; purpose 191; main text 8,694 words (tables included).
+- docx checks: creator "Rahul Kumar Mishra" only; 4 images, each followed by its caption; 9 tables, none over 9 columns; 0 empty paragraphs; no leftover Markdown; 0 hits for the R2 words in the XML of either docx.
+- The check was run by the session that wrote the draft; RKM's console is the record.
+
+**Open before submission (RKM):**
+- confirm the wording of the three new deviations (manuscript, Method, "Deviations from the registered protocol");
+- "each with care" in the Discussion (F34);
+- the repository made public and the OSF embargoes on 2znhw and zu5vq ended, or the data sentences reworded (F40);
+- the 88 earlier commits with attribution trailers, against JOTE's policy on disclosure of writing and coding aids (F41);
+- whether to cite Chevalier-Boisvert et al. (2023) for the minigrid package (F52);
+- the title;
+- Mitchell (1982) and the JCSS version of Goldman and Kearns (1995) read in full (the review could not fetch them);
+- then, as in (n): the preprint posted and its DOI inserted, and the JOTE submission.
+
+## Amendment 14 Oct 2026 (p)
+
+Sixteenth amendment (14 October 2026). The lines above are unchanged; where this section corrects one of them, this section governs. It is written as (p) because an amendment (o) on the same review and draft was already in the file, from an earlier one-line instruction; (p) adds RKM's decisions.
+
+- **Review of manuscript draft 1** committed as 48931d2 (docs/manuscript/REVIEW_draft1.md): 52 findings, 6 blocking, 22 major, 24 minor. Every cited paper was fetched again and every sentence characterizing one was checked.
+- **Facts the review established and draft 2 states:**
+  - dc22 was moved from the ARC held-out set to the train set on 21 September 2026, before registration but during development (docs/HELDOUT.md), so the split was not fixed before development;
+  - the ARC truth table and ARC V1 on the eight development games were registered and never written;
+  - I1 was registered on ARC and never run there under the tag.
+- **The deviations subsection of draft 2 lists eight entries, not seven.** The eighth is the registered row-field V3 check, which no analysis script computes (review F04; amendment (o)).
+- **Citations corrected in draft 2:**
+  - Roelofs et al. (2019) is now cited for what it found;
+  - the descriptions of Bontrager et al. (2016), Bellemare et al. (2012), Goldman and Kearns (1995), Wayllace et al. (2016), Liew (2026) and Skoutnev et al. (2026) are corrected from the sources;
+  - reference URLs are added where no DOI exists;
+  - the AAAI-hosted proceedings are set in periodical form.
+  - **Chevalier-Boisvert et al. (2023) is not in draft 2.** It was left for RKM's decision (review F52) and has not been added. It needs an entry outside docs/preprint/references.bib and its numbers in scripts/manuscript_numbers.py.
+- **RKM's decisions (14 Oct 2026):**
+  - the title of draft 1 is kept;
+  - "each with care" is to be removed. It is still in draft 2 as committed (Discussion, "The methodological mistake") and must be removed in the next draft;
+  - the repository is to be made public and the OSF embargoes on 2znhw and zu5vq ended before submission;
+  - the commit trailers before prereg-v1.2 are left as they are.
+- **Draft 2** committed as dfebd3d ("JOTE manuscript draft 2: review fixes").
+  - manuscript_check.py passes (exit code 0) and the docx checks pass;
+  - Table 2 is split into Tables 2a and 2b so that it fits the page;
+  - Figure 2 is redrawn so that no census point is hidden.
+- **Open before submission:**
+  - the next draft: "each with care" removed, and Chevalier-Boisvert et al. (2023) added if RKM wants it;
+  - RKM reads the abstract, purpose, discussion and conclusion;
+  - the OSF embargoes ended;
+  - a release tag and the repository made public;
+  - the preprint posted and its DOI inserted;
+  - the JOTE submission.
+- docs/STATE.md is a source file of scripts/manuscript_numbers.py. Appendix C names the commit that last changed it, so after this commit the BUILD.md steps must be re-run before check (g) passes again.
