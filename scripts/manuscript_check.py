@@ -27,6 +27,9 @@ hash value; dates "d Month yyyy" must equal a date value; URLs must equal a URL 
 
 Run (working directory D:\\Research\\arc3\\repo), after scripts\\manuscript_numbers.py:
     D:\\Research\\arc3\\brutus\\.venv\\Scripts\\python.exe scripts\\manuscript_check.py
+An optional argument names another file in docs/manuscript to check instead of manuscript.md, for
+example the preprint variant:
+    D:\\Research\\arc3\\brutus\\.venv\\Scripts\\python.exe scripts\\manuscript_check.py preprint_variant.md
 
 Exit code 0 only when every count is zero and every limit holds; 1 otherwise.
 Expected console output when the manuscript is clean: seven blocks (a) to (g), each ending in
@@ -108,7 +111,9 @@ def bib_titles():
 
 
 def main():
-    with open(os.path.join(MS_DIR, "manuscript.md"), encoding="utf-8") as f:
+    ms_file = sys.argv[1] if len(sys.argv) > 1 else "manuscript.md"
+    print(f"checking docs/manuscript/{ms_file}")
+    with open(os.path.join(MS_DIR, ms_file), encoding="utf-8") as f:
         raw = f.read()
     with open(os.path.join(MS_DIR, "numbers.json"), encoding="utf-8") as f:
         numbers = json.load(f)
