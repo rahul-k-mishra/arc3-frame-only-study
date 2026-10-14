@@ -732,3 +732,13 @@ Thirteenth amendment (14 October 2026). The lines above are unchanged.
 - **Commit history after prereg-v1.2 rewritten** by RKM on 14 Oct 2026: 542735f, 2a5b04e and edf806e were replaced by the single commit 8bed48b, to remove attribution trailers from commit messages. No tag and no registered commit was touched. The 88 earlier commits that carry such trailers are unchanged, because the three tags and both OSF registrations point to their hashes. The rule "one subject line, nothing more" is now in CLAUDE.md.
 
 **Next:** RKM reads the full draft; the PDF build; the release tag and the repository visibility decision; the OSF embargo end; the OSF Preprints upload.
+
+## Amendment 14 Oct 2026 (n)
+
+Fourteenth amendment (14 October 2026). The lines above are unchanged.
+
+- Decision of 14 Oct 2026 by RKM, reversing the second part of the decision recorded in (l): the negative result is submitted to the Journal of Trial and Error (JOTE) as an Empirical Article, a diamond open access journal that publishes negative results, with the departure from the registered venue clause ("repository record only, at most an arXiv note") declared in the manuscript and in the cover letter. The OSF preprint, under CC-BY 4.0, goes first and its DOI is cited in both.
+- JOTE manuscript draft 1 committed as e0c4091: docs/manuscript/manuscript.md and .docx, cover_letter.md and .docx, fig1 to fig4, numbers.json, appendix_c.md, BUILD.md, JOTE_CHECKLIST.md; scripts/manuscript_numbers.py, manuscript_figures.py, manuscript_check.py. The check script passes: 0 unmatched numbers, 0 forbidden words, 17 citations matched to 17 entries, 0 British spellings, limits met (take-home 49 words, abstract 244, purpose 183), 7,680 words of main text.
+- A fifth deviation, found while the manuscript was written: the registered text tests V2 on suite B under macro and only reports it under raw, but the frozen analyze_v2.py prints verdicts and a suite line for the raw lines as well; those verdicts enter no outcome clause. Recorded, not corrected.
+- Two limits of the number check, recorded: small integers pass when any value in numbers.json equals them, so context is checked by reading; "CC-BY 4.0" is exempt until the preprint licence is a committed fact.
+- Open before submission: RKM's reading of the full draft; Goldman and Kearns 1995, Bontrager et al. 2016, Keren et al. 2014 read by RKM; Liew's name order and the Rudakov reference form confirmed by RKM; the OSF embargoes on 2znhw and zu5vq ended early so reviewers can open the registrations; the repository made public at a release tag; the preprint posted and its DOI inserted; then the JOTE submission.
