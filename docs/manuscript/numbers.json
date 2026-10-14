@@ -1,0 +1,5452 @@
+{
+ "arc.cap_s": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1.1 D12",
+  "value": 3600
+ },
+ "arc.cut_rows": {
+  "class": "count",
+  "source": "docs/PREREG.md v1.1 D12 ('Eight')",
+  "value": 8
+ },
+ "arc.heldout": {
+  "class": "count",
+  "source": "docs/PREREG.md v1 Section 8",
+  "value": 17
+ },
+ "arc.modes": {
+  "class": "count",
+  "source": "docs/STATE.md amendment (h) ('2 modes')",
+  "value": 2
+ },
+ "arc.old_clock_s": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1.1 D12",
+  "value": 900
+ },
+ "arc.public": {
+  "class": "count",
+  "source": "docs/PREREG.md v1 Section 9.1 ('25 games × 10 seeds')",
+  "value": 25
+ },
+ "arc.source_informed": {
+  "class": "count",
+  "source": "docs/EXPLORATORY_V1_DIAGNOSIS.md Section 6 ('three of which are source-informed')",
+  "value": 3
+ },
+ "arc.train": {
+  "class": "count",
+  "source": "scripts/analyze_common.py (ARC_TRAIN)",
+  "value": 8
+ },
+ "author.orcid": {
+  "class": "identifier",
+  "source": "docs/preprint/preprint.md",
+  "value": "0009-0004-9671-4055"
+ },
+ "blob.analyze_common.py": {
+  "class": "hash",
+  "source": "docs/PREREG.md v1.1 D8, D11; git ls-tree prereg-v1.1",
+  "value": "caad22731807db78aff9c92c993a79a63f042ec3"
+ },
+ "blob.analyze_g.py": {
+  "class": "hash",
+  "source": "docs/PREREG.md v1.1 D8, D11; git ls-tree prereg-v1.1",
+  "value": "46bf991d86400f0189d8898a7e068044d25c629a"
+ },
+ "blob.analyze_v1.py": {
+  "class": "hash",
+  "source": "docs/PREREG.md v1.1 D8, D11; git ls-tree prereg-v1.1",
+  "value": "515f44b0f007182172022272383de548e80d5a11"
+ },
+ "blob.analyze_v2.py": {
+  "class": "hash",
+  "source": "docs/PREREG.md v1.1 D8, D11; git ls-tree prereg-v1.1",
+  "value": "90a849c44e47addd8efdbfa579efdb16288edd50"
+ },
+ "blob.determinism_check.py": {
+  "class": "hash",
+  "source": "docs/PREREG.md v1.1 D8, D11; git ls-tree prereg-v1.1",
+  "value": "4f98f6430e9221deb1a43f2313eb00f5ca676969"
+ },
+ "blob.g_agent.py": {
+  "class": "hash",
+  "source": "docs/PREREG.md v1 Section 5.4; git ls-tree prereg-v1.1",
+  "value": "72585a4dbb926d4512ff9596f58118a176bb0646"
+ },
+ "blob.g_census_table.py": {
+  "class": "hash",
+  "source": "docs/PREREG.md v1 Section 5.4; git ls-tree prereg-v1.1",
+  "value": "488feaca9c10985c4d0ff62791ceb4fa6fa6b9a8"
+ },
+ "blob.g_control_probe.py": {
+  "class": "hash",
+  "source": "docs/PREREG.md v1 Section 5.4; git ls-tree prereg-v1.1",
+  "value": "d5ff2a4dc77b9e1148929e7db03fe99a9d2b0bf8"
+ },
+ "blob.g_motion.py": {
+  "class": "hash",
+  "source": "docs/PREREG.md v1 Section 5.4; git ls-tree prereg-v1.1",
+  "value": "14018512a5c6b0efc81aed61c5466654d338be0b"
+ },
+ "blob.g_nav.py": {
+  "class": "hash",
+  "source": "docs/PREREG.md v1 Section 5.4; git ls-tree prereg-v1.1",
+  "value": "a8a7eb61e62a658c239b98e0224e3588a662d1a0"
+ },
+ "blob.g_nav_run.py": {
+  "class": "hash",
+  "source": "docs/PREREG.md v1 Section 5.4; git ls-tree prereg-v1.1",
+  "value": "2cc0146a697e525e5873d4e29cb80f4ae8bd6297"
+ },
+ "cam.action_seed": {
+  "class": "constant",
+  "source": "runs/pilot_checks/procgen_camera_check.json",
+  "value": 1000
+ },
+ "cam.actions": {
+  "class": "count",
+  "source": "runs/pilot_checks/procgen_camera_check.json",
+  "value": 400
+ },
+ "cam.differing_games": {
+  "class": "count",
+  "source": "runs/pilot_checks/procgen_camera_check.json",
+  "value": 6
+ },
+ "cam.first_differing_step": {
+  "class": "count",
+  "source": "runs/pilot_checks/procgen_camera_check.json",
+  "value": 0
+ },
+ "cam.games": {
+  "class": "count",
+  "source": "runs/pilot_checks/procgen_camera_check.json",
+  "value": 16
+ },
+ "cam.identical_games": {
+  "class": "count",
+  "source": "runs/pilot_checks/procgen_camera_check.json",
+  "value": 10
+ },
+ "cam.steps_compared": {
+  "class": "count",
+  "source": "runs/pilot_checks/procgen_camera_check.json",
+  "value": 401
+ },
+ "cap.multiplier": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1.1 D5 ('three times')",
+  "value": 3
+ },
+ "commit.51eba49": {
+  "class": "hash",
+  "source": "docs/STATE.md amendment (f)",
+  "value": "51eba49"
+ },
+ "commit.5ac65c1": {
+  "class": "hash",
+  "source": "docs/STATE.md amendment (i)",
+  "value": "5ac65c1"
+ },
+ "commit.66e5606": {
+  "class": "hash",
+  "source": "docs/STATE.md amendment (m)",
+  "value": "66e5606"
+ },
+ "commit.8a986d9": {
+  "class": "hash",
+  "source": "docs/STATE.md amendment (j)",
+  "value": "8a986d9"
+ },
+ "commit.b3509de": {
+  "class": "hash",
+  "source": "docs/STATE.md amendment (f)",
+  "value": "b3509de"
+ },
+ "commit.bb0f1a1": {
+  "class": "hash",
+  "source": "docs/STATE.md amendment (k)",
+  "value": "bb0f1a1"
+ },
+ "commit.db1e6ac": {
+  "class": "hash",
+  "source": "docs/STATE.md amendment (f)",
+  "value": "db1e6ac"
+ },
+ "commit.f43526a": {
+  "class": "hash",
+  "source": "docs/STATE.md amendment (l)",
+  "value": "f43526a"
+ },
+ "const.BFS_NODES": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 5.4",
+  "value": 40000
+ },
+ "const.BFS_NODES.line": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 5.4",
+  "value": 54
+ },
+ "const.KEYS.1": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 5.4 (KEYS)",
+  "value": 1
+ },
+ "const.KEYS.2": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 5.4 (KEYS)",
+  "value": 2
+ },
+ "const.KEYS.3": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 5.4 (KEYS)",
+  "value": 3
+ },
+ "const.KEYS.4": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 5.4 (KEYS)",
+  "value": 4
+ },
+ "const.KEYS.5": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 5.4 (KEYS)",
+  "value": 5
+ },
+ "const.KEYS.7": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 5.4 (KEYS)",
+  "value": 7
+ },
+ "const.KEYS.line": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 5.4",
+  "value": 47
+ },
+ "const.LEARN_AGREE": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 5.4",
+  "value": 3
+ },
+ "const.LEARN_AGREE.line": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 5.4",
+  "value": 55
+ },
+ "const.LEARN_MAX": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 5.4",
+  "value": 8
+ },
+ "const.LEARN_MAX.line": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 5.4",
+  "value": 56
+ },
+ "const.MAX_STEP": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 5.4",
+  "value": 10
+ },
+ "const.margin": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 5.4",
+  "value": "2:1"
+ },
+ "const.margin.line": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 5.4",
+  "value": 756
+ },
+ "const.min_cells": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 5.4",
+  "value": 2
+ },
+ "const.min_cells.line": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 5.4",
+  "value": 20
+ },
+ "date.arc_defect": {
+  "class": "date",
+  "source": "docs/STATE.md amendment (k) (dated 13 Oct 2026)",
+  "value": "13 October 2026"
+ },
+ "date.d16": {
+  "class": "date",
+  "source": "docs/PREREG.md v1.2 preface and D16",
+  "value": "13 October 2026"
+ },
+ "date.d1_d15": {
+  "class": "date",
+  "source": "docs/PREREG.md v1.1 preface (two revisions of 27 September 2026)",
+  "value": "27 September 2026"
+ },
+ "date.embargo": {
+  "class": "date",
+  "source": "docs/STATE.md amendment (d)",
+  "value": "30 June 2030"
+ },
+ "date.gate_g3": {
+  "class": "date",
+  "source": "docs/STATE.md amendment (k) (dated 13 Oct 2026)",
+  "value": "13 October 2026"
+ },
+ "date.osf_v1": {
+  "class": "date",
+  "source": "docs/STATE.md amendment (d) (dated 27 Sep 2026)",
+  "value": "27 September 2026"
+ },
+ "date.osf_v1_1": {
+  "class": "date",
+  "source": "docs/STATE.md amendment (h) (dated 27 Sep 2026)",
+  "value": "27 September 2026"
+ },
+ "date.pilot": {
+  "class": "date",
+  "source": "docs/STATE.md amendment (f) (dated 27 Sep 2026)",
+  "value": "27 September 2026"
+ },
+ "date.pilot_lesson": {
+  "class": "date",
+  "source": "docs/STATE.md amendment (k) (dated 13 Oct 2026)",
+  "value": "13 October 2026"
+ },
+ "date.preprint_draft2": {
+  "class": "date",
+  "source": "docs/STATE.md amendment (m) (preprint draft 2, 14 Oct)",
+  "value": "14 October 2026"
+ },
+ "date.prereg_v1_written": {
+  "class": "date",
+  "source": "docs/PREREG.md v1 preface",
+  "value": "27 September 2026"
+ },
+ "date.suiteB_end": {
+  "class": "date",
+  "source": "docs/STATE.md amendment (j)",
+  "value": "13 October 2026"
+ },
+ "date.suiteB_start": {
+  "class": "date",
+  "source": "docs/STATE.md amendment (i)",
+  "value": "28 September 2026"
+ },
+ "date.venue_reading": {
+  "class": "date",
+  "source": "docs/STATE.md amendment (l) (dated 13 Oct 2026)",
+  "value": "13 October 2026"
+ },
+ "det.games": {
+  "class": "count",
+  "source": "runs/checks/determinism_check.json",
+  "value": 9
+ },
+ "det.label_fields": {
+  "class": "count",
+  "source": "runs/checks/determinism_check.json",
+  "value": 3
+ },
+ "det.pairs_compared": {
+  "class": "count",
+  "source": "runs/checks/determinism_check.json",
+  "value": 270
+ },
+ "det.pairs_identical": {
+  "class": "count",
+  "source": "runs/checks/determinism_check.json",
+  "value": 270
+ },
+ "det.pairs_missing": {
+  "class": "count",
+  "source": "runs/checks/determinism_check.json",
+  "value": 0
+ },
+ "det.pairs_per_game": {
+  "class": "count",
+  "source": "runs/checks/determinism_check.json",
+  "value": 30
+ },
+ "det.timing_fields": {
+  "class": "count",
+  "source": "runs/checks/determinism_check.json",
+  "value": 7
+ },
+ "diag.A2C.avatar_found_min_seeds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json",
+  "value": 9
+ },
+ "diag.A2C.disagree_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json",
+  "value": 6
+ },
+ "diag.A2raw.disagree_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json",
+  "value": 87
+ },
+ "diag.A2raw.families": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json",
+  "value": 41
+ },
+ "diag.A2raw.seeds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json",
+  "value": 870
+ },
+ "diag.A2raw.seeds_forward_accepted": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json",
+  "value": 208
+ },
+ "diag.A2raw.seeds_turns_no_move": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json",
+  "value": 870
+ },
+ "diag.A3macro.disagree_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json",
+  "value": 92
+ },
+ "diag.A3macro.seeds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json",
+  "value": 920
+ },
+ "diag.A3macro.seeds_fail": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json",
+  "value": 775
+ },
+ "diag.A3macro.seeds_fail_mispredicted": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json",
+  "value": 755
+ },
+ "diag.A3macro.seeds_fail_no_avatar": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json",
+  "value": 20
+ },
+ "diag.A3macro.seeds_four_vectors": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json",
+  "value": 850
+ },
+ "diag.A4C.games_wall_all_seeds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json",
+  "value": 5
+ },
+ "diag.A4C.games_wall_some_seed": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json",
+  "value": 13
+ },
+ "diag.A4C.truth_holds_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json",
+  "value": 13
+ },
+ "diag.A5C.kappa_cell_truth_fails_pred_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (confusion: fails/holds + fails/undetermined)",
+  "value": 8
+ },
+ "diag.A5C.undetermined_seeds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json",
+  "value": 110
+ },
+ "diag.A5C.undetermined_seeds_no_goal_recorded": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json",
+  "value": 70
+ },
+ "diag.A5macro.kappa_cell_truth_fails_pred_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (confusion: fails/holds + fails/undetermined)",
+  "value": 84
+ },
+ "diag.A5macro.undetermined_seeds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json",
+  "value": 663
+ },
+ "diag.A5macro.undetermined_seeds_no_goal_recorded": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json",
+  "value": 620
+ },
+ "diag.A5raw.kappa_cell_truth_fails_pred_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (confusion: fails/holds + fails/undetermined)",
+  "value": 120
+ },
+ "diag.A5raw.undetermined_seeds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json",
+  "value": 1074
+ },
+ "diag.A5raw.undetermined_seeds_no_goal_recorded": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json",
+  "value": 986
+ },
+ "diag.arc.all25.N.auroc": {
+  "class": "rate",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": "0.4188"
+ },
+ "diag.arc.all25.N.auroc_B": {
+  "class": "rate",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": "0.5000"
+ },
+ "diag.arc.all25.N.ba": {
+  "class": "rate",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": "0.5357"
+ },
+ "diag.arc.all25.N.ci_high": {
+  "class": "rate",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": "0.6379"
+ },
+ "diag.arc.all25.N.ci_low": {
+  "class": "rate",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": "0.1978"
+ },
+ "diag.arc.all25.N.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": 25
+ },
+ "diag.arc.all25.N.positives": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": 14
+ },
+ "diag.arc.all25.R.auroc": {
+  "class": "rate",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": "0.4100"
+ },
+ "diag.arc.all25.R.auroc_B": {
+  "class": "rate",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": "0.5000"
+ },
+ "diag.arc.all25.R.ba": {
+  "class": "rate",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": "0.5333"
+ },
+ "diag.arc.all25.R.ci_high": {
+  "class": "rate",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": "0.6354"
+ },
+ "diag.arc.all25.R.ci_low": {
+  "class": "rate",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": "0.1850"
+ },
+ "diag.arc.all25.R.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": 25
+ },
+ "diag.arc.all25.R.positives": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": 15
+ },
+ "diag.arc.heldout17.N.auroc": {
+  "class": "rate",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": "0.3542"
+ },
+ "diag.arc.heldout17.N.auroc_B": {
+  "class": "rate",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": "0.5000"
+ },
+ "diag.arc.heldout17.N.ba": {
+  "class": "rate",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": "0.5000"
+ },
+ "diag.arc.heldout17.N.ci_high": {
+  "class": "rate",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": "0.6346"
+ },
+ "diag.arc.heldout17.N.ci_low": {
+  "class": "rate",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": "0.1041"
+ },
+ "diag.arc.heldout17.N.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": 17
+ },
+ "diag.arc.heldout17.N.positives": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": 8
+ },
+ "diag.arc.heldout17.R.auroc": {
+  "class": "rate",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": "0.3403"
+ },
+ "diag.arc.heldout17.R.auroc_B": {
+  "class": "rate",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": "0.5000"
+ },
+ "diag.arc.heldout17.R.ba": {
+  "class": "rate",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": "0.5000"
+ },
+ "diag.arc.heldout17.R.ci_high": {
+  "class": "rate",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": "0.6213"
+ },
+ "diag.arc.heldout17.R.ci_low": {
+  "class": "rate",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": "0.0909"
+ },
+ "diag.arc.heldout17.R.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": 17
+ },
+ "diag.arc.heldout17.R.positives": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part2)",
+  "value": 9
+ },
+ "diag.census_field_mismatches": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json",
+  "value": 0
+ },
+ "diag.minigrid.macro.all.A1.agreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (n minus off-diagonal confusion)",
+  "value": 159
+ },
+ "diag.minigrid.macro.all.A1.confusion.truth_fails.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.macro.all.A1.confusion.truth_fails.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.macro.all.A1.confusion.truth_fails.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.macro.all.A1.confusion.truth_holds.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 2
+ },
+ "diag.minigrid.macro.all.A1.confusion.truth_holds.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 159
+ },
+ "diag.minigrid.macro.all.A1.confusion.truth_holds.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.macro.all.A1.disagreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (off-diagonal confusion)",
+  "value": 2
+ },
+ "diag.minigrid.macro.all.A1.dissent_hist.0": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 158
+ },
+ "diag.minigrid.macro.all.A1.dissent_hist.1": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 2
+ },
+ "diag.minigrid.macro.all.A1.dissent_hist.3": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.minigrid.macro.all.A1.dissent_max": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority, max)",
+  "value": 3
+ },
+ "diag.minigrid.macro.all.A1.games_with_dissent": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority > 0)",
+  "value": 3
+ },
+ "diag.minigrid.macro.all.A1.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1)",
+  "value": 161
+ },
+ "diag.minigrid.macro.all.A2.agreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (n minus off-diagonal confusion)",
+  "value": 159
+ },
+ "diag.minigrid.macro.all.A2.confusion.truth_fails.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.macro.all.A2.confusion.truth_fails.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.macro.all.A2.confusion.truth_fails.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.macro.all.A2.confusion.truth_holds.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 2
+ },
+ "diag.minigrid.macro.all.A2.confusion.truth_holds.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 159
+ },
+ "diag.minigrid.macro.all.A2.confusion.truth_holds.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.macro.all.A2.disagreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (off-diagonal confusion)",
+  "value": 2
+ },
+ "diag.minigrid.macro.all.A2.dissent_hist.0": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 155
+ },
+ "diag.minigrid.macro.all.A2.dissent_hist.1": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 3
+ },
+ "diag.minigrid.macro.all.A2.dissent_hist.2": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 2
+ },
+ "diag.minigrid.macro.all.A2.dissent_hist.3": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.minigrid.macro.all.A2.dissent_max": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority, max)",
+  "value": 3
+ },
+ "diag.minigrid.macro.all.A2.games_with_dissent": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority > 0)",
+  "value": 6
+ },
+ "diag.minigrid.macro.all.A2.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1)",
+  "value": 161
+ },
+ "diag.minigrid.macro.all.A3.agreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (n minus off-diagonal confusion)",
+  "value": 69
+ },
+ "diag.minigrid.macro.all.A3.confusion.truth_fails.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.macro.all.A3.confusion.truth_fails.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.macro.all.A3.confusion.truth_fails.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.macro.all.A3.confusion.truth_holds.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 92
+ },
+ "diag.minigrid.macro.all.A3.confusion.truth_holds.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 69
+ },
+ "diag.minigrid.macro.all.A3.confusion.truth_holds.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.macro.all.A3.disagreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (off-diagonal confusion)",
+  "value": 92
+ },
+ "diag.minigrid.macro.all.A3.dissent_hist.0": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 50
+ },
+ "diag.minigrid.macro.all.A3.dissent_hist.1": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 22
+ },
+ "diag.minigrid.macro.all.A3.dissent_hist.2": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 29
+ },
+ "diag.minigrid.macro.all.A3.dissent_hist.3": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 25
+ },
+ "diag.minigrid.macro.all.A3.dissent_hist.4": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 26
+ },
+ "diag.minigrid.macro.all.A3.dissent_hist.5": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 9
+ },
+ "diag.minigrid.macro.all.A3.dissent_max": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority, max)",
+  "value": 5
+ },
+ "diag.minigrid.macro.all.A3.games_with_dissent": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority > 0)",
+  "value": 111
+ },
+ "diag.minigrid.macro.all.A3.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1)",
+  "value": 161
+ },
+ "diag.minigrid.macro.all.A4.agreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (n minus off-diagonal confusion)",
+  "value": 54
+ },
+ "diag.minigrid.macro.all.A4.confusion.truth_fails.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 1
+ },
+ "diag.minigrid.macro.all.A4.confusion.truth_fails.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 4
+ },
+ "diag.minigrid.macro.all.A4.confusion.truth_fails.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.macro.all.A4.confusion.truth_holds.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 103
+ },
+ "diag.minigrid.macro.all.A4.confusion.truth_holds.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 53
+ },
+ "diag.minigrid.macro.all.A4.confusion.truth_holds.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.macro.all.A4.disagreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (off-diagonal confusion)",
+  "value": 107
+ },
+ "diag.minigrid.macro.all.A4.dissent_hist.0": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 50
+ },
+ "diag.minigrid.macro.all.A4.dissent_hist.1": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 18
+ },
+ "diag.minigrid.macro.all.A4.dissent_hist.2": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 30
+ },
+ "diag.minigrid.macro.all.A4.dissent_hist.3": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 28
+ },
+ "diag.minigrid.macro.all.A4.dissent_hist.4": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 25
+ },
+ "diag.minigrid.macro.all.A4.dissent_hist.5": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 10
+ },
+ "diag.minigrid.macro.all.A4.dissent_max": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority, max)",
+  "value": 5
+ },
+ "diag.minigrid.macro.all.A4.games_with_dissent": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority > 0)",
+  "value": 111
+ },
+ "diag.minigrid.macro.all.A4.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1)",
+  "value": 161
+ },
+ "diag.minigrid.macro.all.A5.agreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (n minus off-diagonal confusion)",
+  "value": 43
+ },
+ "diag.minigrid.macro.all.A5.confusion.truth_fails.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 41
+ },
+ "diag.minigrid.macro.all.A5.confusion.truth_fails.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 23
+ },
+ "diag.minigrid.macro.all.A5.confusion.truth_fails.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 61
+ },
+ "diag.minigrid.macro.all.A5.confusion.truth_holds.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 25
+ },
+ "diag.minigrid.macro.all.A5.confusion.truth_holds.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 2
+ },
+ "diag.minigrid.macro.all.A5.confusion.truth_holds.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 9
+ },
+ "diag.minigrid.macro.all.A5.disagreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (off-diagonal confusion)",
+  "value": 118
+ },
+ "diag.minigrid.macro.all.A5.dissent_hist.0": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 87
+ },
+ "diag.minigrid.macro.all.A5.dissent_hist.1": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 19
+ },
+ "diag.minigrid.macro.all.A5.dissent_hist.2": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 16
+ },
+ "diag.minigrid.macro.all.A5.dissent_hist.3": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 15
+ },
+ "diag.minigrid.macro.all.A5.dissent_hist.4": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 11
+ },
+ "diag.minigrid.macro.all.A5.dissent_hist.5": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 13
+ },
+ "diag.minigrid.macro.all.A5.dissent_max": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority, max)",
+  "value": 5
+ },
+ "diag.minigrid.macro.all.A5.games_with_dissent": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority > 0)",
+  "value": 74
+ },
+ "diag.minigrid.macro.all.A5.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1)",
+  "value": 161
+ },
+ "diag.minigrid.raw.all.A1.agreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (n minus off-diagonal confusion)",
+  "value": 151
+ },
+ "diag.minigrid.raw.all.A1.confusion.truth_fails.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.raw.all.A1.confusion.truth_fails.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.raw.all.A1.confusion.truth_fails.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.raw.all.A1.confusion.truth_holds.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 10
+ },
+ "diag.minigrid.raw.all.A1.confusion.truth_holds.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 151
+ },
+ "diag.minigrid.raw.all.A1.confusion.truth_holds.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.raw.all.A1.disagreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (off-diagonal confusion)",
+  "value": 10
+ },
+ "diag.minigrid.raw.all.A1.dissent_hist.0": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 53
+ },
+ "diag.minigrid.raw.all.A1.dissent_hist.1": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 36
+ },
+ "diag.minigrid.raw.all.A1.dissent_hist.2": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 31
+ },
+ "diag.minigrid.raw.all.A1.dissent_hist.3": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 19
+ },
+ "diag.minigrid.raw.all.A1.dissent_hist.4": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 18
+ },
+ "diag.minigrid.raw.all.A1.dissent_hist.5": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 4
+ },
+ "diag.minigrid.raw.all.A1.dissent_max": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority, max)",
+  "value": 5
+ },
+ "diag.minigrid.raw.all.A1.games_with_dissent": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority > 0)",
+  "value": 108
+ },
+ "diag.minigrid.raw.all.A1.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1)",
+  "value": 161
+ },
+ "diag.minigrid.raw.all.A2.agreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (n minus off-diagonal confusion)",
+  "value": 74
+ },
+ "diag.minigrid.raw.all.A2.confusion.truth_fails.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.raw.all.A2.confusion.truth_fails.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.raw.all.A2.confusion.truth_fails.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.raw.all.A2.confusion.truth_holds.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 87
+ },
+ "diag.minigrid.raw.all.A2.confusion.truth_holds.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 74
+ },
+ "diag.minigrid.raw.all.A2.confusion.truth_holds.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.raw.all.A2.disagreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (off-diagonal confusion)",
+  "value": 87
+ },
+ "diag.minigrid.raw.all.A2.dissent_hist.0": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 27
+ },
+ "diag.minigrid.raw.all.A2.dissent_hist.1": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 21
+ },
+ "diag.minigrid.raw.all.A2.dissent_hist.2": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 13
+ },
+ "diag.minigrid.raw.all.A2.dissent_hist.3": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 32
+ },
+ "diag.minigrid.raw.all.A2.dissent_hist.4": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 49
+ },
+ "diag.minigrid.raw.all.A2.dissent_hist.5": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 19
+ },
+ "diag.minigrid.raw.all.A2.dissent_max": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority, max)",
+  "value": 5
+ },
+ "diag.minigrid.raw.all.A2.games_with_dissent": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority > 0)",
+  "value": 134
+ },
+ "diag.minigrid.raw.all.A2.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1)",
+  "value": 161
+ },
+ "diag.minigrid.raw.all.A3.agreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (n minus off-diagonal confusion)",
+  "value": 88
+ },
+ "diag.minigrid.raw.all.A3.confusion.truth_fails.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 88
+ },
+ "diag.minigrid.raw.all.A3.confusion.truth_fails.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 73
+ },
+ "diag.minigrid.raw.all.A3.confusion.truth_fails.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.raw.all.A3.confusion.truth_holds.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.raw.all.A3.confusion.truth_holds.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.raw.all.A3.confusion.truth_holds.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.raw.all.A3.disagreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (off-diagonal confusion)",
+  "value": 73
+ },
+ "diag.minigrid.raw.all.A3.dissent_hist.0": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 26
+ },
+ "diag.minigrid.raw.all.A3.dissent_hist.1": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 21
+ },
+ "diag.minigrid.raw.all.A3.dissent_hist.2": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 12
+ },
+ "diag.minigrid.raw.all.A3.dissent_hist.3": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 33
+ },
+ "diag.minigrid.raw.all.A3.dissent_hist.4": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 50
+ },
+ "diag.minigrid.raw.all.A3.dissent_hist.5": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 19
+ },
+ "diag.minigrid.raw.all.A3.dissent_max": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority, max)",
+  "value": 5
+ },
+ "diag.minigrid.raw.all.A3.games_with_dissent": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority > 0)",
+  "value": 135
+ },
+ "diag.minigrid.raw.all.A3.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1)",
+  "value": 161
+ },
+ "diag.minigrid.raw.all.A4.agreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (n minus off-diagonal confusion)",
+  "value": 10
+ },
+ "diag.minigrid.raw.all.A4.confusion.truth_fails.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 5
+ },
+ "diag.minigrid.raw.all.A4.confusion.truth_fails.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.raw.all.A4.confusion.truth_fails.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.raw.all.A4.confusion.truth_holds.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 151
+ },
+ "diag.minigrid.raw.all.A4.confusion.truth_holds.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 5
+ },
+ "diag.minigrid.raw.all.A4.confusion.truth_holds.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.minigrid.raw.all.A4.disagreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (off-diagonal confusion)",
+  "value": 151
+ },
+ "diag.minigrid.raw.all.A4.dissent_hist.0": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 87
+ },
+ "diag.minigrid.raw.all.A4.dissent_hist.1": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 30
+ },
+ "diag.minigrid.raw.all.A4.dissent_hist.2": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 21
+ },
+ "diag.minigrid.raw.all.A4.dissent_hist.3": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 14
+ },
+ "diag.minigrid.raw.all.A4.dissent_hist.4": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 7
+ },
+ "diag.minigrid.raw.all.A4.dissent_hist.5": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 2
+ },
+ "diag.minigrid.raw.all.A4.dissent_max": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority, max)",
+  "value": 5
+ },
+ "diag.minigrid.raw.all.A4.games_with_dissent": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority > 0)",
+  "value": 74
+ },
+ "diag.minigrid.raw.all.A4.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1)",
+  "value": 161
+ },
+ "diag.minigrid.raw.all.A5.agreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (n minus off-diagonal confusion)",
+  "value": 16
+ },
+ "diag.minigrid.raw.all.A5.confusion.truth_fails.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 5
+ },
+ "diag.minigrid.raw.all.A5.confusion.truth_fails.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 15
+ },
+ "diag.minigrid.raw.all.A5.confusion.truth_fails.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 105
+ },
+ "diag.minigrid.raw.all.A5.confusion.truth_holds.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 2
+ },
+ "diag.minigrid.raw.all.A5.confusion.truth_holds.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 11
+ },
+ "diag.minigrid.raw.all.A5.confusion.truth_holds.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 23
+ },
+ "diag.minigrid.raw.all.A5.disagreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (off-diagonal confusion)",
+  "value": 145
+ },
+ "diag.minigrid.raw.all.A5.dissent_hist.0": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 58
+ },
+ "diag.minigrid.raw.all.A5.dissent_hist.1": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 25
+ },
+ "diag.minigrid.raw.all.A5.dissent_hist.2": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 13
+ },
+ "diag.minigrid.raw.all.A5.dissent_hist.3": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 17
+ },
+ "diag.minigrid.raw.all.A5.dissent_hist.4": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 26
+ },
+ "diag.minigrid.raw.all.A5.dissent_hist.5": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 19
+ },
+ "diag.minigrid.raw.all.A5.dissent_hist.6": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 3
+ },
+ "diag.minigrid.raw.all.A5.dissent_max": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority, max)",
+  "value": 6
+ },
+ "diag.minigrid.raw.all.A5.games_with_dissent": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority > 0)",
+  "value": 103
+ },
+ "diag.minigrid.raw.all.A5.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1)",
+  "value": 161
+ },
+ "diag.procgen.center_off.all.A1.agreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (n minus off-diagonal confusion)",
+  "value": 13
+ },
+ "diag.procgen.center_off.all.A1.confusion.truth_fails.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.all.A1.confusion.truth_fails.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.all.A1.confusion.truth_fails.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.all.A1.confusion.truth_holds.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 1
+ },
+ "diag.procgen.center_off.all.A1.confusion.truth_holds.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 13
+ },
+ "diag.procgen.center_off.all.A1.confusion.truth_holds.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.all.A1.disagreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (off-diagonal confusion)",
+  "value": 1
+ },
+ "diag.procgen.center_off.all.A1.dissent_hist.0": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 9
+ },
+ "diag.procgen.center_off.all.A1.dissent_hist.1": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 3
+ },
+ "diag.procgen.center_off.all.A1.dissent_hist.3": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.procgen.center_off.all.A1.dissent_hist.4": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.procgen.center_off.all.A1.dissent_max": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority, max)",
+  "value": 4
+ },
+ "diag.procgen.center_off.all.A1.games_with_dissent": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority > 0)",
+  "value": 5
+ },
+ "diag.procgen.center_off.all.A1.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1)",
+  "value": 14
+ },
+ "diag.procgen.center_off.all.A2.agreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (n minus off-diagonal confusion)",
+  "value": 8
+ },
+ "diag.procgen.center_off.all.A2.confusion.truth_fails.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 2
+ },
+ "diag.procgen.center_off.all.A2.confusion.truth_fails.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 6
+ },
+ "diag.procgen.center_off.all.A2.confusion.truth_fails.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.all.A2.confusion.truth_holds.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.all.A2.confusion.truth_holds.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 6
+ },
+ "diag.procgen.center_off.all.A2.confusion.truth_holds.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.all.A2.disagreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (off-diagonal confusion)",
+  "value": 6
+ },
+ "diag.procgen.center_off.all.A2.dissent_hist.0": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 9
+ },
+ "diag.procgen.center_off.all.A2.dissent_hist.1": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 2
+ },
+ "diag.procgen.center_off.all.A2.dissent_hist.3": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 3
+ },
+ "diag.procgen.center_off.all.A2.dissent_max": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority, max)",
+  "value": 3
+ },
+ "diag.procgen.center_off.all.A2.games_with_dissent": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority > 0)",
+  "value": 5
+ },
+ "diag.procgen.center_off.all.A2.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1)",
+  "value": 14
+ },
+ "diag.procgen.center_off.all.A3.agreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (n minus off-diagonal confusion)",
+  "value": 8
+ },
+ "diag.procgen.center_off.all.A3.confusion.truth_fails.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 8
+ },
+ "diag.procgen.center_off.all.A3.confusion.truth_fails.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 4
+ },
+ "diag.procgen.center_off.all.A3.confusion.truth_fails.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.all.A3.confusion.truth_holds.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 2
+ },
+ "diag.procgen.center_off.all.A3.confusion.truth_holds.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.all.A3.confusion.truth_holds.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.all.A3.disagreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (off-diagonal confusion)",
+  "value": 6
+ },
+ "diag.procgen.center_off.all.A3.dissent_hist.0": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 2
+ },
+ "diag.procgen.center_off.all.A3.dissent_hist.1": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.procgen.center_off.all.A3.dissent_hist.2": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 4
+ },
+ "diag.procgen.center_off.all.A3.dissent_hist.3": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 4
+ },
+ "diag.procgen.center_off.all.A3.dissent_hist.4": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 2
+ },
+ "diag.procgen.center_off.all.A3.dissent_hist.5": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.procgen.center_off.all.A3.dissent_max": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority, max)",
+  "value": 5
+ },
+ "diag.procgen.center_off.all.A3.games_with_dissent": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority > 0)",
+  "value": 12
+ },
+ "diag.procgen.center_off.all.A3.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1)",
+  "value": 14
+ },
+ "diag.procgen.center_off.all.A4.agreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (n minus off-diagonal confusion)",
+  "value": 1
+ },
+ "diag.procgen.center_off.all.A4.confusion.truth_fails.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 1
+ },
+ "diag.procgen.center_off.all.A4.confusion.truth_fails.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.all.A4.confusion.truth_fails.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.all.A4.confusion.truth_holds.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 13
+ },
+ "diag.procgen.center_off.all.A4.confusion.truth_holds.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.all.A4.confusion.truth_holds.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.all.A4.disagreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (off-diagonal confusion)",
+  "value": 13
+ },
+ "diag.procgen.center_off.all.A4.dissent_hist.0": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 12
+ },
+ "diag.procgen.center_off.all.A4.dissent_hist.1": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.procgen.center_off.all.A4.dissent_hist.3": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.procgen.center_off.all.A4.dissent_max": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority, max)",
+  "value": 3
+ },
+ "diag.procgen.center_off.all.A4.games_with_dissent": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority > 0)",
+  "value": 2
+ },
+ "diag.procgen.center_off.all.A4.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1)",
+  "value": 14
+ },
+ "diag.procgen.center_off.all.A5.agreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (n minus off-diagonal confusion)",
+  "value": 1
+ },
+ "diag.procgen.center_off.all.A5.confusion.truth_fails.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.all.A5.confusion.truth_fails.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.all.A5.confusion.truth_fails.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 8
+ },
+ "diag.procgen.center_off.all.A5.confusion.truth_holds.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 1
+ },
+ "diag.procgen.center_off.all.A5.confusion.truth_holds.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 1
+ },
+ "diag.procgen.center_off.all.A5.confusion.truth_holds.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 4
+ },
+ "diag.procgen.center_off.all.A5.disagreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (off-diagonal confusion)",
+  "value": 13
+ },
+ "diag.procgen.center_off.all.A5.dissent_hist.0": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 11
+ },
+ "diag.procgen.center_off.all.A5.dissent_hist.1": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.procgen.center_off.all.A5.dissent_hist.4": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.procgen.center_off.all.A5.dissent_hist.5": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.procgen.center_off.all.A5.dissent_max": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority, max)",
+  "value": 5
+ },
+ "diag.procgen.center_off.all.A5.games_with_dissent": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority > 0)",
+  "value": 3
+ },
+ "diag.procgen.center_off.all.A5.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1)",
+  "value": 14
+ },
+ "diag.procgen.center_off.in_range.A1.agreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (n minus off-diagonal confusion)",
+  "value": 8
+ },
+ "diag.procgen.center_off.in_range.A1.confusion.truth_fails.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.in_range.A1.confusion.truth_fails.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.in_range.A1.confusion.truth_fails.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.in_range.A1.confusion.truth_holds.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 1
+ },
+ "diag.procgen.center_off.in_range.A1.confusion.truth_holds.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 8
+ },
+ "diag.procgen.center_off.in_range.A1.confusion.truth_holds.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.in_range.A1.disagreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (off-diagonal confusion)",
+  "value": 1
+ },
+ "diag.procgen.center_off.in_range.A1.dissent_hist.0": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 6
+ },
+ "diag.procgen.center_off.in_range.A1.dissent_hist.1": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 2
+ },
+ "diag.procgen.center_off.in_range.A1.dissent_hist.4": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.procgen.center_off.in_range.A1.dissent_max": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority, max)",
+  "value": 4
+ },
+ "diag.procgen.center_off.in_range.A1.games_with_dissent": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority > 0)",
+  "value": 3
+ },
+ "diag.procgen.center_off.in_range.A1.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1)",
+  "value": 9
+ },
+ "diag.procgen.center_off.in_range.A2.agreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (n minus off-diagonal confusion)",
+  "value": 4
+ },
+ "diag.procgen.center_off.in_range.A2.confusion.truth_fails.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.in_range.A2.confusion.truth_fails.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 5
+ },
+ "diag.procgen.center_off.in_range.A2.confusion.truth_fails.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.in_range.A2.confusion.truth_holds.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.in_range.A2.confusion.truth_holds.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 4
+ },
+ "diag.procgen.center_off.in_range.A2.confusion.truth_holds.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.in_range.A2.disagreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (off-diagonal confusion)",
+  "value": 5
+ },
+ "diag.procgen.center_off.in_range.A2.dissent_hist.0": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 7
+ },
+ "diag.procgen.center_off.in_range.A2.dissent_hist.1": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.procgen.center_off.in_range.A2.dissent_hist.3": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.procgen.center_off.in_range.A2.dissent_max": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority, max)",
+  "value": 3
+ },
+ "diag.procgen.center_off.in_range.A2.games_with_dissent": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority > 0)",
+  "value": 2
+ },
+ "diag.procgen.center_off.in_range.A2.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1)",
+  "value": 9
+ },
+ "diag.procgen.center_off.in_range.A3.agreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (n minus off-diagonal confusion)",
+  "value": 4
+ },
+ "diag.procgen.center_off.in_range.A3.confusion.truth_fails.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 4
+ },
+ "diag.procgen.center_off.in_range.A3.confusion.truth_fails.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 3
+ },
+ "diag.procgen.center_off.in_range.A3.confusion.truth_fails.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.in_range.A3.confusion.truth_holds.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 2
+ },
+ "diag.procgen.center_off.in_range.A3.confusion.truth_holds.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.in_range.A3.confusion.truth_holds.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.in_range.A3.disagreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (off-diagonal confusion)",
+  "value": 5
+ },
+ "diag.procgen.center_off.in_range.A3.dissent_hist.0": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.procgen.center_off.in_range.A3.dissent_hist.1": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.procgen.center_off.in_range.A3.dissent_hist.2": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 3
+ },
+ "diag.procgen.center_off.in_range.A3.dissent_hist.3": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 2
+ },
+ "diag.procgen.center_off.in_range.A3.dissent_hist.4": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.procgen.center_off.in_range.A3.dissent_hist.5": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.procgen.center_off.in_range.A3.dissent_max": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority, max)",
+  "value": 5
+ },
+ "diag.procgen.center_off.in_range.A3.games_with_dissent": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority > 0)",
+  "value": 8
+ },
+ "diag.procgen.center_off.in_range.A3.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1)",
+  "value": 9
+ },
+ "diag.procgen.center_off.in_range.A4.agreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (n minus off-diagonal confusion)",
+  "value": 1
+ },
+ "diag.procgen.center_off.in_range.A4.confusion.truth_fails.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 1
+ },
+ "diag.procgen.center_off.in_range.A4.confusion.truth_fails.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.in_range.A4.confusion.truth_fails.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.in_range.A4.confusion.truth_holds.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 8
+ },
+ "diag.procgen.center_off.in_range.A4.confusion.truth_holds.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.in_range.A4.confusion.truth_holds.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.in_range.A4.disagreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (off-diagonal confusion)",
+  "value": 8
+ },
+ "diag.procgen.center_off.in_range.A4.dissent_hist.0": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 9
+ },
+ "diag.procgen.center_off.in_range.A4.dissent_max": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority, max)",
+  "value": 0
+ },
+ "diag.procgen.center_off.in_range.A4.games_with_dissent": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority > 0)",
+  "value": 0
+ },
+ "diag.procgen.center_off.in_range.A4.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1)",
+  "value": 9
+ },
+ "diag.procgen.center_off.in_range.A5.agreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (n minus off-diagonal confusion)",
+  "value": 1
+ },
+ "diag.procgen.center_off.in_range.A5.confusion.truth_fails.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.in_range.A5.confusion.truth_fails.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.in_range.A5.confusion.truth_fails.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 7
+ },
+ "diag.procgen.center_off.in_range.A5.confusion.truth_holds.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_off.in_range.A5.confusion.truth_holds.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 1
+ },
+ "diag.procgen.center_off.in_range.A5.confusion.truth_holds.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 1
+ },
+ "diag.procgen.center_off.in_range.A5.disagreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (off-diagonal confusion)",
+  "value": 8
+ },
+ "diag.procgen.center_off.in_range.A5.dissent_hist.0": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 6
+ },
+ "diag.procgen.center_off.in_range.A5.dissent_hist.1": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.procgen.center_off.in_range.A5.dissent_hist.4": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.procgen.center_off.in_range.A5.dissent_hist.5": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.procgen.center_off.in_range.A5.dissent_max": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority, max)",
+  "value": 5
+ },
+ "diag.procgen.center_off.in_range.A5.games_with_dissent": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority > 0)",
+  "value": 3
+ },
+ "diag.procgen.center_off.in_range.A5.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1)",
+  "value": 9
+ },
+ "diag.procgen.center_on.camera_distinct.A1.agreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (n minus off-diagonal confusion)",
+  "value": 4
+ },
+ "diag.procgen.center_on.camera_distinct.A1.confusion.truth_fails.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_on.camera_distinct.A1.confusion.truth_fails.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_on.camera_distinct.A1.confusion.truth_fails.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_on.camera_distinct.A1.confusion.truth_holds.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 1
+ },
+ "diag.procgen.center_on.camera_distinct.A1.confusion.truth_holds.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 4
+ },
+ "diag.procgen.center_on.camera_distinct.A1.confusion.truth_holds.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_on.camera_distinct.A1.disagreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (off-diagonal confusion)",
+  "value": 1
+ },
+ "diag.procgen.center_on.camera_distinct.A1.dissent_hist.0": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 3
+ },
+ "diag.procgen.center_on.camera_distinct.A1.dissent_hist.2": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 2
+ },
+ "diag.procgen.center_on.camera_distinct.A1.dissent_max": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority, max)",
+  "value": 2
+ },
+ "diag.procgen.center_on.camera_distinct.A1.games_with_dissent": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority > 0)",
+  "value": 2
+ },
+ "diag.procgen.center_on.camera_distinct.A1.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1)",
+  "value": 5
+ },
+ "diag.procgen.center_on.camera_distinct.A2.agreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (n minus off-diagonal confusion)",
+  "value": 4
+ },
+ "diag.procgen.center_on.camera_distinct.A2.confusion.truth_fails.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 2
+ },
+ "diag.procgen.center_on.camera_distinct.A2.confusion.truth_fails.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 1
+ },
+ "diag.procgen.center_on.camera_distinct.A2.confusion.truth_fails.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_on.camera_distinct.A2.confusion.truth_holds.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_on.camera_distinct.A2.confusion.truth_holds.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 2
+ },
+ "diag.procgen.center_on.camera_distinct.A2.confusion.truth_holds.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_on.camera_distinct.A2.disagreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (off-diagonal confusion)",
+  "value": 1
+ },
+ "diag.procgen.center_on.camera_distinct.A2.dissent_hist.0": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.procgen.center_on.camera_distinct.A2.dissent_hist.2": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.procgen.center_on.camera_distinct.A2.dissent_hist.3": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.procgen.center_on.camera_distinct.A2.dissent_hist.4": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 2
+ },
+ "diag.procgen.center_on.camera_distinct.A2.dissent_max": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority, max)",
+  "value": 4
+ },
+ "diag.procgen.center_on.camera_distinct.A2.games_with_dissent": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority > 0)",
+  "value": 4
+ },
+ "diag.procgen.center_on.camera_distinct.A2.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1)",
+  "value": 5
+ },
+ "diag.procgen.center_on.camera_distinct.A3.agreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (n minus off-diagonal confusion)",
+  "value": 3
+ },
+ "diag.procgen.center_on.camera_distinct.A3.confusion.truth_fails.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 3
+ },
+ "diag.procgen.center_on.camera_distinct.A3.confusion.truth_fails.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 2
+ },
+ "diag.procgen.center_on.camera_distinct.A3.confusion.truth_fails.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_on.camera_distinct.A3.confusion.truth_holds.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_on.camera_distinct.A3.confusion.truth_holds.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_on.camera_distinct.A3.confusion.truth_holds.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_on.camera_distinct.A3.disagreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (off-diagonal confusion)",
+  "value": 2
+ },
+ "diag.procgen.center_on.camera_distinct.A3.dissent_hist.0": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.procgen.center_on.camera_distinct.A3.dissent_hist.2": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 3
+ },
+ "diag.procgen.center_on.camera_distinct.A3.dissent_hist.5": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.procgen.center_on.camera_distinct.A3.dissent_max": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority, max)",
+  "value": 5
+ },
+ "diag.procgen.center_on.camera_distinct.A3.games_with_dissent": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority > 0)",
+  "value": 4
+ },
+ "diag.procgen.center_on.camera_distinct.A3.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1)",
+  "value": 5
+ },
+ "diag.procgen.center_on.camera_distinct.A4.agreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (n minus off-diagonal confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_on.camera_distinct.A4.confusion.truth_fails.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_on.camera_distinct.A4.confusion.truth_fails.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_on.camera_distinct.A4.confusion.truth_fails.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_on.camera_distinct.A4.confusion.truth_holds.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 5
+ },
+ "diag.procgen.center_on.camera_distinct.A4.confusion.truth_holds.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_on.camera_distinct.A4.confusion.truth_holds.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_on.camera_distinct.A4.disagreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (off-diagonal confusion)",
+  "value": 5
+ },
+ "diag.procgen.center_on.camera_distinct.A4.dissent_hist.0": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 5
+ },
+ "diag.procgen.center_on.camera_distinct.A4.dissent_max": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority, max)",
+  "value": 0
+ },
+ "diag.procgen.center_on.camera_distinct.A4.games_with_dissent": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority > 0)",
+  "value": 0
+ },
+ "diag.procgen.center_on.camera_distinct.A4.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1)",
+  "value": 5
+ },
+ "diag.procgen.center_on.camera_distinct.A5.agreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (n minus off-diagonal confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_on.camera_distinct.A5.confusion.truth_fails.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_on.camera_distinct.A5.confusion.truth_fails.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_on.camera_distinct.A5.confusion.truth_fails.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 1
+ },
+ "diag.procgen.center_on.camera_distinct.A5.confusion.truth_holds.census_fails": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_on.camera_distinct.A5.confusion.truth_holds.census_holds": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 0
+ },
+ "diag.procgen.center_on.camera_distinct.A5.confusion.truth_holds.census_undetermined": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1 confusion)",
+  "value": 4
+ },
+ "diag.procgen.center_on.camera_distinct.A5.disagreeing_games": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (off-diagonal confusion)",
+  "value": 5
+ },
+ "diag.procgen.center_on.camera_distinct.A5.dissent_hist.0": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 4
+ },
+ "diag.procgen.center_on.camera_distinct.A5.dissent_hist.1": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority histogram)",
+  "value": 1
+ },
+ "diag.procgen.center_on.camera_distinct.A5.dissent_max": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority, max)",
+  "value": 1
+ },
+ "diag.procgen.center_on.camera_distinct.A5.games_with_dissent": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (seeds_against_majority > 0)",
+  "value": 1
+ },
+ "diag.procgen.center_on.camera_distinct.A5.n": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (part1)",
+  "value": 5
+ },
+ "diag.rows_loaded.minigrid.macro": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (rows_loaded)",
+  "value": 1610
+ },
+ "diag.rows_loaded.minigrid.raw": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (rows_loaded)",
+  "value": 1610
+ },
+ "diag.rows_loaded.procgen.center_off": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (rows_loaded)",
+  "value": 140
+ },
+ "diag.rows_loaded.procgen.center_on": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (rows_loaded)",
+  "value": 140
+ },
+ "diag.rows_loaded.total": {
+  "class": "count",
+  "source": "runs/exploratory/v1_diagnosis.json (sum of rows_loaded)",
+  "value": 3500
+ },
+ "excl.I1.macro": {
+  "class": "count",
+  "source": "scripts/analyze_common.py at prereg-v1.1 (V2_EXCLUDE, V2_EXCLUDE_I1)",
+  "value": 78
+ },
+ "excl.I1.macro.primary": {
+  "class": "count",
+  "source": "scripts/analyze_common.py at prereg-v1.1 (V2_EXCLUDE, V2_EXCLUDE_I1) (161 minus the list)",
+  "value": 83
+ },
+ "excl.I1.raw": {
+  "class": "count",
+  "source": "scripts/analyze_common.py at prereg-v1.1 (V2_EXCLUDE, V2_EXCLUDE_I1)",
+  "value": 63
+ },
+ "excl.I1.raw.primary": {
+  "class": "count",
+  "source": "scripts/analyze_common.py at prereg-v1.1 (V2_EXCLUDE, V2_EXCLUDE_I1) (161 minus the list)",
+  "value": 98
+ },
+ "excl.RN.macro": {
+  "class": "count",
+  "source": "scripts/analyze_common.py at prereg-v1.1 (V2_EXCLUDE, V2_EXCLUDE_I1)",
+  "value": 49
+ },
+ "excl.RN.macro.primary": {
+  "class": "count",
+  "source": "scripts/analyze_common.py at prereg-v1.1 (V2_EXCLUDE, V2_EXCLUDE_I1) (161 minus the list)",
+  "value": 112
+ },
+ "excl.RN.raw": {
+  "class": "count",
+  "source": "scripts/analyze_common.py at prereg-v1.1 (V2_EXCLUDE, V2_EXCLUDE_I1)",
+  "value": 6
+ },
+ "excl.RN.raw.primary": {
+  "class": "count",
+  "source": "scripts/analyze_common.py at prereg-v1.1 (V2_EXCLUDE, V2_EXCLUDE_I1) (161 minus the list)",
+  "value": 155
+ },
+ "excl.list.DONE_ABSENT": {
+  "class": "count",
+  "source": "scripts/analyze_common.py at prereg-v1.1 (_DONE_ABSENT)",
+  "value": 5
+ },
+ "excl.list.DROP_ABSENT": {
+  "class": "count",
+  "source": "scripts/analyze_common.py at prereg-v1.1 (_DROP_ABSENT)",
+  "value": 15
+ },
+ "excl.list.DROP_PRECOND": {
+  "class": "count",
+  "source": "scripts/analyze_common.py at prereg-v1.1 (_DROP_PRECOND)",
+  "value": 28
+ },
+ "excl.list.NO_SUCCESS": {
+  "class": "count",
+  "source": "scripts/analyze_common.py at prereg-v1.1 (_NO_SUCCESS)",
+  "value": 1
+ },
+ "excl.list.TOGGLE_PRECOND_own": {
+  "class": "count",
+  "source": "scripts/analyze_common.py at prereg-v1.1 (_TOGGLE_PRECOND minus _DROP_PRECOND)",
+  "value": 9
+ },
+ "excl.list.TOGGLE_PRED": {
+  "class": "count",
+  "source": "scripts/analyze_common.py at prereg-v1.1 (_TOGGLE_PRED)",
+  "value": 20
+ },
+ "excl.list.TOGGLE_needed": {
+  "class": "count",
+  "source": "scripts/analyze_common.py at prereg-v1.1 (_TOGGLE_PRED + _TOGGLE_PRECOND)",
+  "value": 57
+ },
+ "fid.actions": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1.1 D8",
+  "value": 200
+ },
+ "fid.commit": {
+  "class": "hash",
+  "source": "docs/STATE.md amendment (f)",
+  "value": "51eba49"
+ },
+ "fid.minigrid": {
+  "class": "count",
+  "source": "docs/STATE.md amendment (f)",
+  "value": 334
+ },
+ "fid.procgen": {
+  "class": "count",
+  "source": "docs/STATE.md amendment (f)",
+  "value": 32
+ },
+ "frame.canvas": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 3.1",
+  "value": 64
+ },
+ "frame.first_row": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 3.1",
+  "value": 1
+ },
+ "frame.last_row": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 3.1",
+  "value": 62
+ },
+ "frame.palette_cap": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 3.3",
+  "value": 64
+ },
+ "frame.row0": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 3.1",
+  "value": 0
+ },
+ "frame.row63": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 3.1",
+  "value": 63
+ },
+ "frame.tile": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 3.2",
+  "value": 8
+ },
+ "frozen.files": {
+  "class": "count",
+  "source": "docs/PREREG.md v1 Section 5.4",
+  "value": 6
+ },
+ "hash.g_motion_last_commit": {
+  "class": "hash",
+  "source": "docs/PREREG.md v1 Section 5.4",
+  "value": "378345f"
+ },
+ "hash.g_nav_last_commit": {
+  "class": "hash",
+  "source": "docs/PREREG.md v1 Section 5.4",
+  "value": "ccc4d57"
+ },
+ "hash.g_nav_last_commit_full": {
+  "class": "hash",
+  "source": "docs/PREREG.md v1 Section 5.4",
+  "value": "ccc4d57e26cdee73ea0eabdbd7d7fdfe847ed265"
+ },
+ "hash.rows_minigrid_commit": {
+  "class": "hash",
+  "source": "docs/STATE.md amendment (j)",
+  "value": "8a986d9"
+ },
+ "hash.rows_procgen_commit": {
+  "class": "hash",
+  "source": "docs/STATE.md amendment (j)",
+  "value": "5ac65c1"
+ },
+ "i1.keys": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1.1 D9b",
+  "value": 5
+ },
+ "lastcommit.docs/EXPLORATORY_V1_DIAGNOSIS.md": {
+  "class": "hash",
+  "source": "git log -1 -- docs/EXPLORATORY_V1_DIAGNOSIS.md",
+  "value": "7d9205e"
+ },
+ "lastcommit.docs/GROUND_TRUTH_minigrid.md": {
+  "class": "hash",
+  "source": "git log -1 -- docs/GROUND_TRUTH_minigrid.md",
+  "value": "f12e529"
+ },
+ "lastcommit.docs/GROUND_TRUTH_procgen.md": {
+  "class": "hash",
+  "source": "git log -1 -- docs/GROUND_TRUTH_procgen.md",
+  "value": "8d209b3"
+ },
+ "lastcommit.docs/PREREG.md": {
+  "class": "hash",
+  "source": "git log -1 -- docs/PREREG.md",
+  "value": "7d9205e"
+ },
+ "lastcommit.docs/STATE.md": {
+  "class": "hash",
+  "source": "git log -1 -- docs/STATE.md",
+  "value": "f5d7591"
+ },
+ "lastcommit.docs/preprint/preprint.md": {
+  "class": "hash",
+  "source": "git log -1 -- docs/preprint/preprint.md",
+  "value": "8bed48b"
+ },
+ "lastcommit.docs/preprint/references.bib": {
+  "class": "hash",
+  "source": "git log -1 -- docs/preprint/references.bib",
+  "value": "8bed48b"
+ },
+ "lastcommit.docs/tables/v1.json": {
+  "class": "hash",
+  "source": "git log -1 -- docs/tables/v1.json",
+  "value": "bb0f1a1"
+ },
+ "lastcommit.docs/tables/v2.json": {
+  "class": "hash",
+  "source": "git log -1 -- docs/tables/v2.json",
+  "value": "bb0f1a1"
+ },
+ "lastcommit.runs/checks/determinism_check.json": {
+  "class": "hash",
+  "source": "git log -1 -- runs/checks/determinism_check.json",
+  "value": "5ac65c1"
+ },
+ "lastcommit.runs/exploratory/v1_diagnosis.json": {
+  "class": "hash",
+  "source": "git log -1 -- runs/exploratory/v1_diagnosis.json",
+  "value": "66e5606"
+ },
+ "lastcommit.runs/pilot_checks/pilot_check.json": {
+  "class": "hash",
+  "source": "git log -1 -- runs/pilot_checks/pilot_check.json",
+  "value": "cda7aa0"
+ },
+ "lastcommit.runs/pilot_checks/procgen_camera_check.json": {
+  "class": "hash",
+  "source": "git log -1 -- runs/pilot_checks/procgen_camera_check.json",
+  "value": "cda7aa0"
+ },
+ "lastcommit.scripts/analyze_common.py": {
+  "class": "hash",
+  "source": "git log -1 -- scripts/analyze_common.py",
+  "value": "a96e49e"
+ },
+ "pilot.cap_minigrid_s": {
+  "class": "constant",
+  "source": "runs/pilot_checks/pilot_check.json (caps)",
+  "value": 3300
+ },
+ "pilot.cap_procgen_s": {
+  "class": "constant",
+  "source": "runs/pilot_checks/pilot_check.json (caps)",
+  "value": 7500
+ },
+ "pilot.doorkey_I1_zero_rows": {
+  "class": "count",
+  "source": "runs/pilot_checks/pilot_check.json (structural_zeros)",
+  "value": 20
+ },
+ "pilot.errors": {
+  "class": "count",
+  "source": "runs/pilot_checks/pilot_check.json",
+  "value": 0
+ },
+ "pilot.games_minigrid": {
+  "class": "count",
+  "source": "scripts/analyze_common.py (PILOTS_B)",
+  "value": 6
+ },
+ "pilot.games_procgen": {
+  "class": "count",
+  "source": "scripts/analyze_common.py (PILOTS_C)",
+  "value": 2
+ },
+ "pilot.games_with_truth": {
+  "class": "count",
+  "source": "scripts/analyze_common.py (PILOTS_B + PILOTS_C)",
+  "value": 8
+ },
+ "pilot.longest_minigrid_s": {
+  "class": "constant",
+  "source": "runs/pilot_checks/pilot_check.json (longest)",
+  "value": "1081.6"
+ },
+ "pilot.longest_procgen_s": {
+  "class": "constant",
+  "source": "runs/pilot_checks/pilot_check.json (longest)",
+  "value": "2481.5"
+ },
+ "pilot.longest_seed": {
+  "class": "constant",
+  "source": "runs/pilot_checks/pilot_check.json (longest)",
+  "value": 1003
+ },
+ "pilot.max_projection_minigrid_s": {
+  "class": "constant",
+  "source": "runs/pilot_checks/pilot_check.json (cap_projection)",
+  "value": "1517.8"
+ },
+ "pilot.max_projection_procgen_s": {
+  "class": "constant",
+  "source": "runs/pilot_checks/pilot_check.json (cap_projection)",
+  "value": "2550.0"
+ },
+ "pilot.over_cap": {
+  "class": "count",
+  "source": "runs/pilot_checks/pilot_check.json (cap_projection n_over_cap)",
+  "value": 0
+ },
+ "pilot.rows": {
+  "class": "count",
+  "source": "runs/pilot_checks/pilot_check.json",
+  "value": 480
+ },
+ "pilot.rows_minigrid": {
+  "class": "count",
+  "source": "runs/pilot_checks/pilot_check.json (inventory)",
+  "value": 360
+ },
+ "pilot.rows_procgen": {
+  "class": "count",
+  "source": "runs/pilot_checks/pilot_check.json (inventory)",
+  "value": 120
+ },
+ "pilot.short_rows": {
+  "class": "count",
+  "source": "runs/pilot_checks/pilot_check.json",
+  "value": 0
+ },
+ "prereg.entries": {
+  "class": "count",
+  "source": "docs/PREREG.md (diff entries D1 to D16)",
+  "value": 16
+ },
+ "procgen.actions": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 3.3",
+  "value": 15
+ },
+ "range.min_pixels": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 4",
+  "value": 2
+ },
+ "ref.bellemare2012contingency.doi": {
+  "class": "url",
+  "source": "docs/preprint/references.bib",
+  "value": "https://doi.org/10.1609/aaai.v26i1.8321"
+ },
+ "ref.bellemare2012contingency.number": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 1
+ },
+ "ref.bellemare2012contingency.page_first": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 864
+ },
+ "ref.bellemare2012contingency.page_last": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 871
+ },
+ "ref.bellemare2012contingency.title_num0": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 2600
+ },
+ "ref.bellemare2012contingency.volume": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 26
+ },
+ "ref.bellemare2012contingency.year": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 2012
+ },
+ "ref.bertinetto2021preregistration.booktitle_num0": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 2020
+ },
+ "ref.bertinetto2021preregistration.volume": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 148
+ },
+ "ref.bertinetto2021preregistration.year": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 2021
+ },
+ "ref.blum2015ladder.page_first": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 1006
+ },
+ "ref.blum2015ladder.page_last": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 1014
+ },
+ "ref.blum2015ladder.volume": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 37
+ },
+ "ref.blum2015ladder.year": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 2015
+ },
+ "ref.bontrager2016matching.doi": {
+  "class": "url",
+  "source": "docs/preprint/references.bib",
+  "value": "https://doi.org/10.1609/aiide.v12i1.12884"
+ },
+ "ref.bontrager2016matching.number": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 1
+ },
+ "ref.bontrager2016matching.page_first": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 122
+ },
+ "ref.bontrager2016matching.page_last": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 128
+ },
+ "ref.bontrager2016matching.volume": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 12
+ },
+ "ref.bontrager2016matching.year": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 2016
+ },
+ "ref.chevalierboisvert2019babyai.arxiv": {
+  "class": "url",
+  "source": "docs/preprint/references.bib",
+  "value": "https://arxiv.org/abs/1810.08272"
+ },
+ "ref.chevalierboisvert2019babyai.year": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 2019
+ },
+ "ref.choi2019contingency.arxiv": {
+  "class": "url",
+  "source": "docs/preprint/references.bib",
+  "value": "https://arxiv.org/abs/1811.01483"
+ },
+ "ref.choi2019contingency.year": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 2019
+ },
+ "ref.cobbe2020procgen.page_first": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 2048
+ },
+ "ref.cobbe2020procgen.page_last": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 2056
+ },
+ "ref.cobbe2020procgen.volume": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 119
+ },
+ "ref.cobbe2020procgen.year": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 2020
+ },
+ "ref.gaina2018winprediction.booktitle_num0": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 2018
+ },
+ "ref.gaina2018winprediction.doi": {
+  "class": "url",
+  "source": "docs/preprint/references.bib",
+  "value": "https://doi.org/10.1109/CIG.2018.8490439"
+ },
+ "ref.gaina2018winprediction.page_first": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 1
+ },
+ "ref.gaina2018winprediction.page_last": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 8
+ },
+ "ref.gaina2018winprediction.year": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 2018
+ },
+ "ref.goldman1995teaching.doi": {
+  "class": "url",
+  "source": "docs/preprint/references.bib",
+  "value": "https://doi.org/10.1006/jcss.1995.1003"
+ },
+ "ref.goldman1995teaching.number": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 1
+ },
+ "ref.goldman1995teaching.page_first": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 20
+ },
+ "ref.goldman1995teaching.page_last": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 31
+ },
+ "ref.goldman1995teaching.volume": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 50
+ },
+ "ref.goldman1995teaching.year": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 1995
+ },
+ "ref.keren2014grd.doi": {
+  "class": "url",
+  "source": "docs/preprint/references.bib",
+  "value": "https://doi.org/10.1609/icaps.v24i1.13617"
+ },
+ "ref.keren2014grd.number": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 1
+ },
+ "ref.keren2014grd.page_first": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 154
+ },
+ "ref.keren2014grd.page_last": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 162
+ },
+ "ref.keren2014grd.volume": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 24
+ },
+ "ref.keren2014grd.year": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 2014
+ },
+ "ref.laidlaw2023horizon.doi": {
+  "class": "url",
+  "source": "docs/preprint/references.bib",
+  "value": "https://doi.org/10.52202/075280-2573"
+ },
+ "ref.laidlaw2023horizon.page_first": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 58953
+ },
+ "ref.laidlaw2023horizon.page_last": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 59007
+ },
+ "ref.laidlaw2023horizon.volume": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 36
+ },
+ "ref.laidlaw2023horizon.year": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 2023
+ },
+ "ref.liew2026explore.arxiv": {
+  "class": "url",
+  "source": "docs/preprint/references.bib",
+  "value": "https://arxiv.org/abs/2605.25931"
+ },
+ "ref.liew2026explore.year": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 2026
+ },
+ "ref.mitchell1982generalization.doi": {
+  "class": "url",
+  "source": "docs/preprint/references.bib",
+  "value": "https://doi.org/10.1016/0004-3702(82)90040-6"
+ },
+ "ref.mitchell1982generalization.number": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 2
+ },
+ "ref.mitchell1982generalization.page_first": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 203
+ },
+ "ref.mitchell1982generalization.page_last": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 226
+ },
+ "ref.mitchell1982generalization.volume": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 18
+ },
+ "ref.mitchell1982generalization.year": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 1982
+ },
+ "ref.roelofs2019metaanalysis.volume": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 32
+ },
+ "ref.roelofs2019metaanalysis.year": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 2019
+ },
+ "ref.rudakov2025graph.arxiv": {
+  "class": "url",
+  "source": "docs/preprint/references.bib",
+  "value": "https://arxiv.org/abs/2512.24156"
+ },
+ "ref.rudakov2025graph.year": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 2025
+ },
+ "ref.skoutnev2026twin.arxiv": {
+  "class": "url",
+  "source": "docs/preprint/references.bib",
+  "value": "https://arxiv.org/abs/2608.14490"
+ },
+ "ref.skoutnev2026twin.year": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 2026
+ },
+ "ref.wayllace2016grd.page_first": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 3279
+ },
+ "ref.wayllace2016grd.page_last": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 3285
+ },
+ "ref.wayllace2016grd.year": {
+  "class": "identifier",
+  "source": "docs/preprint/references.bib",
+  "value": 2016
+ },
+ "rows.agents": {
+  "class": "count",
+  "source": "docs/PREREG.md v1 Section 2 (R, N, I1)",
+  "value": 3
+ },
+ "rows.arc": {
+  "class": "count",
+  "source": "docs/STATE.md amendment (h)",
+  "value": 500
+ },
+ "rows.conditions": {
+  "class": "count",
+  "source": "docs/PREREG.md v1 Section 9.1 (two conditions per suite)",
+  "value": 2
+ },
+ "rows.minigrid": {
+  "class": "count",
+  "source": "docs/STATE.md amendment (j)",
+  "value": "9,660"
+ },
+ "rows.procgen": {
+  "class": "count",
+  "source": "docs/STATE.md amendment (j)",
+  "value": 840
+ },
+ "rows.total": {
+  "class": "count",
+  "source": "docs/STATE.md amendment (j) (9,660 + 840)",
+  "value": "10,500"
+ },
+ "run.budget": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 9.1",
+  "value": "20,000"
+ },
+ "run.seed_first": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 9.1",
+  "value": 1000
+ },
+ "run.seed_last": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 9.1",
+  "value": 1009
+ },
+ "run.seeds": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 9.1",
+  "value": 10
+ },
+ "suiteB.confirmatory": {
+  "class": "count",
+  "source": "docs/PREREG.md v1 Section 8",
+  "value": 161
+ },
+ "suiteB.excluded": {
+  "class": "count",
+  "source": "docs/PREREG.md v1 Section 8",
+  "value": 11
+ },
+ "suiteB.pilots": {
+  "class": "count",
+  "source": "docs/PREREG.md v1 Section 8",
+  "value": 6
+ },
+ "suiteB.registered_ids": {
+  "class": "count",
+  "source": "docs/PREREG.md v1 Section 7",
+  "value": 178
+ },
+ "suiteB.superseded": {
+  "class": "count",
+  "source": "docs/PREREG.md v1 Section 7 (exclusion table, 'superseded by v1')",
+  "value": 5
+ },
+ "suiteB.wfc": {
+  "class": "count",
+  "source": "docs/PREREG.md v1 Section 7 (exclusion table, six WFC ids)",
+  "value": 6
+ },
+ "suiteC.camera_distinct": {
+  "class": "count",
+  "source": "scripts/analyze_common.py (CAMERA_DISTINCT_C)",
+  "value": 5
+ },
+ "suiteC.confirmatory": {
+  "class": "count",
+  "source": "docs/PREREG.md v1 Section 8",
+  "value": 14
+ },
+ "suiteC.games": {
+  "class": "count",
+  "source": "docs/PREREG.md v1 Section 7",
+  "value": 16
+ },
+ "suiteC.games_overwriting_camera": {
+  "class": "count",
+  "source": "docs/PREREG.md v1.1 D13 ('Ten games overwrite it')",
+  "value": 10
+ },
+ "suiteC.in_range": {
+  "class": "count",
+  "source": "scripts/analyze_common.py (IN_RANGE_C)",
+  "value": 9
+ },
+ "tag.v1.commit": {
+  "class": "hash",
+  "source": "git tag object prereg-v1",
+  "value": "19f2a9f25043997d1deffd5976f2f2150e5f086f"
+ },
+ "tag.v1.commit_short": {
+  "class": "hash",
+  "source": "git tag object prereg-v1",
+  "value": "19f2a9f"
+ },
+ "tag.v1.date": {
+  "class": "date",
+  "source": "git tag object prereg-v1 (tagger date, IST)",
+  "value": "27 September 2026"
+ },
+ "tag.v1_1.commit": {
+  "class": "hash",
+  "source": "git tag object prereg-v1.1",
+  "value": "8b2b2b9b432dbea4ba5f62cfceb1aad5558d1ecc"
+ },
+ "tag.v1_1.commit_short": {
+  "class": "hash",
+  "source": "git tag object prereg-v1.1",
+  "value": "8b2b2b9"
+ },
+ "tag.v1_1.date": {
+  "class": "date",
+  "source": "git tag object prereg-v1.1 (tagger date, IST)",
+  "value": "27 September 2026"
+ },
+ "tag.v1_2.commit": {
+  "class": "hash",
+  "source": "git tag object prereg-v1.2",
+  "value": "66e560645d9d98bca39ee7da9b1039ada1bc579b"
+ },
+ "tag.v1_2.commit_short": {
+  "class": "hash",
+  "source": "git tag object prereg-v1.2",
+  "value": "66e5606"
+ },
+ "tag.v1_2.date": {
+  "class": "date",
+  "source": "git tag object prereg-v1.2 (tagger date, IST)",
+  "value": "13 October 2026"
+ },
+ "tests.synthetic": {
+  "class": "count",
+  "source": "docs/STATE.md amendment (k)",
+  "value": 20
+ },
+ "thr.bootstrap_chunks": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 10",
+  "value": 8
+ },
+ "thr.ci_level": {
+  "class": "threshold",
+  "source": "docs/PREREG.md v1 Section 10",
+  "value": 95
+ },
+ "thr.kappa_min_games": {
+  "class": "threshold",
+  "source": "docs/PREREG.md v1 Section 10 (constant-column rule, 'three')",
+  "value": 3
+ },
+ "thr.resamples": {
+  "class": "constant",
+  "source": "docs/PREREG.md v1 Section 10",
+  "value": "2,000"
+ },
+ "thr.v1_fail_agreement": {
+  "class": "threshold",
+  "source": "docs/PREREG.md v1 Section 10",
+  "value": "0.75"
+ },
+ "thr.v1_pass_agreement": {
+  "class": "threshold",
+  "source": "docs/PREREG.md v1 Section 10",
+  "value": "0.90"
+ },
+ "thr.v1_pass_kappa": {
+  "class": "threshold",
+  "source": "docs/PREREG.md v1 Section 10",
+  "value": "0.70"
+ },
+ "thr.v2_fail_auroc": {
+  "class": "threshold",
+  "source": "docs/PREREG.md v1 Section 10",
+  "value": "0.65"
+ },
+ "thr.v2_pass_auroc": {
+  "class": "threshold",
+  "source": "docs/PREREG.md v1 Section 10",
+  "value": "0.80"
+ },
+ "thr.v2_pass_ba": {
+  "class": "threshold",
+  "source": "docs/PREREG.md v1 Section 10",
+  "value": "0.80"
+ },
+ "thr.v2_pass_ci_low": {
+  "class": "threshold",
+  "source": "docs/PREREG.md v1 Section 10",
+  "value": "0.60"
+ },
+ "thr.v2_pass_margin": {
+  "class": "threshold",
+  "source": "docs/PREREG.md v1 Section 10",
+  "value": "0.10"
+ },
+ "thr.void_high": {
+  "class": "threshold",
+  "source": "docs/PREREG.md v1 Section 10",
+  "value": "0.90"
+ },
+ "thr.void_low": {
+  "class": "threshold",
+  "source": "docs/PREREG.md v1 Section 10",
+  "value": "0.10"
+ },
+ "truth.minigrid.A1.fails": {
+  "class": "count",
+  "source": "docs/GROUND_TRUTH_minigrid.md (analyze_common.parse_truth_minigrid)",
+  "value": 0
+ },
+ "truth.minigrid.A1.holds": {
+  "class": "count",
+  "source": "docs/GROUND_TRUTH_minigrid.md (analyze_common.parse_truth_minigrid)",
+  "value": 161
+ },
+ "truth.minigrid.A2.fails": {
+  "class": "count",
+  "source": "docs/GROUND_TRUTH_minigrid.md (analyze_common.parse_truth_minigrid)",
+  "value": 0
+ },
+ "truth.minigrid.A2.holds": {
+  "class": "count",
+  "source": "docs/GROUND_TRUTH_minigrid.md (analyze_common.parse_truth_minigrid)",
+  "value": 161
+ },
+ "truth.minigrid.A3-macro.fails": {
+  "class": "count",
+  "source": "docs/GROUND_TRUTH_minigrid.md (analyze_common.parse_truth_minigrid)",
+  "value": 0
+ },
+ "truth.minigrid.A3-macro.holds": {
+  "class": "count",
+  "source": "docs/GROUND_TRUTH_minigrid.md (analyze_common.parse_truth_minigrid)",
+  "value": 161
+ },
+ "truth.minigrid.A3-raw.fails": {
+  "class": "count",
+  "source": "docs/GROUND_TRUTH_minigrid.md (analyze_common.parse_truth_minigrid)",
+  "value": 161
+ },
+ "truth.minigrid.A3-raw.holds": {
+  "class": "count",
+  "source": "docs/GROUND_TRUTH_minigrid.md (analyze_common.parse_truth_minigrid)",
+  "value": 0
+ },
+ "truth.minigrid.A4.fails": {
+  "class": "count",
+  "source": "docs/GROUND_TRUTH_minigrid.md (analyze_common.parse_truth_minigrid)",
+  "value": 5
+ },
+ "truth.minigrid.A4.holds": {
+  "class": "count",
+  "source": "docs/GROUND_TRUTH_minigrid.md (analyze_common.parse_truth_minigrid)",
+  "value": 156
+ },
+ "truth.minigrid.A5.fails": {
+  "class": "count",
+  "source": "docs/GROUND_TRUTH_minigrid.md (analyze_common.parse_truth_minigrid)",
+  "value": 125
+ },
+ "truth.minigrid.A5.holds": {
+  "class": "count",
+  "source": "docs/GROUND_TRUTH_minigrid.md (analyze_common.parse_truth_minigrid)",
+  "value": 36
+ },
+ "truth.procgen.A1.fails": {
+  "class": "count",
+  "source": "docs/GROUND_TRUTH_procgen.md (analyze_common.parse_truth_procgen)",
+  "value": 0
+ },
+ "truth.procgen.A1.holds": {
+  "class": "count",
+  "source": "docs/GROUND_TRUTH_procgen.md (analyze_common.parse_truth_procgen)",
+  "value": 14
+ },
+ "truth.procgen.A2.fails": {
+  "class": "count",
+  "source": "docs/GROUND_TRUTH_procgen.md (analyze_common.parse_truth_procgen)",
+  "value": 8
+ },
+ "truth.procgen.A2.holds": {
+  "class": "count",
+  "source": "docs/GROUND_TRUTH_procgen.md (analyze_common.parse_truth_procgen)",
+  "value": 6
+ },
+ "truth.procgen.A3.fails": {
+  "class": "count",
+  "source": "docs/GROUND_TRUTH_procgen.md (analyze_common.parse_truth_procgen)",
+  "value": 12
+ },
+ "truth.procgen.A3.holds": {
+  "class": "count",
+  "source": "docs/GROUND_TRUTH_procgen.md (analyze_common.parse_truth_procgen)",
+  "value": 2
+ },
+ "truth.procgen.A4.fails": {
+  "class": "count",
+  "source": "docs/GROUND_TRUTH_procgen.md (analyze_common.parse_truth_procgen)",
+  "value": 1
+ },
+ "truth.procgen.A4.holds": {
+  "class": "count",
+  "source": "docs/GROUND_TRUTH_procgen.md (analyze_common.parse_truth_procgen)",
+  "value": 13
+ },
+ "truth.procgen.A5.fails": {
+  "class": "count",
+  "source": "docs/GROUND_TRUTH_procgen.md (analyze_common.parse_truth_procgen)",
+  "value": 8
+ },
+ "truth.procgen.A5.holds": {
+  "class": "count",
+  "source": "docs/GROUND_TRUTH_procgen.md (analyze_common.parse_truth_procgen)",
+  "value": 6
+ },
+ "url.29eas": {
+  "class": "url",
+  "source": "docs/STATE.md amendment (h)",
+  "value": "https://osf.io/29eas"
+ },
+ "url.2znhw": {
+  "class": "url",
+  "source": "docs/STATE.md amendment (d)",
+  "value": "https://osf.io/2znhw"
+ },
+ "url.arc3-frame-only-study": {
+  "class": "url",
+  "source": "docs/preprint/preprint.md Section 9",
+  "value": "https://github.com/rahul-k-mishra/arc3-frame-only-study"
+ },
+ "url.zu5vq": {
+  "class": "url",
+  "source": "docs/STATE.md amendment (h)",
+  "value": "https://osf.io/zu5vq"
+ },
+ "v1.lines": {
+  "class": "count",
+  "source": "docs/tables/v1.json (rows)",
+  "value": 25
+ },
+ "v1.minigrid.macro.all.A1.agreement": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.9876"
+ },
+ "v1.minigrid.macro.all.A1.n": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 161
+ },
+ "v1.minigrid.macro.all.A1.truth_holds": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 161
+ },
+ "v1.minigrid.macro.all.A1.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v1.json",
+  "value": "PASS"
+ },
+ "v1.minigrid.macro.all.A2.agreement": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.9876"
+ },
+ "v1.minigrid.macro.all.A2.n": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 161
+ },
+ "v1.minigrid.macro.all.A2.truth_holds": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 161
+ },
+ "v1.minigrid.macro.all.A2.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v1.json",
+  "value": "PASS"
+ },
+ "v1.minigrid.macro.all.A3.agreement": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.4286"
+ },
+ "v1.minigrid.macro.all.A3.n": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 161
+ },
+ "v1.minigrid.macro.all.A3.truth_holds": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 161
+ },
+ "v1.minigrid.macro.all.A3.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v1.json",
+  "value": "FAIL"
+ },
+ "v1.minigrid.macro.all.A4.agreement": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.3354"
+ },
+ "v1.minigrid.macro.all.A4.kappa": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "-0.0435"
+ },
+ "v1.minigrid.macro.all.A4.n": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 161
+ },
+ "v1.minigrid.macro.all.A4.truth_holds": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 156
+ },
+ "v1.minigrid.macro.all.A4.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v1.json",
+  "value": "FAIL"
+ },
+ "v1.minigrid.macro.all.A5.agreement": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.2671"
+ },
+ "v1.minigrid.macro.all.A5.kappa": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "-0.4125"
+ },
+ "v1.minigrid.macro.all.A5.n": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 161
+ },
+ "v1.minigrid.macro.all.A5.truth_holds": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 36
+ },
+ "v1.minigrid.macro.all.A5.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v1.json",
+  "value": "FAIL"
+ },
+ "v1.minigrid.macro.all.count_FAIL": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 3
+ },
+ "v1.minigrid.macro.all.count_PASS": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 2
+ },
+ "v1.minigrid.macro.all.count_neither": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 0
+ },
+ "v1.minigrid.raw.all.A1.agreement": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.9379"
+ },
+ "v1.minigrid.raw.all.A1.n": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 161
+ },
+ "v1.minigrid.raw.all.A1.truth_holds": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 161
+ },
+ "v1.minigrid.raw.all.A1.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v1.json",
+  "value": "PASS"
+ },
+ "v1.minigrid.raw.all.A2.agreement": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.4596"
+ },
+ "v1.minigrid.raw.all.A2.n": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 161
+ },
+ "v1.minigrid.raw.all.A2.truth_holds": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 161
+ },
+ "v1.minigrid.raw.all.A2.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v1.json",
+  "value": "FAIL"
+ },
+ "v1.minigrid.raw.all.A3.agreement": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.5466"
+ },
+ "v1.minigrid.raw.all.A3.n": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 161
+ },
+ "v1.minigrid.raw.all.A3.truth_holds": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 0
+ },
+ "v1.minigrid.raw.all.A3.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v1.json",
+  "value": "FAIL"
+ },
+ "v1.minigrid.raw.all.A4.agreement": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.0621"
+ },
+ "v1.minigrid.raw.all.A4.kappa": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.0021"
+ },
+ "v1.minigrid.raw.all.A4.n": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 161
+ },
+ "v1.minigrid.raw.all.A4.truth_holds": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 156
+ },
+ "v1.minigrid.raw.all.A4.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v1.json",
+  "value": "FAIL"
+ },
+ "v1.minigrid.raw.all.A5.agreement": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.0994"
+ },
+ "v1.minigrid.raw.all.A5.kappa": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "-0.3374"
+ },
+ "v1.minigrid.raw.all.A5.n": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 161
+ },
+ "v1.minigrid.raw.all.A5.truth_holds": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 36
+ },
+ "v1.minigrid.raw.all.A5.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v1.json",
+  "value": "FAIL"
+ },
+ "v1.minigrid.raw.all.count_FAIL": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 4
+ },
+ "v1.minigrid.raw.all.count_PASS": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 1
+ },
+ "v1.minigrid.raw.all.count_neither": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 0
+ },
+ "v1.procgen.center_off.all.A1.agreement": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.9286"
+ },
+ "v1.procgen.center_off.all.A1.n": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 14
+ },
+ "v1.procgen.center_off.all.A1.truth_holds": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 14
+ },
+ "v1.procgen.center_off.all.A1.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v1.json",
+  "value": "PASS"
+ },
+ "v1.procgen.center_off.all.A2.agreement": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.5714"
+ },
+ "v1.procgen.center_off.all.A2.kappa": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.2222"
+ },
+ "v1.procgen.center_off.all.A2.n": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 14
+ },
+ "v1.procgen.center_off.all.A2.truth_holds": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 6
+ },
+ "v1.procgen.center_off.all.A2.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v1.json",
+  "value": "FAIL"
+ },
+ "v1.procgen.center_off.all.A3.agreement": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.5714"
+ },
+ "v1.procgen.center_off.all.A3.n": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 14
+ },
+ "v1.procgen.center_off.all.A3.truth_holds": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 2
+ },
+ "v1.procgen.center_off.all.A3.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v1.json",
+  "value": "FAIL"
+ },
+ "v1.procgen.center_off.all.A4.agreement": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.0714"
+ },
+ "v1.procgen.center_off.all.A4.n": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 14
+ },
+ "v1.procgen.center_off.all.A4.truth_holds": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 13
+ },
+ "v1.procgen.center_off.all.A4.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v1.json",
+  "value": "FAIL"
+ },
+ "v1.procgen.center_off.all.A5.agreement": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.0714"
+ },
+ "v1.procgen.center_off.all.A5.kappa": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "-0.7843"
+ },
+ "v1.procgen.center_off.all.A5.n": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 14
+ },
+ "v1.procgen.center_off.all.A5.truth_holds": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 6
+ },
+ "v1.procgen.center_off.all.A5.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v1.json",
+  "value": "FAIL"
+ },
+ "v1.procgen.center_off.all.count_FAIL": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 4
+ },
+ "v1.procgen.center_off.all.count_PASS": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 1
+ },
+ "v1.procgen.center_off.all.count_neither": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 0
+ },
+ "v1.procgen.center_off.in_range.A1.agreement": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.8889"
+ },
+ "v1.procgen.center_off.in_range.A1.n": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 9
+ },
+ "v1.procgen.center_off.in_range.A1.truth_holds": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 9
+ },
+ "v1.procgen.center_off.in_range.A1.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v1.json",
+  "value": "neither"
+ },
+ "v1.procgen.center_off.in_range.A2.agreement": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.4444"
+ },
+ "v1.procgen.center_off.in_range.A2.kappa": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.0000"
+ },
+ "v1.procgen.center_off.in_range.A2.n": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 9
+ },
+ "v1.procgen.center_off.in_range.A2.truth_holds": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 4
+ },
+ "v1.procgen.center_off.in_range.A2.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v1.json",
+  "value": "FAIL"
+ },
+ "v1.procgen.center_off.in_range.A3.agreement": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.4444"
+ },
+ "v1.procgen.center_off.in_range.A3.n": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 9
+ },
+ "v1.procgen.center_off.in_range.A3.truth_holds": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 2
+ },
+ "v1.procgen.center_off.in_range.A3.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v1.json",
+  "value": "FAIL"
+ },
+ "v1.procgen.center_off.in_range.A4.agreement": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.1111"
+ },
+ "v1.procgen.center_off.in_range.A4.n": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 9
+ },
+ "v1.procgen.center_off.in_range.A4.truth_holds": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 8
+ },
+ "v1.procgen.center_off.in_range.A4.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v1.json",
+  "value": "FAIL"
+ },
+ "v1.procgen.center_off.in_range.A5.agreement": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.1111"
+ },
+ "v1.procgen.center_off.in_range.A5.n": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 9
+ },
+ "v1.procgen.center_off.in_range.A5.truth_holds": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 2
+ },
+ "v1.procgen.center_off.in_range.A5.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v1.json",
+  "value": "FAIL"
+ },
+ "v1.procgen.center_off.in_range.count_FAIL": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 4
+ },
+ "v1.procgen.center_off.in_range.count_PASS": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 0
+ },
+ "v1.procgen.center_off.in_range.count_neither": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 1
+ },
+ "v1.procgen.center_on.camera_distinct.A1.agreement": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.8000"
+ },
+ "v1.procgen.center_on.camera_distinct.A1.n": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 5
+ },
+ "v1.procgen.center_on.camera_distinct.A1.truth_holds": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 5
+ },
+ "v1.procgen.center_on.camera_distinct.A1.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v1.json",
+  "value": "reported, not tested"
+ },
+ "v1.procgen.center_on.camera_distinct.A2.agreement": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.8000"
+ },
+ "v1.procgen.center_on.camera_distinct.A2.n": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 5
+ },
+ "v1.procgen.center_on.camera_distinct.A2.truth_holds": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 2
+ },
+ "v1.procgen.center_on.camera_distinct.A2.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v1.json",
+  "value": "reported, not tested"
+ },
+ "v1.procgen.center_on.camera_distinct.A3.agreement": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.6000"
+ },
+ "v1.procgen.center_on.camera_distinct.A3.n": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 5
+ },
+ "v1.procgen.center_on.camera_distinct.A3.truth_holds": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 0
+ },
+ "v1.procgen.center_on.camera_distinct.A3.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v1.json",
+  "value": "reported, not tested"
+ },
+ "v1.procgen.center_on.camera_distinct.A4.agreement": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.0000"
+ },
+ "v1.procgen.center_on.camera_distinct.A4.n": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 5
+ },
+ "v1.procgen.center_on.camera_distinct.A4.truth_holds": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 5
+ },
+ "v1.procgen.center_on.camera_distinct.A4.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v1.json",
+  "value": "reported, not tested"
+ },
+ "v1.procgen.center_on.camera_distinct.A5.agreement": {
+  "class": "rate",
+  "source": "docs/tables/v1.json",
+  "value": "0.0000"
+ },
+ "v1.procgen.center_on.camera_distinct.A5.n": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 5
+ },
+ "v1.procgen.center_on.camera_distinct.A5.truth_holds": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 4
+ },
+ "v1.procgen.center_on.camera_distinct.A5.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v1.json",
+  "value": "reported, not tested"
+ },
+ "v1.procgen.center_on.camera_distinct.count_FAIL": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 0
+ },
+ "v1.procgen.center_on.camera_distinct.count_PASS": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 0
+ },
+ "v1.procgen.center_on.camera_distinct.count_neither": {
+  "class": "count",
+  "source": "docs/tables/v1.json",
+  "value": 0
+ },
+ "v2.arc.native.all.N.auroc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.4188"
+ },
+ "v2.arc.native.all.N.auroc_B": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5000"
+ },
+ "v2.arc.native.all.N.balanced_acc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5357"
+ },
+ "v2.arc.native.all.N.ci_high": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.6379"
+ },
+ "v2.arc.native.all.N.ci_low": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.1978"
+ },
+ "v2.arc.native.all.N.n": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 25
+ },
+ "v2.arc.native.all.N.positives": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 14
+ },
+ "v2.arc.native.all.N.share_completed": {
+  "class": "rate",
+  "source": "docs/tables/v2.json (positives / n)",
+  "value": "0.5600"
+ },
+ "v2.arc.native.all.N.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json",
+  "value": "FAIL"
+ },
+ "v2.arc.native.all.R.auroc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.4100"
+ },
+ "v2.arc.native.all.R.auroc_B": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5000"
+ },
+ "v2.arc.native.all.R.balanced_acc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5333"
+ },
+ "v2.arc.native.all.R.ci_high": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.6354"
+ },
+ "v2.arc.native.all.R.ci_low": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.1850"
+ },
+ "v2.arc.native.all.R.n": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 25
+ },
+ "v2.arc.native.all.R.positives": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 15
+ },
+ "v2.arc.native.all.R.share_completed": {
+  "class": "rate",
+  "source": "docs/tables/v2.json (positives / n)",
+  "value": "0.6000"
+ },
+ "v2.arc.native.all.R.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json",
+  "value": "FAIL"
+ },
+ "v2.lines": {
+  "class": "count",
+  "source": "docs/tables/v2.json (rows)",
+  "value": 25
+ },
+ "v2.minigrid.lines": {
+  "class": "count",
+  "source": "docs/tables/v2.json (suite minigrid rows)",
+  "value": 14
+ },
+ "v2.minigrid.lines_B_higher": {
+  "class": "count",
+  "source": "docs/tables/v2.json (auroc_B > auroc, suite minigrid rows)",
+  "value": 12
+ },
+ "v2.minigrid.macro.all games.I1.auroc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.7517"
+ },
+ "v2.minigrid.macro.all games.I1.auroc_B": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.7562"
+ },
+ "v2.minigrid.macro.all games.I1.balanced_acc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.6016"
+ },
+ "v2.minigrid.macro.all games.I1.ci_high": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.8223"
+ },
+ "v2.minigrid.macro.all games.I1.ci_low": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.6764"
+ },
+ "v2.minigrid.macro.all games.I1.n": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 161
+ },
+ "v2.minigrid.macro.all games.I1.positives": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 61
+ },
+ "v2.minigrid.macro.all games.I1.share_completed": {
+  "class": "rate",
+  "source": "docs/tables/v2.json (positives / n)",
+  "value": "0.3789"
+ },
+ "v2.minigrid.macro.all games.I1.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json",
+  "value": "reported, not tested"
+ },
+ "v2.minigrid.macro.all games.N.auroc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.6352"
+ },
+ "v2.minigrid.macro.all games.N.auroc_B": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5752"
+ },
+ "v2.minigrid.macro.all games.N.balanced_acc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5700"
+ },
+ "v2.minigrid.macro.all games.N.ci_high": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.7114"
+ },
+ "v2.minigrid.macro.all games.N.ci_low": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5514"
+ },
+ "v2.minigrid.macro.all games.N.n": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 161
+ },
+ "v2.minigrid.macro.all games.N.positives": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 100
+ },
+ "v2.minigrid.macro.all games.N.share_completed": {
+  "class": "rate",
+  "source": "docs/tables/v2.json (positives / n)",
+  "value": "0.6211"
+ },
+ "v2.minigrid.macro.all games.N.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json",
+  "value": "reported, not tested"
+ },
+ "v2.minigrid.macro.all games.R.auroc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.6434"
+ },
+ "v2.minigrid.macro.all games.R.auroc_B": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5589"
+ },
+ "v2.minigrid.macro.all games.R.balanced_acc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5693"
+ },
+ "v2.minigrid.macro.all games.R.ci_high": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.7208"
+ },
+ "v2.minigrid.macro.all games.R.ci_low": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5609"
+ },
+ "v2.minigrid.macro.all games.R.n": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 161
+ },
+ "v2.minigrid.macro.all games.R.positives": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 101
+ },
+ "v2.minigrid.macro.all games.R.share_completed": {
+  "class": "rate",
+  "source": "docs/tables/v2.json (positives / n)",
+  "value": "0.6273"
+ },
+ "v2.minigrid.macro.all games.R.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json",
+  "value": "reported, not tested"
+ },
+ "v2.minigrid.macro.primary, D9b included.I1.auroc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.7719"
+ },
+ "v2.minigrid.macro.primary, D9b included.I1.auroc_B": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.8734"
+ },
+ "v2.minigrid.macro.primary, D9b included.I1.balanced_acc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5968"
+ },
+ "v2.minigrid.macro.primary, D9b included.I1.ci_high": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.8529"
+ },
+ "v2.minigrid.macro.primary, D9b included.I1.ci_low": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.6840"
+ },
+ "v2.minigrid.macro.primary, D9b included.I1.n": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 112
+ },
+ "v2.minigrid.macro.primary, D9b included.I1.positives": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 61
+ },
+ "v2.minigrid.macro.primary, D9b included.I1.share_completed": {
+  "class": "rate",
+  "source": "docs/tables/v2.json (positives / n)",
+  "value": "0.5446"
+ },
+ "v2.minigrid.macro.primary, D9b included.I1.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json",
+  "value": "reported, not tested"
+ },
+ "v2.minigrid.macro.primary.I1.auroc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.7187"
+ },
+ "v2.minigrid.macro.primary.I1.auroc_B": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.8413"
+ },
+ "v2.minigrid.macro.primary.I1.balanced_acc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5838"
+ },
+ "v2.minigrid.macro.primary.I1.ci_high": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.8298"
+ },
+ "v2.minigrid.macro.primary.I1.ci_low": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5902"
+ },
+ "v2.minigrid.macro.primary.I1.n": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 83
+ },
+ "v2.minigrid.macro.primary.I1.positives": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 61
+ },
+ "v2.minigrid.macro.primary.I1.share_completed": {
+  "class": "rate",
+  "source": "docs/tables/v2.json (positives / n)",
+  "value": "0.7349"
+ },
+ "v2.minigrid.macro.primary.I1.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json",
+  "value": "neither"
+ },
+ "v2.minigrid.macro.primary.N.auroc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.6613"
+ },
+ "v2.minigrid.macro.primary.N.auroc_B": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.8725"
+ },
+ "v2.minigrid.macro.primary.N.balanced_acc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5700"
+ },
+ "v2.minigrid.macro.primary.N.ci_high": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.7941"
+ },
+ "v2.minigrid.macro.primary.N.ci_low": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5049"
+ },
+ "v2.minigrid.macro.primary.N.n": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 112
+ },
+ "v2.minigrid.macro.primary.N.positives": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 100
+ },
+ "v2.minigrid.macro.primary.N.share_completed": {
+  "class": "rate",
+  "source": "docs/tables/v2.json (positives / n)",
+  "value": "0.8929"
+ },
+ "v2.minigrid.macro.primary.N.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json",
+  "value": "neither"
+ },
+ "v2.minigrid.macro.primary.R.auroc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.6985"
+ },
+ "v2.minigrid.macro.primary.R.auroc_B": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.8515"
+ },
+ "v2.minigrid.macro.primary.R.balanced_acc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5693"
+ },
+ "v2.minigrid.macro.primary.R.n": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 112
+ },
+ "v2.minigrid.macro.primary.R.positives": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 101
+ },
+ "v2.minigrid.macro.primary.R.share_completed": {
+  "class": "rate",
+  "source": "docs/tables/v2.json (positives / n)",
+  "value": "0.9018"
+ },
+ "v2.minigrid.macro.primary.R.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json",
+  "value": "VOID"
+ },
+ "v2.minigrid.primary_lines": {
+  "class": "count",
+  "source": "docs/tables/v2.json (suite minigrid, subset primary)",
+  "value": 6
+ },
+ "v2.minigrid.primary_lines_B_higher": {
+  "class": "count",
+  "source": "docs/tables/v2.json (auroc_B > auroc, subset primary)",
+  "value": 6
+ },
+ "v2.minigrid.raw.all games.I1.auroc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.6069"
+ },
+ "v2.minigrid.raw.all games.I1.auroc_B": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.8086"
+ },
+ "v2.minigrid.raw.all games.I1.balanced_acc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5070"
+ },
+ "v2.minigrid.raw.all games.I1.ci_high": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.6926"
+ },
+ "v2.minigrid.raw.all games.I1.ci_low": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5235"
+ },
+ "v2.minigrid.raw.all games.I1.n": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 161
+ },
+ "v2.minigrid.raw.all games.I1.positives": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 71
+ },
+ "v2.minigrid.raw.all games.I1.share_completed": {
+  "class": "rate",
+  "source": "docs/tables/v2.json (positives / n)",
+  "value": "0.4410"
+ },
+ "v2.minigrid.raw.all games.I1.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json",
+  "value": "reported, not tested"
+ },
+ "v2.minigrid.raw.all games.N.auroc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.4772"
+ },
+ "v2.minigrid.raw.all games.N.auroc_B": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.6036"
+ },
+ "v2.minigrid.raw.all games.N.balanced_acc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5038"
+ },
+ "v2.minigrid.raw.all games.N.ci_high": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5696"
+ },
+ "v2.minigrid.raw.all games.N.ci_low": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.3829"
+ },
+ "v2.minigrid.raw.all games.N.n": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 161
+ },
+ "v2.minigrid.raw.all games.N.positives": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 130
+ },
+ "v2.minigrid.raw.all games.N.share_completed": {
+  "class": "rate",
+  "source": "docs/tables/v2.json (positives / n)",
+  "value": "0.8075"
+ },
+ "v2.minigrid.raw.all games.N.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json",
+  "value": "reported, not tested"
+ },
+ "v2.minigrid.raw.all games.R.auroc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.4805"
+ },
+ "v2.minigrid.raw.all games.R.auroc_B": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.6472"
+ },
+ "v2.minigrid.raw.all games.R.balanced_acc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5040"
+ },
+ "v2.minigrid.raw.all games.R.ci_high": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5687"
+ },
+ "v2.minigrid.raw.all games.R.ci_low": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.3919"
+ },
+ "v2.minigrid.raw.all games.R.n": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 161
+ },
+ "v2.minigrid.raw.all games.R.positives": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 126
+ },
+ "v2.minigrid.raw.all games.R.share_completed": {
+  "class": "rate",
+  "source": "docs/tables/v2.json (positives / n)",
+  "value": "0.7826"
+ },
+ "v2.minigrid.raw.all games.R.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json",
+  "value": "reported, not tested"
+ },
+ "v2.minigrid.raw.primary, D9b included.I1.auroc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.6258"
+ },
+ "v2.minigrid.raw.primary, D9b included.I1.auroc_B": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.8184"
+ },
+ "v2.minigrid.raw.primary, D9b included.I1.balanced_acc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5070"
+ },
+ "v2.minigrid.raw.primary, D9b included.I1.ci_high": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.7065"
+ },
+ "v2.minigrid.raw.primary, D9b included.I1.ci_low": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5405"
+ },
+ "v2.minigrid.raw.primary, D9b included.I1.n": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 155
+ },
+ "v2.minigrid.raw.primary, D9b included.I1.positives": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 71
+ },
+ "v2.minigrid.raw.primary, D9b included.I1.share_completed": {
+  "class": "rate",
+  "source": "docs/tables/v2.json (positives / n)",
+  "value": "0.4581"
+ },
+ "v2.minigrid.raw.primary, D9b included.I1.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json",
+  "value": "reported, not tested"
+ },
+ "v2.minigrid.raw.primary.I1.auroc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5370"
+ },
+ "v2.minigrid.raw.primary.I1.auroc_B": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.8534"
+ },
+ "v2.minigrid.raw.primary.I1.balanced_acc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5070"
+ },
+ "v2.minigrid.raw.primary.I1.ci_high": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.6410"
+ },
+ "v2.minigrid.raw.primary.I1.ci_low": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.4324"
+ },
+ "v2.minigrid.raw.primary.I1.n": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 98
+ },
+ "v2.minigrid.raw.primary.I1.positives": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 71
+ },
+ "v2.minigrid.raw.primary.I1.share_completed": {
+  "class": "rate",
+  "source": "docs/tables/v2.json (positives / n)",
+  "value": "0.7245"
+ },
+ "v2.minigrid.raw.primary.I1.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json",
+  "value": "FAIL"
+ },
+ "v2.minigrid.raw.primary.N.auroc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5255"
+ },
+ "v2.minigrid.raw.primary.N.auroc_B": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.6202"
+ },
+ "v2.minigrid.raw.primary.N.balanced_acc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5038"
+ },
+ "v2.minigrid.raw.primary.N.ci_high": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.6156"
+ },
+ "v2.minigrid.raw.primary.N.ci_low": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.4320"
+ },
+ "v2.minigrid.raw.primary.N.n": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 155
+ },
+ "v2.minigrid.raw.primary.N.positives": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 130
+ },
+ "v2.minigrid.raw.primary.N.share_completed": {
+  "class": "rate",
+  "source": "docs/tables/v2.json (positives / n)",
+  "value": "0.8387"
+ },
+ "v2.minigrid.raw.primary.N.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json",
+  "value": "FAIL"
+ },
+ "v2.minigrid.raw.primary.R.auroc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5224"
+ },
+ "v2.minigrid.raw.primary.R.auroc_B": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.6561"
+ },
+ "v2.minigrid.raw.primary.R.balanced_acc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5040"
+ },
+ "v2.minigrid.raw.primary.R.ci_high": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.6096"
+ },
+ "v2.minigrid.raw.primary.R.ci_low": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.4330"
+ },
+ "v2.minigrid.raw.primary.R.n": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 155
+ },
+ "v2.minigrid.raw.primary.R.positives": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 126
+ },
+ "v2.minigrid.raw.primary.R.share_completed": {
+  "class": "rate",
+  "source": "docs/tables/v2.json (positives / n)",
+  "value": "0.8129"
+ },
+ "v2.minigrid.raw.primary.R.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json",
+  "value": "FAIL"
+ },
+ "v2.procgen.center_off.all.I1.auroc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.6458"
+ },
+ "v2.procgen.center_off.all.I1.auroc_B": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5104"
+ },
+ "v2.procgen.center_off.all.I1.balanced_acc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5000"
+ },
+ "v2.procgen.center_off.all.I1.ci_high": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.9445"
+ },
+ "v2.procgen.center_off.all.I1.ci_low": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.3333"
+ },
+ "v2.procgen.center_off.all.I1.n": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 14
+ },
+ "v2.procgen.center_off.all.I1.positives": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 6
+ },
+ "v2.procgen.center_off.all.I1.share_completed": {
+  "class": "rate",
+  "source": "docs/tables/v2.json (positives / n)",
+  "value": "0.4286"
+ },
+ "v2.procgen.center_off.all.I1.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json",
+  "value": "FAIL"
+ },
+ "v2.procgen.center_off.all.N.auroc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.7222"
+ },
+ "v2.procgen.center_off.all.N.auroc_B": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5667"
+ },
+ "v2.procgen.center_off.all.N.balanced_acc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5000"
+ },
+ "v2.procgen.center_off.all.N.ci_high": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.9333"
+ },
+ "v2.procgen.center_off.all.N.ci_low": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5000"
+ },
+ "v2.procgen.center_off.all.N.n": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 14
+ },
+ "v2.procgen.center_off.all.N.positives": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 9
+ },
+ "v2.procgen.center_off.all.N.share_completed": {
+  "class": "rate",
+  "source": "docs/tables/v2.json (positives / n)",
+  "value": "0.6429"
+ },
+ "v2.procgen.center_off.all.N.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json",
+  "value": "neither"
+ },
+ "v2.procgen.center_off.all.R.auroc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.7222"
+ },
+ "v2.procgen.center_off.all.R.auroc_B": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5667"
+ },
+ "v2.procgen.center_off.all.R.balanced_acc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5000"
+ },
+ "v2.procgen.center_off.all.R.ci_high": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.9333"
+ },
+ "v2.procgen.center_off.all.R.ci_low": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5000"
+ },
+ "v2.procgen.center_off.all.R.n": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 14
+ },
+ "v2.procgen.center_off.all.R.positives": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 9
+ },
+ "v2.procgen.center_off.all.R.share_completed": {
+  "class": "rate",
+  "source": "docs/tables/v2.json (positives / n)",
+  "value": "0.6429"
+ },
+ "v2.procgen.center_off.all.R.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json",
+  "value": "neither"
+ },
+ "v2.procgen.center_off.in_range.I1.auroc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.8750"
+ },
+ "v2.procgen.center_off.in_range.I1.auroc_B": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.4750"
+ },
+ "v2.procgen.center_off.in_range.I1.balanced_acc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5000"
+ },
+ "v2.procgen.center_off.in_range.I1.ci_high": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "1.0000"
+ },
+ "v2.procgen.center_off.in_range.I1.ci_low": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5000"
+ },
+ "v2.procgen.center_off.in_range.I1.n": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 9
+ },
+ "v2.procgen.center_off.in_range.I1.positives": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 4
+ },
+ "v2.procgen.center_off.in_range.I1.share_completed": {
+  "class": "rate",
+  "source": "docs/tables/v2.json (positives / n)",
+  "value": "0.4444"
+ },
+ "v2.procgen.center_off.in_range.I1.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json",
+  "value": "neither"
+ },
+ "v2.procgen.center_off.in_range.N.auroc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.8000"
+ },
+ "v2.procgen.center_off.in_range.N.auroc_B": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.7000"
+ },
+ "v2.procgen.center_off.in_range.N.balanced_acc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5000"
+ },
+ "v2.procgen.center_off.in_range.N.ci_high": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "1.0000"
+ },
+ "v2.procgen.center_off.in_range.N.ci_low": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5000"
+ },
+ "v2.procgen.center_off.in_range.N.n": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 9
+ },
+ "v2.procgen.center_off.in_range.N.positives": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 5
+ },
+ "v2.procgen.center_off.in_range.N.share_completed": {
+  "class": "rate",
+  "source": "docs/tables/v2.json (positives / n)",
+  "value": "0.5556"
+ },
+ "v2.procgen.center_off.in_range.N.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json",
+  "value": "neither"
+ },
+ "v2.procgen.center_off.in_range.R.auroc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.8000"
+ },
+ "v2.procgen.center_off.in_range.R.auroc_B": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.7000"
+ },
+ "v2.procgen.center_off.in_range.R.balanced_acc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5000"
+ },
+ "v2.procgen.center_off.in_range.R.ci_high": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "1.0000"
+ },
+ "v2.procgen.center_off.in_range.R.ci_low": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5000"
+ },
+ "v2.procgen.center_off.in_range.R.n": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 9
+ },
+ "v2.procgen.center_off.in_range.R.positives": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 5
+ },
+ "v2.procgen.center_off.in_range.R.share_completed": {
+  "class": "rate",
+  "source": "docs/tables/v2.json (positives / n)",
+  "value": "0.5556"
+ },
+ "v2.procgen.center_off.in_range.R.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json",
+  "value": "neither"
+ },
+ "v2.procgen.center_on.camera_distinct.I1.auroc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.3333"
+ },
+ "v2.procgen.center_on.camera_distinct.I1.auroc_B": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.6667"
+ },
+ "v2.procgen.center_on.camera_distinct.I1.balanced_acc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5000"
+ },
+ "v2.procgen.center_on.camera_distinct.I1.ci_high": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "1.0000"
+ },
+ "v2.procgen.center_on.camera_distinct.I1.ci_low": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.0000"
+ },
+ "v2.procgen.center_on.camera_distinct.I1.n": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 5
+ },
+ "v2.procgen.center_on.camera_distinct.I1.positives": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 3
+ },
+ "v2.procgen.center_on.camera_distinct.I1.share_completed": {
+  "class": "rate",
+  "source": "docs/tables/v2.json (positives / n)",
+  "value": "0.6000"
+ },
+ "v2.procgen.center_on.camera_distinct.I1.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json",
+  "value": "reported, not tested"
+ },
+ "v2.procgen.center_on.camera_distinct.N.auroc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.3750"
+ },
+ "v2.procgen.center_on.camera_distinct.N.auroc_B": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "1.0000"
+ },
+ "v2.procgen.center_on.camera_distinct.N.balanced_acc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5000"
+ },
+ "v2.procgen.center_on.camera_distinct.N.ci_high": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.8333"
+ },
+ "v2.procgen.center_on.camera_distinct.N.ci_low": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.0000"
+ },
+ "v2.procgen.center_on.camera_distinct.N.n": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 5
+ },
+ "v2.procgen.center_on.camera_distinct.N.positives": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 4
+ },
+ "v2.procgen.center_on.camera_distinct.N.share_completed": {
+  "class": "rate",
+  "source": "docs/tables/v2.json (positives / n)",
+  "value": "0.8000"
+ },
+ "v2.procgen.center_on.camera_distinct.N.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json",
+  "value": "reported, not tested"
+ },
+ "v2.procgen.center_on.camera_distinct.R.auroc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.3750"
+ },
+ "v2.procgen.center_on.camera_distinct.R.auroc_B": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "1.0000"
+ },
+ "v2.procgen.center_on.camera_distinct.R.balanced_acc": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.5000"
+ },
+ "v2.procgen.center_on.camera_distinct.R.ci_high": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.8333"
+ },
+ "v2.procgen.center_on.camera_distinct.R.ci_low": {
+  "class": "rate",
+  "source": "docs/tables/v2.json",
+  "value": "0.0000"
+ },
+ "v2.procgen.center_on.camera_distinct.R.n": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 5
+ },
+ "v2.procgen.center_on.camera_distinct.R.positives": {
+  "class": "count",
+  "source": "docs/tables/v2.json",
+  "value": 4
+ },
+ "v2.procgen.center_on.camera_distinct.R.share_completed": {
+  "class": "rate",
+  "source": "docs/tables/v2.json (positives / n)",
+  "value": "0.8000"
+ },
+ "v2.procgen.center_on.camera_distinct.R.verdict": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json",
+  "value": "reported, not tested"
+ },
+ "v2.resamples": {
+  "class": "constant",
+  "source": "docs/tables/v2.json (meta.resamples)",
+  "value": 2000
+ },
+ "v2.seed": {
+  "class": "constant",
+  "source": "docs/tables/v2.json (meta.seed)",
+  "value": 20260927
+ },
+ "v2.suite_line.arc.native.all": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json (meta.suite_lines)",
+  "value": "reported, not tested"
+ },
+ "v2.suite_line.minigrid.macro.all games": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json (meta.suite_lines)",
+  "value": "reported, not tested"
+ },
+ "v2.suite_line.minigrid.macro.primary": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json (meta.suite_lines)",
+  "value": "not failed (decided by I1 alone)"
+ },
+ "v2.suite_line.minigrid.macro.primary, D9b included": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json (meta.suite_lines)",
+  "value": "reported, not tested"
+ },
+ "v2.suite_line.minigrid.raw.all games": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json (meta.suite_lines)",
+  "value": "reported, not tested"
+ },
+ "v2.suite_line.minigrid.raw.primary": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json (meta.suite_lines)",
+  "value": "suite FAIL (decided by R and I1)"
+ },
+ "v2.suite_line.minigrid.raw.primary, D9b included": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json (meta.suite_lines)",
+  "value": "reported, not tested"
+ },
+ "v2.suite_line.procgen.center_off.all": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json (meta.suite_lines)",
+  "value": "not failed (decided by R and I1)"
+ },
+ "v2.suite_line.procgen.center_off.in_range": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json (meta.suite_lines)",
+  "value": "not failed (decided by R and I1)"
+ },
+ "v2.suite_line.procgen.center_on.camera_distinct": {
+  "class": "identifier",
+  "source": "docs/tables/v2.json (meta.suite_lines)",
+  "value": "reported, not tested"
+ },
+ "version.arc_agi": {
+  "class": "version",
+  "source": "docs/PREREG.md v1 Section 3",
+  "value": "0.9.8"
+ },
+ "version.arcengine": {
+  "class": "version",
+  "source": "docs/PREREG.md v1 Section 3",
+  "value": "0.9.3"
+ },
+ "version.gymnasium": {
+  "class": "version",
+  "source": "docs/PREREG.md v1 Section 3",
+  "value": "1.3.0"
+ },
+ "version.minigrid": {
+  "class": "version",
+  "source": "docs/PREREG.md v1 Section 3",
+  "value": "3.1.0"
+ },
+ "version.procgen": {
+  "class": "version",
+  "source": "docs/PREREG.md v1 Section 3",
+  "value": "0.10.7"
+ },
+ "version.python_b": {
+  "class": "version",
+  "source": "docs/PREREG.md v1 Section 3",
+  "value": "3.11.9"
+ },
+ "version.python_c": {
+  "class": "version",
+  "source": "docs/PREREG.md v1 Section 3",
+  "value": "3.10"
+ },
+ "zero": {
+  "class": "count",
+  "source": "docs/STATE.md amendments (i), (j): '0 errors, 0 cut by the cap'",
+  "value": 0
+ }
+}
