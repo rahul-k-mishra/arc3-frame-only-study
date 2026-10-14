@@ -857,3 +857,12 @@ Nineteenth amendment (14 October 2026). The lines above are unchanged; where thi
 - **Not changed:** preprint_variant.md, .docx and .pdf, the published preprint (tag manuscript-v1). They keep the preprint sentence and embargo wording of 895f3ac, and their Appendix C no longer matches the current numbers.json.
 - **Next:** the submission to JOTE.
 - docs/STATE.md is a source file of scripts/manuscript_numbers.py. After this amendment is committed, Appendix C of manuscript.md names an older STATE.md commit, so a rebuild needs BUILD.md step 1 and the copy into Appendix C before check (g) passes. The tagged submission version (8f99b24) is consistent as tagged.
+
+## Amendment 14 Oct 2026 (t)
+
+Twentieth amendment (14 October 2026). The lines above are unchanged; where this section corrects one of them, this section governs.
+
+- **Appendix C recopied after (s)**, committed as b05b17d ("Manuscript: Appendix C recopied; rebuild"). The commit of amendment (s), 36c1760, had left Table C1 naming an older STATE.md commit. BUILD.md was rerun: numbers.json holds 1,113 values and all cross-checks passed; Table C1 now names docs/STATE.md (36c1760) on its five rows and was copied into Appendix C of manuscript.md; manuscript_check.py exits 0, (a) to (g) 0 issues, main text 8,733 words; manuscript.docx and cover_letter.docx rebuilt, docx metadata checks clean.
+- Nothing else in the manuscript or the cover letter changed. The tag jote-submission-v1 still points at 8f99b24, which differs from b05b17d only in Table C1 and the files rebuilt from it. preprint_variant.md, .docx and .pdf were not touched.
+- **Next:** the submission to JOTE.
+- Committing this amendment makes Table C1 name an older STATE.md commit once more; check (g) on main passes again only after BUILD.md step 1 and the copy into Appendix C. This does not affect the tagged submission version.
