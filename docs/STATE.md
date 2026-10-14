@@ -812,3 +812,20 @@ Sixteenth amendment (14 October 2026). The lines above are unchanged; where this
   - the preprint posted and its DOI inserted;
   - the JOTE submission.
 - docs/STATE.md is a source file of scripts/manuscript_numbers.py. Appendix C names the commit that last changed it, so after this commit the BUILD.md steps must be re-run before check (g) passes again.
+
+## Amendment 14 Oct 2026 (q)
+
+Seventeenth amendment (14 October 2026). The lines above are unchanged; where this section corrects one of them, this section governs.
+
+- **Manuscript draft 4** committed as 6df6718. Chevalier-Boisvert et al. (2023) is added for MiniGrid, with its fields taken from the NeurIPS proceedings page and its BibTeX. The publisher records the fourth author as Perez-Vicente, R.; the arXiv version of the same paper writes him as Rodrigo de Lazcano. The fields and the pages fetched are recorded in docs/manuscript/REFERENCES_CHECK.md. The manuscript has 18 cited works and 18 reference entries. No draft 3 was committed; the numbering goes 2 then 4. This supersedes the line of amendment (p) that says the 2023 citation is not in the manuscript.
+- **Preprint variant** committed as 4d335ea: docs/manuscript/preprint_variant.md, .docx and .pdf. The variant differs from manuscript.md only in the preprint sentence, replaced in its two places. The PDF was produced with docx2pdf through Word 2019. scripts/manuscript_check.py was given an optional file argument and run on both files, exit code 0. The docx and PDF metadata are clean.
+- **Wording and author-line fixes** committed as f9d9c21 ("Manuscript: wording and author-line fixes; rebuild"). "each with care" is removed from the Discussion of manuscript.md and preprint_variant.md, as decided in amendment (p). The bold author-name line under the title is removed from both files, because the pandoc metadata option already prints the name; the rebuilt docx and PDF show the name once on page 1. Appendix C was recopied, and manuscript_check.py exits 0 on both files. preprint_variant.pdf has 35 pages after the rebuild.
+- **RKM's rebuild of 14 Oct 2026** reproduced the committed manuscript files byte for byte (git reported nothing to commit).
+- **Next:**
+  - the OSF embargoes on 2znhw and zu5vq ended;
+  - the tag manuscript-v1 and the GitHub release;
+  - the repository made public;
+  - the preprint posted on OSF Preprints under CC-BY 4.0, and its DOI recorded in amendment (r);
+  - the J7 line filled;
+  - a final rebuild;
+  - the submission to JOTE.
