@@ -2779,6 +2779,11 @@
   "source": "git log -1 -- docs/STATE.md",
   "value": "687983a"
  },
+ "lastcommit.docs/manuscript/REFERENCES_CHECK.md": {
+  "class": "hash",
+  "source": "git log -1 -- docs/manuscript/REFERENCES_CHECK.md",
+  "value": "6df6718"
+ },
  "lastcommit.docs/manuscript/REVIEW_draft1.md": {
   "class": "hash",
   "source": "git log -1 -- docs/manuscript/REVIEW_draft1.md",

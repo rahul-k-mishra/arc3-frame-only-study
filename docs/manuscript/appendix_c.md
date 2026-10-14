@@ -7,5 +7,5 @@
 | commit or blob hash | docs/PREREG.md (7d9205e); docs/STATE.md (687983a); git tag objects and git ls-tree (the tag objects themselves) |
 | date | docs/HELDOUT.md (4d2c02c); docs/PREREG.md (7d9205e); docs/STATE.md (687983a); git tag objects and git ls-tree (the tag objects themselves) |
 | package version | docs/PREREG.md (7d9205e) |
-| URL or DOI | docs/STATE.md (687983a); docs/manuscript/REFERENCES_CHECK.md (changed in the commit that carries this table); docs/manuscript/REVIEW_draft1.md (48931d2); docs/preprint/preprint.md (8bed48b); docs/preprint/references.bib (8bed48b) |
-| reference field, verdict word or ORCID | docs/manuscript/REFERENCES_CHECK.md (changed in the commit that carries this table); docs/preprint/preprint.md (8bed48b); docs/preprint/references.bib (8bed48b); docs/tables/v1.json (bb0f1a1); docs/tables/v2.json (bb0f1a1) |
+| URL or DOI | docs/STATE.md (687983a); docs/manuscript/REFERENCES_CHECK.md (6df6718); docs/manuscript/REVIEW_draft1.md (48931d2); docs/preprint/preprint.md (8bed48b); docs/preprint/references.bib (8bed48b) |
+| reference field, verdict word or ORCID | docs/manuscript/REFERENCES_CHECK.md (6df6718); docs/preprint/preprint.md (8bed48b); docs/preprint/references.bib (8bed48b); docs/tables/v1.json (bb0f1a1); docs/tables/v2.json (bb0f1a1) |

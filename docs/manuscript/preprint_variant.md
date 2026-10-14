@@ -2,8 +2,6 @@
 title: "A preregistered frame-only census of game mechanics, fitted on ARC-AGI-3, failed its validity test on MiniGrid/BabyAI and Procgen"
 ---
 
-**Rahul Kumar Mishra**
-
 Independent Researcher, Ranchi, Jharkhand, India
 
 ORCID 0009-0004-9671-4055
@@ -314,7 +312,7 @@ On all six primary MiniGrid/BabyAI lines, a logistic regression on grid area, ac
 
 ### The methodological mistake
 
-The mistake, stated plainly and read from the exploratory diagnosis, is that the probes and the truth predicates were not the same constructs, and that no test existed where the parameters were set. The census decisions were by-products of one planner's run: whether it located an avatar from its first presses, whether its first-level model mispredicted, whether it walked through a color it had called a wall, whether a recorded place ended a level again. The truth entries are properties of the environment's step function. Only A1 is measured in nearly the same terms on both sides, and only A1 had no failing V1 line. I wrote the truth definitions and the census rules separately, each with care, and never checked on any game, before registration, that one estimated the other.
+The mistake, stated plainly and read from the exploratory diagnosis, is that the probes and the truth predicates were not the same constructs, and that no test existed where the parameters were set. The census decisions were by-products of one planner's run: whether it located an avatar from its first presses, whether its first-level model mispredicted, whether it walked through a color it had called a wall, whether a recorded place ended a level again. The truth entries are properties of the environment's step function. Only A1 is measured in nearly the same terms on both sides, and only A1 had no failing V1 line. I wrote the truth definitions and the census rules separately and never checked on any game, before registration, that one estimated the other.
 
 ### What a second, separately registered study would have to change
 
@@ -553,8 +551,8 @@ Every number in this article is a value in docs/manuscript/numbers.json, written
 | commit or blob hash | docs/PREREG.md (7d9205e); docs/STATE.md (687983a); git tag objects and git ls-tree (the tag objects themselves) |
 | date | docs/HELDOUT.md (4d2c02c); docs/PREREG.md (7d9205e); docs/STATE.md (687983a); git tag objects and git ls-tree (the tag objects themselves) |
 | package version | docs/PREREG.md (7d9205e) |
-| URL or DOI | docs/STATE.md (687983a); docs/manuscript/REFERENCES_CHECK.md (changed in the commit that carries this table); docs/manuscript/REVIEW_draft1.md (48931d2); docs/preprint/preprint.md (8bed48b); docs/preprint/references.bib (8bed48b) |
-| reference field, verdict word or ORCID | docs/manuscript/REFERENCES_CHECK.md (changed in the commit that carries this table); docs/preprint/preprint.md (8bed48b); docs/preprint/references.bib (8bed48b); docs/tables/v1.json (bb0f1a1); docs/tables/v2.json (bb0f1a1) |
+| URL or DOI | docs/STATE.md (687983a); docs/manuscript/REFERENCES_CHECK.md (6df6718); docs/manuscript/REVIEW_draft1.md (48931d2); docs/preprint/preprint.md (8bed48b); docs/preprint/references.bib (8bed48b) |
+| reference field, verdict word or ORCID | docs/manuscript/REFERENCES_CHECK.md (6df6718); docs/preprint/preprint.md (8bed48b); docs/preprint/references.bib (8bed48b); docs/tables/v1.json (bb0f1a1); docs/tables/v2.json (bb0f1a1) |
 
 ## Appendix D. Frozen files and analysis scripts
 
