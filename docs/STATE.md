@@ -829,3 +829,17 @@ Seventeenth amendment (14 October 2026). The lines above are unchanged; where th
   - the J7 line filled;
   - a final rebuild;
   - the submission to JOTE.
+
+## Amendment 14 Oct 2026 (r)
+
+Eighteenth amendment (14 October 2026). The lines above are unchanged; where this section corrects one of them, this section governs.
+
+- **The preprint is on Zenodo, not OSF Preprints.** OSF's generalist preprint server stopped accepting submissions on 25 August 2025 (COS announcement; the community servers on OSF Preprints are unaffected). The preprint was therefore posted on Zenodo, which JOTE's author guidelines name as an accepted preprint server. This supersedes the OSF Preprints lines of amendments (l), (n) and (q).
+- **The preprint** is the file docs/manuscript/preprint_variant.pdf at commit 895f3ac (tag manuscript-v1). It is published on Zenodo under CC-BY 4.0 on 14 October 2026 with DOI 10.5281/zenodo.23375065 (https://doi.org/10.5281/zenodo.23375065).
+- **Both OSF embargoes** (2znhw, zu5vq) were ended on 14 October 2026.
+- **The repository was made public** and the GitHub release manuscript-v1 created on 14 October 2026, through the GitHub CLI.
+- **Next:**
+  - the DOI into the manuscript and the cover letter;
+  - a rebuild;
+  - the tag jote-submission-v1;
+  - the submission to JOTE.
