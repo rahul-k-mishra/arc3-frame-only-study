@@ -299,6 +299,11 @@
   "source": "docs/STATE.md amendment (d)",
   "value": "30 June 2030"
  },
+ "date.embargo_end": {
+  "class": "date",
+  "source": "docs/STATE.md amendment (r)",
+  "value": "14 October 2026"
+ },
  "date.fifth_deviation": {
   "class": "date",
   "source": "docs/STATE.md amendment (n) (dated 14 Oct 2026)",
@@ -328,6 +333,11 @@
   "class": "date",
   "source": "docs/STATE.md amendment (k) (dated 13 Oct 2026)",
   "value": "13 October 2026"
+ },
+ "date.preprint": {
+  "class": "date",
+  "source": "docs/STATE.md amendment (r)",
+  "value": "14 October 2026"
  },
  "date.preprint_draft2": {
   "class": "date",
@@ -2777,7 +2787,7 @@
  "lastcommit.docs/STATE.md": {
   "class": "hash",
   "source": "git log -1 -- docs/STATE.md",
-  "value": "2048f36"
+  "value": "b48793f"
  },
  "lastcommit.docs/manuscript/REFERENCES_CHECK.md": {
   "class": "hash",
@@ -2918,6 +2928,16 @@
   "class": "count",
   "source": "runs/pilot_checks/pilot_check.json",
   "value": 0
+ },
+ "preprint.doi": {
+  "class": "identifier",
+  "source": "docs/STATE.md amendment (r)",
+  "value": "10.5281/zenodo.23375065"
+ },
+ "preprint.license": {
+  "class": "identifier",
+  "source": "docs/STATE.md amendment (r)",
+  "value": "CC-BY 4.0"
  },
  "prereg.entries": {
   "class": "count",
@@ -3678,6 +3698,11 @@
   "class": "url",
   "source": "docs/preprint/preprint.md Section 9",
   "value": "https://github.com/rahul-k-mishra/arc3-frame-only-study"
+ },
+ "url.preprint": {
+  "class": "url",
+  "source": "docs/STATE.md amendment (r)",
+  "value": "https://doi.org/10.5281/zenodo.23375065"
  },
  "url.zu5vq": {
   "class": "url",

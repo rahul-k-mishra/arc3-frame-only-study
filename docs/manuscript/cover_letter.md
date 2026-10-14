@@ -9,9 +9,9 @@ Dear Editor-in-Chief,
 
 I submit the manuscript "A preregistered frame-only census of game mechanics, fitted on ARC-AGI-3, failed its validity test on MiniGrid/BabyAI and Procgen" for consideration as an Empirical Article.
 
-A preprint of this article is on OSF Preprints under CC-BY 4.0: DOI [to be inserted]
+A preprint of this article is on Zenodo under CC-BY 4.0: https://doi.org/10.5281/zenodo.23375065
 
-All data and code are public under the MIT license in the repository https://github.com/rahul-k-mishra/arc3-frame-only-study, at the tags prereg-v1 (commit 19f2a9f25043997d1deffd5976f2f2150e5f086f), prereg-v1.1 (commit 8b2b2b9b432dbea4ba5f62cfceb1aad5558d1ecc) and prereg-v1.2 (commit 66e560645d9d98bca39ee7da9b1039ada1bc579b). The protocol was registered on the Open Science Framework at https://osf.io/2znhw and amended at https://osf.io/zu5vq; both registrations are under embargo, and their registered texts are in the repository.
+All data and code are public under the MIT license in the repository https://github.com/rahul-k-mishra/arc3-frame-only-study, at the tags prereg-v1 (commit 19f2a9f25043997d1deffd5976f2f2150e5f086f), prereg-v1.1 (commit 8b2b2b9b432dbea4ba5f62cfceb1aad5558d1ecc) and prereg-v1.2 (commit 66e560645d9d98bca39ee7da9b1039ada1bc579b). The protocol was registered on the Open Science Framework at https://osf.io/2znhw and amended at https://osf.io/zu5vq; both registrations are public, and their registered texts are also in the repository.
 
 The registered protocol fixed the consequence of a refutation in advance. Its venue clause read "repository record only, at most an arXiv note". I chose to submit to a journal that publishes negative results instead, and the manuscript records this as a deviation from the protocol. The deviation changes no analysis, no test and no number.
 

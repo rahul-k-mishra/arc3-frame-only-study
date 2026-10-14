@@ -17,9 +17,8 @@ Reports, with line numbers:
 It also prints the word count of the main text (Introduction through Conclusion), for information.
 
 What is not a numeral for (a): digits joined to letters (A1, D9b, v1.1, 8x8, fig1.png, ARC-AGI-3,
-S3R1-v0), because they are names, not quantities; the label numbers of "Figure k" and "Table k"; and
-the license name "CC-BY 4.0" in the preprint line, which is a name fixed by the author's preprint
-statement.  Every other digit run is checked, including those in the verbatim tables and references.
+S3R1-v0), because they are names, not quantities; and the label numbers of "Figure k" and "Table k".
+Every other digit run is checked, including those in the verbatim tables and references.
 A numeral matches when it equals, character for character after removing thousands commas and
 writing the minus sign as "-", a numeric value in numbers.json or a numeric part of a composite value
 (a version, a ratio, a date).  Hashes (7 to 40 hex characters with a digit and a letter) must equal a
@@ -150,7 +149,6 @@ def main():
                     issues.append((n, "hash", h))
         t = re.sub(r"\b(?=[0-9a-f]*\d)(?=[0-9a-f]*[a-f])[0-9a-f]{7,40}\b", " ", t)
         t = re.sub(r"\b(Figure|Table|Figures|Tables) \d+(?: and \d+)?", " ", t)
-        t = t.replace("CC-BY 4.0", " ")
         for m in re.finditer(r"(?<![\w\-./])[−-]?\d+(?:[.,]\d+)*(?![\w])(?!\.[A-Za-z])", t):
             tok = norm(m.group(0))
             if tok not in nums and tok.lstrip("-") not in nums:

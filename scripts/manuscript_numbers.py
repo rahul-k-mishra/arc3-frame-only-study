@@ -535,6 +535,17 @@ def provenance():
     add("date.d1_d15", "27 September 2026", P + " v1.1 preface (two revisions of 27 September 2026)", "date")
     need("docs/STATE.md", r"## Amendment 14 Oct 2026 \(n\)[\s\S]*?A fifth deviation, found while the manuscript was written")
     add("date.fifth_deviation", "14 October 2026", "docs/STATE.md amendment (n) (dated 14 Oct 2026)", "date")
+    # the preprint on Zenodo, as recorded in amendment (r)
+    m = need("docs/STATE.md", r"## Amendment 14 Oct 2026 \(r\)[\s\S]*?published on Zenodo under (CC-BY \d+\.\d+) "
+                              r"on (\d{1,2}) (October) (\d{4}) with DOI (10\.5281/zenodo\.\d+) \((https://doi\.org/[^)\s]+)\)")
+    check(m.group(6) == "https://doi.org/" + m.group(5), "Zenodo URL = https://doi.org/ + DOI in STATE.md (r)")
+    add("preprint.license", m.group(1), "docs/STATE.md amendment (r)", "identifier")
+    add("date.preprint", f"{int(m.group(2))} {m.group(3)} {m.group(4)}", "docs/STATE.md amendment (r)", "date")
+    add("preprint.doi", m.group(5), "docs/STATE.md amendment (r)", "identifier")
+    add("url.preprint", m.group(6), "docs/STATE.md amendment (r)", "url")
+    need("docs/STATE.md", r"## Amendment 14 Oct 2026 \(r\)[\s\S]*?Both OSF embargoes\*\* \(2znhw, zu5vq\) "
+                          r"were ended on 14 October 2026")
+    add("date.embargo_end", "14 October 2026", "docs/STATE.md amendment (r)", "date")
     # reference URLs for entries without a DOI, as fetched in the review of draft 1
     R = "docs/manuscript/REVIEW_draft1.md"
     for key, url in (("bertinetto", "https://proceedings.mlr.press/v148/bertinetto21a.html"),

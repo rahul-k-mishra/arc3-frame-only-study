@@ -10,7 +10,7 @@ mishra.rahul98@gmail.com
 
 Article type: Empirical Article
 
-A preprint of this article is on OSF Preprints under CC-BY 4.0: DOI [to be inserted]
+A preprint of this article is on Zenodo under CC-BY 4.0 at https://doi.org/10.5281/zenodo.23375065.
 
 ## Keywords
 
@@ -74,7 +74,7 @@ I registered version v1 of the protocol on 27 September 2026 as git tag prereg-v
 
 The claim sentence differs in wording between the two registered texts of v1. The git-tagged protocol names the goal-identification cost G as part of the battery and says "in three suites". The OSF text, quoted in the Purpose section, describes G as "measured and reported alongside, not tested" and names no number of suites. The tests, thresholds and outcome table are the same in both.
 
-The protocol also fixed the pilot rules. The pilot games, six MiniGrid/BabyAI environments and two Procgen games, could be run before the confirmatory set and are excluded from every confirmatory analysis. The pilot could change adapter code but never a census constant, threshold, truth entry or frozen file. Every change had to be logged in the next version's dated diff section. After the pilot I registered version v1.1 on 27 September 2026 as git tag prereg-v1.1 on commit 8b2b2b9b432dbea4ba5f62cfceb1aad5558d1ecc, and on the same day on the OSF (https://osf.io/zu5vq). Both registrations are under embargo until 30 June 2030, and their registered texts are in the repository. I wrote version v1.2 after the outcome and tagged it prereg-v1.2 on commit 66e560645d9d98bca39ee7da9b1039ada1bc579b on 13 October 2026.
+The protocol also fixed the pilot rules. The pilot games, six MiniGrid/BabyAI environments and two Procgen games, could be run before the confirmatory set and are excluded from every confirmatory analysis. The pilot could change adapter code but never a census constant, threshold, truth entry or frozen file. Every change had to be logged in the next version's dated diff section. After the pilot I registered version v1.1 on 27 September 2026 as git tag prereg-v1.1 on commit 8b2b2b9b432dbea4ba5f62cfceb1aad5558d1ecc, and on the same day on the OSF (https://osf.io/zu5vq). Both registrations have been public since 14 October 2026, when I ended their embargoes, and their registered texts are also in the repository. I wrote version v1.2 after the outcome and tagged it prereg-v1.2 on commit 66e560645d9d98bca39ee7da9b1039ada1bc579b on 13 October 2026.
 
 The amendment trail has 16 entries, D1 to D16, given in full in Appendix A. D1 to D15 form the v1.1 diff, written on 27 September 2026 after the pilot and before any confirmatory game was played. D1 to D4 fix how each suite is presented through the six-key limit, D5 sets the per-run time caps, D6 the runner, D7 the boundary of I1 and D8 the infrastructure checks. D9 and D9b set the exclusions from V2, and D10 and D11 the analysis code at the tag. D12 sets a time cap for ARC-AGI-3 and the repeat of eight ARC runs that an unregistered clock had cut short. D13 records the Procgen camera identity, D14 the absence of any adapter change after the pilot, and D15 a separate replay planned for G. D16 is the only entry of v1.2, written after the outcome: it withdraws G without measuring it. No threshold, parameter, exclusion list, truth entry or analysis script changed after the prereg-v1.1 tag.
 
@@ -338,9 +338,9 @@ The Purpose section states the objective: a frame-only census, fitted on ARC-AGI
 
 ## Data and code availability
 
-All data and code are public in the repository https://github.com/rahul-k-mishra/arc3-frame-only-study under the MIT license, which the journal lists as an acceptable open license for data and recommends for code. The data are the 10,500 confirmatory rows, 9,660 for MiniGrid/BabyAI and 840 for Procgen, one JSON file per suite, condition, agent, game and seed. They also include the 500-row ARC-AGI-3 baseline, the pilot rows and the outputs of the fidelity, pilot, camera and determinism checks, together with the analysis logs and the V1 and V2 tables. The code is every script that produced them, including the frozen census, the runner, the adapters, the analysis scripts and the three scripts that build and check this article's numbers and figures. The exploratory diagnosis is runs/exploratory/v1_diagnosis.json, written by scripts/explore_v1_diagnosis.py at commit f43526a, and the ARC-AGI-3 split, with the move of dc22, is in docs/HELDOUT.md. The registered protocol is at three tags: prereg-v1 (commit 19f2a9f25043997d1deffd5976f2f2150e5f086f), prereg-v1.1 (commit 8b2b2b9b432dbea4ba5f62cfceb1aad5558d1ecc) and prereg-v1.2 (commit 66e560645d9d98bca39ee7da9b1039ada1bc579b). The two registrations are https://osf.io/2znhw (v1) and https://osf.io/zu5vq (v1.1). Both are under embargo until 30 June 2030, and their registered texts are in the repository. The directory external/rudakov_just_explore, which holds the agent I1, is not covered by the repository's license and keeps the upstream MIT notice of its own authors.
+All data and code are public in the repository https://github.com/rahul-k-mishra/arc3-frame-only-study under the MIT license, which the journal lists as an acceptable open license for data and recommends for code. The data are the 10,500 confirmatory rows, 9,660 for MiniGrid/BabyAI and 840 for Procgen, one JSON file per suite, condition, agent, game and seed. They also include the 500-row ARC-AGI-3 baseline, the pilot rows and the outputs of the fidelity, pilot, camera and determinism checks, together with the analysis logs and the V1 and V2 tables. The code is every script that produced them, including the frozen census, the runner, the adapters, the analysis scripts and the three scripts that build and check this article's numbers and figures. The exploratory diagnosis is runs/exploratory/v1_diagnosis.json, written by scripts/explore_v1_diagnosis.py at commit f43526a, and the ARC-AGI-3 split, with the move of dc22, is in docs/HELDOUT.md. The registered protocol is at three tags: prereg-v1 (commit 19f2a9f25043997d1deffd5976f2f2150e5f086f), prereg-v1.1 (commit 8b2b2b9b432dbea4ba5f62cfceb1aad5558d1ecc) and prereg-v1.2 (commit 66e560645d9d98bca39ee7da9b1039ada1bc579b). The two registrations are https://osf.io/2znhw (v1) and https://osf.io/zu5vq (v1.1). Both have been public since 14 October 2026, when I ended their embargoes, and their registered texts are also in the repository. The directory external/rudakov_just_explore, which holds the agent I1, is not covered by the repository's license and keeps the upstream MIT notice of its own authors.
 
-A preprint of this article is on OSF Preprints under CC-BY 4.0: DOI [to be inserted]
+A preprint of this article is on Zenodo under CC-BY 4.0 at https://doi.org/10.5281/zenodo.23375065.
 
 ## Funding
 
@@ -544,15 +544,15 @@ Every number in this article is a value in docs/manuscript/numbers.json, written
 
 | number class | source files, each with the commit that last changed it |
 |---|---|
-| count | docs/EXPLORATORY_V1_DIAGNOSIS.md (7d9205e); docs/GROUND_TRUTH_minigrid.md (f12e529); docs/GROUND_TRUTH_procgen.md (8d209b3); docs/HELDOUT.md (4d2c02c); docs/PREREG.md (7d9205e); docs/STATE.md (2048f36); docs/tables/v1.json (bb0f1a1); docs/tables/v2.json (bb0f1a1); runs/checks/determinism_check.json (5ac65c1); runs/exploratory/v1_diagnosis.json (66e5606); runs/pilot_checks/pilot_check.json (cda7aa0); runs/pilot_checks/procgen_camera_check.json (cda7aa0); scripts/analyze_common.py (a96e49e) |
+| count | docs/EXPLORATORY_V1_DIAGNOSIS.md (7d9205e); docs/GROUND_TRUTH_minigrid.md (f12e529); docs/GROUND_TRUTH_procgen.md (8d209b3); docs/HELDOUT.md (4d2c02c); docs/PREREG.md (7d9205e); docs/STATE.md (b48793f); docs/tables/v1.json (bb0f1a1); docs/tables/v2.json (bb0f1a1); runs/checks/determinism_check.json (5ac65c1); runs/exploratory/v1_diagnosis.json (66e5606); runs/pilot_checks/pilot_check.json (cda7aa0); runs/pilot_checks/procgen_camera_check.json (cda7aa0); scripts/analyze_common.py (a96e49e) |
 | rate (agreement, κ, AUROC, interval bound, share) | docs/tables/v1.json (bb0f1a1); docs/tables/v2.json (bb0f1a1); runs/exploratory/v1_diagnosis.json (66e5606) |
 | registered threshold | docs/PREREG.md (7d9205e) |
 | constant, cap, seed or time | docs/PREREG.md (7d9205e); docs/tables/v2.json (bb0f1a1); runs/pilot_checks/pilot_check.json (cda7aa0); runs/pilot_checks/procgen_camera_check.json (cda7aa0) |
-| commit or blob hash | docs/PREREG.md (7d9205e); docs/STATE.md (2048f36); git tag objects and git ls-tree (the tag objects themselves) |
-| date | docs/HELDOUT.md (4d2c02c); docs/PREREG.md (7d9205e); docs/STATE.md (2048f36); git tag objects and git ls-tree (the tag objects themselves) |
+| commit or blob hash | docs/PREREG.md (7d9205e); docs/STATE.md (b48793f); git tag objects and git ls-tree (the tag objects themselves) |
+| date | docs/HELDOUT.md (4d2c02c); docs/PREREG.md (7d9205e); docs/STATE.md (b48793f); git tag objects and git ls-tree (the tag objects themselves) |
 | package version | docs/PREREG.md (7d9205e) |
-| URL or DOI | docs/STATE.md (2048f36); docs/manuscript/REFERENCES_CHECK.md (6df6718); docs/manuscript/REVIEW_draft1.md (48931d2); docs/preprint/preprint.md (8bed48b); docs/preprint/references.bib (8bed48b) |
-| reference field, verdict word or ORCID | docs/manuscript/REFERENCES_CHECK.md (6df6718); docs/preprint/preprint.md (8bed48b); docs/preprint/references.bib (8bed48b); docs/tables/v1.json (bb0f1a1); docs/tables/v2.json (bb0f1a1) |
+| URL or DOI | docs/STATE.md (b48793f); docs/manuscript/REFERENCES_CHECK.md (6df6718); docs/manuscript/REVIEW_draft1.md (48931d2); docs/preprint/preprint.md (8bed48b); docs/preprint/references.bib (8bed48b) |
+| reference field, verdict word or ORCID | docs/STATE.md (b48793f); docs/manuscript/REFERENCES_CHECK.md (6df6718); docs/preprint/preprint.md (8bed48b); docs/preprint/references.bib (8bed48b); docs/tables/v1.json (bb0f1a1); docs/tables/v2.json (bb0f1a1) |
 
 ## Appendix D. Frozen files and analysis scripts
 
