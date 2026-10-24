@@ -26,6 +26,14 @@ the value the corresponding document states, where a document states one.
 Run (working directory D:\\Research\\arc3\\repo):
     D:\\Research\\arc3\\brutus\\.venv\\Scripts\\python.exe scripts\\manuscript_numbers.py
 
+Option --state-ref TEXT: docs/STATE.md is one of the source files, and the provenance table names
+the commit that last changed each source file, so every STATE amendment makes a built provenance
+table stale.  With --state-ref, the table names docs/STATE.md with TEXT in place of a hash, and
+numbers.json records TEXT for it with class "identifier" (no hash of STATE.md is then allowed in a
+manuscript).  For the JAGI submission (docs/manuscript_jagi/BUILD.md, step 1):
+    D:\\Research\\arc3\\brutus\\.venv\\Scripts\\python.exe scripts\\manuscript_numbers.py --state-ref "at the commit tagged jagi-submission-v1"
+Without the option the script behaves exactly as before.
+
 Expected console output (last lines):
     numbers.json: <N> values written to docs/manuscript/numbers.json
     appendix_c.md: <K> number classes written to docs/manuscript/appendix_c.md
@@ -45,6 +53,7 @@ sys.path.insert(0, os.path.join(ROOT, "scripts"))
 import analyze_common as C  # noqa: E402  (read only: the registered truth-table parsers and lists)
 
 OUT_DIR = os.path.join(ROOT, "docs", "manuscript")
+STATE_REF = None  # set by --state-ref
 N: dict[str, dict] = {}
 CHECKS: list[str] = []
 
@@ -637,6 +646,10 @@ def appendix_c():
             if f.startswith("git"):
                 commit_of[f] = "the tag objects themselves"
                 continue
+            if f == "docs/STATE.md" and STATE_REF:
+                commit_of[f] = STATE_REF
+                add("lastcommit." + f, STATE_REF, "--state-ref option", "identifier")
+                continue
             if git("status", "--porcelain", "--", f):
                 # new or changed since the last commit: it is committed together with this table
                 commit_of[f] = "changed in the commit that carries this table"
@@ -652,6 +665,14 @@ def appendix_c():
 
 
 def main():
+    global STATE_REF
+    args = sys.argv[1:]
+    if args[:1] == ["--state-ref"]:
+        if len(args) < 2 or not args[1].strip():
+            raise SystemExit("--state-ref needs a text")
+        STATE_REF = args[1].strip()
+    elif args:
+        raise SystemExit(f"unknown arguments: {args}")
     tables()
     diagnosis()
     checks()
@@ -671,6 +692,8 @@ def main():
         print("check ok:", c)
     print(f"numbers.json: {len(N)} values written to docs/manuscript/numbers.json")
     print(f"appendix_c.md: {app.count(chr(10)) - 2} number classes written to docs/manuscript/appendix_c.md")
+    if STATE_REF:
+        print(f"docs/STATE.md named as: {STATE_REF}")
     print("all cross-checks passed")
 
 

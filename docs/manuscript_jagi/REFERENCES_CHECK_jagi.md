@@ -1,4 +1,4 @@
-# References check, JAGI manuscript (24 October 2026)
+# References check, JAGI manuscript (24 October 2026; updated for draft 2 the same day)
 
 The 18 entries of the JOTE manuscript are kept with every field unchanged; their verification is recorded in docs/manuscript/REFERENCES_CHECK.md and docs/manuscript/REVIEW_draft1.md Section 6. In this version they are set in the reference style of the JAGI Author's Kit (Instruction-word.docx, Appendix A: authors separated by semicolons, the year after the authors without parentheses, titles as the publisher prints them, then the venue, volume(issue): pages). The six entries below are new. Each was fetched on 24 October 2026; the page fetched, each field and its source, and the sentence of the manuscript that characterizes the paper, with the passage that supports it, are given per entry.
 
@@ -16,9 +16,9 @@ Sentence (2.2): "Legg and Hutter (2007) took as their informal working definitio
 Passage (arXiv full text, Section 2.6): "Intelligence measures an agent's ability to achieve goals in a wide range of environments. We take this to be our informal working definition of intelligence." Abstract: "These are then mathematically formalised to produce a general measure of intelligence for arbitrary machines."
 Verdict: SUPPORTED. The passage is read from the arXiv version, whose journal-ref names the journal article.
 
-Sentence (1): "One widely cited definition takes intelligence to be an agent's ability to achieve goals in a wide range of environments (Legg and Hutter, 2007)."
+Sentence (1), draft 2: "One definition takes intelligence to be an agent's ability to achieve goals in a wide range of environments (Legg and Hutter, 2007)."
 Passage: as above.
-Verdict: SUPPORTED for the definition. "Widely cited" is the author's characterization and is not drawn from the paper.
+Verdict: SUPPORTED. Draft 1 read "One widely cited definition"; "widely cited" was not supported by any source and was removed (docs/manuscript_jagi/REVIEW_jagi_draft1.md, F04).
 
 Sentence (6.1): "Legg and Hutter (2007) define intelligence over a range of environments, so a claim that an instrument describes environments in general is a claim about a range too, and it has to be tested on each part of the range it names."
 Passage: as above.
@@ -32,9 +32,13 @@ Fields: author José Hernández-Orallo (Crossref); title "The Measure of All Min
 
 Printed: Hernández-Orallo, J. 2017. *The Measure of All Minds: Evaluating Natural and Artificial Intelligence*. Cambridge University Press. https://doi.org/10.1017/9781316594179
 
-Sentence (2.2): "Hernández-Orallo (2017) argues for a universal evaluation of cognition, in which living organisms are a special case, and uses algorithmic information theory as the foundation for questions such as whether the difficulty of a task can be derived from the task itself."
-Passage (publisher's description, Crossref abstract field): "offers a vision of the universal evaluation of cognition. By replacing the dominant anthropocentric stance with a universal perspective where living organisms are considered as a special case, long-standing questions in the evaluation of behavior can be addressed in a wider landscape. Can we derive task difficulty intrinsically? ... Using algorithmic information theory as a foundation, the book elaborates on the evaluation of perceptual, developmental, social, verbal and collective features".
-Verdict: SUPPORTED, from the publisher's description only; the book itself was not read for this check.
+Sentence (2.2), draft 2: "In its publisher's description, Hernández-Orallo (2017) sets out a universal evaluation of cognition in which living organisms are a special case, founded on algorithmic information theory."
+Passage (publisher's description, Crossref abstract field): "offers a vision of the universal evaluation of cognition. By replacing the dominant anthropocentric stance with a universal perspective where living organisms are considered as a special case ... Using algorithmic information theory as a foundation, the book elaborates on the evaluation of perceptual, developmental, social, verbal and collective features".
+Verdict: SUPPORTED as a statement of what the publisher's description says; the book itself was not read. Draft 1 wrote the sentence as if from the book ("argues for ... uses algorithmic information theory as the foundation for questions such as whether the difficulty of a task can be derived from the task itself"); review finding F06.
+
+Sentence (2.2), draft 2, replacing draft 1's "All three treat the set of environments, and what an agent brings to them, as part of what a measurement means.": "Legg and Hutter tie the meaning of a measure of intelligence to the range of environments it covers, and Chollet to the priors and experience an agent brings to them."
+Passages: Legg and Hutter, "Intelligence measures an agent's ability to achieve goals in a wide range of environments"; Chollet, "skill is heavily modulated by prior knowledge and experience".
+Verdict: SUPPORTED. Draft 1's sentence included Hernández-Orallo (2017), for whom nothing fetched supports either half (review finding F05).
 
 Sentence (6.1): "Hernández-Orallo (2017) asks for evaluation that does not take the measuring instrument's validity for granted when the population changes;"
 Status: WITHDRAWN before printing. The publisher's description does not state this, so the sentence is not in the manuscript.
@@ -85,9 +89,9 @@ Verdict: SUPPORTED, from the arXiv abstract of the accepted version.
 
 ## Genesereth, Love and Pell (2005)
 
-Pages fetched: https://ojs.aaai.org/index.php/aimagazine/article/view/1813 (the AI Magazine article page: authors, abstract, DOI, publication date 15 June 2005, and the page's own citation "AI Magazine, 26(2), 62"). The article PDF and the publisher's citation exports returned an anti-bot page or an empty reply, and the DOI is not registered with Crossref in a form the Crossref API returns ("Resource not found"). The end page 72 is taken from the Semantic Scholar record (https://api.semanticscholar.org/graph/v1/paper/DOI:10.1609/aimag.v26i2.1813, "pages": "62-72"), which also gives the DBLP key journals/aim/GeneserethLP05.
+Pages fetched: https://ojs.aaai.org/index.php/aimagazine/article/view/1813 (the AI Magazine article page: authors, abstract, DOI, publication date 15 June 2005, and the page's own citation "AI Magazine, 26(2), 62", which prints the first page only). The article PDF and the publisher's citation exports returned an anti-bot page or an empty reply, and the DOI is not registered with Crossref in a form the Crossref API returns ("Resource not found"). The end page 72 is confirmed by the Stanford faculty profile of Genesereth (https://profiles.stanford.edu/michael-genesereth?tab=publications, fetched 24 October 2026: "General game playing: Overview of the AAAI competition AI MAGAZINE Genesereth, M., Love, N., Pell, B. 2005; 26 (2): 62-72") and by dblp (https://dblp.org/pid/53/1240), from which RKM confirmed it; dblp served an anti-bot page to the fetch. The Semantic Scholar record gives the same pages ("62-72").
 
-Fields: authors Michael Genesereth, Nathaniel Love, Barney Pell (publisher page); title "General Game Playing: Overview of the AAAI Competition" (publisher page); journal AI Magazine, volume 26, issue 2 (publisher page); first page 62 (publisher page); last page 72 (Semantic Scholar only: NOT VERIFIED against the publisher); year 2005 (publisher page); DOI 10.1609/aimag.v26i2.1813 (publisher page).
+Fields: authors Michael Genesereth, Nathaniel Love, Barney Pell (publisher page); title "General Game Playing: Overview of the AAAI Competition" (publisher page); journal AI Magazine, volume 26, issue 2 (publisher page); first page 62 (publisher page); last page 72 (the publisher's page prints the first page only; confirmed by the Stanford faculty profile and by dblp); year 2005 (publisher page); DOI 10.1609/aimag.v26i2.1813 (publisher page).
 
 Printed: Genesereth, M.; Love, N.; and Pell, B. 2005. General Game Playing: Overview of the AAAI Competition. *AI Magazine* 26(2): 62–72. https://doi.org/10.1609/aimag.v26i2.1813
 
@@ -97,4 +101,4 @@ Verdict: SUPPORTED.
 
 ## Summary
 
-Six entries added, 24 in all. Every field of five entries was confirmed against the publisher's deposited record or page, or arXiv. One field is not: the last page of Genesereth et al. (2005), which comes from Semantic Scholar only; RKM to confirm it from the printed article. Two characterizations rest on secondary text: Perez-Liebana et al. (2016), whose abstract was read from OpenAlex because the IEEE page could not be read, and Hernández-Orallo (2017), characterized from the publisher's description, not from the book. One drafted sentence (Hernández-Orallo, Section 6.1) was withdrawn before printing because no fetched text supports it.
+Six entries added, 24 in all. Every field of every entry is confirmed: five against the publisher's deposited record or page, or arXiv, and the last page of Genesereth et al. (2005) against the Stanford faculty profile and dblp, since the publisher's page prints the first page only. All 24 entries were fetched again for the review of draft 1 (docs/manuscript_jagi/REVIEW_jagi_draft1.md, Section 6). Two characterizations rest on secondary text: Perez-Liebana et al. (2016), whose abstract was read from OpenAlex because the IEEE page could not be read, and Hernández-Orallo (2017), which the article now characterizes explicitly as "in its publisher's description", since the book was not read. One drafted sentence (Hernández-Orallo, Section 6.1) was withdrawn before printing because no fetched text supports it.

@@ -6,10 +6,10 @@ Step 1. Write numbers.json and appendix_c.md (ARC venv). The script writes into 
 
 ```powershell
 cd D:\Research\arc3\repo
-D:\Research\arc3\brutus\.venv\Scripts\python.exe scripts\manuscript_numbers.py
+D:\Research\arc3\brutus\.venv\Scripts\python.exe scripts\manuscript_numbers.py --state-ref "at the commit tagged jagi-submission-v1"
 ```
 
-Expected: one "check ok:" line per cross-check, then "numbers.json: 1113 values written", "appendix_c.md: 9 number classes written" and "all cross-checks passed".
+Expected: one "check ok:" line per cross-check, then "numbers.json: 1113 values written", "appendix_c.md: 9 number classes written", "docs/STATE.md named as: at the commit tagged jagi-submission-v1" and "all cross-checks passed". With --state-ref, the provenance table names docs/STATE.md by that text instead of by the commit that last changed it, so a later STATE.md amendment does not make Table S5 stale.
 
 Step 2. Draw the four figures, one worker per figure (written into docs\manuscript).
 
@@ -43,11 +43,11 @@ echo "exit code: $LASTEXITCODE"
 
 Expected: blocks (a) to (g), each ending "0 issues", the abstract within 150 to 250 words, "RESULT: PASS" and "exit code: 0", twice. Do not build or commit unless both exit codes are 0.
 
-Step 5. Build the reference document from the kit's Word template (journal styles, page size and margins; sample running heads replaced; see the docstring of make_reference_doc.py). Set --submitted to the day of submission.
+Step 5. Build the reference document from the kit's Word template (journal styles, page size and margins; sample running heads replaced; see the docstring of make_reference_doc.py). Until the day of submission, --submitted is the placeholder yyyy-mm-dd and the first-page head reads "Submitted yyyy-mm-dd"; on the day of submission, run this step with the date (for example --submitted 2026-11-02) and then steps 6 and 7. Table cells use the style Compact, which keeps with the next paragraph, so each table stays on one page with its caption.
 
 ```powershell
 cd D:\Research\arc3\repo
-D:\Research\arc3\brutus\.venv\Scripts\python.exe -I docs\manuscript_jagi\make_reference_doc.py D:\Research\arc3\jagi_kit\JAGIAuthorKit\Instruction-word.docx docs\manuscript_jagi\jagi_reference.docx --submitted 2026-10-24
+D:\Research\arc3\brutus\.venv\Scripts\python.exe -I docs\manuscript_jagi\make_reference_doc.py D:\Research\arc3\jagi_kit\JAGIAuthorKit\Instruction-word.docx docs\manuscript_jagi\jagi_reference.docx --submitted yyyy-mm-dd
 ```
 
 Expected: "reference document written: docs\manuscript_jagi\jagi_reference.docx (headers 3, styles added 10, numbering removed 3)".
@@ -73,7 +73,7 @@ pdfinfo docs\manuscript_jagi\manuscript_jagi.pdf | Select-String "Pages|Page siz
 pdfinfo docs\manuscript_jagi\supplement_jagi.pdf | Select-String "Pages|Page size|Author|Creator"
 ```
 
-Expected: manuscript_jagi.pdf 21 pages, supplement_jagi.pdf 9 pages, page size 612 x 792 pts (letter), Author "Rahul Kumar Mishra".
+Expected: manuscript_jagi.pdf 21 pages, supplement_jagi.pdf 10 pages, page size 612 x 792 pts (letter), Author "Rahul Kumar Mishra".
 
 Step 8. Metadata and forbidden-word checks on the built files.
 

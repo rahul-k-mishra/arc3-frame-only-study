@@ -1,5 +1,5 @@
 ---
-title: "Supplement to: A Frame-Only Census of Game Mechanics Built on ARC-AGI-3 Failed a Preregistered Generality Test on MiniGrid/BabyAI and Procgen"
+title: "Supplement to: A Frame-Only Census of Game Mechanics Built on ARC‑AGI‑3 Failed a Preregistered Generality Test on MiniGrid/BabyAI and Procgen"
 lang: en-US
 ---
 
@@ -10,7 +10,7 @@ This supplement accompanies the article of the same title. The article cites it 
 Table S1 is docs/tables/v1.md (commit bb0f1a1), as written by the frozen analysis code at prereg-v1.1, with every row and cell unchanged. Agreement is the share of games where the census verdict equals the truth, and κ is given only where both truth values have at least 3 games. The code's identifiers are kept. On MiniGrid/BabyAI, "macro" is absolute moves and "raw" primitive actions. On Procgen, "center_off" is the whole-level view and "center_on" the view centered on the agent, "in_range" is the nine games of the operating range, and "camera_distinct" the five games where the two views differ.
 
 | suite | condition | subset | assumption | n | truth_holds | agreement | kappa | verdict |
-|----------|-----------|---------------|-----------|-----|-----------|----------|------------|--------------------|
+|---------|-----------|------------------|------------|-----|-----------|----------|---------|------------------|
 | minigrid | macro | all | A1 | 161 | 161 | 0.9876 |  | PASS |
 | minigrid | macro | all | A2 | 161 | 161 | 0.9876 |  | PASS |
 | minigrid | macro | all | A3 | 161 | 161 | 0.4286 |  | FAIL |
@@ -270,19 +270,19 @@ B6. A toggle is a precondition (these 9, plus the 28 of B4; on I1's lists in bot
 
 ## S.5 Provenance of the Numbers
 
-Every number in the article and in this supplement is a value in docs/manuscript_jagi/numbers.json, which is a copy of the file that scripts/manuscript_numbers.py writes from committed files into docs/manuscript, made by the build described in docs/manuscript_jagi/BUILD.md. scripts/manuscript_check.py, run with the option --dir docs/manuscript_jagi, rejects any numeral in either file that is not one of those values. The only exceptions are the fields of the six reference entries added for this version, which were verified against the publisher's or arXiv's page and are recorded, entry by entry, in docs/manuscript_jagi/REFERENCES_CHECK_jagi.md; the check accepts such an entry only if it equals the recorded entry character for character. Table S5 lists, for each class of number, the committed files its values come from and the commit that last changed each file. It is written by scripts/manuscript_numbers.py and copied here unchanged.
+Every number in the article and in this supplement is a value in docs/manuscript_jagi/numbers.json, which is a copy of the file that scripts/manuscript_numbers.py writes from committed files into docs/manuscript, made by the build described in docs/manuscript_jagi/BUILD.md. scripts/manuscript_check.py, run with the option --dir docs/manuscript_jagi, rejects any numeral in either file that is not one of those values. The only exceptions are the fields of the six reference entries added for this version, which were verified against the publisher's or arXiv's page and are recorded, entry by entry, in docs/manuscript_jagi/REFERENCES_CHECK_jagi.md; the check accepts such an entry only if it equals the recorded entry character for character. The years of in-text citations are also exempt when the cited work is in the reference list. Table S5 lists, for each class of number, the committed files its values come from and the commit that last changed each file. It is written by scripts/manuscript_numbers.py and copied here unchanged.
 
 | number class | source files, each with the commit that last changed it |
 |---|---|
-| count | docs/EXPLORATORY_V1_DIAGNOSIS.md (7d9205e); docs/GROUND_TRUTH_minigrid.md (f12e529); docs/GROUND_TRUTH_procgen.md (8d209b3); docs/HELDOUT.md (4d2c02c); docs/PREREG.md (7d9205e); docs/STATE.md (a224604); docs/tables/v1.json (bb0f1a1); docs/tables/v2.json (bb0f1a1); runs/checks/determinism_check.json (5ac65c1); runs/exploratory/v1_diagnosis.json (66e5606); runs/pilot_checks/pilot_check.json (cda7aa0); runs/pilot_checks/procgen_camera_check.json (cda7aa0); scripts/analyze_common.py (a96e49e) |
+| count | docs/EXPLORATORY_V1_DIAGNOSIS.md (7d9205e); docs/GROUND_TRUTH_minigrid.md (f12e529); docs/GROUND_TRUTH_procgen.md (8d209b3); docs/HELDOUT.md (4d2c02c); docs/PREREG.md (7d9205e); docs/STATE.md (at the commit tagged jagi-submission-v1); docs/tables/v1.json (bb0f1a1); docs/tables/v2.json (bb0f1a1); runs/checks/determinism_check.json (5ac65c1); runs/exploratory/v1_diagnosis.json (66e5606); runs/pilot_checks/pilot_check.json (cda7aa0); runs/pilot_checks/procgen_camera_check.json (cda7aa0); scripts/analyze_common.py (a96e49e) |
 | rate (agreement, κ, AUROC, interval bound, share) | docs/tables/v1.json (bb0f1a1); docs/tables/v2.json (bb0f1a1); runs/exploratory/v1_diagnosis.json (66e5606) |
 | registered threshold | docs/PREREG.md (7d9205e) |
 | constant, cap, seed or time | docs/PREREG.md (7d9205e); docs/tables/v2.json (bb0f1a1); runs/pilot_checks/pilot_check.json (cda7aa0); runs/pilot_checks/procgen_camera_check.json (cda7aa0) |
-| commit or blob hash | docs/PREREG.md (7d9205e); docs/STATE.md (a224604); git tag objects and git ls-tree (the tag objects themselves) |
-| date | docs/HELDOUT.md (4d2c02c); docs/PREREG.md (7d9205e); docs/STATE.md (a224604); git tag objects and git ls-tree (the tag objects themselves) |
+| commit or blob hash | docs/PREREG.md (7d9205e); docs/STATE.md (at the commit tagged jagi-submission-v1); git tag objects and git ls-tree (the tag objects themselves) |
+| date | docs/HELDOUT.md (4d2c02c); docs/PREREG.md (7d9205e); docs/STATE.md (at the commit tagged jagi-submission-v1); git tag objects and git ls-tree (the tag objects themselves) |
 | package version | docs/PREREG.md (7d9205e) |
-| URL or DOI | docs/STATE.md (a224604); docs/manuscript/REFERENCES_CHECK.md (6df6718); docs/manuscript/REVIEW_draft1.md (48931d2); docs/preprint/preprint.md (8bed48b); docs/preprint/references.bib (8bed48b) |
-| reference field, verdict word or ORCID | docs/STATE.md (a224604); docs/manuscript/REFERENCES_CHECK.md (6df6718); docs/preprint/preprint.md (8bed48b); docs/preprint/references.bib (8bed48b); docs/tables/v1.json (bb0f1a1); docs/tables/v2.json (bb0f1a1) |
+| URL or DOI | docs/STATE.md (at the commit tagged jagi-submission-v1); docs/manuscript/REFERENCES_CHECK.md (6df6718); docs/manuscript/REVIEW_draft1.md (48931d2); docs/preprint/preprint.md (8bed48b); docs/preprint/references.bib (8bed48b) |
+| reference field, verdict word or ORCID | docs/STATE.md (at the commit tagged jagi-submission-v1); docs/manuscript/REFERENCES_CHECK.md (6df6718); docs/preprint/preprint.md (8bed48b); docs/preprint/references.bib (8bed48b); docs/tables/v1.json (bb0f1a1); docs/tables/v2.json (bb0f1a1) |
 
 : Table S5. Number classes and their sources.
 

@@ -2785,9 +2785,9 @@
   "value": "7d9205e"
  },
  "lastcommit.docs/STATE.md": {
-  "class": "hash",
-  "source": "git log -1 -- docs/STATE.md",
-  "value": "a224604"
+  "class": "identifier",
+  "source": "--state-ref option",
+  "value": "at the commit tagged jagi-submission-v1"
  },
  "lastcommit.docs/manuscript/REFERENCES_CHECK.md": {
   "class": "hash",

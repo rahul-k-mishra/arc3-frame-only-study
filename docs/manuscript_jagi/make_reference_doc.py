@@ -13,14 +13,16 @@ its body.  The kit template is used as it is, with four changes, all in the copy
   3. the style names pandoc writes (Title, Author, Body Text, First Paragraph, Compact, Image
      Caption, Table Caption, Captioned Figure, Figure, Table) are defined on top of the kit's own
      styles (Article Title, Author Name, Text, Abstract Text), so that pandoc's output takes the
-     journal's fonts, sizes, spacing and indents;
+     journal's fonts, sizes, spacing and indents; Compact, the style of every table cell, keeps
+     with the next paragraph, so that a table stays on one page together with its caption below it; captions keep their lines
+     together, and a figure keeps with its caption, so that a figure and its whole caption share a page;
   4. the template's document properties are cleared: title, creator and last modified by in
      core.xml, and app.xml (which named the template's title and company) is replaced by a minimal
      one with no title, company or statistics.
 Nothing is read from the repository; the kit file is read only.
 
 Run (working directory D:\\Research\\arc3\\repo):
-    D:\\Research\\arc3\\brutus\\.venv\\Scripts\\python.exe -I docs\\manuscript_jagi\\make_reference_doc.py D:\\Research\\arc3\\jagi_kit\\JAGIAuthorKit\\Instruction-word.docx docs\\manuscript_jagi\\jagi_reference.docx --submitted 2026-10-24
+    D:\\Research\\arc3\\brutus\\.venv\\Scripts\\python.exe -I docs\\manuscript_jagi\\make_reference_doc.py D:\\Research\\arc3\\jagi_kit\\JAGIAuthorKit\\Instruction-word.docx docs\\manuscript_jagi\\jagi_reference.docx --submitted yyyy-mm-dd
 
 Expected console output:
     reference document written: docs\\manuscript_jagi\\jagi_reference.docx (headers 3, styles added 10, numbering removed 3)
@@ -98,13 +100,13 @@ NEW_STYLES = {
                        '<w:basedOn w:val="Text"/><w:next w:val="BodyText"/><w:qFormat/>'
                        '<w:pPr><w:ind w:firstLine="0"/></w:pPr></w:style>'),
     "Compact": ('<w:style w:type="paragraph" w:styleId="Compact"><w:name w:val="Compact"/>'
-                '<w:basedOn w:val="Normal"/><w:qFormat/><w:pPr><w:spacing w:before="0" w:after="0"/></w:pPr>'
+                '<w:basedOn w:val="Normal"/><w:qFormat/><w:pPr><w:keepNext/><w:spacing w:before="0" w:after="0"/></w:pPr>'
                 '<w:rPr><w:sz w:val="18"/><w:szCs w:val="18"/></w:rPr></w:style>'),
     "ImageCaption": ('<w:style w:type="paragraph" w:styleId="ImageCaption"><w:name w:val="Image Caption"/>'
-                     '<w:basedOn w:val="Normal"/><w:pPr><w:spacing w:before="120" w:after="240"/><w:jc w:val="both"/></w:pPr>'
+                     '<w:basedOn w:val="Normal"/><w:pPr><w:keepLines/><w:spacing w:before="120" w:after="240"/><w:jc w:val="both"/></w:pPr>'
                      '<w:rPr><w:sz w:val="20"/><w:szCs w:val="20"/></w:rPr></w:style>'),
     "TableCaption": ('<w:style w:type="paragraph" w:styleId="TableCaption"><w:name w:val="Table Caption"/>'
-                     '<w:basedOn w:val="Normal"/><w:pPr><w:spacing w:before="120" w:after="240"/><w:jc w:val="both"/></w:pPr>'
+                     '<w:basedOn w:val="Normal"/><w:pPr><w:keepLines/><w:spacing w:before="120" w:after="240"/><w:jc w:val="both"/></w:pPr>'
                      '<w:rPr><w:sz w:val="20"/><w:szCs w:val="20"/></w:rPr></w:style>'),
     "CaptionedFigure": ('<w:style w:type="paragraph" w:styleId="CaptionedFigure"><w:name w:val="Captioned Figure"/>'
                         '<w:basedOn w:val="Normal"/><w:pPr><w:keepNext/><w:spacing w:before="240"/><w:jc w:val="center"/></w:pPr></w:style>'),
@@ -162,10 +164,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("kit_docx")
     ap.add_argument("out_docx")
-    ap.add_argument("--submitted", required=True, help="submission date, yyyy-mm-dd")
+    ap.add_argument("--submitted", required=True,
+                    help="submission date yyyy-mm-dd; the literal placeholder yyyy-mm-dd until the day of submission")
     a = ap.parse_args()
-    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", a.submitted):
-        raise SystemExit("--submitted must be yyyy-mm-dd")
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}|yyyy-mm-dd", a.submitted):
+        raise SystemExit("--submitted must be a date yyyy-mm-dd, or the placeholder yyyy-mm-dd itself")
     with zipfile.ZipFile(a.kit_docx) as z:
         names = z.namelist()
         files = {n: z.read(n) for n in names}
