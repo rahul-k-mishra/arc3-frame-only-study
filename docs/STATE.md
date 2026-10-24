@@ -866,3 +866,42 @@ Twentieth amendment (14 October 2026). The lines above are unchanged; where this
 - Nothing else in the manuscript or the cover letter changed. The tag jote-submission-v1 still points at 8f99b24, which differs from b05b17d only in Table C1 and the files rebuilt from it. preprint_variant.md, .docx and .pdf were not touched.
 - **Next:** the submission to JOTE.
 - Committing this amendment makes Table C1 name an older STATE.md commit once more; check (g) on main passes again only after BUILD.md step 1 and the copy into Appendix C. This does not affect the tagged submission version.
+
+## Amendment 14 Oct 2026 (u)
+
+Twenty-first amendment. The lines above are unchanged.
+
+- **Submitted to the Journal of Trial and Error** on 14 October 2026 at 23:23 IST as an Empirical Article, Submission ID Journal of Trial & Error-2018-00200, acknowledged by the Editor-in-Chief by email the same minute.
+  - Files submitted: manuscript.docx, cover_letter.docx and references.bib, exported from tag jote-submission-v1 (commit 8f99b24) with git archive.
+  - The cover letter text was entered as comments for the editor.
+- **Declined without peer review** on 24 October 2026 by the Editor-in-Chief, on two grounds:
+  - a contribution limited in what it adds to measurement validity and instrument development;
+  - a manuscript too technical and detailed for a multidisciplinary readership to see the methodological lesson.
+  - A more specialised journal was suggested.
+- The registered result, the preprint and the repository are unchanged.
+
+## Amendment 24 Oct 2026 (v)
+
+Twenty-second amendment. The lines above are unchanged.
+
+- **Decision of 24 October 2026:** submit a rewritten version to the Journal of Artificial General Intelligence (JAGI), chosen as a specialised venue whose scope is generality of techniques across environments.
+- **JAGI facts**, recorded from its author pages and Author's Kit:
+  - PDF submission through OJS at jagi.mindmakers.org;
+  - no length limit, typical 20 to 30 pages;
+  - the Kit's fee policy noted, with any step under it taken after acceptance as the Kit specifies;
+  - licence stated as CC BY-NC-ND 4.0 in the Kit and first-page header and as CC BY on the submissions page, a discrepancy recorded and not resolved by the author;
+  - the Zenodo preprint stays CC-BY 4.0.
+- **JAGI draft 1** committed as b860143 under docs/manuscript_jagi/:
+  - manuscript_jagi.md built to PDF (21 pages, US Letter, the Kit's Word template as pandoc reference document through make_reference_doc.py and jagi.lua);
+  - supplement_jagi.md built to PDF (9 pages), holding the full V1 and V2 tables, the amendment trail, the exclusion lists, the provenance table, the frozen-file hashes and the 17-game ARC line;
+  - cover_letter_jagi.md for the OJS comments field, with the fee and prior-submission sentences removed in commit b93a700, since the journal's checklist asks only whether the submission is before another journal;
+  - REFERENCES_CHECK_jagi.md with six new references (Legg and Hutter 2007; Hernández-Orallo 2017; Chollet 2019; Perez-Liebana et al. 2016 and 2019; Genesereth, Love and Pell 2005), 24 in all;
+  - scripts/manuscript_check.py extended with a --dir option, output on the JOTE files unchanged;
+  - both checks exit 0; docx and PDF metadata clean.
+- The end page 72 of Genesereth et al. 2005 is confirmed by RKM from dblp and the Stanford faculty profile, to be recorded in REFERENCES_CHECK_jagi.md at the review pass.
+- **Open before submission:**
+  - a review pass;
+  - the supplement uploaded to the Zenodo record as a new version, and its DOI put in place of the SUPPLEMENT_DOI placeholder;
+  - the submission date in the first-page header set on the day of submission;
+  - the tag jagi-submission-v1;
+  - the OJS submission.
