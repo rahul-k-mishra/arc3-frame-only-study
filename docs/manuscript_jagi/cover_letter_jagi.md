@@ -6,6 +6,8 @@ The article reports a preregistered test of generality. A fixed, frame-only inst
 
 An earlier version of this article is a preprint on Zenodo under CC-BY 4.0: https://doi.org/10.5281/zenodo.23375065.
 
+The supplement to this version is on the same Zenodo record as version 2: https://doi.org/10.5281/zenodo.23614519
+
 The registered protocol's venue clause for this outcome read "repository record only, at most an arXiv note". I chose to seek peer review of the negative result instead. This departure is declared in the manuscript (Section 3.10) and changes no analysis and no number.
 
 Compared with the Zenodo preprint, this version is rewritten for a specialist readership in artificial general intelligence and shortened: the full tables, the amendment trail, the exclusion lists, the provenance of every number and the hashes of the frozen files are moved to a supplement. It is not under review elsewhere.

@@ -399,8 +399,8 @@ Proposed fix for Stage B: scripts/manuscript_numbers.py gains an option --state-
 
 - A citation for ARC-AGI-3 itself (technical report or launch post, as the CLAUDE.md must-cite list says). It needs a fetched, verified entry; draft 2 only narrows the sentence (F03).
 - Hernández-Orallo (2017): keep the narrowed wording, read the book and restore a direct characterization, or remove the reference.
-- The supplement as a second PDF: the Kit asks for a single PDF for review and calls online appendices "Online Appendix 1, …". Keep the supplement separate (on Zenodo, cited as SUPPLEMENT_DOI), append it to the review PDF, or rename it "Online Appendix 1".
-- SUPPLEMENT_DOI: the Zenodo version with the supplement, and its DOI, before submission.
+- The supplement as a second PDF: the Kit asks for a single PDF for review and calls online appendices "Online Appendix 1, …". Keep the supplement separate (on Zenodo, cited by the supplement-DOI placeholder), append it to the review PDF, or rename it "Online Appendix 1".
+- The supplement-DOI placeholder: the Zenodo version with the supplement, and its DOI, before submission.
 - The submission date in the first-page head, on the day of submission (BUILD.md step 5).
 - F30 and F31 (small capitals for the e-mail; live links) for the camera-ready version.
 - Whether to change the figure script so that the figure labels use the paper's terms (F28, F29); the script also draws the JOTE figures.

@@ -557,6 +557,16 @@ def provenance():
     need("docs/STATE.md", r"## Amendment 14 Oct 2026 \(r\)[\s\S]*?Both OSF embargoes\*\* \(2znhw, zu5vq\) "
                           r"were ended on 14 October 2026")
     add("date.embargo_end", "14 October 2026", "docs/STATE.md amendment (r)", "date")
+    # the JAGI supplement, published as version 2 of the same Zenodo record
+    m = need("docs/STATE.md", r"## Amendment 24 Oct 2026 \(w\)[\s\S]*?published on Zenodo on (\d{1,2}) (October) (\d{4}) "
+                              r"as version (\d+) of the preprint record, under (CC-BY \d+\.\d+), with DOI "
+                              r"(10\.5281/zenodo\.\d+) \((https://doi\.org/[^)\s]+)\)")
+    check(m.group(7) == "https://doi.org/" + m.group(6), "supplement URL = https://doi.org/ + DOI in STATE.md (w)")
+    add("date.supplement", f"{int(m.group(1))} {m.group(2)} {m.group(3)}", "docs/STATE.md amendment (w)", "date")
+    add("supplement.version", int(m.group(4)), "docs/STATE.md amendment (w)", "identifier")
+    add("supplement.license", m.group(5), "docs/STATE.md amendment (w)", "identifier")
+    add("supplement.doi", m.group(6), "docs/STATE.md amendment (w)", "identifier")
+    add("url.supplement", m.group(7), "docs/STATE.md amendment (w)", "url")
     # reference URLs for entries without a DOI, as fetched in the review of draft 1
     R = "docs/manuscript/REVIEW_draft1.md"
     for key, url in (("bertinetto", "https://proceedings.mlr.press/v148/bertinetto21a.html"),

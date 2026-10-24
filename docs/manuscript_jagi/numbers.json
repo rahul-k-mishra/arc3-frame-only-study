@@ -394,6 +394,11 @@
   "source": "docs/STATE.md amendment (i)",
   "value": "28 September 2026"
  },
+ "date.supplement": {
+  "class": "date",
+  "source": "docs/STATE.md amendment (w)",
+  "value": "24 October 2026"
+ },
  "date.venue_reading": {
   "class": "date",
   "source": "docs/STATE.md amendment (l) (dated 13 Oct 2026)",
@@ -2834,6 +2839,11 @@
   "source": "git log -1 -- docs/manuscript/REVIEW_draft1.md",
   "value": "48931d2"
  },
+ "lastcommit.docs/manuscript_jagi/REFERENCES_CHECK_jagi.md": {
+  "class": "hash",
+  "source": "git log -1 -- docs/manuscript_jagi/REFERENCES_CHECK_jagi.md",
+  "value": "e4c664f"
+ },
  "lastcommit.docs/preprint/preprint.md": {
   "class": "hash",
   "source": "git log -1 -- docs/preprint/preprint.md",
@@ -3499,6 +3509,21 @@
   "source": "scripts/analyze_common.py (IN_RANGE_C)",
   "value": 9
  },
+ "supplement.doi": {
+  "class": "identifier",
+  "source": "docs/STATE.md amendment (w)",
+  "value": "10.5281/zenodo.23614519"
+ },
+ "supplement.license": {
+  "class": "identifier",
+  "source": "docs/STATE.md amendment (w)",
+  "value": "CC-BY 4.0"
+ },
+ "supplement.version": {
+  "class": "identifier",
+  "source": "docs/STATE.md amendment (w)",
+  "value": 2
+ },
  "tag.v1.commit": {
   "class": "hash",
   "source": "git tag object prereg-v1",
@@ -3748,6 +3773,11 @@
   "class": "url",
   "source": "docs/STATE.md amendment (r)",
   "value": "https://doi.org/10.5281/zenodo.23375065"
+ },
+ "url.supplement": {
+  "class": "url",
+  "source": "docs/STATE.md amendment (w)",
+  "value": "https://doi.org/10.5281/zenodo.23614519"
  },
  "url.zu5vq": {
   "class": "url",
