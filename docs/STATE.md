@@ -905,3 +905,23 @@ Twenty-second amendment. The lines above are unchanged.
   - the submission date in the first-page header set on the day of submission;
   - the tag jagi-submission-v1;
   - the OJS submission.
+
+## Amendment 24 Oct 2026 (w)
+
+Twenty-third amendment. The lines above are unchanged.
+
+- **Review of JAGI draft 1** committed as d01ad23 (docs/manuscript_jagi/REVIEW_jagi_draft1.md): 39 findings, 5 blocking, 18 major, 16 minor, plus F40 found at the rebuild.
+  - Every section opening tested against the journal's scope sentence and rewritten where off scope.
+  - 51 numbers checked in context, one corrected.
+  - All 24 references re-fetched.
+- **Draft 2** committed as b558bf1 (CHANGES_jagi_draft2.md).
+- **Draft 3** committed as e4c664f (CHANGES_jagi_draft3.md):
+  - the Greek kappa written out and the typographic minus replaced so that no Identity-H font reaches the PDFs, with straight quotation marks and hyphens for the same reason;
+  - the title's line break fixed before "ARC-AGI-3";
+  - the ARC-AGI-3 technical report (ARC Prize Foundation, 22 April 2026) fetched, verified and cited;
+  - Hernández-Orallo (2017) removed because the book was not read; 24 references;
+  - scripts/manuscript_numbers.py gained the option --state-ref, and scripts/manuscript_check.py accepts an organization as author, with output on the JOTE files unchanged;
+  - a single submission PDF merged from paper and supplement (31 pages).
+- RKM approved on 24 October 2026 the transcription "[kappa]" inside the one registered quotation that holds the Greek letter, with the sentence that says so.
+- **The supplement**, docs/manuscript_jagi/supplement_jagi.pdf at e4c664f, is published on Zenodo on 24 October 2026 as version 2 of the preprint record, under CC-BY 4.0, with DOI 10.5281/zenodo.23614519 (https://doi.org/10.5281/zenodo.23614519); the version-1 DOI 10.5281/zenodo.23375065 of the preprint is unchanged.
+- The submission build of 24 October 2026 follows in the next commit, tagged jagi-submission-v1; the submission to JAGI follows it.
