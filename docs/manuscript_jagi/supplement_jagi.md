@@ -1,5 +1,8 @@
 ---
-title: "Supplement to: A Frame-Only Census of Game Mechanics Built on ARC‑AGI‑3 Failed a Preregistered Generality Test on MiniGrid/BabyAI and Procgen"
+title: |
+  Supplement to:\
+  A Frame-Only Census of Game Mechanics Built on\
+  ARC-AGI-3 Failed a Preregistered Generality Test on MiniGrid/BabyAI and Procgen
 lang: en-US
 ---
 
@@ -7,7 +10,7 @@ This supplement accompanies the article of the same title. The article cites it 
 
 ## S.1 The Full V1 Table
 
-Table S1 is docs/tables/v1.md (commit bb0f1a1), as written by the frozen analysis code at prereg-v1.1, with every row and cell unchanged. Agreement is the share of games where the census verdict equals the truth, and κ is given only where both truth values have at least 3 games. The code's identifiers are kept. On MiniGrid/BabyAI, "macro" is absolute moves and "raw" primitive actions. On Procgen, "center_off" is the whole-level view and "center_on" the view centered on the agent, "in_range" is the nine games of the operating range, and "camera_distinct" the five games where the two views differ.
+Table S1 is docs/tables/v1.md (commit bb0f1a1), as written by the frozen analysis code at prereg-v1.1, with every row and cell unchanged. Agreement is the share of games where the census verdict equals the truth, and kappa is given only where both truth values have at least 3 games. The code's identifiers are kept. On MiniGrid/BabyAI, "macro" is absolute moves and "raw" primitive actions. On Procgen, "center_off" is the whole-level view and "center_on" the view centered on the agent, "in_range" is the nine games of the operating range, and "camera_distinct" the five games where the two views differ.
 
 | suite | condition | subset | assumption | n | truth_holds | agreement | kappa | verdict |
 |---------|-----------|------------------|------------|-----|-----------|----------|---------|------------------|
@@ -164,99 +167,27 @@ These lists are the registered constants in scripts/analyze_common.py at prereg-
 
 B1. No success at all (1 environment; on every agent's list in both conditions):
 
-- MiniGrid-Playground-v0
+MiniGrid-Playground-v0.
 
 B2. Success needs "done" (5; on every list in both conditions; "done" is in no key map):
 
-- MiniGrid-GoToDoor-5x5-v0
-- MiniGrid-GoToDoor-6x6-v0
-- MiniGrid-GoToDoor-8x8-v0
-- MiniGrid-GoToObject-6x6-N2-v0
-- MiniGrid-GoToObject-8x8-N2-v0
+MiniGrid-GoToDoor-5x5-v0; MiniGrid-GoToDoor-6x6-v0; MiniGrid-GoToDoor-8x8-v0; MiniGrid-GoToObject-6x6-N2-v0; MiniGrid-GoToObject-8x8-N2-v0.
 
 B3. Success is a drop (15; on the absolute-move lists of every agent):
 
-- MiniGrid-PutNear-6x6-N2-v0
-- MiniGrid-PutNear-8x8-N3-v0
-- BabyAI-PutNextLocal-v0
-- BabyAI-PutNextLocalS5N3-v0
-- BabyAI-PutNextLocalS6N4-v0
-- BabyAI-PutNextS4N1-v0
-- BabyAI-PutNextS5N1-v0
-- BabyAI-PutNextS5N2-v0
-- BabyAI-PutNextS5N2Carrying-v0
-- BabyAI-PutNextS6N3-v0
-- BabyAI-PutNextS6N3Carrying-v0
-- BabyAI-PutNextS7N4-v0
-- BabyAI-PutNextS7N4Carrying-v0
-- BabyAI-MoveTwoAcrossS5N2-v0
-- BabyAI-MoveTwoAcrossS8N9-v0
+MiniGrid-PutNear-6x6-N2-v0; MiniGrid-PutNear-8x8-N3-v0; BabyAI-PutNextLocal-v0; BabyAI-PutNextLocalS5N3-v0; BabyAI-PutNextLocalS6N4-v0; BabyAI-PutNextS4N1-v0; BabyAI-PutNextS5N1-v0; BabyAI-PutNextS5N2-v0; BabyAI-PutNextS5N2Carrying-v0; BabyAI-PutNextS6N3-v0; BabyAI-PutNextS6N3Carrying-v0; BabyAI-PutNextS7N4-v0; BabyAI-PutNextS7N4Carrying-v0; BabyAI-MoveTwoAcrossS5N2-v0; BabyAI-MoveTwoAcrossS8N9-v0.
 
 B4. A drop is a precondition (28; on the absolute-move lists of every agent, and on I1's lists in both conditions as toggle preconditions):
 
-- MiniGrid-KeyCorridorS3R1-v0
-- MiniGrid-KeyCorridorS3R2-v0
-- MiniGrid-KeyCorridorS3R3-v0
-- MiniGrid-KeyCorridorS4R3-v0
-- MiniGrid-KeyCorridorS5R3-v0
-- MiniGrid-KeyCorridorS6R3-v0
-- MiniGrid-UnlockPickup-v0
-- MiniGrid-BlockedUnlockPickup-v0
-- MiniGrid-ObstructedMaze-1Dl-v0
-- MiniGrid-ObstructedMaze-1Dlh-v0
-- MiniGrid-ObstructedMaze-1Dlhb-v0
-- MiniGrid-ObstructedMaze-1Q-v1
-- MiniGrid-ObstructedMaze-2Dl-v0
-- MiniGrid-ObstructedMaze-2Dlh-v0
-- MiniGrid-ObstructedMaze-2Dlhb-v1
-- MiniGrid-ObstructedMaze-2Q-v1
-- MiniGrid-ObstructedMaze-Full-v1
-- BabyAI-KeyCorridor-v0
-- BabyAI-KeyCorridorS3R1-v0
-- BabyAI-KeyCorridorS3R2-v0
-- BabyAI-KeyCorridorS3R3-v0
-- BabyAI-KeyCorridorS4R3-v0
-- BabyAI-KeyCorridorS5R3-v0
-- BabyAI-KeyCorridorS6R3-v0
-- BabyAI-UnlockPickup-v0
-- BabyAI-UnlockPickupDist-v0
-- BabyAI-BlockedUnlockPickup-v0
-- BabyAI-UnlockToUnlock-v0
+MiniGrid-KeyCorridorS3R1-v0; MiniGrid-KeyCorridorS3R2-v0; MiniGrid-KeyCorridorS3R3-v0; MiniGrid-KeyCorridorS4R3-v0; MiniGrid-KeyCorridorS5R3-v0; MiniGrid-KeyCorridorS6R3-v0; MiniGrid-UnlockPickup-v0; MiniGrid-BlockedUnlockPickup-v0; MiniGrid-ObstructedMaze-1Dl-v0; MiniGrid-ObstructedMaze-1Dlh-v0; MiniGrid-ObstructedMaze-1Dlhb-v0; MiniGrid-ObstructedMaze-1Q-v1; MiniGrid-ObstructedMaze-2Dl-v0; MiniGrid-ObstructedMaze-2Dlh-v0; MiniGrid-ObstructedMaze-2Dlhb-v1; MiniGrid-ObstructedMaze-2Q-v1; MiniGrid-ObstructedMaze-Full-v1; BabyAI-KeyCorridor-v0; BabyAI-KeyCorridorS3R1-v0; BabyAI-KeyCorridorS3R2-v0; BabyAI-KeyCorridorS3R3-v0; BabyAI-KeyCorridorS4R3-v0; BabyAI-KeyCorridorS5R3-v0; BabyAI-KeyCorridorS6R3-v0; BabyAI-UnlockPickup-v0; BabyAI-UnlockPickupDist-v0; BabyAI-BlockedUnlockPickup-v0; BabyAI-UnlockToUnlock-v0.
 
 B5. Success is a toggle (20; on I1's lists in both conditions):
 
-- MiniGrid-Unlock-v0
-- MiniGrid-RedBlueDoors-6x6-v0
-- MiniGrid-RedBlueDoors-8x8-v0
-- BabyAI-Open-v0
-- BabyAI-OpenDoor-v0
-- BabyAI-OpenDoorColor-v0
-- BabyAI-OpenDoorDebug-v0
-- BabyAI-OpenDoorLoc-v0
-- BabyAI-OpenDoorsOrderN2-v0
-- BabyAI-OpenDoorsOrderN2Debug-v0
-- BabyAI-OpenDoorsOrderN4-v0
-- BabyAI-OpenDoorsOrderN4Debug-v0
-- BabyAI-OpenRedBlueDoors-v0
-- BabyAI-OpenRedBlueDoorsDebug-v0
-- BabyAI-OpenRedDoor-v0
-- BabyAI-OpenTwoDoors-v0
-- BabyAI-Unlock-v0
-- BabyAI-UnlockLocal-v0
-- BabyAI-UnlockLocalDist-v0
-- BabyAI-KeyInBox-v0
+MiniGrid-Unlock-v0; MiniGrid-RedBlueDoors-6x6-v0; MiniGrid-RedBlueDoors-8x8-v0; BabyAI-Open-v0; BabyAI-OpenDoor-v0; BabyAI-OpenDoorColor-v0; BabyAI-OpenDoorDebug-v0; BabyAI-OpenDoorLoc-v0; BabyAI-OpenDoorsOrderN2-v0; BabyAI-OpenDoorsOrderN2Debug-v0; BabyAI-OpenDoorsOrderN4-v0; BabyAI-OpenDoorsOrderN4Debug-v0; BabyAI-OpenRedBlueDoors-v0; BabyAI-OpenRedBlueDoorsDebug-v0; BabyAI-OpenRedDoor-v0; BabyAI-OpenTwoDoors-v0; BabyAI-Unlock-v0; BabyAI-UnlockLocal-v0; BabyAI-UnlockLocalDist-v0; BabyAI-KeyInBox-v0.
 
 B6. A toggle is a precondition (these 9, plus the 28 of B4; on I1's lists in both conditions):
 
-- MiniGrid-DoorKey-5x5-v0
-- MiniGrid-DoorKey-6x6-v0
-- MiniGrid-DoorKey-16x16-v0
-- MiniGrid-LockedRoom-v0
-- MiniGrid-MultiRoom-N2-S4-v0
-- MiniGrid-MultiRoom-N4-S5-v1
-- MiniGrid-MultiRoom-N6-v0
-- BabyAI-GoToImpUnlock-v0
-- BabyAI-PickupAbove-v0
+MiniGrid-DoorKey-5x5-v0; MiniGrid-DoorKey-6x6-v0; MiniGrid-DoorKey-16x16-v0; MiniGrid-LockedRoom-v0; MiniGrid-MultiRoom-N2-S4-v0; MiniGrid-MultiRoom-N4-S5-v1; MiniGrid-MultiRoom-N6-v0; BabyAI-GoToImpUnlock-v0; BabyAI-PickupAbove-v0.
 
 | agent and condition | lists | excluded | primary games |
 |---|---|---|---|
@@ -274,15 +205,15 @@ Every number in the article and in this supplement is a value in docs/manuscript
 
 | number class | source files, each with the commit that last changed it |
 |---|---|
-| count | docs/EXPLORATORY_V1_DIAGNOSIS.md (7d9205e); docs/GROUND_TRUTH_minigrid.md (f12e529); docs/GROUND_TRUTH_procgen.md (8d209b3); docs/HELDOUT.md (4d2c02c); docs/PREREG.md (7d9205e); docs/STATE.md (at the commit tagged jagi-submission-v1); docs/tables/v1.json (bb0f1a1); docs/tables/v2.json (bb0f1a1); runs/checks/determinism_check.json (5ac65c1); runs/exploratory/v1_diagnosis.json (66e5606); runs/pilot_checks/pilot_check.json (cda7aa0); runs/pilot_checks/procgen_camera_check.json (cda7aa0); scripts/analyze_common.py (a96e49e) |
-| rate (agreement, κ, AUROC, interval bound, share) | docs/tables/v1.json (bb0f1a1); docs/tables/v2.json (bb0f1a1); runs/exploratory/v1_diagnosis.json (66e5606) |
+| count | docs/EXPLORATORY_V1_DIAGNOSIS.md (7d9205e); docs/GROUND_TRUTH_minigrid.md (f12e529); docs/GROUND_TRUTH_procgen.md (8d209b3); docs/HELDOUT.md (4d2c02c); docs/PREREG.md (7d9205e); docs/STATE.md (at the commit tagged jagi-submission-v1); docs/manuscript_jagi/REFERENCES_CHECK_jagi.md (changed in the commit that carries this table); docs/tables/v1.json (bb0f1a1); docs/tables/v2.json (bb0f1a1); runs/checks/determinism_check.json (5ac65c1); runs/exploratory/v1_diagnosis.json (66e5606); runs/pilot_checks/pilot_check.json (cda7aa0); runs/pilot_checks/procgen_camera_check.json (cda7aa0); scripts/analyze_common.py (a96e49e) |
+| rate (agreement, kappa, AUROC, interval bound, share) | docs/tables/v1.json (bb0f1a1); docs/tables/v2.json (bb0f1a1); runs/exploratory/v1_diagnosis.json (66e5606) |
 | registered threshold | docs/PREREG.md (7d9205e) |
-| constant, cap, seed or time | docs/PREREG.md (7d9205e); docs/tables/v2.json (bb0f1a1); runs/pilot_checks/pilot_check.json (cda7aa0); runs/pilot_checks/procgen_camera_check.json (cda7aa0) |
+| constant, cap, seed or time | docs/PREREG.md (7d9205e); docs/manuscript_jagi/REFERENCES_CHECK_jagi.md (changed in the commit that carries this table); docs/tables/v2.json (bb0f1a1); runs/pilot_checks/pilot_check.json (cda7aa0); runs/pilot_checks/procgen_camera_check.json (cda7aa0) |
 | commit or blob hash | docs/PREREG.md (7d9205e); docs/STATE.md (at the commit tagged jagi-submission-v1); git tag objects and git ls-tree (the tag objects themselves) |
-| date | docs/HELDOUT.md (4d2c02c); docs/PREREG.md (7d9205e); docs/STATE.md (at the commit tagged jagi-submission-v1); git tag objects and git ls-tree (the tag objects themselves) |
+| date | docs/HELDOUT.md (4d2c02c); docs/PREREG.md (7d9205e); docs/STATE.md (at the commit tagged jagi-submission-v1); docs/manuscript_jagi/REFERENCES_CHECK_jagi.md (changed in the commit that carries this table); git tag objects and git ls-tree (the tag objects themselves) |
 | package version | docs/PREREG.md (7d9205e) |
-| URL or DOI | docs/STATE.md (at the commit tagged jagi-submission-v1); docs/manuscript/REFERENCES_CHECK.md (6df6718); docs/manuscript/REVIEW_draft1.md (48931d2); docs/preprint/preprint.md (8bed48b); docs/preprint/references.bib (8bed48b) |
-| reference field, verdict word or ORCID | docs/STATE.md (at the commit tagged jagi-submission-v1); docs/manuscript/REFERENCES_CHECK.md (6df6718); docs/preprint/preprint.md (8bed48b); docs/preprint/references.bib (8bed48b); docs/tables/v1.json (bb0f1a1); docs/tables/v2.json (bb0f1a1) |
+| URL or DOI | docs/STATE.md (at the commit tagged jagi-submission-v1); docs/manuscript/REFERENCES_CHECK.md (6df6718); docs/manuscript/REVIEW_draft1.md (48931d2); docs/manuscript_jagi/REFERENCES_CHECK_jagi.md (changed in the commit that carries this table); docs/preprint/preprint.md (8bed48b); docs/preprint/references.bib (8bed48b) |
+| reference field, verdict word or ORCID | docs/STATE.md (at the commit tagged jagi-submission-v1); docs/manuscript/REFERENCES_CHECK.md (6df6718); docs/manuscript_jagi/REFERENCES_CHECK_jagi.md (changed in the commit that carries this table); docs/preprint/preprint.md (8bed48b); docs/preprint/references.bib (8bed48b); docs/tables/v1.json (bb0f1a1); docs/tables/v2.json (bb0f1a1) |
 
 : Table S5. Number classes and their sources.
 

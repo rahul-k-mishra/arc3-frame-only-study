@@ -17,6 +17,8 @@ Nothing here plays a game or reads runs/suites.  The inputs are:
     docs/GROUND_TRUTH_minigrid.md, docs/GROUND_TRUTH_procgen.md (through analyze_common's parsers)
     docs/HELDOUT.md (the ARC split and the dc22 move), docs/manuscript/REVIEW_draft1.md (reference URLs),
     docs/manuscript/REFERENCES_CHECK.md (fields of the references added for the manuscript)
+    docs/manuscript_jagi/REFERENCES_CHECK_jagi.md (the ARC-AGI-3 technical report: the numbers the JAGI
+    manuscript takes from it, read from the passages recorded there)
     the three annotated tag objects and `git ls-tree` at the tags (committed objects, read only)
 
 Every value taken from prose is matched by a regular expression against its file; the script stops
@@ -626,11 +628,32 @@ def provenance():
                     add(f"ref.{key}.{field}_num{i}", int(num), "docs/preprint/references.bib", "identifier")
 
 
+# ------------------------------------------------------------------ JAGI references
+def jagi_references():
+    """Numbers the JAGI manuscript takes from the ARC-AGI-3 technical report (ARC Prize Foundation,
+    2026), read from the passages and fields recorded in docs/manuscript_jagi/REFERENCES_CHECK_jagi.md."""
+    J = "docs/manuscript_jagi/REFERENCES_CHECK_jagi.md"
+    m = need(J, r"Public Demo, (\d+) environments; Semi-Private, (\d+); Fully Private, (\d+)")
+    add("arcagi3.public_demo", int(m.group(1)), J + ", ARC-AGI-3 report Table 1", "count")
+    add("arcagi3.semi_private", int(m.group(2)), J + ", ARC-AGI-3 report Table 1", "count")
+    add("arcagi3.fully_private", int(m.group(3)), J + ", ARC-AGI-3 report Table 1", "count")
+    m = need(J, r"The agent views a (\d+)x(\d+) grid where each cell is one of (\d+) possible colors")
+    add("arcagi3.frame_side", int(m.group(1)), J + ", ARC-AGI-3 report Section 2.3.1", "constant")
+    add("arcagi3.colors", int(m.group(3)), J + ", ARC-AGI-3 report Section 2.3.1", "constant")
+    m = need(J, r"Printed: ARC Prize Foundation\. (\d{4})\. .*?Technical report, (\d{1,2} \w+ \d{4})\. .*?\(fetched (\d{1,2} \w+ \d{4})\)")
+    add("ref.arcagi3.year", int(m.group(1)), J, "identifier")
+    add("date.arcagi3_report", m.group(2), J, "date")
+    add("date.arcagi3_fetched", m.group(3), J, "date")
+    m = need(J, r"Printed: ARC Prize Foundation\. .*?(https://arcprize\.org/\S+\.pdf)")
+    add("ref.arcagi3.url", m.group(1), J, "url")
+    CHECKS.append("ARC-AGI-3 report numbers read from " + J)
+
+
 # ------------------------------------------------------------------ Appendix C
 def appendix_c():
     """One row per number class: the committed files its values come from, and the commit that last
     changed each file (git log -1).  Those commits are added to numbers.json as hashes."""
-    names = {"count": "count", "rate": "rate (agreement, κ, AUROC, interval bound, share)",
+    names = {"count": "count", "rate": "rate (agreement, kappa, AUROC, interval bound, share)",
              "threshold": "registered threshold", "constant": "constant, cap, seed or time",
              "hash": "commit or blob hash", "date": "date", "version": "package version",
              "url": "URL or DOI", "identifier": "reference field, verdict word or ORCID"}
@@ -678,6 +701,7 @@ def main():
     checks()
     protocol()
     provenance()
+    jagi_references()
     for k, v in N.items():
         if v["class"] == "hash":
             v["value"] = str(v["value"])

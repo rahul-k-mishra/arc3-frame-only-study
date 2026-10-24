@@ -48,7 +48,8 @@ checked as numerals and are ignored when sections are looked up by name; lines t
 pandoc div (":::") and a "**Keywords:**" line do not count toward the word limits; in-text
 citations may use "and" as well as "&"; a reference entry's year may stand without parentheses
 ("Legg, S., and Hutter, M. 2007."), as in the JAGI reference style; family names may carry accented
-letters.
+letters; an organization may be the author ("ARC Prize Foundation. 2026." in the list, "(ARC Prize
+Foundation, 2026)" or "ARC Prize Foundation (2026)" in the text), and is matched by its full name.
 
 Exit code 0 only when every count is zero and every limit holds; 1 otherwise.
 Expected console output when the manuscript is clean: seven blocks (a) to (g), each ending in
@@ -64,6 +65,7 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MS_DIR = os.path.join(ROOT, "docs", "manuscript")
 NAME = r"[A-Z][A-Za-z\u00c0-\u00ff\-]+"
+ORG = r"[A-Z][A-Za-z\-]+(?: [A-Z][A-Za-z\-]+)* (?:Foundation|Society|Institute|Association|Prize)(?: [A-Z][A-Za-z\-]+)*"
 HEADNUM = re.compile(r"^(#{1,6} )(\d+(?:\.\d+)*\.? )")
 MONTHS = "January|February|March|April|May|June|July|August|September|October|November|December"
 
@@ -139,6 +141,8 @@ def cited_and_refs(lines, ref_start, ref_end):
     cited = set()
     for m in re.finditer(rf"({NAME})(?: et al\.| and {NAME})? \((\d{{4}})\)", body):
         cited.add((m.group(1), m.group(2)))
+    for m in re.finditer(rf"({ORG}),? \(?(\d{{4}})\)?", body):
+        cited.add((m.group(1), m.group(2)))
     for grp in re.findall(r"\(([^()]*?\d{4}[^()]*?)\)", body):
         for part in grp.split(";"):
             m = re.match(rf"\s*(?:see |e\.g\., )?({NAME})(?: et al\.| & {NAME}| and {NAME})?, (\d{{4}})\s*$", part)
@@ -147,6 +151,10 @@ def cited_and_refs(lines, ref_start, ref_end):
     refs = set()
     for line in lines[ref_start:ref_end]:
         m = re.match(rf"({NAME}), [A-Z]\..*?\(?(\d{{4}})\)?\.", line)
+        if m:
+            refs.add((m.group(1), m.group(2)))
+            continue
+        m = re.match(rf"({ORG})\. (\d{{4}})\.", line)
         if m:
             refs.add((m.group(1), m.group(2)))
     return cited, refs

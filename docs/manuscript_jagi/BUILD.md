@@ -57,11 +57,11 @@ Step 6. Build the two .docx files with pandoc. The only metadata author is the a
 ```powershell
 cd D:\Research\arc3\repo
 $pd = "C:\Users\Shivani Mishra\AppData\Local\Pandoc\pandoc.exe"
-& $pd docs\manuscript_jagi\manuscript_jagi.md -o docs\manuscript_jagi\manuscript_jagi.docx --reference-doc=docs\manuscript_jagi\jagi_reference.docx --resource-path=docs\manuscript_jagi --shift-heading-level-by=-1 --lua-filter=docs\manuscript_jagi\jagi.lua --table-caption-position=below -M author="Rahul Kumar Mishra"
-& $pd docs\manuscript_jagi\supplement_jagi.md -o docs\manuscript_jagi\supplement_jagi.docx --reference-doc=docs\manuscript_jagi\jagi_reference.docx --resource-path=docs\manuscript_jagi --shift-heading-level-by=-1 --lua-filter=docs\manuscript_jagi\jagi.lua --table-caption-position=below -M author="Rahul Kumar Mishra"
+& $pd -f markdown-smart docs\manuscript_jagi\manuscript_jagi.md -o docs\manuscript_jagi\manuscript_jagi.docx --reference-doc=docs\manuscript_jagi\jagi_reference.docx --resource-path=docs\manuscript_jagi --shift-heading-level-by=-1 --lua-filter=docs\manuscript_jagi\jagi.lua --table-caption-position=below -M author="Rahul Kumar Mishra"
+& $pd -f markdown-smart docs\manuscript_jagi\supplement_jagi.md -o docs\manuscript_jagi\supplement_jagi.docx --reference-doc=docs\manuscript_jagi\jagi_reference.docx --resource-path=docs\manuscript_jagi --shift-heading-level-by=-1 --lua-filter=docs\manuscript_jagi\jagi.lua --table-caption-position=below -M author="Rahul Kumar Mishra"
 ```
 
-Expected: no output, and the two .docx files in docs\manuscript_jagi.
+Expected: no output, and the two .docx files in docs\manuscript_jagi. The reader option -f markdown-smart keeps quotation marks and apostrophes straight: Word embeds a font with Identity-H encoding, which the Kit does not allow, for any line with curly quotes, en dashes or list bullets, so the sources use none of them.
 
 Step 7. Convert both to PDF with docx2pdf (Microsoft Word must be installed), and print the page counts.
 
@@ -89,3 +89,28 @@ D:\Research\arc3\brutus\.venv\Scripts\python.exe -I -c "import zipfile,re,sys; [
 ```
 
 Expected: for each docx, the creator "Rahul Kumar Mishra", the title, every other field empty, and 0 hits; for each PDF, its hit count. The only allowed hit is "Leveraging" in the title of Cobbe et al. (2020) in the reference list of manuscript_jagi.pdf. For each docx, app.xml holds only the template, application and version fields, and 0 template-name hits.
+
+Fonts. The Kit does not allow fonts with Identity-H (CID) encoding in the final version. They arise when a character outside the Windows-1252 set (for example the Greek kappa, the minus sign U+2212 or the non-breaking hyphen U+2011) reaches the PDF, so the manuscript and the supplement use none.
+
+```powershell
+cd D:\Research\arc3\repo
+pdffonts docs\manuscript_jagi\manuscript_jagi.pdf
+pdffonts docs\manuscript_jagi\supplement_jagi.pdf
+```
+
+Expected: every font line has encoding WinAnsi; none has Identity-H. If one does, find the character with pdftotext, replace it in the Markdown, and rebuild from step 4.
+
+Step 9. Merge the paper and the supplement, in that order, into the single submission PDF docs\manuscript_jagi\submission_jagi.pdf, with the pypdf package in the ARC venv (install it once with the first command if it is absent). The merged file's title is the paper's title and its author the author's name. The two separate PDFs are kept; the supplement alone goes to Zenodo.
+
+```powershell
+cd D:\Research\arc3\repo
+D:\Research\arc3\brutus\.venv\Scripts\python.exe -m pip install pypdf
+D:\Research\arc3\brutus\.venv\Scripts\python.exe -c "from pypdf import PdfWriter; w = PdfWriter(); [w.append(p) for p in (r'docs\manuscript_jagi\manuscript_jagi.pdf', r'docs\manuscript_jagi\supplement_jagi.pdf')]; w.add_metadata({'/Title': 'A Frame-Only Census of Game Mechanics Built on ARC-AGI-3 Failed a Preregistered Generality Test on MiniGrid/BabyAI and Procgen', '/Author': 'Rahul Kumar Mishra'}); w.write(r'docs\manuscript_jagi\submission_jagi.pdf'); print('submission_jagi.pdf written,', len(w.pages), 'pages')"
+$a = [int]((pdfinfo docs\manuscript_jagi\manuscript_jagi.pdf | Select-String '^Pages:').ToString() -replace '\D','')
+$b = [int]((pdfinfo docs\manuscript_jagi\supplement_jagi.pdf | Select-String '^Pages:').ToString() -replace '\D','')
+$c = [int]((pdfinfo docs\manuscript_jagi\submission_jagi.pdf | Select-String '^Pages:').ToString() -replace '\D','')
+"paper $a + supplement $b = $($a + $b); merged $c; " + $(if ($c -eq $a + $b) { "OK" } else { "MISMATCH" })
+pdfinfo docs\manuscript_jagi\submission_jagi.pdf | Select-String "Title|Author|Pages"
+```
+
+Expected: "submission_jagi.pdf written, N pages", then "paper P + supplement S = N; merged N; OK", and the title and author as set.
