@@ -1,0 +1,9 @@
+% supplement_header.tex -- for ESM_1.pdf: table captions carry their own labels ("Table S1."), so the
+% automatic "Table n:" label is not printed; typewriter text in Courier, a Type 1 font, so that no
+% bitmap font is embedded; long identifiers and file paths may break lines with stretched spacing
+% rather than run into the margin.
+\usepackage{caption}
+\captionsetup{labelformat=empty}
+\renewcommand{\ttdefault}{pcr}
+\setlength{\emergencystretch}{3em}
+\sloppy

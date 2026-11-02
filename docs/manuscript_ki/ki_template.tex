@@ -1,0 +1,50 @@
+% ki_template.tex -- pandoc template that sets docs/manuscript_ki/manuscript_ki.md in the Springer
+% journal class svjour3 (the LaTeX package linked from KI's submission guidelines), with the option
+% "twocolumn" that the guidelines ask for, and the bibliography style spmpsci (numbered citations in
+% square brackets).  Built by docs/manuscript_ki/BUILD.md; pandoc fills the template fields.
+\RequirePackage{fix-cm}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[twocolumn]{svjour3}
+\smartqed
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage{mathptmx}
+% typewriter text (the e-mail address) in Courier, a Type 1 font, so that no bitmap font is embedded
+\renewcommand{\ttdefault}{pcr}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage[numbers,square,sort&compress]{natbib}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+% DOIs as full links, as the journal asks ("https://doi.org/..."); no "URL" label before a URL
+\newcommand{\doi}[1]{\url{https://doi.org/#1}}
+\newcommand{\urlprefix}{}
+\urlstyle{same}
+% narrow two-column lines: let TeX stretch interword space rather than run into the margin
+\setlength{\emergencystretch}{3em}
+\journalname{KI - K\"unstliche Intelligenz}
+\hypersetup{pdftitle={$pdftitle$}, pdfauthor={$author$}, pdfsubject={}, pdfkeywords={}, pdfcreator={}, pdfproducer={}}
+\begin{document}
+\title{$title$}
+\titlerunning{$titlerunning$}
+\author{$author$}
+\authorrunning{$authorrunning$}
+\institute{$author$ \at
+  $affiliation$ \\
+  \email{$email$} \\
+  ORCID $orcid$}
+\date{Received: date / Accepted: date}
+\maketitle
+\begin{abstract}
+$abstract$
+\keywords{$for(keywords)$$keywords$$sep$ \and $endfor$}
+\end{abstract}
+
+$body$
+
+\bibliographystyle{spmpsci}
+\bibliography{references_ki}
+\end{document}

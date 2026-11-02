@@ -30,6 +30,16 @@ embedded figure fonts.  Every drawn number and label is the same as without the 
     D:\\Research\\arc3\\brutus\\.venv\\Scripts\\python.exe scripts\\manuscript_figures.py --tog
 Expected console output: the same four blocks, then "4 figures written to docs/manuscript_tog".
 Without the option the script behaves exactly as before.
+
+Option --ki (KI - Kuenstliche Intelligenz version, docs/manuscript_ki/BUILD.md): the figures follow the
+journal's artwork rules as fetched on 2 November 2026 (docs/manuscript_ki/JOURNAL_REQUIREMENTS.md):
+vector files with embedded fonts, named Fig1 to Fig4, written both as PDF (for the LaTeX build) and as
+EPS (the journal's preferred vector format), 174 mm wide (the two-column text width), at the default
+heights (all below the journal's 234 mm), all lettering in Arial at 8 pt.  The thresholds are read
+from docs/manuscript_ki/numbers.json.  Every drawn number and label is the same as without the option.
+    D:\\Research\\arc3\\brutus\\.venv\\Scripts\\python.exe scripts\\manuscript_figures.py --ki
+Expected console output: the same four blocks, named Fig1 to Fig4, then "4 figures written to
+docs/manuscript_ki".  Without the option the script behaves exactly as before.
 """
 from __future__ import annotations
 
@@ -41,8 +51,9 @@ from multiprocessing import Pool
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MM = 1 / 25.4
 TOG = "--tog" in sys.argv[1:]
-OUT = os.path.join(ROOT, "docs", "manuscript_tog" if TOG else "manuscript")
-WIDTH = (182 if TOG else 170) * MM
+KI = "--ki" in sys.argv[1:]
+OUT = os.path.join(ROOT, "docs", "manuscript_tog" if TOG else "manuscript_ki" if KI else "manuscript")
+WIDTH = (182 if TOG else 174 if KI else 170) * MM
 DPI = 600 if TOG else 300
 # figure heights in mm: (default, --tog)
 HEIGHT = {"fig1": (120, 88), "fig2": (175, 112), "fig3": (125, 92), "fig4": (110, 76)}
@@ -50,6 +61,23 @@ HEIGHT = {"fig1": (120, 88), "fig2": (175, 112), "fig3": (125, 92), "fig4": (110
 
 def _h(name):
     return HEIGHT[name][1 if TOG else 0] * MM
+
+
+def fs(size):
+    """Font size in points: as given without --ki; 8 pt for all lettering with --ki."""
+    return 8 if KI else size
+
+
+def _name(k):
+    return f"Fig{k}" if KI else f"fig{k}.png"
+
+
+def _save(fig, k):
+    if KI:
+        fig.savefig(os.path.join(OUT, f"Fig{k}.pdf"))
+        fig.savefig(os.path.join(OUT, f"Fig{k}.eps"))
+    else:
+        fig.savefig(os.path.join(OUT, f"fig{k}.png"), dpi=DPI)
 
 LINES_V1 = [("minigrid", "macro", "all", "MiniGrid/BabyAI, absolute moves\n(161 games)"),
             ("minigrid", "raw", "all", "MiniGrid/BabyAI, primitive actions\n(161 games)"),
@@ -74,9 +102,12 @@ def _setup():
     import matplotlib.pyplot as plt
     global MaxNLocator
     from matplotlib.ticker import MaxNLocator
-    plt.rcParams.update({"font.size": 7.5, "axes.labelsize": 7.5, "xtick.labelsize": 7, "ytick.labelsize": 7,
-                         "legend.fontsize": 7, "font.family": "DejaVu Sans", "axes.linewidth": 0.6,
-                         "hatch.linewidth": 0.5})
+    plt.rcParams.update({"font.size": fs(7.5), "axes.labelsize": fs(7.5), "xtick.labelsize": fs(7),
+                         "ytick.labelsize": fs(7), "legend.fontsize": fs(7), "font.family": "DejaVu Sans",
+                         "axes.linewidth": 0.6, "hatch.linewidth": 0.5})
+    if KI:
+        # Arial lettering, fonts embedded as TrueType in the PDF and EPS files
+        plt.rcParams.update({"font.family": "Arial", "pdf.fonttype": 42, "ps.fonttype": 42})
     return plt
 
 
@@ -95,13 +126,13 @@ def fig1():
         ax.axhline(lo, color="black", linestyle="--", linewidth=0.8)
         ax.axhline(hi, color="black", linestyle=":", linewidth=1.0)
         for i, (v, w) in enumerate(zip(vals, verd)):
-            ax.text(i, v + 0.03, w, rotation=90, ha="center", va="bottom", fontsize=6.5,
+            ax.text(i, v + 0.03, w, rotation=90, ha="center", va="bottom", fontsize=fs(6.5),
                     bbox=dict(facecolor="white", edgecolor="none", pad=0.6))
             drawn.append(f"{s} {c} {sub} {A[i]}: agreement {v:.4f}, verdict {w}")
         ax.set_xticks(range(5), A)
         ax.set_ylim(0, 1.75)
         ax.set_yticks([0, 0.25, 0.5, 0.75, 1.0])
-        ax.set_xlabel(title, fontsize=7)
+        ax.set_xlabel(title, fontsize=fs(7))
         ax.spines[["top", "right"]].set_visible(False)
     for ax in axes[:, 0]:
         ax.set_ylabel("Agreement with\nthe truth table" if TOG else "Agreement with the truth table")
@@ -110,17 +141,17 @@ def fig1():
     Y1, Y2, Y3 = (0.92, 0.42, 0.02) if TOG else (0.7, 0.4, 0.15)
     leg.plot([0.05, 0.25], [Y1, Y1], "k:", linewidth=1.0)
     leg.text(0.3, Y1, f"{hi:.2f}: PASS needs agreement\nat or above this line\n(and κ ≥ {_thr('thr.v1_pass_kappa'):.2f} where κ applies)",
-             va="center", fontsize=6.8)
+             va="center", fontsize=fs(6.8))
     leg.plot([0.05, 0.25], [Y2, Y2], "k--", linewidth=0.8)
-    leg.text(0.3, Y2, f"{lo:.2f}: FAIL below this line", va="center", fontsize=6.8)
-    leg.text(0.05, Y3, "Word above each bar: the verdict\nprinted by the frozen analysis code", fontsize=6.8,
+    leg.text(0.3, Y2, f"{lo:.2f}: FAIL below this line", va="center", fontsize=fs(6.8))
+    leg.text(0.05, Y3, "Word above each bar: the verdict\nprinted by the frozen analysis code", fontsize=fs(6.8),
              va="center")
     leg.set_xlim(0, 1)
     leg.set_ylim(0, 1)
     fig.tight_layout(h_pad=1.2, w_pad=0.6)
-    fig.savefig(os.path.join(OUT, "fig1.png"), dpi=DPI)
+    _save(fig, 1)
     plt.close(fig)
-    return "fig1.png", src, drawn
+    return _name(1), src, drawn
 
 
 def fig2():
@@ -145,14 +176,14 @@ def fig2():
         # nearly the same AUROC (minigrid macro all games I1: 0.7517 against 0.7562) stays visible
         ax.plot(r["auroc_B"], y, "s", markerfacecolor="none", markeredgecolor="0.35", markersize=5.2, zorder=2)
         ax.plot(r["auroc"], y, "o", color="black", markersize=4, zorder=3)
-        ax.text(1.06, y, r["verdict"], va="center", fontsize=6.5, transform=ax.get_yaxis_transform())
+        ax.text(1.06, y, r["verdict"], va="center", fontsize=fs(6.5), transform=ax.get_yaxis_transform())
         labels.append((f"{suite_name[r['suite']]} {cond_name[r['condition']]}".strip() + f", {subset_name.get(r['subset'], r['subset'])}: {r['agent']}"))
         ci = "no interval (VOID)" if r["ci_low"] is None else f"[{r['ci_low']:.4f}, {r['ci_high']:.4f}]"
         drawn.append(f"{r['suite']} {r['condition']} {r['subset']} {r['agent']}: AUROC {r['auroc']:.4f}, CI {ci}, "
                      f"AUROC_B {r['auroc_B']:.4f}, verdict {r['verdict']}")
     ax.axvline(lo, color="black", linestyle="--", linewidth=0.8)
     ax.axvline(hi, color="black", linestyle=":", linewidth=1.0)
-    ax.set_yticks(range(n), labels[::-1], fontsize=6.3)
+    ax.set_yticks(range(n), labels[::-1], fontsize=fs(6.3))
     ax.set_ylim(-0.7, n - 0.3)
     ax.set_xlim(0, 1.04)
     ax.set_xticks([0, 0.2, 0.4, 0.6, 0.8, 1.0])
@@ -168,9 +199,9 @@ def fig2():
     ax.legend(handles=handles, loc="upper center", bbox_to_anchor=(0.35, -0.085 if TOG else -0.06), ncol=2, frameon=False)
     fig.tight_layout()
     fig.subplots_adjust(right=0.80)
-    fig.savefig(os.path.join(OUT, "fig2.png"), dpi=DPI)
+    _save(fig, 2)
     plt.close(fig)
-    return "fig2.png", src, drawn
+    return _name(2), src, drawn
 
 
 def fig3():
@@ -197,9 +228,9 @@ def fig3():
                     drawn.append(f"{s} {c} {sub} {a}: truth {t}, census {p}: {v}")
                 xt.append(x)
                 xl.append("h" if t == "holds" else "f")
-            ax.text(i * 2.6 + 0.5, -0.24 if TOG else -0.16, a, transform=ax.get_xaxis_transform(), ha="center", fontsize=7)
-        ax.set_xticks(xt, xl, fontsize=6.5)
-        ax.set_xlabel("\n" + title, fontsize=7)
+            ax.text(i * 2.6 + 0.5, -0.24 if TOG else -0.16, a, transform=ax.get_xaxis_transform(), ha="center", fontsize=fs(7))
+        ax.set_xticks(xt, xl, fontsize=fs(6.5))
+        ax.set_xlabel("\n" + title, fontsize=fs(7))
         ax.yaxis.set_major_locator(MaxNLocator(integer=True))
         ax.spines[["top", "right"]].set_visible(False)
     for ax in axes[:, 0]:
@@ -210,13 +241,13 @@ def fig3():
     leg.legend(handles=[Patch(facecolor="white", edgecolor="black", label="census holds"),
                         Patch(facecolor="0.35", edgecolor="black", label="census fails"),
                         Patch(facecolor="0.82", edgecolor="black", hatch="////", label="census undetermined")],
-               loc="upper left", frameon=False, title="Bar segments", title_fontsize=7)
+               loc="upper left", frameon=False, title="Bar segments", title_fontsize=fs(7))
     leg.text(0.0, 0.25, "Bar label h: games where the truth\ntable says the assumption holds;\n"
-                        "f: games where it says it fails", fontsize=6.8, va="center", transform=leg.transAxes)
+                        "f: games where it says it fails", fontsize=fs(6.8), va="center", transform=leg.transAxes)
     fig.tight_layout(h_pad=1.0, w_pad=0.8)
-    fig.savefig(os.path.join(OUT, "fig3.png"), dpi=DPI)
+    _save(fig, 3)
     plt.close(fig)
-    return "fig3.png", src, drawn
+    return _name(3), src, drawn
 
 
 def fig4():
@@ -239,7 +270,7 @@ def fig4():
                     drawn.append(f"{s} {c} {sub} {a}: {cnt} games with {k} dissenting seeds")
                 left += cnt
         ax.set_yticks(range(5), A[::-1])
-        ax.set_xlabel("Games\n" + title, fontsize=7)
+        ax.set_xlabel("Games\n" + title, fontsize=fs(7))
         ax.xaxis.set_major_locator(MaxNLocator(integer=True))
         ax.spines[["top", "right"]].set_visible(False)
     leg = axes.flat[5]
@@ -247,11 +278,11 @@ def fig4():
     from matplotlib.patches import Patch
     leg.legend(handles=[Patch(facecolor=grays[k], edgecolor="black", label=f"{k}") for k in range(kmax + 1)],
                loc="center left", frameon=False, ncol=2,
-               title="Seeds of 10 that disagree\nwith the game's majority", title_fontsize=7)
+               title="Seeds of 10 that disagree\nwith the game's majority", title_fontsize=fs(7))
     fig.tight_layout(h_pad=1.0, w_pad=0.8)
-    fig.savefig(os.path.join(OUT, "fig4.png"), dpi=DPI)
+    _save(fig, 4)
     plt.close(fig)
-    return "fig4.png", src, drawn
+    return _name(4), src, drawn
 
 
 def _run(name):

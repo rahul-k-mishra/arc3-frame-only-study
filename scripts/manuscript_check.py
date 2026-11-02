@@ -62,6 +62,24 @@ Option --ieee (after --dir; IEEE Transactions on Games version, docs/manuscript_
   - a "**Index Terms:**" line does not count toward the word limits (in every mode).
     D:\\Research\\arc3\\brutus\\.venv\\Scripts\\python.exe scripts\\manuscript_check.py --dir docs\\manuscript_tog --ieee manuscript_tog.md
 
+Option --bib FILE (after --dir; KI - Kuenstliche Intelligenz version, docs/manuscript_ki/BUILD.md): the
+file is a pandoc source whose citations are keys in brackets ("[@key]", "[@a; @b]") and whose
+reference list is typeset by BibTeX from FILE, a .bib file in the same directory, into the .bbl file
+of the LaTeX build (the file's name with .bbl in place of .md; the LaTeX build must have run first):
+  - (c) compares the cited keys with the entries of FILE, and both with the entries of the .bbl;
+  - (a) does not read citation keys as numerals; each .bbl entry, written as plain text (the commands
+    of the bibliography style removed, a DOI written as its https://doi.org/ link, "--" as an en dash),
+    is accepted when it equals a "Printed: " line of REFERENCES_CHECK*.md in the directory, and is
+    otherwise checked like any other line;
+  - (b) also reads the .bbl entries, outside the titles in FILE;
+  - (f) also checks every \\includegraphics{name} of a raw LaTeX block: name, name.pdf or name.eps must
+    exist in the directory;
+  - $...$ math is read as its text ("$-0.4125$" is the numeral -0.4125, "$\\kappa$" no numeral).
+    D:\\Research\\arc3\\brutus\\.venv\\Scripts\\python.exe scripts\\manuscript_check.py --dir docs\\manuscript_ki --bib references_ki.bib manuscript_ki.md
+  - a trailing pandoc attribute of a level-2 heading ("{#sec:intro}", "{-}") is ignored when sections
+    are looked up by name.
+Without the option the script behaves exactly as before.
+
 Exit code 0 only when every count is zero and every limit holds; 1 otherwise.
 Expected console output when the manuscript is clean: seven blocks (a) to (g), each ending in
 "0 issues", the main-text word count, and "RESULT: PASS".
@@ -121,9 +139,12 @@ def allowed_sets(numbers):
     return nums, hashes, dates, urls
 
 
-def sections(lines):
-    """{heading: (first line index, last line index)} for level-2 headings, section numbers removed."""
+def sections(lines, strip_attr=False):
+    """{heading: (first line index, last line index)} for level-2 headings, section numbers removed, and,
+    with strip_attr (--bib only), a trailing pandoc attribute ("{#sec:intro}", "{-}") removed."""
     idx = [(i, HEADNUM.sub(r"\1", l)[3:].strip()) for i, l in enumerate(lines) if l.startswith("## ")]
+    if strip_attr:
+        idx = [(i, re.sub(r"\s*\{[#.\-][^}]*\}\s*$", "", h)) for i, h in idx]
     out = {}
     for k, (i, h) in enumerate(idx):
         end = idx[k + 1][0] if k + 1 < len(idx) else len(lines)
@@ -197,15 +218,52 @@ def ieee_citations(lines, ref_start, ref_end):
     return cited, refs, issues
 
 
+CITE = re.compile(r"\[[^\[\]]*?(?<![\w.])@[A-Za-z][^\[\]]*?\]")
+ACCENTS = {"\\'e": "é", "\\'E": "É", '\\"u': "ü", '\\"o': "ö", '\\"a': "ä", "\\~a": "ã", "\\c{c}": "ç"}
+
+
+def bib_keys_titles(path):
+    """(keys in order, lower-case titles without braces) of a .bib file."""
+    with open(path, encoding="utf-8") as f:
+        bib = f.read()
+    keys = re.findall(r"^@\w+\{([^,\s]+),", bib, re.M)
+    titles = [re.sub(r"[{}]", "", t).replace("\\&", "&").lower()
+              for t in re.findall(r"^\s*title\s*=\s*\{(.*)\},?\s*$", bib, re.M)]
+    return keys, titles
+
+
+def bbl_entries(path):
+    """[(key, plain text)] of the entries of a BibTeX .bbl file, in their printed order."""
+    with open(path, encoding="utf-8") as f:
+        bbl = f.read()
+    out = []
+    for m in re.finditer(r"\\bibitem(?:\[[^\]]*\])?\{([^}]+)\}(.*?)(?=\\bibitem|\\end\{thebibliography\})", bbl, re.S):
+        t = m.group(2)
+        t = re.sub(r"\\doi\{([^}]*)\}", r"https://doi.org/\1", t)
+        t = re.sub(r"\\url\{([^}]*)\}", r"\1", t)
+        t = t.replace("\\urlprefix", "").replace("\\newblock", " ").replace("\\relax ", "")
+        for a, b in ACCENTS.items():
+            t = t.replace("{" + a + "}", b).replace(a, b)
+        t = re.sub(r"\\(?:textbf|emph|textit|em)\b", "", t)
+        t = t.replace("\\&", "&").replace("--", "\u2013").replace("~", " ").replace("\\ ", " ")
+        t = re.sub(r"[{}]", "", t)
+        t = re.sub(r"\s+", " ", t).strip()
+        out.append((m.group(1), t))
+    return out
+
+
 def main():
     args = sys.argv[1:]
-    ms_dir, other_dir, ieee = MS_DIR, False, False
+    ms_dir, other_dir, ieee, bib = MS_DIR, False, False, None
     if args[:1] == ["--dir"]:
         ms_dir, other_dir = os.path.join(ROOT, args[1]), True
         args = args[2:]
         if args[:1] == ["--ieee"]:
             ieee = True
             args = args[1:]
+        if args[:1] == ["--bib"]:
+            bib = args[1]
+            args = args[2:]
     ms_file = args[0] if args else "manuscript.md"
     rel_dir = os.path.relpath(ms_dir, ROOT).replace(os.sep, "/")
     print(f"checking {rel_dir}/{ms_file}")
@@ -215,12 +273,25 @@ def main():
         numbers = json.load(f)
     lines = raw.splitlines()
     nums, hashes, dates, urls = allowed_sets(numbers)
-    secs = sections(lines)
+    secs = sections(lines, strip_attr=bool(bib))
     ref_start, ref_end = secs.get("References", (len(lines), len(lines)))
     if ieee:
         cited, refs, ieee_issues = ieee_citations(lines, ref_start, ref_end)
     else:
         cited, refs = cited_and_refs(lines, ref_start, ref_end)
+    bbl, bib_titles_ki, bbl_path = [], [], None
+    if bib:
+        keys, bib_titles_ki = bib_keys_titles(os.path.join(ms_dir, bib))
+        refs = set(keys)
+        cited = set()
+        for line in lines:
+            for c in CITE.findall(line):
+                cited |= set(re.findall(r"(?<![\w.])@([A-Za-z][\w:\-]*)", c))
+        bbl_path = os.path.join(ms_dir, os.path.splitext(ms_file)[0] + ".bbl")
+        if os.path.exists(bbl_path):
+            bbl = bbl_entries(bbl_path)
+        print(f"bibliography: {len(keys)} entries in {bib}, {len(bbl)} entries in "
+              f"{os.path.basename(bbl_path)}" + ("" if bbl else " (missing: run the LaTeX build first)"))
     printed = set()
     if other_dir:
         for fn in sorted(os.listdir(ms_dir)):
@@ -245,6 +316,10 @@ def main():
             t = re.sub(r"\bFigs?\. \d+(?: and \d+)?", " ", t)
         if other_dir and in_refs and line.strip() in printed:
             continue
+        if bib:
+            t = CITE.sub(" ", t)
+            t = re.sub(r"\$([^$]*)\$", lambda m: re.sub(r"\\[A-Za-z]+", " ", m.group(1)), t)
+            t = re.sub(r"\\includegraphics(\[[^\]]*\])?\{[^}]*\}", " ", t)
         if other_dir and not in_refs and not ieee:
             t = re.sub(rf"({NAME})((?: et al\.| and {NAME}| & {NAME})?(?: \(|, ))(\d{{4}})(?=[);])",
                        lambda m: m.group(1) + m.group(2) + (" " if (m.group(1), m.group(3)) in refs
@@ -276,6 +351,22 @@ def main():
             tok = norm(m.group(0))
             if tok not in nums and tok.lstrip("-") not in nums:
                 issues.append((n, "numeral", m.group(0)))
+    if bib:
+        for k, (key, entry) in enumerate(bbl, 1):
+            if entry in printed:
+                continue
+            t = entry
+            for u in re.findall(r"https?://\S+", t):
+                u2 = u.rstrip(".,;")
+                if u2 not in urls:
+                    issues.append((f"bbl {k} ({key})", "URL", u2))
+                t = t.replace(u, " ")
+            for m in re.finditer(r"(?<![\w\-./])[−-]?\d+(?:[.,]\d+)*(?![\w])(?!\.[A-Za-z])", t):
+                tok = norm(m.group(0))
+                if tok not in nums and tok.lstrip("-") not in nums:
+                    issues.append((f"bbl {k} ({key})", "numeral", m.group(0)))
+        if not bbl:
+            issues.append((os.path.basename(bbl_path), "file", "missing .bbl"))
     print("(a) numerals, hashes, dates, ORCID and URLs not in numbers.json")
     for n, kind, tok in issues:
         print(f"    line {n}: {kind} {tok}")
@@ -291,6 +382,12 @@ def main():
                 if ref_start <= n - 1 < ref_end and any(m.group(0).lower() in t for t in titles):
                     continue
                 issues.append((n, m.group(0)))
+    for k, (key, entry) in enumerate(bbl, 1):
+        for pat in FORBIDDEN:
+            for m in re.finditer(rf"\b{pat}\b", entry, re.I):
+                if any(m.group(0).lower() in t for t in bib_titles_ki):
+                    continue
+                issues.append((f"bbl {k} ({key})", m.group(0)))
     print("(b) forbidden words and phrases (outside cited titles)")
     for n, w in issues:
         print(f"    line {n}: {w}")
@@ -300,6 +397,11 @@ def main():
     # (c) citations against the reference list
     if ieee:
         issues = ieee_issues
+    elif bib:
+        issues = [f"cited without entry: {k}" for k in sorted(cited - refs)]
+        issues += [f"entry never cited: {k}" for k in sorted(refs - cited)]
+        if bbl and {k for k, _ in bbl} != cited:
+            issues.append(f".bbl entries differ from the cited keys: {sorted({k for k, _ in bbl} ^ cited)}")
     else:
         issues = [f"cited without entry: {a} ({y})" for a, y in sorted(cited - refs)]
         issues += [f"entry never cited: {a} ({y})" for a, y in sorted(refs - cited)]
@@ -357,6 +459,10 @@ def main():
         for m in re.finditer(r"!\[[^\]]*\]\(([^)\s]+)", line):
             if not os.path.exists(os.path.join(ms_dir, m.group(1))):
                 issues.append((n, m.group(1)))
+        if bib:
+            for m in re.finditer(r"\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}", line):
+                if not any(os.path.exists(os.path.join(ms_dir, m.group(1) + e)) for e in ("", ".pdf", ".eps")):
+                    issues.append((n, m.group(1)))
     print("(f) figure files referenced but missing")
     for n, p in issues:
         print(f"    line {n}: {p}")

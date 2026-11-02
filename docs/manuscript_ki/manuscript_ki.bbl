@@ -1,0 +1,171 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{DOI~\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{DOI~\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem{arcprize2026arcagi3}
+{ARC Prize Foundation}: {ARC-AGI-3}: A new challenge for frontier agentic
+  intelligence.
+\newblock Technical report, 22 April 2026 (2026).
+\newblock
+  \urlprefix\url{https://arcprize.org/media/ARC_AGI_3_Technical_Report.pdf}.
+\newblock Accessed 24 October 2026
+
+\bibitem{bellemare2012contingency}
+Bellemare, M.G., Veness, J., Bowling, M.: Investigating contingency awareness
+  using {Atari} 2600 games.
+\newblock Proceedings of the {AAAI} Conference on Artificial Intelligence
+  \textbf{26}(1), 864--871 (2012).
+\newblock \doi{10.1609/aaai.v26i1.8321}
+
+\bibitem{bertinetto2021preregistration}
+Bertinetto, L., Henriques, J.F., Albanie, S., Paganini, M., Varol, G.: Preface.
+\newblock In: L.~Bertinetto, J.F. Henriques, S.~Albanie, M.~Paganini, G.~Varol
+  (eds.) {NeurIPS} 2020 Workshop on Pre-registration in Machine Learning,
+  \emph{Proceedings of Machine Learning Research}, vol. 148, p.~i. PMLR (2021).
+\newblock \urlprefix\url{https://proceedings.mlr.press/v148/bertinetto21a.html}
+
+\bibitem{blum2015ladder}
+Blum, A., Hardt, M.: The {Ladder}: A reliable leaderboard for machine learning
+  competitions.
+\newblock In: F.~Bach, D.~Blei (eds.) Proceedings of the 32nd International
+  Conference on Machine Learning, \emph{Proceedings of Machine Learning
+  Research}, vol.~37, pp. 1006--1014. PMLR (2015).
+\newblock \urlprefix\url{https://proceedings.mlr.press/v37/blum15.html}
+
+\bibitem{bontrager2016matching}
+Bontrager, P., Khalifa, A., Mendes, A., Togelius, J.: Matching games and
+  algorithms for general video game playing.
+\newblock Proceedings of the {AAAI} Conference on Artificial Intelligence and
+  Interactive Digital Entertainment \textbf{12}(1), 122--128 (2016).
+\newblock \doi{10.1609/aiide.v12i1.12884}
+
+\bibitem{chevalierboisvert2019babyai}
+Chevalier-Boisvert, M., Bahdanau, D., Lahlou, S., Willems, L., Saharia, C.,
+  Nguyen, T.H., Bengio, Y.: {BabyAI}: A platform to study the sample efficiency
+  of grounded language learning.
+\newblock In: International Conference on Learning Representations (2019).
+\newblock \urlprefix\url{https://openreview.net/forum?id=rJeXCo0cYX}
+
+\bibitem{chevalierboisvert2023minigrid}
+Chevalier-Boisvert, M., Dai, B., Towers, M., Perez-Vicente, R., Willems, L.,
+  Lahlou, S., Pal, S., Castro, P.S., Terry, J.: {Minigrid} \& {Miniworld}:
+  Modular \& customizable reinforcement learning environments for goal-oriented
+  tasks.
+\newblock In: Advances in Neural Information Processing Systems 36, pp.
+  73383--73394 (2023).
+\newblock \doi{10.52202/075280-3209}
+
+\bibitem{choi2019contingency}
+Choi, J., Guo, Y., Moczulski, M., Oh, J., Wu, N., Norouzi, M., Lee, H.:
+  Contingency-aware exploration in reinforcement learning.
+\newblock In: International Conference on Learning Representations (2019).
+\newblock \urlprefix\url{https://openreview.net/forum?id=HyxGB2AcY7}
+
+\bibitem{chollet2019measure}
+Chollet, F.: On the measure of intelligence.
+\newblock Preprint, arXiv (2019).
+\newblock \urlprefix\url{https://arxiv.org/abs/1911.01547}
+
+\bibitem{cobbe2020procgen}
+Cobbe, K., Hesse, C., Hilton, J., Schulman, J.: Leveraging procedural
+  generation to benchmark reinforcement learning.
+\newblock In: H.~{Daum{\'e} III}, A.~Singh (eds.) Proceedings of the 37th
+  International Conference on Machine Learning, \emph{Proceedings of Machine
+  Learning Research}, vol. 119, pp. 2048--2056. PMLR (2020).
+\newblock \urlprefix\url{https://proceedings.mlr.press/v119/cobbe20a.html}
+
+\bibitem{gaina2018winprediction}
+Gaina, R.D., Lucas, S.M., Perez-Liebana, D.: General win prediction from agent
+  experience.
+\newblock In: 2018 {IEEE} Conference on Computational Intelligence and Games
+  ({CIG}), pp. 1--8 (2018).
+\newblock \doi{10.1109/CIG.2018.8490439}
+
+\bibitem{genesereth2005ggp}
+Genesereth, M., Love, N., Pell, B.: General game playing: Overview of the
+  {AAAI} competition.
+\newblock AI Magazine \textbf{26}(2), 62--72 (2005).
+\newblock \doi{10.1609/aimag.v26i2.1813}
+
+\bibitem{goldman1995teaching}
+Goldman, S.A., Kearns, M.J.: On the complexity of teaching.
+\newblock Journal of Computer and System Sciences \textbf{50}(1), 20--31
+  (1995).
+\newblock \doi{10.1006/jcss.1995.1003}
+
+\bibitem{keren2014grd}
+Keren, S., Gal, A., Karpas, E.: Goal recognition design.
+\newblock Proceedings of the International Conference on Automated Planning and
+  Scheduling \textbf{24}(1), 154--162 (2014).
+\newblock \doi{10.1609/icaps.v24i1.13617}
+
+\bibitem{laidlaw2023horizon}
+Laidlaw, C., Russell, S.J., Dragan, A.: Bridging {RL} theory and practice with
+  the effective horizon.
+\newblock In: Advances in Neural Information Processing Systems 36, pp.
+  58953--59007 (2023).
+\newblock \doi{10.52202/075280-2573}
+
+\bibitem{legg2007universal}
+Legg, S., Hutter, M.: Universal intelligence: A definition of machine
+  intelligence.
+\newblock Minds and Machines \textbf{17}(4), 391--444 (2007).
+\newblock \doi{10.1007/s11023-007-9079-x}
+
+\bibitem{liew2026explore}
+Liew, K.H.: Explore before you solve: The speed--depth trade-off in epistemic
+  agents for {ARC-AGI-3}.
+\newblock Preprint, arXiv (2026).
+\newblock \urlprefix\url{https://arxiv.org/abs/2605.25931}
+
+\bibitem{mitchell1982generalization}
+Mitchell, T.M.: Generalization as search.
+\newblock Artificial Intelligence \textbf{18}(2), 203--226 (1982).
+\newblock \doi{10.1016/0004-3702(82)90040-6}
+
+\bibitem{perezliebana2019gvgai}
+Perez-Liebana, D., Liu, J., Khalifa, A., Gaina, R.D., Togelius, J., Lucas,
+  S.M.: {General Video Game AI}: A multitrack framework for evaluating agents,
+  games, and content generation algorithms.
+\newblock IEEE Transactions on Games \textbf{11}(3), 195--214 (2019).
+\newblock \doi{10.1109/TG.2019.2901021}
+
+\bibitem{perezliebana2016gvgp}
+Perez-Liebana, D., Samothrakis, S., Togelius, J., Schaul, T., Lucas, S.M.,
+  Couetoux, A., Lee, J., Lim, {\relax C.-U}., Thompson, T.: The 2014 {General
+  Video Game Playing Competition}.
+\newblock IEEE Transactions on Computational Intelligence and AI in Games
+  \textbf{8}(3), 229--243 (2016).
+\newblock \doi{10.1109/TCIAIG.2015.2402393}
+
+\bibitem{roelofs2019metaanalysis}
+Roelofs, R., Shankar, V., Recht, B., Fridovich-Keil, S., Hardt, M., Miller, J.,
+  Schmidt, L.: A meta-analysis of overfitting in machine learning.
+\newblock In: Advances in Neural Information Processing Systems 32 (2019).
+\newblock
+  \urlprefix\url{https://papers.nips.cc/paper_files/paper/2019/hash/ee39e503b6bedf0c98c388b7e8589aca-Abstract.html}
+
+\bibitem{rudakov2025graph}
+Rudakov, E., Shock, J., Cowley, B.U.: Graph-based exploration for {ARC-AGI-3}
+  interactive reasoning tasks.
+\newblock Preprint, arXiv (2025).
+\newblock \urlprefix\url{https://arxiv.org/abs/2512.24156}
+
+\bibitem{skoutnev2026twin}
+Skoutnev, A., Acharya, K., Longhitano, G., Udell, M., Ellis, K., Drori, I.:
+  {Twin}: Playing an unknown game with a test-time digital twin.
+\newblock Preprint, arXiv (2026).
+\newblock \urlprefix\url{https://arxiv.org/abs/2608.14490}
+
+\bibitem{wayllace2016grd}
+Wayllace, C., Hou, P., Yeoh, W., Son, T.C.: Goal recognition design with
+  stochastic agent action outcomes.
+\newblock In: Proceedings of the Twenty-Fifth International Joint Conference on
+  Artificial Intelligence ({IJCAI}-16), pp. 3279--3285 (2016).
+\newblock \urlprefix\url{https://www.ijcai.org/Proceedings/16/Papers/464.pdf}
+
+\end{thebibliography}
