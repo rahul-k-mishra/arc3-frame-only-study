@@ -36,6 +36,18 @@ manuscript).  For the JAGI submission (docs/manuscript_jagi/BUILD.md, step 1):
     D:\\Research\\arc3\\brutus\\.venv\\Scripts\\python.exe scripts\\manuscript_numbers.py --state-ref "at the commit tagged jagi-submission-v1"
 Without the option the script behaves exactly as before.
 
+Option --out DIR: write numbers.json and appendix_c.md into DIR (relative to the repository root)
+instead of docs/manuscript; with --out, numbers.json also holds the dates of the two earlier
+submissions (docs/STATE.md amendments (u) and (x)), for the cover letter.  Option --anonymous: the provenance table names the source files of each
+number class without the commit that last changed each file, and no such commit is added to
+numbers.json; this is the form of the double-anonymous review version, where commit hashes are
+withheld.  For the IEEE Transactions on Games version (docs/manuscript_tog/BUILD.md, step 1):
+    D:\\Research\\arc3\\brutus\\.venv\\Scripts\\python.exe scripts\\manuscript_numbers.py --out docs/manuscript_tog --anonymous
+Expected console output (last lines): "numbers.json: <N> values written to docs/manuscript_tog/numbers.json",
+"appendix_c.md: 9 number classes written to docs/manuscript_tog/appendix_c.md (anonymous: no commits)"
+and "all cross-checks passed".  The options combine with --state-ref; without them the script
+behaves exactly as before.
+
 Expected console output (last lines):
     numbers.json: <N> values written to docs/manuscript/numbers.json
     appendix_c.md: <K> number classes written to docs/manuscript/appendix_c.md
@@ -55,7 +67,9 @@ sys.path.insert(0, os.path.join(ROOT, "scripts"))
 import analyze_common as C  # noqa: E402  (read only: the registered truth-table parsers and lists)
 
 OUT_DIR = os.path.join(ROOT, "docs", "manuscript")
+DEFAULT_OUT = OUT_DIR
 STATE_REF = None  # set by --state-ref
+ANONYMOUS = False  # set by --anonymous
 N: dict[str, dict] = {}
 CHECKS: list[str] = []
 
@@ -567,6 +581,10 @@ def provenance():
     add("supplement.license", m.group(5), "docs/STATE.md amendment (w)", "identifier")
     add("supplement.doi", m.group(6), "docs/STATE.md amendment (w)", "identifier")
     add("url.supplement", m.group(7), "docs/STATE.md amendment (w)", "url")
+    # the two earlier submissions, for the cover letter of the IEEE Transactions on Games version;
+    # only with --out, so that the JOTE and JAGI builds write the same values as before
+    if OUT_DIR != DEFAULT_OUT:
+        prior_submissions()
     # reference URLs for entries without a DOI, as fetched in the review of draft 1
     R = "docs/manuscript/REVIEW_draft1.md"
     for key, url in (("bertinetto", "https://proceedings.mlr.press/v148/bertinetto21a.html"),
@@ -638,6 +656,16 @@ def provenance():
                     add(f"ref.{key}.{field}_num{i}", int(num), "docs/preprint/references.bib", "identifier")
 
 
+def prior_submissions():
+    """The dates of the two earlier submissions (JOTE, JAGI), for the ToG cover letter."""
+    m = need("docs/STATE.md", r"\*\*Submitted to the Journal of Trial and Error\*\* on (\d{1,2} October \d{4}) ")
+    add("date.jote_submitted", m.group(1), "docs/STATE.md amendment (u)", "date")
+    m = need("docs/STATE.md", r"\*\*Declined without peer review\*\* on (\d{1,2} October \d{4}) by the Editor-in-Chief")
+    add("date.jote_declined", m.group(1), "docs/STATE.md amendment (u)", "date")
+    m = need("docs/STATE.md", r"Submitted to the Journal of Artificial General Intelligence on (\d{1,2} October \d{4}) ")
+    add("date.jagi_submitted", m.group(1), "docs/STATE.md amendment (x)", "date")
+
+
 # ------------------------------------------------------------------ JAGI references
 def jagi_references():
     """Numbers the JAGI manuscript takes from the ARC-AGI-3 technical report (ARC Prize Foundation,
@@ -690,6 +718,15 @@ def appendix_c():
             h = git("log", "-1", "--format=%h", "--", f)
             commit_of[f] = h
             add("lastcommit." + f, h, f"git log -1 -- {f}", "hash")
+    if ANONYMOUS:
+        # double-anonymous review version: files only; commit hashes would point to the repository
+        for k in [k for k in N if k.startswith("lastcommit.")]:
+            del N[k]
+        lines = ["| number class | source files |", "|---|---|"]
+        for cls in names:
+            if cls in by:
+                lines.append(f"| {names[cls]} | " + "; ".join(sorted(by[cls])) + " |")
+        return "\n".join(lines) + "\n"
     lines = ["| number class | source files, each with the commit that last changed it |", "|---|---|"]
     for cls in names:
         if cls in by:
@@ -698,14 +735,25 @@ def appendix_c():
 
 
 def main():
-    global STATE_REF
+    global STATE_REF, ANONYMOUS, OUT_DIR
     args = sys.argv[1:]
-    if args[:1] == ["--state-ref"]:
-        if len(args) < 2 or not args[1].strip():
-            raise SystemExit("--state-ref needs a text")
-        STATE_REF = args[1].strip()
-    elif args:
-        raise SystemExit(f"unknown arguments: {args}")
+    while args:
+        if args[0] == "--state-ref":
+            if len(args) < 2 or not args[1].strip():
+                raise SystemExit("--state-ref needs a text")
+            STATE_REF = args[1].strip()
+            args = args[2:]
+        elif args[0] == "--out":
+            if len(args) < 2 or not args[1].strip():
+                raise SystemExit("--out needs a directory")
+            OUT_DIR = os.path.join(ROOT, args[1].strip())
+            args = args[2:]
+        elif args[0] == "--anonymous":
+            ANONYMOUS = True
+            args = args[1:]
+        else:
+            raise SystemExit(f"unknown arguments: {args}")
+    out_rel = os.path.relpath(OUT_DIR, ROOT).replace(os.sep, "/")
     tables()
     diagnosis()
     checks()
@@ -724,8 +772,9 @@ def main():
         f.write(app)
     for c in CHECKS:
         print("check ok:", c)
-    print(f"numbers.json: {len(N)} values written to docs/manuscript/numbers.json")
-    print(f"appendix_c.md: {app.count(chr(10)) - 2} number classes written to docs/manuscript/appendix_c.md")
+    print(f"numbers.json: {len(N)} values written to {out_rel}/numbers.json")
+    print(f"appendix_c.md: {app.count(chr(10)) - 2} number classes written to {out_rel}/appendix_c.md"
+          + (" (anonymous: no commits)" if ANONYMOUS else ""))
     if STATE_REF:
         print(f"docs/STATE.md named as: {STATE_REF}")
     print("all cross-checks passed")

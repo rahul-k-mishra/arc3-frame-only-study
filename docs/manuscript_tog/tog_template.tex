@@ -1,0 +1,42 @@
+%% pandoc template for the IEEE Transactions on Games version.
+%% Class: IEEEtran.cls V1.8b (IEEE's LaTeX bundle IEEE-Transactions-LaTeX2e-templates-and-instructions.zip,
+%% file IEEETransactions_LaTeX/IEEEtran/IEEEtran.cls), journal mode, after bare_jrnl.tex of that bundle.
+%% Variables set by docs/manuscript_tog/tog.lua: abstract, indexterms; by the build command: classoption, runninghead.
+\documentclass[$if(classoption)$$classoption$$else$journal$endif$]{IEEEtran}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage[hyphens]{url}
+\usepackage[hidelinks,pdfusetitle]{hyperref}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{2}
+% let two-column figures and text share a page instead of leaving float-only pages half empty
+\renewcommand{\dbltopfraction}{0.9}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\dblfloatpagefraction}{0.85}
+\renewcommand{\floatpagefraction}{0.85}
+\setcounter{dbltopnumber}{3}
+\hypersetup{pdfauthor={$pdfauthor$},pdftitle={$title-meta$},pdfsubject={},pdfkeywords={},pdfcreator={},pdfproducer={}}
+\begin{document}
+$if(sloppy)$
+\sloppy
+$endif$
+\title{$title$}
+\author{$if(author)$$author$$else$Anonymous Author$endif$}
+\markboth{$runninghead$}{$runninghead$}
+\maketitle
+$if(abstract)$
+\begin{abstract}
+$abstract$
+\end{abstract}
+$endif$
+$if(indexterms)$
+\begin{IEEEkeywords}
+$indexterms$
+\end{IEEEkeywords}
+$endif$
+$body$
+\end{document}

@@ -51,6 +51,17 @@ citations may use "and" as well as "&"; a reference entry's year may stand witho
 letters; an organization may be the author ("ARC Prize Foundation. 2026." in the list, "(ARC Prize
 Foundation, 2026)" or "ARC Prize Foundation (2026)" in the text), and is matched by its full name.
 
+Option --ieee (after --dir; IEEE Transactions on Games version, docs/manuscript_tog/BUILD.md):
+  - citations are IEEE numbered citations "[n]" in the text, and the reference list is a sequence of
+    lines "[n] entry"; (c) reports every number cited without an entry, every entry never cited,
+    every gap in the numbering, and any entry whose number is not in order of first citation;
+  - (a) does not check citation numbers, the label numbers of "Fig. k" and "Figs. k and m", or the
+    "[n] " label of a reference entry; the entry after its label is compared with the "Printed: "
+    lines of REFERENCES_CHECK*.md as above;
+  - (e) checks the abstract against the journal's limit of 150 to 200 words;
+  - a "**Index Terms:**" line does not count toward the word limits (in every mode).
+    D:\\Research\\arc3\\brutus\\.venv\\Scripts\\python.exe scripts\\manuscript_check.py --dir docs\\manuscript_tog --ieee manuscript_tog.md
+
 Exit code 0 only when every count is zero and every limit holds; 1 otherwise.
 Expected console output when the manuscript is clean: seven blocks (a) to (g), each ending in
 "0 issues", the main-text word count, and "RESULT: PASS".
@@ -122,7 +133,8 @@ def sections(lines):
 
 def words(txt):
     txt = "\n".join(l for l in txt.splitlines()
-                    if not l.lstrip().startswith(":::") and not l.lstrip().startswith("**Keywords:**"))
+                    if not l.lstrip().startswith(":::") and not l.lstrip().startswith("**Keywords:**")
+                    and not l.lstrip().startswith("**Index Terms:**"))
     txt = re.sub(r"!\[[^\]]*\]\([^)]*\)", " ", txt)
     txt = re.sub(r"[*_>#|`]", " ", txt)
     return [w for w in txt.split() if re.search(r"[\w]", w)]
@@ -160,12 +172,40 @@ def cited_and_refs(lines, ref_start, ref_end):
     return cited, refs
 
 
+def ieee_citations(lines, ref_start, ref_end):
+    """IEEE numbered citations: (cited numbers, entry numbers, issues)."""
+    order = []
+    for i, line in enumerate(lines):
+        if ref_start <= i < ref_end:
+            continue
+        for m in re.finditer(r"\[(\d+)\]", line):
+            k = int(m.group(1))
+            if k not in order:
+                order.append(k)
+    entries = []
+    for line in lines[ref_start:ref_end]:
+        m = re.match(r"\[(\d+)\] ", line)
+        if m:
+            entries.append(int(m.group(1)))
+    cited, refs = set(order), set(entries)
+    issues = [f"cited without entry: [{k}]" for k in sorted(cited - refs)]
+    issues += [f"entry never cited: [{k}]" for k in sorted(refs - cited)]
+    if entries != list(range(1, len(entries) + 1)):
+        issues.append(f"entries not numbered 1 to {len(entries)} in sequence: {entries}")
+    if order != sorted(order):
+        issues.append(f"entries not in order of first citation: first citations in the order {order}")
+    return cited, refs, issues
+
+
 def main():
     args = sys.argv[1:]
-    ms_dir, other_dir = MS_DIR, False
+    ms_dir, other_dir, ieee = MS_DIR, False, False
     if args[:1] == ["--dir"]:
         ms_dir, other_dir = os.path.join(ROOT, args[1]), True
         args = args[2:]
+        if args[:1] == ["--ieee"]:
+            ieee = True
+            args = args[1:]
     ms_file = args[0] if args else "manuscript.md"
     rel_dir = os.path.relpath(ms_dir, ROOT).replace(os.sep, "/")
     print(f"checking {rel_dir}/{ms_file}")
@@ -177,7 +217,10 @@ def main():
     nums, hashes, dates, urls = allowed_sets(numbers)
     secs = sections(lines)
     ref_start, ref_end = secs.get("References", (len(lines), len(lines)))
-    cited, refs = cited_and_refs(lines, ref_start, ref_end)
+    if ieee:
+        cited, refs, ieee_issues = ieee_citations(lines, ref_start, ref_end)
+    else:
+        cited, refs = cited_and_refs(lines, ref_start, ref_end)
     printed = set()
     if other_dir:
         for fn in sorted(os.listdir(ms_dir)):
@@ -193,9 +236,16 @@ def main():
     for n, line in enumerate(lines, 1):
         t = HEADNUM.sub(r"\1", line)
         in_refs = ref_start <= n - 1 < ref_end
+        if ieee and in_refs:
+            t = re.sub(r"^\[\d+\] ", "", t)
+            if t.strip() in printed:
+                continue
+        if ieee and not in_refs:
+            t = re.sub(r"\[\d+\]", " ", t)
+            t = re.sub(r"\bFigs?\. \d+(?: and \d+)?", " ", t)
         if other_dir and in_refs and line.strip() in printed:
             continue
-        if other_dir and not in_refs:
+        if other_dir and not in_refs and not ieee:
             t = re.sub(rf"({NAME})((?: et al\.| and {NAME}| & {NAME})?(?: \(|, ))(\d{{4}})(?=[);])",
                        lambda m: m.group(1) + m.group(2) + (" " if (m.group(1), m.group(3)) in refs
                                                             else m.group(3)), t)
@@ -248,8 +298,11 @@ def main():
     failed |= bool(issues)
 
     # (c) citations against the reference list
-    issues = [f"cited without entry: {a} ({y})" for a, y in sorted(cited - refs)]
-    issues += [f"entry never cited: {a} ({y})" for a, y in sorted(refs - cited)]
+    if ieee:
+        issues = ieee_issues
+    else:
+        issues = [f"cited without entry: {a} ({y})" for a, y in sorted(cited - refs)]
+        issues += [f"entry never cited: {a} ({y})" for a, y in sorted(refs - cited)]
     print(f"(c) citations: {len(cited)} cited works, {len(refs)} reference entries")
     for i in issues:
         print("    " + i)
@@ -275,7 +328,7 @@ def main():
     # (e) word limits
     print("(e) word limits")
     n_issues = 0
-    for name, lo, hi, max_sent in (("Take-home message", 0, 50, 3), ("Abstract", 150, 250, None),
+    for name, lo, hi, max_sent in (("Take-home message", 0, 50, 3), ("Abstract", 150, 200 if ieee else 250, None),
                                    ("Purpose", 0, 250, None)):
         if other_dir and name not in secs and not (name == "Abstract" and "References" in secs):
             print(f"    {name}: not a section of this file, no limit applies")

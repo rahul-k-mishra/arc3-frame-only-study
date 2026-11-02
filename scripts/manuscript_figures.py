@@ -21,17 +21,35 @@ Run (working directory D:\\Research\\arc3\\repo), after scripts\\manuscript_numb
 
 Expected console output: four blocks "fig<k>.png from <source>" with one line per drawn number,
 then "4 figures written to docs/manuscript".
+
+Option --tog (IEEE Transactions on Games version, docs/manuscript_tog/BUILD.md): the figures are
+written to docs/manuscript_tog at IEEE's two-column width, 182 mm (7.16 in), at 600 dpi, the
+resolution IEEE asks for line art; heights are reduced so that the four figures fit a 10-page paper,
+and the thresholds are read from docs/manuscript_tog/numbers.json.  PNG keeps the PDF free of
+embedded figure fonts.  Every drawn number and label is the same as without the option.
+    D:\\Research\\arc3\\brutus\\.venv\\Scripts\\python.exe scripts\\manuscript_figures.py --tog
+Expected console output: the same four blocks, then "4 figures written to docs/manuscript_tog".
+Without the option the script behaves exactly as before.
 """
 from __future__ import annotations
 
 import json
 import os
+import sys
 from multiprocessing import Pool
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(ROOT, "docs", "manuscript")
 MM = 1 / 25.4
-WIDTH = 170 * MM
+TOG = "--tog" in sys.argv[1:]
+OUT = os.path.join(ROOT, "docs", "manuscript_tog" if TOG else "manuscript")
+WIDTH = (182 if TOG else 170) * MM
+DPI = 600 if TOG else 300
+# figure heights in mm: (default, --tog)
+HEIGHT = {"fig1": (120, 88), "fig2": (175, 112), "fig3": (125, 92), "fig4": (110, 76)}
+
+
+def _h(name):
+    return HEIGHT[name][1 if TOG else 0] * MM
 
 LINES_V1 = [("minigrid", "macro", "all", "MiniGrid/BabyAI, absolute moves\n(161 games)"),
             ("minigrid", "raw", "all", "MiniGrid/BabyAI, primitive actions\n(161 games)"),
@@ -47,7 +65,7 @@ def _load(rel):
 
 
 def _thr(key):
-    return float(_load("docs/manuscript/numbers.json")[key]["value"])
+    return float(_load(os.path.relpath(os.path.join(OUT, "numbers.json"), ROOT))[key]["value"])
 
 
 def _setup():
@@ -69,7 +87,7 @@ def fig1():
     rows = {(r[0], r[1], r[2], r[3]): dict(zip(v1["header"], r)) for r in v1["rows"]}
     lo, hi = _thr("thr.v1_fail_agreement"), _thr("thr.v1_pass_agreement")
     drawn = [f"threshold FAIL below {lo:.2f}", f"threshold PASS needs at least {hi:.2f}"]
-    fig, axes = plt.subplots(2, 3, figsize=(WIDTH, 120 * MM), sharey=True)
+    fig, axes = plt.subplots(2, 3, figsize=(WIDTH, _h("fig1")), sharey=True)
     for ax, (s, c, sub, title) in zip(axes.flat, LINES_V1):
         vals = [rows[(s, c, sub, a)]["agreement"] for a in A]
         verd = [rows[(s, c, sub, a)]["verdict"] for a in A]
@@ -86,20 +104,21 @@ def fig1():
         ax.set_xlabel(title, fontsize=7)
         ax.spines[["top", "right"]].set_visible(False)
     for ax in axes[:, 0]:
-        ax.set_ylabel("Agreement with the truth table")
+        ax.set_ylabel("Agreement with\nthe truth table" if TOG else "Agreement with the truth table")
     leg = axes.flat[5]
     leg.axis("off")
-    leg.plot([0.05, 0.25], [0.7, 0.7], "k:", linewidth=1.0)
-    leg.text(0.3, 0.7, f"{hi:.2f}: PASS needs agreement\nat or above this line\n(and κ ≥ {_thr('thr.v1_pass_kappa'):.2f} where κ applies)",
+    Y1, Y2, Y3 = (0.92, 0.42, 0.02) if TOG else (0.7, 0.4, 0.15)
+    leg.plot([0.05, 0.25], [Y1, Y1], "k:", linewidth=1.0)
+    leg.text(0.3, Y1, f"{hi:.2f}: PASS needs agreement\nat or above this line\n(and κ ≥ {_thr('thr.v1_pass_kappa'):.2f} where κ applies)",
              va="center", fontsize=6.8)
-    leg.plot([0.05, 0.25], [0.4, 0.4], "k--", linewidth=0.8)
-    leg.text(0.3, 0.4, f"{lo:.2f}: FAIL below this line", va="center", fontsize=6.8)
-    leg.text(0.05, 0.15, "Word above each bar: the verdict\nprinted by the frozen analysis code", fontsize=6.8,
+    leg.plot([0.05, 0.25], [Y2, Y2], "k--", linewidth=0.8)
+    leg.text(0.3, Y2, f"{lo:.2f}: FAIL below this line", va="center", fontsize=6.8)
+    leg.text(0.05, Y3, "Word above each bar: the verdict\nprinted by the frozen analysis code", fontsize=6.8,
              va="center")
     leg.set_xlim(0, 1)
     leg.set_ylim(0, 1)
     fig.tight_layout(h_pad=1.2, w_pad=0.6)
-    fig.savefig(os.path.join(OUT, "fig1.png"), dpi=300)
+    fig.savefig(os.path.join(OUT, "fig1.png"), dpi=DPI)
     plt.close(fig)
     return "fig1.png", src, drawn
 
@@ -115,7 +134,7 @@ def fig2():
     cond_name = {"native": "", "macro": "absolute moves", "raw": "primitive actions", "center_off": "camera off",
                  "center_on": "camera on"}
     subset_name = {"in_range": "in range", "camera_distinct": "camera-distinct"}
-    fig, ax = plt.subplots(figsize=(WIDTH, 175 * MM))
+    fig, ax = plt.subplots(figsize=(WIDTH, _h("fig2")))
     labels = []
     n = len(rows)
     for i, r in enumerate(rows):
@@ -146,10 +165,10 @@ def fig2():
                       label="nuisance baseline AUROC"),
                Line2D([], [], color="black", linestyle="--", linewidth=0.8, label=f"{lo:.2f}: FAIL at or below"),
                Line2D([], [], color="black", linestyle=":", linewidth=1.0, label=f"{hi:.2f}: PASS needs at least")]
-    ax.legend(handles=handles, loc="upper center", bbox_to_anchor=(0.35, -0.06), ncol=2, frameon=False)
+    ax.legend(handles=handles, loc="upper center", bbox_to_anchor=(0.35, -0.085 if TOG else -0.06), ncol=2, frameon=False)
     fig.tight_layout()
     fig.subplots_adjust(right=0.80)
-    fig.savefig(os.path.join(OUT, "fig2.png"), dpi=300)
+    fig.savefig(os.path.join(OUT, "fig2.png"), dpi=DPI)
     plt.close(fig)
     return "fig2.png", src, drawn
 
@@ -162,7 +181,7 @@ def fig3():
     styles = {"holds": dict(color="white", edgecolor="black", hatch=""),
               "fails": dict(color="0.35", edgecolor="black", hatch=""),
               "undetermined": dict(color="0.82", edgecolor="black", hatch="////")}
-    fig, axes = plt.subplots(2, 3, figsize=(WIDTH, 125 * MM))
+    fig, axes = plt.subplots(2, 3, figsize=(WIDTH, _h("fig3")))
     for ax, (s, c, sub, title) in zip(axes.flat, LINES_V1):
         xt, xl = [], []
         for i, a in enumerate(A):
@@ -178,7 +197,7 @@ def fig3():
                     drawn.append(f"{s} {c} {sub} {a}: truth {t}, census {p}: {v}")
                 xt.append(x)
                 xl.append("h" if t == "holds" else "f")
-            ax.text(i * 2.6 + 0.5, -0.16, a, transform=ax.get_xaxis_transform(), ha="center", fontsize=7)
+            ax.text(i * 2.6 + 0.5, -0.24 if TOG else -0.16, a, transform=ax.get_xaxis_transform(), ha="center", fontsize=7)
         ax.set_xticks(xt, xl, fontsize=6.5)
         ax.set_xlabel("\n" + title, fontsize=7)
         ax.yaxis.set_major_locator(MaxNLocator(integer=True))
@@ -195,7 +214,7 @@ def fig3():
     leg.text(0.0, 0.25, "Bar label h: games where the truth\ntable says the assumption holds;\n"
                         "f: games where it says it fails", fontsize=6.8, va="center", transform=leg.transAxes)
     fig.tight_layout(h_pad=1.0, w_pad=0.8)
-    fig.savefig(os.path.join(OUT, "fig3.png"), dpi=300)
+    fig.savefig(os.path.join(OUT, "fig3.png"), dpi=DPI)
     plt.close(fig)
     return "fig3.png", src, drawn
 
@@ -207,7 +226,7 @@ def fig4():
     drawn = []
     kmax = max(max(p["seeds_against_majority"].values()) for p in d.values())
     grays = [str(1 - k / kmax * 0.95) for k in range(kmax + 1)]
-    fig, axes = plt.subplots(2, 3, figsize=(WIDTH, 110 * MM))
+    fig, axes = plt.subplots(2, 3, figsize=(WIDTH, _h("fig4")))
     for ax, (s, c, sub, title) in zip(axes.flat, LINES_V1):
         for i, a in enumerate(A):
             vals = list(d[f"{s} | {c} | {sub} | {a}"]["seeds_against_majority"].values())
@@ -230,7 +249,7 @@ def fig4():
                loc="center left", frameon=False, ncol=2,
                title="Seeds of 10 that disagree\nwith the game's majority", title_fontsize=7)
     fig.tight_layout(h_pad=1.0, w_pad=0.8)
-    fig.savefig(os.path.join(OUT, "fig4.png"), dpi=300)
+    fig.savefig(os.path.join(OUT, "fig4.png"), dpi=DPI)
     plt.close(fig)
     return "fig4.png", src, drawn
 
@@ -247,7 +266,7 @@ def main():
         print(f"{name} from {src}")
         for line in drawn:
             print("  " + line)
-    print(f"{len(results)} figures written to docs/manuscript")
+    print(f"{len(results)} figures written to {os.path.relpath(OUT, ROOT)}".replace(os.sep, "/"))
 
 
 if __name__ == "__main__":
