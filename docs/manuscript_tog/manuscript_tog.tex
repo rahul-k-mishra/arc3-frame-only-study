@@ -20,6 +20,12 @@
 \renewcommand{\floatpagefraction}{0.85}
 \setcounter{dbltopnumber}{3}
 \hypersetup{pdfauthor={},pdftitle={A Frame-Only Census of Game Mechanics Built on ARC-AGI-3 Failed Preregistered Transfer Tests on MiniGrid/BabyAI and Procgen},pdfsubject={},pdfkeywords={},pdfcreator={},pdfproducer={}}
+% no PTEX.* entries (engine banner, file name) in the PDF; creation and modification dates as the
+% build day only, without time of day or time-zone offset
+\pdfsuppressptexinfo=-1
+\makeatletter
+\pdfinfo{/CreationDate (D:\the\year\two@digits\month\two@digits\day) /ModDate (D:\the\year\two@digits\month\two@digits\day)}
+\makeatother
 \begin{document}
 \title{A Frame-Only Census of Game Mechanics Built on ARC-AGI-3 Failed
 Preregistered Transfer Tests on MiniGrid/BabyAI and Procgen}
@@ -509,16 +515,15 @@ verdicts, and a suite line, for the primitive-action lines as well.
 Those verdicts enter no outcome clause.
 
 The last three I also found on 14 October 2026, while reviewing that
-earlier version against the protocol. The sixth: v1 provided for a truth
+earlier version against the protocol. Sixth, v1 provided for a truth
 table of the eight ARC-AGI-3 development games and for V1 on them,
 labeled development, once the table existed. The record listed the table
-as still outstanding at the v1.1 tag, and I never wrote it. The seventh:
-v1 listed I1 among the agents to run on ARC-AGI-3, but the registered
-ARC baseline ran R and N only. The eighth: V3 was registered as a check
-of every row's adapter and code fields, and the analysis code never
-computed it. The ARC-AGI-3 lines are reported and not tested, and V3
-matters only for the outcome Support, so none of these three changes the
-outcome.
+as still outstanding at the v1.1 tag, and I never wrote it. Seventh, v1
+listed I1 among the agents to run on ARC-AGI-3, but the registered ARC
+baseline ran R and N only. Eighth, V3 was registered as a check of every
+row's adapter and code fields, and the analysis code never computed it.
+The ARC-AGI-3 lines are reported and not tested, and V3 matters only for
+the outcome Support, so none of these three changes the outcome.
 
 \section{Results}\label{results}
 
@@ -540,7 +545,7 @@ moves (-0.0435).
 
 \begin{figure*}[!t]
 \centering
-\includegraphics[width=\textwidth]{fig1.png}
+\includegraphics[width=0.95\textwidth]{fig1.png}
 \caption{Test V1: agreement between the census and the source-derived truth
 table, per assumption, for each benchmark and condition. Dashed line:
 0.75, below which V1 fails. Dotted line: 0.90, which V1 needs to pass
@@ -553,8 +558,11 @@ values are those of Supplement, Section S.1.}
 
 \begin{table*}[!t]
 \caption{Test V1, the verdict of each line as printed by the frozen analysis code
-at prereg-v1.1. The agreement and kappa behind each verdict are in
-Supplement, Section S.1.}
+at prereg-v1.1, with its agreement (the share of games where the census
+verdict equals the truth) and, where both truth values have at least 3
+games, Cohen's kappa (\(\kappa\)). A line fails below agreement 0.75 and
+passes at 0.90 or above with \(\kappa\), where it applies, at least
+0.70. Values unchanged from Supplement, Section S.1.}
 \centering
 \footnotesize
 \renewcommand{\arraystretch}{1.15}
@@ -562,11 +570,12 @@ Supplement, Section S.1.}
 \begin{tabular}{>{\raggedright\arraybackslash}p{0.315\linewidth}>{\raggedright\arraybackslash}p{0.055\linewidth}>{\raggedright\arraybackslash}p{0.103\linewidth}>{\raggedright\arraybackslash}p{0.103\linewidth}>{\raggedright\arraybackslash}p{0.103\linewidth}>{\raggedright\arraybackslash}p{0.103\linewidth}>{\raggedright\arraybackslash}p{0.103\linewidth}}
 \hline
 \textbf{benchmark and condition} & \textbf{games} & \textbf{A1} & \textbf{A2} & \textbf{A3} & \textbf{A4} & \textbf{A5} \\ \hline
-MiniGrid/BabyAI, absolute moves & 161 & PASS & PASS & FAIL & FAIL & FAIL \\
-MiniGrid/BabyAI, primitive actions & 161 & PASS & FAIL & FAIL & FAIL & FAIL \\
-Procgen, whole-level view, all games & 14 & PASS & FAIL & FAIL & FAIL & FAIL \\
-Procgen, whole-level view, in-range games & 9 & neither & FAIL & FAIL & FAIL & FAIL \\
-Procgen, view centered on the agent, camera-distinct games & 5 & reported, not tested & reported, not tested & reported, not tested & reported, not tested & reported, not tested \\
+MiniGrid/BabyAI, absolute moves & 161 & PASS 0.9876 & PASS 0.9876 & FAIL 0.4286 & FAIL 0.3354, \(\kappa\)~-0.0435 & FAIL 0.2671, \(\kappa\)~-0.4125 \\
+MiniGrid/BabyAI, primitive actions & 161 & PASS 0.9379 & FAIL 0.4596 & FAIL 0.5466 & FAIL 0.0621, \(\kappa\)~0.0021 & FAIL 0.0994, \(\kappa\)~-0.3374 \\
+Procgen, whole-level view, all games & 14 & PASS 0.9286 & FAIL 0.5714, \(\kappa\)~0.2222 & FAIL 0.5714 & FAIL 0.0714 & FAIL 0.0714, \(\kappa\)~-0.7843 \\
+Procgen, whole-level view, in-range games & 9 & neither 0.8889 & FAIL 0.4444, \(\kappa\)~0.0000 & FAIL 0.4444 & FAIL 0.1111 & FAIL 0.1111 \\
+Procgen, view centered on the agent, camera-distinct games (reported,
+not tested) & 5 & 0.8000 & 0.8000 & 0.6000 & 0.0000 & 0.0000 \\
 \hline
 \end{tabular}
 \end{table*}
@@ -587,7 +596,7 @@ Procgen line misses a pass on the interval alone.
 
 \begin{figure*}[!t]
 \centering
-\includegraphics[width=\textwidth]{fig2.png}
+\includegraphics[width=0.95\textwidth]{fig2.png}
 \caption{Test V2: AUROC of the census score for first-level completion (filled
 circle) with its 95\% bootstrap interval, and the AUROC of the nuisance
 baseline (open square), per agent and line. Dashed line: 0.65, at or
@@ -690,7 +699,7 @@ exploratory.
 
 \begin{figure*}[!t]
 \centering
-\includegraphics[width=\textwidth]{fig3.png}
+\includegraphics[width=0.95\textwidth]{fig3.png}
 \caption{An exploratory view of V1: for each benchmark and condition and each
 assumption, the games where the truth table says the assumption holds
 (bar h) or fails (bar f), split by the census verdict (holds, fails,
@@ -742,7 +751,7 @@ under absolute moves (84 in all), 15 and 105 under primitive actions
 
 \begin{figure*}[!t]
 \centering
-\includegraphics[width=\textwidth]{fig4.png}
+\includegraphics[width=0.95\textwidth]{fig4.png}
 \caption{An exploratory view of seed dissent: for each benchmark and condition
 and each assumption, the games split by how many of their 10 seeds give
 a census verdict different from the game's majority verdict. ``Camera
@@ -757,25 +766,25 @@ dissents on 134 of 161 games for A2 under primitive actions, 135 for A3
 under primitive actions, and 111 each for A3 and A4 under absolute
 moves, but only on 3 and 6 games for A1 and A2 under absolute moves.
 
-The exploratory reading that ties these counts together concerns
-constructs. For A2 under primitive actions, and for A3, A4 and A5, the
-census probe and the truth definition are not the same construct. The
-census A2 asks whether some key moves one located object; the truth asks
-whether exactly one object's displacement is a fixed function of the
-action, turns included. The census A3 asks whether the planner's
-first-level model mispredicted; the truth asks whether each action's
-unblocked displacement is constant. The census A4 counts walked-through
-``wall'' colors; the truth asks whether every blocked move is explained
-by a fixed obstacle set. The census A5 is silent when no level ends; the
+Taken together, these exploratory counts point to a single problem. For
+A2 under primitive actions, and for A3, A4 and A5, the census probe and
+the truth definition are not the same construct. The census A2 asks
+whether some key moves one located object; the truth asks whether
+exactly one object's displacement is a fixed function of the action,
+turns included. The census A3 asks whether the planner's first-level
+model mispredicted; the truth asks whether each action's unblocked
+displacement is constant. The census A4 counts walked-through ``wall''
+colors; the truth asks whether every blocked move is explained by a
+fixed obstacle set. The census A5 is silent when no level ends; the
 truth asks whether success is triggered by entering a place. In each
 case the census reads a by-product of one planner's run, while the truth
-reads the environment's step function. This is a description of the
-mismatch, made after the outcome, not a fix and not a result. On the 17
+reads the environment's step function. This describes the mismatch after
+the outcome was known; it proposes no fix and adds no result. On the 17
 held-out ARC-AGI-3 games, the exploratory V2 line computed by the same
 frozen functions gives AUROC 0.3542 for N and 0.3403 for R (Supplement,
 Section S.7); it is reported and never tested. None of this exploratory
-material supports a causal claim; these are counts of counters, read
-after the outcome was known.
+material supports a causal claim; these are tallies of the planner's
+internal counters, made after the outcome was known.
 
 \section{Discussion}\label{discussion}
 
@@ -794,15 +803,16 @@ prediction built on a score that does not measure what it names would be
 hard to interpret even if it had passed.
 
 The census kept every parameter fixed across benchmarks, which was the
-registered meaning of transfer, and it still failed. Holding parameters
-fixed is a statement about the procedure, not about whether it measures
-the same property on new games. If intelligence is defined over a range
-of environments {[}8{]}, a claim that an instrument describes games in
-general is a claim about a range too, to be tested on each part of the
-range it names; and an instrument that characterizes games carries
-priors of its own {[}9{]}, here the planner whose by-products the census
-read. The registered decision rule worked as designed, and no reading of
-the results after the fact could turn the refutation into support.
+registered meaning of transfer, and it still failed. Fixing the
+parameters keeps the procedure the same; it does not make the procedure
+measure the same property on new games. If intelligence is defined over
+a range of environments {[}8{]}, a claim that an instrument describes
+games in general is a claim about a range too, to be tested on each part
+of the range it names; and an instrument that characterizes games
+carries priors of its own {[}9{]}, here the planner whose by-products
+the census read. The registered decision rule worked as designed, and no
+reading of the results after the fact could turn the refutation into
+support.
 
 \subsection{Why the Failure Could Not Show on the Development
 Benchmark}\label{why-the-failure-could-not-show-on-the-development-benchmark}
@@ -815,7 +825,7 @@ planner work, and nothing on ARC-AGI-3 measured whether its verdicts
 matched the games' mechanics, so a disagreement could not show there.
 The registered phrase that ARC-AGI-3 ``does not count toward
 generality'' kept the development games out of the evidence for the
-claim, not out of that check.
+claim, but nothing in it prevented checking the census on them.
 
 \subsection{The Pilot Check That Was Not
 Done}\label{the-pilot-check-that-was-not-done}
@@ -873,7 +883,7 @@ games; the truth tables say how often each holds. It says nothing about
 the hidden ARC-AGI-3 games or about agents that bring priors to the
 games. It does not show that a differently built census would fail, or
 that instruments built on one benchmark cannot transfer to others. It
-shows that this instrument, registered with these thresholds, did not.
+shows only that this instrument failed the tests registered for it.
 
 \section{Conclusion}\label{conclusion}
 
@@ -885,12 +895,10 @@ V1 failed on both confirmatory benchmarks, for three or four of the five
 assumptions depending on the benchmark and condition; V2 passed for no
 agent on any benchmark; and on MiniGrid/BabyAI a baseline built from the
 size and variety of the environments ranked them better than the census
-did. The registered consequence followed: a refutation. For anyone who
-builds an instrument on one benchmark to describe the games of another,
-the record here is that freezing the parameters secured nothing about
-validity, and that the check that could have shown the failure, a
-comparison with known truth on the development and pilot games, was
-never run.
+did. The registered consequence followed: a refutation. Freezing the
+parameters did not make the census valid on the new benchmarks, and I
+never ran the check that would have shown this before the confirmatory
+runs: a comparison with known truth on the development and pilot games.
 
 \section*{Data and Code Availability}\label{data-and-code-availability}
 \addcontentsline{toc}{section}{Data and Code Availability}

@@ -722,10 +722,22 @@ def appendix_c():
         # double-anonymous review version: files only; commit hashes would point to the repository
         for k in [k for k in N if k.startswith("lastcommit.")]:
             del N[k]
+        # directories of earlier versions are named after the venue they were prepared for; in the
+        # review version they are described, not named
+        neutral = {
+            "docs/manuscript/REFERENCES_CHECK.md":
+                "reference record of the first earlier version of this article",
+            "docs/manuscript/REVIEW_draft1.md":
+                "the author's review of the first earlier version (reference URLs)",
+            "docs/manuscript_jagi/REFERENCES_CHECK_jagi.md":
+                "reference record of the second earlier version (ARC-AGI-3 report and added references)",
+        }
         lines = ["| number class | source files |", "|---|---|"]
         for cls in names:
             if cls in by:
-                lines.append(f"| {names[cls]} | " + "; ".join(sorted(by[cls])) + " |")
+                files = sorted(f for f in by[cls] if f not in neutral)
+                files += sorted(neutral[f] for f in by[cls] if f in neutral)
+                lines.append(f"| {names[cls]} | " + "; ".join(files) + " |")
         return "\n".join(lines) + "\n"
     lines = ["| number class | source files, each with the commit that last changed it |", "|---|---|"]
     for cls in names:

@@ -27,7 +27,7 @@ Expected:
 - "appendix_c.md: 9 number classes written to docs/manuscript_tog/appendix_c.md (anonymous: no commits)";
 - "all cross-checks passed".
 
-docs\manuscript is not touched. With --anonymous the provenance table names files without commits, so a later STATE.md amendment does not make it stale.
+docs\manuscript is not touched. With --anonymous the provenance table names files without commits, so a later STATE.md amendment does not make it stale, and it describes the three source files kept in the directories of earlier versions of the article instead of naming their paths.
 
 ## Step 2. The four figures
 
@@ -64,11 +64,13 @@ Do not build or commit unless all three exit codes are 0.
 ```powershell
 cd D:\Research\arc3\repo\docs\manuscript_tog
 $pd = "C:\Users\Shivani Mishra\AppData\Local\Pandoc\pandoc.exe"
-& $pd -f markdown+autolink_bare_uris manuscript_tog.md -t latex -s --template=tog_template.tex --lua-filter=tog.lua --shift-heading-level-by=-1 -M runninghead="Manuscript submitted to IEEE Transactions on Games" -M pdfauthor="" -o manuscript_tog.tex
+& $pd -f markdown+autolink_bare_uris manuscript_tog.md -t latex -s --template=tog_template.tex --lua-filter=tog.lua --shift-heading-level-by=-1 -M figscale=0.95 -M runninghead="Manuscript submitted to IEEE Transactions on Games" -M pdfauthor="" -o manuscript_tog.tex
 & $pd -f markdown+autolink_bare_uris supplement_tog.md -t latex -s --template=tog_template.tex --lua-filter=tog.lua --shift-heading-level-by=-1 -M classoption="journal,onecolumn" -M sloppy=true -M floatpos="!htbp" -M runninghead="Supplement, manuscript submitted to IEEE Transactions on Games" -M pdfauthor="" -o supplement_tog.tex
 ```
 
 Expected: no output, and the two .tex files.
+
+In the paper the figures are set at 0.95 of the text width (figscale), which keeps it at 10 pages since Table I carries the agreement and kappa of each line; the supplement keeps the full width.
 
 ## Step 5. PDFs with pdflatex (two runs each)
 
@@ -90,7 +92,8 @@ Expected:
 - no line from Select-String;
 - manuscript_tog.pdf 10 pages, supplement_tog.pdf 6 pages;
 - page size 612 x 792 pts (letter), which prints on A4 without loss;
-- Author "Anonymous Author", Creator and Producer empty.
+- Author "Anonymous Author", Creator and Producer empty;
+- CreationDate and ModDate the build day only, with no time of day and no time-zone offset, and no PTEX entries in the Info dictionary (tog_template.tex sets both).
 
 The journal's limit for a full paper is 10 pages, references included, supplementary material excluded. At 11 pages or more a mandatory over-length charge applies (JOURNAL_REQUIREMENTS.md, Section 3).
 
@@ -128,6 +131,4 @@ Open each image and check the following:
 
 ## Before submission (author)
 
-- Create the anonymized copy of the repository at https://anonymous.4open.science/ and put its address in place of [ANONYMIZED REPOSITORY URL], in manuscript_tog.md (Data and Code Availability) and in cover_letter_tog.md. Then rerun steps 3 to 7.
-- In anonymous.4open.science, add the terms to be masked. The repository carries the author's name in LICENSE, docs/preprint/, docs/manuscript/, docs/manuscript_jagi/, docs/manuscript_tog/cover_letter_tog.md, two other files under docs/, one under docs/archive/ and one under scripts/ (found with git grep -i -l "rahul\|mishra" on 2 November 2026). The name, the GitHub handle, the e-mail, the ORCID and the place should all be masked.
 - Upload manuscript_tog.pdf as the main document, supplement_tog.pdf as supplementary material, and the cover letter text as the covering letter and in "Comments to Editor-in-Chief".

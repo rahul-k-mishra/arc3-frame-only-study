@@ -20,6 +20,12 @@
 \renewcommand{\floatpagefraction}{0.85}
 \setcounter{dbltopnumber}{3}
 \hypersetup{pdfauthor={$pdfauthor$},pdftitle={$title-meta$},pdfsubject={},pdfkeywords={},pdfcreator={},pdfproducer={}}
+% no PTEX.* entries (engine banner, file name) in the PDF; creation and modification dates as the
+% build day only, without time of day or time-zone offset
+\pdfsuppressptexinfo=-1
+\makeatletter
+\pdfinfo{/CreationDate (D:\the\year\two@digits\month\two@digits\day) /ModDate (D:\the\year\two@digits\month\two@digits\day)}
+\makeatother
 \begin{document}
 $if(sloppy)$
 \sloppy

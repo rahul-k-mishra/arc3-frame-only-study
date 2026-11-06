@@ -8,6 +8,7 @@
 --    its caption above it, as IEEE places them; in one-column mode the class treats the starred
 --    floats as ordinary ones. The class numbers them ("Fig. 1", "TABLE I").
 -- Float placement is [!t] unless the metadata variable floatpos sets another (the supplement uses !htbp).
+-- Figures are drawn at the full text width unless the metadata variable figscale sets a fraction of it.
 -- Nothing in the text is changed.
 
 local function latex(inlines)
@@ -25,7 +26,7 @@ local function figure_block(fig)
   for _, b in ipairs(fig.caption.long) do
     for _, x in ipairs(b.content or {}) do table.insert(cap, x) end
   end
-  return raw('\\begin{figure*}[' .. FLOATPOS .. ']\n\\centering\n\\includegraphics[width=\\textwidth]{' .. img.src .. '}\n'
+  return raw('\\begin{figure*}[' .. FLOATPOS .. ']\n\\centering\n\\includegraphics[width=' .. FIGWIDTH .. ']{' .. img.src .. '}\n'
              .. '\\caption{' .. latex(cap) .. '}\n\\end{figure*}')
 end
 
@@ -74,9 +75,11 @@ local function table_block(tbl)
 end
 
 FLOATPOS = '!t'
+FIGWIDTH = '\\textwidth'
 
 function Pandoc(doc)
   if doc.meta.floatpos then FLOATPOS = pandoc.utils.stringify(doc.meta.floatpos) end
+  if doc.meta.figscale then FIGWIDTH = pandoc.utils.stringify(doc.meta.figscale) .. '\\textwidth' end
   local out = {}
   local i = 1
   local blocks = doc.blocks

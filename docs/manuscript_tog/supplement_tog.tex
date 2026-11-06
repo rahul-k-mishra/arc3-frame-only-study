@@ -20,6 +20,12 @@
 \renewcommand{\floatpagefraction}{0.85}
 \setcounter{dbltopnumber}{3}
 \hypersetup{pdfauthor={},pdftitle={Supplement to: A Frame-Only Census of Game Mechanics Built on ARC-AGI-3 Failed Preregistered Transfer Tests on MiniGrid/BabyAI and Procgen},pdfsubject={},pdfkeywords={},pdfcreator={},pdfproducer={}}
+% no PTEX.* entries (engine banner, file name) in the PDF; creation and modification dates as the
+% build day only, without time of day or time-zone offset
+\pdfsuppressptexinfo=-1
+\makeatletter
+\pdfinfo{/CreationDate (D:\the\year\two@digits\month\two@digits\day) /ModDate (D:\the\year\two@digits\month\two@digits\day)}
+\makeatother
 \begin{document}
 \sloppy
 \title{Supplement to: A Frame-Only Census of Game Mechanics Built on
@@ -436,32 +442,34 @@ is withheld, as every commit hash is, for double-anonymous review.
 \textbf{number class} & \textbf{source files} \\ \hline
 count & docs/EXPLORATORY\_V1\_DIAGNOSIS.md; docs/GROUND\_TRUTH\_minigrid.md;
 docs/GROUND\_TRUTH\_procgen.md; docs/HELDOUT.md; docs/PREREG.md;
-docs/STATE.md; docs/manuscript\_jagi/REFERENCES\_CHECK\_jagi.md;
-docs/tables/v1.json; docs/tables/v2.json;
+docs/STATE.md; docs/tables/v1.json; docs/tables/v2.json;
 runs/checks/determinism\_check.json;
 runs/exploratory/v1\_diagnosis.json;
 runs/pilot\_checks/pilot\_check.json;
 runs/pilot\_checks/procgen\_camera\_check.json;
-scripts/analyze\_common.py \\
+scripts/analyze\_common.py; reference record of the second earlier
+version (ARC-AGI-3 report and added references) \\
 rate (agreement, kappa, AUROC, interval bound, share) & docs/tables/v1.json; docs/tables/v2.json;
 runs/exploratory/v1\_diagnosis.json \\
 registered threshold & docs/PREREG.md \\
-constant, cap, seed or time & docs/PREREG.md; docs/manuscript\_jagi/REFERENCES\_CHECK\_jagi.md;
-docs/tables/v2.json; runs/pilot\_checks/pilot\_check.json;
-runs/pilot\_checks/procgen\_camera\_check.json \\
+constant, cap, seed or time & docs/PREREG.md; docs/tables/v2.json;
+runs/pilot\_checks/pilot\_check.json;
+runs/pilot\_checks/procgen\_camera\_check.json; reference record of the
+second earlier version (ARC-AGI-3 report and added references) \\
 commit or blob hash & docs/PREREG.md; docs/STATE.md; git tag objects and git ls-tree \\
-date & docs/HELDOUT.md; docs/PREREG.md; docs/STATE.md;
-docs/manuscript\_jagi/REFERENCES\_CHECK\_jagi.md; git tag objects and
-git ls-tree \\
+date & docs/HELDOUT.md; docs/PREREG.md; docs/STATE.md; git tag objects and git
+ls-tree; reference record of the second earlier version (ARC-AGI-3
+report and added references) \\
 package version & docs/PREREG.md \\
-URL or DOI & docs/STATE.md; docs/manuscript/REFERENCES\_CHECK.md;
-docs/manuscript/REVIEW\_draft1.md;
-docs/manuscript\_jagi/REFERENCES\_CHECK\_jagi.md;
-docs/preprint/preprint.md; docs/preprint/references.bib \\
-reference field, verdict word or ORCID & docs/STATE.md; docs/manuscript/REFERENCES\_CHECK.md;
-docs/manuscript\_jagi/REFERENCES\_CHECK\_jagi.md;
-docs/preprint/preprint.md; docs/preprint/references.bib;
-docs/tables/v1.json; docs/tables/v2.json \\
+URL or DOI & docs/STATE.md; docs/preprint/preprint.md; docs/preprint/references.bib;
+reference record of the first earlier version of this article; reference
+record of the second earlier version (ARC-AGI-3 report and added
+references); the author's review of the first earlier version (reference
+URLs) \\
+reference field, verdict word or ORCID & docs/STATE.md; docs/preprint/preprint.md; docs/preprint/references.bib;
+docs/tables/v1.json; docs/tables/v2.json; reference record of the first
+earlier version of this article; reference record of the second earlier
+version (ARC-AGI-3 report and added references) \\
 \hline
 \end{tabular}
 \end{table*}
