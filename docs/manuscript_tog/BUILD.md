@@ -129,6 +129,25 @@ Open each image and check the following:
 - the references end on page 10;
 - in the supplement, the title is on page 1 above Table S1.
 
+## Step 8. Title page (not seen by reviewers)
+
+title_page.md holds the identity that the anonymous manuscript withholds: the title, the author with affiliation and ORCID, the correspondence block, the acknowledgments sentence and the conflicts line. It has no repository address, DOI, registration address or commit hash. pandoc writes the docx; scripts/docx_metadata.py then sets its document properties: creator the author's name, every other field empty (no title, subject, keywords, description, last-modified-by, dates, application or template).
+
+```powershell
+cd D:\Research\arc3\repo
+$pd = "C:\Users\Shivani Mishra\AppData\Local\Pandoc\pandoc.exe"
+& $pd docs\manuscript_tog\title_page.md -o docs\manuscript_tog\title_page.docx
+D:\Research\arc3\brutus\.venv\Scripts\python.exe scripts\docx_metadata.py docs\manuscript_tog\title_page.docx --creator "Rahul Kumar Mishra"
+& $pd docs\manuscript_tog\title_page.docx -t plain --wrap=none
+```
+
+Expected:
+
+- "docs\manuscript_tog\title_page.docx: creator "Rahul Kumar Mishra", every other property empty";
+- "docProps/core.xml: dc:title = ""; dc:subject = ""; dc:creator = "Rahul Kumar Mishra"; cp:keywords = ""; dc:description = ""; cp:lastModifiedBy = """;
+- "docProps/app.xml: Properties = """ and "docProps/custom.xml: Properties = """;
+- the text of the title page, in the order above.
+
 ## Before submission (author)
 
-- Upload manuscript_tog.pdf as the main document, supplement_tog.pdf as supplementary material, and the cover letter text as the covering letter and in "Comments to Editor-in-Chief".
+- Upload manuscript_tog.pdf as the main document, title_page.docx as the title page (not for review), supplement_tog.pdf as supplementary material, and the cover letter text as the covering letter and in "Comments to Editor-in-Chief".
